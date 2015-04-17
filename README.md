@@ -64,12 +64,18 @@ Request a list of current live tournament games. This is the list you see in the
 
 Emitted when a GC connection is established. You shouldn't use any methods before you receive this. Note that this may be received (after it's first emitted) without any disconnectedFromGC event being emitted. In this case, the GC simply restarted.
 
+### disconnectedFromGC
+
+- `reason` - A value from the `GCConnectionStatus` enum
+
+Emitted when we're disconnected from the GC for any reason. node-globaloffensive will automatically try to reconnect and will emit `connectedToGC` when reconnected.
+
 ### connectionStatus
 
 - `status` - A value from the `GCConnectionStatus` enum
 - `data` - The raw data that was received
 
-Emitted when we receive the status of our connection to the GC. Exactly when this is emitted is currently unknown.
+Emitted when we receive the status of our connection to the GC. Exactly when this is emitted is currently unknown. **This may be removed in the future.**
 
 ### matchList
 

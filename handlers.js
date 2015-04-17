@@ -21,6 +21,15 @@ handlers[Language.MatchmakingGC2ClientHello] = function(body) {
 handlers[Language.ClientConnectionStatus] = function(body) {
 	var proto = Protos.ClientConnectionStatus.decode(body);
 	this.emit('connectionStatus', body.status, body);
+	
+	if(body.status != GlobalOffensive.GCConnectionStatus.HAVE_SESSION) {
+		this.emit('disconnectedFromGC', body.status);
+		
+		if(this.haveGCSession) {
+			this._connect(); // Try to reconnect
+			this.haveGCSession = false;
+		}
+	}
 };
 
 // MatchList
