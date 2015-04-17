@@ -35,6 +35,5 @@ handlers[Language.ClientConnectionStatus] = function(body) {
 // MatchList
 handlers[Language.MatchList] = function(body) {
 	var proto = Protos.CMsgGCCStrike15_v2_MatchList.decode(body);
-	console.log(proto);
 	this.emit('matchList', proto.matches, proto);
 };
