@@ -19,7 +19,7 @@ handlers[Language.MatchmakingGC2ClientHello] = function(body) {
 };
 
 handlers[Language.ClientConnectionStatus] = function(body) {
-	var proto = Protos.ClientConnectionStatus.decode(body);
+	var proto = Protos.CMsgConnectionStatus.decode(body);
 	this.emit('connectionStatus', body.status, body);
 	
 	if(body.status != GlobalOffensive.GCConnectionStatus.HAVE_SESSION) {
