@@ -44,6 +44,10 @@ There are a few useful read-only properties available to you.
 
 A big object containing account data and some statistics including players in-game. Undefined until `accountData` is emitted.
 
+### inventory
+
+An array containing the items in your inventory. Undefined until `connectedToGC` is emitted.
+
 # Methods
 
 ### Constructor(steamClient)
@@ -83,3 +87,22 @@ Emitted when we receive the status of our connection to the GC. Exactly when thi
 - `data` - The raw data that was received
 
 Emitted when we receive a match list, especially after a `requestLiveGames()` call. This may be emitted at other times. Presently, the exact behavior is unknown.
+
+### itemAcquired
+
+- `item` - The item that you received
+
+Emitted when you receive a new item.
+
+### itemChanged
+
+- `oldItem` - The item's previous state
+- `item` - The item's new state
+
+Emitted when an item in your inventory changes in some way.
+
+### itemRemoved
+
+- `item` - The item that you lost
+
+Emitted when an item is removed from your inventory.
