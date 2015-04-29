@@ -69,7 +69,7 @@ function GlobalOffensive(steam) {
 		self._isInCSGO = false;
 		self._hadGCSession = self.haveGCSession;
 		if(self.haveGCSession) {
-			self.emit('disconnectedFromGC', GlobalOffensive.GCGoodbyeReason.NO_SESSION);
+			self.emit('disconnectedFromGC', GlobalOffensive.GCConnectionStatus.NO_SESSION);
 			self.haveGCSession = false;
 		}
 	});
@@ -78,7 +78,7 @@ function GlobalOffensive(steam) {
 		self._isInCSGO = false;
 		self._hadGCSession = false;
 		if(self.haveGCSession) {
-			self.emit('disconnectedFromGC', GlobalOffensive.GCGoodbyeReason.NO_SESSION);
+			self.emit('disconnectedFromGC', GlobalOffensive.GCConnectionStatus.NO_SESSION);
 			self.haveGCSession = false;
 		}
 	});
