@@ -55,10 +55,10 @@ handlers[Language.MatchmakingGC2ClientHello] = function(body) {
 
 handlers[Language.ClientConnectionStatus] = function(body) {
 	var proto = Protos.CMsgConnectionStatus.decode(body);
-	this.emit('connectionStatus', body.status, body);
+	this.emit('connectionStatus', proto.status, proto);
 	
-	if(body.status != GlobalOffensive.GCConnectionStatus.HAVE_SESSION) {
-		this.emit('disconnectedFromGC', body.status);
+	if(proto.status != GlobalOffensive.GCConnectionStatus.HAVE_SESSION) {
+		this.emit('disconnectedFromGC', proto.status);
 		
 		if(this.haveGCSession) {
 			this._connect(); // Try to reconnect
