@@ -57,13 +57,10 @@ handlers[Language.ClientConnectionStatus] = function(body) {
 	var proto = Protos.CMsgConnectionStatus.decode(body);
 	this.emit('connectionStatus', proto.status, proto);
 	
-	if(proto.status != GlobalOffensive.GCConnectionStatus.HAVE_SESSION) {
+	if(proto.status != GlobalOffensive.GCConnectionStatus.HAVE_SESSION && this.haveGCSession) {
 		this.emit('disconnectedFromGC', proto.status);
-		
-		if(this.haveGCSession) {
-			this._connect(); // Try to reconnect
-			this.haveGCSession = false;
-		}
+		this._connect(); // Try to reconnect
+		this.haveGCSession = false;
 	}
 };
 
