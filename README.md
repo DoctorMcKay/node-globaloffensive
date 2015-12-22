@@ -1,6 +1,9 @@
 # Counter-Strike Global Offensive for Node.js
 
-This module provides a very flexible interface for interacting with the [CS:GO](http://store.steampowered.com/app/730) Game Coordinator. It's designed to work with a [node-steam](https://github.com/seishun/node-steam) instance.
+This module provides a very flexible interface for interacting with the [CS:GO](http://store.steampowered.com/app/730)
+Game Coordinator. It's designed to work with a
+[node-steam SteamUser](https://github.com/seishun/node-steam/tree/master/lib/handlers/user) or
+[node-steam-user SteamUser](https://github.com/DoctorMcKay/node-steam-user) instance.
 
 This is based off of [node-tf2](https://github.com/DoctorMcKay/node-tf2).
 
@@ -10,23 +13,35 @@ First, install it from npm:
 
 	$ npm install globaloffensive
 
-Require the module and call its constructor with your node-steam instance:
+Require the module and call its constructor with your SteamUser instance:
 
 ```js
 var Steam = require('steam');
 var GlobalOffensive = require('globaloffensive');
 
 var client = new Steam.SteamClient();
-var csgo = new GlobalOffensive(client);
+var user = new Steam.SteamUser(client);
+var csgo = new GlobalOffensive(user);
 ```
 
-To initialize your GC connection, just launch CS:GO via node-steam normally:
+or
+
+```js
+var SteamUser = require('steam-user');
+var GlobalOffensive = require('globaloffensive');
+
+var user = new SteamUser();
+var csgo = new GlobalOffensive(user);
+```
+
+To initialize your GC connection, just launch CS:GO via SteamUser normally:
 
 ```js
 client.gamesPlayed([730]);
 ```
 
-node-globaloffensive will emit a `connectedToGC` event when the game coordinator connection has been successfully established. You shouldn't try to do anything before you receive that event.
+node-globaloffensive will emit a `connectedToGC` event when the game coordinator connection has been successfully
+established. You shouldn't try to do anything before you receive that event.
 
 # Enums
 

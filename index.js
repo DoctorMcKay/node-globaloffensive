@@ -1,8 +1,7 @@
 var fs = require('fs');
+var Steam = require('steam');
 var SteamID = require('steamid');
 var ByteBuffer = require('bytebuffer');
-
-var protomask = 0x80000000;
 
 var Language = require('./language.js');
 var Protos = require('./protos.js');
@@ -12,18 +11,54 @@ module.exports = GlobalOffensive;
 require('util').inherits(GlobalOffensive, require('events').EventEmitter);
 
 function GlobalOffensive(steam) {
-	this._steam = steam;
+	this._steam = steam.client || steam._client;
+	this._gc = new Steam.SteamGameCoordinator(this._steam, 730);
 	this.haveGCSession = false;
 	this._hadGCSession = false;
 	this._isInCSGO = false;
 	
 	var self = this;
+
+	this._gc.on('message', function(header, body, callback) {
+		var protobuf = !!header.proto;
+
+		if(self._handlers[header.msg]) {
+			self._handlers[header.msg].call(self, protobuf ? body : ByteBuffer.wrap(body, ByteBuffer.LITTLE_ENDIAN));
+		} else {
+			var msgName = type;
+			for(var i in Language) {
+				if(Language.hasOwnProperty(i) && Language[i] == type) {
+					msgName = i;
+					break;
+				}
+			}
+
+			self.emit('debug', "Got unhandled GC message " + msgName + (protobuf ? " (protobuf)" : ""));
+		}
+	});
 	
 	// "extend" the default steam.gamesPlayed function so we can catch when CS:GO starts up
 	var gamesPlayed = steam.gamesPlayed;
-	steam.gamesPlayed = function(appids) {
-		if(appids.indexOf(730) != -1) {
-			self._isInCSGO = true;
+	steam.gamesPlayed = function(input) {
+		var appids = input;
+
+		if(appids.games_played) {
+			appids = appids.games_played;
+		}
+
+		if(!(appids instanceof Array)) {
+			appids = [appids];
+		}
+
+		self._isInCSGO = false;
+		for(var i = 0; i < appids.length; i++) {
+			if(appids[i] == 730 || appids[i].game_id == 730) {
+				self._isInCSGO = true;
+				break;
+			}
+		}
+
+		if(self._isInCSGO) {
 			if(!self.haveGCSession) {
 				self._connect();
 			}
@@ -32,8 +67,7 @@ function GlobalOffensive(steam) {
 				clearInterval(self._helloInterval);
 				self._helloInterval = null;
 			}
-			
-			self._isInCSGO = false;
+
 			self.haveGCSession = false;
 			self._hadGCSession = false;
 		}
@@ -41,31 +75,7 @@ function GlobalOffensive(steam) {
 		gamesPlayed.call(steam, appids);
 	};
 	
-	steam.on('fromGC', function(appID, type, body) {
-		if(appID != 730) {
-			// Not from the CS:GO GC
-			return;
-		}
-		
-		var protobuf = !!(type & protomask);
-		type &= ~protomask;
-		
-		if(self._handlers[type]) {
-			self._handlers[type].call(self, protobuf ? body : ByteBuffer.wrap(body, ByteBuffer.LITTLE_ENDIAN));
-		} else {
-			var msgName = type;
-			for(var i in Language) {
-				if(Language[i] == type) {
-					msgName = i;
-					break;
-				}
-			}
-			
-			self.emit('debug', "Got unhandled GC message " + msgName + (protobuf ? " (protobuf)" : ""));
-		}
-	});
-	
-	steam.on('loggedOff', function() {
+	this._steam.on('loggedOff', function() {
 		self._isInCSGO = false;
 		self._hadGCSession = self.haveGCSession;
 		if(self.haveGCSession) {
@@ -74,7 +84,7 @@ function GlobalOffensive(steam) {
 		}
 	});
 	
-	steam.on('error', function(e) {
+	this._steam.on('error', function(e) {
 		self._isInCSGO = false;
 		self._hadGCSession = false;
 		if(self.haveGCSession) {
@@ -83,8 +93,8 @@ function GlobalOffensive(steam) {
 		}
 	});
 	
-	steam.on('loggedOn', function() {
-		if(self._hadGCSession) {
+	this._steam.on('logOnResponse', function(response) {
+		if(response.eresult == Steam.EResult.OK && self._hadGCSession) {
 			self._connect();
 			self._hadGCSession = false;
 		}
@@ -97,7 +107,8 @@ GlobalOffensive.prototype._connect = function() {
 	}
 	
 	var self = this;
-	this._helloInterval = setInterval(function() {
+
+	function sendHello() {
 		if(self.haveGCSession) {
 			clearInterval(self._helloInterval);
 			self._helloInterval = null;
@@ -105,7 +116,10 @@ GlobalOffensive.prototype._connect = function() {
 		}
 		
 		self._send(Language.ClientHello, Protos.CMsgClientHello, {});
-	}, 5000);
+	}
+
+	this._helloInterval = setInterval(sendHello, 5000);
+	sendHello();
 };
 
 GlobalOffensive.prototype._send = function(type, protobuf, body) {
@@ -115,7 +129,7 @@ GlobalOffensive.prototype._send = function(type, protobuf, body) {
 	
 	var msgName = type;
 	for(var i in Language) {
-		if(Language[i] == type) {
+		if(Language.hasOwnProperty(i) && Language[i] == type) {
 			msgName = i;
 			break;
 		}
@@ -124,10 +138,10 @@ GlobalOffensive.prototype._send = function(type, protobuf, body) {
 	this.emit('debug', "Sending GC message " + msgName);
 	
 	if(protobuf) {
-		this._steam.toGC(730, type | protomask, (new protobuf(body)).toBuffer());
+		this._gc.send({"msg": type, "proto": {}}, (new protobuf(body)).toBuffer());
 	} else {
 		// This is a ByteBuffer
-		this._steam.toGC(730, type, body.flip().toBuffer());
+		this._gc.send({"msg": type}, body.flip().toBuffer());
 	}
 	
 	return true;
