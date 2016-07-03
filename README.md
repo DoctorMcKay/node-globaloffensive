@@ -77,6 +77,41 @@ var csgo = new GlobalOffensive(steamClient);
 
 Request a list of current live tournament games. This is the list you see in the client under Watch -> Live. Listen for the `matchList` event to get your response.
 
+### inspectItem(owner[, assetid][, d][, callback])
+- `owner` - The numeric SteamID or market listing ID of the owning Steam account or market listing, as a string; or an entire inspect link.
+- `assetid` - If `owner` is not an entire inspect link, this is the numeric asset ID of this item, as a string
+- `d` - If `owner` is not an entire inspect link, this is the "D" number from the inspect link (the last number following the "D" character)
+- `callback` - Optional. Called if all parameters are valid when Steam responds to us.
+    - `item` - An object containing the item's data
+        - `accountid` - Seems to always be `null`
+        - `itemid` - The item's asset ID, as a string
+        - `defindex` - The item's definition index
+        - `paintindex` - The item's paint index
+        - `rarity` - The item's numeric rarity
+        - `quality` - The item's numeric quality
+        - `paintwear` - The item's paint wear percentage, as a float between 0 and 1 (frequently and incorrectly called "float value")
+        - `paintseed` - The item's paint seed
+        - `killeaterscoretype` - What kind of statistic the StatTrak version of this item tracks (may be `null` if not StatTrak)
+        - `killeatervalue` - The item's tracked statistic value (kills)
+        - `customname` - The item's custom name via a name tag, or `null` if none
+        - `stickers` - An array of objects describing the stickers applied to this item
+            - `slot` - What slot this sticker is applied to
+            - `stickerId` - The ID of this type of sticker
+            - `wear` - Either `null` (not scratched) or a float between 0 and 1 describing how much this sticker has been scratched
+            - `scale` - Always `null`?
+            - `rotation` - Always `null`?
+        - `inventory` - An integer which has no use to you
+        - `origin` - The numeric origin of this item
+        - `questid` - You can ignore this
+
+**v1.1.0 or later is required to use this method**
+
+Sends the same request to the GC that the official client sends when you inspect an item. If all parameters are correct
+and the GC is in a good mood, returns the item's data. Using this for an item your account owns is useless as all
+the data is already available in `inventory`.
+
+The response will arrive in the callback and in the `inspectItemInfo` event.
+
 # Events
 
 ### connectedToGC
@@ -84,40 +119,61 @@ Request a list of current live tournament games. This is the list you see in the
 Emitted when a GC connection is established. You shouldn't use any methods before you receive this. Note that this may be received (after it's first emitted) without any disconnectedFromGC event being emitted. In this case, the GC simply restarted.
 
 ### disconnectedFromGC
-
 - `reason` - A value from the `GCConnectionStatus` enum
 
 Emitted when we're disconnected from the GC for any reason. node-globaloffensive will automatically try to reconnect and will emit `connectedToGC` when reconnected.
 
 ### connectionStatus
-
 - `status` - A value from the `GCConnectionStatus` enum
 - `data` - The raw data that was received
 
 Emitted when we receive the status of our connection to the GC. Exactly when this is emitted is currently unknown. **This may be removed in the future.**
 
 ### matchList
-
 - `matches` - An array of matches
 - `data` - The raw data that was received
 
 Emitted when we receive a match list, especially after a `requestLiveGames()` call. This may be emitted at other times. Presently, the exact behavior is unknown.
 
-### itemAcquired
+### inspectItemInfo
+- `item` - An object containing the item's data
+   - `accountid` - Seems to always be `null`
+   - `itemid` - The item's asset ID, as a string
+   - `defindex` - The item's definition index
+   - `paintindex` - The item's paint index
+   - `rarity` - The item's numeric rarity
+   - `quality` - The item's numeric quality
+   - `paintwear` - The item's paint wear percentage, as a float between 0 and 1 (frequently and incorrectly called "float value")
+   - `paintseed` - The item's paint seed
+   - `killeaterscoretype` - What kind of statistic the StatTrak version of this item tracks (may be `null` if not StatTrak)
+   - `killeatervalue` - The item's tracked statistic value (kills)
+   - `customname` - The item's custom name via a name tag, or `null` if none
+   - `stickers` - An array of objects describing the stickers applied to this item
+       - `slot` - What slot this sticker is applied to
+       - `stickerId` - The ID of this type of sticker
+       - `wear` - Either `null` (not scratched) or a float between 0 and 1 describing how much this sticker has been scratched
+       - `scale` - Always `null`?
+       - `rotation` - Always `null`?
+   - `inventory` - An integer which has no use to you
+   - `origin` - The numeric origin of this item
+   - `questid` - You can ignore this
 
+**v1.1.0 or later is required to use this method**
+
+Emitted in response to an `inspectItem()` call.
+
+### itemAcquired
 - `item` - The item that you received
 
 Emitted when you receive a new item.
 
 ### itemChanged
-
 - `oldItem` - The item's previous state
 - `item` - The item's new state
 
 Emitted when an item in your inventory changes in some way.
 
 ### itemRemoved
-
 - `item` - The item that you lost
 
 Emitted when an item is removed from your inventory.

@@ -70,6 +70,23 @@ handlers[Language.MatchList] = function(body) {
 	this.emit('matchList', proto.matches, proto);
 };
 
+// Inspecting items
+handlers[Language.Client2GCEconPreviewDataBlockResponse] = function(body) {
+	var proto = Protos.CMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse.decode(body);
+	if (!proto.iteminfo) {
+		return;
+	}
+
+	var item = proto.iteminfo;
+	// decode the wear
+	var buf = new Buffer(4);
+	buf.writeUInt32BE(item.paintwear, 0);
+	item.paintwear = buf.readFloatBE(0);
+	item.itemid = item.itemid.toString();
+	this.emit('inspectItemInfo', item);
+	this.emit('inspectItemInfo#' + item.itemid, item);
+};
+
 // SO
 handlers[Language.SO_Create] = function(body) {
 	var proto = Protos.CMsgSOSingleObject.decode(body);

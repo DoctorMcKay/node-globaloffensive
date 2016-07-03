@@ -151,6 +151,43 @@ GlobalOffensive.prototype.requestLiveGames = function() {
 	this._send(Language.MatchListRequestCurrentLiveGames, Protos.CMsgGCCStrike15_v2_MatchListRequestCurrentLiveGames, {});
 };
 
+GlobalOffensive.prototype.inspectItem = function(owner, assetid, d, callback) {
+	var match;
+	if (typeof owner === 'string' && (match = owner.match(/[SM](\d+)A(\d+)D(\d+)$/))) {
+		callback = assetid;
+		owner = match[1];
+		assetid = match[2];
+		d = match[3];
+	}
+
+	var msg = {
+		"paramA": assetid,
+		"paramD": d,
+		"paramS": 0,
+		"paramM": 0
+	};
+
+	if (typeof owner === 'object') {
+		owner = owner.toString();
+	}
+
+	try {
+		var sid = new SteamID(owner);
+		if (!sid.isValid()) {
+			throw 0;
+		}
+		// it's a valid steamid
+		msg.paramS = owner;
+	} catch (e) {
+		msg.paramM = owner;
+	}
+
+	this._send(Language.Client2GCEconPreviewDataBlockRequest, Protos.CMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest, msg);
+	if (callback) {
+		this.once('inspectItemInfo#' + assetid, callback);
+	}
+};
+
 GlobalOffensive.prototype._handlers = {};
 
 function coerceToLong(num, signed) {
