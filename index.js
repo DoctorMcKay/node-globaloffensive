@@ -173,7 +173,7 @@ GlobalOffensive.prototype.inspectItem = function(owner, assetid, d, callback) {
 
 	try {
 		var sid = new SteamID(owner);
-		if (!sid.isValid()) {
+		if (!sid.isValid() || sid.universe != SteamID.Universe.PUBLIC || sid.type != SteamID.Type.INDIVIDUAL || sid.instance != SteamID.Instance.DESKTOP) {
 			throw 0;
 		}
 		// it's a valid steamid
