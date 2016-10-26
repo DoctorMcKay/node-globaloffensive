@@ -3,6 +3,7 @@ var fs = require('fs');
 var GlobalOffensive = require('./index.js');
 var Language = require('./language.js');
 var Protos = require('./protos.js');
+var SteamID = require('steamid');
 
 var handlers = GlobalOffensive.prototype._handlers;
 
@@ -69,6 +70,22 @@ handlers[Language.MatchList] = function(body) {
 	var proto = Protos.CMsgGCCStrike15_v2_MatchList.decode(body);
 	this.emit('matchList', proto.matches, proto);
 };
+
+// PlayersProfile
+handlers[Language.PlayersProfile] = function (body) {
+  var proto = Protos.CMsgGCCStrike15_v2_PlayersProfile.decode(body);
+
+  if (!proto.accountProfiles[0]) {
+    return;
+  }
+
+  var profile = proto.accountProfiles[0];
+
+  var sid = SteamID.fromIndividualAccountID(profile.accountId);
+
+  this.emit('playersProfile', profile);
+  this.emit('playersProfile#' + sid.getSteamID64(), profile);
+}
 
 // Inspecting items
 handlers[Language.Client2GCEconPreviewDataBlockResponse] = function(body) {
