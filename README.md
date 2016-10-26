@@ -112,6 +112,45 @@ the data is already available in `inventory`.
 
 The response will arrive in the callback and in the `inspectItemInfo` event.
 
+### requestPlayersProfile(steamid[, callback])
+- `steamid` - The numeric SteamID of the Steam account to pull profile data for. Needs to be playing CSGO and be on the friend list of the requesting account.
+- `callback` - Optional. Called if all parameters are valid when Steam responds to us.
+    - `profile` - An object containing the profiledata
+        - `accountid` - Steam account id
+	- `ongoingmatch`
+	- `globalStats` - Seems to always be `null`
+	- `penaltySeconds`
+	- `penaltyReason`
+	- `vacBanned`
+	- `ranking`
+	    - `accountid`
+	    - `rankId` - Matchmaking rank (0-18), starting at 0 for unranked
+	    - `wins` - Number of matchmaking wins
+	    - `rankChange` - Seems to always be `null`
+	- `commendation`
+	    - `cmdFriendly` - The number of "friendly" commendations the account has received
+	    - `cmdTeaching` - The number of "teaching" commendations the account has received
+	    - `cmdLeader` - The number of "leader" commendations the account has received
+	- `medals` - Archievement medals, their ranks and coins
+	    - `medalTeam`
+	    - `medalCombat`
+	    - `medalWeapon`
+	    - `medalGlobal`
+	    - `medalArms`
+	    - `legacy_CoinOpPayback`
+	    - `displayedItemsDefidx` - Array of coins
+	    - `featuredDisplayItemDefidx`
+	- `myCurrentEvent`
+	- `myCurrentEventTeams`
+	- `myCurrentTeam`
+	- `myCurrentEventStages`
+	- `surveyVote`
+	- `activity`
+	- `secondsUntilNextMission`
+	
+Sends the same request to the GC that viewing the CSGO player profile from the in-game friendlist sends. Returns the same information that you would get in-game.
+This returns the same protobuf that is used when you request your own profile data, so most of it stays empty.
+	
 # Events
 
 ### connectedToGC
@@ -177,3 +216,39 @@ Emitted when an item in your inventory changes in some way.
 - `item` - The item that you lost
 
 Emitted when an item is removed from your inventory.
+
+### playersProfile
+- `profile` - An object containing the profiledata
+        - `accountid` - Steam account id
+	- `ongoingmatch`
+	- `globalStats` - Seems to always be `null`
+	- `penaltySeconds`
+	- `penaltyReason`
+	- `vacBanned`
+	- `ranking`
+	    - `accountid`
+	    - `rankId` - Matchmaking rank (0-18), starting at 0 for unranked
+	    - `wins` - Number of matchmaking wins
+	    - `rankChange` - Seems to always be `null`
+	- `commendation`
+	    - `cmdFriendly` - The number of "friendly" commendations the account has received
+	    - `cmdTeaching` - The number of "teaching" commendations the account has received
+	    - `cmdLeader` - The number of "leader" commendations the account has received
+	- `medals` - Archievement medals, their ranks and coins
+	    - `medalTeam`
+	    - `medalCombat`
+	    - `medalWeapon`
+	    - `medalGlobal`
+	    - `medalArms`
+	    - `legacy_CoinOpPayback`
+	    - `displayedItemsDefidx` - Array of coins
+	    - `featuredDisplayItemDefidx`
+	- `myCurrentEvent`
+	- `myCurrentEventTeams`
+	- `myCurrentTeam`
+	- `myCurrentEventStages`
+	- `surveyVote`
+	- `activity`
+	- `secondsUntilNextMission`
+
+Emitted in response to an `requestPlayersProfile()` call.
