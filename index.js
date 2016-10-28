@@ -189,6 +189,10 @@ GlobalOffensive.prototype.inspectItem = function(owner, assetid, d, callback) {
 };
 
 GlobalOffensive.prototype.requestPlayersProfile = function (steamid, callback) {
+  if (typeof steamid === 'object') {
+    steamid = steamid.toString();
+  }
+
   var sid = new SteamID(steamid);
 
   if (!sid.isValid() || sid.universe != SteamID.Universe.PUBLIC || sid.type != SteamID.Type.INDIVIDUAL || sid.instance != SteamID.Instance.DESKTOP) {
