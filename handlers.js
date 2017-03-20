@@ -166,6 +166,10 @@ GlobalOffensive.prototype._handleSODestroy = function(proto) {
 		return; // Not an item
 	}
 	
+	if (!this.inventory) {
+		return; // Inventory not loaded yet
+	}
+	
 	var item = Protos.CSOEconItem.decode(proto.objectData);
 	item.id = item.id.toString();
 	var itemData = null;
