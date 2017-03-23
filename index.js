@@ -21,20 +21,22 @@ function GlobalOffensive(steam) {
 
 	this._gc.on('message', function(header, body, callback) {
 		var protobuf = !!header.proto;
+		var handled = false;
 
-		if(self._handlers[header.msg]) {
+		if (self._handlers[header.msg]) {
+			handled = true;
 			self._handlers[header.msg].call(self, protobuf ? body : ByteBuffer.wrap(body, ByteBuffer.LITTLE_ENDIAN));
-		} else {
-			var msgName = header.msg;
-			for(var i in Language) {
-				if(Language.hasOwnProperty(i) && Language[i] == header.msg) {
-					msgName = i;
-					break;
-				}
-			}
-
-			self.emit('debug', "Got unhandled GC message " + msgName + (protobuf ? " (protobuf)" : ""));
 		}
+
+		var msgName = header.msg;
+		for (var i in Language) {
+			if(Language.hasOwnProperty(i) && Language[i] == header.msg) {
+				msgName = i;
+				break;
+			}
+		}
+
+		self.emit('debug', "Got " + (handled ? "handled" : "unhandled") + " GC message " + msgName + (protobuf ? " (protobuf)" : ""));
 	});
 	
 	// "extend" the default steam.gamesPlayed function so we can catch when CS:GO starts up
