@@ -60,8 +60,8 @@ handlers[Language.ClientConnectionStatus] = function(body) {
 	
 	if(proto.status != GlobalOffensive.GCConnectionStatus.HAVE_SESSION && this.haveGCSession) {
 		this.emit('disconnectedFromGC', proto.status);
-		this._connect(); // Try to reconnect
 		this.haveGCSession = false;
+		this._connect(); // Try to reconnect
 	}
 };
 
