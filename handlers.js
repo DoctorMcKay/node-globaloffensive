@@ -85,7 +85,7 @@ handlers[Language.PlayersProfile] = function (body) {
 
   this.emit('playersProfile', profile);
   this.emit('playersProfile#' + sid.getSteamID64(), profile);
-}
+};
 
 // Inspecting items
 handlers[Language.Client2GCEconPreviewDataBlockResponse] = function(body) {
