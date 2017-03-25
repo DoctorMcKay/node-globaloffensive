@@ -3,6 +3,11 @@ import "steammessages.proto";
 option optimize_for = SPEED;
 option cc_generic_services = false;
 
+enum GCClientLauncherType {
+	GCClientLauncherType_DEFAULT = 0;
+	GCClientLauncherType_PERFECTWORLD = 1;
+}
+
 enum GCConnectionStatus {
 	GCConnectionStatus_HAVE_SESSION = 0;
 	GCConnectionStatus_GC_GOING_DOWN = 1;
@@ -91,6 +96,11 @@ message CMsgGCMultiplexMessage {
 	optional uint32 msgtype = 1;
 	optional bytes payload = 2;
 	repeated fixed64 steamids = 3;
+	optional bool replytogc = 4;
+}
+
+message CMsgGCMultiplexMessage_Response {
+	optional uint32 msgtype = 1;
 }
 
 message CGCToGCMsgMasterAck {
@@ -139,6 +149,17 @@ message CMsgClientHello {
 	repeated .CMsgSOCacheHaveVersion socache_have_versions = 2;
 	optional uint32 client_session_need = 3;
 	optional uint32 client_launcher = 4;
+	optional uint32 partner_srcid = 5;
+	optional uint32 partner_accountid = 6;
+	optional uint32 partner_accountflags = 7;
+}
+
+message CMsgServerHello {
+	optional uint32 version = 1;
+	repeated .CMsgSOCacheHaveVersion socache_have_versions = 2;
+	optional uint32 legacy_client_session_need = 3;
+	optional uint32 client_launcher = 4;
+	optional uint32 steamdatagram_port = 5;
 }
 
 message CMsgClientWelcome {
@@ -171,6 +192,7 @@ message CWorkshop_PopulateItemDescriptions_Request {
 	message SingleItemDescription {
 		optional uint32 gameitemid = 1;
 		optional string item_description = 2;
+		optional bool one_per_account = 3;
 	}
 
 	message ItemDescriptionsLanguageBlock {
