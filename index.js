@@ -65,9 +65,10 @@ function GlobalOffensive(steam) {
 				self._connect();
 			}
 		} else {
-			if(self._helloInterval) {
-				clearInterval(self._helloInterval);
-				self._helloInterval = null;
+			if (self._helloTimer) {
+				clearTimeout(self._helloTimer);
+				self._helloTimer = null;
+				delete self._helloTimerMs;
 			}
 
 			self.haveGCSession = false;
@@ -104,24 +105,25 @@ function GlobalOffensive(steam) {
 }
 
 GlobalOffensive.prototype._connect = function() {
-	if(!this._isInCSGO || this._helloInterval) {
+	if (!this._isInCSGO || this._helloTimer) {
 		return; // We're not in CS:GO or we're already trying to connect
 	}
 	
 	var self = this;
+	this._helloTimer = setTimeout(sendHello, 500);
 
 	function sendHello() {
-		if(self.haveGCSession) {
-			clearInterval(self._helloInterval);
-			self._helloInterval = null;
+		if (self.haveGCSession) {
+			clearTimeout(self._helloTimer);
+			delete self._helloTimer;
 			return;
 		}
 		
 		self._send(Language.ClientHello, Protos.CMsgClientHello, {});
+		self._helloTimerMs = Math.min(60000, (self._helloTimerMs || 1000) * 2); // exponential backoff, max 60 seconds
+		self._helloTimer = setTimeout(sendHello, self._helloTimerMs);
 	}
 
-	this._helloInterval = setInterval(sendHello, 5000);
-	sendHello();
 };
 
 GlobalOffensive.prototype._send = function(type, protobuf, body) {

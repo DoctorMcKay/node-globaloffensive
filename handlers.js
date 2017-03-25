@@ -45,6 +45,9 @@ handlers[Language.ClientWelcome] = function(body) {
 	this.inventory = this.inventory || [];
 	
 	this.haveGCSession = true;
+	clearTimeout(this._helloTimer);
+	this._helloTimer = null;
+	this._helloTimerMs = 1000;
 	this.emit('connectedToGC');
 };
 
