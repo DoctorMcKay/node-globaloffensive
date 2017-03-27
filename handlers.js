@@ -60,6 +60,15 @@ handlers[Language.MatchmakingGC2ClientHello] = function(body) {
 handlers[Language.ClientConnectionStatus] = function(body) {
 	var proto = Protos.CMsgConnectionStatus.decode(body);
 	this.emit('connectionStatus', proto.status, proto);
+
+	var statusStr = proto.status;
+	for (var i in GlobalOffensive.GCConnectionStatus) {
+		if (GlobalOffensive.GCConnectionStatus.hasOwnProperty(i) && GlobalOffensive.GCConnectionStatus[i] == proto.status) {
+			statusStr = i;
+		}
+	}
+
+	this.emit('debug', "Connection status: " + statusStr + " (" + proto.status + ")");
 	
 	if(proto.status != GlobalOffensive.GCConnectionStatus.HAVE_SESSION && this.haveGCSession) {
 		this.emit('disconnectedFromGC', proto.status);

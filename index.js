@@ -106,6 +106,7 @@ function GlobalOffensive(steam) {
 
 GlobalOffensive.prototype._connect = function() {
 	if (!this._isInCSGO || this._helloTimer) {
+		this.emit('debug', "Not trying to connect due to " + (!this._isInCSGO ? "not in CS:GO" : "has helloTimer"));
 		return; // We're not in CS:GO or we're already trying to connect
 	}
 	
@@ -114,14 +115,16 @@ GlobalOffensive.prototype._connect = function() {
 
 	function sendHello() {
 		if (self.haveGCSession) {
+			self.emit('debug', "Not sending hello because we have a session");
 			clearTimeout(self._helloTimer);
 			delete self._helloTimer;
 			return;
 		}
-		
+
 		self._send(Language.ClientHello, Protos.CMsgClientHello, {});
 		self._helloTimerMs = Math.min(60000, (self._helloTimerMs || 1000) * 2); // exponential backoff, max 60 seconds
 		self._helloTimer = setTimeout(sendHello, self._helloTimerMs);
+		self.emit('debug', "Sending hello, setting timer for next attempt to " + self._helloTimerMs + " ms");
 	}
 
 };
