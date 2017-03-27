@@ -1,4 +1,8 @@
 # Counter-Strike Global Offensive for Node.js
+[![npm version](https://img.shields.io/npm/v/steam-user.svg)](https://www.npmjs.com/package/globaloffensive)
+[![npm downloads](https://img.shields.io/npm/dm/steam-user.svg)](https://www.npmjs.com/package/globaloffensive)
+[![dependencies](https://img.shields.io/david/DoctorMcKay/node-steam-user.svg)](https://david-dm.org/DoctorMcKay/node-globaloffensive)
+[![license](https://img.shields.io/npm/l/steam-user.svg)](https://github.com/DoctorMcKay/node-globaloffensive/blob/master/LICENSE)
 
 This module provides a very flexible interface for interacting with the [CS:GO](http://store.steampowered.com/app/730)
 Game Coordinator. It's designed to work with a
