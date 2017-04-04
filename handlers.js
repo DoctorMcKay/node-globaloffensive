@@ -43,7 +43,8 @@ handlers[Language.ClientWelcome] = function(body) {
 	}
 	
 	this.inventory = this.inventory || [];
-	
+
+	this.emit('debug', "GC connection established");
 	this.haveGCSession = true;
 	clearTimeout(this._helloTimer);
 	this._helloTimer = null;
@@ -68,7 +69,7 @@ handlers[Language.ClientConnectionStatus] = function(body) {
 		}
 	}
 
-	this.emit('debug', "Connection status: " + statusStr + " (" + proto.status + ")");
+	this.emit('debug', "Connection status: " + statusStr + " (" + proto.status + "); have session: " + (this.haveGCSession ? 'yes' : 'no'));
 	
 	if(proto.status != GlobalOffensive.GCConnectionStatus.HAVE_SESSION && this.haveGCSession) {
 		this.emit('disconnectedFromGC', proto.status);

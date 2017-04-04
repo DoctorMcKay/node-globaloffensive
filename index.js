@@ -60,8 +60,9 @@ function GlobalOffensive(steam) {
 			}
 		}
 
-		if(self._isInCSGO) {
-			if(!self.haveGCSession) {
+		if (self._isInCSGO) {
+			if (!self.haveGCSession) {
+				self.emit('debug', "Connecting because we're playing CS:GO");
 				self._connect();
 			}
 		} else {
@@ -71,6 +72,7 @@ function GlobalOffensive(steam) {
 				delete self._helloTimerMs;
 			}
 
+			self.emit('debug', "Making sure we're disconnected because we're not playing CS:GO");
 			self.haveGCSession = false;
 			self._hadGCSession = false;
 		}
@@ -78,19 +80,24 @@ function GlobalOffensive(steam) {
 		gamesPlayed.call(steam, appids);
 	};
 	
-	this._steam.on('loggedOff', function() {
+	this._steam.on('loggedOff', onSteamLoggedOff);
+	this._steam.on('disconnected', onSteamLoggedOff);
+
+	function onSteamLoggedOff() {
 		self._isInCSGO = false;
 		self._hadGCSession = self.haveGCSession;
-		if(self.haveGCSession) {
+		if (self.haveGCSession) {
+			self.emit('debug', "Emitting disconnectedFromGC because we're logged off of Steam");
 			self.emit('disconnectedFromGC', GlobalOffensive.GCConnectionStatus.NO_SESSION);
 			self.haveGCSession = false;
 		}
-	});
+	}
 	
 	this._steam.on('error', function(e) {
 		self._isInCSGO = false;
 		self._hadGCSession = false;
-		if(self.haveGCSession) {
+		if (self.haveGCSession) {
+			self.emit('debug', "Emitting disconnectedFromGC due to Steam error");
 			self.emit('disconnectedFromGC', GlobalOffensive.GCConnectionStatus.NO_SESSION);
 			self.haveGCSession = false;
 		}
