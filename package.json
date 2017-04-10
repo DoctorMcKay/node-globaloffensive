@@ -1,6 +1,6 @@
 {
 	"name": "globaloffensive",
-	"version": "1.2.5",
+	"version": "1.2.6",
 	"description": "Exposes a simple API for interacting with the Counter-Strike: Global Offensive game coordinator",
 	"keywords": ["csgo", "cs:go", "cs", "counter strike", "counter-strike", "counter strike global offensive", "counter-strike global offensive", "global offensive", "valve", "steam"],
 	"homepage": "https://github.com/DoctorMcKay/node-globaloffensive",
