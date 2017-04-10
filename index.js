@@ -36,7 +36,7 @@ function GlobalOffensive(steam) {
 			}
 		}
 
-		self.emit('debug', "Got " + (handled ? "handled" : "unhandled") + " GC message " + msgName + (protobuf ? " (protobuf)" : ""));
+		self.emit('debug', "Got " + (handled ? "handled" : "unhandled") + " GC message " + msgName + (protobuf ? " (protobuf)" : "") + (!self.haveGCSession ? " (NO SESSION?)" : ""));
 	});
 	
 	// "extend" the default steam.gamesPlayed function so we can catch when CS:GO starts up
