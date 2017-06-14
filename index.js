@@ -223,6 +223,12 @@ GlobalOffensive.prototype.requestPlayersProfile = function(steamid, callback) {
 	}
 };
 
+GlobalOffensive.prototype.deleteItem = function(item) {
+	var buffer = new ByteBuffer(8, ByteBuffer.LITTLE_ENDIAN);
+	buffer.writeUint64(item);
+	this._send(Language.Delete, null, buffer);
+};
+
 GlobalOffensive.prototype._handlers = {};
 
 function coerceToLong(num, signed) {
