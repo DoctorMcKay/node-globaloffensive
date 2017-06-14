@@ -156,6 +156,13 @@ The response will arrive in the callback and in the `inspectItemInfo` event.
 
 Sends the same request to the GC that viewing the CSGO player profile from the in-game friendlist sends. Returns the same information that you would get in-game.
 This returns the same protobuf that is used when you request your own profile data, so most of it stays empty.
+
+### deleteItem(item)
+- `item` - The ID of the item you want to delete
+
+**1.3.0 or later is required to use this method**
+
+Deletes a particular item from your inventory. **This is a destructive operation, which cannot be undone.**
 	
 # Events
 
