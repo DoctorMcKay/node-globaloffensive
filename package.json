@@ -2,7 +2,18 @@
 	"name": "globaloffensive",
 	"version": "1.2.6",
 	"description": "Exposes a simple API for interacting with the Counter-Strike: Global Offensive game coordinator",
-	"keywords": ["csgo", "cs:go", "cs", "counter strike", "counter-strike", "counter strike global offensive", "counter-strike global offensive", "global offensive", "valve", "steam"],
+	"keywords": [
+		"csgo",
+		"cs:go",
+		"cs",
+		"counter strike",
+		"counter-strike",
+		"counter strike global offensive",
+		"counter-strike global offensive",
+		"global offensive",
+		"valve",
+		"steam"
+	],
 	"homepage": "https://github.com/DoctorMcKay/node-globaloffensive",
 	"bugs": {
 		"url": "https://github.com/DoctorMcKay/node-globaloffensive/issues"
@@ -13,9 +24,10 @@
 		"url": "https://github.com/DoctorMcKay/node-globaloffensive.git"
 	},
 	"dependencies": {
-		"steam": "^1.0.0",
+		"bytebuffer": "^5.0.0",
 		"protobufjs": "^5.0.1",
-		"steamid": "^1.1.0",
-		"bytebuffer": "^5.0.0"
+		"steam": "^1.0.0",
+		"steam-user": "^3.21.4",
+		"steamid": "^1.1.0"
 	}
 }
