@@ -121,7 +121,11 @@ GlobalOffensive.prototype._connect = function() {
 	this._helloTimer = setTimeout(sendHello, 500);
 
 	function sendHello() {
-		if (self.haveGCSession) {
+		if (!self._isInCSGO) {
+			self.emit('debug', "Not sending hello because we're no longer in CS:GO");
+			delete self._helloTimer;
+			return;
+		} else if (self.haveGCSession) {
 			self.emit('debug', "Not sending hello because we have a session");
 			clearTimeout(self._helloTimer);
 			delete self._helloTimer;
