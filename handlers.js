@@ -18,10 +18,86 @@ handlers[Language.ClientWelcome] = function(body) {
 					// Inventory
 					var items = cache.objectData.map(function(object) {
 						var item = Protos.CSOEconItem.decode(object);
-						var isNew = (item.inventory >>> 30) & 1;
+						var isNew = (item.inventory >>> 30) & 1;						
+
 						item.id = item.id.toString();
 						item.originalId = item.originalId.toString();
 						item.position = (isNew ? 0 : item.inventory & 0xFFFF);
+
+						if(item.attribute) {
+							for(var i = 0; i < item.attribute.length; i++) {
+								var index = item.attribute[i].defIndex;
+								var value = item.attribute[i].valueBytes;
+
+								switch(index) {
+									case 6: // Paint ID
+										var buf = new Buffer(value.toArrayBuffer());
+
+										item.paintkitId = Math.floor(buf.readFloatLE(0));
+									break;
+									case 7: // Paint Seed
+										var buf = new Buffer(value.toArrayBuffer());
+
+										item.paintSeed = Math.floor(buf.readFloatLE(0));
+									break;
+									case 8: // Paint Wear
+										var buf = new Buffer(value.toArrayBuffer());
+
+										item.paintWear = buf.readFloatLE(0);
+									break;
+									case 113:
+									case 117:
+									case 121:
+									case 125: // Sticker #((index - 113) % 4) kit
+										var buf = new Buffer(value.toArrayBuffer());
+
+										item.stickers = item.stickers || [];
+										item.stickers[(index - 113) % 4] = item.stickers[(index - 113) % 4] || {};
+
+										item.stickers[(index - 113) % 4].stickerkitId = buf.readUInt32LE(0);
+									break;
+									case 114:
+									case 118:
+									case 122:
+									case 126: // Sticker #((index - 113) % 4) wear
+										var buf = new Buffer(value.toArrayBuffer());
+
+										item.stickers = item.stickers || [];
+										item.stickers[(index - 113) % 4] = item.stickers[(index - 113) % 4] || {};
+
+										item.stickers[(index - 113) % 4].stickerkitWear = buf.readFloatLE(0);
+									break;
+									case 115:
+									case 119:
+									case 123:
+									case 127: // Sticker #((index - 113) % 4) scale
+										var buf = new Buffer(value.toArrayBuffer());
+
+										item.stickers = item.stickers || [];
+										item.stickers[(index - 113) % 4] = item.stickers[(index - 113) % 4] || {};
+
+										item.stickers[(index - 113) % 4].stickerScale = buf.readFloatLE(0);
+									break;
+									case 116:
+									case 120:
+									case 124:
+									case 128: // Sticker #((index - 113) % 4) rotation
+										var buf = new Buffer(value.toArrayBuffer());
+
+										item.stickers = item.stickers || [];
+										item.stickers[(index - 113) % 4] = item.stickers[(index - 113) % 4] || {};
+
+										item.stickers[(index - 113) % 4].stickerRotation = buf.readFloatLE(0);
+									break;
+									case 222: // Acquired timestamp (Medals)
+										var buf = new Buffer(value.toArrayBuffer());
+
+										item.acquiredTimestamp = buf.readUInt32LE(0);
+									break;
+								}
+							}
+						}
+
 						return item;
 					});
 					
