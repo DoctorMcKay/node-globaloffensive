@@ -185,6 +185,22 @@ GlobalOffensive.prototype.requestRecentGames = function(steamid) {
 	});
 };
 
+GlobalOffensive.prototype.requestLiveGameForUser = function(steamid) {
+	if (typeof steamid === 'object') {
+		steamid = steamid.toString();
+	}
+
+	var sid = new SteamID(steamid);
+
+	if (!sid.isValid() || sid.universe != SteamID.Universe.PUBLIC || sid.type != SteamID.Type.INDIVIDUAL || sid.instance != SteamID.Instance.DESKTOP) {
+		return false;
+	}
+
+	this._send(Language.MatchListRequestLiveGameForUser, Protos.CMsgGCCStrike15_v2_MatchListRequestLiveGameForUser, {
+		accountid: sid.accountid
+	});
+};
+
 GlobalOffensive.prototype.inspectItem = function(owner, assetid, d, callback) {
 	var match;
 	if (typeof owner === 'string' && (match = owner.match(/[SM](\d+)A(\d+)D(\d+)$/))) {
