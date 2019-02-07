@@ -26,9 +26,16 @@
 	},
 	"dependencies": {
 		"bytebuffer": "^5.0.1",
-		"protobufjs": "^5.0.2",
-		"steam": "^1.4.0",
-		"steam-user": "^3.23.2",
+		"protobufjs": "^6.8.8",
 		"steamid": "^1.1.0"
+	},
+	"devDependencies": {
+		"steam-user": "^4.2.0"
+	},
+	"scripts": {
+		"generate-protos": "node scripts/generate-protos.js"
+	},
+	"engines": {
+		"node": ">=8.0.0"
 	}
 }
