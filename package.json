@@ -1,6 +1,7 @@
 {
 	"name": "globaloffensive",
-	"version": "1.3.2",
+	"version": "2.0.0-dev",
+	"private": true,
 	"description": "Exposes a simple API for interacting with the Counter-Strike: Global Offensive game coordinator",
 	"keywords": [
 		"csgo",
