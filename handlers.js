@@ -1,47 +1,45 @@
-var fs = require('fs');
+const ByteBuffer = require('bytebuffer');
+const SteamID = require('steamid');
 
-var GlobalOffensive = require('./index.js');
-var Language = require('./language.js');
-var Protos = require('./protos.js');
-var SteamID = require('steamid');
+const GlobalOffensive = require('./index.js');
+const Language = require('./language.js');
+const Protos = require('./protobufs/generated/_load.js');
 
-var handlers = GlobalOffensive.prototype._handlers;
+let handlers = GlobalOffensive.prototype._handlers;
 
 // ClientWelcome and ClientConnectionStatus
 handlers[Language.ClientWelcome] = function(body) {
-	var proto = Protos.CMsgClientWelcome.decode(body);
-	
-	if(proto.outofdateSubscribedCaches && proto.outofdateSubscribedCaches.length) {
-		proto.outofdateSubscribedCaches[0].objects.forEach(function(cache) {
-			switch(cache.typeId) {
+	let proto = decodeProto(Protos.CMsgClientWelcome, body);
+
+	if (proto.outofdate_subscribed_caches && proto.outofdate_subscribed_caches.length) {
+		proto.outofdate_subscribed_caches[0].objects.forEach((cache) => {
+			switch (cache.type_id) {
 				case 1:
 					// Inventory
-					var items = cache.objectData.map(function(object) {
-						var item = Protos.CSOEconItem.decode(object);
-						var isNew = (item.inventory >>> 30) & 1;
-						item.id = item.id.toString();
-						item.originalId = item.originalId.toString();
+					let items = cache.object_data.map((object) => {
+						let item = decodeProto(Protos.CSOEconItem, object);
+						let isNew = (item.inventory >>> 30) & 1;
 						item.position = (isNew ? 0 : item.inventory & 0xFFFF);
 						return item;
 					});
-					
+
 					this.inventory = items;
 					break;
 				/*case 7:
 					// Account metadata - this doesn't appear to be useful in CS:GO
-					var data = Protos.CSOEconGameAccountClient.decode(cache.objectData[0]);
+					let data = decodeProto(Protos.CSOEconGameAccountClient, cache.object_data[0]);
 					break;*/
 				/*case 43:
-					// Most likely item presets (multiple)	
-					var data = Protos.CSOSelectedItemPreset.decode(cache.objectData[0]);
+					// Most likely item presets (multiple)
+					let data = decodeProto(Protos.CSOSelectedItemPreset, cache.object_data[0]);
 					break;*/
 				default:
-					this.emit('debug', "Unknown SO type " + cache.typeId + " with " + cache.objectData.length + " items");
+					this.emit('debug', "Unknown SO type " + cache.type_id + " with " + cache.object_data.length + " items");
 					break;
 			}
-		}.bind(this));
+		});
 	}
-	
+
 	this.inventory = this.inventory || [];
 
 	this.emit('debug', "GC connection established");
@@ -53,25 +51,25 @@ handlers[Language.ClientWelcome] = function(body) {
 };
 
 handlers[Language.MatchmakingGC2ClientHello] = function(body) {
-	var proto = Protos.CMsgGCCStrike15_v2_MatchmakingGC2ClientHello.decode(body);
+	let proto = decodeProto(Protos.CMsgGCCStrike15_v2_MatchmakingGC2ClientHello, body);
 	this.emit('accountData', proto);
 	this.accountData = proto;
 };
 
 handlers[Language.ClientConnectionStatus] = function(body) {
-	var proto = Protos.CMsgConnectionStatus.decode(body);
+	let proto = decodeProto(Protos.CMsgConnectionStatus, body);
 	this.emit('connectionStatus', proto.status, proto);
 
-	var statusStr = proto.status;
-	for (var i in GlobalOffensive.GCConnectionStatus) {
+	let statusStr = proto.status;
+	for (let i in GlobalOffensive.GCConnectionStatus) {
 		if (GlobalOffensive.GCConnectionStatus.hasOwnProperty(i) && GlobalOffensive.GCConnectionStatus[i] == proto.status) {
 			statusStr = i;
 		}
 	}
 
 	this.emit('debug', "Connection status: " + statusStr + " (" + proto.status + "); have session: " + (this.haveGCSession ? 'yes' : 'no'));
-	
-	if(proto.status != GlobalOffensive.GCConnectionStatus.HAVE_SESSION && this.haveGCSession) {
+
+	if (proto.status != GlobalOffensive.GCConnectionStatus.HAVE_SESSION && this.haveGCSession) {
 		this.emit('disconnectedFromGC', proto.status);
 		this.haveGCSession = false;
 		this._connect(); // Try to reconnect
@@ -80,89 +78,84 @@ handlers[Language.ClientConnectionStatus] = function(body) {
 
 // MatchList
 handlers[Language.MatchList] = function(body) {
-	var proto = Protos.CMsgGCCStrike15_v2_MatchList.decode(body);
+	let proto = decodeProto(Protos.CMsgGCCStrike15_v2_MatchList, body);
 	this.emit('matchList', proto.matches, proto);
 };
 
 // PlayersProfile
-handlers[Language.PlayersProfile] = function (body) {
-  var proto = Protos.CMsgGCCStrike15_v2_PlayersProfile.decode(body);
+handlers[Language.PlayersProfile] = function(body) {
+	let proto = decodeProto(Protos.CMsgGCCStrike15_v2_PlayersProfile, body);
 
-  if (!proto.accountProfiles[0]) {
-    return;
-  }
+	if (!proto.account_profiles[0]) {
+		return;
+	}
 
-  var profile = proto.accountProfiles[0];
+	let profile = proto.account_profiles[0];
 
-  var sid = SteamID.fromIndividualAccountID(profile.accountId);
+	let sid = SteamID.fromIndividualAccountID(profile.account_id);
 
-  this.emit('playersProfile', profile);
-  this.emit('playersProfile#' + sid.getSteamID64(), profile);
+	this.emit('playersProfile', profile);
+	this.emit('playersProfile#' + sid.getSteamID64(), profile);
 };
 
 // Inspecting items
 handlers[Language.Client2GCEconPreviewDataBlockResponse] = function(body) {
-	var proto = Protos.CMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse.decode(body);
+	let proto = decodeProto(Protos.CMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse, body);
 	if (!proto.iteminfo) {
 		return;
 	}
 
-	var item = proto.iteminfo;
+	let item = proto.iteminfo;
 	// decode the wear
-	var buf = new Buffer(4);
+	let buf = Buffer.alloc(4);
 	buf.writeUInt32BE(item.paintwear, 0);
 	item.paintwear = buf.readFloatBE(0);
-	item.itemid = item.itemid.toString();
 	this.emit('inspectItemInfo', item);
 	this.emit('inspectItemInfo#' + item.itemid, item);
 };
 
 // SO
 handlers[Language.SO_Create] = function(body) {
-	var proto = Protos.CMsgSOSingleObject.decode(body);
+	let proto = decodeProto(Protos.CMsgSOSingleObject, body);
 	this._handleSOCreate(proto);
 };
 
 GlobalOffensive.prototype._handleSOCreate = function(proto) {
-	if(proto.typeId != 1) {
+	if (proto.type_id != 1) {
 		return; // Not an item
 	}
-	
-	if(!this.inventory) {
+
+	if (!this.inventory) {
 		return; // We don't have our inventory yet! (this shouldn't be possible in CS:GO, but wutevs)
 	}
-	
-	var item = Protos.CSOEconItem.decode(proto.objectData);
-	item.id = item.id.toString();
-	item.originalId = item.originalId.toString();
+
+	let item = decodeProto(Protos.CSOEconItem, proto.object_data);
 	item.position = item.inventory & 0x0000FFFF;
 	this.inventory.push(item);
 	this.emit('itemAcquired', item);
 };
 
 handlers[Language.SO_Update] = function(body) {
-	var proto = Protos.CMsgSOSingleObject.decode(body);
+	let proto = decodeProto(Protos.CMsgSOSingleObject, body);
 	this._handleSOUpdate(proto);
 };
 
 GlobalOffensive.prototype._handleSOUpdate = function(so) {
-	if(so.typeId != 1) {
+	if (so.type_id != 1) {
 		return; // Not an item, we don't care
 	}
-	
-	if(!this.inventory) {
+
+	if (!this.inventory) {
 		return; // We somehow don't have our inventory yet!
 	}
-	
-	var item = Protos.CSOEconItem.decode(so.objectData);
-	item.id = item.id.toString();
-	item.originalId = item.originalId.toString();
+
+	let item = decodeProto(Protos.CSOEconItem, so.object_data);
 	item.position = item.inventory & 0x0000FFFF;
-	for(var i = 0; i < this.inventory.length; i++) {
-		if(this.inventory[i].id == item.id) {
-			var oldItem = this.inventory[i];
+	for (let i = 0; i < this.inventory.length; i++) {
+		if (this.inventory[i].id == item.id) {
+			let oldItem = this.inventory[i];
 			this.inventory[i] = item;
-			
+
 			this.emit('itemChanged', oldItem, item);
 			break;
 		}
@@ -170,49 +163,91 @@ GlobalOffensive.prototype._handleSOUpdate = function(so) {
 };
 
 handlers[Language.SO_Destroy] = function(body) {
-	var proto = Protos.CMsgSOSingleObject.decode(body);
+	let proto = decodeProto(Protos.CMsgSOSingleObject, body);
 	this._handleSODestroy(proto);
 };
 
 GlobalOffensive.prototype._handleSODestroy = function(proto) {
-	if(proto.typeId != 1) {
+	if (proto.type_id != 1) {
 		return; // Not an item
 	}
-	
+
 	if (!this.inventory) {
 		return; // Inventory not loaded yet
 	}
-	
-	var item = Protos.CSOEconItem.decode(proto.objectData);
+
+	let item = decodeProto(Protos.CSOEconItem, proto.object_data);
 	item.id = item.id.toString();
-	var itemData = null;
-	for(var i = 0; i < this.inventory.length; i++) {
-		if(this.inventory[i].id == item.id) {
+	let itemData = null;
+	for (let i = 0; i < this.inventory.length; i++) {
+		if (this.inventory[i].id == item.id) {
 			itemData = this.inventory[i];
 			this.inventory.splice(i, 1);
 			break;
 		}
 	}
-	
+
 	this.emit('itemRemoved', itemData);
 };
 
 
 handlers[Language.SO_UpdateMultiple] = function(body) {
-	var proto = Protos.CMsgSOMultipleObjects.decode(body);
-	
-	// Added
-	(proto.objectsAdded || []).forEach(function(item) {
-		this._handleSOCreate(item);
-	}.bind(this));
-	
-	// Modified
-	(proto.objectsModified || []).forEach(function(item) {
-		this._handleSOUpdate(item);
-	}.bind(this));
-	
-	// Destroyed
-	(proto.objectsRemoved || []).forEach(function(item) {
-		this._handleSODestroy(item);
-	}.bind(this));
+	let proto = decodeProto(Protos.CMsgSOMultipleObjects, body);
+
+	(proto.objects_added || []).forEach(item => this._handleSOCreate(item));
+	(proto.objects_modified || []).forEach(item => this._handleSOUpdate(item));
+	(proto.objects_removed || []).forEach(item => this._handleSODestroy(item));
 };
+
+function decodeProto(proto, encoded) {
+	if (ByteBuffer.isByteBuffer(encoded)) {
+		encoded = encoded.toBuffer();
+	}
+
+	let decoded = proto.decode(encoded);
+	let objNoDefaults = proto.toObject(decoded, {"longs": String});
+	let objWithDefaults = proto.toObject(decoded, {"defaults": true, "longs": String});
+	return replaceDefaults(objNoDefaults, objWithDefaults);
+
+	function replaceDefaults(noDefaults, withDefaults) {
+		if (Array.isArray(withDefaults)) {
+			return withDefaults.map((val, idx) => replaceDefaults(noDefaults[idx], val));
+		}
+
+		for (let i in withDefaults) {
+			if (!withDefaults.hasOwnProperty(i)) {
+				continue;
+			}
+
+			if (withDefaults[i] && typeof withDefaults[i] === 'object' && !Buffer.isBuffer(withDefaults[i])) {
+				// Covers both object and array cases, both of which will work
+				// Won't replace empty arrays, but that's desired behavior
+				withDefaults[i] = replaceDefaults(noDefaults[i], withDefaults[i]);
+			} else if (typeof noDefaults[i] === 'undefined' && isReplaceableDefaultValue(withDefaults[i])) {
+				withDefaults[i] = null;
+			}
+		}
+
+		return withDefaults;
+	}
+
+	function isReplaceableDefaultValue(val) {
+		if (Buffer.isBuffer(val) && val.length == 0) {
+			// empty buffer is replaceable
+			return true;
+		}
+
+		if (Array.isArray(val)) {
+			// empty array is not replaceable (empty repeated fields)
+			return false;
+		}
+
+		if (val === '0') {
+			// Zero as a string is replaceable (64-bit integer)
+			return true;
+		}
+
+		// Anything falsy is true
+		return !val;
+	}
+}
