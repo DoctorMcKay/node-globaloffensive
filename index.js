@@ -154,29 +154,25 @@ GlobalOffensive.prototype.requestLiveGames = function() {
 };
 
 GlobalOffensive.prototype.requestRecentGames = function(steamid) {
-	if (typeof steamid === 'object') {
-		steamid = steamid.toString();
+	if (typeof steamid === 'string') {
+		steamid = new SteamID(steamid);
 	}
 
-	var sid = new SteamID(steamid);
-
-	if (!sid.isValid() || sid.universe != SteamID.Universe.PUBLIC || sid.type != SteamID.Type.INDIVIDUAL || sid.instance != SteamID.Instance.DESKTOP) {
+	if (!steamid.isValid() || steamid.universe != SteamID.Universe.PUBLIC || steamid.type != SteamID.Type.INDIVIDUAL || steamid.instance != SteamID.Instance.DESKTOP) {
 		return false;
 	}
 
 	this._send(Language.MatchListRequestRecentUserGames, Protos.CMsgGCCStrike15_v2_MatchListRequestRecentUserGames, {
-		accountid: sid.accountid
+		accountid: steamid.accountid
 	});
 };
 
 GlobalOffensive.prototype.requestLiveGameForUser = function(steamid) {
-	if (typeof steamid === 'object') {
-		steamid = steamid.toString();
+	if (typeof steamid === 'string') {
+		steamid = new SteamID(steamid);
 	}
 
-	var sid = new SteamID(steamid);
-
-	if (!sid.isValid() || sid.universe != SteamID.Universe.PUBLIC || sid.type != SteamID.Type.INDIVIDUAL || sid.instance != SteamID.Instance.DESKTOP) {
+	if (!steamid.isValid() || steamid.universe != SteamID.Universe.PUBLIC || steamid.type != SteamID.Type.INDIVIDUAL || steamid.instance != SteamID.Instance.DESKTOP) {
 		return false;
 	}
 
