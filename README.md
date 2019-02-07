@@ -81,6 +81,14 @@ var csgo = new GlobalOffensive(steamClient);
 
 Request a list of current live tournament games. This is the list you see in the client under Watch -> Live. Listen for the `matchList` event to get your response.
 
+### requestRecentGames(steamid)
+
+Request a list of recent games (max. 8). This is the list you see in the client under Watch -> Your Matches. Listen for the `matchList` event to get your response.
+
+### requestLiveGameForUser(steamid)
+
+Request live game info for a specific user. Listen for the `matchList` event to get your response.
+
 ### inspectItem(owner[, assetid][, d][, callback])
 - `owner` - The numeric SteamID or market listing ID of the owning Steam account or market listing, as a string; or an entire inspect link.
 - `assetid` - If `owner` is not an entire inspect link, this is the numeric asset ID of this item, as a string
