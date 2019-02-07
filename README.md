@@ -6,10 +6,11 @@
 
 This module provides a very flexible interface for interacting with the [CS:GO](http://store.steampowered.com/app/730)
 Game Coordinator. It's designed to work with a
-[node-steam SteamUser](https://github.com/seishun/node-steam/tree/master/lib/handlers/user) or
 [node-steam-user SteamUser](https://github.com/DoctorMcKay/node-steam-user) instance.
 
 This is based off of [node-tf2](https://github.com/DoctorMcKay/node-tf2).
+
+**You will need node-steam-user v4.2.0 or later and Node.js v8 or later to use node-globaloffensive v2.**
 
 # Setup
 
@@ -20,22 +21,11 @@ First, install it from npm:
 Require the module and call its constructor with your SteamUser instance:
 
 ```js
-var Steam = require('steam');
-var GlobalOffensive = require('globaloffensive');
+const SteamUser = require('steam-user');
+const GlobalOffensive = require('globaloffensive');
 
-var client = new Steam.SteamClient();
-var user = new Steam.SteamUser(client);
-var csgo = new GlobalOffensive(user);
-```
-
-or
-
-```js
-var SteamUser = require('steam-user');
-var GlobalOffensive = require('globaloffensive');
-
-var user = new SteamUser();
-var csgo = new GlobalOffensive(user);
+let user = new SteamUser();
+let csgo = new GlobalOffensive(user);
 ```
 
 To initialize your GC connection, just launch CS:GO via SteamUser normally:
@@ -108,7 +98,7 @@ Request live game info for a specific user. Listen for the `matchList` event to 
         - `customname` - The item's custom name via a name tag, or `null` if none
         - `stickers` - An array of objects describing the stickers applied to this item
             - `slot` - What slot this sticker is applied to
-            - `stickerId` - The ID of this type of sticker
+            - `sticker_id` - The ID of this type of sticker
             - `wear` - Either `null` (not scratched) or a float between 0 and 1 describing how much this sticker has been scratched
             - `scale` - Always `null`?
             - `rotation` - Always `null`?
@@ -128,37 +118,36 @@ The response will arrive in the callback and in the `inspectItemInfo` event.
 - `steamid` - The numeric SteamID of the Steam account to pull profile data for. Needs to be playing CSGO and be on the friend list of the requesting account.
 - `callback` - Optional. Called if all parameters are valid when Steam responds to us.
     - `profile` - An object containing the profiledata
-        - `accountid` - Steam account id
-	- `ongoingmatch`
-	- `globalStats` - Seems to always be `null`
-	- `penaltySeconds`
-	- `penaltyReason`
-	- `vacBanned`
-	- `ranking`
-	    - `accountid`
-	    - `rankId` - Matchmaking rank (0-18), starting at 0 for unranked
-	    - `wins` - Number of matchmaking wins
-	    - `rankChange` - Seems to always be `null`
-	- `commendation`
-	    - `cmdFriendly` - The number of "friendly" commendations the account has received
-	    - `cmdTeaching` - The number of "teaching" commendations the account has received
-	    - `cmdLeader` - The number of "leader" commendations the account has received
-	- `medals` - Archievement medals, their ranks and coins
-	    - `medalTeam`
-	    - `medalCombat`
-	    - `medalWeapon`
-	    - `medalGlobal`
-	    - `medalArms`
-	    - `legacy_CoinOpPayback`
-	    - `displayedItemsDefidx` - Array of coins
-	    - `featuredDisplayItemDefidx`
-	- `myCurrentEvent`
-	- `myCurrentEventTeams`
-	- `myCurrentTeam`
-	- `myCurrentEventStages`
-	- `surveyVote`
-	- `activity`
-	- `secondsUntilNextMission`
+        - `account_id` - Steam account id
+		- `ongoingmatch`
+		- `global_stats` - Seems to always be `null`
+		- `penalty_seconds`
+		- `penalty_reason`
+		- `vac_banned`
+		- `ranking`
+		    - `account_id`
+		    - `rank_id` - Matchmaking rank (0-18), starting at 0 for unranked
+		    - `wins` - Number of matchmaking wins
+		    - `rank_change` - Seems to always be `null`
+		- `commendation`
+		    - `cmd_friendly` - The number of "friendly" commendations the account has received
+		    - `cmd_teaching` - The number of "teaching" commendations the account has received
+		    - `cmd_leader` - The number of "leader" commendations the account has received
+		- `medals` - Achievement medals, their ranks and coins
+		    - `medal_team`
+		    - `medal_combat`
+		    - `medal_weapon`
+		    - `medal_global`
+		    - `medal_arms`
+		    - `display_items_defidx` - Array of coins
+		    - `featured_display_item_defidx`
+		- `my_current_event`
+		- `my_current_event_teams`
+		- `my_current_team`
+		- `my_current_event_stages`
+		- `survey_vote`
+		- `activity`
+		- `seconds_until_next_mission`
 	
 **v1.2.0 or later is required to use this method**
 
@@ -210,7 +199,7 @@ Emitted when we receive a match list, especially after a `requestLiveGames()` ca
    - `customname` - The item's custom name via a name tag, or `null` if none
    - `stickers` - An array of objects describing the stickers applied to this item
        - `slot` - What slot this sticker is applied to
-       - `stickerId` - The ID of this type of sticker
+       - `sticker_id` - The ID of this type of sticker
        - `wear` - Either `null` (not scratched) or a float between 0 and 1 describing how much this sticker has been scratched
        - `scale` - Always `null`?
        - `rotation` - Always `null`?
@@ -239,37 +228,36 @@ Emitted when an item in your inventory changes in some way.
 Emitted when an item is removed from your inventory.
 
 ### playersProfile
-- `profile` - An object containing the profiledata
-        - `accountid` - Steam account id
-	- `ongoingmatch`
-	- `globalStats` - Seems to always be `null`
-	- `penaltySeconds`
-	- `penaltyReason`
-	- `vacBanned`
-	- `ranking`
-	    - `accountid`
-	    - `rankId` - Matchmaking rank (0-18), starting at 0 for unranked
-	    - `wins` - Number of matchmaking wins
-	    - `rankChange` - Seems to always be `null`
-	- `commendation`
-	    - `cmdFriendly` - The number of "friendly" commendations the account has received
-	    - `cmdTeaching` - The number of "teaching" commendations the account has received
-	    - `cmdLeader` - The number of "leader" commendations the account has received
-	- `medals` - Archievement medals, their ranks and coins
-	    - `medalTeam`
-	    - `medalCombat`
-	    - `medalWeapon`
-	    - `medalGlobal`
-	    - `medalArms`
-	    - `legacy_CoinOpPayback`
-	    - `displayedItemsDefidx` - Array of coins
-	    - `featuredDisplayItemDefidx`
-	- `myCurrentEvent`
-	- `myCurrentEventTeams`
-	- `myCurrentTeam`
-	- `myCurrentEventStages`
-	- `surveyVote`
-	- `activity`
-	- `secondsUntilNextMission`
+- `profile` - An object containing the profile data
+    - `account_id` - Steam account id
+    - `ongoingmatch`
+    - `global_stats` - Seems to always be `null`
+    - `penalty_seconds`
+    - `penalty_reason`
+    - `vac_banned`
+    - `ranking`
+        - `account_id`
+        - `rank_id` - Matchmaking rank (0-18), starting at 0 for unranked
+        - `wins` - Number of matchmaking wins
+        - `rank_change` - Seems to always be `null`
+    - `commendation`
+        - `cmd_friendly` - The number of "friendly" commendations the account has received
+        - `cmd_teaching` - The number of "teaching" commendations the account has received
+        - `cmd_leader` - The number of "leader" commendations the account has received
+    - `medals` - Achievement medals, their ranks and coins
+        - `medal_team`
+        - `medal_combat`
+        - `medal_weapon`
+        - `medal_global`
+        - `medal_arms`
+        - `display_items_defidx` - Array of coins
+        - `featured_display_item_defidx`
+    - `my_current_event`
+    - `my_current_event_teams`
+    - `my_current_team`
+    - `my_current_event_stages`
+    - `survey_vote`
+    - `activity`
+    - `seconds_until_next_mission`
 
 Emitted in response to an `requestPlayersProfile()` call.
