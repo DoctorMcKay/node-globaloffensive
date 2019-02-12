@@ -72,7 +72,7 @@ function GlobalOffensive(steam) {
 		}
 
 		if (this.haveGCSession && emitDisconnectEvent) {
-			this.emit('disconnectedFromGC', TeamFortress2.GCGoodbyeReason.NO_SESSION);
+			this.emit('disconnectedFromGC', GlobalOffensive.GCConnectionStatus.NO_SESSION);
 		}
 
 		this.haveGCSession = false;
