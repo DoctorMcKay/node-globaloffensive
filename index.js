@@ -177,7 +177,7 @@ GlobalOffensive.prototype.requestLiveGameForUser = function(steamid) {
 	}
 
 	this._send(Language.MatchListRequestLiveGameForUser, Protos.CMsgGCCStrike15_v2_MatchListRequestLiveGameForUser, {
-		accountid: sid.accountid
+		accountid: steamid.accountid
 	});
 };
 
