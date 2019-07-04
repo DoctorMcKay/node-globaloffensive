@@ -79,6 +79,10 @@ Request a list of recent games (max. 8). This is the list you see in the client 
 
 Request live game info for a specific user. Listen for the `matchList` event to get your response.
 
+### requestGame(matchid, outcomeid, token)
+
+Request info for a finished game. Listen for the `matchList` event to get your response.
+
 ### inspectItem(owner[, assetid][, d][, callback])
 - `owner` - The numeric SteamID or market listing ID of the owning Steam account or market listing, as a string; or an entire inspect link.
 - `assetid` - If `owner` is not an entire inspect link, this is the numeric asset ID of this item, as a string
@@ -148,7 +152,7 @@ The response will arrive in the callback and in the `inspectItemInfo` event.
 		- `survey_vote`
 		- `activity`
 		- `seconds_until_next_mission`
-	
+
 **v1.2.0 or later is required to use this method**
 
 Sends the same request to the GC that viewing the CSGO player profile from the in-game friendlist sends. Returns the same information that you would get in-game.
@@ -160,7 +164,7 @@ This returns the same protobuf that is used when you request your own profile da
 **1.3.0 or later is required to use this method**
 
 Deletes a particular item from your inventory. **This is a destructive operation, which cannot be undone.**
-	
+
 # Events
 
 ### connectedToGC
