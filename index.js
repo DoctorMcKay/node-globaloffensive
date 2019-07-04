@@ -181,6 +181,18 @@ GlobalOffensive.prototype.requestLiveGameForUser = function(steamid) {
 	});
 };
 
+GlobalOffensive.prototype.requestGame = function(matchid, outcomeid, token) {
+	if (!matchid || !outcomeid || !token) {
+		return false;
+	}
+
+	this._send(Language.MatchListRequestFullGameInfo, Protos.CMsgGCCStrike15_v2_MatchListRequestFullGameInfo, {
+		matchid,
+		outcomeid,
+		token,
+	});
+}
+
 GlobalOffensive.prototype.inspectItem = function(owner, assetid, d, callback) {
 	let match;
 	if (typeof owner === 'string' && (match = owner.match(/[SM](\d+)A(\d+)D(\d+)$/))) {
