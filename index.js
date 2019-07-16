@@ -153,6 +153,14 @@ GlobalOffensive.prototype.requestLiveGames = function() {
 	this._send(Language.MatchListRequestCurrentLiveGames, Protos.CMsgGCCStrike15_v2_MatchListRequestCurrentLiveGames, {});
 };
 
+GlobalOffensive.prototype.requestFullGameInfo = function(matchid, outcomeid, token) {
+	this._send(Language.MatchListRequestFullGameInfo, Protos.CMsgGCCStrike15_v2_MatchListRequestFullGameInfo, {
+		matchid,
+		outcomeid,
+		token,
+	});
+};
+
 GlobalOffensive.prototype.requestRecentGames = function(steamid) {
 	if (typeof steamid === 'string') {
 		steamid = new SteamID(steamid);
