@@ -1,8 +1,7 @@
 # Counter-Strike Global Offensive for Node.js
-[![npm version](https://img.shields.io/npm/v/globaloffensive.svg)](https://npmjs.com/package/globaloffensive)
-[![npm downloads](https://img.shields.io/npm/dm/globaloffensive.svg)](https://npmjs.com/package/globaloffensive)
-[![dependencies](https://img.shields.io/david/DoctorMcKay/node-globaloffensive.svg)](https://david-dm.org/DoctorMcKay/node-globaloffensive)
-[![license](https://img.shields.io/npm/l/globaloffensive.svg)](https://github.com/DoctorMcKay/node-globaloffensive/blob/master/LICENSE)
+[![license](https://img.shields.io/npm/l/globaloffensive.svg)](https://github.com/Yaroslav-95/node-globaloffensive/blob/master/LICENSE)
+
+This is a fork of DoctorMcKay's "globaloffensive" project. It includes a missing method in the original project - `requestGame(matchid, outcomeid, token)`.
 
 This module provides a very flexible interface for interacting with the [CS:GO](http://store.steampowered.com/app/730)
 Game Coordinator. It's designed to work with a
@@ -16,13 +15,13 @@ This is based off of [node-tf2](https://github.com/DoctorMcKay/node-tf2).
 
 First, install it from npm:
 
-	$ npm install globaloffensive
+	$ npm install @yaroslav-95/globaloffensive
 
 Require the module and call its constructor with your SteamUser instance:
 
 ```js
 const SteamUser = require('steam-user');
-const GlobalOffensive = require('globaloffensive');
+const GlobalOffensive = require('@yaroslav-95/globaloffensive');
 
 let user = new SteamUser();
 let csgo = new GlobalOffensive(user);
@@ -82,6 +81,8 @@ Request live game info for a specific user. Listen for the `matchList` event to 
 ### requestGame(matchid, outcomeid, token)
 
 Request info for a finished game. Listen for the `matchList` event to get your response.
+
+matchid, outcomeid, and token can be obtained from a sharecode, by using the [globaloffensive-sharecode](https://www.npmjs.com/package/globaloffensive-sharecode) package.
 
 ### inspectItem(owner[, assetid][, d][, callback])
 - `owner` - The numeric SteamID or market listing ID of the owning Steam account or market listing, as a string; or an entire inspect link.
