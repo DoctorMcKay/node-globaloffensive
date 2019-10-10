@@ -75,6 +75,7 @@ function GlobalOffensive(steam) {
 			this.emit('disconnectedFromGC', GlobalOffensive.GCConnectionStatus.NO_SESSION);
 		}
 
+		this._isInCSGO = false;
 		this.haveGCSession = false;
 	};
 
@@ -84,7 +85,6 @@ function GlobalOffensive(steam) {
 		}
 
 		if (appid == STEAM_APPID) {
-			this._isInCSGO = false;
 			handleAppQuit(false);
 		}
 	});
