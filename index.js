@@ -84,6 +84,7 @@ function GlobalOffensive(steam) {
 		}
 
 		if (appid == STEAM_APPID) {
+			this._isInCSGO = false;
 			handleAppQuit(false);
 		}
 	});
