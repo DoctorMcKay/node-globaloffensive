@@ -31,6 +31,7 @@
          * @property {number|null} [rtdelay] CEngineGotvSyncPacket rtdelay
          * @property {number|null} [rcvage] CEngineGotvSyncPacket rcvage
          * @property {number|null} [keyframe_interval] CEngineGotvSyncPacket keyframe_interval
+         * @property {number|null} [cdndelay] CEngineGotvSyncPacket cdndelay
          */
     
         /**
@@ -121,6 +122,14 @@
         CEngineGotvSyncPacket.prototype.keyframe_interval = 0;
     
         /**
+         * CEngineGotvSyncPacket cdndelay.
+         * @member {number} cdndelay
+         * @memberof CEngineGotvSyncPacket
+         * @instance
+         */
+        CEngineGotvSyncPacket.prototype.cdndelay = 0;
+    
+        /**
          * Creates a new CEngineGotvSyncPacket instance using the specified properties.
          * @function create
          * @memberof CEngineGotvSyncPacket
@@ -162,6 +171,8 @@
                 writer.uint32(/* id 9, wireType 5 =*/77).float(message.rcvage);
             if (message.keyframe_interval != null && message.hasOwnProperty("keyframe_interval"))
                 writer.uint32(/* id 10, wireType 5 =*/85).float(message.keyframe_interval);
+            if (message.cdndelay != null && message.hasOwnProperty("cdndelay"))
+                writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.cdndelay);
             return writer;
         };
     
@@ -222,6 +233,9 @@
                     break;
                 case 10:
                     message.keyframe_interval = reader.float();
+                    break;
+                case 11:
+                    message.cdndelay = reader.uint32();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -285,6 +299,9 @@
             if (message.keyframe_interval != null && message.hasOwnProperty("keyframe_interval"))
                 if (typeof message.keyframe_interval !== "number")
                     return "keyframe_interval: number expected";
+            if (message.cdndelay != null && message.hasOwnProperty("cdndelay"))
+                if (!$util.isInteger(message.cdndelay))
+                    return "cdndelay: integer expected";
             return null;
         };
     
@@ -325,6 +342,8 @@
                 message.rcvage = Number(object.rcvage);
             if (object.keyframe_interval != null)
                 message.keyframe_interval = Number(object.keyframe_interval);
+            if (object.cdndelay != null)
+                message.cdndelay = object.cdndelay >>> 0;
             return message;
         };
     
@@ -355,6 +374,7 @@
                 object.rtdelay = 0;
                 object.rcvage = 0;
                 object.keyframe_interval = 0;
+                object.cdndelay = 0;
             }
             if (message.match_id != null && message.hasOwnProperty("match_id"))
                 if (typeof message.match_id === "number")
@@ -377,6 +397,8 @@
                 object.rcvage = options.json && !isFinite(message.rcvage) ? String(message.rcvage) : message.rcvage;
             if (message.keyframe_interval != null && message.hasOwnProperty("keyframe_interval"))
                 object.keyframe_interval = options.json && !isFinite(message.keyframe_interval) ? String(message.keyframe_interval) : message.keyframe_interval;
+            if (message.cdndelay != null && message.hasOwnProperty("cdndelay"))
+                object.cdndelay = message.cdndelay;
             return object;
         };
     
