@@ -84,27 +84,31 @@ Request live game info for a specific user. Listen for the `matchList` event to 
 - `assetid` - If `owner` is not an entire inspect link, this is the numeric asset ID of this item, as a string
 - `d` - If `owner` is not an entire inspect link, this is the "D" number from the inspect link (the last number following the "D" character)
 - `callback` - Optional. Called if all parameters are valid when Steam responds to us.
-    - `item` - An object containing the item's data
-        - `accountid` - Seems to always be `null`
-        - `itemid` - The item's asset ID, as a string
-        - `defindex` - The item's definition index
-        - `paintindex` - The item's paint index
-        - `rarity` - The item's numeric rarity
-        - `quality` - The item's numeric quality
-        - `paintwear` - The item's paint wear percentage, as a float between 0 and 1 (frequently and incorrectly called "float value")
-        - `paintseed` - The item's paint seed
-        - `killeaterscoretype` - What kind of statistic the StatTrak version of this item tracks (may be `null` if not StatTrak)
-        - `killeatervalue` - The item's tracked statistic value (kills)
-        - `customname` - The item's custom name via a name tag, or `null` if none
-        - `stickers` - An array of objects describing the stickers applied to this item
-            - `slot` - What slot this sticker is applied to
-            - `sticker_id` - The ID of this type of sticker
-            - `wear` - Either `null` (not scratched) or a float between 0 and 1 describing how much this sticker has been scratched
-            - `scale` - Always `null`?
-            - `rotation` - Always `null`?
-        - `inventory` - An integer which has no use to you
-        - `origin` - The numeric origin of this item
-        - `questid` - You can ignore this
+		- `item` - An object containing the item's data
+				- `accountid` - Seems to always be `null`
+				- `itemid` - The item's asset ID, as a string
+				- `defindex` - The item's definition index
+				- `paintindex` - The item's paint index
+				- `rarity` - The item's numeric rarity
+				- `quality` - The item's numeric quality
+				- `paintwear` - The item's paint wear percentage, as a float between 0 and 1 (frequently and incorrectly called "float value")
+				- `paintseed` - The item's paint seed
+				- `killeaterscoretype` - What kind of statistic the StatTrak version of this item tracks (may be `null` if not StatTrak)
+				- `killeatervalue` - The item's tracked statistic value (kills)
+				- `customname` - The item's custom name via a name tag, or `null` if none
+				- `stickers` - An array of objects describing the stickers applied to this item
+						- `slot` - What slot this sticker is applied to
+						- `sticker_id` - The ID of this type of sticker
+						- `wear` - Either `null` (not scratched) or a float between 0 and 1 describing how much this sticker has been scratched
+						- `scale` - Always `null`?
+						- `rotation` - Always `null`?
+						- `tint_id`
+				- `inventory` - An integer which has no use to you
+				- `origin` - The numeric origin of this item
+				- `questid` - You can ignore this
+				- `dropreason`
+				- `musicindex`
+				- `entindex`
 
 **v1.1.0 or later is required to use this method**
 
@@ -117,37 +121,46 @@ The response will arrive in the callback and in the `inspectItemInfo` event.
 ### requestPlayersProfile(steamid[, callback])
 - `steamid` - The numeric SteamID of the Steam account to pull profile data for. Needs to be playing CSGO and be on the friend list of the requesting account.
 - `callback` - Optional. Called if all parameters are valid when Steam responds to us.
-    - `profile` - An object containing the profiledata
-        - `account_id` - Steam account id
-		- `ongoingmatch`
-		- `global_stats` - Seems to always be `null`
-		- `penalty_seconds`
-		- `penalty_reason`
-		- `vac_banned`
-		- `ranking`
-		    - `account_id`
-		    - `rank_id` - Matchmaking rank (0-18), starting at 0 for unranked
-		    - `wins` - Number of matchmaking wins
-		    - `rank_change` - Seems to always be `null`
-		- `commendation`
-		    - `cmd_friendly` - The number of "friendly" commendations the account has received
-		    - `cmd_teaching` - The number of "teaching" commendations the account has received
-		    - `cmd_leader` - The number of "leader" commendations the account has received
-		- `medals` - Achievement medals, their ranks and coins
-		    - `medal_team`
-		    - `medal_combat`
-		    - `medal_weapon`
-		    - `medal_global`
-		    - `medal_arms`
-		    - `display_items_defidx` - Array of coins
-		    - `featured_display_item_defidx`
-		- `my_current_event`
-		- `my_current_event_teams`
-		- `my_current_team`
-		- `my_current_event_stages`
-		- `survey_vote`
-		- `activity`
-		- `seconds_until_next_mission`
+		- `profile` - An object containing the profiledata
+				- `account_id` - Steam account id
+				- `ongoingmatch`
+				- `global_stats` - Seems to always be `null`
+				- `penalty_seconds`
+				- `penalty_reason`
+				- `vac_banned`
+				- `ranking`
+						- `account_id`
+						- `rank_id` - Rank (0-18), starting at 0 for unranked
+						- `wins` - Number of wins
+						- `rank_change` - Seems to always be `null`
+						- `rank_type_id` - Rank type (6: Matchmaking, 7: Wingman, 10: Danger Zone)
+				- `commendation`
+						- `cmd_friendly` - The number of "friendly" commendations the account has received
+						- `cmd_teaching` - The number of "teaching" commendations the account has received
+						- `cmd_leader` - The number of "leader" commendations the account has received
+				- `medals` - Achievement medals, their ranks and coins
+						- `medal_team`
+						- `medal_combat`
+						- `medal_weapon`
+						- `medal_global`
+						- `medal_arms`
+						- `display_items_defidx` - Array of coins
+						- `featured_display_item_defidx`
+				- `my_current_event`
+				- `my_current_event_teams`
+				- `my_current_team`
+				- `my_current_event_stages`
+				- `survey_vote`
+				- `activity`
+				- `player_level` - Private rank level
+				- `player_cur_xp` - Current XP, starting at 327680000 (level % = (player_cur_xp - 327680000) / 5000)
+				- `player_xp_bonus_flags` - Seems to always be `null`
+				- `rankings` - Array of ranking infos
+						- `account_id`
+						- `rank_id` - Rank (0-18), starting at 0 for unranked
+						- `wins` - Number of wins
+						- `rank_change` - Seems to always be `null`
+						- `rank_type_id` - Rank type (6: Matchmaking, 7: Wingman, 10: Danger Zone)
 	
 **v1.2.0 or later is required to use this method**
 
@@ -186,26 +199,30 @@ Emitted when we receive a match list, especially after a `requestLiveGames()` ca
 
 ### inspectItemInfo
 - `item` - An object containing the item's data
-   - `accountid` - Seems to always be `null`
-   - `itemid` - The item's asset ID, as a string
-   - `defindex` - The item's definition index
-   - `paintindex` - The item's paint index
-   - `rarity` - The item's numeric rarity
-   - `quality` - The item's numeric quality
-   - `paintwear` - The item's paint wear percentage, as a float between 0 and 1 (frequently and incorrectly called "float value")
-   - `paintseed` - The item's paint seed
-   - `killeaterscoretype` - What kind of statistic the StatTrak version of this item tracks (may be `null` if not StatTrak)
-   - `killeatervalue` - The item's tracked statistic value (kills)
-   - `customname` - The item's custom name via a name tag, or `null` if none
-   - `stickers` - An array of objects describing the stickers applied to this item
-       - `slot` - What slot this sticker is applied to
-       - `sticker_id` - The ID of this type of sticker
-       - `wear` - Either `null` (not scratched) or a float between 0 and 1 describing how much this sticker has been scratched
-       - `scale` - Always `null`?
-       - `rotation` - Always `null`?
-   - `inventory` - An integer which has no use to you
-   - `origin` - The numeric origin of this item
-   - `questid` - You can ignore this
+	- `accountid` - Seems to always be `null`
+	- `itemid` - The item's asset ID, as a string
+	- `defindex` - The item's definition index
+	- `paintindex` - The item's paint index
+	- `rarity` - The item's numeric rarity
+	- `quality` - The item's numeric quality
+	- `paintwear` - The item's paint wear percentage, as a float between 0 and 1 (frequently and incorrectly called "float value")
+	- `paintseed` - The item's paint seed
+	- `killeaterscoretype` - What kind of statistic the StatTrak version of this item tracks (may be `null` if not StatTrak)
+	- `killeatervalue` - The item's tracked statistic value (kills)
+	- `customname` - The item's custom name via a name tag, or `null` if none
+	- `stickers` - An array of objects describing the stickers applied to this item
+			- `slot` - What slot this sticker is applied to
+			- `sticker_id` - The ID of this type of sticker
+			- `wear` - Either `null` (not scratched) or a float between 0 and 1 describing how much this sticker has been scratched
+			- `scale` - Always `null`?
+			- `rotation` - Always `null`?
+			- `tint_id`
+	- `inventory` - An integer which has no use to you
+	- `origin` - The numeric origin of this item
+	- `questid` - You can ignore this
+	- `dropreason`
+	- `musicindex`
+	- `entindex`
 
 **v1.1.0 or later is required to use this method**
 
@@ -229,35 +246,44 @@ Emitted when an item is removed from your inventory.
 
 ### playersProfile
 - `profile` - An object containing the profile data
-    - `account_id` - Steam account id
-    - `ongoingmatch`
-    - `global_stats` - Seems to always be `null`
-    - `penalty_seconds`
-    - `penalty_reason`
-    - `vac_banned`
-    - `ranking`
-        - `account_id`
-        - `rank_id` - Matchmaking rank (0-18), starting at 0 for unranked
-        - `wins` - Number of matchmaking wins
-        - `rank_change` - Seems to always be `null`
-    - `commendation`
-        - `cmd_friendly` - The number of "friendly" commendations the account has received
-        - `cmd_teaching` - The number of "teaching" commendations the account has received
-        - `cmd_leader` - The number of "leader" commendations the account has received
-    - `medals` - Achievement medals, their ranks and coins
-        - `medal_team`
-        - `medal_combat`
-        - `medal_weapon`
-        - `medal_global`
-        - `medal_arms`
-        - `display_items_defidx` - Array of coins
-        - `featured_display_item_defidx`
-    - `my_current_event`
-    - `my_current_event_teams`
-    - `my_current_team`
-    - `my_current_event_stages`
-    - `survey_vote`
-    - `activity`
-    - `seconds_until_next_mission`
+		- `account_id` - Steam account id
+		- `ongoingmatch`
+		- `global_stats` - Seems to always be `null`
+		- `penalty_seconds`
+		- `penalty_reason`
+		- `vac_banned`
+		- `ranking`
+				- `account_id`
+				- `rank_id` - Rank (0-18), starting at 0 for unranked
+				- `wins` - Number of wins
+				- `rank_change` - Seems to always be `null`
+				- `rank_type_id` - Rank type (6: Matchmaking, 7: Wingman, 10: Danger Zone)
+		- `commendation`
+				- `cmd_friendly` - The number of "friendly" commendations the account has received
+				- `cmd_teaching` - The number of "teaching" commendations the account has received
+				- `cmd_leader` - The number of "leader" commendations the account has received
+		- `medals` - Achievement medals, their ranks and coins
+				- `medal_team`
+				- `medal_combat`
+				- `medal_weapon`
+				- `medal_global`
+				- `medal_arms`
+				- `display_items_defidx` - Array of coins
+				- `featured_display_item_defidx`
+		- `my_current_event`
+		- `my_current_event_teams`
+		- `my_current_team`
+		- `my_current_event_stages`
+		- `survey_vote`
+		- `activity`
+		- `player_level` - Private rank level
+		- `player_cur_xp` - Current XP, starting at 327680000 (level % = (player_cur_xp - 327680000) / 5000)
+		- `player_xp_bonus_flags` - Seems to always be `null`
+		- `rankings` - Array of ranking infos
+				- `account_id`
+				- `rank_id` - Rank (0-18), starting at 0 for unranked
+				- `wins` - Number of wins
+				- `rank_change` - Seems to always be `null`
+				- `rank_type_id` - Rank type (6: Matchmaking, 7: Wingman, 10: Danger Zone)
 
 Emitted in response to an `requestPlayersProfile()` call.
