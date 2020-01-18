@@ -114,6 +114,9 @@ the data is already available in `inventory`.
 
 The response will arrive in the callback and in the `inspectItemInfo` event.
 
+As of v2.1.0, the request will time out if no response is received in 10 seconds. If this happens,
+[`inspectItemTimedOut`](#inspectitemtimedout) will be emitted.
+
 ### requestPlayersProfile(steamid[, callback])
 - `steamid` - The numeric SteamID of the Steam account to pull profile data for. Needs to be playing CSGO and be on the friend list of the requesting account.
 - `callback` - Optional. Called if all parameters are valid when Steam responds to us.
@@ -210,6 +213,13 @@ Emitted when we receive a match list, especially after a `requestLiveGames()` ca
 **v1.1.0 or later is required to use this method**
 
 Emitted in response to an `inspectItem()` call.
+
+### inspectItemTimedOut
+- `assetid` - The asset ID of the item we attempted to inspect
+
+**v2.1.0 or later is required to use this method**
+
+Emitted if `inspectItem()` is called but we don't receive a timely reply to the request.
 
 ### itemAcquired
 - `item` - The item that you received
