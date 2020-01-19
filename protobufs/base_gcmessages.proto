@@ -48,6 +48,8 @@ message CMsgGCStorePurchaseInit {
 message CMsgGCStorePurchaseInitResponse {
 	optional int32 result = 1;
 	optional uint64 txn_id = 2;
+	optional string url = 3;
+	repeated uint64 item_ids = 4;
 }
 
 message CSOPartyInvite {
@@ -171,6 +173,12 @@ message CMsgApplySticker {
 	optional float sticker_wear = 5;
 }
 
+message CMsgModifyItemAttribute {
+	optional uint64 item_id = 1;
+	optional uint32 attr_defidx = 2;
+	optional uint32 attr_value = 3;
+}
+
 message CMsgApplyStatTrakSwap {
 	optional uint64 tool_item_id = 1;
 	optional uint64 item_1_item_id = 2;
@@ -229,6 +237,12 @@ message CMsgAdjustItemEquippedState {
 	optional uint32 new_class = 2;
 	optional uint32 new_slot = 3;
 	optional bool swap = 4;
+}
+
+message CMsgAdjustItemEquippedStateMulti {
+	repeated uint64 t_equips = 1;
+	repeated uint64 ct_equips = 2;
+	repeated uint64 noteam_equips = 3;
 }
 
 message CMsgSortItems {

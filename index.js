@@ -75,6 +75,7 @@ function GlobalOffensive(steam) {
 			this.emit('disconnectedFromGC', GlobalOffensive.GCConnectionStatus.NO_SESSION);
 		}
 
+		this._isInCSGO = false;
 		this.haveGCSession = false;
 	};
 
