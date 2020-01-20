@@ -622,6 +622,8 @@
          * @interface ICMsgGCStorePurchaseInitResponse
          * @property {number|null} [result] CMsgGCStorePurchaseInitResponse result
          * @property {number|Long|null} [txn_id] CMsgGCStorePurchaseInitResponse txn_id
+         * @property {string|null} [url] CMsgGCStorePurchaseInitResponse url
+         * @property {Array.<number|Long>|null} [item_ids] CMsgGCStorePurchaseInitResponse item_ids
          */
     
         /**
@@ -633,6 +635,7 @@
          * @param {ICMsgGCStorePurchaseInitResponse=} [properties] Properties to set
          */
         function CMsgGCStorePurchaseInitResponse(properties) {
+            this.item_ids = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -654,6 +657,22 @@
          * @instance
          */
         CMsgGCStorePurchaseInitResponse.prototype.txn_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+        /**
+         * CMsgGCStorePurchaseInitResponse url.
+         * @member {string} url
+         * @memberof CMsgGCStorePurchaseInitResponse
+         * @instance
+         */
+        CMsgGCStorePurchaseInitResponse.prototype.url = "";
+    
+        /**
+         * CMsgGCStorePurchaseInitResponse item_ids.
+         * @member {Array.<number|Long>} item_ids
+         * @memberof CMsgGCStorePurchaseInitResponse
+         * @instance
+         */
+        CMsgGCStorePurchaseInitResponse.prototype.item_ids = $util.emptyArray;
     
         /**
          * Creates a new CMsgGCStorePurchaseInitResponse instance using the specified properties.
@@ -683,6 +702,11 @@
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.result);
             if (message.txn_id != null && message.hasOwnProperty("txn_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.txn_id);
+            if (message.url != null && message.hasOwnProperty("url"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.url);
+            if (message.item_ids != null && message.item_ids.length)
+                for (var i = 0; i < message.item_ids.length; ++i)
+                    writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.item_ids[i]);
             return writer;
         };
     
@@ -722,6 +746,19 @@
                     break;
                 case 2:
                     message.txn_id = reader.uint64();
+                    break;
+                case 3:
+                    message.url = reader.string();
+                    break;
+                case 4:
+                    if (!(message.item_ids && message.item_ids.length))
+                        message.item_ids = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.item_ids.push(reader.uint64());
+                    } else
+                        message.item_ids.push(reader.uint64());
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -764,6 +801,16 @@
             if (message.txn_id != null && message.hasOwnProperty("txn_id"))
                 if (!$util.isInteger(message.txn_id) && !(message.txn_id && $util.isInteger(message.txn_id.low) && $util.isInteger(message.txn_id.high)))
                     return "txn_id: integer|Long expected";
+            if (message.url != null && message.hasOwnProperty("url"))
+                if (!$util.isString(message.url))
+                    return "url: string expected";
+            if (message.item_ids != null && message.hasOwnProperty("item_ids")) {
+                if (!Array.isArray(message.item_ids))
+                    return "item_ids: array expected";
+                for (var i = 0; i < message.item_ids.length; ++i)
+                    if (!$util.isInteger(message.item_ids[i]) && !(message.item_ids[i] && $util.isInteger(message.item_ids[i].low) && $util.isInteger(message.item_ids[i].high)))
+                        return "item_ids: integer|Long[] expected";
+            }
             return null;
         };
     
@@ -790,6 +837,22 @@
                     message.txn_id = object.txn_id;
                 else if (typeof object.txn_id === "object")
                     message.txn_id = new $util.LongBits(object.txn_id.low >>> 0, object.txn_id.high >>> 0).toNumber(true);
+            if (object.url != null)
+                message.url = String(object.url);
+            if (object.item_ids) {
+                if (!Array.isArray(object.item_ids))
+                    throw TypeError(".CMsgGCStorePurchaseInitResponse.item_ids: array expected");
+                message.item_ids = [];
+                for (var i = 0; i < object.item_ids.length; ++i)
+                    if ($util.Long)
+                        (message.item_ids[i] = $util.Long.fromValue(object.item_ids[i])).unsigned = true;
+                    else if (typeof object.item_ids[i] === "string")
+                        message.item_ids[i] = parseInt(object.item_ids[i], 10);
+                    else if (typeof object.item_ids[i] === "number")
+                        message.item_ids[i] = object.item_ids[i];
+                    else if (typeof object.item_ids[i] === "object")
+                        message.item_ids[i] = new $util.LongBits(object.item_ids[i].low >>> 0, object.item_ids[i].high >>> 0).toNumber(true);
+            }
             return message;
         };
     
@@ -806,6 +869,8 @@
             if (!options)
                 options = {};
             var object = {};
+            if (options.arrays || options.defaults)
+                object.item_ids = [];
             if (options.defaults) {
                 object.result = 0;
                 if ($util.Long) {
@@ -813,6 +878,7 @@
                     object.txn_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
                 } else
                     object.txn_id = options.longs === String ? "0" : 0;
+                object.url = "";
             }
             if (message.result != null && message.hasOwnProperty("result"))
                 object.result = message.result;
@@ -821,6 +887,16 @@
                     object.txn_id = options.longs === String ? String(message.txn_id) : message.txn_id;
                 else
                     object.txn_id = options.longs === String ? $util.Long.prototype.toString.call(message.txn_id) : options.longs === Number ? new $util.LongBits(message.txn_id.low >>> 0, message.txn_id.high >>> 0).toNumber(true) : message.txn_id;
+            if (message.url != null && message.hasOwnProperty("url"))
+                object.url = message.url;
+            if (message.item_ids && message.item_ids.length) {
+                object.item_ids = [];
+                for (var j = 0; j < message.item_ids.length; ++j)
+                    if (typeof message.item_ids[j] === "number")
+                        object.item_ids[j] = options.longs === String ? String(message.item_ids[j]) : message.item_ids[j];
+                    else
+                        object.item_ids[j] = options.longs === String ? $util.Long.prototype.toString.call(message.item_ids[j]) : options.longs === Number ? new $util.LongBits(message.item_ids[j].low >>> 0, message.item_ids[j].high >>> 0).toNumber(true) : message.item_ids[j];
+            }
             return object;
         };
     
@@ -5473,6 +5549,252 @@
         return CMsgApplySticker;
     })();
     
+    $root.CMsgModifyItemAttribute = (function() {
+    
+        /**
+         * Properties of a CMsgModifyItemAttribute.
+         * @exports ICMsgModifyItemAttribute
+         * @interface ICMsgModifyItemAttribute
+         * @property {number|Long|null} [item_id] CMsgModifyItemAttribute item_id
+         * @property {number|null} [attr_defidx] CMsgModifyItemAttribute attr_defidx
+         * @property {number|null} [attr_value] CMsgModifyItemAttribute attr_value
+         */
+    
+        /**
+         * Constructs a new CMsgModifyItemAttribute.
+         * @exports CMsgModifyItemAttribute
+         * @classdesc Represents a CMsgModifyItemAttribute.
+         * @implements ICMsgModifyItemAttribute
+         * @constructor
+         * @param {ICMsgModifyItemAttribute=} [properties] Properties to set
+         */
+        function CMsgModifyItemAttribute(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgModifyItemAttribute item_id.
+         * @member {number|Long} item_id
+         * @memberof CMsgModifyItemAttribute
+         * @instance
+         */
+        CMsgModifyItemAttribute.prototype.item_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+        /**
+         * CMsgModifyItemAttribute attr_defidx.
+         * @member {number} attr_defidx
+         * @memberof CMsgModifyItemAttribute
+         * @instance
+         */
+        CMsgModifyItemAttribute.prototype.attr_defidx = 0;
+    
+        /**
+         * CMsgModifyItemAttribute attr_value.
+         * @member {number} attr_value
+         * @memberof CMsgModifyItemAttribute
+         * @instance
+         */
+        CMsgModifyItemAttribute.prototype.attr_value = 0;
+    
+        /**
+         * Creates a new CMsgModifyItemAttribute instance using the specified properties.
+         * @function create
+         * @memberof CMsgModifyItemAttribute
+         * @static
+         * @param {ICMsgModifyItemAttribute=} [properties] Properties to set
+         * @returns {CMsgModifyItemAttribute} CMsgModifyItemAttribute instance
+         */
+        CMsgModifyItemAttribute.create = function create(properties) {
+            return new CMsgModifyItemAttribute(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgModifyItemAttribute message. Does not implicitly {@link CMsgModifyItemAttribute.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgModifyItemAttribute
+         * @static
+         * @param {ICMsgModifyItemAttribute} message CMsgModifyItemAttribute message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgModifyItemAttribute.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.item_id != null && message.hasOwnProperty("item_id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.item_id);
+            if (message.attr_defidx != null && message.hasOwnProperty("attr_defidx"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.attr_defidx);
+            if (message.attr_value != null && message.hasOwnProperty("attr_value"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.attr_value);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgModifyItemAttribute message, length delimited. Does not implicitly {@link CMsgModifyItemAttribute.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgModifyItemAttribute
+         * @static
+         * @param {ICMsgModifyItemAttribute} message CMsgModifyItemAttribute message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgModifyItemAttribute.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgModifyItemAttribute message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgModifyItemAttribute
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgModifyItemAttribute} CMsgModifyItemAttribute
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgModifyItemAttribute.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgModifyItemAttribute();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.item_id = reader.uint64();
+                    break;
+                case 2:
+                    message.attr_defidx = reader.uint32();
+                    break;
+                case 3:
+                    message.attr_value = reader.uint32();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgModifyItemAttribute message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgModifyItemAttribute
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgModifyItemAttribute} CMsgModifyItemAttribute
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgModifyItemAttribute.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgModifyItemAttribute message.
+         * @function verify
+         * @memberof CMsgModifyItemAttribute
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgModifyItemAttribute.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.item_id != null && message.hasOwnProperty("item_id"))
+                if (!$util.isInteger(message.item_id) && !(message.item_id && $util.isInteger(message.item_id.low) && $util.isInteger(message.item_id.high)))
+                    return "item_id: integer|Long expected";
+            if (message.attr_defidx != null && message.hasOwnProperty("attr_defidx"))
+                if (!$util.isInteger(message.attr_defidx))
+                    return "attr_defidx: integer expected";
+            if (message.attr_value != null && message.hasOwnProperty("attr_value"))
+                if (!$util.isInteger(message.attr_value))
+                    return "attr_value: integer expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgModifyItemAttribute message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgModifyItemAttribute
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgModifyItemAttribute} CMsgModifyItemAttribute
+         */
+        CMsgModifyItemAttribute.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgModifyItemAttribute)
+                return object;
+            var message = new $root.CMsgModifyItemAttribute();
+            if (object.item_id != null)
+                if ($util.Long)
+                    (message.item_id = $util.Long.fromValue(object.item_id)).unsigned = true;
+                else if (typeof object.item_id === "string")
+                    message.item_id = parseInt(object.item_id, 10);
+                else if (typeof object.item_id === "number")
+                    message.item_id = object.item_id;
+                else if (typeof object.item_id === "object")
+                    message.item_id = new $util.LongBits(object.item_id.low >>> 0, object.item_id.high >>> 0).toNumber(true);
+            if (object.attr_defidx != null)
+                message.attr_defidx = object.attr_defidx >>> 0;
+            if (object.attr_value != null)
+                message.attr_value = object.attr_value >>> 0;
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgModifyItemAttribute message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgModifyItemAttribute
+         * @static
+         * @param {CMsgModifyItemAttribute} message CMsgModifyItemAttribute
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgModifyItemAttribute.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.item_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.item_id = options.longs === String ? "0" : 0;
+                object.attr_defidx = 0;
+                object.attr_value = 0;
+            }
+            if (message.item_id != null && message.hasOwnProperty("item_id"))
+                if (typeof message.item_id === "number")
+                    object.item_id = options.longs === String ? String(message.item_id) : message.item_id;
+                else
+                    object.item_id = options.longs === String ? $util.Long.prototype.toString.call(message.item_id) : options.longs === Number ? new $util.LongBits(message.item_id.low >>> 0, message.item_id.high >>> 0).toNumber(true) : message.item_id;
+            if (message.attr_defidx != null && message.hasOwnProperty("attr_defidx"))
+                object.attr_defidx = message.attr_defidx;
+            if (message.attr_value != null && message.hasOwnProperty("attr_value"))
+                object.attr_value = message.attr_value;
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgModifyItemAttribute to JSON.
+         * @function toJSON
+         * @memberof CMsgModifyItemAttribute
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgModifyItemAttribute.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return CMsgModifyItemAttribute;
+    })();
+    
     $root.CMsgApplyStatTrakSwap = (function() {
     
         /**
@@ -7817,6 +8139,331 @@
         };
     
         return CMsgAdjustItemEquippedState;
+    })();
+    
+    $root.CMsgAdjustItemEquippedStateMulti = (function() {
+    
+        /**
+         * Properties of a CMsgAdjustItemEquippedStateMulti.
+         * @exports ICMsgAdjustItemEquippedStateMulti
+         * @interface ICMsgAdjustItemEquippedStateMulti
+         * @property {Array.<number|Long>|null} [t_equips] CMsgAdjustItemEquippedStateMulti t_equips
+         * @property {Array.<number|Long>|null} [ct_equips] CMsgAdjustItemEquippedStateMulti ct_equips
+         * @property {Array.<number|Long>|null} [noteam_equips] CMsgAdjustItemEquippedStateMulti noteam_equips
+         */
+    
+        /**
+         * Constructs a new CMsgAdjustItemEquippedStateMulti.
+         * @exports CMsgAdjustItemEquippedStateMulti
+         * @classdesc Represents a CMsgAdjustItemEquippedStateMulti.
+         * @implements ICMsgAdjustItemEquippedStateMulti
+         * @constructor
+         * @param {ICMsgAdjustItemEquippedStateMulti=} [properties] Properties to set
+         */
+        function CMsgAdjustItemEquippedStateMulti(properties) {
+            this.t_equips = [];
+            this.ct_equips = [];
+            this.noteam_equips = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgAdjustItemEquippedStateMulti t_equips.
+         * @member {Array.<number|Long>} t_equips
+         * @memberof CMsgAdjustItemEquippedStateMulti
+         * @instance
+         */
+        CMsgAdjustItemEquippedStateMulti.prototype.t_equips = $util.emptyArray;
+    
+        /**
+         * CMsgAdjustItemEquippedStateMulti ct_equips.
+         * @member {Array.<number|Long>} ct_equips
+         * @memberof CMsgAdjustItemEquippedStateMulti
+         * @instance
+         */
+        CMsgAdjustItemEquippedStateMulti.prototype.ct_equips = $util.emptyArray;
+    
+        /**
+         * CMsgAdjustItemEquippedStateMulti noteam_equips.
+         * @member {Array.<number|Long>} noteam_equips
+         * @memberof CMsgAdjustItemEquippedStateMulti
+         * @instance
+         */
+        CMsgAdjustItemEquippedStateMulti.prototype.noteam_equips = $util.emptyArray;
+    
+        /**
+         * Creates a new CMsgAdjustItemEquippedStateMulti instance using the specified properties.
+         * @function create
+         * @memberof CMsgAdjustItemEquippedStateMulti
+         * @static
+         * @param {ICMsgAdjustItemEquippedStateMulti=} [properties] Properties to set
+         * @returns {CMsgAdjustItemEquippedStateMulti} CMsgAdjustItemEquippedStateMulti instance
+         */
+        CMsgAdjustItemEquippedStateMulti.create = function create(properties) {
+            return new CMsgAdjustItemEquippedStateMulti(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgAdjustItemEquippedStateMulti message. Does not implicitly {@link CMsgAdjustItemEquippedStateMulti.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgAdjustItemEquippedStateMulti
+         * @static
+         * @param {ICMsgAdjustItemEquippedStateMulti} message CMsgAdjustItemEquippedStateMulti message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgAdjustItemEquippedStateMulti.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.t_equips != null && message.t_equips.length)
+                for (var i = 0; i < message.t_equips.length; ++i)
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.t_equips[i]);
+            if (message.ct_equips != null && message.ct_equips.length)
+                for (var i = 0; i < message.ct_equips.length; ++i)
+                    writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.ct_equips[i]);
+            if (message.noteam_equips != null && message.noteam_equips.length)
+                for (var i = 0; i < message.noteam_equips.length; ++i)
+                    writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.noteam_equips[i]);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgAdjustItemEquippedStateMulti message, length delimited. Does not implicitly {@link CMsgAdjustItemEquippedStateMulti.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgAdjustItemEquippedStateMulti
+         * @static
+         * @param {ICMsgAdjustItemEquippedStateMulti} message CMsgAdjustItemEquippedStateMulti message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgAdjustItemEquippedStateMulti.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgAdjustItemEquippedStateMulti message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgAdjustItemEquippedStateMulti
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgAdjustItemEquippedStateMulti} CMsgAdjustItemEquippedStateMulti
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgAdjustItemEquippedStateMulti.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAdjustItemEquippedStateMulti();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    if (!(message.t_equips && message.t_equips.length))
+                        message.t_equips = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.t_equips.push(reader.uint64());
+                    } else
+                        message.t_equips.push(reader.uint64());
+                    break;
+                case 2:
+                    if (!(message.ct_equips && message.ct_equips.length))
+                        message.ct_equips = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.ct_equips.push(reader.uint64());
+                    } else
+                        message.ct_equips.push(reader.uint64());
+                    break;
+                case 3:
+                    if (!(message.noteam_equips && message.noteam_equips.length))
+                        message.noteam_equips = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.noteam_equips.push(reader.uint64());
+                    } else
+                        message.noteam_equips.push(reader.uint64());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgAdjustItemEquippedStateMulti message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgAdjustItemEquippedStateMulti
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgAdjustItemEquippedStateMulti} CMsgAdjustItemEquippedStateMulti
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgAdjustItemEquippedStateMulti.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgAdjustItemEquippedStateMulti message.
+         * @function verify
+         * @memberof CMsgAdjustItemEquippedStateMulti
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgAdjustItemEquippedStateMulti.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.t_equips != null && message.hasOwnProperty("t_equips")) {
+                if (!Array.isArray(message.t_equips))
+                    return "t_equips: array expected";
+                for (var i = 0; i < message.t_equips.length; ++i)
+                    if (!$util.isInteger(message.t_equips[i]) && !(message.t_equips[i] && $util.isInteger(message.t_equips[i].low) && $util.isInteger(message.t_equips[i].high)))
+                        return "t_equips: integer|Long[] expected";
+            }
+            if (message.ct_equips != null && message.hasOwnProperty("ct_equips")) {
+                if (!Array.isArray(message.ct_equips))
+                    return "ct_equips: array expected";
+                for (var i = 0; i < message.ct_equips.length; ++i)
+                    if (!$util.isInteger(message.ct_equips[i]) && !(message.ct_equips[i] && $util.isInteger(message.ct_equips[i].low) && $util.isInteger(message.ct_equips[i].high)))
+                        return "ct_equips: integer|Long[] expected";
+            }
+            if (message.noteam_equips != null && message.hasOwnProperty("noteam_equips")) {
+                if (!Array.isArray(message.noteam_equips))
+                    return "noteam_equips: array expected";
+                for (var i = 0; i < message.noteam_equips.length; ++i)
+                    if (!$util.isInteger(message.noteam_equips[i]) && !(message.noteam_equips[i] && $util.isInteger(message.noteam_equips[i].low) && $util.isInteger(message.noteam_equips[i].high)))
+                        return "noteam_equips: integer|Long[] expected";
+            }
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgAdjustItemEquippedStateMulti message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgAdjustItemEquippedStateMulti
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgAdjustItemEquippedStateMulti} CMsgAdjustItemEquippedStateMulti
+         */
+        CMsgAdjustItemEquippedStateMulti.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgAdjustItemEquippedStateMulti)
+                return object;
+            var message = new $root.CMsgAdjustItemEquippedStateMulti();
+            if (object.t_equips) {
+                if (!Array.isArray(object.t_equips))
+                    throw TypeError(".CMsgAdjustItemEquippedStateMulti.t_equips: array expected");
+                message.t_equips = [];
+                for (var i = 0; i < object.t_equips.length; ++i)
+                    if ($util.Long)
+                        (message.t_equips[i] = $util.Long.fromValue(object.t_equips[i])).unsigned = true;
+                    else if (typeof object.t_equips[i] === "string")
+                        message.t_equips[i] = parseInt(object.t_equips[i], 10);
+                    else if (typeof object.t_equips[i] === "number")
+                        message.t_equips[i] = object.t_equips[i];
+                    else if (typeof object.t_equips[i] === "object")
+                        message.t_equips[i] = new $util.LongBits(object.t_equips[i].low >>> 0, object.t_equips[i].high >>> 0).toNumber(true);
+            }
+            if (object.ct_equips) {
+                if (!Array.isArray(object.ct_equips))
+                    throw TypeError(".CMsgAdjustItemEquippedStateMulti.ct_equips: array expected");
+                message.ct_equips = [];
+                for (var i = 0; i < object.ct_equips.length; ++i)
+                    if ($util.Long)
+                        (message.ct_equips[i] = $util.Long.fromValue(object.ct_equips[i])).unsigned = true;
+                    else if (typeof object.ct_equips[i] === "string")
+                        message.ct_equips[i] = parseInt(object.ct_equips[i], 10);
+                    else if (typeof object.ct_equips[i] === "number")
+                        message.ct_equips[i] = object.ct_equips[i];
+                    else if (typeof object.ct_equips[i] === "object")
+                        message.ct_equips[i] = new $util.LongBits(object.ct_equips[i].low >>> 0, object.ct_equips[i].high >>> 0).toNumber(true);
+            }
+            if (object.noteam_equips) {
+                if (!Array.isArray(object.noteam_equips))
+                    throw TypeError(".CMsgAdjustItemEquippedStateMulti.noteam_equips: array expected");
+                message.noteam_equips = [];
+                for (var i = 0; i < object.noteam_equips.length; ++i)
+                    if ($util.Long)
+                        (message.noteam_equips[i] = $util.Long.fromValue(object.noteam_equips[i])).unsigned = true;
+                    else if (typeof object.noteam_equips[i] === "string")
+                        message.noteam_equips[i] = parseInt(object.noteam_equips[i], 10);
+                    else if (typeof object.noteam_equips[i] === "number")
+                        message.noteam_equips[i] = object.noteam_equips[i];
+                    else if (typeof object.noteam_equips[i] === "object")
+                        message.noteam_equips[i] = new $util.LongBits(object.noteam_equips[i].low >>> 0, object.noteam_equips[i].high >>> 0).toNumber(true);
+            }
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgAdjustItemEquippedStateMulti message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgAdjustItemEquippedStateMulti
+         * @static
+         * @param {CMsgAdjustItemEquippedStateMulti} message CMsgAdjustItemEquippedStateMulti
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgAdjustItemEquippedStateMulti.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults) {
+                object.t_equips = [];
+                object.ct_equips = [];
+                object.noteam_equips = [];
+            }
+            if (message.t_equips && message.t_equips.length) {
+                object.t_equips = [];
+                for (var j = 0; j < message.t_equips.length; ++j)
+                    if (typeof message.t_equips[j] === "number")
+                        object.t_equips[j] = options.longs === String ? String(message.t_equips[j]) : message.t_equips[j];
+                    else
+                        object.t_equips[j] = options.longs === String ? $util.Long.prototype.toString.call(message.t_equips[j]) : options.longs === Number ? new $util.LongBits(message.t_equips[j].low >>> 0, message.t_equips[j].high >>> 0).toNumber(true) : message.t_equips[j];
+            }
+            if (message.ct_equips && message.ct_equips.length) {
+                object.ct_equips = [];
+                for (var j = 0; j < message.ct_equips.length; ++j)
+                    if (typeof message.ct_equips[j] === "number")
+                        object.ct_equips[j] = options.longs === String ? String(message.ct_equips[j]) : message.ct_equips[j];
+                    else
+                        object.ct_equips[j] = options.longs === String ? $util.Long.prototype.toString.call(message.ct_equips[j]) : options.longs === Number ? new $util.LongBits(message.ct_equips[j].low >>> 0, message.ct_equips[j].high >>> 0).toNumber(true) : message.ct_equips[j];
+            }
+            if (message.noteam_equips && message.noteam_equips.length) {
+                object.noteam_equips = [];
+                for (var j = 0; j < message.noteam_equips.length; ++j)
+                    if (typeof message.noteam_equips[j] === "number")
+                        object.noteam_equips[j] = options.longs === String ? String(message.noteam_equips[j]) : message.noteam_equips[j];
+                    else
+                        object.noteam_equips[j] = options.longs === String ? $util.Long.prototype.toString.call(message.noteam_equips[j]) : options.longs === Number ? new $util.LongBits(message.noteam_equips[j].low >>> 0, message.noteam_equips[j].high >>> 0).toNumber(true) : message.noteam_equips[j];
+            }
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgAdjustItemEquippedStateMulti to JSON.
+         * @function toJSON
+         * @memberof CMsgAdjustItemEquippedStateMulti
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgAdjustItemEquippedStateMulti.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return CMsgAdjustItemEquippedStateMulti;
     })();
     
     $root.CMsgSortItems = (function() {
@@ -19566,6 +20213,7 @@
          * @property {string|null} [target_job_name] CMsgProtoBufHeader target_job_name
          * @property {number|null} [eresult] CMsgProtoBufHeader eresult
          * @property {string|null} [error_message] CMsgProtoBufHeader error_message
+         * @property {number|null} [ip] CMsgProtoBufHeader ip
          * @property {GCProtoBufMsgSrc|null} [gc_msg_src] CMsgProtoBufHeader gc_msg_src
          * @property {number|null} [gc_dir_index_source] CMsgProtoBufHeader gc_dir_index_source
          */
@@ -19650,6 +20298,14 @@
         CMsgProtoBufHeader.prototype.error_message = "";
     
         /**
+         * CMsgProtoBufHeader ip.
+         * @member {number} ip
+         * @memberof CMsgProtoBufHeader
+         * @instance
+         */
+        CMsgProtoBufHeader.prototype.ip = 0;
+    
+        /**
          * CMsgProtoBufHeader gc_msg_src.
          * @member {GCProtoBufMsgSrc} gc_msg_src
          * @memberof CMsgProtoBufHeader
@@ -19705,6 +20361,8 @@
                 writer.uint32(/* id 13, wireType 0 =*/104).int32(message.eresult);
             if (message.error_message != null && message.hasOwnProperty("error_message"))
                 writer.uint32(/* id 14, wireType 2 =*/114).string(message.error_message);
+            if (message.ip != null && message.hasOwnProperty("ip"))
+                writer.uint32(/* id 15, wireType 0 =*/120).uint32(message.ip);
             if (message.gc_msg_src != null && message.hasOwnProperty("gc_msg_src"))
                 writer.uint32(/* id 200, wireType 0 =*/1600).int32(message.gc_msg_src);
             if (message.gc_dir_index_source != null && message.hasOwnProperty("gc_dir_index_source"))
@@ -19766,6 +20424,9 @@
                     break;
                 case 14:
                     message.error_message = reader.string();
+                    break;
+                case 15:
+                    message.ip = reader.uint32();
                     break;
                 case 200:
                     message.gc_msg_src = reader.int32();
@@ -19832,6 +20493,9 @@
             if (message.error_message != null && message.hasOwnProperty("error_message"))
                 if (!$util.isString(message.error_message))
                     return "error_message: string expected";
+            if (message.ip != null && message.hasOwnProperty("ip"))
+                if (!$util.isInteger(message.ip))
+                    return "ip: integer expected";
             if (message.gc_msg_src != null && message.hasOwnProperty("gc_msg_src"))
                 switch (message.gc_msg_src) {
                 default:
@@ -19898,6 +20562,8 @@
                 message.eresult = object.eresult | 0;
             if (object.error_message != null)
                 message.error_message = String(object.error_message);
+            if (object.ip != null)
+                message.ip = object.ip >>> 0;
             switch (object.gc_msg_src) {
             case "GCProtoBufMsgSrc_Unspecified":
             case 0:
@@ -19959,6 +20625,7 @@
                 object.target_job_name = "";
                 object.eresult = 2;
                 object.error_message = "";
+                object.ip = 0;
                 object.gc_msg_src = options.enums === String ? "GCProtoBufMsgSrc_Unspecified" : 0;
                 object.gc_dir_index_source = 0;
             }
@@ -19987,6 +20654,8 @@
                 object.eresult = message.eresult;
             if (message.error_message != null && message.hasOwnProperty("error_message"))
                 object.error_message = message.error_message;
+            if (message.ip != null && message.hasOwnProperty("ip"))
+                object.ip = message.ip;
             if (message.gc_msg_src != null && message.hasOwnProperty("gc_msg_src"))
                 object.gc_msg_src = options.enums === String ? $root.GCProtoBufMsgSrc[message.gc_msg_src] : message.gc_msg_src;
             if (message.gc_dir_index_source != null && message.hasOwnProperty("gc_dir_index_source"))
@@ -31762,6 +32431,9 @@
          * @property {number|null} [phone_verification_time] CGCSystemMsg_GetAccountDetails_Response phone_verification_time
          * @property {number|Long|null} [phone_id] CGCSystemMsg_GetAccountDetails_Response phone_id
          * @property {boolean|null} [is_phone_identifying] CGCSystemMsg_GetAccountDetails_Response is_phone_identifying
+         * @property {number|null} [rt_identity_linked] CGCSystemMsg_GetAccountDetails_Response rt_identity_linked
+         * @property {number|null} [rt_birth_date] CGCSystemMsg_GetAccountDetails_Response rt_birth_date
+         * @property {string|null} [txn_country_code] CGCSystemMsg_GetAccountDetails_Response txn_country_code
          */
     
         /**
@@ -32028,6 +32700,30 @@
         CGCSystemMsg_GetAccountDetails_Response.prototype.is_phone_identifying = false;
     
         /**
+         * CGCSystemMsg_GetAccountDetails_Response rt_identity_linked.
+         * @member {number} rt_identity_linked
+         * @memberof CGCSystemMsg_GetAccountDetails_Response
+         * @instance
+         */
+        CGCSystemMsg_GetAccountDetails_Response.prototype.rt_identity_linked = 0;
+    
+        /**
+         * CGCSystemMsg_GetAccountDetails_Response rt_birth_date.
+         * @member {number} rt_birth_date
+         * @memberof CGCSystemMsg_GetAccountDetails_Response
+         * @instance
+         */
+        CGCSystemMsg_GetAccountDetails_Response.prototype.rt_birth_date = 0;
+    
+        /**
+         * CGCSystemMsg_GetAccountDetails_Response txn_country_code.
+         * @member {string} txn_country_code
+         * @memberof CGCSystemMsg_GetAccountDetails_Response
+         * @instance
+         */
+        CGCSystemMsg_GetAccountDetails_Response.prototype.txn_country_code = "";
+    
+        /**
          * Creates a new CGCSystemMsg_GetAccountDetails_Response instance using the specified properties.
          * @function create
          * @memberof CGCSystemMsg_GetAccountDetails_Response
@@ -32113,6 +32809,12 @@
                 writer.uint32(/* id 33, wireType 0 =*/264).uint64(message.phone_id);
             if (message.is_phone_identifying != null && message.hasOwnProperty("is_phone_identifying"))
                 writer.uint32(/* id 34, wireType 0 =*/272).bool(message.is_phone_identifying);
+            if (message.rt_identity_linked != null && message.hasOwnProperty("rt_identity_linked"))
+                writer.uint32(/* id 35, wireType 0 =*/280).uint32(message.rt_identity_linked);
+            if (message.rt_birth_date != null && message.hasOwnProperty("rt_birth_date"))
+                writer.uint32(/* id 36, wireType 0 =*/288).uint32(message.rt_birth_date);
+            if (message.txn_country_code != null && message.hasOwnProperty("txn_country_code"))
+                writer.uint32(/* id 37, wireType 2 =*/298).string(message.txn_country_code);
             return writer;
         };
     
@@ -32239,6 +32941,15 @@
                     break;
                 case 34:
                     message.is_phone_identifying = reader.bool();
+                    break;
+                case 35:
+                    message.rt_identity_linked = reader.uint32();
+                    break;
+                case 36:
+                    message.rt_birth_date = reader.uint32();
+                    break;
+                case 37:
+                    message.txn_country_code = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -32368,6 +33079,15 @@
             if (message.is_phone_identifying != null && message.hasOwnProperty("is_phone_identifying"))
                 if (typeof message.is_phone_identifying !== "boolean")
                     return "is_phone_identifying: boolean expected";
+            if (message.rt_identity_linked != null && message.hasOwnProperty("rt_identity_linked"))
+                if (!$util.isInteger(message.rt_identity_linked))
+                    return "rt_identity_linked: integer expected";
+            if (message.rt_birth_date != null && message.hasOwnProperty("rt_birth_date"))
+                if (!$util.isInteger(message.rt_birth_date))
+                    return "rt_birth_date: integer expected";
+            if (message.txn_country_code != null && message.hasOwnProperty("txn_country_code"))
+                if (!$util.isString(message.txn_country_code))
+                    return "txn_country_code: string expected";
             return null;
         };
     
@@ -32452,6 +33172,12 @@
                     message.phone_id = new $util.LongBits(object.phone_id.low >>> 0, object.phone_id.high >>> 0).toNumber(true);
             if (object.is_phone_identifying != null)
                 message.is_phone_identifying = Boolean(object.is_phone_identifying);
+            if (object.rt_identity_linked != null)
+                message.rt_identity_linked = object.rt_identity_linked >>> 0;
+            if (object.rt_birth_date != null)
+                message.rt_birth_date = object.rt_birth_date >>> 0;
+            if (object.txn_country_code != null)
+                message.txn_country_code = String(object.txn_country_code);
             return message;
         };
     
@@ -32504,6 +33230,9 @@
                 } else
                     object.phone_id = options.longs === String ? "0" : 0;
                 object.is_phone_identifying = false;
+                object.rt_identity_linked = 0;
+                object.rt_birth_date = 0;
+                object.txn_country_code = "";
             }
             if (message.eresult_deprecated != null && message.hasOwnProperty("eresult_deprecated"))
                 object.eresult_deprecated = message.eresult_deprecated;
@@ -32570,6 +33299,12 @@
                     object.phone_id = options.longs === String ? $util.Long.prototype.toString.call(message.phone_id) : options.longs === Number ? new $util.LongBits(message.phone_id.low >>> 0, message.phone_id.high >>> 0).toNumber(true) : message.phone_id;
             if (message.is_phone_identifying != null && message.hasOwnProperty("is_phone_identifying"))
                 object.is_phone_identifying = message.is_phone_identifying;
+            if (message.rt_identity_linked != null && message.hasOwnProperty("rt_identity_linked"))
+                object.rt_identity_linked = message.rt_identity_linked;
+            if (message.rt_birth_date != null && message.hasOwnProperty("rt_birth_date"))
+                object.rt_birth_date = message.rt_birth_date;
+            if (message.txn_country_code != null && message.hasOwnProperty("txn_country_code"))
+                object.txn_country_code = message.txn_country_code;
             return object;
         };
     
@@ -37912,6 +38647,10 @@
          * @property {number|null} [os_type] CMsgGCHUpdateSession os_type
          * @property {number|null} [client_addr] CMsgGCHUpdateSession client_addr
          * @property {Array.<CMsgGCHUpdateSession.IExtraField>|null} [extra_fields] CMsgGCHUpdateSession extra_fields
+         * @property {number|Long|null} [owner_id] CMsgGCHUpdateSession owner_id
+         * @property {number|null} [cm_session_sysid] CMsgGCHUpdateSession cm_session_sysid
+         * @property {number|null} [cm_session_identifier] CMsgGCHUpdateSession cm_session_identifier
+         * @property {Array.<number>|null} [depot_ids] CMsgGCHUpdateSession depot_ids
          */
     
         /**
@@ -37924,6 +38663,7 @@
          */
         function CMsgGCHUpdateSession(properties) {
             this.extra_fields = [];
+            this.depot_ids = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -38003,6 +38743,38 @@
         CMsgGCHUpdateSession.prototype.extra_fields = $util.emptyArray;
     
         /**
+         * CMsgGCHUpdateSession owner_id.
+         * @member {number|Long} owner_id
+         * @memberof CMsgGCHUpdateSession
+         * @instance
+         */
+        CMsgGCHUpdateSession.prototype.owner_id = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+    
+        /**
+         * CMsgGCHUpdateSession cm_session_sysid.
+         * @member {number} cm_session_sysid
+         * @memberof CMsgGCHUpdateSession
+         * @instance
+         */
+        CMsgGCHUpdateSession.prototype.cm_session_sysid = 0;
+    
+        /**
+         * CMsgGCHUpdateSession cm_session_identifier.
+         * @member {number} cm_session_identifier
+         * @memberof CMsgGCHUpdateSession
+         * @instance
+         */
+        CMsgGCHUpdateSession.prototype.cm_session_identifier = 0;
+    
+        /**
+         * CMsgGCHUpdateSession depot_ids.
+         * @member {Array.<number>} depot_ids
+         * @memberof CMsgGCHUpdateSession
+         * @instance
+         */
+        CMsgGCHUpdateSession.prototype.depot_ids = $util.emptyArray;
+    
+        /**
          * Creates a new CMsgGCHUpdateSession instance using the specified properties.
          * @function create
          * @memberof CMsgGCHUpdateSession
@@ -38045,6 +38817,15 @@
             if (message.extra_fields != null && message.extra_fields.length)
                 for (var i = 0; i < message.extra_fields.length; ++i)
                     $root.CMsgGCHUpdateSession.ExtraField.encode(message.extra_fields[i], writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
+            if (message.owner_id != null && message.hasOwnProperty("owner_id"))
+                writer.uint32(/* id 10, wireType 1 =*/81).fixed64(message.owner_id);
+            if (message.cm_session_sysid != null && message.hasOwnProperty("cm_session_sysid"))
+                writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.cm_session_sysid);
+            if (message.cm_session_identifier != null && message.hasOwnProperty("cm_session_identifier"))
+                writer.uint32(/* id 12, wireType 0 =*/96).uint32(message.cm_session_identifier);
+            if (message.depot_ids != null && message.depot_ids.length)
+                for (var i = 0; i < message.depot_ids.length; ++i)
+                    writer.uint32(/* id 13, wireType 0 =*/104).uint32(message.depot_ids[i]);
             return writer;
         };
     
@@ -38107,6 +38888,25 @@
                     if (!(message.extra_fields && message.extra_fields.length))
                         message.extra_fields = [];
                     message.extra_fields.push($root.CMsgGCHUpdateSession.ExtraField.decode(reader, reader.uint32()));
+                    break;
+                case 10:
+                    message.owner_id = reader.fixed64();
+                    break;
+                case 11:
+                    message.cm_session_sysid = reader.uint32();
+                    break;
+                case 12:
+                    message.cm_session_identifier = reader.uint32();
+                    break;
+                case 13:
+                    if (!(message.depot_ids && message.depot_ids.length))
+                        message.depot_ids = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.depot_ids.push(reader.uint32());
+                    } else
+                        message.depot_ids.push(reader.uint32());
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -38176,6 +38976,22 @@
                         return "extra_fields." + error;
                 }
             }
+            if (message.owner_id != null && message.hasOwnProperty("owner_id"))
+                if (!$util.isInteger(message.owner_id) && !(message.owner_id && $util.isInteger(message.owner_id.low) && $util.isInteger(message.owner_id.high)))
+                    return "owner_id: integer|Long expected";
+            if (message.cm_session_sysid != null && message.hasOwnProperty("cm_session_sysid"))
+                if (!$util.isInteger(message.cm_session_sysid))
+                    return "cm_session_sysid: integer expected";
+            if (message.cm_session_identifier != null && message.hasOwnProperty("cm_session_identifier"))
+                if (!$util.isInteger(message.cm_session_identifier))
+                    return "cm_session_identifier: integer expected";
+            if (message.depot_ids != null && message.hasOwnProperty("depot_ids")) {
+                if (!Array.isArray(message.depot_ids))
+                    return "depot_ids: array expected";
+                for (var i = 0; i < message.depot_ids.length; ++i)
+                    if (!$util.isInteger(message.depot_ids[i]))
+                        return "depot_ids: integer[] expected";
+            }
             return null;
         };
     
@@ -38231,6 +39047,26 @@
                     message.extra_fields[i] = $root.CMsgGCHUpdateSession.ExtraField.fromObject(object.extra_fields[i]);
                 }
             }
+            if (object.owner_id != null)
+                if ($util.Long)
+                    (message.owner_id = $util.Long.fromValue(object.owner_id)).unsigned = false;
+                else if (typeof object.owner_id === "string")
+                    message.owner_id = parseInt(object.owner_id, 10);
+                else if (typeof object.owner_id === "number")
+                    message.owner_id = object.owner_id;
+                else if (typeof object.owner_id === "object")
+                    message.owner_id = new $util.LongBits(object.owner_id.low >>> 0, object.owner_id.high >>> 0).toNumber();
+            if (object.cm_session_sysid != null)
+                message.cm_session_sysid = object.cm_session_sysid >>> 0;
+            if (object.cm_session_identifier != null)
+                message.cm_session_identifier = object.cm_session_identifier >>> 0;
+            if (object.depot_ids) {
+                if (!Array.isArray(object.depot_ids))
+                    throw TypeError(".CMsgGCHUpdateSession.depot_ids: array expected");
+                message.depot_ids = [];
+                for (var i = 0; i < object.depot_ids.length; ++i)
+                    message.depot_ids[i] = object.depot_ids[i] >>> 0;
+            }
             return message;
         };
     
@@ -38247,8 +39083,10 @@
             if (!options)
                 options = {};
             var object = {};
-            if (options.arrays || options.defaults)
+            if (options.arrays || options.defaults) {
                 object.extra_fields = [];
+                object.depot_ids = [];
+            }
             if (options.defaults) {
                 if ($util.Long) {
                     var long = new $util.Long(0, 0, false);
@@ -38266,6 +39104,13 @@
                 object.server_port = 0;
                 object.os_type = 0;
                 object.client_addr = 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, false);
+                    object.owner_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.owner_id = options.longs === String ? "0" : 0;
+                object.cm_session_sysid = 0;
+                object.cm_session_identifier = 0;
             }
             if (message.steam_id != null && message.hasOwnProperty("steam_id"))
                 if (typeof message.steam_id === "number")
@@ -38293,6 +39138,20 @@
                 object.extra_fields = [];
                 for (var j = 0; j < message.extra_fields.length; ++j)
                     object.extra_fields[j] = $root.CMsgGCHUpdateSession.ExtraField.toObject(message.extra_fields[j], options);
+            }
+            if (message.owner_id != null && message.hasOwnProperty("owner_id"))
+                if (typeof message.owner_id === "number")
+                    object.owner_id = options.longs === String ? String(message.owner_id) : message.owner_id;
+                else
+                    object.owner_id = options.longs === String ? $util.Long.prototype.toString.call(message.owner_id) : options.longs === Number ? new $util.LongBits(message.owner_id.low >>> 0, message.owner_id.high >>> 0).toNumber() : message.owner_id;
+            if (message.cm_session_sysid != null && message.hasOwnProperty("cm_session_sysid"))
+                object.cm_session_sysid = message.cm_session_sysid;
+            if (message.cm_session_identifier != null && message.hasOwnProperty("cm_session_identifier"))
+                object.cm_session_identifier = message.cm_session_identifier;
+            if (message.depot_ids && message.depot_ids.length) {
+                object.depot_ids = [];
+                for (var j = 0; j < message.depot_ids.length; ++j)
+                    object.depot_ids[j] = message.depot_ids[j];
             }
             return object;
         };
@@ -39011,6 +39870,1465 @@
         })();
     
         return CMsgNotificationOfSuspiciousActivity;
+    })();
+    
+    $root.CMsgDPPartnerMicroTxns = (function() {
+    
+        /**
+         * Properties of a CMsgDPPartnerMicroTxns.
+         * @exports ICMsgDPPartnerMicroTxns
+         * @interface ICMsgDPPartnerMicroTxns
+         * @property {number|null} [appid] CMsgDPPartnerMicroTxns appid
+         * @property {string|null} [gc_name] CMsgDPPartnerMicroTxns gc_name
+         * @property {CMsgDPPartnerMicroTxns.IPartnerInfo|null} [partner] CMsgDPPartnerMicroTxns partner
+         * @property {Array.<CMsgDPPartnerMicroTxns.IPartnerMicroTxn>|null} [transactions] CMsgDPPartnerMicroTxns transactions
+         */
+    
+        /**
+         * Constructs a new CMsgDPPartnerMicroTxns.
+         * @exports CMsgDPPartnerMicroTxns
+         * @classdesc Represents a CMsgDPPartnerMicroTxns.
+         * @implements ICMsgDPPartnerMicroTxns
+         * @constructor
+         * @param {ICMsgDPPartnerMicroTxns=} [properties] Properties to set
+         */
+        function CMsgDPPartnerMicroTxns(properties) {
+            this.transactions = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgDPPartnerMicroTxns appid.
+         * @member {number} appid
+         * @memberof CMsgDPPartnerMicroTxns
+         * @instance
+         */
+        CMsgDPPartnerMicroTxns.prototype.appid = 0;
+    
+        /**
+         * CMsgDPPartnerMicroTxns gc_name.
+         * @member {string} gc_name
+         * @memberof CMsgDPPartnerMicroTxns
+         * @instance
+         */
+        CMsgDPPartnerMicroTxns.prototype.gc_name = "";
+    
+        /**
+         * CMsgDPPartnerMicroTxns partner.
+         * @member {CMsgDPPartnerMicroTxns.IPartnerInfo|null|undefined} partner
+         * @memberof CMsgDPPartnerMicroTxns
+         * @instance
+         */
+        CMsgDPPartnerMicroTxns.prototype.partner = null;
+    
+        /**
+         * CMsgDPPartnerMicroTxns transactions.
+         * @member {Array.<CMsgDPPartnerMicroTxns.IPartnerMicroTxn>} transactions
+         * @memberof CMsgDPPartnerMicroTxns
+         * @instance
+         */
+        CMsgDPPartnerMicroTxns.prototype.transactions = $util.emptyArray;
+    
+        /**
+         * Creates a new CMsgDPPartnerMicroTxns instance using the specified properties.
+         * @function create
+         * @memberof CMsgDPPartnerMicroTxns
+         * @static
+         * @param {ICMsgDPPartnerMicroTxns=} [properties] Properties to set
+         * @returns {CMsgDPPartnerMicroTxns} CMsgDPPartnerMicroTxns instance
+         */
+        CMsgDPPartnerMicroTxns.create = function create(properties) {
+            return new CMsgDPPartnerMicroTxns(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgDPPartnerMicroTxns message. Does not implicitly {@link CMsgDPPartnerMicroTxns.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgDPPartnerMicroTxns
+         * @static
+         * @param {ICMsgDPPartnerMicroTxns} message CMsgDPPartnerMicroTxns message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgDPPartnerMicroTxns.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.appid != null && message.hasOwnProperty("appid"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.appid);
+            if (message.gc_name != null && message.hasOwnProperty("gc_name"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.gc_name);
+            if (message.partner != null && message.hasOwnProperty("partner"))
+                $root.CMsgDPPartnerMicroTxns.PartnerInfo.encode(message.partner, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+            if (message.transactions != null && message.transactions.length)
+                for (var i = 0; i < message.transactions.length; ++i)
+                    $root.CMsgDPPartnerMicroTxns.PartnerMicroTxn.encode(message.transactions[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgDPPartnerMicroTxns message, length delimited. Does not implicitly {@link CMsgDPPartnerMicroTxns.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgDPPartnerMicroTxns
+         * @static
+         * @param {ICMsgDPPartnerMicroTxns} message CMsgDPPartnerMicroTxns message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgDPPartnerMicroTxns.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgDPPartnerMicroTxns message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgDPPartnerMicroTxns
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgDPPartnerMicroTxns} CMsgDPPartnerMicroTxns
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgDPPartnerMicroTxns.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgDPPartnerMicroTxns();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.appid = reader.uint32();
+                    break;
+                case 2:
+                    message.gc_name = reader.string();
+                    break;
+                case 3:
+                    message.partner = $root.CMsgDPPartnerMicroTxns.PartnerInfo.decode(reader, reader.uint32());
+                    break;
+                case 4:
+                    if (!(message.transactions && message.transactions.length))
+                        message.transactions = [];
+                    message.transactions.push($root.CMsgDPPartnerMicroTxns.PartnerMicroTxn.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgDPPartnerMicroTxns message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgDPPartnerMicroTxns
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgDPPartnerMicroTxns} CMsgDPPartnerMicroTxns
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgDPPartnerMicroTxns.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgDPPartnerMicroTxns message.
+         * @function verify
+         * @memberof CMsgDPPartnerMicroTxns
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgDPPartnerMicroTxns.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.appid != null && message.hasOwnProperty("appid"))
+                if (!$util.isInteger(message.appid))
+                    return "appid: integer expected";
+            if (message.gc_name != null && message.hasOwnProperty("gc_name"))
+                if (!$util.isString(message.gc_name))
+                    return "gc_name: string expected";
+            if (message.partner != null && message.hasOwnProperty("partner")) {
+                var error = $root.CMsgDPPartnerMicroTxns.PartnerInfo.verify(message.partner);
+                if (error)
+                    return "partner." + error;
+            }
+            if (message.transactions != null && message.hasOwnProperty("transactions")) {
+                if (!Array.isArray(message.transactions))
+                    return "transactions: array expected";
+                for (var i = 0; i < message.transactions.length; ++i) {
+                    var error = $root.CMsgDPPartnerMicroTxns.PartnerMicroTxn.verify(message.transactions[i]);
+                    if (error)
+                        return "transactions." + error;
+                }
+            }
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgDPPartnerMicroTxns message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgDPPartnerMicroTxns
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgDPPartnerMicroTxns} CMsgDPPartnerMicroTxns
+         */
+        CMsgDPPartnerMicroTxns.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgDPPartnerMicroTxns)
+                return object;
+            var message = new $root.CMsgDPPartnerMicroTxns();
+            if (object.appid != null)
+                message.appid = object.appid >>> 0;
+            if (object.gc_name != null)
+                message.gc_name = String(object.gc_name);
+            if (object.partner != null) {
+                if (typeof object.partner !== "object")
+                    throw TypeError(".CMsgDPPartnerMicroTxns.partner: object expected");
+                message.partner = $root.CMsgDPPartnerMicroTxns.PartnerInfo.fromObject(object.partner);
+            }
+            if (object.transactions) {
+                if (!Array.isArray(object.transactions))
+                    throw TypeError(".CMsgDPPartnerMicroTxns.transactions: array expected");
+                message.transactions = [];
+                for (var i = 0; i < object.transactions.length; ++i) {
+                    if (typeof object.transactions[i] !== "object")
+                        throw TypeError(".CMsgDPPartnerMicroTxns.transactions: object expected");
+                    message.transactions[i] = $root.CMsgDPPartnerMicroTxns.PartnerMicroTxn.fromObject(object.transactions[i]);
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgDPPartnerMicroTxns message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgDPPartnerMicroTxns
+         * @static
+         * @param {CMsgDPPartnerMicroTxns} message CMsgDPPartnerMicroTxns
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgDPPartnerMicroTxns.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.transactions = [];
+            if (options.defaults) {
+                object.appid = 0;
+                object.gc_name = "";
+                object.partner = null;
+            }
+            if (message.appid != null && message.hasOwnProperty("appid"))
+                object.appid = message.appid;
+            if (message.gc_name != null && message.hasOwnProperty("gc_name"))
+                object.gc_name = message.gc_name;
+            if (message.partner != null && message.hasOwnProperty("partner"))
+                object.partner = $root.CMsgDPPartnerMicroTxns.PartnerInfo.toObject(message.partner, options);
+            if (message.transactions && message.transactions.length) {
+                object.transactions = [];
+                for (var j = 0; j < message.transactions.length; ++j)
+                    object.transactions[j] = $root.CMsgDPPartnerMicroTxns.PartnerMicroTxn.toObject(message.transactions[j], options);
+            }
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgDPPartnerMicroTxns to JSON.
+         * @function toJSON
+         * @memberof CMsgDPPartnerMicroTxns
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgDPPartnerMicroTxns.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        CMsgDPPartnerMicroTxns.PartnerMicroTxn = (function() {
+    
+            /**
+             * Properties of a PartnerMicroTxn.
+             * @memberof CMsgDPPartnerMicroTxns
+             * @interface IPartnerMicroTxn
+             * @property {number|null} [init_time] PartnerMicroTxn init_time
+             * @property {number|null} [last_update_time] PartnerMicroTxn last_update_time
+             * @property {number|Long|null} [txn_id] PartnerMicroTxn txn_id
+             * @property {number|null} [account_id] PartnerMicroTxn account_id
+             * @property {number|null} [line_item] PartnerMicroTxn line_item
+             * @property {number|Long|null} [item_id] PartnerMicroTxn item_id
+             * @property {number|null} [def_index] PartnerMicroTxn def_index
+             * @property {number|Long|null} [price] PartnerMicroTxn price
+             * @property {number|Long|null} [tax] PartnerMicroTxn tax
+             * @property {number|Long|null} [price_usd] PartnerMicroTxn price_usd
+             * @property {number|Long|null} [tax_usd] PartnerMicroTxn tax_usd
+             * @property {number|null} [purchase_type] PartnerMicroTxn purchase_type
+             * @property {number|null} [steam_txn_type] PartnerMicroTxn steam_txn_type
+             * @property {string|null} [country_code] PartnerMicroTxn country_code
+             * @property {string|null} [region_code] PartnerMicroTxn region_code
+             * @property {number|null} [quantity] PartnerMicroTxn quantity
+             * @property {number|Long|null} [ref_trans_id] PartnerMicroTxn ref_trans_id
+             */
+    
+            /**
+             * Constructs a new PartnerMicroTxn.
+             * @memberof CMsgDPPartnerMicroTxns
+             * @classdesc Represents a PartnerMicroTxn.
+             * @implements IPartnerMicroTxn
+             * @constructor
+             * @param {CMsgDPPartnerMicroTxns.IPartnerMicroTxn=} [properties] Properties to set
+             */
+            function PartnerMicroTxn(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * PartnerMicroTxn init_time.
+             * @member {number} init_time
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             */
+            PartnerMicroTxn.prototype.init_time = 0;
+    
+            /**
+             * PartnerMicroTxn last_update_time.
+             * @member {number} last_update_time
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             */
+            PartnerMicroTxn.prototype.last_update_time = 0;
+    
+            /**
+             * PartnerMicroTxn txn_id.
+             * @member {number|Long} txn_id
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             */
+            PartnerMicroTxn.prototype.txn_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+            /**
+             * PartnerMicroTxn account_id.
+             * @member {number} account_id
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             */
+            PartnerMicroTxn.prototype.account_id = 0;
+    
+            /**
+             * PartnerMicroTxn line_item.
+             * @member {number} line_item
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             */
+            PartnerMicroTxn.prototype.line_item = 0;
+    
+            /**
+             * PartnerMicroTxn item_id.
+             * @member {number|Long} item_id
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             */
+            PartnerMicroTxn.prototype.item_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+            /**
+             * PartnerMicroTxn def_index.
+             * @member {number} def_index
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             */
+            PartnerMicroTxn.prototype.def_index = 0;
+    
+            /**
+             * PartnerMicroTxn price.
+             * @member {number|Long} price
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             */
+            PartnerMicroTxn.prototype.price = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+            /**
+             * PartnerMicroTxn tax.
+             * @member {number|Long} tax
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             */
+            PartnerMicroTxn.prototype.tax = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+            /**
+             * PartnerMicroTxn price_usd.
+             * @member {number|Long} price_usd
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             */
+            PartnerMicroTxn.prototype.price_usd = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+            /**
+             * PartnerMicroTxn tax_usd.
+             * @member {number|Long} tax_usd
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             */
+            PartnerMicroTxn.prototype.tax_usd = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+            /**
+             * PartnerMicroTxn purchase_type.
+             * @member {number} purchase_type
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             */
+            PartnerMicroTxn.prototype.purchase_type = 0;
+    
+            /**
+             * PartnerMicroTxn steam_txn_type.
+             * @member {number} steam_txn_type
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             */
+            PartnerMicroTxn.prototype.steam_txn_type = 0;
+    
+            /**
+             * PartnerMicroTxn country_code.
+             * @member {string} country_code
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             */
+            PartnerMicroTxn.prototype.country_code = "";
+    
+            /**
+             * PartnerMicroTxn region_code.
+             * @member {string} region_code
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             */
+            PartnerMicroTxn.prototype.region_code = "";
+    
+            /**
+             * PartnerMicroTxn quantity.
+             * @member {number} quantity
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             */
+            PartnerMicroTxn.prototype.quantity = 0;
+    
+            /**
+             * PartnerMicroTxn ref_trans_id.
+             * @member {number|Long} ref_trans_id
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             */
+            PartnerMicroTxn.prototype.ref_trans_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+            /**
+             * Creates a new PartnerMicroTxn instance using the specified properties.
+             * @function create
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @static
+             * @param {CMsgDPPartnerMicroTxns.IPartnerMicroTxn=} [properties] Properties to set
+             * @returns {CMsgDPPartnerMicroTxns.PartnerMicroTxn} PartnerMicroTxn instance
+             */
+            PartnerMicroTxn.create = function create(properties) {
+                return new PartnerMicroTxn(properties);
+            };
+    
+            /**
+             * Encodes the specified PartnerMicroTxn message. Does not implicitly {@link CMsgDPPartnerMicroTxns.PartnerMicroTxn.verify|verify} messages.
+             * @function encode
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @static
+             * @param {CMsgDPPartnerMicroTxns.IPartnerMicroTxn} message PartnerMicroTxn message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PartnerMicroTxn.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.init_time != null && message.hasOwnProperty("init_time"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.init_time);
+                if (message.last_update_time != null && message.hasOwnProperty("last_update_time"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.last_update_time);
+                if (message.txn_id != null && message.hasOwnProperty("txn_id"))
+                    writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.txn_id);
+                if (message.account_id != null && message.hasOwnProperty("account_id"))
+                    writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.account_id);
+                if (message.line_item != null && message.hasOwnProperty("line_item"))
+                    writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.line_item);
+                if (message.item_id != null && message.hasOwnProperty("item_id"))
+                    writer.uint32(/* id 6, wireType 0 =*/48).uint64(message.item_id);
+                if (message.def_index != null && message.hasOwnProperty("def_index"))
+                    writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.def_index);
+                if (message.price != null && message.hasOwnProperty("price"))
+                    writer.uint32(/* id 8, wireType 0 =*/64).uint64(message.price);
+                if (message.tax != null && message.hasOwnProperty("tax"))
+                    writer.uint32(/* id 9, wireType 0 =*/72).uint64(message.tax);
+                if (message.price_usd != null && message.hasOwnProperty("price_usd"))
+                    writer.uint32(/* id 10, wireType 0 =*/80).uint64(message.price_usd);
+                if (message.tax_usd != null && message.hasOwnProperty("tax_usd"))
+                    writer.uint32(/* id 11, wireType 0 =*/88).uint64(message.tax_usd);
+                if (message.purchase_type != null && message.hasOwnProperty("purchase_type"))
+                    writer.uint32(/* id 12, wireType 0 =*/96).uint32(message.purchase_type);
+                if (message.steam_txn_type != null && message.hasOwnProperty("steam_txn_type"))
+                    writer.uint32(/* id 13, wireType 0 =*/104).uint32(message.steam_txn_type);
+                if (message.country_code != null && message.hasOwnProperty("country_code"))
+                    writer.uint32(/* id 14, wireType 2 =*/114).string(message.country_code);
+                if (message.region_code != null && message.hasOwnProperty("region_code"))
+                    writer.uint32(/* id 15, wireType 2 =*/122).string(message.region_code);
+                if (message.quantity != null && message.hasOwnProperty("quantity"))
+                    writer.uint32(/* id 16, wireType 0 =*/128).int32(message.quantity);
+                if (message.ref_trans_id != null && message.hasOwnProperty("ref_trans_id"))
+                    writer.uint32(/* id 17, wireType 0 =*/136).uint64(message.ref_trans_id);
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified PartnerMicroTxn message, length delimited. Does not implicitly {@link CMsgDPPartnerMicroTxns.PartnerMicroTxn.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @static
+             * @param {CMsgDPPartnerMicroTxns.IPartnerMicroTxn} message PartnerMicroTxn message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PartnerMicroTxn.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes a PartnerMicroTxn message from the specified reader or buffer.
+             * @function decode
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {CMsgDPPartnerMicroTxns.PartnerMicroTxn} PartnerMicroTxn
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PartnerMicroTxn.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgDPPartnerMicroTxns.PartnerMicroTxn();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.init_time = reader.uint32();
+                        break;
+                    case 2:
+                        message.last_update_time = reader.uint32();
+                        break;
+                    case 3:
+                        message.txn_id = reader.uint64();
+                        break;
+                    case 4:
+                        message.account_id = reader.uint32();
+                        break;
+                    case 5:
+                        message.line_item = reader.uint32();
+                        break;
+                    case 6:
+                        message.item_id = reader.uint64();
+                        break;
+                    case 7:
+                        message.def_index = reader.uint32();
+                        break;
+                    case 8:
+                        message.price = reader.uint64();
+                        break;
+                    case 9:
+                        message.tax = reader.uint64();
+                        break;
+                    case 10:
+                        message.price_usd = reader.uint64();
+                        break;
+                    case 11:
+                        message.tax_usd = reader.uint64();
+                        break;
+                    case 12:
+                        message.purchase_type = reader.uint32();
+                        break;
+                    case 13:
+                        message.steam_txn_type = reader.uint32();
+                        break;
+                    case 14:
+                        message.country_code = reader.string();
+                        break;
+                    case 15:
+                        message.region_code = reader.string();
+                        break;
+                    case 16:
+                        message.quantity = reader.int32();
+                        break;
+                    case 17:
+                        message.ref_trans_id = reader.uint64();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes a PartnerMicroTxn message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {CMsgDPPartnerMicroTxns.PartnerMicroTxn} PartnerMicroTxn
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PartnerMicroTxn.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies a PartnerMicroTxn message.
+             * @function verify
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            PartnerMicroTxn.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.init_time != null && message.hasOwnProperty("init_time"))
+                    if (!$util.isInteger(message.init_time))
+                        return "init_time: integer expected";
+                if (message.last_update_time != null && message.hasOwnProperty("last_update_time"))
+                    if (!$util.isInteger(message.last_update_time))
+                        return "last_update_time: integer expected";
+                if (message.txn_id != null && message.hasOwnProperty("txn_id"))
+                    if (!$util.isInteger(message.txn_id) && !(message.txn_id && $util.isInteger(message.txn_id.low) && $util.isInteger(message.txn_id.high)))
+                        return "txn_id: integer|Long expected";
+                if (message.account_id != null && message.hasOwnProperty("account_id"))
+                    if (!$util.isInteger(message.account_id))
+                        return "account_id: integer expected";
+                if (message.line_item != null && message.hasOwnProperty("line_item"))
+                    if (!$util.isInteger(message.line_item))
+                        return "line_item: integer expected";
+                if (message.item_id != null && message.hasOwnProperty("item_id"))
+                    if (!$util.isInteger(message.item_id) && !(message.item_id && $util.isInteger(message.item_id.low) && $util.isInteger(message.item_id.high)))
+                        return "item_id: integer|Long expected";
+                if (message.def_index != null && message.hasOwnProperty("def_index"))
+                    if (!$util.isInteger(message.def_index))
+                        return "def_index: integer expected";
+                if (message.price != null && message.hasOwnProperty("price"))
+                    if (!$util.isInteger(message.price) && !(message.price && $util.isInteger(message.price.low) && $util.isInteger(message.price.high)))
+                        return "price: integer|Long expected";
+                if (message.tax != null && message.hasOwnProperty("tax"))
+                    if (!$util.isInteger(message.tax) && !(message.tax && $util.isInteger(message.tax.low) && $util.isInteger(message.tax.high)))
+                        return "tax: integer|Long expected";
+                if (message.price_usd != null && message.hasOwnProperty("price_usd"))
+                    if (!$util.isInteger(message.price_usd) && !(message.price_usd && $util.isInteger(message.price_usd.low) && $util.isInteger(message.price_usd.high)))
+                        return "price_usd: integer|Long expected";
+                if (message.tax_usd != null && message.hasOwnProperty("tax_usd"))
+                    if (!$util.isInteger(message.tax_usd) && !(message.tax_usd && $util.isInteger(message.tax_usd.low) && $util.isInteger(message.tax_usd.high)))
+                        return "tax_usd: integer|Long expected";
+                if (message.purchase_type != null && message.hasOwnProperty("purchase_type"))
+                    if (!$util.isInteger(message.purchase_type))
+                        return "purchase_type: integer expected";
+                if (message.steam_txn_type != null && message.hasOwnProperty("steam_txn_type"))
+                    if (!$util.isInteger(message.steam_txn_type))
+                        return "steam_txn_type: integer expected";
+                if (message.country_code != null && message.hasOwnProperty("country_code"))
+                    if (!$util.isString(message.country_code))
+                        return "country_code: string expected";
+                if (message.region_code != null && message.hasOwnProperty("region_code"))
+                    if (!$util.isString(message.region_code))
+                        return "region_code: string expected";
+                if (message.quantity != null && message.hasOwnProperty("quantity"))
+                    if (!$util.isInteger(message.quantity))
+                        return "quantity: integer expected";
+                if (message.ref_trans_id != null && message.hasOwnProperty("ref_trans_id"))
+                    if (!$util.isInteger(message.ref_trans_id) && !(message.ref_trans_id && $util.isInteger(message.ref_trans_id.low) && $util.isInteger(message.ref_trans_id.high)))
+                        return "ref_trans_id: integer|Long expected";
+                return null;
+            };
+    
+            /**
+             * Creates a PartnerMicroTxn message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {CMsgDPPartnerMicroTxns.PartnerMicroTxn} PartnerMicroTxn
+             */
+            PartnerMicroTxn.fromObject = function fromObject(object) {
+                if (object instanceof $root.CMsgDPPartnerMicroTxns.PartnerMicroTxn)
+                    return object;
+                var message = new $root.CMsgDPPartnerMicroTxns.PartnerMicroTxn();
+                if (object.init_time != null)
+                    message.init_time = object.init_time >>> 0;
+                if (object.last_update_time != null)
+                    message.last_update_time = object.last_update_time >>> 0;
+                if (object.txn_id != null)
+                    if ($util.Long)
+                        (message.txn_id = $util.Long.fromValue(object.txn_id)).unsigned = true;
+                    else if (typeof object.txn_id === "string")
+                        message.txn_id = parseInt(object.txn_id, 10);
+                    else if (typeof object.txn_id === "number")
+                        message.txn_id = object.txn_id;
+                    else if (typeof object.txn_id === "object")
+                        message.txn_id = new $util.LongBits(object.txn_id.low >>> 0, object.txn_id.high >>> 0).toNumber(true);
+                if (object.account_id != null)
+                    message.account_id = object.account_id >>> 0;
+                if (object.line_item != null)
+                    message.line_item = object.line_item >>> 0;
+                if (object.item_id != null)
+                    if ($util.Long)
+                        (message.item_id = $util.Long.fromValue(object.item_id)).unsigned = true;
+                    else if (typeof object.item_id === "string")
+                        message.item_id = parseInt(object.item_id, 10);
+                    else if (typeof object.item_id === "number")
+                        message.item_id = object.item_id;
+                    else if (typeof object.item_id === "object")
+                        message.item_id = new $util.LongBits(object.item_id.low >>> 0, object.item_id.high >>> 0).toNumber(true);
+                if (object.def_index != null)
+                    message.def_index = object.def_index >>> 0;
+                if (object.price != null)
+                    if ($util.Long)
+                        (message.price = $util.Long.fromValue(object.price)).unsigned = true;
+                    else if (typeof object.price === "string")
+                        message.price = parseInt(object.price, 10);
+                    else if (typeof object.price === "number")
+                        message.price = object.price;
+                    else if (typeof object.price === "object")
+                        message.price = new $util.LongBits(object.price.low >>> 0, object.price.high >>> 0).toNumber(true);
+                if (object.tax != null)
+                    if ($util.Long)
+                        (message.tax = $util.Long.fromValue(object.tax)).unsigned = true;
+                    else if (typeof object.tax === "string")
+                        message.tax = parseInt(object.tax, 10);
+                    else if (typeof object.tax === "number")
+                        message.tax = object.tax;
+                    else if (typeof object.tax === "object")
+                        message.tax = new $util.LongBits(object.tax.low >>> 0, object.tax.high >>> 0).toNumber(true);
+                if (object.price_usd != null)
+                    if ($util.Long)
+                        (message.price_usd = $util.Long.fromValue(object.price_usd)).unsigned = true;
+                    else if (typeof object.price_usd === "string")
+                        message.price_usd = parseInt(object.price_usd, 10);
+                    else if (typeof object.price_usd === "number")
+                        message.price_usd = object.price_usd;
+                    else if (typeof object.price_usd === "object")
+                        message.price_usd = new $util.LongBits(object.price_usd.low >>> 0, object.price_usd.high >>> 0).toNumber(true);
+                if (object.tax_usd != null)
+                    if ($util.Long)
+                        (message.tax_usd = $util.Long.fromValue(object.tax_usd)).unsigned = true;
+                    else if (typeof object.tax_usd === "string")
+                        message.tax_usd = parseInt(object.tax_usd, 10);
+                    else if (typeof object.tax_usd === "number")
+                        message.tax_usd = object.tax_usd;
+                    else if (typeof object.tax_usd === "object")
+                        message.tax_usd = new $util.LongBits(object.tax_usd.low >>> 0, object.tax_usd.high >>> 0).toNumber(true);
+                if (object.purchase_type != null)
+                    message.purchase_type = object.purchase_type >>> 0;
+                if (object.steam_txn_type != null)
+                    message.steam_txn_type = object.steam_txn_type >>> 0;
+                if (object.country_code != null)
+                    message.country_code = String(object.country_code);
+                if (object.region_code != null)
+                    message.region_code = String(object.region_code);
+                if (object.quantity != null)
+                    message.quantity = object.quantity | 0;
+                if (object.ref_trans_id != null)
+                    if ($util.Long)
+                        (message.ref_trans_id = $util.Long.fromValue(object.ref_trans_id)).unsigned = true;
+                    else if (typeof object.ref_trans_id === "string")
+                        message.ref_trans_id = parseInt(object.ref_trans_id, 10);
+                    else if (typeof object.ref_trans_id === "number")
+                        message.ref_trans_id = object.ref_trans_id;
+                    else if (typeof object.ref_trans_id === "object")
+                        message.ref_trans_id = new $util.LongBits(object.ref_trans_id.low >>> 0, object.ref_trans_id.high >>> 0).toNumber(true);
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from a PartnerMicroTxn message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @static
+             * @param {CMsgDPPartnerMicroTxns.PartnerMicroTxn} message PartnerMicroTxn
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            PartnerMicroTxn.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.init_time = 0;
+                    object.last_update_time = 0;
+                    if ($util.Long) {
+                        var long = new $util.Long(0, 0, true);
+                        object.txn_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    } else
+                        object.txn_id = options.longs === String ? "0" : 0;
+                    object.account_id = 0;
+                    object.line_item = 0;
+                    if ($util.Long) {
+                        var long = new $util.Long(0, 0, true);
+                        object.item_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    } else
+                        object.item_id = options.longs === String ? "0" : 0;
+                    object.def_index = 0;
+                    if ($util.Long) {
+                        var long = new $util.Long(0, 0, true);
+                        object.price = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    } else
+                        object.price = options.longs === String ? "0" : 0;
+                    if ($util.Long) {
+                        var long = new $util.Long(0, 0, true);
+                        object.tax = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    } else
+                        object.tax = options.longs === String ? "0" : 0;
+                    if ($util.Long) {
+                        var long = new $util.Long(0, 0, true);
+                        object.price_usd = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    } else
+                        object.price_usd = options.longs === String ? "0" : 0;
+                    if ($util.Long) {
+                        var long = new $util.Long(0, 0, true);
+                        object.tax_usd = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    } else
+                        object.tax_usd = options.longs === String ? "0" : 0;
+                    object.purchase_type = 0;
+                    object.steam_txn_type = 0;
+                    object.country_code = "";
+                    object.region_code = "";
+                    object.quantity = 0;
+                    if ($util.Long) {
+                        var long = new $util.Long(0, 0, true);
+                        object.ref_trans_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    } else
+                        object.ref_trans_id = options.longs === String ? "0" : 0;
+                }
+                if (message.init_time != null && message.hasOwnProperty("init_time"))
+                    object.init_time = message.init_time;
+                if (message.last_update_time != null && message.hasOwnProperty("last_update_time"))
+                    object.last_update_time = message.last_update_time;
+                if (message.txn_id != null && message.hasOwnProperty("txn_id"))
+                    if (typeof message.txn_id === "number")
+                        object.txn_id = options.longs === String ? String(message.txn_id) : message.txn_id;
+                    else
+                        object.txn_id = options.longs === String ? $util.Long.prototype.toString.call(message.txn_id) : options.longs === Number ? new $util.LongBits(message.txn_id.low >>> 0, message.txn_id.high >>> 0).toNumber(true) : message.txn_id;
+                if (message.account_id != null && message.hasOwnProperty("account_id"))
+                    object.account_id = message.account_id;
+                if (message.line_item != null && message.hasOwnProperty("line_item"))
+                    object.line_item = message.line_item;
+                if (message.item_id != null && message.hasOwnProperty("item_id"))
+                    if (typeof message.item_id === "number")
+                        object.item_id = options.longs === String ? String(message.item_id) : message.item_id;
+                    else
+                        object.item_id = options.longs === String ? $util.Long.prototype.toString.call(message.item_id) : options.longs === Number ? new $util.LongBits(message.item_id.low >>> 0, message.item_id.high >>> 0).toNumber(true) : message.item_id;
+                if (message.def_index != null && message.hasOwnProperty("def_index"))
+                    object.def_index = message.def_index;
+                if (message.price != null && message.hasOwnProperty("price"))
+                    if (typeof message.price === "number")
+                        object.price = options.longs === String ? String(message.price) : message.price;
+                    else
+                        object.price = options.longs === String ? $util.Long.prototype.toString.call(message.price) : options.longs === Number ? new $util.LongBits(message.price.low >>> 0, message.price.high >>> 0).toNumber(true) : message.price;
+                if (message.tax != null && message.hasOwnProperty("tax"))
+                    if (typeof message.tax === "number")
+                        object.tax = options.longs === String ? String(message.tax) : message.tax;
+                    else
+                        object.tax = options.longs === String ? $util.Long.prototype.toString.call(message.tax) : options.longs === Number ? new $util.LongBits(message.tax.low >>> 0, message.tax.high >>> 0).toNumber(true) : message.tax;
+                if (message.price_usd != null && message.hasOwnProperty("price_usd"))
+                    if (typeof message.price_usd === "number")
+                        object.price_usd = options.longs === String ? String(message.price_usd) : message.price_usd;
+                    else
+                        object.price_usd = options.longs === String ? $util.Long.prototype.toString.call(message.price_usd) : options.longs === Number ? new $util.LongBits(message.price_usd.low >>> 0, message.price_usd.high >>> 0).toNumber(true) : message.price_usd;
+                if (message.tax_usd != null && message.hasOwnProperty("tax_usd"))
+                    if (typeof message.tax_usd === "number")
+                        object.tax_usd = options.longs === String ? String(message.tax_usd) : message.tax_usd;
+                    else
+                        object.tax_usd = options.longs === String ? $util.Long.prototype.toString.call(message.tax_usd) : options.longs === Number ? new $util.LongBits(message.tax_usd.low >>> 0, message.tax_usd.high >>> 0).toNumber(true) : message.tax_usd;
+                if (message.purchase_type != null && message.hasOwnProperty("purchase_type"))
+                    object.purchase_type = message.purchase_type;
+                if (message.steam_txn_type != null && message.hasOwnProperty("steam_txn_type"))
+                    object.steam_txn_type = message.steam_txn_type;
+                if (message.country_code != null && message.hasOwnProperty("country_code"))
+                    object.country_code = message.country_code;
+                if (message.region_code != null && message.hasOwnProperty("region_code"))
+                    object.region_code = message.region_code;
+                if (message.quantity != null && message.hasOwnProperty("quantity"))
+                    object.quantity = message.quantity;
+                if (message.ref_trans_id != null && message.hasOwnProperty("ref_trans_id"))
+                    if (typeof message.ref_trans_id === "number")
+                        object.ref_trans_id = options.longs === String ? String(message.ref_trans_id) : message.ref_trans_id;
+                    else
+                        object.ref_trans_id = options.longs === String ? $util.Long.prototype.toString.call(message.ref_trans_id) : options.longs === Number ? new $util.LongBits(message.ref_trans_id.low >>> 0, message.ref_trans_id.high >>> 0).toNumber(true) : message.ref_trans_id;
+                return object;
+            };
+    
+            /**
+             * Converts this PartnerMicroTxn to JSON.
+             * @function toJSON
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            PartnerMicroTxn.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            return PartnerMicroTxn;
+        })();
+    
+        CMsgDPPartnerMicroTxns.PartnerInfo = (function() {
+    
+            /**
+             * Properties of a PartnerInfo.
+             * @memberof CMsgDPPartnerMicroTxns
+             * @interface IPartnerInfo
+             * @property {number|null} [partner_id] PartnerInfo partner_id
+             * @property {string|null} [partner_name] PartnerInfo partner_name
+             * @property {string|null} [currency_code] PartnerInfo currency_code
+             * @property {string|null} [currency_name] PartnerInfo currency_name
+             */
+    
+            /**
+             * Constructs a new PartnerInfo.
+             * @memberof CMsgDPPartnerMicroTxns
+             * @classdesc Represents a PartnerInfo.
+             * @implements IPartnerInfo
+             * @constructor
+             * @param {CMsgDPPartnerMicroTxns.IPartnerInfo=} [properties] Properties to set
+             */
+            function PartnerInfo(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * PartnerInfo partner_id.
+             * @member {number} partner_id
+             * @memberof CMsgDPPartnerMicroTxns.PartnerInfo
+             * @instance
+             */
+            PartnerInfo.prototype.partner_id = 0;
+    
+            /**
+             * PartnerInfo partner_name.
+             * @member {string} partner_name
+             * @memberof CMsgDPPartnerMicroTxns.PartnerInfo
+             * @instance
+             */
+            PartnerInfo.prototype.partner_name = "";
+    
+            /**
+             * PartnerInfo currency_code.
+             * @member {string} currency_code
+             * @memberof CMsgDPPartnerMicroTxns.PartnerInfo
+             * @instance
+             */
+            PartnerInfo.prototype.currency_code = "";
+    
+            /**
+             * PartnerInfo currency_name.
+             * @member {string} currency_name
+             * @memberof CMsgDPPartnerMicroTxns.PartnerInfo
+             * @instance
+             */
+            PartnerInfo.prototype.currency_name = "";
+    
+            /**
+             * Creates a new PartnerInfo instance using the specified properties.
+             * @function create
+             * @memberof CMsgDPPartnerMicroTxns.PartnerInfo
+             * @static
+             * @param {CMsgDPPartnerMicroTxns.IPartnerInfo=} [properties] Properties to set
+             * @returns {CMsgDPPartnerMicroTxns.PartnerInfo} PartnerInfo instance
+             */
+            PartnerInfo.create = function create(properties) {
+                return new PartnerInfo(properties);
+            };
+    
+            /**
+             * Encodes the specified PartnerInfo message. Does not implicitly {@link CMsgDPPartnerMicroTxns.PartnerInfo.verify|verify} messages.
+             * @function encode
+             * @memberof CMsgDPPartnerMicroTxns.PartnerInfo
+             * @static
+             * @param {CMsgDPPartnerMicroTxns.IPartnerInfo} message PartnerInfo message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PartnerInfo.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.partner_id != null && message.hasOwnProperty("partner_id"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.partner_id);
+                if (message.partner_name != null && message.hasOwnProperty("partner_name"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.partner_name);
+                if (message.currency_code != null && message.hasOwnProperty("currency_code"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.currency_code);
+                if (message.currency_name != null && message.hasOwnProperty("currency_name"))
+                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.currency_name);
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified PartnerInfo message, length delimited. Does not implicitly {@link CMsgDPPartnerMicroTxns.PartnerInfo.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof CMsgDPPartnerMicroTxns.PartnerInfo
+             * @static
+             * @param {CMsgDPPartnerMicroTxns.IPartnerInfo} message PartnerInfo message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PartnerInfo.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes a PartnerInfo message from the specified reader or buffer.
+             * @function decode
+             * @memberof CMsgDPPartnerMicroTxns.PartnerInfo
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {CMsgDPPartnerMicroTxns.PartnerInfo} PartnerInfo
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PartnerInfo.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgDPPartnerMicroTxns.PartnerInfo();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.partner_id = reader.uint32();
+                        break;
+                    case 2:
+                        message.partner_name = reader.string();
+                        break;
+                    case 3:
+                        message.currency_code = reader.string();
+                        break;
+                    case 4:
+                        message.currency_name = reader.string();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes a PartnerInfo message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof CMsgDPPartnerMicroTxns.PartnerInfo
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {CMsgDPPartnerMicroTxns.PartnerInfo} PartnerInfo
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PartnerInfo.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies a PartnerInfo message.
+             * @function verify
+             * @memberof CMsgDPPartnerMicroTxns.PartnerInfo
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            PartnerInfo.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.partner_id != null && message.hasOwnProperty("partner_id"))
+                    if (!$util.isInteger(message.partner_id))
+                        return "partner_id: integer expected";
+                if (message.partner_name != null && message.hasOwnProperty("partner_name"))
+                    if (!$util.isString(message.partner_name))
+                        return "partner_name: string expected";
+                if (message.currency_code != null && message.hasOwnProperty("currency_code"))
+                    if (!$util.isString(message.currency_code))
+                        return "currency_code: string expected";
+                if (message.currency_name != null && message.hasOwnProperty("currency_name"))
+                    if (!$util.isString(message.currency_name))
+                        return "currency_name: string expected";
+                return null;
+            };
+    
+            /**
+             * Creates a PartnerInfo message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof CMsgDPPartnerMicroTxns.PartnerInfo
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {CMsgDPPartnerMicroTxns.PartnerInfo} PartnerInfo
+             */
+            PartnerInfo.fromObject = function fromObject(object) {
+                if (object instanceof $root.CMsgDPPartnerMicroTxns.PartnerInfo)
+                    return object;
+                var message = new $root.CMsgDPPartnerMicroTxns.PartnerInfo();
+                if (object.partner_id != null)
+                    message.partner_id = object.partner_id >>> 0;
+                if (object.partner_name != null)
+                    message.partner_name = String(object.partner_name);
+                if (object.currency_code != null)
+                    message.currency_code = String(object.currency_code);
+                if (object.currency_name != null)
+                    message.currency_name = String(object.currency_name);
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from a PartnerInfo message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof CMsgDPPartnerMicroTxns.PartnerInfo
+             * @static
+             * @param {CMsgDPPartnerMicroTxns.PartnerInfo} message PartnerInfo
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            PartnerInfo.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.partner_id = 0;
+                    object.partner_name = "";
+                    object.currency_code = "";
+                    object.currency_name = "";
+                }
+                if (message.partner_id != null && message.hasOwnProperty("partner_id"))
+                    object.partner_id = message.partner_id;
+                if (message.partner_name != null && message.hasOwnProperty("partner_name"))
+                    object.partner_name = message.partner_name;
+                if (message.currency_code != null && message.hasOwnProperty("currency_code"))
+                    object.currency_code = message.currency_code;
+                if (message.currency_name != null && message.hasOwnProperty("currency_name"))
+                    object.currency_name = message.currency_name;
+                return object;
+            };
+    
+            /**
+             * Converts this PartnerInfo to JSON.
+             * @function toJSON
+             * @memberof CMsgDPPartnerMicroTxns.PartnerInfo
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            PartnerInfo.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            return PartnerInfo;
+        })();
+    
+        return CMsgDPPartnerMicroTxns;
+    })();
+    
+    $root.CMsgDPPartnerMicroTxnsResponse = (function() {
+    
+        /**
+         * Properties of a CMsgDPPartnerMicroTxnsResponse.
+         * @exports ICMsgDPPartnerMicroTxnsResponse
+         * @interface ICMsgDPPartnerMicroTxnsResponse
+         * @property {number|null} [eresult] CMsgDPPartnerMicroTxnsResponse eresult
+         * @property {CMsgDPPartnerMicroTxnsResponse.EErrorCode|null} [eerrorcode] CMsgDPPartnerMicroTxnsResponse eerrorcode
+         */
+    
+        /**
+         * Constructs a new CMsgDPPartnerMicroTxnsResponse.
+         * @exports CMsgDPPartnerMicroTxnsResponse
+         * @classdesc Represents a CMsgDPPartnerMicroTxnsResponse.
+         * @implements ICMsgDPPartnerMicroTxnsResponse
+         * @constructor
+         * @param {ICMsgDPPartnerMicroTxnsResponse=} [properties] Properties to set
+         */
+        function CMsgDPPartnerMicroTxnsResponse(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgDPPartnerMicroTxnsResponse eresult.
+         * @member {number} eresult
+         * @memberof CMsgDPPartnerMicroTxnsResponse
+         * @instance
+         */
+        CMsgDPPartnerMicroTxnsResponse.prototype.eresult = 2;
+    
+        /**
+         * CMsgDPPartnerMicroTxnsResponse eerrorcode.
+         * @member {CMsgDPPartnerMicroTxnsResponse.EErrorCode} eerrorcode
+         * @memberof CMsgDPPartnerMicroTxnsResponse
+         * @instance
+         */
+        CMsgDPPartnerMicroTxnsResponse.prototype.eerrorcode = 0;
+    
+        /**
+         * Creates a new CMsgDPPartnerMicroTxnsResponse instance using the specified properties.
+         * @function create
+         * @memberof CMsgDPPartnerMicroTxnsResponse
+         * @static
+         * @param {ICMsgDPPartnerMicroTxnsResponse=} [properties] Properties to set
+         * @returns {CMsgDPPartnerMicroTxnsResponse} CMsgDPPartnerMicroTxnsResponse instance
+         */
+        CMsgDPPartnerMicroTxnsResponse.create = function create(properties) {
+            return new CMsgDPPartnerMicroTxnsResponse(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgDPPartnerMicroTxnsResponse message. Does not implicitly {@link CMsgDPPartnerMicroTxnsResponse.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgDPPartnerMicroTxnsResponse
+         * @static
+         * @param {ICMsgDPPartnerMicroTxnsResponse} message CMsgDPPartnerMicroTxnsResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgDPPartnerMicroTxnsResponse.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.eresult != null && message.hasOwnProperty("eresult"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.eresult);
+            if (message.eerrorcode != null && message.hasOwnProperty("eerrorcode"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.eerrorcode);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgDPPartnerMicroTxnsResponse message, length delimited. Does not implicitly {@link CMsgDPPartnerMicroTxnsResponse.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgDPPartnerMicroTxnsResponse
+         * @static
+         * @param {ICMsgDPPartnerMicroTxnsResponse} message CMsgDPPartnerMicroTxnsResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgDPPartnerMicroTxnsResponse.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgDPPartnerMicroTxnsResponse message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgDPPartnerMicroTxnsResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgDPPartnerMicroTxnsResponse} CMsgDPPartnerMicroTxnsResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgDPPartnerMicroTxnsResponse.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgDPPartnerMicroTxnsResponse();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.eresult = reader.uint32();
+                    break;
+                case 2:
+                    message.eerrorcode = reader.int32();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgDPPartnerMicroTxnsResponse message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgDPPartnerMicroTxnsResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgDPPartnerMicroTxnsResponse} CMsgDPPartnerMicroTxnsResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgDPPartnerMicroTxnsResponse.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgDPPartnerMicroTxnsResponse message.
+         * @function verify
+         * @memberof CMsgDPPartnerMicroTxnsResponse
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgDPPartnerMicroTxnsResponse.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.eresult != null && message.hasOwnProperty("eresult"))
+                if (!$util.isInteger(message.eresult))
+                    return "eresult: integer expected";
+            if (message.eerrorcode != null && message.hasOwnProperty("eerrorcode"))
+                switch (message.eerrorcode) {
+                default:
+                    return "eerrorcode: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 7:
+                case 8:
+                case 9:
+                    break;
+                }
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgDPPartnerMicroTxnsResponse message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgDPPartnerMicroTxnsResponse
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgDPPartnerMicroTxnsResponse} CMsgDPPartnerMicroTxnsResponse
+         */
+        CMsgDPPartnerMicroTxnsResponse.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgDPPartnerMicroTxnsResponse)
+                return object;
+            var message = new $root.CMsgDPPartnerMicroTxnsResponse();
+            if (object.eresult != null)
+                message.eresult = object.eresult >>> 0;
+            switch (object.eerrorcode) {
+            case "k_MsgValid":
+            case 0:
+                message.eerrorcode = 0;
+                break;
+            case "k_MsgInvalidAppID":
+            case 1:
+                message.eerrorcode = 1;
+                break;
+            case "k_MsgInvalidPartnerInfo":
+            case 2:
+                message.eerrorcode = 2;
+                break;
+            case "k_MsgNoTransactions":
+            case 3:
+                message.eerrorcode = 3;
+                break;
+            case "k_MsgSQLFailure":
+            case 4:
+                message.eerrorcode = 4;
+                break;
+            case "k_MsgPartnerInfoDiscrepancy":
+            case 5:
+                message.eerrorcode = 5;
+                break;
+            case "k_MsgTransactionInsertFailed":
+            case 7:
+                message.eerrorcode = 7;
+                break;
+            case "k_MsgAlreadyRunning":
+            case 8:
+                message.eerrorcode = 8;
+                break;
+            case "k_MsgInvalidTransactionData":
+            case 9:
+                message.eerrorcode = 9;
+                break;
+            }
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgDPPartnerMicroTxnsResponse message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgDPPartnerMicroTxnsResponse
+         * @static
+         * @param {CMsgDPPartnerMicroTxnsResponse} message CMsgDPPartnerMicroTxnsResponse
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgDPPartnerMicroTxnsResponse.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.eresult = 2;
+                object.eerrorcode = options.enums === String ? "k_MsgValid" : 0;
+            }
+            if (message.eresult != null && message.hasOwnProperty("eresult"))
+                object.eresult = message.eresult;
+            if (message.eerrorcode != null && message.hasOwnProperty("eerrorcode"))
+                object.eerrorcode = options.enums === String ? $root.CMsgDPPartnerMicroTxnsResponse.EErrorCode[message.eerrorcode] : message.eerrorcode;
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgDPPartnerMicroTxnsResponse to JSON.
+         * @function toJSON
+         * @memberof CMsgDPPartnerMicroTxnsResponse
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgDPPartnerMicroTxnsResponse.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * EErrorCode enum.
+         * @name CMsgDPPartnerMicroTxnsResponse.EErrorCode
+         * @enum {string}
+         * @property {number} k_MsgValid=0 k_MsgValid value
+         * @property {number} k_MsgInvalidAppID=1 k_MsgInvalidAppID value
+         * @property {number} k_MsgInvalidPartnerInfo=2 k_MsgInvalidPartnerInfo value
+         * @property {number} k_MsgNoTransactions=3 k_MsgNoTransactions value
+         * @property {number} k_MsgSQLFailure=4 k_MsgSQLFailure value
+         * @property {number} k_MsgPartnerInfoDiscrepancy=5 k_MsgPartnerInfoDiscrepancy value
+         * @property {number} k_MsgTransactionInsertFailed=7 k_MsgTransactionInsertFailed value
+         * @property {number} k_MsgAlreadyRunning=8 k_MsgAlreadyRunning value
+         * @property {number} k_MsgInvalidTransactionData=9 k_MsgInvalidTransactionData value
+         */
+        CMsgDPPartnerMicroTxnsResponse.EErrorCode = (function() {
+            var valuesById = {}, values = Object.create(valuesById);
+            values[valuesById[0] = "k_MsgValid"] = 0;
+            values[valuesById[1] = "k_MsgInvalidAppID"] = 1;
+            values[valuesById[2] = "k_MsgInvalidPartnerInfo"] = 2;
+            values[valuesById[3] = "k_MsgNoTransactions"] = 3;
+            values[valuesById[4] = "k_MsgSQLFailure"] = 4;
+            values[valuesById[5] = "k_MsgPartnerInfoDiscrepancy"] = 5;
+            values[valuesById[7] = "k_MsgTransactionInsertFailed"] = 7;
+            values[valuesById[8] = "k_MsgAlreadyRunning"] = 8;
+            values[valuesById[9] = "k_MsgInvalidTransactionData"] = 9;
+            return values;
+        })();
+    
+        return CMsgDPPartnerMicroTxnsResponse;
     })();
     
     $root.google = (function() {

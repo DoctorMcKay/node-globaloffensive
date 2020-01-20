@@ -75,6 +75,7 @@ function GlobalOffensive(steam) {
 			this.emit('disconnectedFromGC', GlobalOffensive.GCConnectionStatus.NO_SESSION);
 		}
 
+		this._isInCSGO = false;
 		this.haveGCSession = false;
 	};
 
@@ -226,7 +227,18 @@ GlobalOffensive.prototype.inspectItem = function(owner, assetid, d, callback) {
 
 	this._send(Language.Client2GCEconPreviewDataBlockRequest, Protos.CMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest, msg);
 	if (callback) {
-		this.once('inspectItemInfo#' + assetid, callback);
+		let timeout;
+		let listener = (item) => {
+			clearTimeout(timeout);
+			callback(item);
+		};
+		timeout = setTimeout(() => {
+			this.removeListener('inspectItemInfo#' + assetid, listener);
+			this.emit('inspectItemTimedOut', assetid);
+			this.emit('inspectItemTimedOut#' + assetid, assetid);
+		}, 10000);
+
+		this.once('inspectItemInfo#' + assetid, listener);
 	}
 };
 
