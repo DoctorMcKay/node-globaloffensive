@@ -150,6 +150,14 @@ GlobalOffensive.prototype._send = function(type, protobuf, body) {
 	return true;
 };
 
+GlobalOffensive.prototype.requestOverwatchCaseUpdate = function(caseupdate) {
+	this._send(Language.PlayerOverwatchCaseUpdate, Protos.CMsgGCCStrike15_v2_PlayerOverwatchCaseUpdate, caseupdate || { reason: 1 });
+};
+
+GlobalOffensive.prototype.sendOverwatchCaseStatus = function(caseid, statusid) {
+	this._send(Language.PlayerOverwatchCaseStatus, Protos.CMsgGCCStrike15_v2_PlayerOverwatchCaseStatus, { caseid: caseid, statusid: statusid });
+};
+
 GlobalOffensive.prototype.requestLiveGames = function() {
 	this._send(Language.MatchListRequestCurrentLiveGames, Protos.CMsgGCCStrike15_v2_MatchListRequestCurrentLiveGames, {});
 };

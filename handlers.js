@@ -76,6 +76,12 @@ handlers[Language.ClientConnectionStatus] = function(body) {
 	}
 };
 
+// Overwatch Assignment
+handlers[Language.PlayerOverwatchCaseAssignment] = function(body) {
+	let proto = decodeProto(Protos.CMsgGCCStrike15_v2_PlayerOverwatchCaseAssignment, body);
+	this.emit('overwatchAssignment', proto, proto);
+};
+
 // MatchList
 handlers[Language.MatchList] = function(body) {
 	let proto = decodeProto(Protos.CMsgGCCStrike15_v2_MatchList, body);
