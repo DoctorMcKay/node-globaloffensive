@@ -57,6 +57,30 @@ A big object containing account data and some statistics including players in-ga
 
 An array containing the items in your inventory. Undefined until `connectedToGC` is emitted.
 
+As of v2.1.0, some special property are populated on items in this array (and also item objects in `itemAcquired` and
+related events), where applicable:
+
+- `position` - This item's position in your inventory. If the item is new and unacknowledged, this is `0`
+- `custom_name` - This item's custom name, applied via name tag
+- `paint_index` - The item's paint index
+- `paint_seed` - The item's paint seed
+- `paint_wear` - The item's paint wear, as a float (often ignorantly referred to as "float value")
+- `tradable_after` - A `Date` object representing when this item will become tradable. May be a date in the past, as this is not removed when the date is reached.
+- `stickers` - An array of objects:
+    - `slot` - The sticker slot number, 0-5
+    - `sticker_id`
+    - `wear` - The sticker's wear (how scratched it is), as a float. `null` if not scratched at all.
+    - `scale` - Float, `null` if not applicable
+    - `rotation` - Float, `null` if not applicable
+- `casket_id` - If this item is contained in a casket (storage unit), this is a string containing that casket's item ID
+- `casket_contained_item_count` - If this item is a casket (storage unit), this is a count of how many items it contains
+
+Note that if any of the above attributes are not applicable, then they will not exist in the item object.
+
+It appears that under some circumstances, the GC might load items from storage units into your inventory without
+calling [`getCasketContents`](#getcasketcontentscasketid-callback), so if you are using this property to see what items
+are in your inventory, you will need to check `casket_id` to filter out items stored in storage units.
+
 # Methods
 
 ### Constructor(steamClient)
@@ -187,27 +211,45 @@ Renames a particular item in your inventory, using a given name tag. You can ren
 
 Deletes a particular item from your inventory. **This is a destructive operation, which cannot be undone.**
 
-### addToStorageUnit(storageUnitId, itemId)
-- `storageUnitId` - The ID of the storage unit you want to put an item into
-- `itemId` - The ID of the item you want to put into the storage unit
+### addToCasket(casketId, itemId)
+- `casketId` - The ID of the casket (storage unit) you want to put an item into
+- `itemId` - The ID of the item you want to put into the casket
 
 **v2.1.0 or later is required to use this method**
 
-Put an item in your inventory into a storage unit you own. Assuming the request succeeds,
-[`itemRemoved`](#itemremoved) will be emitted for the item that was put into the storage unit, and
+Put an item in your inventory into a casket (storage unit) you own. Assuming the request succeeds,
+[`itemRemoved`](#itemremoved) will be emitted for the item that was put into the casket, and
 [`itemCustomizationNotification`](#itemcustomizationnotification) will be emitted with notification type
-`CasketAdded` for the storage unit.
+`CasketAdded` for the casket.
 
-### removeFromStorageUnit(storageUnitId, itemId)
-- `storageUnitId` - The ID of the storage unit you want to remove an item from
-- `itemId` - The ID of the item you want to remove from the storage unit
+### removeFromCasket(casketId, itemId)
+- `casketId` - The ID of the casket (storage unit) you want to remove an item from
+- `itemId` - The ID of the item you want to remove from the casket
 
 **v2.1.0 or later is required to use this method**
 
-Remove an item from a storage unit you own and put it into your inventory. Assuming the request succeeds,
-[`itemAcquired`](#itemremoved) will be emitted for the item that was removed from the storage unit, and
+Remove an item from a casket (storage unit) you own and put it into your inventory. Assuming the request succeeds,
+[`itemAcquired`](#itemremoved) will be emitted for the item that was removed from the casket, and
 [`itemCustomizationNotification`](#itemcustomizationnotification) will be emitted with notification type
-`CasketRemoved` for the storage unit.
+`CasketRemoved` for the casket.
+
+### getCasketContents(casketId, callback)
+- `casketId` - The ID of the casket (storage unit) you want to get the contents of
+- `callback` - A function to be called once the contents are loaded
+    - `err` - An `Error` object on failure, or `null` on success
+    - `items` - An array of item objects, the same structure as objects in [`inventory`](#inventory)
+
+**v2.1.0 or later is required to use this method**
+
+Loads the contents of a storage unit. Note that calling this will have the GC load the contents of the storage unit
+using the same mechanism as your actual inventory, so items in the storage unit will appear in the [`inventory`](#inventory)
+property, and `itemAcquired` will be emitted for each item. Each item in your [`inventory`](#inventory) that is contained
+inside of a storage unit has a property `casket_id`, the value of which is a string containing the ID of the storage unit
+that contains that item.
+
+It appears that under some circumstances, the GC might load these items into your inventory without calling this method,
+so if you are using [`inventory`](#inventory) to see what items are in your inventory, you will need to check `casket_id`
+to filter out items stored in storage units.
 	
 # Events
 

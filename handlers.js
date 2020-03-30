@@ -1,4 +1,5 @@
 const ByteBuffer = require('bytebuffer');
+const Long = require('long');
 const SteamID = require('steamid');
 
 const GlobalOffensive = require('./index.js');
@@ -18,8 +19,7 @@ handlers[Language.ClientWelcome] = function(body) {
 					// Inventory
 					let items = cache.object_data.map((object) => {
 						let item = decodeProto(Protos.CSOEconItem, object);
-						let isNew = (item.inventory >>> 30) & 1;
-						item.position = (isNew ? 0 : item.inventory & 0xFFFF);
+						this._processSOEconItem(item);
 						return item;
 					});
 
@@ -124,6 +124,94 @@ handlers[Language.ItemCustomizationNotification] = function(body) {
 };
 
 // SO
+GlobalOffensive.prototype._processSOEconItem = function(item) {
+	// Inventory position
+	let isNew = (item.inventory >>> 30) & 1;
+	item.position = (isNew ? 0 : item.inventory & 0xFFFF);
+
+	// Is this item contained in a casket?
+	let casketIdLow = getAttributeValueBytes(272);
+	let casketIdHigh = getAttributeValueBytes(273);
+	if (casketIdLow && casketIdHigh) {
+		let casketIdLong = new Long(casketIdLow.readUInt32LE(0), casketIdHigh.readUInt32LE(0));
+		item.casket_id = casketIdLong.toString();
+	}
+
+	// Item custom names
+	let customNameBytes = getAttributeValueBytes(111);
+	if (customNameBytes && !item.custom_name) {
+		item.custom_name = customNameBytes.slice(2).toString('utf8');
+	}
+
+	// Paint index/seed/wear
+	let paintIndexBytes = getAttributeValueBytes(6);
+	if (paintIndexBytes) {
+		item.paint_index = paintIndexBytes.readFloatLE(0);
+	}
+
+	let paintSeedBytes = getAttributeValueBytes(7);
+	if (paintSeedBytes) {
+		item.paint_seed = Math.floor(paintSeedBytes.readFloatLE(0));
+	}
+
+	let paintWearBytes = getAttributeValueBytes(8);
+	if (paintWearBytes) {
+		item.paint_wear = paintWearBytes.readFloatLE(0);
+	}
+
+	let tradableAfterDateBytes = getAttributeValueBytes(75);
+	if (tradableAfterDateBytes) {
+		item.tradable_after = new Date(tradableAfterDateBytes.readUInt32LE(0) * 1000);
+	}
+
+	let stickers = [];
+	for (let i = 0; i <= 5; i++) {
+		let stickerIdBytes = getAttributeValueBytes(113 + (i * 4));
+		if (stickerIdBytes) {
+			let sticker = {
+				slot: i,
+				sticker_id: stickerIdBytes.readUInt32LE(0),
+				wear: null,
+				scale: null,
+				rotation: null
+			};
+
+			['wear', 'scale', 'rotation'].forEach((attrib, idx) => {
+				let bytes = getAttributeValueBytes(114 + (i * 4) + idx);
+				if (bytes) {
+					sticker[attrib] = bytes.readFloatLE(0);
+				}
+			});
+
+			stickers.push(sticker);
+		}
+	}
+	if (stickers.length > 0) {
+		item.stickers = stickers;
+	}
+
+	// def_index-specific attribute parsing
+	switch (item.def_index) {
+		case 1201:
+			// Storage Unit
+			item.casket_contained_item_count = 0;
+			let itemCountBytes = getAttributeValueBytes(270);
+			if (itemCountBytes) {
+				item.casket_contained_item_count = itemCountBytes.readUInt32LE(0);
+			}
+			break;
+	}
+
+	/**
+	 * @param {int} attribDefIndex
+	 * @returns {null|Buffer}
+	 */
+	function getAttributeValueBytes(attribDefIndex) {
+		let attrib = (item.attribute || []).find(attrib => attrib.def_index == attribDefIndex);
+		return attrib ? attrib.value_bytes : null;
+	}
+};
+
 handlers[Language.SO_Create] = function(body) {
 	let proto = decodeProto(Protos.CMsgSOSingleObject, body);
 	this._handleSOCreate(proto);
@@ -139,8 +227,9 @@ GlobalOffensive.prototype._handleSOCreate = function(proto) {
 	}
 
 	let item = decodeProto(Protos.CSOEconItem, proto.object_data);
-	item.position = item.inventory & 0x0000FFFF;
+	this._processSOEconItem(item);
 	this.inventory.push(item);
+
 	this.emit('itemAcquired', item);
 };
 
@@ -159,7 +248,8 @@ GlobalOffensive.prototype._handleSOUpdate = function(so) {
 	}
 
 	let item = decodeProto(Protos.CSOEconItem, so.object_data);
-	item.position = item.inventory & 0x0000FFFF;
+	this._processSOEconItem(item);
+
 	for (let i = 0; i < this.inventory.length; i++) {
 		if (this.inventory[i].id == item.id) {
 			let oldItem = this.inventory[i];

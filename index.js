@@ -276,18 +276,89 @@ GlobalOffensive.prototype.deleteItem = function(itemId) {
 };
 
 // Storage units
-GlobalOffensive.prototype.addToStorageUnit = function(storageUnitId, itemId) {
+/**
+ * Put an item from your inventory into a casket (aka a storage unit).
+ * @param {int} casketId
+ * @param {int} itemId
+ */
+GlobalOffensive.prototype.addToCasket = function(casketId, itemId) {
 	this._send(Language.CasketItemAdd, Protos.CMsgCasketItem, {
-		casket_item_id: storageUnitId,
+		casket_item_id: casketId,
 		item_item_id: itemId
 	});
 };
 
-GlobalOffensive.prototype.removeFromStorageUnit = function(storageUnitId, itemId) {
+/**
+ * Remove an item from a casket (aka a storage unit) into your inventory.
+ * @param {int} casketId
+ * @param {int} itemId
+ */
+GlobalOffensive.prototype.removeFromCasket = function(casketId, itemId) {
 	this._send(Language.CasketItemExtract, Protos.CMsgCasketItem, {
-		casket_item_id: storageUnitId,
+		casket_item_id: casketId,
 		item_item_id: itemId
 	});
+};
+
+/**
+ * Get the contents of a casket (aka a storage unit).
+ * @param {int} casketId
+ * @param {function} callback
+ */
+GlobalOffensive.prototype.getCasketContents = function(casketId, callback) {
+	// First see if we already have this casket's contents in our inventory
+	let casketItem = this.inventory.find(item => item.id == casketId);
+	if (!casketItem) {
+		callback(new Error(`No casket matching ID ${casketId} was found`));
+		return;
+	}
+
+	if (!casketItem.casket_contained_item_count) {
+		// Casket is empty, I guess
+		callback(null, []);
+		return;
+	}
+
+	let loadedItems = this.inventory.filter(item => item.casket_id == casketId);
+	if (loadedItems.length == casketItem.casket_contained_item_count) {
+		callback(null, loadedItems);
+		return;
+	}
+
+	// We need to load casket contents from the GC
+	this._send(Language.CasketItemLoadContents, Protos.CMsgCasketItem, {
+		casket_item_id: casketId,
+		item_item_id: casketId
+	});
+
+	// Set a 30 second timeout in case the GC isn't being cooperative
+	let timedOut = false;
+	let timeout = setTimeout(() => {
+		if (timedOut) {
+			return;
+		}
+
+		callback(new Error('Loading casket contents timed out'));
+	}, 30000);
+
+	let customizationNotification = (itemIds, notificationType) => {
+		if (timedOut) {
+			this.off('itemCustomizationNotification', customizationNotification);
+			return;
+		}
+
+		if (itemIds[0] != casketId || notificationType != GlobalOffensive.ItemCustomizationNotification.CasketContents) {
+			return;
+		}
+
+		// This is our casket, and it's the correct notification
+		clearTimeout(timeout);
+		timedOut = true;
+		this.off('itemCustomizationNotification', customizationNotification);
+		callback(null, this.inventory.filter(item => item.casket_id == casketId));
+	};
+
+	this.on('itemCustomizationNotification', customizationNotification);
 };
 
 GlobalOffensive.prototype._handlers = {};
