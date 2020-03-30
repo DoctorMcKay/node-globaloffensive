@@ -275,6 +275,21 @@ GlobalOffensive.prototype.deleteItem = function(itemId) {
 	this._send(Language.Delete, null, buffer);
 };
 
+// Storage units
+GlobalOffensive.prototype.addToStorageUnit = function(storageUnitId, itemId) {
+	this._send(Language.CasketItemAdd, Protos.CMsgCasketItem, {
+		casket_item_id: storageUnitId,
+		item_item_id: itemId
+	});
+};
+
+GlobalOffensive.prototype.removeFromStorageUnit = function(storageUnitId, itemId) {
+	this._send(Language.CasketItemExtract, Protos.CMsgCasketItem, {
+		casket_item_id: storageUnitId,
+		item_item_id: itemId
+	});
+};
+
 GlobalOffensive.prototype._handlers = {};
 
 require('./enums.js');

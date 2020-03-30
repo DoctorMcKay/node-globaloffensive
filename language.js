@@ -10,7 +10,7 @@ module.exports = {
 	SO_UpdateMultiple: 26,
 	SO_CacheSubscriptionCheck: 27,
 	SO_CacheSubscriptionRefresh: 28,
-	
+
 	// EGCItemMsg
 	Base: 1000,
 	SetItemPosition: 1001,
@@ -95,6 +95,12 @@ module.exports = {
 	ApplySticker: 1086,
 	ItemAcknowledged: 1087,
 	StatTrakSwap: 1088,
+	UserTrackTimePlayedConsecutively: 1089,
+	ItemCustomizationNotification: 1090,
+	ModifyItemAttribute: 1091,
+	CasketItemAdd: 1092,
+	CasketItemExtract: 1093,
+	CasketItemLoadContents: 1094,
 	TradingBase: 1500,
 	Trading_InitiateTradeRequest: 1501,
 	Trading_InitiateTradeResponse: 1502,
@@ -151,7 +157,7 @@ module.exports = {
 	RequestAnnouncementsResponse: 2526,
 	RequestPassportItemGrant: 2527,
 	ClientVersionUpdated: 2528,
-	
+
 	// EGCBaseClientMsg
 	ClientWelcome: 4004,
 	ServerWelcome: 4005,
@@ -159,7 +165,7 @@ module.exports = {
 	ServerHello: 4007,
 	ClientConnectionStatus: 4009,
 	ServerConnectionStatus: 4010,
-	
+
 	// ECsgoGCMsg
 	Base: 9100,
 	MatchmakingStart: 9101,

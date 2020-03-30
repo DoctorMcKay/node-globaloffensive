@@ -186,6 +186,28 @@ Renames a particular item in your inventory, using a given name tag. You can ren
 **1.3.0 or later is required to use this method**
 
 Deletes a particular item from your inventory. **This is a destructive operation, which cannot be undone.**
+
+### addToStorageUnit(storageUnitId, itemId)
+- `storageUnitId` - The ID of the storage unit you want to put an item into
+- `itemId` - The ID of the item you want to put into the storage unit
+
+**v2.1.0 or later is required to use this method**
+
+Put an item in your inventory into a storage unit you own. Assuming the request succeeds,
+[`itemRemoved`](#itemremoved) will be emitted for the item that was put into the storage unit, and
+[`itemCustomizationNotification`](#itemcustomizationnotification) will be emitted with notification type
+`CasketAdded` for the storage unit.
+
+### removeFromStorageUnit(storageUnitId, itemId)
+- `storageUnitId` - The ID of the storage unit you want to remove an item from
+- `itemId` - The ID of the item you want to remove from the storage unit
+
+**v2.1.0 or later is required to use this method**
+
+Remove an item from a storage unit you own and put it into your inventory. Assuming the request succeeds,
+[`itemAcquired`](#itemremoved) will be emitted for the item that was removed from the storage unit, and
+[`itemCustomizationNotification`](#itemcustomizationnotification) will be emitted with notification type
+`CasketRemoved` for the storage unit.
 	
 # Events
 
@@ -197,6 +219,19 @@ Emitted when a GC connection is established. You shouldn't use any methods befor
 - `reason` - A value from the `GCConnectionStatus` enum
 
 Emitted when we're disconnected from the GC for any reason. node-globaloffensive will automatically try to reconnect and will emit `connectedToGC` when reconnected.
+
+Example usage:
+
+```js
+const GlobalOffensive = require('globaloffensive');
+let csgo = new GlobalOffensive(steamUser);
+
+csgo.on('disconnectedFromGC', (reason) => {
+    if (reason == GlobalOffensive.GCConnectionStatus.GC_GOING_DOWN) {
+        console.log('GC going down');    
+    }
+});
+```
 
 ### connectionStatus
 - `status` - A value from the `GCConnectionStatus` enum
@@ -263,6 +298,25 @@ Emitted when an item in your inventory changes in some way.
 - `item` - The item that you lost
 
 Emitted when an item is removed from your inventory.
+
+### itemCustomizationNotification
+- `itemIds` - An array of item IDs (as strings) to which something happened
+- `notificationType` - A value from the `ItemCustomizationNotification` enum
+
+**v2.1.0 or later is required to use this event**
+
+Emitted when the GC informs us that an item is customized somehow. Example:
+
+```js
+const GlobalOffensive = require('globaloffensive');
+let csgo = new GlobalOffensive(steamUser);
+
+csgo.on('ItemCustomizationNotification', (itemIds, notificationType) => {
+    if (notificationType == GlobalOffensive.ItemCustomizationNotification.CasketInvFull) {
+        console.log('Storage unit ' + itemIds[0] + ' is full');
+    }
+});
+```
 
 ### playersProfile
 - `profile` - An object containing the profile data

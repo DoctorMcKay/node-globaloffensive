@@ -114,6 +114,15 @@ handlers[Language.Client2GCEconPreviewDataBlockResponse] = function(body) {
 	this.emit('inspectItemInfo#' + item.itemid, item);
 };
 
+handlers[Language.ItemCustomizationNotification] = function(body) {
+	let proto = decodeProto(Protos.CMsgGCItemCustomizationNotification, body);
+	if (!proto.item_id || proto.item_id.length == 0 || !proto.request) {
+		return;
+	}
+
+	this.emit('itemCustomizationNotification', proto.item_id, proto.request);
+};
+
 // SO
 handlers[Language.SO_Create] = function(body) {
 	let proto = decodeProto(Protos.CMsgSOSingleObject, body);
