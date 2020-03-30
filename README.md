@@ -170,8 +170,18 @@ As of v2.1.0, the request will time out if no response is received in 10 seconds
 Sends the same request to the GC that viewing the CSGO player profile from the in-game friendlist sends. Returns the same information that you would get in-game.
 This returns the same protobuf that is used when you request your own profile data, so most of it stays empty.
 
-### deleteItem(item)
-- `item` - The ID of the item you want to delete
+### nameItem(nameTagId, itemId, name)
+- `nameTagId` - The ID of the name tag you want to consume to do this
+- `itemId` - The ID of the item you want to rename
+- `name` - A string containing the item's new name
+
+**v2.1.0 or later is required to use this method**
+
+Renames a particular item in your inventory, using a given name tag. You can rename storage units for free by passing
+`0` as the `nameTagId`.
+
+### deleteItem(itemId)
+- `itemId` - The ID of the item you want to delete
 
 **1.3.0 or later is required to use this method**
 

@@ -249,9 +249,29 @@ GlobalOffensive.prototype.requestPlayersProfile = function(steamid, callback) {
 	}
 };
 
-GlobalOffensive.prototype.deleteItem = function(item) {
+/**
+ * Rename an item in your inventory using a name tag.
+ * @param {int} nameTagId
+ * @param {int} itemId
+ * @param {string} name
+ */
+GlobalOffensive.prototype.nameItem = function(nameTagId, itemId, name) {
+	let buffer = new ByteBuffer(18 + Buffer.byteLength(name), ByteBuffer.LITTLE_ENDIAN);
+	buffer.writeUint64(nameTagId);
+	buffer.writeUint64(itemId);
+	buffer.writeByte(0x00); // unknown
+	buffer.writeCString(name);
+	console.log(buffer.buffer.toString('hex').toUpperCase());
+	this._send(Language.NameItem, null, buffer);
+};
+
+/**
+ * Permanently delete an item from your inventory.
+ * @param {int} itemId
+ */
+GlobalOffensive.prototype.deleteItem = function(itemId) {
 	let buffer = new ByteBuffer(8, ByteBuffer.LITTLE_ENDIAN);
-	buffer.writeUint64(item);
+	buffer.writeUint64(itemId);
 	this._send(Language.Delete, null, buffer);
 };
 
