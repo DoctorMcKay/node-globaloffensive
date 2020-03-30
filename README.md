@@ -57,7 +57,7 @@ A big object containing account data and some statistics including players in-ga
 
 An array containing the items in your inventory. Undefined until `connectedToGC` is emitted.
 
-As of v2.1.0, some special property are populated on items in this array (and also item objects in `itemAcquired` and
+As of v2.1.0, some special properties are populated on items in this array (and also item objects in `itemAcquired` and
 related events), where applicable:
 
 - `position` - This item's position in your inventory. If the item is new and unacknowledged, this is `0`
