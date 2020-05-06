@@ -56,6 +56,30 @@ A big object containing account data and some statistics including players in-ga
 
 An array containing the items in your inventory. Undefined until `connectedToGC` is emitted.
 
+As of v2.3.0, some special properties are populated on items in this array (and also item objects in `itemAcquired` and
+related events), where applicable:
+
+- `position` - This item's position in your inventory. If the item is new and unacknowledged, this is `0`
+- `custom_name` - This item's custom name, applied via name tag
+- `paint_index` - The item's paint index
+- `paint_seed` - The item's paint seed
+- `paint_wear` - The item's paint wear, as a float (often ignorantly referred to as "float value")
+- `tradable_after` - A `Date` object representing when this item will become tradable. May be a date in the past, as this is not removed when the date is reached.
+- `stickers` - An array of objects:
+    - `slot` - The sticker slot number, 0-5
+    - `sticker_id`
+    - `wear` - The sticker's wear (how scratched it is), as a float. `null` if not scratched at all.
+    - `scale` - Float, `null` if not applicable
+    - `rotation` - Float, `null` if not applicable
+- `casket_id` - If this item is contained in a casket (storage unit), this is a string containing that casket's item ID
+- `casket_contained_item_count` - If this item is a casket (storage unit), this is a count of how many items it contains
+
+Note that if any of the above attributes are not applicable, then they will not exist in the item object.
+
+It appears that under some circumstances, the GC might load items from storage units into your inventory without
+calling [`getCasketContents`](#getcasketcontentscasketid-callback), so if you are using this property to see what items
+are in your inventory, you will need to check `casket_id` to filter out items stored in storage units.
+
 # Methods
 
 ### Constructor(steamClient)
@@ -175,12 +199,62 @@ As of v2.1.0, the request will time out if no response is received in 10 seconds
 Sends the same request to the GC that viewing the CSGO player profile from the in-game friendlist sends. Returns the same information that you would get in-game.
 This returns the same protobuf that is used when you request your own profile data, so most of it stays empty.
 
-### deleteItem(item)
-- `item` - The ID of the item you want to delete
+### nameItem(nameTagId, itemId, name)
+- `nameTagId` - The ID of the name tag you want to consume to do this
+- `itemId` - The ID of the item you want to rename
+- `name` - A string containing the item's new name
+
+**v2.1.0 or later is required to use this method**
+
+Renames a particular item in your inventory, using a given name tag. You can rename storage units for free by passing
+`0` as the `nameTagId`.
+
+### deleteItem(itemId)
+- `itemId` - The ID of the item you want to delete
 
 **1.3.0 or later is required to use this method**
 
 Deletes a particular item from your inventory. **This is a destructive operation, which cannot be undone.**
+
+### addToCasket(casketId, itemId)
+- `casketId` - The ID of the casket (storage unit) you want to put an item into
+- `itemId` - The ID of the item you want to put into the casket
+
+**v2.1.0 or later is required to use this method**
+
+Put an item in your inventory into a casket (storage unit) you own. Assuming the request succeeds,
+[`itemRemoved`](#itemremoved) will be emitted for the item that was put into the casket, and
+[`itemCustomizationNotification`](#itemcustomizationnotification) will be emitted with notification type
+`CasketAdded` for the casket.
+
+### removeFromCasket(casketId, itemId)
+- `casketId` - The ID of the casket (storage unit) you want to remove an item from
+- `itemId` - The ID of the item you want to remove from the casket
+
+**v2.3.0 or later is required to use this method**
+
+Remove an item from a casket (storage unit) you own and put it into your inventory. Assuming the request succeeds,
+[`itemAcquired`](#itemremoved) will be emitted for the item that was removed from the casket, and
+[`itemCustomizationNotification`](#itemcustomizationnotification) will be emitted with notification type
+`CasketRemoved` for the casket.
+
+### getCasketContents(casketId, callback)
+- `casketId` - The ID of the casket (storage unit) you want to get the contents of
+- `callback` - A function to be called once the contents are loaded
+    - `err` - An `Error` object on failure, or `null` on success
+    - `items` - An array of item objects, the same structure as objects in [`inventory`](#inventory)
+
+**v2.3.0 or later is required to use this method**
+
+Loads the contents of a storage unit. Note that calling this will have the GC load the contents of the storage unit
+using the same mechanism as your actual inventory, so items in the storage unit will appear in the [`inventory`](#inventory)
+property, and `itemAcquired` will be emitted for each item. Each item in your [`inventory`](#inventory) that is contained
+inside of a storage unit has a property `casket_id`, the value of which is a string containing the ID of the storage unit
+that contains that item.
+
+It appears that under some circumstances, the GC might load these items into your inventory without calling this method,
+so if you are using [`inventory`](#inventory) to see what items are in your inventory, you will need to check `casket_id`
+to filter out items stored in storage units.
 
 # Events
 
@@ -192,6 +266,19 @@ Emitted when a GC connection is established. You shouldn't use any methods befor
 - `reason` - A value from the `GCConnectionStatus` enum
 
 Emitted when we're disconnected from the GC for any reason. node-globaloffensive will automatically try to reconnect and will emit `connectedToGC` when reconnected.
+
+Example usage:
+
+```js
+const GlobalOffensive = require('globaloffensive');
+let csgo = new GlobalOffensive(steamUser);
+
+csgo.on('disconnectedFromGC', (reason) => {
+    if (reason == GlobalOffensive.GCConnectionStatus.GC_GOING_DOWN) {
+        console.log('GC going down');
+    }
+});
+```
 
 ### connectionStatus
 - `status` - A value from the `GCConnectionStatus` enum
@@ -258,6 +345,25 @@ Emitted when an item in your inventory changes in some way.
 - `item` - The item that you lost
 
 Emitted when an item is removed from your inventory.
+
+### itemCustomizationNotification
+- `itemIds` - An array of item IDs (as strings) to which something happened
+- `notificationType` - A value from the `ItemCustomizationNotification` enum
+
+**v2.3.0 or later is required to use this event**
+
+Emitted when the GC informs us that an item is customized somehow. Example:
+
+```js
+const GlobalOffensive = require('globaloffensive');
+let csgo = new GlobalOffensive(steamUser);
+
+csgo.on('ItemCustomizationNotification', (itemIds, notificationType) => {
+    if (notificationType == GlobalOffensive.ItemCustomizationNotification.CasketInvFull) {
+        console.log('Storage unit ' + itemIds[0] + ' is full');
+    }
+});
+```
 
 ### playersProfile
 - `profile` - An object containing the profile data

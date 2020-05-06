@@ -1,6 +1,6 @@
 {
 	"name": "@yaroslav-95/globaloffensive",
-	"version": "2.2.0",
+	"version": "2.3.0",
 	"description": "Exposes a simple API for interacting with the Counter-Strike: Global Offensive game coordinator",
 	"keywords": [
 		"csgo",
@@ -25,6 +25,7 @@
 	},
 	"dependencies": {
 		"bytebuffer": "^5.0.1",
+		"long": "^3.2.0",
 		"protobufjs": "^6.8.8",
 		"steamid": "^1.1.0"
 	},
