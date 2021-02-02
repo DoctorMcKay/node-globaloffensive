@@ -353,7 +353,7 @@ Emitted when the GC informs us that an item is customized somehow. Example:
 const GlobalOffensive = require('globaloffensive');
 let csgo = new GlobalOffensive(steamUser);
 
-csgo.on('ItemCustomizationNotification', (itemIds, notificationType) => {
+csgo.on('itemCustomizationNotification', (itemIds, notificationType) => {
     if (notificationType == GlobalOffensive.ItemCustomizationNotification.CasketInvFull) {
         console.log('Storage unit ' + itemIds[0] + ' is full');
     }
