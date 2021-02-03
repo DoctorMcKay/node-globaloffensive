@@ -1,8 +1,7 @@
 # Counter-Strike Global Offensive for Node.js
-[![npm version](https://img.shields.io/npm/v/globaloffensive.svg)](https://npmjs.com/package/globaloffensive)
-[![npm downloads](https://img.shields.io/npm/dm/globaloffensive.svg)](https://npmjs.com/package/globaloffensive)
-[![dependencies](https://img.shields.io/david/DoctorMcKay/node-globaloffensive.svg)](https://david-dm.org/DoctorMcKay/node-globaloffensive)
-[![license](https://img.shields.io/npm/l/globaloffensive.svg)](https://github.com/DoctorMcKay/node-globaloffensive/blob/master/LICENSE)
+[![license](https://img.shields.io/npm/l/globaloffensive.svg)](https://github.com/Yaroslav-95/node-globaloffensive/blob/master/LICENSE)
+
+This is a fork of DoctorMcKay's "globaloffensive" project. It includes a missing method in the original project - `requestGame(matchid, outcomeid, token)`.
 
 This module provides a very flexible interface for interacting with the [CS:GO](http://store.steampowered.com/app/730)
 Game Coordinator. It's designed to work with a
@@ -16,13 +15,13 @@ This is based off of [node-tf2](https://github.com/DoctorMcKay/node-tf2).
 
 First, install it from npm:
 
-	$ npm install globaloffensive
+	$ npm install @yaroslav-95/globaloffensive
 
 Require the module and call its constructor with your SteamUser instance:
 
 ```js
 const SteamUser = require('steam-user');
-const GlobalOffensive = require('globaloffensive');
+const GlobalOffensive = require('@yaroslav-95/globaloffensive');
 
 let user = new SteamUser();
 let csgo = new GlobalOffensive(user);
@@ -57,7 +56,7 @@ A big object containing account data and some statistics including players in-ga
 
 An array containing the items in your inventory. Undefined until `connectedToGC` is emitted.
 
-As of v2.1.0, some special properties are populated on items in this array (and also item objects in `itemAcquired` and
+As of v2.3.0, some special properties are populated on items in this array (and also item objects in `itemAcquired` and
 related events), where applicable:
 
 - `position` - This item's position in your inventory. If the item is new and unacknowledged, this is `0`
@@ -102,6 +101,12 @@ Request a list of recent games (max. 8). This is the list you see in the client 
 ### requestLiveGameForUser(steamid)
 
 Request live game info for a specific user. Listen for the `matchList` event to get your response.
+
+### requestGame(matchid, outcomeid, token)
+
+Request info for a finished game. Listen for the `matchList` event to get your response.
+
+matchid, outcomeid, and token can be obtained from a sharecode, by using the [globaloffensive-sharecode](https://www.npmjs.com/package/globaloffensive-sharecode) package.
 
 ### inspectItem(owner[, assetid][, d][, callback])
 - `owner` - The numeric SteamID or market listing ID of the owning Steam account or market listing, as a string; or an entire inspect link.
@@ -188,7 +193,7 @@ As of v2.1.0, the request will time out if no response is received in 10 seconds
 			- `wins` - Number of wins
 			- `rank_change` - Seems to always be `null`
 			- `rank_type_id` - Rank type (6: Matchmaking, 7: Wingman, 10: Danger Zone)
-	
+
 **v1.2.0 or later is required to use this method**
 
 Sends the same request to the GC that viewing the CSGO player profile from the in-game friendlist sends. Returns the same information that you would get in-game.
@@ -226,7 +231,7 @@ Put an item in your inventory into a casket (storage unit) you own. Assuming the
 - `casketId` - The ID of the casket (storage unit) you want to remove an item from
 - `itemId` - The ID of the item you want to remove from the casket
 
-**v2.1.0 or later is required to use this method**
+**v2.3.0 or later is required to use this method**
 
 Remove an item from a casket (storage unit) you own and put it into your inventory. Assuming the request succeeds,
 [`itemAcquired`](#itemremoved) will be emitted for the item that was removed from the casket, and
@@ -239,7 +244,7 @@ Remove an item from a casket (storage unit) you own and put it into your invento
     - `err` - An `Error` object on failure, or `null` on success
     - `items` - An array of item objects, the same structure as objects in [`inventory`](#inventory)
 
-**v2.1.0 or later is required to use this method**
+**v2.3.0 or later is required to use this method**
 
 Loads the contents of a storage unit. Note that calling this will have the GC load the contents of the storage unit
 using the same mechanism as your actual inventory, so items in the storage unit will appear in the [`inventory`](#inventory)
@@ -250,7 +255,7 @@ that contains that item.
 It appears that under some circumstances, the GC might load these items into your inventory without calling this method,
 so if you are using [`inventory`](#inventory) to see what items are in your inventory, you will need to check `casket_id`
 to filter out items stored in storage units.
-	
+
 # Events
 
 ### connectedToGC
@@ -270,7 +275,7 @@ let csgo = new GlobalOffensive(steamUser);
 
 csgo.on('disconnectedFromGC', (reason) => {
     if (reason == GlobalOffensive.GCConnectionStatus.GC_GOING_DOWN) {
-        console.log('GC going down');    
+        console.log('GC going down');
     }
 });
 ```
@@ -345,7 +350,7 @@ Emitted when an item is removed from your inventory.
 - `itemIds` - An array of item IDs (as strings) to which something happened
 - `notificationType` - A value from the `ItemCustomizationNotification` enum
 
-**v2.1.0 or later is required to use this event**
+**v2.3.0 or later is required to use this event**
 
 Emitted when the GC informs us that an item is customized somehow. Example:
 
@@ -402,4 +407,4 @@ csgo.on('itemCustomizationNotification', (itemIds, notificationType) => {
 		- `rank_change` - Seems to always be `null`
 		- `rank_type_id` - Rank type (6: Matchmaking, 7: Wingman, 10: Danger Zone)
 
-Emitted in response to an `requestPlayersProfile()` call.
+Emitted in response to a `requestPlayersProfile()` call.
