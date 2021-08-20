@@ -24,6 +24,7 @@
 		"url": "https://github.com/DoctorMcKay/node-globaloffensive.git"
 	},
 	"dependencies": {
+		"bytebuffer": "^5.0.1",
 		"long": "^3.2.0",
 		"protobufjs": "^6.8.8",
 		"steamid": "^1.1.0"

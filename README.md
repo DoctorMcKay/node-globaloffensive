@@ -53,6 +53,10 @@ There are a few useful read-only properties available to you.
 
 A big object containing account data and some statistics including players in-game. Undefined until `accountData` is emitted.
 
+### hasPrime
+
+Boolean if the account has access to prime
+
 ### inventory
 
 An array containing the items in your inventory. Undefined until `connectedToGC` is emitted.
@@ -188,11 +192,29 @@ As of v2.1.0, the request will time out if no response is received in 10 seconds
 			- `wins` - Number of wins
 			- `rank_change` - Seems to always be `null`
 			- `rank_type_id` - Rank type (6: Matchmaking, 7: Wingman, 10: Danger Zone)
-	
+
 **v1.2.0 or later is required to use this method**
 
 Sends the same request to the GC that viewing the CSGO player profile from the in-game friendlist sends. Returns the same information that you would get in-game.
 This returns the same protobuf that is used when you request your own profile data, so most of it stays empty.
+
+### refreshSession()
+
+Refresh session. The session becomes expire every hour.
+
+### matchmakingStatsRequest()
+
+Request information about personal statistics, search statistics.
+Listen `accountData` and `globalStatistics` for response.
+
+### matchmakingStatsRequest(rank_type_id)
+- `rank_type_id` - Number of rank
+
+### getStoreItems(currency, price_sheet_version)
+- `currency` - currency Number recieved from `ClientWelcome` event from GC
+- `price_sheet_version` - You can get price sheet from `accountData` called `pricesheet_version`
+
+Listen `storeResponse` for response.
 
 ### nameItem(nameTagId, itemId, name)
 - `nameTagId` - The ID of the name tag you want to consume to do this
@@ -250,7 +272,7 @@ that contains that item.
 It appears that under some circumstances, the GC might load these items into your inventory without calling this method,
 so if you are using [`inventory`](#inventory) to see what items are in your inventory, you will need to check `casket_id`
 to filter out items stored in storage units.
-	
+
 # Events
 
 ### connectedToGC
@@ -280,6 +302,36 @@ csgo.on('disconnectedFromGC', (reason) => {
 - `data` - The raw data that was received
 
 Emitted when we receive the status of our connection to the GC. Exactly when this is emitted is currently unknown. **This may be removed in the future.**
+
+### xpProgress
+- `xpProgressData` - An object of progress data
+
+### hasPrime
+- `hasPrime` - Boolean if the account has access to prime
+
+### itemPresets
+- `itemPresets` - In game items presets
+
+### storeResponse
+- `storeResponse` - An object containing the cs go store items
+	- `result` - Status number
+	- `currency_deprecated` - Seems to always be `null`
+	- `country_deprecated` - Seems to always be `null`
+	- `price_sheet_version` - Number version
+	- `price_sheet` - Many bytes, can't parse. This data maybe compression now. Write if you now how decode this
+
+### globalStatistics
+- `storeResponse` - An object containing the cs go matchmaking users
+
+### userData
+- `userData` - An object containing the user's data
+	- `store_item_hash` - Unknow number
+	- `timeplayedconsecutively` - Time played
+	- `time_first_played` - Date first launch `unix` format
+	- `last_time_played` - Date last launch `unix` format
+	- `last_ip_address` - Last ip address
+	- `gscookieid` - Seems to always be `null` or changed if you play from china
+	- `uniqueid` - Seems to always be `null` or changed if you play from china
 
 ### matchList
 - `matches` - An array of matches

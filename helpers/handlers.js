@@ -60,6 +60,8 @@ handlers[Language.ClientWelcome] = function(body) {
 		});
 	}
 
+	this.inventory = this.inventory || [];
+
 	let [ first_data ] = proto.outofdate_subscribed_caches;
 	let [ second_data ] = proto.uptodate_subscribed_caches;
 
