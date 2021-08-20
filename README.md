@@ -321,7 +321,7 @@ Emitted when we receive the status of our connection to the GC. Exactly when thi
 	- `price_sheet` - Many bytes, can't parse. This data maybe compression now. Write if you now how decode this
 
 ### globalStatistics
-- `storeResponse` - An object containing the cs go matchmaking users
+- `globalStatistics` - An object containing the cs go matchmaking users
 
 ### userData
 - `userData` - An object containing the user's data
