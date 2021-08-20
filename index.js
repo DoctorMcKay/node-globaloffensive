@@ -3,7 +3,7 @@ const EventEmitter = require('events').EventEmitter;
 const SteamID = require('steamid');
 const Util = require('util');
 
-const Language = require('./language.js');
+const Language = require('./helpers/language.js');
 const Protos = require('./protobufs/generated/_load.js');
 
 const STEAM_APPID = 730;
@@ -125,6 +125,31 @@ GlobalOffensive.prototype._connect = function() {
 	this._helloTimer = setTimeout(sendHello, 500);
 };
 
+GlobalOffensive.prototype.refreshSession = function(){
+	if (!this._isInCSGO) {
+		this.emit('debug', "Not sending hello because we're no longer in CS:GO");
+		return;
+	}
+
+	let soid = this.owner_soid;
+   	let version = this.version;
+
+   	let socache_have_versions = [{
+	   	soid, version
+   	}];
+
+   	this.haveGCSession = false;
+
+   	this._send(Language.ClientHello, Protos.CMsgClientHello, {
+	   	client_session_need: 0,
+	   	steam_launcher: 0,
+	   	client_launcher: 0,
+	   	version: 1255,
+
+	   	socache_have_versions
+   	});
+}
+
 GlobalOffensive.prototype._send = function(type, protobuf, body) {
 	if (!this._steam.steamID) {
 		return false;
@@ -153,6 +178,24 @@ GlobalOffensive.prototype._send = function(type, protobuf, body) {
 GlobalOffensive.prototype.requestLiveGames = function() {
 	this._send(Language.MatchListRequestCurrentLiveGames, Protos.CMsgGCCStrike15_v2_MatchListRequestCurrentLiveGames, {});
 };
+
+GlobalOffensive.prototype.matchmakingStatsRequest = function() {
+	this._send(Language.MatchmakingClient2GCHello, Protos.CMsgGCCStrike15_v2_MatchmakingClient2GCHello, {});
+};
+
+GlobalOffensive.prototype.updateRank = function(rank_type_id) {
+	this._send(Language.ClientGCRankUpdate, Protos.CMsgGCCStrike15_v2_ClientGCRankUpdate, {
+		rankings: {
+			rank_type_id
+		}
+	});
+};
+
+GlobalOffensive.prototype.getStoreItems = function(currency, price_sheet_version) {
+	this._send(Language.StoreGetUserData, Protos.CMsgStoreGetUserData, {
+		currency, price_sheet_version
+	});
+}
 
 GlobalOffensive.prototype.requestRecentGames = function(steamid) {
 	if (typeof steamid === 'string') {
@@ -261,7 +304,7 @@ GlobalOffensive.prototype.nameItem = function(nameTagId, itemId, name) {
 	buffer.writeUint64(itemId);
 	buffer.writeByte(0x00); // unknown
 	buffer.writeCString(name);
-	console.log(buffer.buffer.toString('hex').toUpperCase());
+
 	this._send(Language.NameItem, null, buffer);
 };
 
@@ -363,5 +406,5 @@ GlobalOffensive.prototype.getCasketContents = function(casketId, callback) {
 
 GlobalOffensive.prototype._handlers = {};
 
-require('./enums.js');
-require('./handlers.js');
+require('./helpers/enums.js');
+require('./helpers/handlers.js');

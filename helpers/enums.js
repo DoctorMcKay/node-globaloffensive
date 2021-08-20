@@ -1,4 +1,4 @@
-var GlobalOffensive = require('./index.js');
+var GlobalOffensive = require('../index.js');
 
 GlobalOffensive.GCConnectionStatus = {
 	HAVE_SESSION: 0,

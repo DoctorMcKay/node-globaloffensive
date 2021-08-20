@@ -1,16 +1,28 @@
 const ByteBuffer = require('bytebuffer');
+const BinaryKVParser = require('binarykvparser');
 const Long = require('long');
 const SteamID = require('steamid');
 
-const GlobalOffensive = require('./index.js');
+const GlobalOffensive = require('../index.js');
 const Language = require('./language.js');
-const Protos = require('./protobufs/generated/_load.js');
+const Protos = require('../protobufs/generated/_load.js');
 
 let handlers = GlobalOffensive.prototype._handlers;
 
 // ClientWelcome and ClientConnectionStatus
 handlers[Language.ClientWelcome] = function(body) {
 	let proto = decodeProto(Protos.CMsgClientWelcome, body);
+
+	let game_data = decodeProto(Protos.CMsgCStrike15Welcome, proto.game_data);
+	let game_data2 = decodeProto(Protos.CMsgGCCStrike15_v2_MatchmakingGC2ClientHello, proto.game_data2);
+	let int_ip = game_data.last_ip_address;
+
+	game_data.last_ip_address = intToIP(int_ip);
+
+	this.accountData = game_data2;
+
+	this.emit('accountData', game_data2);
+	this.emit('userData', game_data);
 
 	if (proto.outofdate_subscribed_caches && proto.outofdate_subscribed_caches.length) {
 		proto.outofdate_subscribed_caches[0].objects.forEach((cache) => {
@@ -25,14 +37,22 @@ handlers[Language.ClientWelcome] = function(body) {
 
 					this.inventory = items;
 					break;
-				/*case 7:
-					// Account metadata - this doesn't appear to be useful in CS:GO
-					let data = decodeProto(Protos.CSOEconGameAccountClient, cache.object_data[0]);
-					break;*/
-				/*case 43:
+				case 2:
+					// XpProgressData
+					let xpProgressData = decodeProto(Protos.XpProgressData, cache.object_data[0]);
+					this.emit('xpProgress', xpProgressData);
+				case 7:
+					// Account metadata
+					let account = decodeProto(Protos.CSOEconGameAccountClient, cache.object_data[0]);
+					let prime = account.elevated_state == 5 || (account.bonus_xp_usedflags & 16) != 0;
+					this.emit('hasPrime', prime);
+					this.hasPrime = true;
+					break;
+				case 43:
 					// Most likely item presets (multiple)
-					let data = decodeProto(Protos.CSOSelectedItemPreset, cache.object_data[0]);
-					break;*/
+					let presets = decodeProto(Protos.CSOSelectedItemPreset, cache.object_data[0]);
+					this.emit('itemPresets', presets);
+					break;
 				default:
 					this.emit('debug', "Unknown SO type " + cache.type_id + " with " + cache.object_data.length + " items");
 					break;
@@ -40,7 +60,13 @@ handlers[Language.ClientWelcome] = function(body) {
 		});
 	}
 
-	this.inventory = this.inventory || [];
+	let [ first_data ] = proto.outofdate_subscribed_caches;
+	let [ second_data ] = proto.uptodate_subscribed_caches;
+
+	let { owner_soid, version } = first_data || second_data || {};
+
+	this.owner_soid = owner_soid || {};
+	this.version = version || "";
 
 	this.emit('debug', "GC connection established");
 	this.haveGCSession = true;
@@ -50,10 +76,20 @@ handlers[Language.ClientWelcome] = function(body) {
 	this.emit('connectedToGC');
 };
 
+handlers[Language.StoreGetUserDataResponse] = function(body) {
+	let proto = decodeProto(Protos.CMsgStoreGetUserDataResponse, body);
+	this.emit('storeResponse', proto);
+};
+
 handlers[Language.MatchmakingGC2ClientHello] = function(body) {
 	let proto = decodeProto(Protos.CMsgGCCStrike15_v2_MatchmakingGC2ClientHello, body);
 	this.emit('accountData', proto);
 	this.accountData = proto;
+};
+
+handlers[Language.GC2ClientGlobalStats] = function(body) {
+  	let globalStatistics = decodeProto(Protos.GlobalStatistics, body);
+	this.emit('globalStatistics', globalStatistics)
 };
 
 handlers[Language.ClientConnectionStatus] = function(body) {
@@ -349,4 +385,13 @@ function decodeProto(proto, encoded) {
 		// Anything falsy is true
 		return !val;
 	}
+}
+
+function intToIP(int) {
+    var part1 = int & 255;
+    var part2 = ((int >> 8) & 255);
+    var part3 = ((int >> 16) & 255);
+    var part4 = ((int >> 24) & 255);
+
+    return part4 + "." + part3 + "." + part2 + "." + part1;
 }

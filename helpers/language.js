@@ -229,5 +229,7 @@ module.exports = {
 	DraftSummary: 9162,
 	ClientRequestJoinFriendData: 9163,
 	ClientRequestJoinServerData: 9164,
-	ClientRequestNewMission: 9165
+	ClientRequestNewMission: 9165,
+	GC2ClientGlobalStats: 9173,
+	ClientGCRankUpdate: 9194,
 };
