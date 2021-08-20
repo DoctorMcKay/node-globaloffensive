@@ -195,7 +195,7 @@ GlobalOffensive.prototype.getStoreItems = function(currency, price_sheet_version
 	this._send(Language.StoreGetUserData, Protos.CMsgStoreGetUserData, {
 		currency, price_sheet_version
 	});
-}
+};
 
 GlobalOffensive.prototype.requestRecentGames = function(steamid) {
 	if (typeof steamid === 'string') {
@@ -208,6 +208,14 @@ GlobalOffensive.prototype.requestRecentGames = function(steamid) {
 
 	this._send(Language.MatchListRequestRecentUserGames, Protos.CMsgGCCStrike15_v2_MatchListRequestRecentUserGames, {
 		accountid: steamid.accountid
+	});
+};
+
+GlobalOffensive.prototype.requestFullGameInfo = function(matchid, outcomeid, token) {
+	this._send(Language.MatchListRequestFullGameInfo, Protos.CMsgGCCStrike15_v2_MatchListRequestFullGameInfo, {
+		matchid,
+		outcomeid,
+		token,
 	});
 };
 

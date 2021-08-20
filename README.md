@@ -216,6 +216,11 @@ Listen `accountData` and `globalStatistics` for response.
 
 Listen `storeResponse` for response.
 
+### requestFullGameInfo(matchid, outcomeid, token)
+- `matchid` - Number matchid
+- `outcomeid` - Number outcomeid
+- `token` - String token
+
 ### nameItem(nameTagId, itemId, name)
 - `nameTagId` - The ID of the name tag you want to consume to do this
 - `itemId` - The ID of the item you want to rename
