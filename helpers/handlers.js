@@ -50,7 +50,7 @@ handlers[Language.ClientWelcome] = function(body) {
 					break;
 				case 43:
 					// Most likely item presets (multiple)
-					let presets = decodeProto(Protos.CSOSelectedItemPreset, cache.object_data[0]);
+					let presets = decodeProto(Protos.CSOEconDefaultEquippedDefinitionInstanceClient, cache.object_data[0]);
 					this.emit('itemPresets', presets);
 					break;
 				default:
@@ -93,6 +93,11 @@ handlers[Language.GC2ClientGlobalStats] = function(body) {
   	let globalStatistics = decodeProto(Protos.GlobalStatistics, body);
 	this.emit('globalStatistics', globalStatistics)
 };
+
+handlers[Language.ClientDeepStats] = function(body) {
+	let proto = decodeProto(Protos.CMsgGCCStrike15_ClientDeepStats, body);
+	this.emit('playerStats', proto)
+}
 
 handlers[Language.ClientConnectionStatus] = function(body) {
 	let proto = decodeProto(Protos.CMsgConnectionStatus, body);
@@ -326,7 +331,6 @@ GlobalOffensive.prototype._handleSODestroy = function(proto) {
 
 	this.emit('itemRemoved', itemData);
 };
-
 
 handlers[Language.SO_UpdateMultiple] = function(body) {
 	let proto = decodeProto(Protos.CMsgSOMultipleObjects, body);

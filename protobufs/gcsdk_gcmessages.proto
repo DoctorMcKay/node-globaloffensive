@@ -6,6 +6,7 @@ option cc_generic_services = false;
 enum GCClientLauncherType {
 	GCClientLauncherType_DEFAULT = 0;
 	GCClientLauncherType_PERFECTWORLD = 1;
+	GCClientLauncherType_STEAMCHINA = 2;
 }
 
 enum GCConnectionStatus {
@@ -14,14 +15,6 @@ enum GCConnectionStatus {
 	GCConnectionStatus_NO_SESSION = 2;
 	GCConnectionStatus_NO_SESSION_IN_LOGON_QUEUE = 3;
 	GCConnectionStatus_NO_STEAM = 4;
-}
-
-enum ESteamPaymentRuleType {
-	k_EPaymentRuleTypeComposite = 0;
-	k_EPaymentRuleTypeWorkshop = 1;
-	k_EPaymentRuleTypeServiceProvider = 2;
-	k_EPaymentRuleTypePartner = 3;
-	k_EPaymentRuleTypeSpecialPayment = 4;
 }
 
 message CMsgSOIDOwner {
@@ -40,6 +33,7 @@ message CMsgSOMultipleObjects {
 	message SingleObject {
 		option (msgpool_soft_limit) = 256;
 		option (msgpool_hard_limit) = 1024;
+
 		optional int32 type_id = 1;
 		optional bytes object_data = 2;
 	}
@@ -160,6 +154,7 @@ message CMsgClientHello {
 	optional uint32 partner_accountid = 6;
 	optional uint32 partner_accountflags = 7;
 	optional uint32 partner_accountbalance = 8;
+	optional uint32 steam_launcher = 9;
 }
 
 message CMsgServerHello {
@@ -234,6 +229,11 @@ message CWorkshop_SetItemPaymentRules_Request {
 		optional uint32 rule_type = 4 [default = 1];
 	}
 
+	message WorkshopDirectPaymentRule {
+		optional uint64 workshop_file_id = 1;
+		optional string rule_description = 2;
+	}
+
 	message PartnerItemPaymentRule {
 		optional uint32 account_id = 1;
 		optional float revenue_percentage = 2;
@@ -244,6 +244,9 @@ message CWorkshop_SetItemPaymentRules_Request {
 	optional uint32 gameitemid = 2;
 	repeated .CWorkshop_SetItemPaymentRules_Request.WorkshopItemPaymentRule associated_workshop_files = 3;
 	repeated .CWorkshop_SetItemPaymentRules_Request.PartnerItemPaymentRule partner_accounts = 4;
+	optional bool validate_only = 5;
+	optional bool make_workshop_files_subscribable = 6;
+	optional .CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule associated_workshop_file_for_direct_payments = 7;
 }
 
 message CWorkshop_SetItemPaymentRules_Response {
@@ -279,3 +282,21 @@ message CWorkshop_AddSpecialPayment_Request {
 message CWorkshop_AddSpecialPayment_Response {
 }
 
+message CProductInfo_SetRichPresenceLocalization_Request {
+	message Token {
+		optional string token = 1;
+		optional string value = 2;
+	}
+
+	message LanguageSection {
+		optional string language = 1;
+		repeated .CProductInfo_SetRichPresenceLocalization_Request.Token tokens = 2;
+	}
+
+	optional uint32 appid = 1;
+	repeated .CProductInfo_SetRichPresenceLocalization_Request.LanguageSection languages = 2;
+	optional uint64 steamid = 3;
+}
+
+message CProductInfo_SetRichPresenceLocalization_Response {
+}

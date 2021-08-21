@@ -19,24 +19,18 @@
     /**
      * ECsgoGCMsg enum.
      * @exports ECsgoGCMsg
-     * @enum {string}
+     * @enum {number}
      * @property {number} k_EMsgGCCStrike15_v2_Base=9100 k_EMsgGCCStrike15_v2_Base value
      * @property {number} k_EMsgGCCStrike15_v2_MatchmakingStart=9101 k_EMsgGCCStrike15_v2_MatchmakingStart value
      * @property {number} k_EMsgGCCStrike15_v2_MatchmakingStop=9102 k_EMsgGCCStrike15_v2_MatchmakingStop value
      * @property {number} k_EMsgGCCStrike15_v2_MatchmakingClient2ServerPing=9103 k_EMsgGCCStrike15_v2_MatchmakingClient2ServerPing value
      * @property {number} k_EMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate=9104 k_EMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate value
-     * @property {number} k_EMsgGCCStrike15_v2_MatchmakingGC2ServerReserve=9105 k_EMsgGCCStrike15_v2_MatchmakingGC2ServerReserve value
      * @property {number} k_EMsgGCCStrike15_v2_MatchmakingServerReservationResponse=9106 k_EMsgGCCStrike15_v2_MatchmakingServerReservationResponse value
      * @property {number} k_EMsgGCCStrike15_v2_MatchmakingGC2ClientReserve=9107 k_EMsgGCCStrike15_v2_MatchmakingGC2ClientReserve value
-     * @property {number} k_EMsgGCCStrike15_v2_MatchmakingServerRoundStats=9108 k_EMsgGCCStrike15_v2_MatchmakingServerRoundStats value
      * @property {number} k_EMsgGCCStrike15_v2_MatchmakingClient2GCHello=9109 k_EMsgGCCStrike15_v2_MatchmakingClient2GCHello value
      * @property {number} k_EMsgGCCStrike15_v2_MatchmakingGC2ClientHello=9110 k_EMsgGCCStrike15_v2_MatchmakingGC2ClientHello value
-     * @property {number} k_EMsgGCCStrike15_v2_MatchmakingServerMatchEnd=9111 k_EMsgGCCStrike15_v2_MatchmakingServerMatchEnd value
      * @property {number} k_EMsgGCCStrike15_v2_MatchmakingGC2ClientAbandon=9112 k_EMsgGCCStrike15_v2_MatchmakingGC2ClientAbandon value
-     * @property {number} k_EMsgGCCStrike15_v2_MatchmakingServer2GCKick=9113 k_EMsgGCCStrike15_v2_MatchmakingServer2GCKick value
-     * @property {number} k_EMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm=9114 k_EMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm value
      * @property {number} k_EMsgGCCStrike15_v2_MatchmakingGCOperationalStats=9115 k_EMsgGCCStrike15_v2_MatchmakingGCOperationalStats value
-     * @property {number} k_EMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate=9116 k_EMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate value
      * @property {number} k_EMsgGCCStrike15_v2_MatchmakingOperator2GCBlogUpdate=9117 k_EMsgGCCStrike15_v2_MatchmakingOperator2GCBlogUpdate value
      * @property {number} k_EMsgGCCStrike15_v2_ServerNotificationForUserPenalty=9118 k_EMsgGCCStrike15_v2_ServerNotificationForUserPenalty value
      * @property {number} k_EMsgGCCStrike15_v2_ClientReportPlayer=9119 k_EMsgGCCStrike15_v2_ClientReportPlayer value
@@ -61,17 +55,14 @@
      * @property {number} k_EMsgGCCStrike15_v2_MatchListRequestRecentUserGames=9141 k_EMsgGCCStrike15_v2_MatchListRequestRecentUserGames value
      * @property {number} k_EMsgGCCStrike15_v2_GC2ServerReservationUpdate=9142 k_EMsgGCCStrike15_v2_GC2ServerReservationUpdate value
      * @property {number} k_EMsgGCCStrike15_v2_ClientVarValueNotificationInfo=9144 k_EMsgGCCStrike15_v2_ClientVarValueNotificationInfo value
-     * @property {number} k_EMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification=9145 k_EMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification value
      * @property {number} k_EMsgGCCStrike15_v2_MatchListRequestTournamentGames=9146 k_EMsgGCCStrike15_v2_MatchListRequestTournamentGames value
      * @property {number} k_EMsgGCCStrike15_v2_MatchListRequestFullGameInfo=9147 k_EMsgGCCStrike15_v2_MatchListRequestFullGameInfo value
      * @property {number} k_EMsgGCCStrike15_v2_GiftsLeaderboardRequest=9148 k_EMsgGCCStrike15_v2_GiftsLeaderboardRequest value
      * @property {number} k_EMsgGCCStrike15_v2_GiftsLeaderboardResponse=9149 k_EMsgGCCStrike15_v2_GiftsLeaderboardResponse value
      * @property {number} k_EMsgGCCStrike15_v2_ServerVarValueNotificationInfo=9150 k_EMsgGCCStrike15_v2_ServerVarValueNotificationInfo value
-     * @property {number} k_EMsgGCToGCReloadVersions=9151 k_EMsgGCToGCReloadVersions value
      * @property {number} k_EMsgGCCStrike15_v2_ClientSubmitSurveyVote=9152 k_EMsgGCCStrike15_v2_ClientSubmitSurveyVote value
      * @property {number} k_EMsgGCCStrike15_v2_Server2GCClientValidate=9153 k_EMsgGCCStrike15_v2_Server2GCClientValidate value
      * @property {number} k_EMsgGCCStrike15_v2_MatchListRequestLiveGameForUser=9154 k_EMsgGCCStrike15_v2_MatchListRequestLiveGameForUser value
-     * @property {number} k_EMsgGCCStrike15_v2_Server2GCPureServerValidationFailure=9155 k_EMsgGCCStrike15_v2_Server2GCPureServerValidationFailure value
      * @property {number} k_EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest=9156 k_EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest value
      * @property {number} k_EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse=9157 k_EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse value
      * @property {number} k_EMsgGCCStrike15_v2_AccountPrivacySettings=9158 k_EMsgGCCStrike15_v2_AccountPrivacySettings value
@@ -82,7 +73,6 @@
      * @property {number} k_EMsgGCCStrike15_v2_ClientRequestJoinFriendData=9163 k_EMsgGCCStrike15_v2_ClientRequestJoinFriendData value
      * @property {number} k_EMsgGCCStrike15_v2_ClientRequestJoinServerData=9164 k_EMsgGCCStrike15_v2_ClientRequestJoinServerData value
      * @property {number} k_EMsgGCCStrike15_v2_ClientRequestNewMission=9165 k_EMsgGCCStrike15_v2_ClientRequestNewMission value
-     * @property {number} k_EMsgGCCStrike15_v2_GC2ServerNotifyXPRewarded=9166 k_EMsgGCCStrike15_v2_GC2ServerNotifyXPRewarded value
      * @property {number} k_EMsgGCCStrike15_v2_GC2ClientTournamentInfo=9167 k_EMsgGCCStrike15_v2_GC2ClientTournamentInfo value
      * @property {number} k_EMsgGC_GlobalGame_Subscribe=9168 k_EMsgGC_GlobalGame_Subscribe value
      * @property {number} k_EMsgGC_GlobalGame_Unsubscribe=9169 k_EMsgGC_GlobalGame_Unsubscribe value
@@ -114,11 +104,17 @@
      * @property {number} k_EMsgGCCStrike15_v2_ClientAccountBalance=9196 k_EMsgGCCStrike15_v2_ClientAccountBalance value
      * @property {number} k_EMsgGCCStrike15_v2_ClientPartyJoinRelay=9197 k_EMsgGCCStrike15_v2_ClientPartyJoinRelay value
      * @property {number} k_EMsgGCCStrike15_v2_ClientPartyWarning=9198 k_EMsgGCCStrike15_v2_ClientPartyWarning value
-     * @property {number} k_EMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial=9199 k_EMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial value
      * @property {number} k_EMsgGCCStrike15_v2_SetEventFavorite=9200 k_EMsgGCCStrike15_v2_SetEventFavorite value
      * @property {number} k_EMsgGCCStrike15_v2_GetEventFavorites_Request=9201 k_EMsgGCCStrike15_v2_GetEventFavorites_Request value
+     * @property {number} k_EMsgGCCStrike15_v2_ClientPerfReport=9202 k_EMsgGCCStrike15_v2_ClientPerfReport value
      * @property {number} k_EMsgGCCStrike15_v2_GetEventFavorites_Response=9203 k_EMsgGCCStrike15_v2_GetEventFavorites_Response value
      * @property {number} k_EMsgGCCStrike15_v2_ClientRequestSouvenir=9204 k_EMsgGCCStrike15_v2_ClientRequestSouvenir value
+     * @property {number} k_EMsgGCCStrike15_v2_ClientReportValidation=9205 k_EMsgGCCStrike15_v2_ClientReportValidation value
+     * @property {number} k_EMsgGCCStrike15_v2_GC2ClientRefuseSecureMode=9206 k_EMsgGCCStrike15_v2_GC2ClientRefuseSecureMode value
+     * @property {number} k_EMsgGCCStrike15_v2_GC2ClientRequestValidation=9207 k_EMsgGCCStrike15_v2_GC2ClientRequestValidation value
+     * @property {number} k_EMsgGCCStrike15_v2_ClientRedeemMissionReward=9209 k_EMsgGCCStrike15_v2_ClientRedeemMissionReward value
+     * @property {number} k_EMsgGCCStrike15_ClientDeepStats=9210 k_EMsgGCCStrike15_ClientDeepStats value
+     * @property {number} k_EMsgGCCStrike15_StartAgreementSessionInGame=9211 k_EMsgGCCStrike15_StartAgreementSessionInGame value
      */
     $root.ECsgoGCMsg = (function() {
         var valuesById = {}, values = Object.create(valuesById);
@@ -127,18 +123,12 @@
         values[valuesById[9102] = "k_EMsgGCCStrike15_v2_MatchmakingStop"] = 9102;
         values[valuesById[9103] = "k_EMsgGCCStrike15_v2_MatchmakingClient2ServerPing"] = 9103;
         values[valuesById[9104] = "k_EMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate"] = 9104;
-        values[valuesById[9105] = "k_EMsgGCCStrike15_v2_MatchmakingGC2ServerReserve"] = 9105;
         values[valuesById[9106] = "k_EMsgGCCStrike15_v2_MatchmakingServerReservationResponse"] = 9106;
         values[valuesById[9107] = "k_EMsgGCCStrike15_v2_MatchmakingGC2ClientReserve"] = 9107;
-        values[valuesById[9108] = "k_EMsgGCCStrike15_v2_MatchmakingServerRoundStats"] = 9108;
         values[valuesById[9109] = "k_EMsgGCCStrike15_v2_MatchmakingClient2GCHello"] = 9109;
         values[valuesById[9110] = "k_EMsgGCCStrike15_v2_MatchmakingGC2ClientHello"] = 9110;
-        values[valuesById[9111] = "k_EMsgGCCStrike15_v2_MatchmakingServerMatchEnd"] = 9111;
         values[valuesById[9112] = "k_EMsgGCCStrike15_v2_MatchmakingGC2ClientAbandon"] = 9112;
-        values[valuesById[9113] = "k_EMsgGCCStrike15_v2_MatchmakingServer2GCKick"] = 9113;
-        values[valuesById[9114] = "k_EMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm"] = 9114;
         values[valuesById[9115] = "k_EMsgGCCStrike15_v2_MatchmakingGCOperationalStats"] = 9115;
-        values[valuesById[9116] = "k_EMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate"] = 9116;
         values[valuesById[9117] = "k_EMsgGCCStrike15_v2_MatchmakingOperator2GCBlogUpdate"] = 9117;
         values[valuesById[9118] = "k_EMsgGCCStrike15_v2_ServerNotificationForUserPenalty"] = 9118;
         values[valuesById[9119] = "k_EMsgGCCStrike15_v2_ClientReportPlayer"] = 9119;
@@ -163,17 +153,14 @@
         values[valuesById[9141] = "k_EMsgGCCStrike15_v2_MatchListRequestRecentUserGames"] = 9141;
         values[valuesById[9142] = "k_EMsgGCCStrike15_v2_GC2ServerReservationUpdate"] = 9142;
         values[valuesById[9144] = "k_EMsgGCCStrike15_v2_ClientVarValueNotificationInfo"] = 9144;
-        values[valuesById[9145] = "k_EMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification"] = 9145;
         values[valuesById[9146] = "k_EMsgGCCStrike15_v2_MatchListRequestTournamentGames"] = 9146;
         values[valuesById[9147] = "k_EMsgGCCStrike15_v2_MatchListRequestFullGameInfo"] = 9147;
         values[valuesById[9148] = "k_EMsgGCCStrike15_v2_GiftsLeaderboardRequest"] = 9148;
         values[valuesById[9149] = "k_EMsgGCCStrike15_v2_GiftsLeaderboardResponse"] = 9149;
         values[valuesById[9150] = "k_EMsgGCCStrike15_v2_ServerVarValueNotificationInfo"] = 9150;
-        values[valuesById[9151] = "k_EMsgGCToGCReloadVersions"] = 9151;
         values[valuesById[9152] = "k_EMsgGCCStrike15_v2_ClientSubmitSurveyVote"] = 9152;
         values[valuesById[9153] = "k_EMsgGCCStrike15_v2_Server2GCClientValidate"] = 9153;
         values[valuesById[9154] = "k_EMsgGCCStrike15_v2_MatchListRequestLiveGameForUser"] = 9154;
-        values[valuesById[9155] = "k_EMsgGCCStrike15_v2_Server2GCPureServerValidationFailure"] = 9155;
         values[valuesById[9156] = "k_EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest"] = 9156;
         values[valuesById[9157] = "k_EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse"] = 9157;
         values[valuesById[9158] = "k_EMsgGCCStrike15_v2_AccountPrivacySettings"] = 9158;
@@ -184,7 +171,6 @@
         values[valuesById[9163] = "k_EMsgGCCStrike15_v2_ClientRequestJoinFriendData"] = 9163;
         values[valuesById[9164] = "k_EMsgGCCStrike15_v2_ClientRequestJoinServerData"] = 9164;
         values[valuesById[9165] = "k_EMsgGCCStrike15_v2_ClientRequestNewMission"] = 9165;
-        values[valuesById[9166] = "k_EMsgGCCStrike15_v2_GC2ServerNotifyXPRewarded"] = 9166;
         values[valuesById[9167] = "k_EMsgGCCStrike15_v2_GC2ClientTournamentInfo"] = 9167;
         values[valuesById[9168] = "k_EMsgGC_GlobalGame_Subscribe"] = 9168;
         values[valuesById[9169] = "k_EMsgGC_GlobalGame_Unsubscribe"] = 9169;
@@ -216,18 +202,24 @@
         values[valuesById[9196] = "k_EMsgGCCStrike15_v2_ClientAccountBalance"] = 9196;
         values[valuesById[9197] = "k_EMsgGCCStrike15_v2_ClientPartyJoinRelay"] = 9197;
         values[valuesById[9198] = "k_EMsgGCCStrike15_v2_ClientPartyWarning"] = 9198;
-        values[valuesById[9199] = "k_EMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial"] = 9199;
         values[valuesById[9200] = "k_EMsgGCCStrike15_v2_SetEventFavorite"] = 9200;
         values[valuesById[9201] = "k_EMsgGCCStrike15_v2_GetEventFavorites_Request"] = 9201;
+        values[valuesById[9202] = "k_EMsgGCCStrike15_v2_ClientPerfReport"] = 9202;
         values[valuesById[9203] = "k_EMsgGCCStrike15_v2_GetEventFavorites_Response"] = 9203;
         values[valuesById[9204] = "k_EMsgGCCStrike15_v2_ClientRequestSouvenir"] = 9204;
+        values[valuesById[9205] = "k_EMsgGCCStrike15_v2_ClientReportValidation"] = 9205;
+        values[valuesById[9206] = "k_EMsgGCCStrike15_v2_GC2ClientRefuseSecureMode"] = 9206;
+        values[valuesById[9207] = "k_EMsgGCCStrike15_v2_GC2ClientRequestValidation"] = 9207;
+        values[valuesById[9209] = "k_EMsgGCCStrike15_v2_ClientRedeemMissionReward"] = 9209;
+        values[valuesById[9210] = "k_EMsgGCCStrike15_ClientDeepStats"] = 9210;
+        values[valuesById[9211] = "k_EMsgGCCStrike15_StartAgreementSessionInGame"] = 9211;
         return values;
     })();
     
     /**
      * ECsgoSteamUserStat enum.
      * @exports ECsgoSteamUserStat
-     * @enum {string}
+     * @enum {number}
      * @property {number} k_ECsgoSteamUserStat_XpEarnedGames=1 k_ECsgoSteamUserStat_XpEarnedGames value
      * @property {number} k_ECsgoSteamUserStat_MatchWinsCompetitive=2 k_ECsgoSteamUserStat_MatchWinsCompetitive value
      * @property {number} k_ECsgoSteamUserStat_SurvivedDangerZone=3 k_ECsgoSteamUserStat_SurvivedDangerZone value
@@ -237,6 +229,22 @@
         values[valuesById[1] = "k_ECsgoSteamUserStat_XpEarnedGames"] = 1;
         values[valuesById[2] = "k_ECsgoSteamUserStat_MatchWinsCompetitive"] = 2;
         values[valuesById[3] = "k_ECsgoSteamUserStat_SurvivedDangerZone"] = 3;
+        return values;
+    })();
+    
+    /**
+     * EClientReportingVersion enum.
+     * @exports EClientReportingVersion
+     * @enum {number}
+     * @property {number} k_EClientReportingVersion_OldVersion=0 k_EClientReportingVersion_OldVersion value
+     * @property {number} k_EClientReportingVersion_BetaVersion=1 k_EClientReportingVersion_BetaVersion value
+     * @property {number} k_EClientReportingVersion_SupportsTrustedMode=2 k_EClientReportingVersion_SupportsTrustedMode value
+     */
+    $root.EClientReportingVersion = (function() {
+        var valuesById = {}, values = Object.create(valuesById);
+        values[valuesById[0] = "k_EClientReportingVersion_OldVersion"] = 0;
+        values[valuesById[1] = "k_EClientReportingVersion_BetaVersion"] = 1;
+        values[valuesById[2] = "k_EClientReportingVersion_SupportsTrustedMode"] = 2;
         return values;
     })();
     
@@ -314,11 +322,11 @@
         GameServerPing.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.ping != null && message.hasOwnProperty("ping"))
+            if (message.ping != null && Object.hasOwnProperty.call(message, "ping"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.ping);
-            if (message.ip != null && message.hasOwnProperty("ip"))
+            if (message.ip != null && Object.hasOwnProperty.call(message, "ip"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.ip);
-            if (message.instances != null && message.hasOwnProperty("instances"))
+            if (message.instances != null && Object.hasOwnProperty.call(message, "instances"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.instances);
             return writer;
         };
@@ -537,9 +545,9 @@
         DataCenterPing.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.data_center_id != null && message.hasOwnProperty("data_center_id"))
+            if (message.data_center_id != null && Object.hasOwnProperty.call(message, "data_center_id"))
                 writer.uint32(/* id 1, wireType 5 =*/13).fixed32(message.data_center_id);
-            if (message.ping != null && message.hasOwnProperty("ping"))
+            if (message.ping != null && Object.hasOwnProperty.call(message, "ping"))
                 writer.uint32(/* id 2, wireType 0 =*/16).sint32(message.ping);
             return writer;
         };
@@ -756,11 +764,11 @@
         DetailedSearchStatistic.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.game_type != null && message.hasOwnProperty("game_type"))
+            if (message.game_type != null && Object.hasOwnProperty.call(message, "game_type"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.game_type);
-            if (message.search_time_avg != null && message.hasOwnProperty("search_time_avg"))
+            if (message.search_time_avg != null && Object.hasOwnProperty.call(message, "search_time_avg"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.search_time_avg);
-            if (message.players_searching != null && message.hasOwnProperty("players_searching"))
+            if (message.players_searching != null && Object.hasOwnProperty.call(message, "players_searching"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.players_searching);
             return writer;
         };
@@ -1024,19 +1032,19 @@
         TournamentPlayer.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.account_id);
-            if (message.player_nick != null && message.hasOwnProperty("player_nick"))
+            if (message.player_nick != null && Object.hasOwnProperty.call(message, "player_nick"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.player_nick);
-            if (message.player_name != null && message.hasOwnProperty("player_name"))
+            if (message.player_name != null && Object.hasOwnProperty.call(message, "player_name"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.player_name);
-            if (message.player_dob != null && message.hasOwnProperty("player_dob"))
+            if (message.player_dob != null && Object.hasOwnProperty.call(message, "player_dob"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.player_dob);
-            if (message.player_flag != null && message.hasOwnProperty("player_flag"))
+            if (message.player_flag != null && Object.hasOwnProperty.call(message, "player_flag"))
                 writer.uint32(/* id 5, wireType 2 =*/42).string(message.player_flag);
-            if (message.player_location != null && message.hasOwnProperty("player_location"))
+            if (message.player_location != null && Object.hasOwnProperty.call(message, "player_location"))
                 writer.uint32(/* id 6, wireType 2 =*/50).string(message.player_location);
-            if (message.player_desc != null && message.hasOwnProperty("player_desc"))
+            if (message.player_desc != null && Object.hasOwnProperty.call(message, "player_desc"))
                 writer.uint32(/* id 7, wireType 2 =*/58).string(message.player_desc);
             return writer;
         };
@@ -1327,13 +1335,13 @@
         TournamentTeam.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.team_id != null && message.hasOwnProperty("team_id"))
+            if (message.team_id != null && Object.hasOwnProperty.call(message, "team_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.team_id);
-            if (message.team_tag != null && message.hasOwnProperty("team_tag"))
+            if (message.team_tag != null && Object.hasOwnProperty.call(message, "team_tag"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.team_tag);
-            if (message.team_flag != null && message.hasOwnProperty("team_flag"))
+            if (message.team_flag != null && Object.hasOwnProperty.call(message, "team_flag"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.team_flag);
-            if (message.team_name != null && message.hasOwnProperty("team_name"))
+            if (message.team_name != null && Object.hasOwnProperty.call(message, "team_name"))
                 writer.uint32(/* id 4, wireType 2 =*/34).string(message.team_name);
             if (message.players != null && message.players.length)
                 for (var i = 0; i < message.players.length; ++i)
@@ -1660,23 +1668,23 @@
         TournamentEvent.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.event_id != null && message.hasOwnProperty("event_id"))
+            if (message.event_id != null && Object.hasOwnProperty.call(message, "event_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.event_id);
-            if (message.event_tag != null && message.hasOwnProperty("event_tag"))
+            if (message.event_tag != null && Object.hasOwnProperty.call(message, "event_tag"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.event_tag);
-            if (message.event_name != null && message.hasOwnProperty("event_name"))
+            if (message.event_name != null && Object.hasOwnProperty.call(message, "event_name"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.event_name);
-            if (message.event_time_start != null && message.hasOwnProperty("event_time_start"))
+            if (message.event_time_start != null && Object.hasOwnProperty.call(message, "event_time_start"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.event_time_start);
-            if (message.event_time_end != null && message.hasOwnProperty("event_time_end"))
+            if (message.event_time_end != null && Object.hasOwnProperty.call(message, "event_time_end"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.event_time_end);
-            if (message.event_public != null && message.hasOwnProperty("event_public"))
+            if (message.event_public != null && Object.hasOwnProperty.call(message, "event_public"))
                 writer.uint32(/* id 6, wireType 0 =*/48).int32(message.event_public);
-            if (message.event_stage_id != null && message.hasOwnProperty("event_stage_id"))
+            if (message.event_stage_id != null && Object.hasOwnProperty.call(message, "event_stage_id"))
                 writer.uint32(/* id 7, wireType 0 =*/56).int32(message.event_stage_id);
-            if (message.event_stage_name != null && message.hasOwnProperty("event_stage_name"))
+            if (message.event_stage_name != null && Object.hasOwnProperty.call(message, "event_stage_name"))
                 writer.uint32(/* id 8, wireType 2 =*/66).string(message.event_stage_name);
-            if (message.active_section_id != null && message.hasOwnProperty("active_section_id"))
+            if (message.active_section_id != null && Object.hasOwnProperty.call(message, "active_section_id"))
                 writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.active_section_id);
             return writer;
         };
@@ -2079,36 +2087,36 @@
         GlobalStatistics.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.players_online != null && message.hasOwnProperty("players_online"))
+            if (message.players_online != null && Object.hasOwnProperty.call(message, "players_online"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.players_online);
-            if (message.servers_online != null && message.hasOwnProperty("servers_online"))
+            if (message.servers_online != null && Object.hasOwnProperty.call(message, "servers_online"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.servers_online);
-            if (message.players_searching != null && message.hasOwnProperty("players_searching"))
+            if (message.players_searching != null && Object.hasOwnProperty.call(message, "players_searching"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.players_searching);
-            if (message.servers_available != null && message.hasOwnProperty("servers_available"))
+            if (message.servers_available != null && Object.hasOwnProperty.call(message, "servers_available"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.servers_available);
-            if (message.ongoing_matches != null && message.hasOwnProperty("ongoing_matches"))
+            if (message.ongoing_matches != null && Object.hasOwnProperty.call(message, "ongoing_matches"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.ongoing_matches);
-            if (message.search_time_avg != null && message.hasOwnProperty("search_time_avg"))
+            if (message.search_time_avg != null && Object.hasOwnProperty.call(message, "search_time_avg"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.search_time_avg);
             if (message.search_statistics != null && message.search_statistics.length)
                 for (var i = 0; i < message.search_statistics.length; ++i)
                     $root.DetailedSearchStatistic.encode(message.search_statistics[i], writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
-            if (message.main_post_url != null && message.hasOwnProperty("main_post_url"))
+            if (message.main_post_url != null && Object.hasOwnProperty.call(message, "main_post_url"))
                 writer.uint32(/* id 8, wireType 2 =*/66).string(message.main_post_url);
-            if (message.required_appid_version != null && message.hasOwnProperty("required_appid_version"))
+            if (message.required_appid_version != null && Object.hasOwnProperty.call(message, "required_appid_version"))
                 writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.required_appid_version);
-            if (message.pricesheet_version != null && message.hasOwnProperty("pricesheet_version"))
+            if (message.pricesheet_version != null && Object.hasOwnProperty.call(message, "pricesheet_version"))
                 writer.uint32(/* id 10, wireType 0 =*/80).uint32(message.pricesheet_version);
-            if (message.twitch_streams_version != null && message.hasOwnProperty("twitch_streams_version"))
+            if (message.twitch_streams_version != null && Object.hasOwnProperty.call(message, "twitch_streams_version"))
                 writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.twitch_streams_version);
-            if (message.active_tournament_eventid != null && message.hasOwnProperty("active_tournament_eventid"))
+            if (message.active_tournament_eventid != null && Object.hasOwnProperty.call(message, "active_tournament_eventid"))
                 writer.uint32(/* id 12, wireType 0 =*/96).uint32(message.active_tournament_eventid);
-            if (message.active_survey_id != null && message.hasOwnProperty("active_survey_id"))
+            if (message.active_survey_id != null && Object.hasOwnProperty.call(message, "active_survey_id"))
                 writer.uint32(/* id 13, wireType 0 =*/104).uint32(message.active_survey_id);
-            if (message.rtime32_cur != null && message.hasOwnProperty("rtime32_cur"))
+            if (message.rtime32_cur != null && Object.hasOwnProperty.call(message, "rtime32_cur"))
                 writer.uint32(/* id 14, wireType 0 =*/112).uint32(message.rtime32_cur);
-            if (message.rtime32_event_start != null && message.hasOwnProperty("rtime32_event_start"))
+            if (message.rtime32_event_start != null && Object.hasOwnProperty.call(message, "rtime32_event_start"))
                 writer.uint32(/* id 15, wireType 0 =*/120).uint32(message.rtime32_event_start);
             return writer;
         };
@@ -2479,9 +2487,9 @@
         OperationalStatisticDescription.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.name != null && message.hasOwnProperty("name"))
+            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-            if (message.idkey != null && message.hasOwnProperty("idkey"))
+            if (message.idkey != null && Object.hasOwnProperty.call(message, "idkey"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.idkey);
             return writer;
         };
@@ -2690,7 +2698,7 @@
         OperationalStatisticElement.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.idkey != null && message.hasOwnProperty("idkey"))
+            if (message.idkey != null && Object.hasOwnProperty.call(message, "idkey"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.idkey);
             if (message.values != null && message.values.length)
                 for (var i = 0; i < message.values.length; ++i)
@@ -2930,9 +2938,9 @@
         OperationalStatisticsPacket.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.packetid != null && message.hasOwnProperty("packetid"))
+            if (message.packetid != null && Object.hasOwnProperty.call(message, "packetid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.packetid);
-            if (message.mstimestamp != null && message.hasOwnProperty("mstimestamp"))
+            if (message.mstimestamp != null && Object.hasOwnProperty.call(message, "mstimestamp"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.mstimestamp);
             if (message.values != null && message.values.length)
                 for (var i = 0; i < message.values.length; ++i)
@@ -3120,6 +3128,7 @@
          * @property {number|null} [wins] PlayerRankingInfo wins
          * @property {number|null} [rank_change] PlayerRankingInfo rank_change
          * @property {number|null} [rank_type_id] PlayerRankingInfo rank_type_id
+         * @property {number|null} [tv_control] PlayerRankingInfo tv_control
          */
     
         /**
@@ -3178,6 +3187,14 @@
         PlayerRankingInfo.prototype.rank_type_id = 0;
     
         /**
+         * PlayerRankingInfo tv_control.
+         * @member {number} tv_control
+         * @memberof PlayerRankingInfo
+         * @instance
+         */
+        PlayerRankingInfo.prototype.tv_control = 0;
+    
+        /**
          * Creates a new PlayerRankingInfo instance using the specified properties.
          * @function create
          * @memberof PlayerRankingInfo
@@ -3201,16 +3218,18 @@
         PlayerRankingInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.account_id);
-            if (message.rank_id != null && message.hasOwnProperty("rank_id"))
+            if (message.rank_id != null && Object.hasOwnProperty.call(message, "rank_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.rank_id);
-            if (message.wins != null && message.hasOwnProperty("wins"))
+            if (message.wins != null && Object.hasOwnProperty.call(message, "wins"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.wins);
-            if (message.rank_change != null && message.hasOwnProperty("rank_change"))
+            if (message.rank_change != null && Object.hasOwnProperty.call(message, "rank_change"))
                 writer.uint32(/* id 4, wireType 5 =*/37).float(message.rank_change);
-            if (message.rank_type_id != null && message.hasOwnProperty("rank_type_id"))
+            if (message.rank_type_id != null && Object.hasOwnProperty.call(message, "rank_type_id"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.rank_type_id);
+            if (message.tv_control != null && Object.hasOwnProperty.call(message, "tv_control"))
+                writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.tv_control);
             return writer;
         };
     
@@ -3259,6 +3278,9 @@
                     break;
                 case 6:
                     message.rank_type_id = reader.uint32();
+                    break;
+                case 7:
+                    message.tv_control = reader.uint32();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -3310,6 +3332,9 @@
             if (message.rank_type_id != null && message.hasOwnProperty("rank_type_id"))
                 if (!$util.isInteger(message.rank_type_id))
                     return "rank_type_id: integer expected";
+            if (message.tv_control != null && message.hasOwnProperty("tv_control"))
+                if (!$util.isInteger(message.tv_control))
+                    return "tv_control: integer expected";
             return null;
         };
     
@@ -3335,6 +3360,8 @@
                 message.rank_change = Number(object.rank_change);
             if (object.rank_type_id != null)
                 message.rank_type_id = object.rank_type_id >>> 0;
+            if (object.tv_control != null)
+                message.tv_control = object.tv_control >>> 0;
             return message;
         };
     
@@ -3357,6 +3384,7 @@
                 object.wins = 0;
                 object.rank_change = 0;
                 object.rank_type_id = 0;
+                object.tv_control = 0;
             }
             if (message.account_id != null && message.hasOwnProperty("account_id"))
                 object.account_id = message.account_id;
@@ -3368,6 +3396,8 @@
                 object.rank_change = options.json && !isFinite(message.rank_change) ? String(message.rank_change) : message.rank_change;
             if (message.rank_type_id != null && message.hasOwnProperty("rank_type_id"))
                 object.rank_type_id = message.rank_type_id;
+            if (message.tv_control != null && message.hasOwnProperty("tv_control"))
+                object.tv_control = message.tv_control;
             return object;
         };
     
@@ -3459,11 +3489,11 @@
         PlayerCommendationInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.cmd_friendly != null && message.hasOwnProperty("cmd_friendly"))
+            if (message.cmd_friendly != null && Object.hasOwnProperty.call(message, "cmd_friendly"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.cmd_friendly);
-            if (message.cmd_teaching != null && message.hasOwnProperty("cmd_teaching"))
+            if (message.cmd_teaching != null && Object.hasOwnProperty.call(message, "cmd_teaching"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.cmd_teaching);
-            if (message.cmd_leader != null && message.hasOwnProperty("cmd_leader"))
+            if (message.cmd_leader != null && Object.hasOwnProperty.call(message, "cmd_leader"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.cmd_leader);
             return writer;
         };
@@ -3686,7 +3716,7 @@
             if (message.display_items_defidx != null && message.display_items_defidx.length)
                 for (var i = 0; i < message.display_items_defidx.length; ++i)
                     writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.display_items_defidx[i]);
-            if (message.featured_display_item_defidx != null && message.hasOwnProperty("featured_display_item_defidx"))
+            if (message.featured_display_item_defidx != null && Object.hasOwnProperty.call(message, "featured_display_item_defidx"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.featured_display_item_defidx);
             return writer;
         };
@@ -3931,13 +3961,13 @@
         AccountActivity.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.activity != null && message.hasOwnProperty("activity"))
+            if (message.activity != null && Object.hasOwnProperty.call(message, "activity"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.activity);
-            if (message.mode != null && message.hasOwnProperty("mode"))
+            if (message.mode != null && Object.hasOwnProperty.call(message, "mode"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.mode);
-            if (message.map != null && message.hasOwnProperty("map"))
+            if (message.map != null && Object.hasOwnProperty.call(message, "map"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.map);
-            if (message.matchid != null && message.hasOwnProperty("matchid"))
+            if (message.matchid != null && Object.hasOwnProperty.call(message, "matchid"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.matchid);
             return writer;
         };
@@ -4199,13 +4229,13 @@
         TournamentMatchSetup.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.event_id != null && message.hasOwnProperty("event_id"))
+            if (message.event_id != null && Object.hasOwnProperty.call(message, "event_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.event_id);
-            if (message.team_id_ct != null && message.hasOwnProperty("team_id_ct"))
+            if (message.team_id_ct != null && Object.hasOwnProperty.call(message, "team_id_ct"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.team_id_ct);
-            if (message.team_id_t != null && message.hasOwnProperty("team_id_t"))
+            if (message.team_id_t != null && Object.hasOwnProperty.call(message, "team_id_t"))
                 writer.uint32(/* id 3, wireType 0 =*/24).int32(message.team_id_t);
-            if (message.event_stage_id != null && message.hasOwnProperty("event_stage_id"))
+            if (message.event_stage_id != null && Object.hasOwnProperty.call(message, "event_stage_id"))
                 writer.uint32(/* id 4, wireType 0 =*/32).int32(message.event_stage_id);
             return writer;
         };
@@ -4597,45 +4627,45 @@
         ServerHltvInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.tv_udp_port != null && message.hasOwnProperty("tv_udp_port"))
+            if (message.tv_udp_port != null && Object.hasOwnProperty.call(message, "tv_udp_port"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.tv_udp_port);
-            if (message.tv_watch_key != null && message.hasOwnProperty("tv_watch_key"))
+            if (message.tv_watch_key != null && Object.hasOwnProperty.call(message, "tv_watch_key"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.tv_watch_key);
-            if (message.tv_slots != null && message.hasOwnProperty("tv_slots"))
+            if (message.tv_slots != null && Object.hasOwnProperty.call(message, "tv_slots"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.tv_slots);
-            if (message.tv_clients != null && message.hasOwnProperty("tv_clients"))
+            if (message.tv_clients != null && Object.hasOwnProperty.call(message, "tv_clients"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.tv_clients);
-            if (message.tv_proxies != null && message.hasOwnProperty("tv_proxies"))
+            if (message.tv_proxies != null && Object.hasOwnProperty.call(message, "tv_proxies"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.tv_proxies);
-            if (message.tv_time != null && message.hasOwnProperty("tv_time"))
+            if (message.tv_time != null && Object.hasOwnProperty.call(message, "tv_time"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.tv_time);
-            if (message.game_type != null && message.hasOwnProperty("game_type"))
+            if (message.game_type != null && Object.hasOwnProperty.call(message, "game_type"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.game_type);
-            if (message.game_mapgroup != null && message.hasOwnProperty("game_mapgroup"))
+            if (message.game_mapgroup != null && Object.hasOwnProperty.call(message, "game_mapgroup"))
                 writer.uint32(/* id 9, wireType 2 =*/74).string(message.game_mapgroup);
-            if (message.game_map != null && message.hasOwnProperty("game_map"))
+            if (message.game_map != null && Object.hasOwnProperty.call(message, "game_map"))
                 writer.uint32(/* id 10, wireType 2 =*/82).string(message.game_map);
-            if (message.tv_master_steamid != null && message.hasOwnProperty("tv_master_steamid"))
+            if (message.tv_master_steamid != null && Object.hasOwnProperty.call(message, "tv_master_steamid"))
                 writer.uint32(/* id 11, wireType 0 =*/88).uint64(message.tv_master_steamid);
-            if (message.tv_local_slots != null && message.hasOwnProperty("tv_local_slots"))
+            if (message.tv_local_slots != null && Object.hasOwnProperty.call(message, "tv_local_slots"))
                 writer.uint32(/* id 12, wireType 0 =*/96).uint32(message.tv_local_slots);
-            if (message.tv_local_clients != null && message.hasOwnProperty("tv_local_clients"))
+            if (message.tv_local_clients != null && Object.hasOwnProperty.call(message, "tv_local_clients"))
                 writer.uint32(/* id 13, wireType 0 =*/104).uint32(message.tv_local_clients);
-            if (message.tv_local_proxies != null && message.hasOwnProperty("tv_local_proxies"))
+            if (message.tv_local_proxies != null && Object.hasOwnProperty.call(message, "tv_local_proxies"))
                 writer.uint32(/* id 14, wireType 0 =*/112).uint32(message.tv_local_proxies);
-            if (message.tv_relay_slots != null && message.hasOwnProperty("tv_relay_slots"))
+            if (message.tv_relay_slots != null && Object.hasOwnProperty.call(message, "tv_relay_slots"))
                 writer.uint32(/* id 15, wireType 0 =*/120).uint32(message.tv_relay_slots);
-            if (message.tv_relay_clients != null && message.hasOwnProperty("tv_relay_clients"))
+            if (message.tv_relay_clients != null && Object.hasOwnProperty.call(message, "tv_relay_clients"))
                 writer.uint32(/* id 16, wireType 0 =*/128).uint32(message.tv_relay_clients);
-            if (message.tv_relay_proxies != null && message.hasOwnProperty("tv_relay_proxies"))
+            if (message.tv_relay_proxies != null && Object.hasOwnProperty.call(message, "tv_relay_proxies"))
                 writer.uint32(/* id 17, wireType 0 =*/136).uint32(message.tv_relay_proxies);
-            if (message.tv_relay_address != null && message.hasOwnProperty("tv_relay_address"))
+            if (message.tv_relay_address != null && Object.hasOwnProperty.call(message, "tv_relay_address"))
                 writer.uint32(/* id 18, wireType 0 =*/144).uint32(message.tv_relay_address);
-            if (message.tv_relay_port != null && message.hasOwnProperty("tv_relay_port"))
+            if (message.tv_relay_port != null && Object.hasOwnProperty.call(message, "tv_relay_port"))
                 writer.uint32(/* id 19, wireType 0 =*/152).uint32(message.tv_relay_port);
-            if (message.tv_relay_steamid != null && message.hasOwnProperty("tv_relay_steamid"))
+            if (message.tv_relay_steamid != null && Object.hasOwnProperty.call(message, "tv_relay_steamid"))
                 writer.uint32(/* id 20, wireType 0 =*/160).uint64(message.tv_relay_steamid);
-            if (message.flags != null && message.hasOwnProperty("flags"))
+            if (message.flags != null && Object.hasOwnProperty.call(message, "flags"))
                 writer.uint32(/* id 21, wireType 0 =*/168).uint32(message.flags);
             return writer;
         };
@@ -5119,17 +5149,17 @@
         IpAddressMask.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.a != null && message.hasOwnProperty("a"))
+            if (message.a != null && Object.hasOwnProperty.call(message, "a"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.a);
-            if (message.b != null && message.hasOwnProperty("b"))
+            if (message.b != null && Object.hasOwnProperty.call(message, "b"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.b);
-            if (message.c != null && message.hasOwnProperty("c"))
+            if (message.c != null && Object.hasOwnProperty.call(message, "c"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.c);
-            if (message.d != null && message.hasOwnProperty("d"))
+            if (message.d != null && Object.hasOwnProperty.call(message, "d"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.d);
-            if (message.bits != null && message.hasOwnProperty("bits"))
+            if (message.bits != null && Object.hasOwnProperty.call(message, "bits"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.bits);
-            if (message.token != null && message.hasOwnProperty("token"))
+            if (message.token != null && Object.hasOwnProperty.call(message, "token"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.token);
             return writer;
         };
@@ -5390,11 +5420,11 @@
         CMsgCsgoSteamUserStatChange.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.ecsgosteamuserstat != null && message.hasOwnProperty("ecsgosteamuserstat"))
+            if (message.ecsgosteamuserstat != null && Object.hasOwnProperty.call(message, "ecsgosteamuserstat"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.ecsgosteamuserstat);
-            if (message.delta != null && message.hasOwnProperty("delta"))
+            if (message.delta != null && Object.hasOwnProperty.call(message, "delta"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.delta);
-            if (message.absolute != null && message.hasOwnProperty("absolute"))
+            if (message.absolute != null && Object.hasOwnProperty.call(message, "absolute"))
                 writer.uint32(/* id 3, wireType 0 =*/24).bool(message.absolute);
             return writer;
         };
@@ -5613,9 +5643,9 @@
         XpProgressData.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.xp_points != null && message.hasOwnProperty("xp_points"))
+            if (message.xp_points != null && Object.hasOwnProperty.call(message, "xp_points"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.xp_points);
-            if (message.xp_category != null && message.hasOwnProperty("xp_category"))
+            if (message.xp_category != null && Object.hasOwnProperty.call(message, "xp_category"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.xp_category);
             return writer;
         };
@@ -5832,11 +5862,11 @@
         MatchEndItemUpdates.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.item_id != null && message.hasOwnProperty("item_id"))
+            if (message.item_id != null && Object.hasOwnProperty.call(message, "item_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.item_id);
-            if (message.item_attr_defidx != null && message.hasOwnProperty("item_attr_defidx"))
+            if (message.item_attr_defidx != null && Object.hasOwnProperty.call(message, "item_attr_defidx"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.item_attr_defidx);
-            if (message.item_attr_delta_value != null && message.hasOwnProperty("item_attr_delta_value"))
+            if (message.item_attr_delta_value != null && Object.hasOwnProperty.call(message, "item_attr_delta_value"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.item_attr_delta_value);
             return writer;
         };
@@ -6089,9 +6119,9 @@
         ScoreLeaderboardData.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.quest_id != null && message.hasOwnProperty("quest_id"))
+            if (message.quest_id != null && Object.hasOwnProperty.call(message, "quest_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.quest_id);
-            if (message.score != null && message.hasOwnProperty("score"))
+            if (message.score != null && Object.hasOwnProperty.call(message, "score"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.score);
             if (message.accountentries != null && message.accountentries.length)
                 for (var i = 0; i < message.accountentries.length; ++i)
@@ -6378,9 +6408,9 @@
             Entry.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.tag != null && message.hasOwnProperty("tag"))
+                if (message.tag != null && Object.hasOwnProperty.call(message, "tag"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.tag);
-                if (message.val != null && message.hasOwnProperty("val"))
+                if (message.val != null && Object.hasOwnProperty.call(message, "val"))
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.val);
                 return writer;
             };
@@ -6589,7 +6619,7 @@
             AccountEntries.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.accountid != null && message.hasOwnProperty("accountid"))
+                if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.accountid);
                 if (message.entries != null && message.entries.length)
                     for (var i = 0; i < message.entries.length; ++i)
@@ -6880,7 +6910,7 @@
         PlayerQuestData.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.quester_account_id != null && message.hasOwnProperty("quester_account_id"))
+            if (message.quester_account_id != null && Object.hasOwnProperty.call(message, "quester_account_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.quester_account_id);
             if (message.quest_item_data != null && message.quest_item_data.length)
                 for (var i = 0; i < message.quest_item_data.length; ++i)
@@ -6888,14 +6918,14 @@
             if (message.xp_progress_data != null && message.xp_progress_data.length)
                 for (var i = 0; i < message.xp_progress_data.length; ++i)
                     $root.XpProgressData.encode(message.xp_progress_data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-            if (message.time_played != null && message.hasOwnProperty("time_played"))
+            if (message.time_played != null && Object.hasOwnProperty.call(message, "time_played"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.time_played);
-            if (message.mm_game_mode != null && message.hasOwnProperty("mm_game_mode"))
+            if (message.mm_game_mode != null && Object.hasOwnProperty.call(message, "mm_game_mode"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.mm_game_mode);
             if (message.item_updates != null && message.item_updates.length)
                 for (var i = 0; i < message.item_updates.length; ++i)
                     $root.MatchEndItemUpdates.encode(message.item_updates[i], writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
-            if (message.operation_points_eligible != null && message.hasOwnProperty("operation_points_eligible"))
+            if (message.operation_points_eligible != null && Object.hasOwnProperty.call(message, "operation_points_eligible"))
                 writer.uint32(/* id 7, wireType 0 =*/56).bool(message.operation_points_eligible);
             if (message.userstatchanges != null && message.userstatchanges.length)
                 for (var i = 0; i < message.userstatchanges.length; ++i)
@@ -7256,11 +7286,11 @@
             QuestItemData.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.quest_id != null && message.hasOwnProperty("quest_id"))
+                if (message.quest_id != null && Object.hasOwnProperty.call(message, "quest_id"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.quest_id);
-                if (message.quest_normal_points_earned != null && message.hasOwnProperty("quest_normal_points_earned"))
+                if (message.quest_normal_points_earned != null && Object.hasOwnProperty.call(message, "quest_normal_points_earned"))
                     writer.uint32(/* id 2, wireType 0 =*/16).int32(message.quest_normal_points_earned);
-                if (message.quest_bonus_points_earned != null && message.hasOwnProperty("quest_bonus_points_earned"))
+                if (message.quest_bonus_points_earned != null && Object.hasOwnProperty.call(message, "quest_bonus_points_earned"))
                     writer.uint32(/* id 3, wireType 0 =*/24).int32(message.quest_bonus_points_earned);
                 return writer;
             };
@@ -7431,6 +7461,1312 @@
         return PlayerQuestData;
     })();
     
+    $root.DeepPlayerStatsEntry = (function() {
+    
+        /**
+         * Properties of a DeepPlayerStatsEntry.
+         * @exports IDeepPlayerStatsEntry
+         * @interface IDeepPlayerStatsEntry
+         * @property {number|null} [accountid] DeepPlayerStatsEntry accountid
+         * @property {number|Long|null} [match_id] DeepPlayerStatsEntry match_id
+         * @property {number|null} [mm_game_mode] DeepPlayerStatsEntry mm_game_mode
+         * @property {number|null} [mapid] DeepPlayerStatsEntry mapid
+         * @property {boolean|null} [b_starting_ct] DeepPlayerStatsEntry b_starting_ct
+         * @property {number|null} [match_outcome] DeepPlayerStatsEntry match_outcome
+         * @property {number|null} [rounds_won] DeepPlayerStatsEntry rounds_won
+         * @property {number|null} [rounds_lost] DeepPlayerStatsEntry rounds_lost
+         * @property {number|null} [stat_score] DeepPlayerStatsEntry stat_score
+         * @property {number|null} [stat_deaths] DeepPlayerStatsEntry stat_deaths
+         * @property {number|null} [stat_mvps] DeepPlayerStatsEntry stat_mvps
+         * @property {number|null} [enemy_kills] DeepPlayerStatsEntry enemy_kills
+         * @property {number|null} [enemy_headshots] DeepPlayerStatsEntry enemy_headshots
+         * @property {number|null} [enemy_2ks] DeepPlayerStatsEntry enemy_2ks
+         * @property {number|null} [enemy_3ks] DeepPlayerStatsEntry enemy_3ks
+         * @property {number|null} [enemy_4ks] DeepPlayerStatsEntry enemy_4ks
+         * @property {number|null} [total_damage] DeepPlayerStatsEntry total_damage
+         * @property {number|null} [engagements_entry_count] DeepPlayerStatsEntry engagements_entry_count
+         * @property {number|null} [engagements_entry_wins] DeepPlayerStatsEntry engagements_entry_wins
+         * @property {number|null} [engagements_1v1_count] DeepPlayerStatsEntry engagements_1v1_count
+         * @property {number|null} [engagements_1v1_wins] DeepPlayerStatsEntry engagements_1v1_wins
+         * @property {number|null} [engagements_1v2_count] DeepPlayerStatsEntry engagements_1v2_count
+         * @property {number|null} [engagements_1v2_wins] DeepPlayerStatsEntry engagements_1v2_wins
+         * @property {number|null} [utility_count] DeepPlayerStatsEntry utility_count
+         * @property {number|null} [utility_success] DeepPlayerStatsEntry utility_success
+         * @property {number|null} [flash_count] DeepPlayerStatsEntry flash_count
+         * @property {number|null} [flash_success] DeepPlayerStatsEntry flash_success
+         * @property {Array.<number>|null} [mates] DeepPlayerStatsEntry mates
+         */
+    
+        /**
+         * Constructs a new DeepPlayerStatsEntry.
+         * @exports DeepPlayerStatsEntry
+         * @classdesc Represents a DeepPlayerStatsEntry.
+         * @implements IDeepPlayerStatsEntry
+         * @constructor
+         * @param {IDeepPlayerStatsEntry=} [properties] Properties to set
+         */
+        function DeepPlayerStatsEntry(properties) {
+            this.mates = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * DeepPlayerStatsEntry accountid.
+         * @member {number} accountid
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.accountid = 0;
+    
+        /**
+         * DeepPlayerStatsEntry match_id.
+         * @member {number|Long} match_id
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.match_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+        /**
+         * DeepPlayerStatsEntry mm_game_mode.
+         * @member {number} mm_game_mode
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.mm_game_mode = 0;
+    
+        /**
+         * DeepPlayerStatsEntry mapid.
+         * @member {number} mapid
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.mapid = 0;
+    
+        /**
+         * DeepPlayerStatsEntry b_starting_ct.
+         * @member {boolean} b_starting_ct
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.b_starting_ct = false;
+    
+        /**
+         * DeepPlayerStatsEntry match_outcome.
+         * @member {number} match_outcome
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.match_outcome = 0;
+    
+        /**
+         * DeepPlayerStatsEntry rounds_won.
+         * @member {number} rounds_won
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.rounds_won = 0;
+    
+        /**
+         * DeepPlayerStatsEntry rounds_lost.
+         * @member {number} rounds_lost
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.rounds_lost = 0;
+    
+        /**
+         * DeepPlayerStatsEntry stat_score.
+         * @member {number} stat_score
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.stat_score = 0;
+    
+        /**
+         * DeepPlayerStatsEntry stat_deaths.
+         * @member {number} stat_deaths
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.stat_deaths = 0;
+    
+        /**
+         * DeepPlayerStatsEntry stat_mvps.
+         * @member {number} stat_mvps
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.stat_mvps = 0;
+    
+        /**
+         * DeepPlayerStatsEntry enemy_kills.
+         * @member {number} enemy_kills
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.enemy_kills = 0;
+    
+        /**
+         * DeepPlayerStatsEntry enemy_headshots.
+         * @member {number} enemy_headshots
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.enemy_headshots = 0;
+    
+        /**
+         * DeepPlayerStatsEntry enemy_2ks.
+         * @member {number} enemy_2ks
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.enemy_2ks = 0;
+    
+        /**
+         * DeepPlayerStatsEntry enemy_3ks.
+         * @member {number} enemy_3ks
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.enemy_3ks = 0;
+    
+        /**
+         * DeepPlayerStatsEntry enemy_4ks.
+         * @member {number} enemy_4ks
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.enemy_4ks = 0;
+    
+        /**
+         * DeepPlayerStatsEntry total_damage.
+         * @member {number} total_damage
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.total_damage = 0;
+    
+        /**
+         * DeepPlayerStatsEntry engagements_entry_count.
+         * @member {number} engagements_entry_count
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.engagements_entry_count = 0;
+    
+        /**
+         * DeepPlayerStatsEntry engagements_entry_wins.
+         * @member {number} engagements_entry_wins
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.engagements_entry_wins = 0;
+    
+        /**
+         * DeepPlayerStatsEntry engagements_1v1_count.
+         * @member {number} engagements_1v1_count
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.engagements_1v1_count = 0;
+    
+        /**
+         * DeepPlayerStatsEntry engagements_1v1_wins.
+         * @member {number} engagements_1v1_wins
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.engagements_1v1_wins = 0;
+    
+        /**
+         * DeepPlayerStatsEntry engagements_1v2_count.
+         * @member {number} engagements_1v2_count
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.engagements_1v2_count = 0;
+    
+        /**
+         * DeepPlayerStatsEntry engagements_1v2_wins.
+         * @member {number} engagements_1v2_wins
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.engagements_1v2_wins = 0;
+    
+        /**
+         * DeepPlayerStatsEntry utility_count.
+         * @member {number} utility_count
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.utility_count = 0;
+    
+        /**
+         * DeepPlayerStatsEntry utility_success.
+         * @member {number} utility_success
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.utility_success = 0;
+    
+        /**
+         * DeepPlayerStatsEntry flash_count.
+         * @member {number} flash_count
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.flash_count = 0;
+    
+        /**
+         * DeepPlayerStatsEntry flash_success.
+         * @member {number} flash_success
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.flash_success = 0;
+    
+        /**
+         * DeepPlayerStatsEntry mates.
+         * @member {Array.<number>} mates
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         */
+        DeepPlayerStatsEntry.prototype.mates = $util.emptyArray;
+    
+        /**
+         * Creates a new DeepPlayerStatsEntry instance using the specified properties.
+         * @function create
+         * @memberof DeepPlayerStatsEntry
+         * @static
+         * @param {IDeepPlayerStatsEntry=} [properties] Properties to set
+         * @returns {DeepPlayerStatsEntry} DeepPlayerStatsEntry instance
+         */
+        DeepPlayerStatsEntry.create = function create(properties) {
+            return new DeepPlayerStatsEntry(properties);
+        };
+    
+        /**
+         * Encodes the specified DeepPlayerStatsEntry message. Does not implicitly {@link DeepPlayerStatsEntry.verify|verify} messages.
+         * @function encode
+         * @memberof DeepPlayerStatsEntry
+         * @static
+         * @param {IDeepPlayerStatsEntry} message DeepPlayerStatsEntry message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeepPlayerStatsEntry.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.accountid);
+            if (message.match_id != null && Object.hasOwnProperty.call(message, "match_id"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.match_id);
+            if (message.mm_game_mode != null && Object.hasOwnProperty.call(message, "mm_game_mode"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.mm_game_mode);
+            if (message.mapid != null && Object.hasOwnProperty.call(message, "mapid"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.mapid);
+            if (message.b_starting_ct != null && Object.hasOwnProperty.call(message, "b_starting_ct"))
+                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.b_starting_ct);
+            if (message.match_outcome != null && Object.hasOwnProperty.call(message, "match_outcome"))
+                writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.match_outcome);
+            if (message.rounds_won != null && Object.hasOwnProperty.call(message, "rounds_won"))
+                writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.rounds_won);
+            if (message.rounds_lost != null && Object.hasOwnProperty.call(message, "rounds_lost"))
+                writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.rounds_lost);
+            if (message.stat_score != null && Object.hasOwnProperty.call(message, "stat_score"))
+                writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.stat_score);
+            if (message.stat_deaths != null && Object.hasOwnProperty.call(message, "stat_deaths"))
+                writer.uint32(/* id 12, wireType 0 =*/96).uint32(message.stat_deaths);
+            if (message.stat_mvps != null && Object.hasOwnProperty.call(message, "stat_mvps"))
+                writer.uint32(/* id 13, wireType 0 =*/104).uint32(message.stat_mvps);
+            if (message.enemy_kills != null && Object.hasOwnProperty.call(message, "enemy_kills"))
+                writer.uint32(/* id 14, wireType 0 =*/112).uint32(message.enemy_kills);
+            if (message.enemy_headshots != null && Object.hasOwnProperty.call(message, "enemy_headshots"))
+                writer.uint32(/* id 15, wireType 0 =*/120).uint32(message.enemy_headshots);
+            if (message.enemy_2ks != null && Object.hasOwnProperty.call(message, "enemy_2ks"))
+                writer.uint32(/* id 16, wireType 0 =*/128).uint32(message.enemy_2ks);
+            if (message.enemy_3ks != null && Object.hasOwnProperty.call(message, "enemy_3ks"))
+                writer.uint32(/* id 17, wireType 0 =*/136).uint32(message.enemy_3ks);
+            if (message.enemy_4ks != null && Object.hasOwnProperty.call(message, "enemy_4ks"))
+                writer.uint32(/* id 18, wireType 0 =*/144).uint32(message.enemy_4ks);
+            if (message.total_damage != null && Object.hasOwnProperty.call(message, "total_damage"))
+                writer.uint32(/* id 19, wireType 0 =*/152).uint32(message.total_damage);
+            if (message.engagements_entry_count != null && Object.hasOwnProperty.call(message, "engagements_entry_count"))
+                writer.uint32(/* id 23, wireType 0 =*/184).uint32(message.engagements_entry_count);
+            if (message.engagements_entry_wins != null && Object.hasOwnProperty.call(message, "engagements_entry_wins"))
+                writer.uint32(/* id 24, wireType 0 =*/192).uint32(message.engagements_entry_wins);
+            if (message.engagements_1v1_count != null && Object.hasOwnProperty.call(message, "engagements_1v1_count"))
+                writer.uint32(/* id 25, wireType 0 =*/200).uint32(message.engagements_1v1_count);
+            if (message.engagements_1v1_wins != null && Object.hasOwnProperty.call(message, "engagements_1v1_wins"))
+                writer.uint32(/* id 26, wireType 0 =*/208).uint32(message.engagements_1v1_wins);
+            if (message.engagements_1v2_count != null && Object.hasOwnProperty.call(message, "engagements_1v2_count"))
+                writer.uint32(/* id 27, wireType 0 =*/216).uint32(message.engagements_1v2_count);
+            if (message.engagements_1v2_wins != null && Object.hasOwnProperty.call(message, "engagements_1v2_wins"))
+                writer.uint32(/* id 28, wireType 0 =*/224).uint32(message.engagements_1v2_wins);
+            if (message.utility_count != null && Object.hasOwnProperty.call(message, "utility_count"))
+                writer.uint32(/* id 29, wireType 0 =*/232).uint32(message.utility_count);
+            if (message.utility_success != null && Object.hasOwnProperty.call(message, "utility_success"))
+                writer.uint32(/* id 30, wireType 0 =*/240).uint32(message.utility_success);
+            if (message.flash_count != null && Object.hasOwnProperty.call(message, "flash_count"))
+                writer.uint32(/* id 32, wireType 0 =*/256).uint32(message.flash_count);
+            if (message.flash_success != null && Object.hasOwnProperty.call(message, "flash_success"))
+                writer.uint32(/* id 33, wireType 0 =*/264).uint32(message.flash_success);
+            if (message.mates != null && message.mates.length)
+                for (var i = 0; i < message.mates.length; ++i)
+                    writer.uint32(/* id 34, wireType 0 =*/272).uint32(message.mates[i]);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified DeepPlayerStatsEntry message, length delimited. Does not implicitly {@link DeepPlayerStatsEntry.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof DeepPlayerStatsEntry
+         * @static
+         * @param {IDeepPlayerStatsEntry} message DeepPlayerStatsEntry message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeepPlayerStatsEntry.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a DeepPlayerStatsEntry message from the specified reader or buffer.
+         * @function decode
+         * @memberof DeepPlayerStatsEntry
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {DeepPlayerStatsEntry} DeepPlayerStatsEntry
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeepPlayerStatsEntry.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.DeepPlayerStatsEntry();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.accountid = reader.uint32();
+                    break;
+                case 2:
+                    message.match_id = reader.uint64();
+                    break;
+                case 3:
+                    message.mm_game_mode = reader.uint32();
+                    break;
+                case 4:
+                    message.mapid = reader.uint32();
+                    break;
+                case 5:
+                    message.b_starting_ct = reader.bool();
+                    break;
+                case 6:
+                    message.match_outcome = reader.uint32();
+                    break;
+                case 7:
+                    message.rounds_won = reader.uint32();
+                    break;
+                case 8:
+                    message.rounds_lost = reader.uint32();
+                    break;
+                case 9:
+                    message.stat_score = reader.uint32();
+                    break;
+                case 12:
+                    message.stat_deaths = reader.uint32();
+                    break;
+                case 13:
+                    message.stat_mvps = reader.uint32();
+                    break;
+                case 14:
+                    message.enemy_kills = reader.uint32();
+                    break;
+                case 15:
+                    message.enemy_headshots = reader.uint32();
+                    break;
+                case 16:
+                    message.enemy_2ks = reader.uint32();
+                    break;
+                case 17:
+                    message.enemy_3ks = reader.uint32();
+                    break;
+                case 18:
+                    message.enemy_4ks = reader.uint32();
+                    break;
+                case 19:
+                    message.total_damage = reader.uint32();
+                    break;
+                case 23:
+                    message.engagements_entry_count = reader.uint32();
+                    break;
+                case 24:
+                    message.engagements_entry_wins = reader.uint32();
+                    break;
+                case 25:
+                    message.engagements_1v1_count = reader.uint32();
+                    break;
+                case 26:
+                    message.engagements_1v1_wins = reader.uint32();
+                    break;
+                case 27:
+                    message.engagements_1v2_count = reader.uint32();
+                    break;
+                case 28:
+                    message.engagements_1v2_wins = reader.uint32();
+                    break;
+                case 29:
+                    message.utility_count = reader.uint32();
+                    break;
+                case 30:
+                    message.utility_success = reader.uint32();
+                    break;
+                case 32:
+                    message.flash_count = reader.uint32();
+                    break;
+                case 33:
+                    message.flash_success = reader.uint32();
+                    break;
+                case 34:
+                    if (!(message.mates && message.mates.length))
+                        message.mates = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.mates.push(reader.uint32());
+                    } else
+                        message.mates.push(reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a DeepPlayerStatsEntry message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof DeepPlayerStatsEntry
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {DeepPlayerStatsEntry} DeepPlayerStatsEntry
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeepPlayerStatsEntry.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a DeepPlayerStatsEntry message.
+         * @function verify
+         * @memberof DeepPlayerStatsEntry
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DeepPlayerStatsEntry.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.accountid != null && message.hasOwnProperty("accountid"))
+                if (!$util.isInteger(message.accountid))
+                    return "accountid: integer expected";
+            if (message.match_id != null && message.hasOwnProperty("match_id"))
+                if (!$util.isInteger(message.match_id) && !(message.match_id && $util.isInteger(message.match_id.low) && $util.isInteger(message.match_id.high)))
+                    return "match_id: integer|Long expected";
+            if (message.mm_game_mode != null && message.hasOwnProperty("mm_game_mode"))
+                if (!$util.isInteger(message.mm_game_mode))
+                    return "mm_game_mode: integer expected";
+            if (message.mapid != null && message.hasOwnProperty("mapid"))
+                if (!$util.isInteger(message.mapid))
+                    return "mapid: integer expected";
+            if (message.b_starting_ct != null && message.hasOwnProperty("b_starting_ct"))
+                if (typeof message.b_starting_ct !== "boolean")
+                    return "b_starting_ct: boolean expected";
+            if (message.match_outcome != null && message.hasOwnProperty("match_outcome"))
+                if (!$util.isInteger(message.match_outcome))
+                    return "match_outcome: integer expected";
+            if (message.rounds_won != null && message.hasOwnProperty("rounds_won"))
+                if (!$util.isInteger(message.rounds_won))
+                    return "rounds_won: integer expected";
+            if (message.rounds_lost != null && message.hasOwnProperty("rounds_lost"))
+                if (!$util.isInteger(message.rounds_lost))
+                    return "rounds_lost: integer expected";
+            if (message.stat_score != null && message.hasOwnProperty("stat_score"))
+                if (!$util.isInteger(message.stat_score))
+                    return "stat_score: integer expected";
+            if (message.stat_deaths != null && message.hasOwnProperty("stat_deaths"))
+                if (!$util.isInteger(message.stat_deaths))
+                    return "stat_deaths: integer expected";
+            if (message.stat_mvps != null && message.hasOwnProperty("stat_mvps"))
+                if (!$util.isInteger(message.stat_mvps))
+                    return "stat_mvps: integer expected";
+            if (message.enemy_kills != null && message.hasOwnProperty("enemy_kills"))
+                if (!$util.isInteger(message.enemy_kills))
+                    return "enemy_kills: integer expected";
+            if (message.enemy_headshots != null && message.hasOwnProperty("enemy_headshots"))
+                if (!$util.isInteger(message.enemy_headshots))
+                    return "enemy_headshots: integer expected";
+            if (message.enemy_2ks != null && message.hasOwnProperty("enemy_2ks"))
+                if (!$util.isInteger(message.enemy_2ks))
+                    return "enemy_2ks: integer expected";
+            if (message.enemy_3ks != null && message.hasOwnProperty("enemy_3ks"))
+                if (!$util.isInteger(message.enemy_3ks))
+                    return "enemy_3ks: integer expected";
+            if (message.enemy_4ks != null && message.hasOwnProperty("enemy_4ks"))
+                if (!$util.isInteger(message.enemy_4ks))
+                    return "enemy_4ks: integer expected";
+            if (message.total_damage != null && message.hasOwnProperty("total_damage"))
+                if (!$util.isInteger(message.total_damage))
+                    return "total_damage: integer expected";
+            if (message.engagements_entry_count != null && message.hasOwnProperty("engagements_entry_count"))
+                if (!$util.isInteger(message.engagements_entry_count))
+                    return "engagements_entry_count: integer expected";
+            if (message.engagements_entry_wins != null && message.hasOwnProperty("engagements_entry_wins"))
+                if (!$util.isInteger(message.engagements_entry_wins))
+                    return "engagements_entry_wins: integer expected";
+            if (message.engagements_1v1_count != null && message.hasOwnProperty("engagements_1v1_count"))
+                if (!$util.isInteger(message.engagements_1v1_count))
+                    return "engagements_1v1_count: integer expected";
+            if (message.engagements_1v1_wins != null && message.hasOwnProperty("engagements_1v1_wins"))
+                if (!$util.isInteger(message.engagements_1v1_wins))
+                    return "engagements_1v1_wins: integer expected";
+            if (message.engagements_1v2_count != null && message.hasOwnProperty("engagements_1v2_count"))
+                if (!$util.isInteger(message.engagements_1v2_count))
+                    return "engagements_1v2_count: integer expected";
+            if (message.engagements_1v2_wins != null && message.hasOwnProperty("engagements_1v2_wins"))
+                if (!$util.isInteger(message.engagements_1v2_wins))
+                    return "engagements_1v2_wins: integer expected";
+            if (message.utility_count != null && message.hasOwnProperty("utility_count"))
+                if (!$util.isInteger(message.utility_count))
+                    return "utility_count: integer expected";
+            if (message.utility_success != null && message.hasOwnProperty("utility_success"))
+                if (!$util.isInteger(message.utility_success))
+                    return "utility_success: integer expected";
+            if (message.flash_count != null && message.hasOwnProperty("flash_count"))
+                if (!$util.isInteger(message.flash_count))
+                    return "flash_count: integer expected";
+            if (message.flash_success != null && message.hasOwnProperty("flash_success"))
+                if (!$util.isInteger(message.flash_success))
+                    return "flash_success: integer expected";
+            if (message.mates != null && message.hasOwnProperty("mates")) {
+                if (!Array.isArray(message.mates))
+                    return "mates: array expected";
+                for (var i = 0; i < message.mates.length; ++i)
+                    if (!$util.isInteger(message.mates[i]))
+                        return "mates: integer[] expected";
+            }
+            return null;
+        };
+    
+        /**
+         * Creates a DeepPlayerStatsEntry message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof DeepPlayerStatsEntry
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {DeepPlayerStatsEntry} DeepPlayerStatsEntry
+         */
+        DeepPlayerStatsEntry.fromObject = function fromObject(object) {
+            if (object instanceof $root.DeepPlayerStatsEntry)
+                return object;
+            var message = new $root.DeepPlayerStatsEntry();
+            if (object.accountid != null)
+                message.accountid = object.accountid >>> 0;
+            if (object.match_id != null)
+                if ($util.Long)
+                    (message.match_id = $util.Long.fromValue(object.match_id)).unsigned = true;
+                else if (typeof object.match_id === "string")
+                    message.match_id = parseInt(object.match_id, 10);
+                else if (typeof object.match_id === "number")
+                    message.match_id = object.match_id;
+                else if (typeof object.match_id === "object")
+                    message.match_id = new $util.LongBits(object.match_id.low >>> 0, object.match_id.high >>> 0).toNumber(true);
+            if (object.mm_game_mode != null)
+                message.mm_game_mode = object.mm_game_mode >>> 0;
+            if (object.mapid != null)
+                message.mapid = object.mapid >>> 0;
+            if (object.b_starting_ct != null)
+                message.b_starting_ct = Boolean(object.b_starting_ct);
+            if (object.match_outcome != null)
+                message.match_outcome = object.match_outcome >>> 0;
+            if (object.rounds_won != null)
+                message.rounds_won = object.rounds_won >>> 0;
+            if (object.rounds_lost != null)
+                message.rounds_lost = object.rounds_lost >>> 0;
+            if (object.stat_score != null)
+                message.stat_score = object.stat_score >>> 0;
+            if (object.stat_deaths != null)
+                message.stat_deaths = object.stat_deaths >>> 0;
+            if (object.stat_mvps != null)
+                message.stat_mvps = object.stat_mvps >>> 0;
+            if (object.enemy_kills != null)
+                message.enemy_kills = object.enemy_kills >>> 0;
+            if (object.enemy_headshots != null)
+                message.enemy_headshots = object.enemy_headshots >>> 0;
+            if (object.enemy_2ks != null)
+                message.enemy_2ks = object.enemy_2ks >>> 0;
+            if (object.enemy_3ks != null)
+                message.enemy_3ks = object.enemy_3ks >>> 0;
+            if (object.enemy_4ks != null)
+                message.enemy_4ks = object.enemy_4ks >>> 0;
+            if (object.total_damage != null)
+                message.total_damage = object.total_damage >>> 0;
+            if (object.engagements_entry_count != null)
+                message.engagements_entry_count = object.engagements_entry_count >>> 0;
+            if (object.engagements_entry_wins != null)
+                message.engagements_entry_wins = object.engagements_entry_wins >>> 0;
+            if (object.engagements_1v1_count != null)
+                message.engagements_1v1_count = object.engagements_1v1_count >>> 0;
+            if (object.engagements_1v1_wins != null)
+                message.engagements_1v1_wins = object.engagements_1v1_wins >>> 0;
+            if (object.engagements_1v2_count != null)
+                message.engagements_1v2_count = object.engagements_1v2_count >>> 0;
+            if (object.engagements_1v2_wins != null)
+                message.engagements_1v2_wins = object.engagements_1v2_wins >>> 0;
+            if (object.utility_count != null)
+                message.utility_count = object.utility_count >>> 0;
+            if (object.utility_success != null)
+                message.utility_success = object.utility_success >>> 0;
+            if (object.flash_count != null)
+                message.flash_count = object.flash_count >>> 0;
+            if (object.flash_success != null)
+                message.flash_success = object.flash_success >>> 0;
+            if (object.mates) {
+                if (!Array.isArray(object.mates))
+                    throw TypeError(".DeepPlayerStatsEntry.mates: array expected");
+                message.mates = [];
+                for (var i = 0; i < object.mates.length; ++i)
+                    message.mates[i] = object.mates[i] >>> 0;
+            }
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a DeepPlayerStatsEntry message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof DeepPlayerStatsEntry
+         * @static
+         * @param {DeepPlayerStatsEntry} message DeepPlayerStatsEntry
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DeepPlayerStatsEntry.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.mates = [];
+            if (options.defaults) {
+                object.accountid = 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.match_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.match_id = options.longs === String ? "0" : 0;
+                object.mm_game_mode = 0;
+                object.mapid = 0;
+                object.b_starting_ct = false;
+                object.match_outcome = 0;
+                object.rounds_won = 0;
+                object.rounds_lost = 0;
+                object.stat_score = 0;
+                object.stat_deaths = 0;
+                object.stat_mvps = 0;
+                object.enemy_kills = 0;
+                object.enemy_headshots = 0;
+                object.enemy_2ks = 0;
+                object.enemy_3ks = 0;
+                object.enemy_4ks = 0;
+                object.total_damage = 0;
+                object.engagements_entry_count = 0;
+                object.engagements_entry_wins = 0;
+                object.engagements_1v1_count = 0;
+                object.engagements_1v1_wins = 0;
+                object.engagements_1v2_count = 0;
+                object.engagements_1v2_wins = 0;
+                object.utility_count = 0;
+                object.utility_success = 0;
+                object.flash_count = 0;
+                object.flash_success = 0;
+            }
+            if (message.accountid != null && message.hasOwnProperty("accountid"))
+                object.accountid = message.accountid;
+            if (message.match_id != null && message.hasOwnProperty("match_id"))
+                if (typeof message.match_id === "number")
+                    object.match_id = options.longs === String ? String(message.match_id) : message.match_id;
+                else
+                    object.match_id = options.longs === String ? $util.Long.prototype.toString.call(message.match_id) : options.longs === Number ? new $util.LongBits(message.match_id.low >>> 0, message.match_id.high >>> 0).toNumber(true) : message.match_id;
+            if (message.mm_game_mode != null && message.hasOwnProperty("mm_game_mode"))
+                object.mm_game_mode = message.mm_game_mode;
+            if (message.mapid != null && message.hasOwnProperty("mapid"))
+                object.mapid = message.mapid;
+            if (message.b_starting_ct != null && message.hasOwnProperty("b_starting_ct"))
+                object.b_starting_ct = message.b_starting_ct;
+            if (message.match_outcome != null && message.hasOwnProperty("match_outcome"))
+                object.match_outcome = message.match_outcome;
+            if (message.rounds_won != null && message.hasOwnProperty("rounds_won"))
+                object.rounds_won = message.rounds_won;
+            if (message.rounds_lost != null && message.hasOwnProperty("rounds_lost"))
+                object.rounds_lost = message.rounds_lost;
+            if (message.stat_score != null && message.hasOwnProperty("stat_score"))
+                object.stat_score = message.stat_score;
+            if (message.stat_deaths != null && message.hasOwnProperty("stat_deaths"))
+                object.stat_deaths = message.stat_deaths;
+            if (message.stat_mvps != null && message.hasOwnProperty("stat_mvps"))
+                object.stat_mvps = message.stat_mvps;
+            if (message.enemy_kills != null && message.hasOwnProperty("enemy_kills"))
+                object.enemy_kills = message.enemy_kills;
+            if (message.enemy_headshots != null && message.hasOwnProperty("enemy_headshots"))
+                object.enemy_headshots = message.enemy_headshots;
+            if (message.enemy_2ks != null && message.hasOwnProperty("enemy_2ks"))
+                object.enemy_2ks = message.enemy_2ks;
+            if (message.enemy_3ks != null && message.hasOwnProperty("enemy_3ks"))
+                object.enemy_3ks = message.enemy_3ks;
+            if (message.enemy_4ks != null && message.hasOwnProperty("enemy_4ks"))
+                object.enemy_4ks = message.enemy_4ks;
+            if (message.total_damage != null && message.hasOwnProperty("total_damage"))
+                object.total_damage = message.total_damage;
+            if (message.engagements_entry_count != null && message.hasOwnProperty("engagements_entry_count"))
+                object.engagements_entry_count = message.engagements_entry_count;
+            if (message.engagements_entry_wins != null && message.hasOwnProperty("engagements_entry_wins"))
+                object.engagements_entry_wins = message.engagements_entry_wins;
+            if (message.engagements_1v1_count != null && message.hasOwnProperty("engagements_1v1_count"))
+                object.engagements_1v1_count = message.engagements_1v1_count;
+            if (message.engagements_1v1_wins != null && message.hasOwnProperty("engagements_1v1_wins"))
+                object.engagements_1v1_wins = message.engagements_1v1_wins;
+            if (message.engagements_1v2_count != null && message.hasOwnProperty("engagements_1v2_count"))
+                object.engagements_1v2_count = message.engagements_1v2_count;
+            if (message.engagements_1v2_wins != null && message.hasOwnProperty("engagements_1v2_wins"))
+                object.engagements_1v2_wins = message.engagements_1v2_wins;
+            if (message.utility_count != null && message.hasOwnProperty("utility_count"))
+                object.utility_count = message.utility_count;
+            if (message.utility_success != null && message.hasOwnProperty("utility_success"))
+                object.utility_success = message.utility_success;
+            if (message.flash_count != null && message.hasOwnProperty("flash_count"))
+                object.flash_count = message.flash_count;
+            if (message.flash_success != null && message.hasOwnProperty("flash_success"))
+                object.flash_success = message.flash_success;
+            if (message.mates && message.mates.length) {
+                object.mates = [];
+                for (var j = 0; j < message.mates.length; ++j)
+                    object.mates[j] = message.mates[j];
+            }
+            return object;
+        };
+    
+        /**
+         * Converts this DeepPlayerStatsEntry to JSON.
+         * @function toJSON
+         * @memberof DeepPlayerStatsEntry
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DeepPlayerStatsEntry.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return DeepPlayerStatsEntry;
+    })();
+    
+    $root.DeepPlayerMatchEvent = (function() {
+    
+        /**
+         * Properties of a DeepPlayerMatchEvent.
+         * @exports IDeepPlayerMatchEvent
+         * @interface IDeepPlayerMatchEvent
+         * @property {number|null} [accountid] DeepPlayerMatchEvent accountid
+         * @property {number|Long|null} [match_id] DeepPlayerMatchEvent match_id
+         * @property {number|null} [event_id] DeepPlayerMatchEvent event_id
+         * @property {number|null} [event_type] DeepPlayerMatchEvent event_type
+         * @property {boolean|null} [b_playing_ct] DeepPlayerMatchEvent b_playing_ct
+         * @property {number|null} [user_pos_x] DeepPlayerMatchEvent user_pos_x
+         * @property {number|null} [user_pos_y] DeepPlayerMatchEvent user_pos_y
+         * @property {number|null} [user_pos_z] DeepPlayerMatchEvent user_pos_z
+         * @property {number|null} [user_defidx] DeepPlayerMatchEvent user_defidx
+         * @property {number|null} [other_pos_x] DeepPlayerMatchEvent other_pos_x
+         * @property {number|null} [other_pos_y] DeepPlayerMatchEvent other_pos_y
+         * @property {number|null} [other_pos_z] DeepPlayerMatchEvent other_pos_z
+         * @property {number|null} [other_defidx] DeepPlayerMatchEvent other_defidx
+         * @property {number|null} [event_data] DeepPlayerMatchEvent event_data
+         */
+    
+        /**
+         * Constructs a new DeepPlayerMatchEvent.
+         * @exports DeepPlayerMatchEvent
+         * @classdesc Represents a DeepPlayerMatchEvent.
+         * @implements IDeepPlayerMatchEvent
+         * @constructor
+         * @param {IDeepPlayerMatchEvent=} [properties] Properties to set
+         */
+        function DeepPlayerMatchEvent(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * DeepPlayerMatchEvent accountid.
+         * @member {number} accountid
+         * @memberof DeepPlayerMatchEvent
+         * @instance
+         */
+        DeepPlayerMatchEvent.prototype.accountid = 0;
+    
+        /**
+         * DeepPlayerMatchEvent match_id.
+         * @member {number|Long} match_id
+         * @memberof DeepPlayerMatchEvent
+         * @instance
+         */
+        DeepPlayerMatchEvent.prototype.match_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+        /**
+         * DeepPlayerMatchEvent event_id.
+         * @member {number} event_id
+         * @memberof DeepPlayerMatchEvent
+         * @instance
+         */
+        DeepPlayerMatchEvent.prototype.event_id = 0;
+    
+        /**
+         * DeepPlayerMatchEvent event_type.
+         * @member {number} event_type
+         * @memberof DeepPlayerMatchEvent
+         * @instance
+         */
+        DeepPlayerMatchEvent.prototype.event_type = 0;
+    
+        /**
+         * DeepPlayerMatchEvent b_playing_ct.
+         * @member {boolean} b_playing_ct
+         * @memberof DeepPlayerMatchEvent
+         * @instance
+         */
+        DeepPlayerMatchEvent.prototype.b_playing_ct = false;
+    
+        /**
+         * DeepPlayerMatchEvent user_pos_x.
+         * @member {number} user_pos_x
+         * @memberof DeepPlayerMatchEvent
+         * @instance
+         */
+        DeepPlayerMatchEvent.prototype.user_pos_x = 0;
+    
+        /**
+         * DeepPlayerMatchEvent user_pos_y.
+         * @member {number} user_pos_y
+         * @memberof DeepPlayerMatchEvent
+         * @instance
+         */
+        DeepPlayerMatchEvent.prototype.user_pos_y = 0;
+    
+        /**
+         * DeepPlayerMatchEvent user_pos_z.
+         * @member {number} user_pos_z
+         * @memberof DeepPlayerMatchEvent
+         * @instance
+         */
+        DeepPlayerMatchEvent.prototype.user_pos_z = 0;
+    
+        /**
+         * DeepPlayerMatchEvent user_defidx.
+         * @member {number} user_defidx
+         * @memberof DeepPlayerMatchEvent
+         * @instance
+         */
+        DeepPlayerMatchEvent.prototype.user_defidx = 0;
+    
+        /**
+         * DeepPlayerMatchEvent other_pos_x.
+         * @member {number} other_pos_x
+         * @memberof DeepPlayerMatchEvent
+         * @instance
+         */
+        DeepPlayerMatchEvent.prototype.other_pos_x = 0;
+    
+        /**
+         * DeepPlayerMatchEvent other_pos_y.
+         * @member {number} other_pos_y
+         * @memberof DeepPlayerMatchEvent
+         * @instance
+         */
+        DeepPlayerMatchEvent.prototype.other_pos_y = 0;
+    
+        /**
+         * DeepPlayerMatchEvent other_pos_z.
+         * @member {number} other_pos_z
+         * @memberof DeepPlayerMatchEvent
+         * @instance
+         */
+        DeepPlayerMatchEvent.prototype.other_pos_z = 0;
+    
+        /**
+         * DeepPlayerMatchEvent other_defidx.
+         * @member {number} other_defidx
+         * @memberof DeepPlayerMatchEvent
+         * @instance
+         */
+        DeepPlayerMatchEvent.prototype.other_defidx = 0;
+    
+        /**
+         * DeepPlayerMatchEvent event_data.
+         * @member {number} event_data
+         * @memberof DeepPlayerMatchEvent
+         * @instance
+         */
+        DeepPlayerMatchEvent.prototype.event_data = 0;
+    
+        /**
+         * Creates a new DeepPlayerMatchEvent instance using the specified properties.
+         * @function create
+         * @memberof DeepPlayerMatchEvent
+         * @static
+         * @param {IDeepPlayerMatchEvent=} [properties] Properties to set
+         * @returns {DeepPlayerMatchEvent} DeepPlayerMatchEvent instance
+         */
+        DeepPlayerMatchEvent.create = function create(properties) {
+            return new DeepPlayerMatchEvent(properties);
+        };
+    
+        /**
+         * Encodes the specified DeepPlayerMatchEvent message. Does not implicitly {@link DeepPlayerMatchEvent.verify|verify} messages.
+         * @function encode
+         * @memberof DeepPlayerMatchEvent
+         * @static
+         * @param {IDeepPlayerMatchEvent} message DeepPlayerMatchEvent message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeepPlayerMatchEvent.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.accountid);
+            if (message.match_id != null && Object.hasOwnProperty.call(message, "match_id"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.match_id);
+            if (message.event_id != null && Object.hasOwnProperty.call(message, "event_id"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.event_id);
+            if (message.event_type != null && Object.hasOwnProperty.call(message, "event_type"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.event_type);
+            if (message.b_playing_ct != null && Object.hasOwnProperty.call(message, "b_playing_ct"))
+                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.b_playing_ct);
+            if (message.user_pos_x != null && Object.hasOwnProperty.call(message, "user_pos_x"))
+                writer.uint32(/* id 6, wireType 0 =*/48).int32(message.user_pos_x);
+            if (message.user_pos_y != null && Object.hasOwnProperty.call(message, "user_pos_y"))
+                writer.uint32(/* id 7, wireType 0 =*/56).int32(message.user_pos_y);
+            if (message.user_defidx != null && Object.hasOwnProperty.call(message, "user_defidx"))
+                writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.user_defidx);
+            if (message.other_pos_x != null && Object.hasOwnProperty.call(message, "other_pos_x"))
+                writer.uint32(/* id 9, wireType 0 =*/72).int32(message.other_pos_x);
+            if (message.other_pos_y != null && Object.hasOwnProperty.call(message, "other_pos_y"))
+                writer.uint32(/* id 10, wireType 0 =*/80).int32(message.other_pos_y);
+            if (message.other_defidx != null && Object.hasOwnProperty.call(message, "other_defidx"))
+                writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.other_defidx);
+            if (message.user_pos_z != null && Object.hasOwnProperty.call(message, "user_pos_z"))
+                writer.uint32(/* id 12, wireType 0 =*/96).int32(message.user_pos_z);
+            if (message.other_pos_z != null && Object.hasOwnProperty.call(message, "other_pos_z"))
+                writer.uint32(/* id 13, wireType 0 =*/104).int32(message.other_pos_z);
+            if (message.event_data != null && Object.hasOwnProperty.call(message, "event_data"))
+                writer.uint32(/* id 14, wireType 0 =*/112).int32(message.event_data);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified DeepPlayerMatchEvent message, length delimited. Does not implicitly {@link DeepPlayerMatchEvent.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof DeepPlayerMatchEvent
+         * @static
+         * @param {IDeepPlayerMatchEvent} message DeepPlayerMatchEvent message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeepPlayerMatchEvent.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a DeepPlayerMatchEvent message from the specified reader or buffer.
+         * @function decode
+         * @memberof DeepPlayerMatchEvent
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {DeepPlayerMatchEvent} DeepPlayerMatchEvent
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeepPlayerMatchEvent.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.DeepPlayerMatchEvent();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.accountid = reader.uint32();
+                    break;
+                case 2:
+                    message.match_id = reader.uint64();
+                    break;
+                case 3:
+                    message.event_id = reader.uint32();
+                    break;
+                case 4:
+                    message.event_type = reader.uint32();
+                    break;
+                case 5:
+                    message.b_playing_ct = reader.bool();
+                    break;
+                case 6:
+                    message.user_pos_x = reader.int32();
+                    break;
+                case 7:
+                    message.user_pos_y = reader.int32();
+                    break;
+                case 12:
+                    message.user_pos_z = reader.int32();
+                    break;
+                case 8:
+                    message.user_defidx = reader.uint32();
+                    break;
+                case 9:
+                    message.other_pos_x = reader.int32();
+                    break;
+                case 10:
+                    message.other_pos_y = reader.int32();
+                    break;
+                case 13:
+                    message.other_pos_z = reader.int32();
+                    break;
+                case 11:
+                    message.other_defidx = reader.uint32();
+                    break;
+                case 14:
+                    message.event_data = reader.int32();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a DeepPlayerMatchEvent message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof DeepPlayerMatchEvent
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {DeepPlayerMatchEvent} DeepPlayerMatchEvent
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeepPlayerMatchEvent.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a DeepPlayerMatchEvent message.
+         * @function verify
+         * @memberof DeepPlayerMatchEvent
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DeepPlayerMatchEvent.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.accountid != null && message.hasOwnProperty("accountid"))
+                if (!$util.isInteger(message.accountid))
+                    return "accountid: integer expected";
+            if (message.match_id != null && message.hasOwnProperty("match_id"))
+                if (!$util.isInteger(message.match_id) && !(message.match_id && $util.isInteger(message.match_id.low) && $util.isInteger(message.match_id.high)))
+                    return "match_id: integer|Long expected";
+            if (message.event_id != null && message.hasOwnProperty("event_id"))
+                if (!$util.isInteger(message.event_id))
+                    return "event_id: integer expected";
+            if (message.event_type != null && message.hasOwnProperty("event_type"))
+                if (!$util.isInteger(message.event_type))
+                    return "event_type: integer expected";
+            if (message.b_playing_ct != null && message.hasOwnProperty("b_playing_ct"))
+                if (typeof message.b_playing_ct !== "boolean")
+                    return "b_playing_ct: boolean expected";
+            if (message.user_pos_x != null && message.hasOwnProperty("user_pos_x"))
+                if (!$util.isInteger(message.user_pos_x))
+                    return "user_pos_x: integer expected";
+            if (message.user_pos_y != null && message.hasOwnProperty("user_pos_y"))
+                if (!$util.isInteger(message.user_pos_y))
+                    return "user_pos_y: integer expected";
+            if (message.user_pos_z != null && message.hasOwnProperty("user_pos_z"))
+                if (!$util.isInteger(message.user_pos_z))
+                    return "user_pos_z: integer expected";
+            if (message.user_defidx != null && message.hasOwnProperty("user_defidx"))
+                if (!$util.isInteger(message.user_defidx))
+                    return "user_defidx: integer expected";
+            if (message.other_pos_x != null && message.hasOwnProperty("other_pos_x"))
+                if (!$util.isInteger(message.other_pos_x))
+                    return "other_pos_x: integer expected";
+            if (message.other_pos_y != null && message.hasOwnProperty("other_pos_y"))
+                if (!$util.isInteger(message.other_pos_y))
+                    return "other_pos_y: integer expected";
+            if (message.other_pos_z != null && message.hasOwnProperty("other_pos_z"))
+                if (!$util.isInteger(message.other_pos_z))
+                    return "other_pos_z: integer expected";
+            if (message.other_defidx != null && message.hasOwnProperty("other_defidx"))
+                if (!$util.isInteger(message.other_defidx))
+                    return "other_defidx: integer expected";
+            if (message.event_data != null && message.hasOwnProperty("event_data"))
+                if (!$util.isInteger(message.event_data))
+                    return "event_data: integer expected";
+            return null;
+        };
+    
+        /**
+         * Creates a DeepPlayerMatchEvent message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof DeepPlayerMatchEvent
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {DeepPlayerMatchEvent} DeepPlayerMatchEvent
+         */
+        DeepPlayerMatchEvent.fromObject = function fromObject(object) {
+            if (object instanceof $root.DeepPlayerMatchEvent)
+                return object;
+            var message = new $root.DeepPlayerMatchEvent();
+            if (object.accountid != null)
+                message.accountid = object.accountid >>> 0;
+            if (object.match_id != null)
+                if ($util.Long)
+                    (message.match_id = $util.Long.fromValue(object.match_id)).unsigned = true;
+                else if (typeof object.match_id === "string")
+                    message.match_id = parseInt(object.match_id, 10);
+                else if (typeof object.match_id === "number")
+                    message.match_id = object.match_id;
+                else if (typeof object.match_id === "object")
+                    message.match_id = new $util.LongBits(object.match_id.low >>> 0, object.match_id.high >>> 0).toNumber(true);
+            if (object.event_id != null)
+                message.event_id = object.event_id >>> 0;
+            if (object.event_type != null)
+                message.event_type = object.event_type >>> 0;
+            if (object.b_playing_ct != null)
+                message.b_playing_ct = Boolean(object.b_playing_ct);
+            if (object.user_pos_x != null)
+                message.user_pos_x = object.user_pos_x | 0;
+            if (object.user_pos_y != null)
+                message.user_pos_y = object.user_pos_y | 0;
+            if (object.user_pos_z != null)
+                message.user_pos_z = object.user_pos_z | 0;
+            if (object.user_defidx != null)
+                message.user_defidx = object.user_defidx >>> 0;
+            if (object.other_pos_x != null)
+                message.other_pos_x = object.other_pos_x | 0;
+            if (object.other_pos_y != null)
+                message.other_pos_y = object.other_pos_y | 0;
+            if (object.other_pos_z != null)
+                message.other_pos_z = object.other_pos_z | 0;
+            if (object.other_defidx != null)
+                message.other_defidx = object.other_defidx >>> 0;
+            if (object.event_data != null)
+                message.event_data = object.event_data | 0;
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a DeepPlayerMatchEvent message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof DeepPlayerMatchEvent
+         * @static
+         * @param {DeepPlayerMatchEvent} message DeepPlayerMatchEvent
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DeepPlayerMatchEvent.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.accountid = 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.match_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.match_id = options.longs === String ? "0" : 0;
+                object.event_id = 0;
+                object.event_type = 0;
+                object.b_playing_ct = false;
+                object.user_pos_x = 0;
+                object.user_pos_y = 0;
+                object.user_defidx = 0;
+                object.other_pos_x = 0;
+                object.other_pos_y = 0;
+                object.other_defidx = 0;
+                object.user_pos_z = 0;
+                object.other_pos_z = 0;
+                object.event_data = 0;
+            }
+            if (message.accountid != null && message.hasOwnProperty("accountid"))
+                object.accountid = message.accountid;
+            if (message.match_id != null && message.hasOwnProperty("match_id"))
+                if (typeof message.match_id === "number")
+                    object.match_id = options.longs === String ? String(message.match_id) : message.match_id;
+                else
+                    object.match_id = options.longs === String ? $util.Long.prototype.toString.call(message.match_id) : options.longs === Number ? new $util.LongBits(message.match_id.low >>> 0, message.match_id.high >>> 0).toNumber(true) : message.match_id;
+            if (message.event_id != null && message.hasOwnProperty("event_id"))
+                object.event_id = message.event_id;
+            if (message.event_type != null && message.hasOwnProperty("event_type"))
+                object.event_type = message.event_type;
+            if (message.b_playing_ct != null && message.hasOwnProperty("b_playing_ct"))
+                object.b_playing_ct = message.b_playing_ct;
+            if (message.user_pos_x != null && message.hasOwnProperty("user_pos_x"))
+                object.user_pos_x = message.user_pos_x;
+            if (message.user_pos_y != null && message.hasOwnProperty("user_pos_y"))
+                object.user_pos_y = message.user_pos_y;
+            if (message.user_defidx != null && message.hasOwnProperty("user_defidx"))
+                object.user_defidx = message.user_defidx;
+            if (message.other_pos_x != null && message.hasOwnProperty("other_pos_x"))
+                object.other_pos_x = message.other_pos_x;
+            if (message.other_pos_y != null && message.hasOwnProperty("other_pos_y"))
+                object.other_pos_y = message.other_pos_y;
+            if (message.other_defidx != null && message.hasOwnProperty("other_defidx"))
+                object.other_defidx = message.other_defidx;
+            if (message.user_pos_z != null && message.hasOwnProperty("user_pos_z"))
+                object.user_pos_z = message.user_pos_z;
+            if (message.other_pos_z != null && message.hasOwnProperty("other_pos_z"))
+                object.other_pos_z = message.other_pos_z;
+            if (message.event_data != null && message.hasOwnProperty("event_data"))
+                object.event_data = message.event_data;
+            return object;
+        };
+    
+        /**
+         * Converts this DeepPlayerMatchEvent to JSON.
+         * @function toJSON
+         * @memberof DeepPlayerMatchEvent
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DeepPlayerMatchEvent.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return DeepPlayerMatchEvent;
+    })();
+    
     $root.CMsgGC_ServerQuestUpdateData = (function() {
     
         /**
@@ -7518,11 +8854,11 @@
             if (message.player_quest_data != null && message.player_quest_data.length)
                 for (var i = 0; i < message.player_quest_data.length; ++i)
                     $root.PlayerQuestData.encode(message.player_quest_data[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.binary_data != null && message.hasOwnProperty("binary_data"))
+            if (message.binary_data != null && Object.hasOwnProperty.call(message, "binary_data"))
                 writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.binary_data);
-            if (message.mm_game_mode != null && message.hasOwnProperty("mm_game_mode"))
+            if (message.mm_game_mode != null && Object.hasOwnProperty.call(message, "mm_game_mode"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.mm_game_mode);
-            if (message.missionlbsdata != null && message.hasOwnProperty("missionlbsdata"))
+            if (message.missionlbsdata != null && Object.hasOwnProperty.call(message, "missionlbsdata"))
                 $root.ScoreLeaderboardData.encode(message.missionlbsdata, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
             return writer;
         };
@@ -7797,7 +9133,7 @@
         CMsgGCCStrike15_v2_MatchmakingGCOperationalStats.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.packetid != null && message.hasOwnProperty("packetid"))
+            if (message.packetid != null && Object.hasOwnProperty.call(message, "packetid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.packetid);
             if (message.namekeys != null && message.namekeys.length)
                 for (var i = 0; i < message.namekeys.length; ++i)
@@ -8070,11 +9406,11 @@
         CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.token != null && message.hasOwnProperty("token"))
+            if (message.token != null && Object.hasOwnProperty.call(message, "token"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.token);
-            if (message.stamp != null && message.hasOwnProperty("stamp"))
+            if (message.stamp != null && Object.hasOwnProperty.call(message, "stamp"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.stamp);
-            if (message.exchange != null && message.hasOwnProperty("exchange"))
+            if (message.exchange != null && Object.hasOwnProperty.call(message, "exchange"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.exchange);
             return writer;
         };
@@ -8307,9 +9643,9 @@
         CMsgGCCStrike15_v2_GC2ServerReservationUpdate.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.viewers_external_total != null && message.hasOwnProperty("viewers_external_total"))
+            if (message.viewers_external_total != null && Object.hasOwnProperty.call(message, "viewers_external_total"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.viewers_external_total);
-            if (message.viewers_external_steam != null && message.hasOwnProperty("viewers_external_steam"))
+            if (message.viewers_external_steam != null && Object.hasOwnProperty.call(message, "viewers_external_steam"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.viewers_external_steam);
             return writer;
         };
@@ -8557,15 +9893,15 @@
             if (message.account_ids != null && message.account_ids.length)
                 for (var i = 0; i < message.account_ids.length; ++i)
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.account_ids[i]);
-            if (message.game_type != null && message.hasOwnProperty("game_type"))
+            if (message.game_type != null && Object.hasOwnProperty.call(message, "game_type"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.game_type);
-            if (message.ticket_data != null && message.hasOwnProperty("ticket_data"))
+            if (message.ticket_data != null && Object.hasOwnProperty.call(message, "ticket_data"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.ticket_data);
-            if (message.client_version != null && message.hasOwnProperty("client_version"))
+            if (message.client_version != null && Object.hasOwnProperty.call(message, "client_version"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.client_version);
-            if (message.tournament_match != null && message.hasOwnProperty("tournament_match"))
+            if (message.tournament_match != null && Object.hasOwnProperty.call(message, "tournament_match"))
                 $root.TournamentMatchSetup.encode(message.tournament_match, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
-            if (message.prime_only != null && message.hasOwnProperty("prime_only"))
+            if (message.prime_only != null && Object.hasOwnProperty.call(message, "prime_only"))
                 writer.uint32(/* id 6, wireType 0 =*/48).bool(message.prime_only);
             return writer;
         };
@@ -8833,7 +10169,7 @@
         CMsgGCCStrike15_v2_MatchmakingStop.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.abandon != null && message.hasOwnProperty("abandon"))
+            if (message.abandon != null && Object.hasOwnProperty.call(message, "abandon"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.abandon);
             return writer;
         };
@@ -9070,16 +10406,16 @@
             if (message.gameserverpings != null && message.gameserverpings.length)
                 for (var i = 0; i < message.gameserverpings.length; ++i)
                     $root.GameServerPing.encode(message.gameserverpings[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.offset_index != null && message.hasOwnProperty("offset_index"))
+            if (message.offset_index != null && Object.hasOwnProperty.call(message, "offset_index"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.offset_index);
-            if (message.final_batch != null && message.hasOwnProperty("final_batch"))
+            if (message.final_batch != null && Object.hasOwnProperty.call(message, "final_batch"))
                 writer.uint32(/* id 3, wireType 0 =*/24).int32(message.final_batch);
             if (message.data_center_pings != null && message.data_center_pings.length)
                 for (var i = 0; i < message.data_center_pings.length; ++i)
                     $root.DataCenterPing.encode(message.data_center_pings[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
-            if (message.max_ping != null && message.hasOwnProperty("max_ping"))
+            if (message.max_ping != null && Object.hasOwnProperty.call(message, "max_ping"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.max_ping);
-            if (message.test_token != null && message.hasOwnProperty("test_token"))
+            if (message.test_token != null && Object.hasOwnProperty.call(message, "test_token"))
                 writer.uint32(/* id 6, wireType 5 =*/53).fixed32(message.test_token);
             return writer;
         };
@@ -9327,6 +10663,7 @@
          * @property {Array.<number>|null} [insufficientlevel_sessions] CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate insufficientlevel_sessions
          * @property {Array.<number>|null} [vsncheck_account_id_sessions] CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate vsncheck_account_id_sessions
          * @property {Array.<number>|null} [launcher_mismatch_sessions] CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate launcher_mismatch_sessions
+         * @property {Array.<number>|null} [insecure_account_id_sessions] CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate insecure_account_id_sessions
          */
     
         /**
@@ -9349,6 +10686,7 @@
             this.insufficientlevel_sessions = [];
             this.vsncheck_account_id_sessions = [];
             this.launcher_mismatch_sessions = [];
+            this.insecure_account_id_sessions = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -9476,6 +10814,14 @@
         CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate.prototype.launcher_mismatch_sessions = $util.emptyArray;
     
         /**
+         * CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate insecure_account_id_sessions.
+         * @member {Array.<number>} insecure_account_id_sessions
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate
+         * @instance
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate.prototype.insecure_account_id_sessions = $util.emptyArray;
+    
+        /**
          * Creates a new CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate instance using the specified properties.
          * @function create
          * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate
@@ -9499,17 +10845,17 @@
         CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.matchmaking != null && message.hasOwnProperty("matchmaking"))
+            if (message.matchmaking != null && Object.hasOwnProperty.call(message, "matchmaking"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.matchmaking);
             if (message.waiting_account_id_sessions != null && message.waiting_account_id_sessions.length)
                 for (var i = 0; i < message.waiting_account_id_sessions.length; ++i)
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.waiting_account_id_sessions[i]);
-            if (message.error != null && message.hasOwnProperty("error"))
+            if (message.error != null && Object.hasOwnProperty.call(message, "error"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.error);
             if (message.ongoingmatch_account_id_sessions != null && message.ongoingmatch_account_id_sessions.length)
                 for (var i = 0; i < message.ongoingmatch_account_id_sessions.length; ++i)
                     writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.ongoingmatch_account_id_sessions[i]);
-            if (message.global_stats != null && message.hasOwnProperty("global_stats"))
+            if (message.global_stats != null && Object.hasOwnProperty.call(message, "global_stats"))
                 $root.GlobalStatistics.encode(message.global_stats, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
             if (message.failping_account_id_sessions != null && message.failping_account_id_sessions.length)
                 for (var i = 0; i < message.failping_account_id_sessions.length; ++i)
@@ -9523,7 +10869,7 @@
             if (message.vacbanned_account_id_sessions != null && message.vacbanned_account_id_sessions.length)
                 for (var i = 0; i < message.vacbanned_account_id_sessions.length; ++i)
                     writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.vacbanned_account_id_sessions[i]);
-            if (message.server_ipaddress_mask != null && message.hasOwnProperty("server_ipaddress_mask"))
+            if (message.server_ipaddress_mask != null && Object.hasOwnProperty.call(message, "server_ipaddress_mask"))
                 $root.IpAddressMask.encode(message.server_ipaddress_mask, writer.uint32(/* id 12, wireType 2 =*/98).fork()).ldelim();
             if (message.notes != null && message.notes.length)
                 for (var i = 0; i < message.notes.length; ++i)
@@ -9540,6 +10886,9 @@
             if (message.launcher_mismatch_sessions != null && message.launcher_mismatch_sessions.length)
                 for (var i = 0; i < message.launcher_mismatch_sessions.length; ++i)
                     writer.uint32(/* id 17, wireType 0 =*/136).uint32(message.launcher_mismatch_sessions[i]);
+            if (message.insecure_account_id_sessions != null && message.insecure_account_id_sessions.length)
+                for (var i = 0; i < message.insecure_account_id_sessions.length; ++i)
+                    writer.uint32(/* id 18, wireType 0 =*/144).uint32(message.insecure_account_id_sessions[i]);
             return writer;
         };
     
@@ -9691,6 +11040,16 @@
                     } else
                         message.launcher_mismatch_sessions.push(reader.uint32());
                     break;
+                case 18:
+                    if (!(message.insecure_account_id_sessions && message.insecure_account_id_sessions.length))
+                        message.insecure_account_id_sessions = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.insecure_account_id_sessions.push(reader.uint32());
+                    } else
+                        message.insecure_account_id_sessions.push(reader.uint32());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -9821,6 +11180,13 @@
                     if (!$util.isInteger(message.launcher_mismatch_sessions[i]))
                         return "launcher_mismatch_sessions: integer[] expected";
             }
+            if (message.insecure_account_id_sessions != null && message.hasOwnProperty("insecure_account_id_sessions")) {
+                if (!Array.isArray(message.insecure_account_id_sessions))
+                    return "insecure_account_id_sessions: array expected";
+                for (var i = 0; i < message.insecure_account_id_sessions.length; ++i)
+                    if (!$util.isInteger(message.insecure_account_id_sessions[i]))
+                        return "insecure_account_id_sessions: integer[] expected";
+            }
             return null;
         };
     
@@ -9930,6 +11296,13 @@
                 for (var i = 0; i < object.launcher_mismatch_sessions.length; ++i)
                     message.launcher_mismatch_sessions[i] = object.launcher_mismatch_sessions[i] >>> 0;
             }
+            if (object.insecure_account_id_sessions) {
+                if (!Array.isArray(object.insecure_account_id_sessions))
+                    throw TypeError(".CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate.insecure_account_id_sessions: array expected");
+                message.insecure_account_id_sessions = [];
+                for (var i = 0; i < object.insecure_account_id_sessions.length; ++i)
+                    message.insecure_account_id_sessions[i] = object.insecure_account_id_sessions[i] >>> 0;
+            }
             return message;
         };
     
@@ -9958,6 +11331,7 @@
                 object.insufficientlevel_sessions = [];
                 object.vsncheck_account_id_sessions = [];
                 object.launcher_mismatch_sessions = [];
+                object.insecure_account_id_sessions = [];
             }
             if (options.defaults) {
                 object.matchmaking = 0;
@@ -10027,6 +11401,11 @@
                 object.launcher_mismatch_sessions = [];
                 for (var j = 0; j < message.launcher_mismatch_sessions.length; ++j)
                     object.launcher_mismatch_sessions[j] = message.launcher_mismatch_sessions[j];
+            }
+            if (message.insecure_account_id_sessions && message.insecure_account_id_sessions.length) {
+                object.insecure_account_id_sessions = [];
+                for (var j = 0; j < message.insecure_account_id_sessions.length; ++j)
+                    object.insecure_account_id_sessions[j] = message.insecure_account_id_sessions[j];
             }
             return object;
         };
@@ -10125,13 +11504,13 @@
             Note.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.type != null && message.hasOwnProperty("type"))
+                if (message.type != null && Object.hasOwnProperty.call(message, "type"))
                     writer.uint32(/* id 1, wireType 0 =*/8).int32(message.type);
-                if (message.region_id != null && message.hasOwnProperty("region_id"))
+                if (message.region_id != null && Object.hasOwnProperty.call(message, "region_id"))
                     writer.uint32(/* id 2, wireType 0 =*/16).int32(message.region_id);
-                if (message.region_r != null && message.hasOwnProperty("region_r"))
+                if (message.region_r != null && Object.hasOwnProperty.call(message, "region_r"))
                     writer.uint32(/* id 3, wireType 5 =*/29).float(message.region_r);
-                if (message.distance != null && message.hasOwnProperty("distance"))
+                if (message.distance != null && Object.hasOwnProperty.call(message, "distance"))
                     writer.uint32(/* id 4, wireType 5 =*/37).float(message.distance);
                 return writer;
             };
@@ -10437,23 +11816,23 @@
         CDataGCCStrike15_v2_TournamentMatchDraft.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.event_id != null && message.hasOwnProperty("event_id"))
+            if (message.event_id != null && Object.hasOwnProperty.call(message, "event_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.event_id);
-            if (message.event_stage_id != null && message.hasOwnProperty("event_stage_id"))
+            if (message.event_stage_id != null && Object.hasOwnProperty.call(message, "event_stage_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.event_stage_id);
-            if (message.team_id_0 != null && message.hasOwnProperty("team_id_0"))
+            if (message.team_id_0 != null && Object.hasOwnProperty.call(message, "team_id_0"))
                 writer.uint32(/* id 3, wireType 0 =*/24).int32(message.team_id_0);
-            if (message.team_id_1 != null && message.hasOwnProperty("team_id_1"))
+            if (message.team_id_1 != null && Object.hasOwnProperty.call(message, "team_id_1"))
                 writer.uint32(/* id 4, wireType 0 =*/32).int32(message.team_id_1);
-            if (message.maps_count != null && message.hasOwnProperty("maps_count"))
+            if (message.maps_count != null && Object.hasOwnProperty.call(message, "maps_count"))
                 writer.uint32(/* id 5, wireType 0 =*/40).int32(message.maps_count);
-            if (message.maps_current != null && message.hasOwnProperty("maps_current"))
+            if (message.maps_current != null && Object.hasOwnProperty.call(message, "maps_current"))
                 writer.uint32(/* id 6, wireType 0 =*/48).int32(message.maps_current);
-            if (message.team_id_start != null && message.hasOwnProperty("team_id_start"))
+            if (message.team_id_start != null && Object.hasOwnProperty.call(message, "team_id_start"))
                 writer.uint32(/* id 7, wireType 0 =*/56).int32(message.team_id_start);
-            if (message.team_id_veto1 != null && message.hasOwnProperty("team_id_veto1"))
+            if (message.team_id_veto1 != null && Object.hasOwnProperty.call(message, "team_id_veto1"))
                 writer.uint32(/* id 8, wireType 0 =*/64).int32(message.team_id_veto1);
-            if (message.team_id_pickn != null && message.hasOwnProperty("team_id_pickn"))
+            if (message.team_id_pickn != null && Object.hasOwnProperty.call(message, "team_id_pickn"))
                 writer.uint32(/* id 9, wireType 0 =*/72).int32(message.team_id_pickn);
             if (message.drafts != null && message.drafts.length)
                 for (var i = 0; i < message.drafts.length; ++i)
@@ -10769,9 +12148,9 @@
             Entry.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.mapid != null && message.hasOwnProperty("mapid"))
+                if (message.mapid != null && Object.hasOwnProperty.call(message, "mapid"))
                     writer.uint32(/* id 1, wireType 0 =*/8).int32(message.mapid);
-                if (message.team_id_ct != null && message.hasOwnProperty("team_id_ct"))
+                if (message.team_id_ct != null && Object.hasOwnProperty.call(message, "team_id_ct"))
                     writer.uint32(/* id 2, wireType 0 =*/16).int32(message.team_id_ct);
                 return writer;
             };
@@ -11002,9 +12381,9 @@
         CPreMatchInfoData.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.predictions_pct != null && message.hasOwnProperty("predictions_pct"))
+            if (message.predictions_pct != null && Object.hasOwnProperty.call(message, "predictions_pct"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.predictions_pct);
-            if (message.draft != null && message.hasOwnProperty("draft"))
+            if (message.draft != null && Object.hasOwnProperty.call(message, "draft"))
                 $root.CDataGCCStrike15_v2_TournamentMatchDraft.encode(message.draft, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
             if (message.stats != null && message.stats.length)
                 for (var i = 0; i < message.stats.length; ++i)
@@ -11292,9 +12671,9 @@
             TeamStats.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.match_info_idxtxt != null && message.hasOwnProperty("match_info_idxtxt"))
+                if (message.match_info_idxtxt != null && Object.hasOwnProperty.call(message, "match_info_idxtxt"))
                     writer.uint32(/* id 1, wireType 0 =*/8).int32(message.match_info_idxtxt);
-                if (message.match_info_txt != null && message.hasOwnProperty("match_info_txt"))
+                if (message.match_info_txt != null && Object.hasOwnProperty.call(message, "match_info_txt"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.match_info_txt);
                 if (message.match_info_teams != null && message.match_info_teams.length)
                     for (var i = 0; i < message.match_info_teams.length; ++i)
@@ -11687,18 +13066,18 @@
             if (message.account_ids != null && message.account_ids.length)
                 for (var i = 0; i < message.account_ids.length; ++i)
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.account_ids[i]);
-            if (message.game_type != null && message.hasOwnProperty("game_type"))
+            if (message.game_type != null && Object.hasOwnProperty.call(message, "game_type"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.game_type);
-            if (message.match_id != null && message.hasOwnProperty("match_id"))
+            if (message.match_id != null && Object.hasOwnProperty.call(message, "match_id"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.match_id);
-            if (message.server_version != null && message.hasOwnProperty("server_version"))
+            if (message.server_version != null && Object.hasOwnProperty.call(message, "server_version"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.server_version);
             if (message.rankings != null && message.rankings.length)
                 for (var i = 0; i < message.rankings.length; ++i)
                     $root.PlayerRankingInfo.encode(message.rankings[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
-            if (message.encryption_key != null && message.hasOwnProperty("encryption_key"))
+            if (message.encryption_key != null && Object.hasOwnProperty.call(message, "encryption_key"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint64(message.encryption_key);
-            if (message.encryption_key_pub != null && message.hasOwnProperty("encryption_key_pub"))
+            if (message.encryption_key_pub != null && Object.hasOwnProperty.call(message, "encryption_key_pub"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint64(message.encryption_key_pub);
             if (message.party_ids != null && message.party_ids.length)
                 for (var i = 0; i < message.party_ids.length; ++i)
@@ -11706,9 +13085,9 @@
             if (message.whitelist != null && message.whitelist.length)
                 for (var i = 0; i < message.whitelist.length; ++i)
                     $root.IpAddressMask.encode(message.whitelist[i], writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
-            if (message.tv_master_steamid != null && message.hasOwnProperty("tv_master_steamid"))
+            if (message.tv_master_steamid != null && Object.hasOwnProperty.call(message, "tv_master_steamid"))
                 writer.uint32(/* id 10, wireType 0 =*/80).uint64(message.tv_master_steamid);
-            if (message.tournament_event != null && message.hasOwnProperty("tournament_event"))
+            if (message.tournament_event != null && Object.hasOwnProperty.call(message, "tournament_event"))
                 $root.TournamentEvent.encode(message.tournament_event, writer.uint32(/* id 11, wireType 2 =*/90).fork()).ldelim();
             if (message.tournament_teams != null && message.tournament_teams.length)
                 for (var i = 0; i < message.tournament_teams.length; ++i)
@@ -11716,15 +13095,15 @@
             if (message.tournament_casters_account_ids != null && message.tournament_casters_account_ids.length)
                 for (var i = 0; i < message.tournament_casters_account_ids.length; ++i)
                     writer.uint32(/* id 13, wireType 0 =*/104).uint32(message.tournament_casters_account_ids[i]);
-            if (message.tv_relay_steamid != null && message.hasOwnProperty("tv_relay_steamid"))
+            if (message.tv_relay_steamid != null && Object.hasOwnProperty.call(message, "tv_relay_steamid"))
                 writer.uint32(/* id 14, wireType 0 =*/112).uint64(message.tv_relay_steamid);
-            if (message.pre_match_data != null && message.hasOwnProperty("pre_match_data"))
+            if (message.pre_match_data != null && Object.hasOwnProperty.call(message, "pre_match_data"))
                 $root.CPreMatchInfoData.encode(message.pre_match_data, writer.uint32(/* id 15, wireType 2 =*/122).fork()).ldelim();
-            if (message.rtime32_event_start != null && message.hasOwnProperty("rtime32_event_start"))
+            if (message.rtime32_event_start != null && Object.hasOwnProperty.call(message, "rtime32_event_start"))
                 writer.uint32(/* id 16, wireType 0 =*/128).uint32(message.rtime32_event_start);
-            if (message.tv_control != null && message.hasOwnProperty("tv_control"))
+            if (message.tv_control != null && Object.hasOwnProperty.call(message, "tv_control"))
                 writer.uint32(/* id 17, wireType 0 =*/136).uint32(message.tv_control);
-            if (message.flags != null && message.hasOwnProperty("flags"))
+            if (message.flags != null && Object.hasOwnProperty.call(message, "flags"))
                 writer.uint32(/* id 18, wireType 0 =*/144).uint32(message.flags);
             return writer;
         };
@@ -12441,17 +13820,17 @@
         CMsgGCCStrike15_v2_MatchmakingServerReservationResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.reservationid != null && message.hasOwnProperty("reservationid"))
+            if (message.reservationid != null && Object.hasOwnProperty.call(message, "reservationid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.reservationid);
-            if (message.reservation != null && message.hasOwnProperty("reservation"))
+            if (message.reservation != null && Object.hasOwnProperty.call(message, "reservation"))
                 $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.encode(message.reservation, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.map != null && message.hasOwnProperty("map"))
+            if (message.map != null && Object.hasOwnProperty.call(message, "map"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.map);
-            if (message.gc_reservation_sent != null && message.hasOwnProperty("gc_reservation_sent"))
+            if (message.gc_reservation_sent != null && Object.hasOwnProperty.call(message, "gc_reservation_sent"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.gc_reservation_sent);
-            if (message.server_version != null && message.hasOwnProperty("server_version"))
+            if (message.server_version != null && Object.hasOwnProperty.call(message, "server_version"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.server_version);
-            if (message.tv_info != null && message.hasOwnProperty("tv_info"))
+            if (message.tv_info != null && Object.hasOwnProperty.call(message, "tv_info"))
                 $root.ServerHltvInfo.encode(message.tv_info, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
             if (message.reward_player_accounts != null && message.reward_player_accounts.length)
                 for (var i = 0; i < message.reward_player_accounts.length; ++i)
@@ -12459,23 +13838,23 @@
             if (message.idle_player_accounts != null && message.idle_player_accounts.length)
                 for (var i = 0; i < message.idle_player_accounts.length; ++i)
                     writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.idle_player_accounts[i]);
-            if (message.reward_item_attr_def_idx != null && message.hasOwnProperty("reward_item_attr_def_idx"))
+            if (message.reward_item_attr_def_idx != null && Object.hasOwnProperty.call(message, "reward_item_attr_def_idx"))
                 writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.reward_item_attr_def_idx);
-            if (message.reward_item_attr_value != null && message.hasOwnProperty("reward_item_attr_value"))
+            if (message.reward_item_attr_value != null && Object.hasOwnProperty.call(message, "reward_item_attr_value"))
                 writer.uint32(/* id 10, wireType 0 =*/80).uint32(message.reward_item_attr_value);
-            if (message.reward_item_attr_reward_idx != null && message.hasOwnProperty("reward_item_attr_reward_idx"))
+            if (message.reward_item_attr_reward_idx != null && Object.hasOwnProperty.call(message, "reward_item_attr_reward_idx"))
                 writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.reward_item_attr_reward_idx);
-            if (message.reward_drop_list != null && message.hasOwnProperty("reward_drop_list"))
+            if (message.reward_drop_list != null && Object.hasOwnProperty.call(message, "reward_drop_list"))
                 writer.uint32(/* id 12, wireType 0 =*/96).uint32(message.reward_drop_list);
-            if (message.tournament_tag != null && message.hasOwnProperty("tournament_tag"))
+            if (message.tournament_tag != null && Object.hasOwnProperty.call(message, "tournament_tag"))
                 writer.uint32(/* id 13, wireType 2 =*/106).string(message.tournament_tag);
-            if (message.legacy_steamdatagram_port != null && message.hasOwnProperty("legacy_steamdatagram_port"))
+            if (message.legacy_steamdatagram_port != null && Object.hasOwnProperty.call(message, "legacy_steamdatagram_port"))
                 writer.uint32(/* id 14, wireType 0 =*/112).uint32(message.legacy_steamdatagram_port);
-            if (message.test_token != null && message.hasOwnProperty("test_token"))
+            if (message.test_token != null && Object.hasOwnProperty.call(message, "test_token"))
                 writer.uint32(/* id 15, wireType 5 =*/125).fixed32(message.test_token);
-            if (message.flags != null && message.hasOwnProperty("flags"))
+            if (message.flags != null && Object.hasOwnProperty.call(message, "flags"))
                 writer.uint32(/* id 16, wireType 0 =*/128).uint32(message.flags);
-            if (message.steamdatagram_routing != null && message.hasOwnProperty("steamdatagram_routing"))
+            if (message.steamdatagram_routing != null && Object.hasOwnProperty.call(message, "steamdatagram_routing"))
                 writer.uint32(/* id 17, wireType 0 =*/136).uint32(message.steamdatagram_routing);
             return writer;
         };
@@ -12971,19 +14350,19 @@
         CMsgGCCStrike15_v2_MatchmakingGC2ClientReserve.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.serverid != null && message.hasOwnProperty("serverid"))
+            if (message.serverid != null && Object.hasOwnProperty.call(message, "serverid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.serverid);
-            if (message.direct_udp_ip != null && message.hasOwnProperty("direct_udp_ip"))
+            if (message.direct_udp_ip != null && Object.hasOwnProperty.call(message, "direct_udp_ip"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.direct_udp_ip);
-            if (message.direct_udp_port != null && message.hasOwnProperty("direct_udp_port"))
+            if (message.direct_udp_port != null && Object.hasOwnProperty.call(message, "direct_udp_port"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.direct_udp_port);
-            if (message.reservationid != null && message.hasOwnProperty("reservationid"))
+            if (message.reservationid != null && Object.hasOwnProperty.call(message, "reservationid"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.reservationid);
-            if (message.reservation != null && message.hasOwnProperty("reservation"))
+            if (message.reservation != null && Object.hasOwnProperty.call(message, "reservation"))
                 $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.encode(message.reservation, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
-            if (message.map != null && message.hasOwnProperty("map"))
+            if (message.map != null && Object.hasOwnProperty.call(message, "map"))
                 writer.uint32(/* id 6, wireType 2 =*/50).string(message.map);
-            if (message.server_address != null && message.hasOwnProperty("server_address"))
+            if (message.server_address != null && Object.hasOwnProperty.call(message, "server_address"))
                 writer.uint32(/* id 7, wireType 2 =*/58).string(message.server_address);
             return writer;
         };
@@ -13246,6 +14625,10 @@
          * @property {number|null} [spectators_count_lnk] CMsgGCCStrike15_v2_MatchmakingServerRoundStats spectators_count_lnk
          * @property {Array.<number>|null} [enemy_kills_agg] CMsgGCCStrike15_v2_MatchmakingServerRoundStats enemy_kills_agg
          * @property {CMsgGCCStrike15_v2_MatchmakingServerRoundStats.IDropInfo|null} [drop_info] CMsgGCCStrike15_v2_MatchmakingServerRoundStats drop_info
+         * @property {boolean|null} [b_switched_teams] CMsgGCCStrike15_v2_MatchmakingServerRoundStats b_switched_teams
+         * @property {Array.<number>|null} [enemy_2ks] CMsgGCCStrike15_v2_MatchmakingServerRoundStats enemy_2ks
+         * @property {Array.<number>|null} [player_spawned] CMsgGCCStrike15_v2_MatchmakingServerRoundStats player_spawned
+         * @property {Array.<number>|null} [team_spawn_count] CMsgGCCStrike15_v2_MatchmakingServerRoundStats team_spawn_count
          */
     
         /**
@@ -13270,6 +14653,9 @@
             this.enemy_5ks = [];
             this.mvps = [];
             this.enemy_kills_agg = [];
+            this.enemy_2ks = [];
+            this.player_spawned = [];
+            this.team_spawn_count = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -13485,6 +14871,38 @@
         CMsgGCCStrike15_v2_MatchmakingServerRoundStats.prototype.drop_info = null;
     
         /**
+         * CMsgGCCStrike15_v2_MatchmakingServerRoundStats b_switched_teams.
+         * @member {boolean} b_switched_teams
+         * @memberof CMsgGCCStrike15_v2_MatchmakingServerRoundStats
+         * @instance
+         */
+        CMsgGCCStrike15_v2_MatchmakingServerRoundStats.prototype.b_switched_teams = false;
+    
+        /**
+         * CMsgGCCStrike15_v2_MatchmakingServerRoundStats enemy_2ks.
+         * @member {Array.<number>} enemy_2ks
+         * @memberof CMsgGCCStrike15_v2_MatchmakingServerRoundStats
+         * @instance
+         */
+        CMsgGCCStrike15_v2_MatchmakingServerRoundStats.prototype.enemy_2ks = $util.emptyArray;
+    
+        /**
+         * CMsgGCCStrike15_v2_MatchmakingServerRoundStats player_spawned.
+         * @member {Array.<number>} player_spawned
+         * @memberof CMsgGCCStrike15_v2_MatchmakingServerRoundStats
+         * @instance
+         */
+        CMsgGCCStrike15_v2_MatchmakingServerRoundStats.prototype.player_spawned = $util.emptyArray;
+    
+        /**
+         * CMsgGCCStrike15_v2_MatchmakingServerRoundStats team_spawn_count.
+         * @member {Array.<number>} team_spawn_count
+         * @memberof CMsgGCCStrike15_v2_MatchmakingServerRoundStats
+         * @instance
+         */
+        CMsgGCCStrike15_v2_MatchmakingServerRoundStats.prototype.team_spawn_count = $util.emptyArray;
+    
+        /**
          * Creates a new CMsgGCCStrike15_v2_MatchmakingServerRoundStats instance using the specified properties.
          * @function create
          * @memberof CMsgGCCStrike15_v2_MatchmakingServerRoundStats
@@ -13508,13 +14926,13 @@
         CMsgGCCStrike15_v2_MatchmakingServerRoundStats.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.reservationid != null && message.hasOwnProperty("reservationid"))
+            if (message.reservationid != null && Object.hasOwnProperty.call(message, "reservationid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.reservationid);
-            if (message.reservation != null && message.hasOwnProperty("reservation"))
+            if (message.reservation != null && Object.hasOwnProperty.call(message, "reservation"))
                 $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.encode(message.reservation, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.map != null && message.hasOwnProperty("map"))
+            if (message.map != null && Object.hasOwnProperty.call(message, "map"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.map);
-            if (message.round != null && message.hasOwnProperty("round"))
+            if (message.round != null && Object.hasOwnProperty.call(message, "round"))
                 writer.uint32(/* id 4, wireType 0 =*/32).int32(message.round);
             if (message.kills != null && message.kills.length)
                 for (var i = 0; i < message.kills.length; ++i)
@@ -13531,18 +14949,18 @@
             if (message.pings != null && message.pings.length)
                 for (var i = 0; i < message.pings.length; ++i)
                     writer.uint32(/* id 9, wireType 0 =*/72).int32(message.pings[i]);
-            if (message.round_result != null && message.hasOwnProperty("round_result"))
+            if (message.round_result != null && Object.hasOwnProperty.call(message, "round_result"))
                 writer.uint32(/* id 10, wireType 0 =*/80).int32(message.round_result);
-            if (message.match_result != null && message.hasOwnProperty("match_result"))
+            if (message.match_result != null && Object.hasOwnProperty.call(message, "match_result"))
                 writer.uint32(/* id 11, wireType 0 =*/88).int32(message.match_result);
             if (message.team_scores != null && message.team_scores.length)
                 for (var i = 0; i < message.team_scores.length; ++i)
                     writer.uint32(/* id 12, wireType 0 =*/96).int32(message.team_scores[i]);
-            if (message.confirm != null && message.hasOwnProperty("confirm"))
+            if (message.confirm != null && Object.hasOwnProperty.call(message, "confirm"))
                 $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm.encode(message.confirm, writer.uint32(/* id 13, wireType 2 =*/106).fork()).ldelim();
-            if (message.reservation_stage != null && message.hasOwnProperty("reservation_stage"))
+            if (message.reservation_stage != null && Object.hasOwnProperty.call(message, "reservation_stage"))
                 writer.uint32(/* id 14, wireType 0 =*/112).int32(message.reservation_stage);
-            if (message.match_duration != null && message.hasOwnProperty("match_duration"))
+            if (message.match_duration != null && Object.hasOwnProperty.call(message, "match_duration"))
                 writer.uint32(/* id 15, wireType 0 =*/120).int32(message.match_duration);
             if (message.enemy_kills != null && message.enemy_kills.length)
                 for (var i = 0; i < message.enemy_kills.length; ++i)
@@ -13562,17 +14980,28 @@
             if (message.mvps != null && message.mvps.length)
                 for (var i = 0; i < message.mvps.length; ++i)
                     writer.uint32(/* id 21, wireType 0 =*/168).int32(message.mvps[i]);
-            if (message.spectators_count != null && message.hasOwnProperty("spectators_count"))
+            if (message.spectators_count != null && Object.hasOwnProperty.call(message, "spectators_count"))
                 writer.uint32(/* id 22, wireType 0 =*/176).uint32(message.spectators_count);
-            if (message.spectators_count_tv != null && message.hasOwnProperty("spectators_count_tv"))
+            if (message.spectators_count_tv != null && Object.hasOwnProperty.call(message, "spectators_count_tv"))
                 writer.uint32(/* id 23, wireType 0 =*/184).uint32(message.spectators_count_tv);
-            if (message.spectators_count_lnk != null && message.hasOwnProperty("spectators_count_lnk"))
+            if (message.spectators_count_lnk != null && Object.hasOwnProperty.call(message, "spectators_count_lnk"))
                 writer.uint32(/* id 24, wireType 0 =*/192).uint32(message.spectators_count_lnk);
             if (message.enemy_kills_agg != null && message.enemy_kills_agg.length)
                 for (var i = 0; i < message.enemy_kills_agg.length; ++i)
                     writer.uint32(/* id 25, wireType 0 =*/200).int32(message.enemy_kills_agg[i]);
-            if (message.drop_info != null && message.hasOwnProperty("drop_info"))
+            if (message.drop_info != null && Object.hasOwnProperty.call(message, "drop_info"))
                 $root.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.DropInfo.encode(message.drop_info, writer.uint32(/* id 26, wireType 2 =*/210).fork()).ldelim();
+            if (message.b_switched_teams != null && Object.hasOwnProperty.call(message, "b_switched_teams"))
+                writer.uint32(/* id 27, wireType 0 =*/216).bool(message.b_switched_teams);
+            if (message.enemy_2ks != null && message.enemy_2ks.length)
+                for (var i = 0; i < message.enemy_2ks.length; ++i)
+                    writer.uint32(/* id 28, wireType 0 =*/224).int32(message.enemy_2ks[i]);
+            if (message.player_spawned != null && message.player_spawned.length)
+                for (var i = 0; i < message.player_spawned.length; ++i)
+                    writer.uint32(/* id 29, wireType 0 =*/232).int32(message.player_spawned[i]);
+            if (message.team_spawn_count != null && message.team_spawn_count.length)
+                for (var i = 0; i < message.team_spawn_count.length; ++i)
+                    writer.uint32(/* id 30, wireType 0 =*/240).int32(message.team_spawn_count[i]);
             return writer;
         };
     
@@ -13776,6 +15205,39 @@
                 case 26:
                     message.drop_info = $root.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.DropInfo.decode(reader, reader.uint32());
                     break;
+                case 27:
+                    message.b_switched_teams = reader.bool();
+                    break;
+                case 28:
+                    if (!(message.enemy_2ks && message.enemy_2ks.length))
+                        message.enemy_2ks = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.enemy_2ks.push(reader.int32());
+                    } else
+                        message.enemy_2ks.push(reader.int32());
+                    break;
+                case 29:
+                    if (!(message.player_spawned && message.player_spawned.length))
+                        message.player_spawned = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.player_spawned.push(reader.int32());
+                    } else
+                        message.player_spawned.push(reader.int32());
+                    break;
+                case 30:
+                    if (!(message.team_spawn_count && message.team_spawn_count.length))
+                        message.team_spawn_count = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.team_spawn_count.push(reader.int32());
+                    } else
+                        message.team_spawn_count.push(reader.int32());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -13947,6 +15409,30 @@
                 if (error)
                     return "drop_info." + error;
             }
+            if (message.b_switched_teams != null && message.hasOwnProperty("b_switched_teams"))
+                if (typeof message.b_switched_teams !== "boolean")
+                    return "b_switched_teams: boolean expected";
+            if (message.enemy_2ks != null && message.hasOwnProperty("enemy_2ks")) {
+                if (!Array.isArray(message.enemy_2ks))
+                    return "enemy_2ks: array expected";
+                for (var i = 0; i < message.enemy_2ks.length; ++i)
+                    if (!$util.isInteger(message.enemy_2ks[i]))
+                        return "enemy_2ks: integer[] expected";
+            }
+            if (message.player_spawned != null && message.hasOwnProperty("player_spawned")) {
+                if (!Array.isArray(message.player_spawned))
+                    return "player_spawned: array expected";
+                for (var i = 0; i < message.player_spawned.length; ++i)
+                    if (!$util.isInteger(message.player_spawned[i]))
+                        return "player_spawned: integer[] expected";
+            }
+            if (message.team_spawn_count != null && message.hasOwnProperty("team_spawn_count")) {
+                if (!Array.isArray(message.team_spawn_count))
+                    return "team_spawn_count: array expected";
+                for (var i = 0; i < message.team_spawn_count.length; ++i)
+                    if (!$util.isInteger(message.team_spawn_count[i]))
+                        return "team_spawn_count: integer[] expected";
+            }
             return null;
         };
     
@@ -14095,6 +15581,29 @@
                     throw TypeError(".CMsgGCCStrike15_v2_MatchmakingServerRoundStats.drop_info: object expected");
                 message.drop_info = $root.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.DropInfo.fromObject(object.drop_info);
             }
+            if (object.b_switched_teams != null)
+                message.b_switched_teams = Boolean(object.b_switched_teams);
+            if (object.enemy_2ks) {
+                if (!Array.isArray(object.enemy_2ks))
+                    throw TypeError(".CMsgGCCStrike15_v2_MatchmakingServerRoundStats.enemy_2ks: array expected");
+                message.enemy_2ks = [];
+                for (var i = 0; i < object.enemy_2ks.length; ++i)
+                    message.enemy_2ks[i] = object.enemy_2ks[i] | 0;
+            }
+            if (object.player_spawned) {
+                if (!Array.isArray(object.player_spawned))
+                    throw TypeError(".CMsgGCCStrike15_v2_MatchmakingServerRoundStats.player_spawned: array expected");
+                message.player_spawned = [];
+                for (var i = 0; i < object.player_spawned.length; ++i)
+                    message.player_spawned[i] = object.player_spawned[i] | 0;
+            }
+            if (object.team_spawn_count) {
+                if (!Array.isArray(object.team_spawn_count))
+                    throw TypeError(".CMsgGCCStrike15_v2_MatchmakingServerRoundStats.team_spawn_count: array expected");
+                message.team_spawn_count = [];
+                for (var i = 0; i < object.team_spawn_count.length; ++i)
+                    message.team_spawn_count[i] = object.team_spawn_count[i] | 0;
+            }
             return message;
         };
     
@@ -14125,6 +15634,9 @@
                 object.enemy_5ks = [];
                 object.mvps = [];
                 object.enemy_kills_agg = [];
+                object.enemy_2ks = [];
+                object.player_spawned = [];
+                object.team_spawn_count = [];
             }
             if (options.defaults) {
                 if ($util.Long) {
@@ -14144,6 +15656,7 @@
                 object.spectators_count_tv = 0;
                 object.spectators_count_lnk = 0;
                 object.drop_info = null;
+                object.b_switched_teams = false;
             }
             if (message.reservationid != null && message.hasOwnProperty("reservationid"))
                 if (typeof message.reservationid === "number")
@@ -14239,6 +15752,23 @@
             }
             if (message.drop_info != null && message.hasOwnProperty("drop_info"))
                 object.drop_info = $root.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.DropInfo.toObject(message.drop_info, options);
+            if (message.b_switched_teams != null && message.hasOwnProperty("b_switched_teams"))
+                object.b_switched_teams = message.b_switched_teams;
+            if (message.enemy_2ks && message.enemy_2ks.length) {
+                object.enemy_2ks = [];
+                for (var j = 0; j < message.enemy_2ks.length; ++j)
+                    object.enemy_2ks[j] = message.enemy_2ks[j];
+            }
+            if (message.player_spawned && message.player_spawned.length) {
+                object.player_spawned = [];
+                for (var j = 0; j < message.player_spawned.length; ++j)
+                    object.player_spawned[j] = message.player_spawned[j];
+            }
+            if (message.team_spawn_count && message.team_spawn_count.length) {
+                object.team_spawn_count = [];
+                for (var j = 0; j < message.team_spawn_count.length; ++j)
+                    object.team_spawn_count[j] = message.team_spawn_count[j];
+            }
             return object;
         };
     
@@ -14309,7 +15839,7 @@
             DropInfo.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.account_mvp != null && message.hasOwnProperty("account_mvp"))
+                if (message.account_mvp != null && Object.hasOwnProperty.call(message, "account_mvp"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.account_mvp);
                 return writer;
             };
@@ -14441,682 +15971,6 @@
         })();
     
         return CMsgGCCStrike15_v2_MatchmakingServerRoundStats;
-    })();
-    
-    $root.CMsgGCCStrike15_v2_MatchmakingServerMatchEnd = (function() {
-    
-        /**
-         * Properties of a CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.
-         * @exports ICMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @interface ICMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @property {ICMsgGCCStrike15_v2_MatchmakingServerRoundStats|null} [stats] CMsgGCCStrike15_v2_MatchmakingServerMatchEnd stats
-         * @property {ICMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm|null} [confirm] CMsgGCCStrike15_v2_MatchmakingServerMatchEnd confirm
-         * @property {number|Long|null} [rematch] CMsgGCCStrike15_v2_MatchmakingServerMatchEnd rematch
-         * @property {number|null} [replay_token] CMsgGCCStrike15_v2_MatchmakingServerMatchEnd replay_token
-         * @property {number|null} [replay_cluster_id] CMsgGCCStrike15_v2_MatchmakingServerMatchEnd replay_cluster_id
-         * @property {boolean|null} [aborted_match] CMsgGCCStrike15_v2_MatchmakingServerMatchEnd aborted_match
-         * @property {ICMsgGC_ServerQuestUpdateData|null} [match_end_quest_data] CMsgGCCStrike15_v2_MatchmakingServerMatchEnd match_end_quest_data
-         * @property {number|null} [server_version] CMsgGCCStrike15_v2_MatchmakingServerMatchEnd server_version
-         */
-    
-        /**
-         * Constructs a new CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.
-         * @exports CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @classdesc Represents a CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.
-         * @implements ICMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @constructor
-         * @param {ICMsgGCCStrike15_v2_MatchmakingServerMatchEnd=} [properties] Properties to set
-         */
-        function CMsgGCCStrike15_v2_MatchmakingServerMatchEnd(properties) {
-            if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingServerMatchEnd stats.
-         * @member {ICMsgGCCStrike15_v2_MatchmakingServerRoundStats|null|undefined} stats
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.prototype.stats = null;
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingServerMatchEnd confirm.
-         * @member {ICMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm|null|undefined} confirm
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.prototype.confirm = null;
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingServerMatchEnd rematch.
-         * @member {number|Long} rematch
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.prototype.rematch = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingServerMatchEnd replay_token.
-         * @member {number} replay_token
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.prototype.replay_token = 0;
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingServerMatchEnd replay_cluster_id.
-         * @member {number} replay_cluster_id
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.prototype.replay_cluster_id = 0;
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingServerMatchEnd aborted_match.
-         * @member {boolean} aborted_match
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.prototype.aborted_match = false;
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingServerMatchEnd match_end_quest_data.
-         * @member {ICMsgGC_ServerQuestUpdateData|null|undefined} match_end_quest_data
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.prototype.match_end_quest_data = null;
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingServerMatchEnd server_version.
-         * @member {number} server_version
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.prototype.server_version = 0;
-    
-        /**
-         * Creates a new CMsgGCCStrike15_v2_MatchmakingServerMatchEnd instance using the specified properties.
-         * @function create
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @static
-         * @param {ICMsgGCCStrike15_v2_MatchmakingServerMatchEnd=} [properties] Properties to set
-         * @returns {CMsgGCCStrike15_v2_MatchmakingServerMatchEnd} CMsgGCCStrike15_v2_MatchmakingServerMatchEnd instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.create = function create(properties) {
-            return new CMsgGCCStrike15_v2_MatchmakingServerMatchEnd(properties);
-        };
-    
-        /**
-         * Encodes the specified CMsgGCCStrike15_v2_MatchmakingServerMatchEnd message. Does not implicitly {@link CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.verify|verify} messages.
-         * @function encode
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @static
-         * @param {ICMsgGCCStrike15_v2_MatchmakingServerMatchEnd} message CMsgGCCStrike15_v2_MatchmakingServerMatchEnd message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.stats != null && message.hasOwnProperty("stats"))
-                $root.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.encode(message.stats, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.confirm != null && message.hasOwnProperty("confirm"))
-                $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm.encode(message.confirm, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-            if (message.rematch != null && message.hasOwnProperty("rematch"))
-                writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.rematch);
-            if (message.replay_token != null && message.hasOwnProperty("replay_token"))
-                writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.replay_token);
-            if (message.replay_cluster_id != null && message.hasOwnProperty("replay_cluster_id"))
-                writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.replay_cluster_id);
-            if (message.aborted_match != null && message.hasOwnProperty("aborted_match"))
-                writer.uint32(/* id 7, wireType 0 =*/56).bool(message.aborted_match);
-            if (message.match_end_quest_data != null && message.hasOwnProperty("match_end_quest_data"))
-                $root.CMsgGC_ServerQuestUpdateData.encode(message.match_end_quest_data, writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
-            if (message.server_version != null && message.hasOwnProperty("server_version"))
-                writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.server_version);
-            return writer;
-        };
-    
-        /**
-         * Encodes the specified CMsgGCCStrike15_v2_MatchmakingServerMatchEnd message, length delimited. Does not implicitly {@link CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @static
-         * @param {ICMsgGCCStrike15_v2_MatchmakingServerMatchEnd} message CMsgGCCStrike15_v2_MatchmakingServerMatchEnd message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-    
-        /**
-         * Decodes a CMsgGCCStrike15_v2_MatchmakingServerMatchEnd message from the specified reader or buffer.
-         * @function decode
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {CMsgGCCStrike15_v2_MatchmakingServerMatchEnd} CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.decode = function decode(reader, length) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingServerMatchEnd();
-            while (reader.pos < end) {
-                var tag = reader.uint32();
-                switch (tag >>> 3) {
-                case 1:
-                    message.stats = $root.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.decode(reader, reader.uint32());
-                    break;
-                case 3:
-                    message.confirm = $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm.decode(reader, reader.uint32());
-                    break;
-                case 4:
-                    message.rematch = reader.uint64();
-                    break;
-                case 5:
-                    message.replay_token = reader.uint32();
-                    break;
-                case 6:
-                    message.replay_cluster_id = reader.uint32();
-                    break;
-                case 7:
-                    message.aborted_match = reader.bool();
-                    break;
-                case 8:
-                    message.match_end_quest_data = $root.CMsgGC_ServerQuestUpdateData.decode(reader, reader.uint32());
-                    break;
-                case 9:
-                    message.server_version = reader.uint32();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-    
-        /**
-         * Decodes a CMsgGCCStrike15_v2_MatchmakingServerMatchEnd message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {CMsgGCCStrike15_v2_MatchmakingServerMatchEnd} CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-    
-        /**
-         * Verifies a CMsgGCCStrike15_v2_MatchmakingServerMatchEnd message.
-         * @function verify
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.stats != null && message.hasOwnProperty("stats")) {
-                var error = $root.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.verify(message.stats);
-                if (error)
-                    return "stats." + error;
-            }
-            if (message.confirm != null && message.hasOwnProperty("confirm")) {
-                var error = $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm.verify(message.confirm);
-                if (error)
-                    return "confirm." + error;
-            }
-            if (message.rematch != null && message.hasOwnProperty("rematch"))
-                if (!$util.isInteger(message.rematch) && !(message.rematch && $util.isInteger(message.rematch.low) && $util.isInteger(message.rematch.high)))
-                    return "rematch: integer|Long expected";
-            if (message.replay_token != null && message.hasOwnProperty("replay_token"))
-                if (!$util.isInteger(message.replay_token))
-                    return "replay_token: integer expected";
-            if (message.replay_cluster_id != null && message.hasOwnProperty("replay_cluster_id"))
-                if (!$util.isInteger(message.replay_cluster_id))
-                    return "replay_cluster_id: integer expected";
-            if (message.aborted_match != null && message.hasOwnProperty("aborted_match"))
-                if (typeof message.aborted_match !== "boolean")
-                    return "aborted_match: boolean expected";
-            if (message.match_end_quest_data != null && message.hasOwnProperty("match_end_quest_data")) {
-                var error = $root.CMsgGC_ServerQuestUpdateData.verify(message.match_end_quest_data);
-                if (error)
-                    return "match_end_quest_data." + error;
-            }
-            if (message.server_version != null && message.hasOwnProperty("server_version"))
-                if (!$util.isInteger(message.server_version))
-                    return "server_version: integer expected";
-            return null;
-        };
-    
-        /**
-         * Creates a CMsgGCCStrike15_v2_MatchmakingServerMatchEnd message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {CMsgGCCStrike15_v2_MatchmakingServerMatchEnd} CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.fromObject = function fromObject(object) {
-            if (object instanceof $root.CMsgGCCStrike15_v2_MatchmakingServerMatchEnd)
-                return object;
-            var message = new $root.CMsgGCCStrike15_v2_MatchmakingServerMatchEnd();
-            if (object.stats != null) {
-                if (typeof object.stats !== "object")
-                    throw TypeError(".CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.stats: object expected");
-                message.stats = $root.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.fromObject(object.stats);
-            }
-            if (object.confirm != null) {
-                if (typeof object.confirm !== "object")
-                    throw TypeError(".CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.confirm: object expected");
-                message.confirm = $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm.fromObject(object.confirm);
-            }
-            if (object.rematch != null)
-                if ($util.Long)
-                    (message.rematch = $util.Long.fromValue(object.rematch)).unsigned = true;
-                else if (typeof object.rematch === "string")
-                    message.rematch = parseInt(object.rematch, 10);
-                else if (typeof object.rematch === "number")
-                    message.rematch = object.rematch;
-                else if (typeof object.rematch === "object")
-                    message.rematch = new $util.LongBits(object.rematch.low >>> 0, object.rematch.high >>> 0).toNumber(true);
-            if (object.replay_token != null)
-                message.replay_token = object.replay_token >>> 0;
-            if (object.replay_cluster_id != null)
-                message.replay_cluster_id = object.replay_cluster_id >>> 0;
-            if (object.aborted_match != null)
-                message.aborted_match = Boolean(object.aborted_match);
-            if (object.match_end_quest_data != null) {
-                if (typeof object.match_end_quest_data !== "object")
-                    throw TypeError(".CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.match_end_quest_data: object expected");
-                message.match_end_quest_data = $root.CMsgGC_ServerQuestUpdateData.fromObject(object.match_end_quest_data);
-            }
-            if (object.server_version != null)
-                message.server_version = object.server_version >>> 0;
-            return message;
-        };
-    
-        /**
-         * Creates a plain object from a CMsgGCCStrike15_v2_MatchmakingServerMatchEnd message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @static
-         * @param {CMsgGCCStrike15_v2_MatchmakingServerMatchEnd} message CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            var object = {};
-            if (options.defaults) {
-                object.stats = null;
-                object.confirm = null;
-                if ($util.Long) {
-                    var long = new $util.Long(0, 0, true);
-                    object.rematch = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                } else
-                    object.rematch = options.longs === String ? "0" : 0;
-                object.replay_token = 0;
-                object.replay_cluster_id = 0;
-                object.aborted_match = false;
-                object.match_end_quest_data = null;
-                object.server_version = 0;
-            }
-            if (message.stats != null && message.hasOwnProperty("stats"))
-                object.stats = $root.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.toObject(message.stats, options);
-            if (message.confirm != null && message.hasOwnProperty("confirm"))
-                object.confirm = $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm.toObject(message.confirm, options);
-            if (message.rematch != null && message.hasOwnProperty("rematch"))
-                if (typeof message.rematch === "number")
-                    object.rematch = options.longs === String ? String(message.rematch) : message.rematch;
-                else
-                    object.rematch = options.longs === String ? $util.Long.prototype.toString.call(message.rematch) : options.longs === Number ? new $util.LongBits(message.rematch.low >>> 0, message.rematch.high >>> 0).toNumber(true) : message.rematch;
-            if (message.replay_token != null && message.hasOwnProperty("replay_token"))
-                object.replay_token = message.replay_token;
-            if (message.replay_cluster_id != null && message.hasOwnProperty("replay_cluster_id"))
-                object.replay_cluster_id = message.replay_cluster_id;
-            if (message.aborted_match != null && message.hasOwnProperty("aborted_match"))
-                object.aborted_match = message.aborted_match;
-            if (message.match_end_quest_data != null && message.hasOwnProperty("match_end_quest_data"))
-                object.match_end_quest_data = $root.CMsgGC_ServerQuestUpdateData.toObject(message.match_end_quest_data, options);
-            if (message.server_version != null && message.hasOwnProperty("server_version"))
-                object.server_version = message.server_version;
-            return object;
-        };
-    
-        /**
-         * Converts this CMsgGCCStrike15_v2_MatchmakingServerMatchEnd to JSON.
-         * @function toJSON
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEnd
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEnd.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-    
-        return CMsgGCCStrike15_v2_MatchmakingServerMatchEnd;
-    })();
-    
-    $root.CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial = (function() {
-    
-        /**
-         * Properties of a CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.
-         * @exports ICMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @interface ICMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @property {number|Long|null} [reservationid] CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial reservationid
-         * @property {ICMsgGCCStrike15_v2_MatchmakingGC2ServerReserve|null} [reservation] CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial reservation
-         * @property {ICMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm|null} [confirm] CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial confirm
-         * @property {ICMsgGC_ServerQuestUpdateData|null} [completed_player_quest_data] CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial completed_player_quest_data
-         * @property {number|null} [server_version] CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial server_version
-         */
-    
-        /**
-         * Constructs a new CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.
-         * @exports CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @classdesc Represents a CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.
-         * @implements ICMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @constructor
-         * @param {ICMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial=} [properties] Properties to set
-         */
-        function CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial(properties) {
-            if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial reservationid.
-         * @member {number|Long} reservationid
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.prototype.reservationid = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial reservation.
-         * @member {ICMsgGCCStrike15_v2_MatchmakingGC2ServerReserve|null|undefined} reservation
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.prototype.reservation = null;
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial confirm.
-         * @member {ICMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm|null|undefined} confirm
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.prototype.confirm = null;
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial completed_player_quest_data.
-         * @member {ICMsgGC_ServerQuestUpdateData|null|undefined} completed_player_quest_data
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.prototype.completed_player_quest_data = null;
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial server_version.
-         * @member {number} server_version
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.prototype.server_version = 0;
-    
-        /**
-         * Creates a new CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial instance using the specified properties.
-         * @function create
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @static
-         * @param {ICMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial=} [properties] Properties to set
-         * @returns {CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial} CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.create = function create(properties) {
-            return new CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial(properties);
-        };
-    
-        /**
-         * Encodes the specified CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial message. Does not implicitly {@link CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.verify|verify} messages.
-         * @function encode
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @static
-         * @param {ICMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial} message CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.reservationid != null && message.hasOwnProperty("reservationid"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.reservationid);
-            if (message.reservation != null && message.hasOwnProperty("reservation"))
-                $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.encode(message.reservation, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.confirm != null && message.hasOwnProperty("confirm"))
-                $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm.encode(message.confirm, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-            if (message.completed_player_quest_data != null && message.hasOwnProperty("completed_player_quest_data"))
-                $root.CMsgGC_ServerQuestUpdateData.encode(message.completed_player_quest_data, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
-            if (message.server_version != null && message.hasOwnProperty("server_version"))
-                writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.server_version);
-            return writer;
-        };
-    
-        /**
-         * Encodes the specified CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial message, length delimited. Does not implicitly {@link CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @static
-         * @param {ICMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial} message CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-    
-        /**
-         * Decodes a CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial message from the specified reader or buffer.
-         * @function decode
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial} CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.decode = function decode(reader, length) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial();
-            while (reader.pos < end) {
-                var tag = reader.uint32();
-                switch (tag >>> 3) {
-                case 1:
-                    message.reservationid = reader.uint64();
-                    break;
-                case 2:
-                    message.reservation = $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.decode(reader, reader.uint32());
-                    break;
-                case 3:
-                    message.confirm = $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm.decode(reader, reader.uint32());
-                    break;
-                case 4:
-                    message.completed_player_quest_data = $root.CMsgGC_ServerQuestUpdateData.decode(reader, reader.uint32());
-                    break;
-                case 5:
-                    message.server_version = reader.uint32();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-    
-        /**
-         * Decodes a CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial} CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-    
-        /**
-         * Verifies a CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial message.
-         * @function verify
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.reservationid != null && message.hasOwnProperty("reservationid"))
-                if (!$util.isInteger(message.reservationid) && !(message.reservationid && $util.isInteger(message.reservationid.low) && $util.isInteger(message.reservationid.high)))
-                    return "reservationid: integer|Long expected";
-            if (message.reservation != null && message.hasOwnProperty("reservation")) {
-                var error = $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.verify(message.reservation);
-                if (error)
-                    return "reservation." + error;
-            }
-            if (message.confirm != null && message.hasOwnProperty("confirm")) {
-                var error = $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm.verify(message.confirm);
-                if (error)
-                    return "confirm." + error;
-            }
-            if (message.completed_player_quest_data != null && message.hasOwnProperty("completed_player_quest_data")) {
-                var error = $root.CMsgGC_ServerQuestUpdateData.verify(message.completed_player_quest_data);
-                if (error)
-                    return "completed_player_quest_data." + error;
-            }
-            if (message.server_version != null && message.hasOwnProperty("server_version"))
-                if (!$util.isInteger(message.server_version))
-                    return "server_version: integer expected";
-            return null;
-        };
-    
-        /**
-         * Creates a CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial} CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.fromObject = function fromObject(object) {
-            if (object instanceof $root.CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial)
-                return object;
-            var message = new $root.CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial();
-            if (object.reservationid != null)
-                if ($util.Long)
-                    (message.reservationid = $util.Long.fromValue(object.reservationid)).unsigned = true;
-                else if (typeof object.reservationid === "string")
-                    message.reservationid = parseInt(object.reservationid, 10);
-                else if (typeof object.reservationid === "number")
-                    message.reservationid = object.reservationid;
-                else if (typeof object.reservationid === "object")
-                    message.reservationid = new $util.LongBits(object.reservationid.low >>> 0, object.reservationid.high >>> 0).toNumber(true);
-            if (object.reservation != null) {
-                if (typeof object.reservation !== "object")
-                    throw TypeError(".CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.reservation: object expected");
-                message.reservation = $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.fromObject(object.reservation);
-            }
-            if (object.confirm != null) {
-                if (typeof object.confirm !== "object")
-                    throw TypeError(".CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.confirm: object expected");
-                message.confirm = $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm.fromObject(object.confirm);
-            }
-            if (object.completed_player_quest_data != null) {
-                if (typeof object.completed_player_quest_data !== "object")
-                    throw TypeError(".CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.completed_player_quest_data: object expected");
-                message.completed_player_quest_data = $root.CMsgGC_ServerQuestUpdateData.fromObject(object.completed_player_quest_data);
-            }
-            if (object.server_version != null)
-                message.server_version = object.server_version >>> 0;
-            return message;
-        };
-    
-        /**
-         * Creates a plain object from a CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @static
-         * @param {CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial} message CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            var object = {};
-            if (options.defaults) {
-                if ($util.Long) {
-                    var long = new $util.Long(0, 0, true);
-                    object.reservationid = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                } else
-                    object.reservationid = options.longs === String ? "0" : 0;
-                object.reservation = null;
-                object.confirm = null;
-                object.completed_player_quest_data = null;
-                object.server_version = 0;
-            }
-            if (message.reservationid != null && message.hasOwnProperty("reservationid"))
-                if (typeof message.reservationid === "number")
-                    object.reservationid = options.longs === String ? String(message.reservationid) : message.reservationid;
-                else
-                    object.reservationid = options.longs === String ? $util.Long.prototype.toString.call(message.reservationid) : options.longs === Number ? new $util.LongBits(message.reservationid.low >>> 0, message.reservationid.high >>> 0).toNumber(true) : message.reservationid;
-            if (message.reservation != null && message.hasOwnProperty("reservation"))
-                object.reservation = $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.toObject(message.reservation, options);
-            if (message.confirm != null && message.hasOwnProperty("confirm"))
-                object.confirm = $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm.toObject(message.confirm, options);
-            if (message.completed_player_quest_data != null && message.hasOwnProperty("completed_player_quest_data"))
-                object.completed_player_quest_data = $root.CMsgGC_ServerQuestUpdateData.toObject(message.completed_player_quest_data, options);
-            if (message.server_version != null && message.hasOwnProperty("server_version"))
-                object.server_version = message.server_version;
-            return object;
-        };
-    
-        /**
-         * Converts this CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial to JSON.
-         * @function toJSON
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-    
-        return CMsgGCCStrike15_v2_MatchmakingServerMatchEndPartial;
     })();
     
     $root.CMsgGCCStrike15_v2_MatchmakingClient2GCHello = (function() {
@@ -15500,43 +16354,43 @@
         CMsgGCCStrike15_v2_MatchmakingGC2ClientHello.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.account_id);
-            if (message.ongoingmatch != null && message.hasOwnProperty("ongoingmatch"))
+            if (message.ongoingmatch != null && Object.hasOwnProperty.call(message, "ongoingmatch"))
                 $root.CMsgGCCStrike15_v2_MatchmakingGC2ClientReserve.encode(message.ongoingmatch, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.global_stats != null && message.hasOwnProperty("global_stats"))
+            if (message.global_stats != null && Object.hasOwnProperty.call(message, "global_stats"))
                 $root.GlobalStatistics.encode(message.global_stats, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-            if (message.penalty_seconds != null && message.hasOwnProperty("penalty_seconds"))
+            if (message.penalty_seconds != null && Object.hasOwnProperty.call(message, "penalty_seconds"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.penalty_seconds);
-            if (message.penalty_reason != null && message.hasOwnProperty("penalty_reason"))
+            if (message.penalty_reason != null && Object.hasOwnProperty.call(message, "penalty_reason"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.penalty_reason);
-            if (message.vac_banned != null && message.hasOwnProperty("vac_banned"))
+            if (message.vac_banned != null && Object.hasOwnProperty.call(message, "vac_banned"))
                 writer.uint32(/* id 6, wireType 0 =*/48).int32(message.vac_banned);
-            if (message.ranking != null && message.hasOwnProperty("ranking"))
+            if (message.ranking != null && Object.hasOwnProperty.call(message, "ranking"))
                 $root.PlayerRankingInfo.encode(message.ranking, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
-            if (message.commendation != null && message.hasOwnProperty("commendation"))
+            if (message.commendation != null && Object.hasOwnProperty.call(message, "commendation"))
                 $root.PlayerCommendationInfo.encode(message.commendation, writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
-            if (message.medals != null && message.hasOwnProperty("medals"))
+            if (message.medals != null && Object.hasOwnProperty.call(message, "medals"))
                 $root.PlayerMedalsInfo.encode(message.medals, writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
-            if (message.my_current_event != null && message.hasOwnProperty("my_current_event"))
+            if (message.my_current_event != null && Object.hasOwnProperty.call(message, "my_current_event"))
                 $root.TournamentEvent.encode(message.my_current_event, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
             if (message.my_current_event_teams != null && message.my_current_event_teams.length)
                 for (var i = 0; i < message.my_current_event_teams.length; ++i)
                     $root.TournamentTeam.encode(message.my_current_event_teams[i], writer.uint32(/* id 11, wireType 2 =*/90).fork()).ldelim();
-            if (message.my_current_team != null && message.hasOwnProperty("my_current_team"))
+            if (message.my_current_team != null && Object.hasOwnProperty.call(message, "my_current_team"))
                 $root.TournamentTeam.encode(message.my_current_team, writer.uint32(/* id 12, wireType 2 =*/98).fork()).ldelim();
             if (message.my_current_event_stages != null && message.my_current_event_stages.length)
                 for (var i = 0; i < message.my_current_event_stages.length; ++i)
                     $root.TournamentEvent.encode(message.my_current_event_stages[i], writer.uint32(/* id 13, wireType 2 =*/106).fork()).ldelim();
-            if (message.survey_vote != null && message.hasOwnProperty("survey_vote"))
+            if (message.survey_vote != null && Object.hasOwnProperty.call(message, "survey_vote"))
                 writer.uint32(/* id 14, wireType 0 =*/112).uint32(message.survey_vote);
-            if (message.activity != null && message.hasOwnProperty("activity"))
+            if (message.activity != null && Object.hasOwnProperty.call(message, "activity"))
                 $root.AccountActivity.encode(message.activity, writer.uint32(/* id 15, wireType 2 =*/122).fork()).ldelim();
-            if (message.player_level != null && message.hasOwnProperty("player_level"))
+            if (message.player_level != null && Object.hasOwnProperty.call(message, "player_level"))
                 writer.uint32(/* id 17, wireType 0 =*/136).int32(message.player_level);
-            if (message.player_cur_xp != null && message.hasOwnProperty("player_cur_xp"))
+            if (message.player_cur_xp != null && Object.hasOwnProperty.call(message, "player_cur_xp"))
                 writer.uint32(/* id 18, wireType 0 =*/144).int32(message.player_cur_xp);
-            if (message.player_xp_bonus_flags != null && message.hasOwnProperty("player_xp_bonus_flags"))
+            if (message.player_xp_bonus_flags != null && Object.hasOwnProperty.call(message, "player_xp_bonus_flags"))
                 writer.uint32(/* id 19, wireType 0 =*/152).int32(message.player_xp_bonus_flags);
             if (message.rankings != null && message.rankings.length)
                 for (var i = 0; i < message.rankings.length; ++i)
@@ -16238,9 +17092,9 @@
             Setting.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.setting_type != null && message.hasOwnProperty("setting_type"))
+                if (message.setting_type != null && Object.hasOwnProperty.call(message, "setting_type"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.setting_type);
-                if (message.setting_value != null && message.hasOwnProperty("setting_value"))
+                if (message.setting_value != null && Object.hasOwnProperty.call(message, "setting_value"))
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.setting_value);
                 return writer;
             };
@@ -16469,13 +17323,13 @@
         CMsgGCCStrike15_v2_MatchmakingGC2ClientAbandon.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.account_id);
-            if (message.abandoned_match != null && message.hasOwnProperty("abandoned_match"))
+            if (message.abandoned_match != null && Object.hasOwnProperty.call(message, "abandoned_match"))
                 $root.CMsgGCCStrike15_v2_MatchmakingGC2ClientReserve.encode(message.abandoned_match, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.penalty_seconds != null && message.hasOwnProperty("penalty_seconds"))
+            if (message.penalty_seconds != null && Object.hasOwnProperty.call(message, "penalty_seconds"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.penalty_seconds);
-            if (message.penalty_reason != null && message.hasOwnProperty("penalty_reason"))
+            if (message.penalty_reason != null && Object.hasOwnProperty.call(message, "penalty_reason"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.penalty_reason);
             return writer;
         };
@@ -16643,488 +17497,6 @@
         };
     
         return CMsgGCCStrike15_v2_MatchmakingGC2ClientAbandon;
-    })();
-    
-    $root.CMsgGCCStrike15_v2_MatchmakingServer2GCKick = (function() {
-    
-        /**
-         * Properties of a CMsgGCCStrike15_v2_MatchmakingServer2GCKick.
-         * @exports ICMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @interface ICMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @property {number|null} [account_id] CMsgGCCStrike15_v2_MatchmakingServer2GCKick account_id
-         * @property {ICMsgGCCStrike15_v2_MatchmakingGC2ServerReserve|null} [reservation] CMsgGCCStrike15_v2_MatchmakingServer2GCKick reservation
-         * @property {number|null} [reason] CMsgGCCStrike15_v2_MatchmakingServer2GCKick reason
-         */
-    
-        /**
-         * Constructs a new CMsgGCCStrike15_v2_MatchmakingServer2GCKick.
-         * @exports CMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @classdesc Represents a CMsgGCCStrike15_v2_MatchmakingServer2GCKick.
-         * @implements ICMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @constructor
-         * @param {ICMsgGCCStrike15_v2_MatchmakingServer2GCKick=} [properties] Properties to set
-         */
-        function CMsgGCCStrike15_v2_MatchmakingServer2GCKick(properties) {
-            if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingServer2GCKick account_id.
-         * @member {number} account_id
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServer2GCKick.prototype.account_id = 0;
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingServer2GCKick reservation.
-         * @member {ICMsgGCCStrike15_v2_MatchmakingGC2ServerReserve|null|undefined} reservation
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServer2GCKick.prototype.reservation = null;
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingServer2GCKick reason.
-         * @member {number} reason
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServer2GCKick.prototype.reason = 0;
-    
-        /**
-         * Creates a new CMsgGCCStrike15_v2_MatchmakingServer2GCKick instance using the specified properties.
-         * @function create
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @static
-         * @param {ICMsgGCCStrike15_v2_MatchmakingServer2GCKick=} [properties] Properties to set
-         * @returns {CMsgGCCStrike15_v2_MatchmakingServer2GCKick} CMsgGCCStrike15_v2_MatchmakingServer2GCKick instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingServer2GCKick.create = function create(properties) {
-            return new CMsgGCCStrike15_v2_MatchmakingServer2GCKick(properties);
-        };
-    
-        /**
-         * Encodes the specified CMsgGCCStrike15_v2_MatchmakingServer2GCKick message. Does not implicitly {@link CMsgGCCStrike15_v2_MatchmakingServer2GCKick.verify|verify} messages.
-         * @function encode
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @static
-         * @param {ICMsgGCCStrike15_v2_MatchmakingServer2GCKick} message CMsgGCCStrike15_v2_MatchmakingServer2GCKick message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CMsgGCCStrike15_v2_MatchmakingServer2GCKick.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.account_id);
-            if (message.reservation != null && message.hasOwnProperty("reservation"))
-                $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.encode(message.reservation, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.reason != null && message.hasOwnProperty("reason"))
-                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.reason);
-            return writer;
-        };
-    
-        /**
-         * Encodes the specified CMsgGCCStrike15_v2_MatchmakingServer2GCKick message, length delimited. Does not implicitly {@link CMsgGCCStrike15_v2_MatchmakingServer2GCKick.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @static
-         * @param {ICMsgGCCStrike15_v2_MatchmakingServer2GCKick} message CMsgGCCStrike15_v2_MatchmakingServer2GCKick message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CMsgGCCStrike15_v2_MatchmakingServer2GCKick.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-    
-        /**
-         * Decodes a CMsgGCCStrike15_v2_MatchmakingServer2GCKick message from the specified reader or buffer.
-         * @function decode
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {CMsgGCCStrike15_v2_MatchmakingServer2GCKick} CMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CMsgGCCStrike15_v2_MatchmakingServer2GCKick.decode = function decode(reader, length) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingServer2GCKick();
-            while (reader.pos < end) {
-                var tag = reader.uint32();
-                switch (tag >>> 3) {
-                case 1:
-                    message.account_id = reader.uint32();
-                    break;
-                case 2:
-                    message.reservation = $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.decode(reader, reader.uint32());
-                    break;
-                case 3:
-                    message.reason = reader.uint32();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-    
-        /**
-         * Decodes a CMsgGCCStrike15_v2_MatchmakingServer2GCKick message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {CMsgGCCStrike15_v2_MatchmakingServer2GCKick} CMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CMsgGCCStrike15_v2_MatchmakingServer2GCKick.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-    
-        /**
-         * Verifies a CMsgGCCStrike15_v2_MatchmakingServer2GCKick message.
-         * @function verify
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        CMsgGCCStrike15_v2_MatchmakingServer2GCKick.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
-                if (!$util.isInteger(message.account_id))
-                    return "account_id: integer expected";
-            if (message.reservation != null && message.hasOwnProperty("reservation")) {
-                var error = $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.verify(message.reservation);
-                if (error)
-                    return "reservation." + error;
-            }
-            if (message.reason != null && message.hasOwnProperty("reason"))
-                if (!$util.isInteger(message.reason))
-                    return "reason: integer expected";
-            return null;
-        };
-    
-        /**
-         * Creates a CMsgGCCStrike15_v2_MatchmakingServer2GCKick message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {CMsgGCCStrike15_v2_MatchmakingServer2GCKick} CMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         */
-        CMsgGCCStrike15_v2_MatchmakingServer2GCKick.fromObject = function fromObject(object) {
-            if (object instanceof $root.CMsgGCCStrike15_v2_MatchmakingServer2GCKick)
-                return object;
-            var message = new $root.CMsgGCCStrike15_v2_MatchmakingServer2GCKick();
-            if (object.account_id != null)
-                message.account_id = object.account_id >>> 0;
-            if (object.reservation != null) {
-                if (typeof object.reservation !== "object")
-                    throw TypeError(".CMsgGCCStrike15_v2_MatchmakingServer2GCKick.reservation: object expected");
-                message.reservation = $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.fromObject(object.reservation);
-            }
-            if (object.reason != null)
-                message.reason = object.reason >>> 0;
-            return message;
-        };
-    
-        /**
-         * Creates a plain object from a CMsgGCCStrike15_v2_MatchmakingServer2GCKick message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @static
-         * @param {CMsgGCCStrike15_v2_MatchmakingServer2GCKick} message CMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        CMsgGCCStrike15_v2_MatchmakingServer2GCKick.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            var object = {};
-            if (options.defaults) {
-                object.account_id = 0;
-                object.reservation = null;
-                object.reason = 0;
-            }
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
-                object.account_id = message.account_id;
-            if (message.reservation != null && message.hasOwnProperty("reservation"))
-                object.reservation = $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.toObject(message.reservation, options);
-            if (message.reason != null && message.hasOwnProperty("reason"))
-                object.reason = message.reason;
-            return object;
-        };
-    
-        /**
-         * Converts this CMsgGCCStrike15_v2_MatchmakingServer2GCKick to JSON.
-         * @function toJSON
-         * @memberof CMsgGCCStrike15_v2_MatchmakingServer2GCKick
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        CMsgGCCStrike15_v2_MatchmakingServer2GCKick.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-    
-        return CMsgGCCStrike15_v2_MatchmakingServer2GCKick;
-    })();
-    
-    $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate = (function() {
-    
-        /**
-         * Properties of a CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.
-         * @exports ICMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @interface ICMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @property {Array.<IPlayerRankingInfo>|null} [rankings] CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate rankings
-         * @property {number|Long|null} [match_id] CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate match_id
-         */
-    
-        /**
-         * Constructs a new CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.
-         * @exports CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @classdesc Represents a CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.
-         * @implements ICMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @constructor
-         * @param {ICMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate=} [properties] Properties to set
-         */
-        function CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate(properties) {
-            this.rankings = [];
-            if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate rankings.
-         * @member {Array.<IPlayerRankingInfo>} rankings
-         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.prototype.rankings = $util.emptyArray;
-    
-        /**
-         * CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate match_id.
-         * @member {number|Long} match_id
-         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.prototype.match_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
-    
-        /**
-         * Creates a new CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate instance using the specified properties.
-         * @function create
-         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @static
-         * @param {ICMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate=} [properties] Properties to set
-         * @returns {CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate} CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.create = function create(properties) {
-            return new CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate(properties);
-        };
-    
-        /**
-         * Encodes the specified CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate message. Does not implicitly {@link CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.verify|verify} messages.
-         * @function encode
-         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @static
-         * @param {ICMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate} message CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.rankings != null && message.rankings.length)
-                for (var i = 0; i < message.rankings.length; ++i)
-                    $root.PlayerRankingInfo.encode(message.rankings[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.match_id != null && message.hasOwnProperty("match_id"))
-                writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.match_id);
-            return writer;
-        };
-    
-        /**
-         * Encodes the specified CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate message, length delimited. Does not implicitly {@link CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @static
-         * @param {ICMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate} message CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-    
-        /**
-         * Decodes a CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate message from the specified reader or buffer.
-         * @function decode
-         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate} CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.decode = function decode(reader, length) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate();
-            while (reader.pos < end) {
-                var tag = reader.uint32();
-                switch (tag >>> 3) {
-                case 1:
-                    if (!(message.rankings && message.rankings.length))
-                        message.rankings = [];
-                    message.rankings.push($root.PlayerRankingInfo.decode(reader, reader.uint32()));
-                    break;
-                case 2:
-                    message.match_id = reader.uint64();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-    
-        /**
-         * Decodes a CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate} CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-    
-        /**
-         * Verifies a CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate message.
-         * @function verify
-         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.rankings != null && message.hasOwnProperty("rankings")) {
-                if (!Array.isArray(message.rankings))
-                    return "rankings: array expected";
-                for (var i = 0; i < message.rankings.length; ++i) {
-                    var error = $root.PlayerRankingInfo.verify(message.rankings[i]);
-                    if (error)
-                        return "rankings." + error;
-                }
-            }
-            if (message.match_id != null && message.hasOwnProperty("match_id"))
-                if (!$util.isInteger(message.match_id) && !(message.match_id && $util.isInteger(message.match_id.low) && $util.isInteger(message.match_id.high)))
-                    return "match_id: integer|Long expected";
-            return null;
-        };
-    
-        /**
-         * Creates a CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate} CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         */
-        CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.fromObject = function fromObject(object) {
-            if (object instanceof $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate)
-                return object;
-            var message = new $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate();
-            if (object.rankings) {
-                if (!Array.isArray(object.rankings))
-                    throw TypeError(".CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.rankings: array expected");
-                message.rankings = [];
-                for (var i = 0; i < object.rankings.length; ++i) {
-                    if (typeof object.rankings[i] !== "object")
-                        throw TypeError(".CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.rankings: object expected");
-                    message.rankings[i] = $root.PlayerRankingInfo.fromObject(object.rankings[i]);
-                }
-            }
-            if (object.match_id != null)
-                if ($util.Long)
-                    (message.match_id = $util.Long.fromValue(object.match_id)).unsigned = true;
-                else if (typeof object.match_id === "string")
-                    message.match_id = parseInt(object.match_id, 10);
-                else if (typeof object.match_id === "number")
-                    message.match_id = object.match_id;
-                else if (typeof object.match_id === "object")
-                    message.match_id = new $util.LongBits(object.match_id.low >>> 0, object.match_id.high >>> 0).toNumber(true);
-            return message;
-        };
-    
-        /**
-         * Creates a plain object from a CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @static
-         * @param {CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate} message CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            var object = {};
-            if (options.arrays || options.defaults)
-                object.rankings = [];
-            if (options.defaults)
-                if ($util.Long) {
-                    var long = new $util.Long(0, 0, true);
-                    object.match_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                } else
-                    object.match_id = options.longs === String ? "0" : 0;
-            if (message.rankings && message.rankings.length) {
-                object.rankings = [];
-                for (var j = 0; j < message.rankings.length; ++j)
-                    object.rankings[j] = $root.PlayerRankingInfo.toObject(message.rankings[j], options);
-            }
-            if (message.match_id != null && message.hasOwnProperty("match_id"))
-                if (typeof message.match_id === "number")
-                    object.match_id = options.longs === String ? String(message.match_id) : message.match_id;
-                else
-                    object.match_id = options.longs === String ? $util.Long.prototype.toString.call(message.match_id) : options.longs === Number ? new $util.LongBits(message.match_id.low >>> 0, message.match_id.high >>> 0).toNumber(true) : message.match_id;
-            return object;
-        };
-    
-        /**
-         * Converts this CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate to JSON.
-         * @function toJSON
-         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-    
-        return CMsgGCCStrike15_v2_MatchmakingGC2ServerRankUpdate;
     })();
     
     $root.CMsgGCCStrike15_v2_ClientGCRankUpdate = (function() {
@@ -17391,7 +17763,7 @@
         CMsgGCCStrike15_v2_MatchmakingOperator2GCBlogUpdate.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.main_post_url != null && message.hasOwnProperty("main_post_url"))
+            if (message.main_post_url != null && Object.hasOwnProperty.call(message, "main_post_url"))
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.main_post_url);
             return writer;
         };
@@ -17531,6 +17903,7 @@
          * @property {number|null} [account_id] CMsgGCCStrike15_v2_ServerNotificationForUserPenalty account_id
          * @property {number|null} [reason] CMsgGCCStrike15_v2_ServerNotificationForUserPenalty reason
          * @property {number|null} [seconds] CMsgGCCStrike15_v2_ServerNotificationForUserPenalty seconds
+         * @property {boolean|null} [communication_cooldown] CMsgGCCStrike15_v2_ServerNotificationForUserPenalty communication_cooldown
          */
     
         /**
@@ -17573,6 +17946,14 @@
         CMsgGCCStrike15_v2_ServerNotificationForUserPenalty.prototype.seconds = 0;
     
         /**
+         * CMsgGCCStrike15_v2_ServerNotificationForUserPenalty communication_cooldown.
+         * @member {boolean} communication_cooldown
+         * @memberof CMsgGCCStrike15_v2_ServerNotificationForUserPenalty
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ServerNotificationForUserPenalty.prototype.communication_cooldown = false;
+    
+        /**
          * Creates a new CMsgGCCStrike15_v2_ServerNotificationForUserPenalty instance using the specified properties.
          * @function create
          * @memberof CMsgGCCStrike15_v2_ServerNotificationForUserPenalty
@@ -17596,12 +17977,14 @@
         CMsgGCCStrike15_v2_ServerNotificationForUserPenalty.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.account_id);
-            if (message.reason != null && message.hasOwnProperty("reason"))
+            if (message.reason != null && Object.hasOwnProperty.call(message, "reason"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.reason);
-            if (message.seconds != null && message.hasOwnProperty("seconds"))
+            if (message.seconds != null && Object.hasOwnProperty.call(message, "seconds"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.seconds);
+            if (message.communication_cooldown != null && Object.hasOwnProperty.call(message, "communication_cooldown"))
+                writer.uint32(/* id 4, wireType 0 =*/32).bool(message.communication_cooldown);
             return writer;
         };
     
@@ -17644,6 +18027,9 @@
                     break;
                 case 3:
                     message.seconds = reader.uint32();
+                    break;
+                case 4:
+                    message.communication_cooldown = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -17689,6 +18075,9 @@
             if (message.seconds != null && message.hasOwnProperty("seconds"))
                 if (!$util.isInteger(message.seconds))
                     return "seconds: integer expected";
+            if (message.communication_cooldown != null && message.hasOwnProperty("communication_cooldown"))
+                if (typeof message.communication_cooldown !== "boolean")
+                    return "communication_cooldown: boolean expected";
             return null;
         };
     
@@ -17710,6 +18099,8 @@
                 message.reason = object.reason >>> 0;
             if (object.seconds != null)
                 message.seconds = object.seconds >>> 0;
+            if (object.communication_cooldown != null)
+                message.communication_cooldown = Boolean(object.communication_cooldown);
             return message;
         };
     
@@ -17730,6 +18121,7 @@
                 object.account_id = 0;
                 object.reason = 0;
                 object.seconds = 0;
+                object.communication_cooldown = false;
             }
             if (message.account_id != null && message.hasOwnProperty("account_id"))
                 object.account_id = message.account_id;
@@ -17737,6 +18129,8 @@
                 object.reason = message.reason;
             if (message.seconds != null && message.hasOwnProperty("seconds"))
                 object.seconds = message.seconds;
+            if (message.communication_cooldown != null && message.hasOwnProperty("communication_cooldown"))
+                object.communication_cooldown = message.communication_cooldown;
             return object;
         };
     
@@ -17768,6 +18162,7 @@
          * @property {number|null} [rpt_textabuse] CMsgGCCStrike15_v2_ClientReportPlayer rpt_textabuse
          * @property {number|null} [rpt_voiceabuse] CMsgGCCStrike15_v2_ClientReportPlayer rpt_voiceabuse
          * @property {number|Long|null} [match_id] CMsgGCCStrike15_v2_ClientReportPlayer match_id
+         * @property {boolean|null} [report_from_demo] CMsgGCCStrike15_v2_ClientReportPlayer report_from_demo
          */
     
         /**
@@ -17850,6 +18245,14 @@
         CMsgGCCStrike15_v2_ClientReportPlayer.prototype.match_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
     
         /**
+         * CMsgGCCStrike15_v2_ClientReportPlayer report_from_demo.
+         * @member {boolean} report_from_demo
+         * @memberof CMsgGCCStrike15_v2_ClientReportPlayer
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportPlayer.prototype.report_from_demo = false;
+    
+        /**
          * Creates a new CMsgGCCStrike15_v2_ClientReportPlayer instance using the specified properties.
          * @function create
          * @memberof CMsgGCCStrike15_v2_ClientReportPlayer
@@ -17873,22 +18276,24 @@
         CMsgGCCStrike15_v2_ClientReportPlayer.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.account_id);
-            if (message.rpt_aimbot != null && message.hasOwnProperty("rpt_aimbot"))
+            if (message.rpt_aimbot != null && Object.hasOwnProperty.call(message, "rpt_aimbot"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.rpt_aimbot);
-            if (message.rpt_wallhack != null && message.hasOwnProperty("rpt_wallhack"))
+            if (message.rpt_wallhack != null && Object.hasOwnProperty.call(message, "rpt_wallhack"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.rpt_wallhack);
-            if (message.rpt_speedhack != null && message.hasOwnProperty("rpt_speedhack"))
+            if (message.rpt_speedhack != null && Object.hasOwnProperty.call(message, "rpt_speedhack"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.rpt_speedhack);
-            if (message.rpt_teamharm != null && message.hasOwnProperty("rpt_teamharm"))
+            if (message.rpt_teamharm != null && Object.hasOwnProperty.call(message, "rpt_teamharm"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.rpt_teamharm);
-            if (message.rpt_textabuse != null && message.hasOwnProperty("rpt_textabuse"))
+            if (message.rpt_textabuse != null && Object.hasOwnProperty.call(message, "rpt_textabuse"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.rpt_textabuse);
-            if (message.rpt_voiceabuse != null && message.hasOwnProperty("rpt_voiceabuse"))
+            if (message.rpt_voiceabuse != null && Object.hasOwnProperty.call(message, "rpt_voiceabuse"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.rpt_voiceabuse);
-            if (message.match_id != null && message.hasOwnProperty("match_id"))
+            if (message.match_id != null && Object.hasOwnProperty.call(message, "match_id"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint64(message.match_id);
+            if (message.report_from_demo != null && Object.hasOwnProperty.call(message, "report_from_demo"))
+                writer.uint32(/* id 9, wireType 0 =*/72).bool(message.report_from_demo);
             return writer;
         };
     
@@ -17946,6 +18351,9 @@
                     break;
                 case 8:
                     message.match_id = reader.uint64();
+                    break;
+                case 9:
+                    message.report_from_demo = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -18006,6 +18414,9 @@
             if (message.match_id != null && message.hasOwnProperty("match_id"))
                 if (!$util.isInteger(message.match_id) && !(message.match_id && $util.isInteger(message.match_id.low) && $util.isInteger(message.match_id.high)))
                     return "match_id: integer|Long expected";
+            if (message.report_from_demo != null && message.hasOwnProperty("report_from_demo"))
+                if (typeof message.report_from_demo !== "boolean")
+                    return "report_from_demo: boolean expected";
             return null;
         };
     
@@ -18044,6 +18455,8 @@
                     message.match_id = object.match_id;
                 else if (typeof object.match_id === "object")
                     message.match_id = new $util.LongBits(object.match_id.low >>> 0, object.match_id.high >>> 0).toNumber(true);
+            if (object.report_from_demo != null)
+                message.report_from_demo = Boolean(object.report_from_demo);
             return message;
         };
     
@@ -18073,6 +18486,7 @@
                     object.match_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
                 } else
                     object.match_id = options.longs === String ? "0" : 0;
+                object.report_from_demo = false;
             }
             if (message.account_id != null && message.hasOwnProperty("account_id"))
                 object.account_id = message.account_id;
@@ -18093,6 +18507,8 @@
                     object.match_id = options.longs === String ? String(message.match_id) : message.match_id;
                 else
                     object.match_id = options.longs === String ? $util.Long.prototype.toString.call(message.match_id) : options.longs === Number ? new $util.LongBits(message.match_id.low >>> 0, message.match_id.high >>> 0).toNumber(true) : message.match_id;
+            if (message.report_from_demo != null && message.hasOwnProperty("report_from_demo"))
+                object.report_from_demo = message.report_from_demo;
             return object;
         };
     
@@ -18193,13 +18609,13 @@
         CMsgGCCStrike15_v2_ClientCommendPlayer.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.account_id);
-            if (message.match_id != null && message.hasOwnProperty("match_id"))
+            if (message.match_id != null && Object.hasOwnProperty.call(message, "match_id"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint64(message.match_id);
-            if (message.commendation != null && message.hasOwnProperty("commendation"))
+            if (message.commendation != null && Object.hasOwnProperty.call(message, "commendation"))
                 $root.PlayerCommendationInfo.encode(message.commendation, writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
-            if (message.tokens != null && message.hasOwnProperty("tokens"))
+            if (message.tokens != null && Object.hasOwnProperty.call(message, "tokens"))
                 writer.uint32(/* id 10, wireType 0 =*/80).uint32(message.tokens);
             return writer;
         };
@@ -18484,17 +18900,17 @@
         CMsgGCCStrike15_v2_ClientReportServer.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.rpt_poorperf != null && message.hasOwnProperty("rpt_poorperf"))
+            if (message.rpt_poorperf != null && Object.hasOwnProperty.call(message, "rpt_poorperf"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.rpt_poorperf);
-            if (message.rpt_abusivemodels != null && message.hasOwnProperty("rpt_abusivemodels"))
+            if (message.rpt_abusivemodels != null && Object.hasOwnProperty.call(message, "rpt_abusivemodels"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.rpt_abusivemodels);
-            if (message.rpt_badmotd != null && message.hasOwnProperty("rpt_badmotd"))
+            if (message.rpt_badmotd != null && Object.hasOwnProperty.call(message, "rpt_badmotd"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.rpt_badmotd);
-            if (message.rpt_listingabuse != null && message.hasOwnProperty("rpt_listingabuse"))
+            if (message.rpt_listingabuse != null && Object.hasOwnProperty.call(message, "rpt_listingabuse"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.rpt_listingabuse);
-            if (message.rpt_inventoryabuse != null && message.hasOwnProperty("rpt_inventoryabuse"))
+            if (message.rpt_inventoryabuse != null && Object.hasOwnProperty.call(message, "rpt_inventoryabuse"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.rpt_inventoryabuse);
-            if (message.match_id != null && message.hasOwnProperty("match_id"))
+            if (message.match_id != null && Object.hasOwnProperty.call(message, "match_id"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint64(message.match_id);
             return writer;
         };
@@ -18796,17 +19212,17 @@
         CMsgGCCStrike15_v2_ClientReportResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.confirmation_id != null && message.hasOwnProperty("confirmation_id"))
+            if (message.confirmation_id != null && Object.hasOwnProperty.call(message, "confirmation_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.confirmation_id);
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.account_id);
-            if (message.server_ip != null && message.hasOwnProperty("server_ip"))
+            if (message.server_ip != null && Object.hasOwnProperty.call(message, "server_ip"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.server_ip);
-            if (message.response_type != null && message.hasOwnProperty("response_type"))
+            if (message.response_type != null && Object.hasOwnProperty.call(message, "response_type"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.response_type);
-            if (message.response_result != null && message.hasOwnProperty("response_result"))
+            if (message.response_result != null && Object.hasOwnProperty.call(message, "response_result"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.response_result);
-            if (message.tokens != null && message.hasOwnProperty("tokens"))
+            if (message.tokens != null && Object.hasOwnProperty.call(message, "tokens"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.tokens);
             return writer;
         };
@@ -19110,16 +19526,16 @@
         CMsgGCCStrike15_v2_ClientRequestWatchInfoFriends.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.request_id != null && message.hasOwnProperty("request_id"))
+            if (message.request_id != null && Object.hasOwnProperty.call(message, "request_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.request_id);
             if (message.account_ids != null && message.account_ids.length)
                 for (var i = 0; i < message.account_ids.length; ++i)
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.account_ids[i]);
-            if (message.serverid != null && message.hasOwnProperty("serverid"))
+            if (message.serverid != null && Object.hasOwnProperty.call(message, "serverid"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.serverid);
-            if (message.matchid != null && message.hasOwnProperty("matchid"))
+            if (message.matchid != null && Object.hasOwnProperty.call(message, "matchid"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.matchid);
-            if (message.client_launcher != null && message.hasOwnProperty("client_launcher"))
+            if (message.client_launcher != null && Object.hasOwnProperty.call(message, "client_launcher"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.client_launcher);
             if (message.data_center_pings != null && message.data_center_pings.length)
                 for (var i = 0; i < message.data_center_pings.length; ++i)
@@ -19541,31 +19957,31 @@
         WatchableMatchInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.server_ip != null && message.hasOwnProperty("server_ip"))
+            if (message.server_ip != null && Object.hasOwnProperty.call(message, "server_ip"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.server_ip);
-            if (message.tv_port != null && message.hasOwnProperty("tv_port"))
+            if (message.tv_port != null && Object.hasOwnProperty.call(message, "tv_port"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.tv_port);
-            if (message.tv_spectators != null && message.hasOwnProperty("tv_spectators"))
+            if (message.tv_spectators != null && Object.hasOwnProperty.call(message, "tv_spectators"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.tv_spectators);
-            if (message.tv_time != null && message.hasOwnProperty("tv_time"))
+            if (message.tv_time != null && Object.hasOwnProperty.call(message, "tv_time"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.tv_time);
-            if (message.tv_watch_password != null && message.hasOwnProperty("tv_watch_password"))
+            if (message.tv_watch_password != null && Object.hasOwnProperty.call(message, "tv_watch_password"))
                 writer.uint32(/* id 5, wireType 2 =*/42).bytes(message.tv_watch_password);
-            if (message.cl_decryptdata_key != null && message.hasOwnProperty("cl_decryptdata_key"))
+            if (message.cl_decryptdata_key != null && Object.hasOwnProperty.call(message, "cl_decryptdata_key"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint64(message.cl_decryptdata_key);
-            if (message.cl_decryptdata_key_pub != null && message.hasOwnProperty("cl_decryptdata_key_pub"))
+            if (message.cl_decryptdata_key_pub != null && Object.hasOwnProperty.call(message, "cl_decryptdata_key_pub"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint64(message.cl_decryptdata_key_pub);
-            if (message.game_type != null && message.hasOwnProperty("game_type"))
+            if (message.game_type != null && Object.hasOwnProperty.call(message, "game_type"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.game_type);
-            if (message.game_mapgroup != null && message.hasOwnProperty("game_mapgroup"))
+            if (message.game_mapgroup != null && Object.hasOwnProperty.call(message, "game_mapgroup"))
                 writer.uint32(/* id 9, wireType 2 =*/74).string(message.game_mapgroup);
-            if (message.game_map != null && message.hasOwnProperty("game_map"))
+            if (message.game_map != null && Object.hasOwnProperty.call(message, "game_map"))
                 writer.uint32(/* id 10, wireType 2 =*/82).string(message.game_map);
-            if (message.server_id != null && message.hasOwnProperty("server_id"))
+            if (message.server_id != null && Object.hasOwnProperty.call(message, "server_id"))
                 writer.uint32(/* id 11, wireType 0 =*/88).uint64(message.server_id);
-            if (message.match_id != null && message.hasOwnProperty("match_id"))
+            if (message.match_id != null && Object.hasOwnProperty.call(message, "match_id"))
                 writer.uint32(/* id 12, wireType 0 =*/96).uint64(message.match_id);
-            if (message.reservation_id != null && message.hasOwnProperty("reservation_id"))
+            if (message.reservation_id != null && Object.hasOwnProperty.call(message, "reservation_id"))
                 writer.uint32(/* id 13, wireType 0 =*/104).uint64(message.reservation_id);
             return writer;
         };
@@ -20009,17 +20425,17 @@
         CMsgGCCStrike15_v2_ClientRequestJoinFriendData.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.version != null && message.hasOwnProperty("version"))
+            if (message.version != null && Object.hasOwnProperty.call(message, "version"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.version);
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.account_id);
-            if (message.join_token != null && message.hasOwnProperty("join_token"))
+            if (message.join_token != null && Object.hasOwnProperty.call(message, "join_token"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.join_token);
-            if (message.join_ipp != null && message.hasOwnProperty("join_ipp"))
+            if (message.join_ipp != null && Object.hasOwnProperty.call(message, "join_ipp"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.join_ipp);
-            if (message.res != null && message.hasOwnProperty("res"))
+            if (message.res != null && Object.hasOwnProperty.call(message, "res"))
                 $root.CMsgGCCStrike15_v2_MatchmakingGC2ClientReserve.encode(message.res, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
-            if (message.errormsg != null && message.hasOwnProperty("errormsg"))
+            if (message.errormsg != null && Object.hasOwnProperty.call(message, "errormsg"))
                 writer.uint32(/* id 6, wireType 2 =*/50).string(message.errormsg);
             return writer;
         };
@@ -20321,19 +20737,19 @@
         CMsgGCCStrike15_v2_ClientRequestJoinServerData.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.version != null && message.hasOwnProperty("version"))
+            if (message.version != null && Object.hasOwnProperty.call(message, "version"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.version);
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.account_id);
-            if (message.serverid != null && message.hasOwnProperty("serverid"))
+            if (message.serverid != null && Object.hasOwnProperty.call(message, "serverid"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.serverid);
-            if (message.server_ip != null && message.hasOwnProperty("server_ip"))
+            if (message.server_ip != null && Object.hasOwnProperty.call(message, "server_ip"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.server_ip);
-            if (message.server_port != null && message.hasOwnProperty("server_port"))
+            if (message.server_port != null && Object.hasOwnProperty.call(message, "server_port"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.server_port);
-            if (message.res != null && message.hasOwnProperty("res"))
+            if (message.res != null && Object.hasOwnProperty.call(message, "res"))
                 $root.CMsgGCCStrike15_v2_MatchmakingGC2ClientReserve.encode(message.res, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
-            if (message.errormsg != null && message.hasOwnProperty("errormsg"))
+            if (message.errormsg != null && Object.hasOwnProperty.call(message, "errormsg"))
                 writer.uint32(/* id 7, wireType 2 =*/58).string(message.errormsg);
             return writer;
         };
@@ -20615,9 +21031,9 @@
         CMsgGCCstrike15_v2_ClientRequestNewMission.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.mission_id != null && message.hasOwnProperty("mission_id"))
+            if (message.mission_id != null && Object.hasOwnProperty.call(message, "mission_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.mission_id);
-            if (message.campaign_id != null && message.hasOwnProperty("campaign_id"))
+            if (message.campaign_id != null && Object.hasOwnProperty.call(message, "campaign_id"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.campaign_id);
             return writer;
         };
@@ -20760,6 +21176,260 @@
         return CMsgGCCstrike15_v2_ClientRequestNewMission;
     })();
     
+    $root.CMsgGCCstrike15_v2_ClientRedeemMissionReward = (function() {
+    
+        /**
+         * Properties of a CMsgGCCstrike15_v2_ClientRedeemMissionReward.
+         * @exports ICMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @interface ICMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @property {number|null} [campaign_id] CMsgGCCstrike15_v2_ClientRedeemMissionReward campaign_id
+         * @property {number|null} [redeem_id] CMsgGCCstrike15_v2_ClientRedeemMissionReward redeem_id
+         * @property {number|null} [redeemable_balance] CMsgGCCstrike15_v2_ClientRedeemMissionReward redeemable_balance
+         * @property {number|null} [expected_cost] CMsgGCCstrike15_v2_ClientRedeemMissionReward expected_cost
+         */
+    
+        /**
+         * Constructs a new CMsgGCCstrike15_v2_ClientRedeemMissionReward.
+         * @exports CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @classdesc Represents a CMsgGCCstrike15_v2_ClientRedeemMissionReward.
+         * @implements ICMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @constructor
+         * @param {ICMsgGCCstrike15_v2_ClientRedeemMissionReward=} [properties] Properties to set
+         */
+        function CMsgGCCstrike15_v2_ClientRedeemMissionReward(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgGCCstrike15_v2_ClientRedeemMissionReward campaign_id.
+         * @member {number} campaign_id
+         * @memberof CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @instance
+         */
+        CMsgGCCstrike15_v2_ClientRedeemMissionReward.prototype.campaign_id = 0;
+    
+        /**
+         * CMsgGCCstrike15_v2_ClientRedeemMissionReward redeem_id.
+         * @member {number} redeem_id
+         * @memberof CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @instance
+         */
+        CMsgGCCstrike15_v2_ClientRedeemMissionReward.prototype.redeem_id = 0;
+    
+        /**
+         * CMsgGCCstrike15_v2_ClientRedeemMissionReward redeemable_balance.
+         * @member {number} redeemable_balance
+         * @memberof CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @instance
+         */
+        CMsgGCCstrike15_v2_ClientRedeemMissionReward.prototype.redeemable_balance = 0;
+    
+        /**
+         * CMsgGCCstrike15_v2_ClientRedeemMissionReward expected_cost.
+         * @member {number} expected_cost
+         * @memberof CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @instance
+         */
+        CMsgGCCstrike15_v2_ClientRedeemMissionReward.prototype.expected_cost = 0;
+    
+        /**
+         * Creates a new CMsgGCCstrike15_v2_ClientRedeemMissionReward instance using the specified properties.
+         * @function create
+         * @memberof CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @static
+         * @param {ICMsgGCCstrike15_v2_ClientRedeemMissionReward=} [properties] Properties to set
+         * @returns {CMsgGCCstrike15_v2_ClientRedeemMissionReward} CMsgGCCstrike15_v2_ClientRedeemMissionReward instance
+         */
+        CMsgGCCstrike15_v2_ClientRedeemMissionReward.create = function create(properties) {
+            return new CMsgGCCstrike15_v2_ClientRedeemMissionReward(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCstrike15_v2_ClientRedeemMissionReward message. Does not implicitly {@link CMsgGCCstrike15_v2_ClientRedeemMissionReward.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @static
+         * @param {ICMsgGCCstrike15_v2_ClientRedeemMissionReward} message CMsgGCCstrike15_v2_ClientRedeemMissionReward message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCstrike15_v2_ClientRedeemMissionReward.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.campaign_id != null && Object.hasOwnProperty.call(message, "campaign_id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.campaign_id);
+            if (message.redeem_id != null && Object.hasOwnProperty.call(message, "redeem_id"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.redeem_id);
+            if (message.redeemable_balance != null && Object.hasOwnProperty.call(message, "redeemable_balance"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.redeemable_balance);
+            if (message.expected_cost != null && Object.hasOwnProperty.call(message, "expected_cost"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.expected_cost);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCstrike15_v2_ClientRedeemMissionReward message, length delimited. Does not implicitly {@link CMsgGCCstrike15_v2_ClientRedeemMissionReward.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @static
+         * @param {ICMsgGCCstrike15_v2_ClientRedeemMissionReward} message CMsgGCCstrike15_v2_ClientRedeemMissionReward message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCstrike15_v2_ClientRedeemMissionReward.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgGCCstrike15_v2_ClientRedeemMissionReward message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgGCCstrike15_v2_ClientRedeemMissionReward} CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCstrike15_v2_ClientRedeemMissionReward.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCstrike15_v2_ClientRedeemMissionReward();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.campaign_id = reader.uint32();
+                    break;
+                case 2:
+                    message.redeem_id = reader.uint32();
+                    break;
+                case 3:
+                    message.redeemable_balance = reader.uint32();
+                    break;
+                case 4:
+                    message.expected_cost = reader.uint32();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgGCCstrike15_v2_ClientRedeemMissionReward message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgGCCstrike15_v2_ClientRedeemMissionReward} CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCstrike15_v2_ClientRedeemMissionReward.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgGCCstrike15_v2_ClientRedeemMissionReward message.
+         * @function verify
+         * @memberof CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgGCCstrike15_v2_ClientRedeemMissionReward.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.campaign_id != null && message.hasOwnProperty("campaign_id"))
+                if (!$util.isInteger(message.campaign_id))
+                    return "campaign_id: integer expected";
+            if (message.redeem_id != null && message.hasOwnProperty("redeem_id"))
+                if (!$util.isInteger(message.redeem_id))
+                    return "redeem_id: integer expected";
+            if (message.redeemable_balance != null && message.hasOwnProperty("redeemable_balance"))
+                if (!$util.isInteger(message.redeemable_balance))
+                    return "redeemable_balance: integer expected";
+            if (message.expected_cost != null && message.hasOwnProperty("expected_cost"))
+                if (!$util.isInteger(message.expected_cost))
+                    return "expected_cost: integer expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgGCCstrike15_v2_ClientRedeemMissionReward message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgGCCstrike15_v2_ClientRedeemMissionReward} CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         */
+        CMsgGCCstrike15_v2_ClientRedeemMissionReward.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgGCCstrike15_v2_ClientRedeemMissionReward)
+                return object;
+            var message = new $root.CMsgGCCstrike15_v2_ClientRedeemMissionReward();
+            if (object.campaign_id != null)
+                message.campaign_id = object.campaign_id >>> 0;
+            if (object.redeem_id != null)
+                message.redeem_id = object.redeem_id >>> 0;
+            if (object.redeemable_balance != null)
+                message.redeemable_balance = object.redeemable_balance >>> 0;
+            if (object.expected_cost != null)
+                message.expected_cost = object.expected_cost >>> 0;
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgGCCstrike15_v2_ClientRedeemMissionReward message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @static
+         * @param {CMsgGCCstrike15_v2_ClientRedeemMissionReward} message CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgGCCstrike15_v2_ClientRedeemMissionReward.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.campaign_id = 0;
+                object.redeem_id = 0;
+                object.redeemable_balance = 0;
+                object.expected_cost = 0;
+            }
+            if (message.campaign_id != null && message.hasOwnProperty("campaign_id"))
+                object.campaign_id = message.campaign_id;
+            if (message.redeem_id != null && message.hasOwnProperty("redeem_id"))
+                object.redeem_id = message.redeem_id;
+            if (message.redeemable_balance != null && message.hasOwnProperty("redeemable_balance"))
+                object.redeemable_balance = message.redeemable_balance;
+            if (message.expected_cost != null && message.hasOwnProperty("expected_cost"))
+                object.expected_cost = message.expected_cost;
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgGCCstrike15_v2_ClientRedeemMissionReward to JSON.
+         * @function toJSON
+         * @memberof CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgGCCstrike15_v2_ClientRedeemMissionReward.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return CMsgGCCstrike15_v2_ClientRedeemMissionReward;
+    })();
+    
     $root.CMsgGCCstrike15_v2_GC2ServerNotifyXPRewarded = (function() {
     
         /**
@@ -20865,15 +21535,15 @@
             if (message.xp_progress_data != null && message.xp_progress_data.length)
                 for (var i = 0; i < message.xp_progress_data.length; ++i)
                     $root.XpProgressData.encode(message.xp_progress_data[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.account_id);
-            if (message.current_xp != null && message.hasOwnProperty("current_xp"))
+            if (message.current_xp != null && Object.hasOwnProperty.call(message, "current_xp"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.current_xp);
-            if (message.current_level != null && message.hasOwnProperty("current_level"))
+            if (message.current_level != null && Object.hasOwnProperty.call(message, "current_level"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.current_level);
-            if (message.upgraded_defidx != null && message.hasOwnProperty("upgraded_defidx"))
+            if (message.upgraded_defidx != null && Object.hasOwnProperty.call(message, "upgraded_defidx"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.upgraded_defidx);
-            if (message.operation_points_awarded != null && message.hasOwnProperty("operation_points_awarded"))
+            if (message.operation_points_awarded != null && Object.hasOwnProperty.call(message, "operation_points_awarded"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.operation_points_awarded);
             return writer;
         };
@@ -21080,6 +21750,733 @@
         return CMsgGCCstrike15_v2_GC2ServerNotifyXPRewarded;
     })();
     
+    $root.CMsgGCCStrike15_ClientDeepStats = (function() {
+    
+        /**
+         * Properties of a CMsgGCCStrike15_ClientDeepStats.
+         * @exports ICMsgGCCStrike15_ClientDeepStats
+         * @interface ICMsgGCCStrike15_ClientDeepStats
+         * @property {number|null} [account_id] CMsgGCCStrike15_ClientDeepStats account_id
+         * @property {CMsgGCCStrike15_ClientDeepStats.IDeepStatsRange|null} [range] CMsgGCCStrike15_ClientDeepStats range
+         * @property {Array.<CMsgGCCStrike15_ClientDeepStats.IDeepStatsMatch>|null} [matches] CMsgGCCStrike15_ClientDeepStats matches
+         */
+    
+        /**
+         * Constructs a new CMsgGCCStrike15_ClientDeepStats.
+         * @exports CMsgGCCStrike15_ClientDeepStats
+         * @classdesc Represents a CMsgGCCStrike15_ClientDeepStats.
+         * @implements ICMsgGCCStrike15_ClientDeepStats
+         * @constructor
+         * @param {ICMsgGCCStrike15_ClientDeepStats=} [properties] Properties to set
+         */
+        function CMsgGCCStrike15_ClientDeepStats(properties) {
+            this.matches = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgGCCStrike15_ClientDeepStats account_id.
+         * @member {number} account_id
+         * @memberof CMsgGCCStrike15_ClientDeepStats
+         * @instance
+         */
+        CMsgGCCStrike15_ClientDeepStats.prototype.account_id = 0;
+    
+        /**
+         * CMsgGCCStrike15_ClientDeepStats range.
+         * @member {CMsgGCCStrike15_ClientDeepStats.IDeepStatsRange|null|undefined} range
+         * @memberof CMsgGCCStrike15_ClientDeepStats
+         * @instance
+         */
+        CMsgGCCStrike15_ClientDeepStats.prototype.range = null;
+    
+        /**
+         * CMsgGCCStrike15_ClientDeepStats matches.
+         * @member {Array.<CMsgGCCStrike15_ClientDeepStats.IDeepStatsMatch>} matches
+         * @memberof CMsgGCCStrike15_ClientDeepStats
+         * @instance
+         */
+        CMsgGCCStrike15_ClientDeepStats.prototype.matches = $util.emptyArray;
+    
+        /**
+         * Creates a new CMsgGCCStrike15_ClientDeepStats instance using the specified properties.
+         * @function create
+         * @memberof CMsgGCCStrike15_ClientDeepStats
+         * @static
+         * @param {ICMsgGCCStrike15_ClientDeepStats=} [properties] Properties to set
+         * @returns {CMsgGCCStrike15_ClientDeepStats} CMsgGCCStrike15_ClientDeepStats instance
+         */
+        CMsgGCCStrike15_ClientDeepStats.create = function create(properties) {
+            return new CMsgGCCStrike15_ClientDeepStats(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_ClientDeepStats message. Does not implicitly {@link CMsgGCCStrike15_ClientDeepStats.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgGCCStrike15_ClientDeepStats
+         * @static
+         * @param {ICMsgGCCStrike15_ClientDeepStats} message CMsgGCCStrike15_ClientDeepStats message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_ClientDeepStats.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.account_id);
+            if (message.range != null && Object.hasOwnProperty.call(message, "range"))
+                $root.CMsgGCCStrike15_ClientDeepStats.DeepStatsRange.encode(message.range, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            if (message.matches != null && message.matches.length)
+                for (var i = 0; i < message.matches.length; ++i)
+                    $root.CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch.encode(message.matches[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_ClientDeepStats message, length delimited. Does not implicitly {@link CMsgGCCStrike15_ClientDeepStats.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgGCCStrike15_ClientDeepStats
+         * @static
+         * @param {ICMsgGCCStrike15_ClientDeepStats} message CMsgGCCStrike15_ClientDeepStats message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_ClientDeepStats.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_ClientDeepStats message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgGCCStrike15_ClientDeepStats
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgGCCStrike15_ClientDeepStats} CMsgGCCStrike15_ClientDeepStats
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_ClientDeepStats.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_ClientDeepStats();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.account_id = reader.uint32();
+                    break;
+                case 2:
+                    message.range = $root.CMsgGCCStrike15_ClientDeepStats.DeepStatsRange.decode(reader, reader.uint32());
+                    break;
+                case 3:
+                    if (!(message.matches && message.matches.length))
+                        message.matches = [];
+                    message.matches.push($root.CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_ClientDeepStats message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgGCCStrike15_ClientDeepStats
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgGCCStrike15_ClientDeepStats} CMsgGCCStrike15_ClientDeepStats
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_ClientDeepStats.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgGCCStrike15_ClientDeepStats message.
+         * @function verify
+         * @memberof CMsgGCCStrike15_ClientDeepStats
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgGCCStrike15_ClientDeepStats.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.account_id != null && message.hasOwnProperty("account_id"))
+                if (!$util.isInteger(message.account_id))
+                    return "account_id: integer expected";
+            if (message.range != null && message.hasOwnProperty("range")) {
+                var error = $root.CMsgGCCStrike15_ClientDeepStats.DeepStatsRange.verify(message.range);
+                if (error)
+                    return "range." + error;
+            }
+            if (message.matches != null && message.hasOwnProperty("matches")) {
+                if (!Array.isArray(message.matches))
+                    return "matches: array expected";
+                for (var i = 0; i < message.matches.length; ++i) {
+                    var error = $root.CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch.verify(message.matches[i]);
+                    if (error)
+                        return "matches." + error;
+                }
+            }
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgGCCStrike15_ClientDeepStats message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgGCCStrike15_ClientDeepStats
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgGCCStrike15_ClientDeepStats} CMsgGCCStrike15_ClientDeepStats
+         */
+        CMsgGCCStrike15_ClientDeepStats.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgGCCStrike15_ClientDeepStats)
+                return object;
+            var message = new $root.CMsgGCCStrike15_ClientDeepStats();
+            if (object.account_id != null)
+                message.account_id = object.account_id >>> 0;
+            if (object.range != null) {
+                if (typeof object.range !== "object")
+                    throw TypeError(".CMsgGCCStrike15_ClientDeepStats.range: object expected");
+                message.range = $root.CMsgGCCStrike15_ClientDeepStats.DeepStatsRange.fromObject(object.range);
+            }
+            if (object.matches) {
+                if (!Array.isArray(object.matches))
+                    throw TypeError(".CMsgGCCStrike15_ClientDeepStats.matches: array expected");
+                message.matches = [];
+                for (var i = 0; i < object.matches.length; ++i) {
+                    if (typeof object.matches[i] !== "object")
+                        throw TypeError(".CMsgGCCStrike15_ClientDeepStats.matches: object expected");
+                    message.matches[i] = $root.CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch.fromObject(object.matches[i]);
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgGCCStrike15_ClientDeepStats message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgGCCStrike15_ClientDeepStats
+         * @static
+         * @param {CMsgGCCStrike15_ClientDeepStats} message CMsgGCCStrike15_ClientDeepStats
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgGCCStrike15_ClientDeepStats.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.matches = [];
+            if (options.defaults) {
+                object.account_id = 0;
+                object.range = null;
+            }
+            if (message.account_id != null && message.hasOwnProperty("account_id"))
+                object.account_id = message.account_id;
+            if (message.range != null && message.hasOwnProperty("range"))
+                object.range = $root.CMsgGCCStrike15_ClientDeepStats.DeepStatsRange.toObject(message.range, options);
+            if (message.matches && message.matches.length) {
+                object.matches = [];
+                for (var j = 0; j < message.matches.length; ++j)
+                    object.matches[j] = $root.CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch.toObject(message.matches[j], options);
+            }
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgGCCStrike15_ClientDeepStats to JSON.
+         * @function toJSON
+         * @memberof CMsgGCCStrike15_ClientDeepStats
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgGCCStrike15_ClientDeepStats.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        CMsgGCCStrike15_ClientDeepStats.DeepStatsRange = (function() {
+    
+            /**
+             * Properties of a DeepStatsRange.
+             * @memberof CMsgGCCStrike15_ClientDeepStats
+             * @interface IDeepStatsRange
+             * @property {number|null} [begin] DeepStatsRange begin
+             * @property {number|null} [end] DeepStatsRange end
+             * @property {boolean|null} [frozen] DeepStatsRange frozen
+             */
+    
+            /**
+             * Constructs a new DeepStatsRange.
+             * @memberof CMsgGCCStrike15_ClientDeepStats
+             * @classdesc Represents a DeepStatsRange.
+             * @implements IDeepStatsRange
+             * @constructor
+             * @param {CMsgGCCStrike15_ClientDeepStats.IDeepStatsRange=} [properties] Properties to set
+             */
+            function DeepStatsRange(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * DeepStatsRange begin.
+             * @member {number} begin
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsRange
+             * @instance
+             */
+            DeepStatsRange.prototype.begin = 0;
+    
+            /**
+             * DeepStatsRange end.
+             * @member {number} end
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsRange
+             * @instance
+             */
+            DeepStatsRange.prototype.end = 0;
+    
+            /**
+             * DeepStatsRange frozen.
+             * @member {boolean} frozen
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsRange
+             * @instance
+             */
+            DeepStatsRange.prototype.frozen = false;
+    
+            /**
+             * Creates a new DeepStatsRange instance using the specified properties.
+             * @function create
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsRange
+             * @static
+             * @param {CMsgGCCStrike15_ClientDeepStats.IDeepStatsRange=} [properties] Properties to set
+             * @returns {CMsgGCCStrike15_ClientDeepStats.DeepStatsRange} DeepStatsRange instance
+             */
+            DeepStatsRange.create = function create(properties) {
+                return new DeepStatsRange(properties);
+            };
+    
+            /**
+             * Encodes the specified DeepStatsRange message. Does not implicitly {@link CMsgGCCStrike15_ClientDeepStats.DeepStatsRange.verify|verify} messages.
+             * @function encode
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsRange
+             * @static
+             * @param {CMsgGCCStrike15_ClientDeepStats.IDeepStatsRange} message DeepStatsRange message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            DeepStatsRange.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.begin != null && Object.hasOwnProperty.call(message, "begin"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.begin);
+                if (message.end != null && Object.hasOwnProperty.call(message, "end"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.end);
+                if (message.frozen != null && Object.hasOwnProperty.call(message, "frozen"))
+                    writer.uint32(/* id 3, wireType 0 =*/24).bool(message.frozen);
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified DeepStatsRange message, length delimited. Does not implicitly {@link CMsgGCCStrike15_ClientDeepStats.DeepStatsRange.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsRange
+             * @static
+             * @param {CMsgGCCStrike15_ClientDeepStats.IDeepStatsRange} message DeepStatsRange message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            DeepStatsRange.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes a DeepStatsRange message from the specified reader or buffer.
+             * @function decode
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsRange
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {CMsgGCCStrike15_ClientDeepStats.DeepStatsRange} DeepStatsRange
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            DeepStatsRange.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_ClientDeepStats.DeepStatsRange();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.begin = reader.uint32();
+                        break;
+                    case 2:
+                        message.end = reader.uint32();
+                        break;
+                    case 3:
+                        message.frozen = reader.bool();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes a DeepStatsRange message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsRange
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {CMsgGCCStrike15_ClientDeepStats.DeepStatsRange} DeepStatsRange
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            DeepStatsRange.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies a DeepStatsRange message.
+             * @function verify
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsRange
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            DeepStatsRange.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.begin != null && message.hasOwnProperty("begin"))
+                    if (!$util.isInteger(message.begin))
+                        return "begin: integer expected";
+                if (message.end != null && message.hasOwnProperty("end"))
+                    if (!$util.isInteger(message.end))
+                        return "end: integer expected";
+                if (message.frozen != null && message.hasOwnProperty("frozen"))
+                    if (typeof message.frozen !== "boolean")
+                        return "frozen: boolean expected";
+                return null;
+            };
+    
+            /**
+             * Creates a DeepStatsRange message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsRange
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {CMsgGCCStrike15_ClientDeepStats.DeepStatsRange} DeepStatsRange
+             */
+            DeepStatsRange.fromObject = function fromObject(object) {
+                if (object instanceof $root.CMsgGCCStrike15_ClientDeepStats.DeepStatsRange)
+                    return object;
+                var message = new $root.CMsgGCCStrike15_ClientDeepStats.DeepStatsRange();
+                if (object.begin != null)
+                    message.begin = object.begin >>> 0;
+                if (object.end != null)
+                    message.end = object.end >>> 0;
+                if (object.frozen != null)
+                    message.frozen = Boolean(object.frozen);
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from a DeepStatsRange message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsRange
+             * @static
+             * @param {CMsgGCCStrike15_ClientDeepStats.DeepStatsRange} message DeepStatsRange
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            DeepStatsRange.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.begin = 0;
+                    object.end = 0;
+                    object.frozen = false;
+                }
+                if (message.begin != null && message.hasOwnProperty("begin"))
+                    object.begin = message.begin;
+                if (message.end != null && message.hasOwnProperty("end"))
+                    object.end = message.end;
+                if (message.frozen != null && message.hasOwnProperty("frozen"))
+                    object.frozen = message.frozen;
+                return object;
+            };
+    
+            /**
+             * Converts this DeepStatsRange to JSON.
+             * @function toJSON
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsRange
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            DeepStatsRange.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            return DeepStatsRange;
+        })();
+    
+        CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch = (function() {
+    
+            /**
+             * Properties of a DeepStatsMatch.
+             * @memberof CMsgGCCStrike15_ClientDeepStats
+             * @interface IDeepStatsMatch
+             * @property {IDeepPlayerStatsEntry|null} [player] DeepStatsMatch player
+             * @property {Array.<IDeepPlayerMatchEvent>|null} [events] DeepStatsMatch events
+             */
+    
+            /**
+             * Constructs a new DeepStatsMatch.
+             * @memberof CMsgGCCStrike15_ClientDeepStats
+             * @classdesc Represents a DeepStatsMatch.
+             * @implements IDeepStatsMatch
+             * @constructor
+             * @param {CMsgGCCStrike15_ClientDeepStats.IDeepStatsMatch=} [properties] Properties to set
+             */
+            function DeepStatsMatch(properties) {
+                this.events = [];
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * DeepStatsMatch player.
+             * @member {IDeepPlayerStatsEntry|null|undefined} player
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch
+             * @instance
+             */
+            DeepStatsMatch.prototype.player = null;
+    
+            /**
+             * DeepStatsMatch events.
+             * @member {Array.<IDeepPlayerMatchEvent>} events
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch
+             * @instance
+             */
+            DeepStatsMatch.prototype.events = $util.emptyArray;
+    
+            /**
+             * Creates a new DeepStatsMatch instance using the specified properties.
+             * @function create
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch
+             * @static
+             * @param {CMsgGCCStrike15_ClientDeepStats.IDeepStatsMatch=} [properties] Properties to set
+             * @returns {CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch} DeepStatsMatch instance
+             */
+            DeepStatsMatch.create = function create(properties) {
+                return new DeepStatsMatch(properties);
+            };
+    
+            /**
+             * Encodes the specified DeepStatsMatch message. Does not implicitly {@link CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch.verify|verify} messages.
+             * @function encode
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch
+             * @static
+             * @param {CMsgGCCStrike15_ClientDeepStats.IDeepStatsMatch} message DeepStatsMatch message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            DeepStatsMatch.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.player != null && Object.hasOwnProperty.call(message, "player"))
+                    $root.DeepPlayerStatsEntry.encode(message.player, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                if (message.events != null && message.events.length)
+                    for (var i = 0; i < message.events.length; ++i)
+                        $root.DeepPlayerMatchEvent.encode(message.events[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified DeepStatsMatch message, length delimited. Does not implicitly {@link CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch
+             * @static
+             * @param {CMsgGCCStrike15_ClientDeepStats.IDeepStatsMatch} message DeepStatsMatch message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            DeepStatsMatch.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes a DeepStatsMatch message from the specified reader or buffer.
+             * @function decode
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch} DeepStatsMatch
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            DeepStatsMatch.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.player = $root.DeepPlayerStatsEntry.decode(reader, reader.uint32());
+                        break;
+                    case 2:
+                        if (!(message.events && message.events.length))
+                            message.events = [];
+                        message.events.push($root.DeepPlayerMatchEvent.decode(reader, reader.uint32()));
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes a DeepStatsMatch message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch} DeepStatsMatch
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            DeepStatsMatch.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies a DeepStatsMatch message.
+             * @function verify
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            DeepStatsMatch.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.player != null && message.hasOwnProperty("player")) {
+                    var error = $root.DeepPlayerStatsEntry.verify(message.player);
+                    if (error)
+                        return "player." + error;
+                }
+                if (message.events != null && message.hasOwnProperty("events")) {
+                    if (!Array.isArray(message.events))
+                        return "events: array expected";
+                    for (var i = 0; i < message.events.length; ++i) {
+                        var error = $root.DeepPlayerMatchEvent.verify(message.events[i]);
+                        if (error)
+                            return "events." + error;
+                    }
+                }
+                return null;
+            };
+    
+            /**
+             * Creates a DeepStatsMatch message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch} DeepStatsMatch
+             */
+            DeepStatsMatch.fromObject = function fromObject(object) {
+                if (object instanceof $root.CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch)
+                    return object;
+                var message = new $root.CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch();
+                if (object.player != null) {
+                    if (typeof object.player !== "object")
+                        throw TypeError(".CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch.player: object expected");
+                    message.player = $root.DeepPlayerStatsEntry.fromObject(object.player);
+                }
+                if (object.events) {
+                    if (!Array.isArray(object.events))
+                        throw TypeError(".CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch.events: array expected");
+                    message.events = [];
+                    for (var i = 0; i < object.events.length; ++i) {
+                        if (typeof object.events[i] !== "object")
+                            throw TypeError(".CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch.events: object expected");
+                        message.events[i] = $root.DeepPlayerMatchEvent.fromObject(object.events[i]);
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from a DeepStatsMatch message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch
+             * @static
+             * @param {CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch} message DeepStatsMatch
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            DeepStatsMatch.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.arrays || options.defaults)
+                    object.events = [];
+                if (options.defaults)
+                    object.player = null;
+                if (message.player != null && message.hasOwnProperty("player"))
+                    object.player = $root.DeepPlayerStatsEntry.toObject(message.player, options);
+                if (message.events && message.events.length) {
+                    object.events = [];
+                    for (var j = 0; j < message.events.length; ++j)
+                        object.events[j] = $root.DeepPlayerMatchEvent.toObject(message.events[j], options);
+                }
+                return object;
+            };
+    
+            /**
+             * Converts this DeepStatsMatch to JSON.
+             * @function toJSON
+             * @memberof CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            DeepStatsMatch.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            return DeepStatsMatch;
+        })();
+    
+        return CMsgGCCStrike15_ClientDeepStats;
+    })();
+    
     $root.CMsgGCCStrike15_v2_WatchInfoUsers = (function() {
     
         /**
@@ -21165,7 +22562,7 @@
         CMsgGCCStrike15_v2_WatchInfoUsers.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.request_id != null && message.hasOwnProperty("request_id"))
+            if (message.request_id != null && Object.hasOwnProperty.call(message, "request_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.request_id);
             if (message.account_ids != null && message.account_ids.length)
                 for (var i = 0; i < message.account_ids.length; ++i)
@@ -21173,7 +22570,7 @@
             if (message.watchable_match_infos != null && message.watchable_match_infos.length)
                 for (var i = 0; i < message.watchable_match_infos.length; ++i)
                     $root.WatchableMatchInfo.encode(message.watchable_match_infos[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-            if (message.extended_timeout != null && message.hasOwnProperty("extended_timeout"))
+            if (message.extended_timeout != null && Object.hasOwnProperty.call(message, "extended_timeout"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.extended_timeout);
             return writer;
         };
@@ -21462,14 +22859,14 @@
         CMsgGCCStrike15_v2_ClientRequestPlayersProfile.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.request_id__deprecated != null && message.hasOwnProperty("request_id__deprecated"))
+            if (message.request_id__deprecated != null && Object.hasOwnProperty.call(message, "request_id__deprecated"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.request_id__deprecated);
             if (message.account_ids__deprecated != null && message.account_ids__deprecated.length)
                 for (var i = 0; i < message.account_ids__deprecated.length; ++i)
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.account_ids__deprecated[i]);
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.account_id);
-            if (message.request_level != null && message.hasOwnProperty("request_level"))
+            if (message.request_level != null && Object.hasOwnProperty.call(message, "request_level"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.request_level);
             return writer;
         };
@@ -21720,7 +23117,7 @@
         CMsgGCCStrike15_v2_PlayersProfile.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.request_id != null && message.hasOwnProperty("request_id"))
+            if (message.request_id != null && Object.hasOwnProperty.call(message, "request_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.request_id);
             if (message.account_profiles != null && message.account_profiles.length)
                 for (var i = 0; i < message.account_profiles.length; ++i)
@@ -22004,21 +23401,21 @@
         CMsgGCCStrike15_v2_PlayerOverwatchCaseUpdate.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.caseid != null && message.hasOwnProperty("caseid"))
+            if (message.caseid != null && Object.hasOwnProperty.call(message, "caseid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.caseid);
-            if (message.suspectid != null && message.hasOwnProperty("suspectid"))
+            if (message.suspectid != null && Object.hasOwnProperty.call(message, "suspectid"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.suspectid);
-            if (message.fractionid != null && message.hasOwnProperty("fractionid"))
+            if (message.fractionid != null && Object.hasOwnProperty.call(message, "fractionid"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.fractionid);
-            if (message.rpt_aimbot != null && message.hasOwnProperty("rpt_aimbot"))
+            if (message.rpt_aimbot != null && Object.hasOwnProperty.call(message, "rpt_aimbot"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.rpt_aimbot);
-            if (message.rpt_wallhack != null && message.hasOwnProperty("rpt_wallhack"))
+            if (message.rpt_wallhack != null && Object.hasOwnProperty.call(message, "rpt_wallhack"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.rpt_wallhack);
-            if (message.rpt_speedhack != null && message.hasOwnProperty("rpt_speedhack"))
+            if (message.rpt_speedhack != null && Object.hasOwnProperty.call(message, "rpt_speedhack"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.rpt_speedhack);
-            if (message.rpt_teamharm != null && message.hasOwnProperty("rpt_teamharm"))
+            if (message.rpt_teamharm != null && Object.hasOwnProperty.call(message, "rpt_teamharm"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.rpt_teamharm);
-            if (message.reason != null && message.hasOwnProperty("reason"))
+            if (message.reason != null && Object.hasOwnProperty.call(message, "reason"))
                 writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.reason);
             return writer;
         };
@@ -22387,27 +23784,27 @@
         CMsgGCCStrike15_v2_PlayerOverwatchCaseAssignment.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.caseid != null && message.hasOwnProperty("caseid"))
+            if (message.caseid != null && Object.hasOwnProperty.call(message, "caseid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.caseid);
-            if (message.caseurl != null && message.hasOwnProperty("caseurl"))
+            if (message.caseurl != null && Object.hasOwnProperty.call(message, "caseurl"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.caseurl);
-            if (message.verdict != null && message.hasOwnProperty("verdict"))
+            if (message.verdict != null && Object.hasOwnProperty.call(message, "verdict"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.verdict);
-            if (message.timestamp != null && message.hasOwnProperty("timestamp"))
+            if (message.timestamp != null && Object.hasOwnProperty.call(message, "timestamp"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.timestamp);
-            if (message.throttleseconds != null && message.hasOwnProperty("throttleseconds"))
+            if (message.throttleseconds != null && Object.hasOwnProperty.call(message, "throttleseconds"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.throttleseconds);
-            if (message.suspectid != null && message.hasOwnProperty("suspectid"))
+            if (message.suspectid != null && Object.hasOwnProperty.call(message, "suspectid"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.suspectid);
-            if (message.fractionid != null && message.hasOwnProperty("fractionid"))
+            if (message.fractionid != null && Object.hasOwnProperty.call(message, "fractionid"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.fractionid);
-            if (message.numrounds != null && message.hasOwnProperty("numrounds"))
+            if (message.numrounds != null && Object.hasOwnProperty.call(message, "numrounds"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.numrounds);
-            if (message.fractionrounds != null && message.hasOwnProperty("fractionrounds"))
+            if (message.fractionrounds != null && Object.hasOwnProperty.call(message, "fractionrounds"))
                 writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.fractionrounds);
-            if (message.streakconvictions != null && message.hasOwnProperty("streakconvictions"))
+            if (message.streakconvictions != null && Object.hasOwnProperty.call(message, "streakconvictions"))
                 writer.uint32(/* id 10, wireType 0 =*/80).int32(message.streakconvictions);
-            if (message.reason != null && message.hasOwnProperty("reason"))
+            if (message.reason != null && Object.hasOwnProperty.call(message, "reason"))
                 writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.reason);
             return writer;
         };
@@ -22728,9 +24125,9 @@
         CMsgGCCStrike15_v2_PlayerOverwatchCaseStatus.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.caseid != null && message.hasOwnProperty("caseid"))
+            if (message.caseid != null && Object.hasOwnProperty.call(message, "caseid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.caseid);
-            if (message.statusid != null && message.hasOwnProperty("statusid"))
+            if (message.statusid != null && Object.hasOwnProperty.call(message, "statusid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.statusid);
             return writer;
         };
@@ -22952,9 +24349,9 @@
         CClientHeaderOverwatchEvidence.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.accountid != null && message.hasOwnProperty("accountid"))
+            if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.accountid);
-            if (message.caseid != null && message.hasOwnProperty("caseid"))
+            if (message.caseid != null && Object.hasOwnProperty.call(message, "caseid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.caseid);
             return writer;
         };
@@ -23185,11 +24582,11 @@
         CMsgGCCStrike15_v2_GC2ClientTextMsg.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.id != null && message.hasOwnProperty("id"))
+            if (message.id != null && Object.hasOwnProperty.call(message, "id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.id);
-            if (message.type != null && message.hasOwnProperty("type"))
+            if (message.type != null && Object.hasOwnProperty.call(message, "type"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.type);
-            if (message.payload != null && message.hasOwnProperty("payload"))
+            if (message.payload != null && Object.hasOwnProperty.call(message, "payload"))
                 writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.payload);
             return writer;
         };
@@ -23418,7 +24815,7 @@
         CMsgGCCStrike15_v2_Client2GCTextMsg.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.id != null && message.hasOwnProperty("id"))
+            if (message.id != null && Object.hasOwnProperty.call(message, "id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.id);
             if (message.args != null && message.args.length)
                 for (var i = 0; i < message.args.length; ++i)
@@ -23646,9 +25043,9 @@
         CMsgGCCStrike15_v2_MatchEndRunRewardDrops.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.serverinfo != null && message.hasOwnProperty("serverinfo"))
+            if (message.serverinfo != null && Object.hasOwnProperty.call(message, "serverinfo"))
                 $root.CMsgGCCStrike15_v2_MatchmakingServerReservationResponse.encode(message.serverinfo, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-            if (message.match_end_quest_data != null && message.hasOwnProperty("match_end_quest_data"))
+            if (message.match_end_quest_data != null && Object.hasOwnProperty.call(message, "match_end_quest_data"))
                 $root.CMsgGC_ServerQuestUpdateData.encode(message.match_end_quest_data, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
             return writer;
         };
@@ -24011,42 +25408,42 @@
         CEconItemPreviewDataBlock.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.accountid != null && message.hasOwnProperty("accountid"))
+            if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.accountid);
-            if (message.itemid != null && message.hasOwnProperty("itemid"))
+            if (message.itemid != null && Object.hasOwnProperty.call(message, "itemid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.itemid);
-            if (message.defindex != null && message.hasOwnProperty("defindex"))
+            if (message.defindex != null && Object.hasOwnProperty.call(message, "defindex"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.defindex);
-            if (message.paintindex != null && message.hasOwnProperty("paintindex"))
+            if (message.paintindex != null && Object.hasOwnProperty.call(message, "paintindex"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.paintindex);
-            if (message.rarity != null && message.hasOwnProperty("rarity"))
+            if (message.rarity != null && Object.hasOwnProperty.call(message, "rarity"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.rarity);
-            if (message.quality != null && message.hasOwnProperty("quality"))
+            if (message.quality != null && Object.hasOwnProperty.call(message, "quality"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.quality);
-            if (message.paintwear != null && message.hasOwnProperty("paintwear"))
+            if (message.paintwear != null && Object.hasOwnProperty.call(message, "paintwear"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.paintwear);
-            if (message.paintseed != null && message.hasOwnProperty("paintseed"))
+            if (message.paintseed != null && Object.hasOwnProperty.call(message, "paintseed"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.paintseed);
-            if (message.killeaterscoretype != null && message.hasOwnProperty("killeaterscoretype"))
+            if (message.killeaterscoretype != null && Object.hasOwnProperty.call(message, "killeaterscoretype"))
                 writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.killeaterscoretype);
-            if (message.killeatervalue != null && message.hasOwnProperty("killeatervalue"))
+            if (message.killeatervalue != null && Object.hasOwnProperty.call(message, "killeatervalue"))
                 writer.uint32(/* id 10, wireType 0 =*/80).uint32(message.killeatervalue);
-            if (message.customname != null && message.hasOwnProperty("customname"))
+            if (message.customname != null && Object.hasOwnProperty.call(message, "customname"))
                 writer.uint32(/* id 11, wireType 2 =*/90).string(message.customname);
             if (message.stickers != null && message.stickers.length)
                 for (var i = 0; i < message.stickers.length; ++i)
                     $root.CEconItemPreviewDataBlock.Sticker.encode(message.stickers[i], writer.uint32(/* id 12, wireType 2 =*/98).fork()).ldelim();
-            if (message.inventory != null && message.hasOwnProperty("inventory"))
+            if (message.inventory != null && Object.hasOwnProperty.call(message, "inventory"))
                 writer.uint32(/* id 13, wireType 0 =*/104).uint32(message.inventory);
-            if (message.origin != null && message.hasOwnProperty("origin"))
+            if (message.origin != null && Object.hasOwnProperty.call(message, "origin"))
                 writer.uint32(/* id 14, wireType 0 =*/112).uint32(message.origin);
-            if (message.questid != null && message.hasOwnProperty("questid"))
+            if (message.questid != null && Object.hasOwnProperty.call(message, "questid"))
                 writer.uint32(/* id 15, wireType 0 =*/120).uint32(message.questid);
-            if (message.dropreason != null && message.hasOwnProperty("dropreason"))
+            if (message.dropreason != null && Object.hasOwnProperty.call(message, "dropreason"))
                 writer.uint32(/* id 16, wireType 0 =*/128).uint32(message.dropreason);
-            if (message.musicindex != null && message.hasOwnProperty("musicindex"))
+            if (message.musicindex != null && Object.hasOwnProperty.call(message, "musicindex"))
                 writer.uint32(/* id 17, wireType 0 =*/136).uint32(message.musicindex);
-            if (message.entindex != null && message.hasOwnProperty("entindex"))
+            if (message.entindex != null && Object.hasOwnProperty.call(message, "entindex"))
                 writer.uint32(/* id 18, wireType 0 =*/144).int32(message.entindex);
             return writer;
         };
@@ -24497,17 +25894,17 @@
             Sticker.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.slot != null && message.hasOwnProperty("slot"))
+                if (message.slot != null && Object.hasOwnProperty.call(message, "slot"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.slot);
-                if (message.sticker_id != null && message.hasOwnProperty("sticker_id"))
+                if (message.sticker_id != null && Object.hasOwnProperty.call(message, "sticker_id"))
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.sticker_id);
-                if (message.wear != null && message.hasOwnProperty("wear"))
+                if (message.wear != null && Object.hasOwnProperty.call(message, "wear"))
                     writer.uint32(/* id 3, wireType 5 =*/29).float(message.wear);
-                if (message.scale != null && message.hasOwnProperty("scale"))
+                if (message.scale != null && Object.hasOwnProperty.call(message, "scale"))
                     writer.uint32(/* id 4, wireType 5 =*/37).float(message.scale);
-                if (message.rotation != null && message.hasOwnProperty("rotation"))
+                if (message.rotation != null && Object.hasOwnProperty.call(message, "rotation"))
                     writer.uint32(/* id 5, wireType 5 =*/45).float(message.rotation);
-                if (message.tint_id != null && message.hasOwnProperty("tint_id"))
+                if (message.tint_id != null && Object.hasOwnProperty.call(message, "tint_id"))
                     writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.tint_id);
                 return writer;
             };
@@ -24753,7 +26150,7 @@
         CMsgGCCStrike15_v2_MatchEndRewardDropsNotification.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.iteminfo != null && message.hasOwnProperty("iteminfo"))
+            if (message.iteminfo != null && Object.hasOwnProperty.call(message, "iteminfo"))
                 $root.CEconItemPreviewDataBlock.encode(message.iteminfo, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
             return writer;
         };
@@ -24945,7 +26342,7 @@
         CMsgItemAcknowledged.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.iteminfo != null && message.hasOwnProperty("iteminfo"))
+            if (message.iteminfo != null && Object.hasOwnProperty.call(message, "iteminfo"))
                 $root.CEconItemPreviewDataBlock.encode(message.iteminfo, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             return writer;
         };
@@ -25164,13 +26561,13 @@
         CMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.param_s != null && message.hasOwnProperty("param_s"))
+            if (message.param_s != null && Object.hasOwnProperty.call(message, "param_s"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.param_s);
-            if (message.param_a != null && message.hasOwnProperty("param_a"))
+            if (message.param_a != null && Object.hasOwnProperty.call(message, "param_a"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.param_a);
-            if (message.param_d != null && message.hasOwnProperty("param_d"))
+            if (message.param_d != null && Object.hasOwnProperty.call(message, "param_d"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.param_d);
-            if (message.param_m != null && message.hasOwnProperty("param_m"))
+            if (message.param_m != null && Object.hasOwnProperty.call(message, "param_m"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.param_m);
             return writer;
         };
@@ -25447,7 +26844,7 @@
         CMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.iteminfo != null && message.hasOwnProperty("iteminfo"))
+            if (message.iteminfo != null && Object.hasOwnProperty.call(message, "iteminfo"))
                 $root.CEconItemPreviewDataBlock.encode(message.iteminfo, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             return writer;
         };
@@ -25581,274 +26978,6 @@
         };
     
         return CMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse;
-    })();
-    
-    $root.CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification = (function() {
-    
-        /**
-         * Properties of a CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.
-         * @exports ICMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @interface ICMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @property {number|Long|null} [match_id] CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification match_id
-         * @property {number|null} [defindex] CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification defindex
-         * @property {Array.<number>|null} [accountids] CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification accountids
-         */
-    
-        /**
-         * Constructs a new CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.
-         * @exports CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @classdesc Represents a CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.
-         * @implements ICMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @constructor
-         * @param {ICMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification=} [properties] Properties to set
-         */
-        function CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification(properties) {
-            this.accountids = [];
-            if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-    
-        /**
-         * CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification match_id.
-         * @member {number|Long} match_id
-         * @memberof CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @instance
-         */
-        CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.prototype.match_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
-    
-        /**
-         * CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification defindex.
-         * @member {number} defindex
-         * @memberof CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @instance
-         */
-        CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.prototype.defindex = 0;
-    
-        /**
-         * CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification accountids.
-         * @member {Array.<number>} accountids
-         * @memberof CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @instance
-         */
-        CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.prototype.accountids = $util.emptyArray;
-    
-        /**
-         * Creates a new CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification instance using the specified properties.
-         * @function create
-         * @memberof CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @static
-         * @param {ICMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification=} [properties] Properties to set
-         * @returns {CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification} CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification instance
-         */
-        CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.create = function create(properties) {
-            return new CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification(properties);
-        };
-    
-        /**
-         * Encodes the specified CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification message. Does not implicitly {@link CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.verify|verify} messages.
-         * @function encode
-         * @memberof CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @static
-         * @param {ICMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification} message CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.match_id != null && message.hasOwnProperty("match_id"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.match_id);
-            if (message.defindex != null && message.hasOwnProperty("defindex"))
-                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.defindex);
-            if (message.accountids != null && message.accountids.length)
-                for (var i = 0; i < message.accountids.length; ++i)
-                    writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.accountids[i]);
-            return writer;
-        };
-    
-        /**
-         * Encodes the specified CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification message, length delimited. Does not implicitly {@link CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @static
-         * @param {ICMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification} message CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-    
-        /**
-         * Decodes a CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification message from the specified reader or buffer.
-         * @function decode
-         * @memberof CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification} CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.decode = function decode(reader, length) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification();
-            while (reader.pos < end) {
-                var tag = reader.uint32();
-                switch (tag >>> 3) {
-                case 1:
-                    message.match_id = reader.uint64();
-                    break;
-                case 2:
-                    message.defindex = reader.uint32();
-                    break;
-                case 3:
-                    if (!(message.accountids && message.accountids.length))
-                        message.accountids = [];
-                    if ((tag & 7) === 2) {
-                        var end2 = reader.uint32() + reader.pos;
-                        while (reader.pos < end2)
-                            message.accountids.push(reader.uint32());
-                    } else
-                        message.accountids.push(reader.uint32());
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-    
-        /**
-         * Decodes a CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification} CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-    
-        /**
-         * Verifies a CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification message.
-         * @function verify
-         * @memberof CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.match_id != null && message.hasOwnProperty("match_id"))
-                if (!$util.isInteger(message.match_id) && !(message.match_id && $util.isInteger(message.match_id.low) && $util.isInteger(message.match_id.high)))
-                    return "match_id: integer|Long expected";
-            if (message.defindex != null && message.hasOwnProperty("defindex"))
-                if (!$util.isInteger(message.defindex))
-                    return "defindex: integer expected";
-            if (message.accountids != null && message.hasOwnProperty("accountids")) {
-                if (!Array.isArray(message.accountids))
-                    return "accountids: array expected";
-                for (var i = 0; i < message.accountids.length; ++i)
-                    if (!$util.isInteger(message.accountids[i]))
-                        return "accountids: integer[] expected";
-            }
-            return null;
-        };
-    
-        /**
-         * Creates a CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification} CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         */
-        CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.fromObject = function fromObject(object) {
-            if (object instanceof $root.CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification)
-                return object;
-            var message = new $root.CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification();
-            if (object.match_id != null)
-                if ($util.Long)
-                    (message.match_id = $util.Long.fromValue(object.match_id)).unsigned = true;
-                else if (typeof object.match_id === "string")
-                    message.match_id = parseInt(object.match_id, 10);
-                else if (typeof object.match_id === "number")
-                    message.match_id = object.match_id;
-                else if (typeof object.match_id === "object")
-                    message.match_id = new $util.LongBits(object.match_id.low >>> 0, object.match_id.high >>> 0).toNumber(true);
-            if (object.defindex != null)
-                message.defindex = object.defindex >>> 0;
-            if (object.accountids) {
-                if (!Array.isArray(object.accountids))
-                    throw TypeError(".CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.accountids: array expected");
-                message.accountids = [];
-                for (var i = 0; i < object.accountids.length; ++i)
-                    message.accountids[i] = object.accountids[i] >>> 0;
-            }
-            return message;
-        };
-    
-        /**
-         * Creates a plain object from a CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @static
-         * @param {CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification} message CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            var object = {};
-            if (options.arrays || options.defaults)
-                object.accountids = [];
-            if (options.defaults) {
-                if ($util.Long) {
-                    var long = new $util.Long(0, 0, true);
-                    object.match_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                } else
-                    object.match_id = options.longs === String ? "0" : 0;
-                object.defindex = 0;
-            }
-            if (message.match_id != null && message.hasOwnProperty("match_id"))
-                if (typeof message.match_id === "number")
-                    object.match_id = options.longs === String ? String(message.match_id) : message.match_id;
-                else
-                    object.match_id = options.longs === String ? $util.Long.prototype.toString.call(message.match_id) : options.longs === Number ? new $util.LongBits(message.match_id.low >>> 0, message.match_id.high >>> 0).toNumber(true) : message.match_id;
-            if (message.defindex != null && message.hasOwnProperty("defindex"))
-                object.defindex = message.defindex;
-            if (message.accountids && message.accountids.length) {
-                object.accountids = [];
-                for (var j = 0; j < message.accountids.length; ++j)
-                    object.accountids[j] = message.accountids[j];
-            }
-            return object;
-        };
-    
-        /**
-         * Converts this CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification to JSON.
-         * @function toJSON
-         * @memberof CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-    
-        return CMsgGCCStrike15_v2_TournamentMatchRewardDropsNotification;
     })();
     
     $root.CMsgGCCStrike15_v2_MatchListRequestCurrentLiveGames = (function() {
@@ -26067,7 +27196,7 @@
         CMsgGCCStrike15_v2_MatchListRequestLiveGameForUser.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.accountid != null && message.hasOwnProperty("accountid"))
+            if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.accountid);
             return writer;
         };
@@ -26254,7 +27383,7 @@
         CMsgGCCStrike15_v2_MatchListRequestRecentUserGames.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.accountid != null && message.hasOwnProperty("accountid"))
+            if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.accountid);
             return writer;
         };
@@ -26441,7 +27570,7 @@
         CMsgGCCStrike15_v2_MatchListRequestTournamentGames.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eventid != null && message.hasOwnProperty("eventid"))
+            if (message.eventid != null && Object.hasOwnProperty.call(message, "eventid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.eventid);
             return writer;
         };
@@ -26646,11 +27775,11 @@
         CMsgGCCStrike15_v2_MatchListRequestFullGameInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.matchid != null && message.hasOwnProperty("matchid"))
+            if (message.matchid != null && Object.hasOwnProperty.call(message, "matchid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.matchid);
-            if (message.outcomeid != null && message.hasOwnProperty("outcomeid"))
+            if (message.outcomeid != null && Object.hasOwnProperty.call(message, "outcomeid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.outcomeid);
-            if (message.token != null && message.hasOwnProperty("token"))
+            if (message.token != null && Object.hasOwnProperty.call(message, "token"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.token);
             return writer;
         };
@@ -26925,13 +28054,13 @@
         CDataGCCStrike15_v2_MatchInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.matchid != null && message.hasOwnProperty("matchid"))
+            if (message.matchid != null && Object.hasOwnProperty.call(message, "matchid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.matchid);
-            if (message.matchtime != null && message.hasOwnProperty("matchtime"))
+            if (message.matchtime != null && Object.hasOwnProperty.call(message, "matchtime"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.matchtime);
-            if (message.watchablematchinfo != null && message.hasOwnProperty("watchablematchinfo"))
+            if (message.watchablematchinfo != null && Object.hasOwnProperty.call(message, "watchablematchinfo"))
                 $root.WatchableMatchInfo.encode(message.watchablematchinfo, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-            if (message.roundstats_legacy != null && message.hasOwnProperty("roundstats_legacy"))
+            if (message.roundstats_legacy != null && Object.hasOwnProperty.call(message, "roundstats_legacy"))
                 $root.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.encode(message.roundstats_legacy, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
             if (message.roundstatsall != null && message.roundstatsall.length)
                 for (var i = 0; i < message.roundstatsall.length; ++i)
@@ -27228,11 +28357,11 @@
         CDataGCCStrike15_v2_TournamentGroupTeam.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.team_id != null && message.hasOwnProperty("team_id"))
+            if (message.team_id != null && Object.hasOwnProperty.call(message, "team_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.team_id);
-            if (message.score != null && message.hasOwnProperty("score"))
+            if (message.score != null && Object.hasOwnProperty.call(message, "score"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.score);
-            if (message.correctpick != null && message.hasOwnProperty("correctpick"))
+            if (message.correctpick != null && Object.hasOwnProperty.call(message, "correctpick"))
                 writer.uint32(/* id 3, wireType 0 =*/24).bool(message.correctpick);
             return writer;
         };
@@ -27526,13 +28655,13 @@
         CDataGCCStrike15_v2_TournamentGroup.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.groupid != null && message.hasOwnProperty("groupid"))
+            if (message.groupid != null && Object.hasOwnProperty.call(message, "groupid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.groupid);
-            if (message.name != null && message.hasOwnProperty("name"))
+            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
-            if (message.desc != null && message.hasOwnProperty("desc"))
+            if (message.desc != null && Object.hasOwnProperty.call(message, "desc"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.desc);
-            if (message.picks__deprecated != null && message.hasOwnProperty("picks__deprecated"))
+            if (message.picks__deprecated != null && Object.hasOwnProperty.call(message, "picks__deprecated"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.picks__deprecated);
             if (message.teams != null && message.teams.length)
                 for (var i = 0; i < message.teams.length; ++i)
@@ -27540,11 +28669,11 @@
             if (message.stage_ids != null && message.stage_ids.length)
                 for (var i = 0; i < message.stage_ids.length; ++i)
                     writer.uint32(/* id 6, wireType 0 =*/48).int32(message.stage_ids[i]);
-            if (message.picklockuntiltime != null && message.hasOwnProperty("picklockuntiltime"))
+            if (message.picklockuntiltime != null && Object.hasOwnProperty.call(message, "picklockuntiltime"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.picklockuntiltime);
-            if (message.pickableteams != null && message.hasOwnProperty("pickableteams"))
+            if (message.pickableteams != null && Object.hasOwnProperty.call(message, "pickableteams"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.pickableteams);
-            if (message.points_per_pick != null && message.hasOwnProperty("points_per_pick"))
+            if (message.points_per_pick != null && Object.hasOwnProperty.call(message, "points_per_pick"))
                 writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.points_per_pick);
             if (message.picks != null && message.picks.length)
                 for (var i = 0; i < message.picks.length; ++i)
@@ -28129,11 +29258,11 @@
         CDataGCCStrike15_v2_TournamentSection.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.sectionid != null && message.hasOwnProperty("sectionid"))
+            if (message.sectionid != null && Object.hasOwnProperty.call(message, "sectionid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.sectionid);
-            if (message.name != null && message.hasOwnProperty("name"))
+            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
-            if (message.desc != null && message.hasOwnProperty("desc"))
+            if (message.desc != null && Object.hasOwnProperty.call(message, "desc"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.desc);
             if (message.groups != null && message.groups.length)
                 for (var i = 0; i < message.groups.length; ++i)
@@ -28400,7 +29529,7 @@
             if (message.sections != null && message.sections.length)
                 for (var i = 0; i < message.sections.length; ++i)
                     $root.CDataGCCStrike15_v2_TournamentSection.encode(message.sections[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.tournament_event != null && message.hasOwnProperty("tournament_event"))
+            if (message.tournament_event != null && Object.hasOwnProperty.call(message, "tournament_event"))
                 $root.TournamentEvent.encode(message.tournament_event, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             if (message.tournament_teams != null && message.tournament_teams.length)
                 for (var i = 0; i < message.tournament_teams.length; ++i)
@@ -28704,11 +29833,11 @@
         CMsgGCCStrike15_v2_MatchList.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.msgrequestid != null && message.hasOwnProperty("msgrequestid"))
+            if (message.msgrequestid != null && Object.hasOwnProperty.call(message, "msgrequestid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.msgrequestid);
-            if (message.accountid != null && message.hasOwnProperty("accountid"))
+            if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.accountid);
-            if (message.servertime != null && message.hasOwnProperty("servertime"))
+            if (message.servertime != null && Object.hasOwnProperty.call(message, "servertime"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.servertime);
             if (message.matches != null && message.matches.length)
                 for (var i = 0; i < message.matches.length; ++i)
@@ -28716,7 +29845,7 @@
             if (message.streams != null && message.streams.length)
                 for (var i = 0; i < message.streams.length; ++i)
                     $root.TournamentTeam.encode(message.streams[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
-            if (message.tournamentinfo != null && message.hasOwnProperty("tournamentinfo"))
+            if (message.tournamentinfo != null && Object.hasOwnProperty.call(message, "tournamentinfo"))
                 $root.CDataGCCStrike15_v2_TournamentInfo.encode(message.tournamentinfo, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
             return writer;
         };
@@ -29014,7 +30143,7 @@
         CMsgGCCStrike15_v2_Predictions.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.event_id != null && message.hasOwnProperty("event_id"))
+            if (message.event_id != null && Object.hasOwnProperty.call(message, "event_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.event_id);
             if (message.group_match_team_picks != null && message.group_match_team_picks.length)
                 for (var i = 0; i < message.group_match_team_picks.length; ++i)
@@ -29268,15 +30397,15 @@
             GroupMatchTeamPick.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.sectionid != null && message.hasOwnProperty("sectionid"))
+                if (message.sectionid != null && Object.hasOwnProperty.call(message, "sectionid"))
                     writer.uint32(/* id 1, wireType 0 =*/8).int32(message.sectionid);
-                if (message.groupid != null && message.hasOwnProperty("groupid"))
+                if (message.groupid != null && Object.hasOwnProperty.call(message, "groupid"))
                     writer.uint32(/* id 2, wireType 0 =*/16).int32(message.groupid);
-                if (message.index != null && message.hasOwnProperty("index"))
+                if (message.index != null && Object.hasOwnProperty.call(message, "index"))
                     writer.uint32(/* id 3, wireType 0 =*/24).int32(message.index);
-                if (message.teamid != null && message.hasOwnProperty("teamid"))
+                if (message.teamid != null && Object.hasOwnProperty.call(message, "teamid"))
                     writer.uint32(/* id 4, wireType 0 =*/32).int32(message.teamid);
-                if (message.itemid != null && message.hasOwnProperty("itemid"))
+                if (message.itemid != null && Object.hasOwnProperty.call(message, "itemid"))
                     writer.uint32(/* id 5, wireType 0 =*/40).uint64(message.itemid);
                 return writer;
             };
@@ -29535,7 +30664,7 @@
         CMsgGCCStrike15_v2_Fantasy.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.event_id != null && message.hasOwnProperty("event_id"))
+            if (message.event_id != null && Object.hasOwnProperty.call(message, "event_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.event_id);
             if (message.teams != null && message.teams.length)
                 for (var i = 0; i < message.teams.length; ++i)
@@ -29771,11 +30900,11 @@
             FantasySlot.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.type != null && message.hasOwnProperty("type"))
+                if (message.type != null && Object.hasOwnProperty.call(message, "type"))
                     writer.uint32(/* id 1, wireType 0 =*/8).int32(message.type);
-                if (message.pick != null && message.hasOwnProperty("pick"))
+                if (message.pick != null && Object.hasOwnProperty.call(message, "pick"))
                     writer.uint32(/* id 2, wireType 0 =*/16).int32(message.pick);
-                if (message.itemid != null && message.hasOwnProperty("itemid"))
+                if (message.itemid != null && Object.hasOwnProperty.call(message, "itemid"))
                     writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.itemid);
                 return writer;
             };
@@ -30009,7 +31138,7 @@
             FantasyTeam.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.sectionid != null && message.hasOwnProperty("sectionid"))
+                if (message.sectionid != null && Object.hasOwnProperty.call(message, "sectionid"))
                     writer.uint32(/* id 1, wireType 0 =*/8).int32(message.sectionid);
                 if (message.slots != null && message.slots.length)
                     for (var i = 0; i < message.slots.length; ++i)
@@ -30233,7 +31362,7 @@
         CAttribute_String.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.value != null && message.hasOwnProperty("value"))
+            if (message.value != null && Object.hasOwnProperty.call(message, "value"))
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.value);
             return writer;
         };
@@ -30364,166 +31493,6 @@
         return CAttribute_String;
     })();
     
-    $root.CMsgGCToGCReloadVersions = (function() {
-    
-        /**
-         * Properties of a CMsgGCToGCReloadVersions.
-         * @exports ICMsgGCToGCReloadVersions
-         * @interface ICMsgGCToGCReloadVersions
-         */
-    
-        /**
-         * Constructs a new CMsgGCToGCReloadVersions.
-         * @exports CMsgGCToGCReloadVersions
-         * @classdesc Represents a CMsgGCToGCReloadVersions.
-         * @implements ICMsgGCToGCReloadVersions
-         * @constructor
-         * @param {ICMsgGCToGCReloadVersions=} [properties] Properties to set
-         */
-        function CMsgGCToGCReloadVersions(properties) {
-            if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-    
-        /**
-         * Creates a new CMsgGCToGCReloadVersions instance using the specified properties.
-         * @function create
-         * @memberof CMsgGCToGCReloadVersions
-         * @static
-         * @param {ICMsgGCToGCReloadVersions=} [properties] Properties to set
-         * @returns {CMsgGCToGCReloadVersions} CMsgGCToGCReloadVersions instance
-         */
-        CMsgGCToGCReloadVersions.create = function create(properties) {
-            return new CMsgGCToGCReloadVersions(properties);
-        };
-    
-        /**
-         * Encodes the specified CMsgGCToGCReloadVersions message. Does not implicitly {@link CMsgGCToGCReloadVersions.verify|verify} messages.
-         * @function encode
-         * @memberof CMsgGCToGCReloadVersions
-         * @static
-         * @param {ICMsgGCToGCReloadVersions} message CMsgGCToGCReloadVersions message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CMsgGCToGCReloadVersions.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            return writer;
-        };
-    
-        /**
-         * Encodes the specified CMsgGCToGCReloadVersions message, length delimited. Does not implicitly {@link CMsgGCToGCReloadVersions.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof CMsgGCToGCReloadVersions
-         * @static
-         * @param {ICMsgGCToGCReloadVersions} message CMsgGCToGCReloadVersions message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CMsgGCToGCReloadVersions.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-    
-        /**
-         * Decodes a CMsgGCToGCReloadVersions message from the specified reader or buffer.
-         * @function decode
-         * @memberof CMsgGCToGCReloadVersions
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {CMsgGCToGCReloadVersions} CMsgGCToGCReloadVersions
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CMsgGCToGCReloadVersions.decode = function decode(reader, length) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCToGCReloadVersions();
-            while (reader.pos < end) {
-                var tag = reader.uint32();
-                switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-    
-        /**
-         * Decodes a CMsgGCToGCReloadVersions message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof CMsgGCToGCReloadVersions
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {CMsgGCToGCReloadVersions} CMsgGCToGCReloadVersions
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CMsgGCToGCReloadVersions.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-    
-        /**
-         * Verifies a CMsgGCToGCReloadVersions message.
-         * @function verify
-         * @memberof CMsgGCToGCReloadVersions
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        CMsgGCToGCReloadVersions.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            return null;
-        };
-    
-        /**
-         * Creates a CMsgGCToGCReloadVersions message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof CMsgGCToGCReloadVersions
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {CMsgGCToGCReloadVersions} CMsgGCToGCReloadVersions
-         */
-        CMsgGCToGCReloadVersions.fromObject = function fromObject(object) {
-            if (object instanceof $root.CMsgGCToGCReloadVersions)
-                return object;
-            return new $root.CMsgGCToGCReloadVersions();
-        };
-    
-        /**
-         * Creates a plain object from a CMsgGCToGCReloadVersions message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof CMsgGCToGCReloadVersions
-         * @static
-         * @param {CMsgGCToGCReloadVersions} message CMsgGCToGCReloadVersions
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        CMsgGCToGCReloadVersions.toObject = function toObject() {
-            return {};
-        };
-    
-        /**
-         * Converts this CMsgGCToGCReloadVersions to JSON.
-         * @function toJSON
-         * @memberof CMsgGCToGCReloadVersions
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        CMsgGCToGCReloadVersions.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-    
-        return CMsgGCToGCReloadVersions;
-    })();
-    
     $root.CMsgCStrike15Welcome = (function() {
     
         /**
@@ -30634,19 +31603,19 @@
         CMsgCStrike15Welcome.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.store_item_hash != null && message.hasOwnProperty("store_item_hash"))
+            if (message.store_item_hash != null && Object.hasOwnProperty.call(message, "store_item_hash"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.store_item_hash);
-            if (message.timeplayedconsecutively != null && message.hasOwnProperty("timeplayedconsecutively"))
+            if (message.timeplayedconsecutively != null && Object.hasOwnProperty.call(message, "timeplayedconsecutively"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.timeplayedconsecutively);
-            if (message.time_first_played != null && message.hasOwnProperty("time_first_played"))
+            if (message.time_first_played != null && Object.hasOwnProperty.call(message, "time_first_played"))
                 writer.uint32(/* id 10, wireType 0 =*/80).uint32(message.time_first_played);
-            if (message.last_time_played != null && message.hasOwnProperty("last_time_played"))
+            if (message.last_time_played != null && Object.hasOwnProperty.call(message, "last_time_played"))
                 writer.uint32(/* id 12, wireType 0 =*/96).uint32(message.last_time_played);
-            if (message.last_ip_address != null && message.hasOwnProperty("last_ip_address"))
+            if (message.last_ip_address != null && Object.hasOwnProperty.call(message, "last_ip_address"))
                 writer.uint32(/* id 13, wireType 0 =*/104).uint32(message.last_ip_address);
-            if (message.gscookieid != null && message.hasOwnProperty("gscookieid"))
+            if (message.gscookieid != null && Object.hasOwnProperty.call(message, "gscookieid"))
                 writer.uint32(/* id 18, wireType 0 =*/144).uint64(message.gscookieid);
-            if (message.uniqueid != null && message.hasOwnProperty("uniqueid"))
+            if (message.uniqueid != null && Object.hasOwnProperty.call(message, "uniqueid"))
                 writer.uint32(/* id 19, wireType 0 =*/152).uint64(message.uniqueid);
             return writer;
         };
@@ -30965,13 +31934,13 @@
         CMsgGCCStrike15_v2_ClientVarValueNotificationInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.value_name != null && message.hasOwnProperty("value_name"))
+            if (message.value_name != null && Object.hasOwnProperty.call(message, "value_name"))
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.value_name);
-            if (message.value_int != null && message.hasOwnProperty("value_int"))
+            if (message.value_int != null && Object.hasOwnProperty.call(message, "value_int"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.value_int);
-            if (message.server_addr != null && message.hasOwnProperty("server_addr"))
+            if (message.server_addr != null && Object.hasOwnProperty.call(message, "server_addr"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.server_addr);
-            if (message.server_port != null && message.hasOwnProperty("server_port"))
+            if (message.server_port != null && Object.hasOwnProperty.call(message, "server_port"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.server_port);
             if (message.choked_blocks != null && message.choked_blocks.length)
                 for (var i = 0; i < message.choked_blocks.length; ++i)
@@ -31174,6 +32143,7 @@
          * @property {number|null} [accountid] CMsgGCCStrike15_v2_ServerVarValueNotificationInfo accountid
          * @property {Array.<number>|null} [viewangles] CMsgGCCStrike15_v2_ServerVarValueNotificationInfo viewangles
          * @property {number|null} [type] CMsgGCCStrike15_v2_ServerVarValueNotificationInfo type
+         * @property {Array.<number>|null} [userdata] CMsgGCCStrike15_v2_ServerVarValueNotificationInfo userdata
          */
     
         /**
@@ -31186,6 +32156,7 @@
          */
         function CMsgGCCStrike15_v2_ServerVarValueNotificationInfo(properties) {
             this.viewangles = [];
+            this.userdata = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -31217,6 +32188,14 @@
         CMsgGCCStrike15_v2_ServerVarValueNotificationInfo.prototype.type = 0;
     
         /**
+         * CMsgGCCStrike15_v2_ServerVarValueNotificationInfo userdata.
+         * @member {Array.<number>} userdata
+         * @memberof CMsgGCCStrike15_v2_ServerVarValueNotificationInfo
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ServerVarValueNotificationInfo.prototype.userdata = $util.emptyArray;
+    
+        /**
          * Creates a new CMsgGCCStrike15_v2_ServerVarValueNotificationInfo instance using the specified properties.
          * @function create
          * @memberof CMsgGCCStrike15_v2_ServerVarValueNotificationInfo
@@ -31240,13 +32219,16 @@
         CMsgGCCStrike15_v2_ServerVarValueNotificationInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.accountid != null && message.hasOwnProperty("accountid"))
+            if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.accountid);
             if (message.viewangles != null && message.viewangles.length)
                 for (var i = 0; i < message.viewangles.length; ++i)
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.viewangles[i]);
-            if (message.type != null && message.hasOwnProperty("type"))
+            if (message.type != null && Object.hasOwnProperty.call(message, "type"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.type);
+            if (message.userdata != null && message.userdata.length)
+                for (var i = 0; i < message.userdata.length; ++i)
+                    writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.userdata[i]);
             return writer;
         };
     
@@ -31297,6 +32279,16 @@
                 case 3:
                     message.type = reader.uint32();
                     break;
+                case 4:
+                    if (!(message.userdata && message.userdata.length))
+                        message.userdata = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.userdata.push(reader.uint32());
+                    } else
+                        message.userdata.push(reader.uint32());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -31345,6 +32337,13 @@
             if (message.type != null && message.hasOwnProperty("type"))
                 if (!$util.isInteger(message.type))
                     return "type: integer expected";
+            if (message.userdata != null && message.hasOwnProperty("userdata")) {
+                if (!Array.isArray(message.userdata))
+                    return "userdata: array expected";
+                for (var i = 0; i < message.userdata.length; ++i)
+                    if (!$util.isInteger(message.userdata[i]))
+                        return "userdata: integer[] expected";
+            }
             return null;
         };
     
@@ -31371,6 +32370,13 @@
             }
             if (object.type != null)
                 message.type = object.type >>> 0;
+            if (object.userdata) {
+                if (!Array.isArray(object.userdata))
+                    throw TypeError(".CMsgGCCStrike15_v2_ServerVarValueNotificationInfo.userdata: array expected");
+                message.userdata = [];
+                for (var i = 0; i < object.userdata.length; ++i)
+                    message.userdata[i] = object.userdata[i] >>> 0;
+            }
             return message;
         };
     
@@ -31387,8 +32393,10 @@
             if (!options)
                 options = {};
             var object = {};
-            if (options.arrays || options.defaults)
+            if (options.arrays || options.defaults) {
                 object.viewangles = [];
+                object.userdata = [];
+            }
             if (options.defaults) {
                 object.accountid = 0;
                 object.type = 0;
@@ -31402,6 +32410,11 @@
             }
             if (message.type != null && message.hasOwnProperty("type"))
                 object.type = message.type;
+            if (message.userdata && message.userdata.length) {
+                object.userdata = [];
+                for (var j = 0; j < message.userdata.length; ++j)
+                    object.userdata[j] = message.userdata[j];
+            }
             return object;
         };
     
@@ -31672,13 +32685,13 @@
         CMsgGCCStrike15_v2_GiftsLeaderboardResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.servertime != null && message.hasOwnProperty("servertime"))
+            if (message.servertime != null && Object.hasOwnProperty.call(message, "servertime"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.servertime);
-            if (message.time_period_seconds != null && message.hasOwnProperty("time_period_seconds"))
+            if (message.time_period_seconds != null && Object.hasOwnProperty.call(message, "time_period_seconds"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.time_period_seconds);
-            if (message.total_gifts_given != null && message.hasOwnProperty("total_gifts_given"))
+            if (message.total_gifts_given != null && Object.hasOwnProperty.call(message, "total_gifts_given"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.total_gifts_given);
-            if (message.total_givers != null && message.hasOwnProperty("total_givers"))
+            if (message.total_givers != null && Object.hasOwnProperty.call(message, "total_givers"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.total_givers);
             if (message.entries != null && message.entries.length)
                 for (var i = 0; i < message.entries.length; ++i)
@@ -31939,9 +32952,9 @@
             GiftLeaderboardEntry.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.accountid != null && message.hasOwnProperty("accountid"))
+                if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.accountid);
-                if (message.gifts != null && message.hasOwnProperty("gifts"))
+                if (message.gifts != null && Object.hasOwnProperty.call(message, "gifts"))
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.gifts);
                 return writer;
             };
@@ -32152,9 +33165,9 @@
         CMsgGCCStrike15_v2_ClientSubmitSurveyVote.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.survey_id != null && message.hasOwnProperty("survey_id"))
+            if (message.survey_id != null && Object.hasOwnProperty.call(message, "survey_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.survey_id);
-            if (message.vote != null && message.hasOwnProperty("vote"))
+            if (message.vote != null && Object.hasOwnProperty.call(message, "vote"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.vote);
             return writer;
         };
@@ -32353,7 +33366,7 @@
         CMsgGCCStrike15_v2_Server2GCClientValidate.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.accountid != null && message.hasOwnProperty("accountid"))
+            if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.accountid);
             return writer;
         };
@@ -32484,348 +33497,6 @@
         return CMsgGCCStrike15_v2_Server2GCClientValidate;
     })();
     
-    $root.CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure = (function() {
-    
-        /**
-         * Properties of a CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.
-         * @exports ICMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @interface ICMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @property {number|null} [accountid] CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure accountid
-         * @property {string|null} [path] CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure path
-         * @property {string|null} [file] CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure file
-         * @property {number|null} [crc] CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure crc
-         * @property {number|null} [hash] CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure hash
-         * @property {number|null} [len] CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure len
-         * @property {number|null} [pack_number] CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure pack_number
-         * @property {number|null} [pack_file_id] CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure pack_file_id
-         */
-    
-        /**
-         * Constructs a new CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.
-         * @exports CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @classdesc Represents a CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.
-         * @implements ICMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @constructor
-         * @param {ICMsgGCCStrike15_v2_Server2GCPureServerValidationFailure=} [properties] Properties to set
-         */
-        function CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure(properties) {
-            if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-    
-        /**
-         * CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure accountid.
-         * @member {number} accountid
-         * @memberof CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @instance
-         */
-        CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.prototype.accountid = 0;
-    
-        /**
-         * CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure path.
-         * @member {string} path
-         * @memberof CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @instance
-         */
-        CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.prototype.path = "";
-    
-        /**
-         * CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure file.
-         * @member {string} file
-         * @memberof CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @instance
-         */
-        CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.prototype.file = "";
-    
-        /**
-         * CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure crc.
-         * @member {number} crc
-         * @memberof CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @instance
-         */
-        CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.prototype.crc = 0;
-    
-        /**
-         * CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure hash.
-         * @member {number} hash
-         * @memberof CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @instance
-         */
-        CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.prototype.hash = 0;
-    
-        /**
-         * CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure len.
-         * @member {number} len
-         * @memberof CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @instance
-         */
-        CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.prototype.len = 0;
-    
-        /**
-         * CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure pack_number.
-         * @member {number} pack_number
-         * @memberof CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @instance
-         */
-        CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.prototype.pack_number = 0;
-    
-        /**
-         * CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure pack_file_id.
-         * @member {number} pack_file_id
-         * @memberof CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @instance
-         */
-        CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.prototype.pack_file_id = 0;
-    
-        /**
-         * Creates a new CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure instance using the specified properties.
-         * @function create
-         * @memberof CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @static
-         * @param {ICMsgGCCStrike15_v2_Server2GCPureServerValidationFailure=} [properties] Properties to set
-         * @returns {CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure} CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure instance
-         */
-        CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.create = function create(properties) {
-            return new CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure(properties);
-        };
-    
-        /**
-         * Encodes the specified CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure message. Does not implicitly {@link CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.verify|verify} messages.
-         * @function encode
-         * @memberof CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @static
-         * @param {ICMsgGCCStrike15_v2_Server2GCPureServerValidationFailure} message CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.accountid != null && message.hasOwnProperty("accountid"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.accountid);
-            if (message.path != null && message.hasOwnProperty("path"))
-                writer.uint32(/* id 2, wireType 2 =*/18).string(message.path);
-            if (message.file != null && message.hasOwnProperty("file"))
-                writer.uint32(/* id 3, wireType 2 =*/26).string(message.file);
-            if (message.crc != null && message.hasOwnProperty("crc"))
-                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.crc);
-            if (message.hash != null && message.hasOwnProperty("hash"))
-                writer.uint32(/* id 5, wireType 0 =*/40).int32(message.hash);
-            if (message.len != null && message.hasOwnProperty("len"))
-                writer.uint32(/* id 6, wireType 0 =*/48).int32(message.len);
-            if (message.pack_number != null && message.hasOwnProperty("pack_number"))
-                writer.uint32(/* id 7, wireType 0 =*/56).int32(message.pack_number);
-            if (message.pack_file_id != null && message.hasOwnProperty("pack_file_id"))
-                writer.uint32(/* id 8, wireType 0 =*/64).int32(message.pack_file_id);
-            return writer;
-        };
-    
-        /**
-         * Encodes the specified CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure message, length delimited. Does not implicitly {@link CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @static
-         * @param {ICMsgGCCStrike15_v2_Server2GCPureServerValidationFailure} message CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-    
-        /**
-         * Decodes a CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure message from the specified reader or buffer.
-         * @function decode
-         * @memberof CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure} CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.decode = function decode(reader, length) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure();
-            while (reader.pos < end) {
-                var tag = reader.uint32();
-                switch (tag >>> 3) {
-                case 1:
-                    message.accountid = reader.uint32();
-                    break;
-                case 2:
-                    message.path = reader.string();
-                    break;
-                case 3:
-                    message.file = reader.string();
-                    break;
-                case 4:
-                    message.crc = reader.uint32();
-                    break;
-                case 5:
-                    message.hash = reader.int32();
-                    break;
-                case 6:
-                    message.len = reader.int32();
-                    break;
-                case 7:
-                    message.pack_number = reader.int32();
-                    break;
-                case 8:
-                    message.pack_file_id = reader.int32();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-    
-        /**
-         * Decodes a CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure} CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-    
-        /**
-         * Verifies a CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure message.
-         * @function verify
-         * @memberof CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.accountid != null && message.hasOwnProperty("accountid"))
-                if (!$util.isInteger(message.accountid))
-                    return "accountid: integer expected";
-            if (message.path != null && message.hasOwnProperty("path"))
-                if (!$util.isString(message.path))
-                    return "path: string expected";
-            if (message.file != null && message.hasOwnProperty("file"))
-                if (!$util.isString(message.file))
-                    return "file: string expected";
-            if (message.crc != null && message.hasOwnProperty("crc"))
-                if (!$util.isInteger(message.crc))
-                    return "crc: integer expected";
-            if (message.hash != null && message.hasOwnProperty("hash"))
-                if (!$util.isInteger(message.hash))
-                    return "hash: integer expected";
-            if (message.len != null && message.hasOwnProperty("len"))
-                if (!$util.isInteger(message.len))
-                    return "len: integer expected";
-            if (message.pack_number != null && message.hasOwnProperty("pack_number"))
-                if (!$util.isInteger(message.pack_number))
-                    return "pack_number: integer expected";
-            if (message.pack_file_id != null && message.hasOwnProperty("pack_file_id"))
-                if (!$util.isInteger(message.pack_file_id))
-                    return "pack_file_id: integer expected";
-            return null;
-        };
-    
-        /**
-         * Creates a CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure} CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         */
-        CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.fromObject = function fromObject(object) {
-            if (object instanceof $root.CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure)
-                return object;
-            var message = new $root.CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure();
-            if (object.accountid != null)
-                message.accountid = object.accountid >>> 0;
-            if (object.path != null)
-                message.path = String(object.path);
-            if (object.file != null)
-                message.file = String(object.file);
-            if (object.crc != null)
-                message.crc = object.crc >>> 0;
-            if (object.hash != null)
-                message.hash = object.hash | 0;
-            if (object.len != null)
-                message.len = object.len | 0;
-            if (object.pack_number != null)
-                message.pack_number = object.pack_number | 0;
-            if (object.pack_file_id != null)
-                message.pack_file_id = object.pack_file_id | 0;
-            return message;
-        };
-    
-        /**
-         * Creates a plain object from a CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @static
-         * @param {CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure} message CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            var object = {};
-            if (options.defaults) {
-                object.accountid = 0;
-                object.path = "";
-                object.file = "";
-                object.crc = 0;
-                object.hash = 0;
-                object.len = 0;
-                object.pack_number = 0;
-                object.pack_file_id = 0;
-            }
-            if (message.accountid != null && message.hasOwnProperty("accountid"))
-                object.accountid = message.accountid;
-            if (message.path != null && message.hasOwnProperty("path"))
-                object.path = message.path;
-            if (message.file != null && message.hasOwnProperty("file"))
-                object.file = message.file;
-            if (message.crc != null && message.hasOwnProperty("crc"))
-                object.crc = message.crc;
-            if (message.hash != null && message.hasOwnProperty("hash"))
-                object.hash = message.hash;
-            if (message.len != null && message.hasOwnProperty("len"))
-                object.len = message.len;
-            if (message.pack_number != null && message.hasOwnProperty("pack_number"))
-                object.pack_number = message.pack_number;
-            if (message.pack_file_id != null && message.hasOwnProperty("pack_file_id"))
-                object.pack_file_id = message.pack_file_id;
-            return object;
-        };
-    
-        /**
-         * Converts this CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure to JSON.
-         * @function toJSON
-         * @memberof CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-    
-        return CMsgGCCStrike15_v2_Server2GCPureServerValidationFailure;
-    })();
-    
     $root.CMsgGCCStrike15_v2_GC2ClientTournamentInfo = (function() {
     
         /**
@@ -32910,11 +33581,11 @@
         CMsgGCCStrike15_v2_GC2ClientTournamentInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eventid != null && message.hasOwnProperty("eventid"))
+            if (message.eventid != null && Object.hasOwnProperty.call(message, "eventid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.eventid);
-            if (message.stageid != null && message.hasOwnProperty("stageid"))
+            if (message.stageid != null && Object.hasOwnProperty.call(message, "stageid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.stageid);
-            if (message.game_type != null && message.hasOwnProperty("game_type"))
+            if (message.game_type != null && Object.hasOwnProperty.call(message, "game_type"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.game_type);
             if (message.teamids != null && message.teamids.length)
                 for (var i = 0; i < message.teamids.length; ++i)
@@ -33176,11 +33847,11 @@
         CSOEconCoupon.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.entryid != null && message.hasOwnProperty("entryid"))
+            if (message.entryid != null && Object.hasOwnProperty.call(message, "entryid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.entryid);
-            if (message.defidx != null && message.hasOwnProperty("defidx"))
+            if (message.defidx != null && Object.hasOwnProperty.call(message, "defidx"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.defidx);
-            if (message.expiration_date != null && message.hasOwnProperty("expiration_date"))
+            if (message.expiration_date != null && Object.hasOwnProperty.call(message, "expiration_date"))
                 writer.uint32(/* id 3, wireType 5 =*/29).fixed32(message.expiration_date);
             return writer;
         };
@@ -33408,11 +34079,11 @@
         CSOQuestProgress.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.questid != null && message.hasOwnProperty("questid"))
+            if (message.questid != null && Object.hasOwnProperty.call(message, "questid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.questid);
-            if (message.points_remaining != null && message.hasOwnProperty("points_remaining"))
+            if (message.points_remaining != null && Object.hasOwnProperty.call(message, "points_remaining"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.points_remaining);
-            if (message.bonus_points != null && message.hasOwnProperty("bonus_points"))
+            if (message.bonus_points != null && Object.hasOwnProperty.call(message, "bonus_points"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.bonus_points);
             return writer;
         };
@@ -33577,6 +34248,8 @@
          * @property {number|null} [premium_tiers] CSOAccountSeasonalOperation premium_tiers
          * @property {number|null} [mission_id] CSOAccountSeasonalOperation mission_id
          * @property {number|null} [missions_completed] CSOAccountSeasonalOperation missions_completed
+         * @property {number|null} [redeemable_balance] CSOAccountSeasonalOperation redeemable_balance
+         * @property {number|null} [season_pass_time] CSOAccountSeasonalOperation season_pass_time
          */
     
         /**
@@ -33635,6 +34308,22 @@
         CSOAccountSeasonalOperation.prototype.missions_completed = 0;
     
         /**
+         * CSOAccountSeasonalOperation redeemable_balance.
+         * @member {number} redeemable_balance
+         * @memberof CSOAccountSeasonalOperation
+         * @instance
+         */
+        CSOAccountSeasonalOperation.prototype.redeemable_balance = 0;
+    
+        /**
+         * CSOAccountSeasonalOperation season_pass_time.
+         * @member {number} season_pass_time
+         * @memberof CSOAccountSeasonalOperation
+         * @instance
+         */
+        CSOAccountSeasonalOperation.prototype.season_pass_time = 0;
+    
+        /**
          * Creates a new CSOAccountSeasonalOperation instance using the specified properties.
          * @function create
          * @memberof CSOAccountSeasonalOperation
@@ -33658,16 +34347,20 @@
         CSOAccountSeasonalOperation.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.season_value != null && message.hasOwnProperty("season_value"))
+            if (message.season_value != null && Object.hasOwnProperty.call(message, "season_value"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.season_value);
-            if (message.tier_unlocked != null && message.hasOwnProperty("tier_unlocked"))
+            if (message.tier_unlocked != null && Object.hasOwnProperty.call(message, "tier_unlocked"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.tier_unlocked);
-            if (message.premium_tiers != null && message.hasOwnProperty("premium_tiers"))
+            if (message.premium_tiers != null && Object.hasOwnProperty.call(message, "premium_tiers"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.premium_tiers);
-            if (message.mission_id != null && message.hasOwnProperty("mission_id"))
+            if (message.mission_id != null && Object.hasOwnProperty.call(message, "mission_id"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.mission_id);
-            if (message.missions_completed != null && message.hasOwnProperty("missions_completed"))
+            if (message.missions_completed != null && Object.hasOwnProperty.call(message, "missions_completed"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.missions_completed);
+            if (message.redeemable_balance != null && Object.hasOwnProperty.call(message, "redeemable_balance"))
+                writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.redeemable_balance);
+            if (message.season_pass_time != null && Object.hasOwnProperty.call(message, "season_pass_time"))
+                writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.season_pass_time);
             return writer;
         };
     
@@ -33716,6 +34409,12 @@
                     break;
                 case 5:
                     message.missions_completed = reader.uint32();
+                    break;
+                case 6:
+                    message.redeemable_balance = reader.uint32();
+                    break;
+                case 7:
+                    message.season_pass_time = reader.uint32();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -33767,6 +34466,12 @@
             if (message.missions_completed != null && message.hasOwnProperty("missions_completed"))
                 if (!$util.isInteger(message.missions_completed))
                     return "missions_completed: integer expected";
+            if (message.redeemable_balance != null && message.hasOwnProperty("redeemable_balance"))
+                if (!$util.isInteger(message.redeemable_balance))
+                    return "redeemable_balance: integer expected";
+            if (message.season_pass_time != null && message.hasOwnProperty("season_pass_time"))
+                if (!$util.isInteger(message.season_pass_time))
+                    return "season_pass_time: integer expected";
             return null;
         };
     
@@ -33792,6 +34497,10 @@
                 message.mission_id = object.mission_id >>> 0;
             if (object.missions_completed != null)
                 message.missions_completed = object.missions_completed >>> 0;
+            if (object.redeemable_balance != null)
+                message.redeemable_balance = object.redeemable_balance >>> 0;
+            if (object.season_pass_time != null)
+                message.season_pass_time = object.season_pass_time >>> 0;
             return message;
         };
     
@@ -33814,6 +34523,8 @@
                 object.premium_tiers = 0;
                 object.mission_id = 0;
                 object.missions_completed = 0;
+                object.redeemable_balance = 0;
+                object.season_pass_time = 0;
             }
             if (message.season_value != null && message.hasOwnProperty("season_value"))
                 object.season_value = message.season_value;
@@ -33825,6 +34536,10 @@
                 object.mission_id = message.mission_id;
             if (message.missions_completed != null && message.hasOwnProperty("missions_completed"))
                 object.missions_completed = message.missions_completed;
+            if (message.redeemable_balance != null && message.hasOwnProperty("redeemable_balance"))
+                object.redeemable_balance = message.redeemable_balance;
+            if (message.season_pass_time != null && message.hasOwnProperty("season_pass_time"))
+                object.season_pass_time = message.season_pass_time;
             return object;
         };
     
@@ -33840,6 +34555,216 @@
         };
     
         return CSOAccountSeasonalOperation;
+    })();
+    
+    $root.CSOAccountRecurringSubscription = (function() {
+    
+        /**
+         * Properties of a CSOAccountRecurringSubscription.
+         * @exports ICSOAccountRecurringSubscription
+         * @interface ICSOAccountRecurringSubscription
+         * @property {number|null} [time_next_cycle] CSOAccountRecurringSubscription time_next_cycle
+         * @property {number|null} [time_initiated] CSOAccountRecurringSubscription time_initiated
+         */
+    
+        /**
+         * Constructs a new CSOAccountRecurringSubscription.
+         * @exports CSOAccountRecurringSubscription
+         * @classdesc Represents a CSOAccountRecurringSubscription.
+         * @implements ICSOAccountRecurringSubscription
+         * @constructor
+         * @param {ICSOAccountRecurringSubscription=} [properties] Properties to set
+         */
+        function CSOAccountRecurringSubscription(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CSOAccountRecurringSubscription time_next_cycle.
+         * @member {number} time_next_cycle
+         * @memberof CSOAccountRecurringSubscription
+         * @instance
+         */
+        CSOAccountRecurringSubscription.prototype.time_next_cycle = 0;
+    
+        /**
+         * CSOAccountRecurringSubscription time_initiated.
+         * @member {number} time_initiated
+         * @memberof CSOAccountRecurringSubscription
+         * @instance
+         */
+        CSOAccountRecurringSubscription.prototype.time_initiated = 0;
+    
+        /**
+         * Creates a new CSOAccountRecurringSubscription instance using the specified properties.
+         * @function create
+         * @memberof CSOAccountRecurringSubscription
+         * @static
+         * @param {ICSOAccountRecurringSubscription=} [properties] Properties to set
+         * @returns {CSOAccountRecurringSubscription} CSOAccountRecurringSubscription instance
+         */
+        CSOAccountRecurringSubscription.create = function create(properties) {
+            return new CSOAccountRecurringSubscription(properties);
+        };
+    
+        /**
+         * Encodes the specified CSOAccountRecurringSubscription message. Does not implicitly {@link CSOAccountRecurringSubscription.verify|verify} messages.
+         * @function encode
+         * @memberof CSOAccountRecurringSubscription
+         * @static
+         * @param {ICSOAccountRecurringSubscription} message CSOAccountRecurringSubscription message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CSOAccountRecurringSubscription.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.time_next_cycle != null && Object.hasOwnProperty.call(message, "time_next_cycle"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.time_next_cycle);
+            if (message.time_initiated != null && Object.hasOwnProperty.call(message, "time_initiated"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.time_initiated);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CSOAccountRecurringSubscription message, length delimited. Does not implicitly {@link CSOAccountRecurringSubscription.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CSOAccountRecurringSubscription
+         * @static
+         * @param {ICSOAccountRecurringSubscription} message CSOAccountRecurringSubscription message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CSOAccountRecurringSubscription.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CSOAccountRecurringSubscription message from the specified reader or buffer.
+         * @function decode
+         * @memberof CSOAccountRecurringSubscription
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CSOAccountRecurringSubscription} CSOAccountRecurringSubscription
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CSOAccountRecurringSubscription.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CSOAccountRecurringSubscription();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.time_next_cycle = reader.uint32();
+                    break;
+                case 2:
+                    message.time_initiated = reader.uint32();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CSOAccountRecurringSubscription message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CSOAccountRecurringSubscription
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CSOAccountRecurringSubscription} CSOAccountRecurringSubscription
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CSOAccountRecurringSubscription.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CSOAccountRecurringSubscription message.
+         * @function verify
+         * @memberof CSOAccountRecurringSubscription
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CSOAccountRecurringSubscription.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.time_next_cycle != null && message.hasOwnProperty("time_next_cycle"))
+                if (!$util.isInteger(message.time_next_cycle))
+                    return "time_next_cycle: integer expected";
+            if (message.time_initiated != null && message.hasOwnProperty("time_initiated"))
+                if (!$util.isInteger(message.time_initiated))
+                    return "time_initiated: integer expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CSOAccountRecurringSubscription message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CSOAccountRecurringSubscription
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CSOAccountRecurringSubscription} CSOAccountRecurringSubscription
+         */
+        CSOAccountRecurringSubscription.fromObject = function fromObject(object) {
+            if (object instanceof $root.CSOAccountRecurringSubscription)
+                return object;
+            var message = new $root.CSOAccountRecurringSubscription();
+            if (object.time_next_cycle != null)
+                message.time_next_cycle = object.time_next_cycle >>> 0;
+            if (object.time_initiated != null)
+                message.time_initiated = object.time_initiated >>> 0;
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CSOAccountRecurringSubscription message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CSOAccountRecurringSubscription
+         * @static
+         * @param {CSOAccountRecurringSubscription} message CSOAccountRecurringSubscription
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CSOAccountRecurringSubscription.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.time_next_cycle = 0;
+                object.time_initiated = 0;
+            }
+            if (message.time_next_cycle != null && message.hasOwnProperty("time_next_cycle"))
+                object.time_next_cycle = message.time_next_cycle;
+            if (message.time_initiated != null && message.hasOwnProperty("time_initiated"))
+                object.time_initiated = message.time_initiated;
+            return object;
+        };
+    
+        /**
+         * Converts this CSOAccountRecurringSubscription to JSON.
+         * @function toJSON
+         * @memberof CSOAccountRecurringSubscription
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CSOAccountRecurringSubscription.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return CSOAccountRecurringSubscription;
     })();
     
     $root.CSOPersonaDataPublic = (function() {
@@ -33916,11 +34841,11 @@
         CSOPersonaDataPublic.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.player_level != null && message.hasOwnProperty("player_level"))
+            if (message.player_level != null && Object.hasOwnProperty.call(message, "player_level"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.player_level);
-            if (message.commendation != null && message.hasOwnProperty("commendation"))
+            if (message.commendation != null && Object.hasOwnProperty.call(message, "commendation"))
                 $root.PlayerCommendationInfo.encode(message.commendation, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.elevated_state != null && message.hasOwnProperty("elevated_state"))
+            if (message.elevated_state != null && Object.hasOwnProperty.call(message, "elevated_state"))
                 writer.uint32(/* id 3, wireType 0 =*/24).bool(message.elevated_state);
             return writer;
         };
@@ -34135,7 +35060,7 @@
         CMsgGC_GlobalGame_Subscribe.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.ticket != null && message.hasOwnProperty("ticket"))
+            if (message.ticket != null && Object.hasOwnProperty.call(message, "ticket"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.ticket);
             return writer;
         };
@@ -34336,7 +35261,7 @@
         CMsgGC_GlobalGame_Unsubscribe.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.timeleft != null && message.hasOwnProperty("timeleft"))
+            if (message.timeleft != null && Object.hasOwnProperty.call(message, "timeleft"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.timeleft);
             return writer;
         };
@@ -34541,11 +35466,11 @@
         CMsgGC_GlobalGame_Play.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.ticket != null && message.hasOwnProperty("ticket"))
+            if (message.ticket != null && Object.hasOwnProperty.call(message, "ticket"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.ticket);
-            if (message.gametimems != null && message.hasOwnProperty("gametimems"))
+            if (message.gametimems != null && Object.hasOwnProperty.call(message, "gametimems"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.gametimems);
-            if (message.msperpoint != null && message.hasOwnProperty("msperpoint"))
+            if (message.msperpoint != null && Object.hasOwnProperty.call(message, "msperpoint"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.msperpoint);
             return writer;
         };
@@ -34769,7 +35694,7 @@
         CMsgGCCStrike15_v2_AcknowledgePenalty.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.acknowledged != null && message.hasOwnProperty("acknowledged"))
+            if (message.acknowledged != null && Object.hasOwnProperty.call(message, "acknowledged"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.acknowledged);
             return writer;
         };
@@ -34983,13 +35908,13 @@
         CMsgGCCStrike15_v2_Client2GCRequestPrestigeCoin.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.defindex != null && message.hasOwnProperty("defindex"))
+            if (message.defindex != null && Object.hasOwnProperty.call(message, "defindex"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.defindex);
-            if (message.upgradeid != null && message.hasOwnProperty("upgradeid"))
+            if (message.upgradeid != null && Object.hasOwnProperty.call(message, "upgradeid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.upgradeid);
-            if (message.hours != null && message.hasOwnProperty("hours"))
+            if (message.hours != null && Object.hasOwnProperty.call(message, "hours"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.hours);
-            if (message.prestigetime != null && message.hasOwnProperty("prestigetime"))
+            if (message.prestigetime != null && Object.hasOwnProperty.call(message, "prestigetime"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.prestigetime);
             return writer;
         };
@@ -35233,9 +36158,9 @@
         CMsgGCCStrike15_v2_Client2GCStreamUnlock.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.ticket != null && message.hasOwnProperty("ticket"))
+            if (message.ticket != null && Object.hasOwnProperty.call(message, "ticket"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.ticket);
-            if (message.os != null && message.hasOwnProperty("os"))
+            if (message.os != null && Object.hasOwnProperty.call(message, "os"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.os);
             return writer;
         };
@@ -35448,7 +36373,7 @@
         CMsgGCCStrike15_v2_ClientToGCRequestElevate.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.stage != null && message.hasOwnProperty("stage"))
+            if (message.stage != null && Object.hasOwnProperty.call(message, "stage"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.stage);
             return writer;
         };
@@ -35644,9 +36569,9 @@
         CMsgGCCStrike15_v2_ClientToGCChat.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.match_id != null && message.hasOwnProperty("match_id"))
+            if (message.match_id != null && Object.hasOwnProperty.call(message, "match_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.match_id);
-            if (message.text != null && message.hasOwnProperty("text"))
+            if (message.text != null && Object.hasOwnProperty.call(message, "text"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.text);
             return writer;
         };
@@ -35868,9 +36793,9 @@
         CMsgGCCStrike15_v2_GCToClientChat.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.account_id);
-            if (message.text != null && message.hasOwnProperty("text"))
+            if (message.text != null && Object.hasOwnProperty.call(message, "text"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.text);
             return writer;
         };
@@ -36078,9 +37003,9 @@
         CMsgGCCStrike15_v2_ClientAuthKeyCode.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eventid != null && message.hasOwnProperty("eventid"))
+            if (message.eventid != null && Object.hasOwnProperty.call(message, "eventid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.eventid);
-            if (message.code != null && message.hasOwnProperty("code"))
+            if (message.code != null && Object.hasOwnProperty.call(message, "code"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.code);
             return writer;
         };
@@ -36279,7 +37204,7 @@
         CMsgGCCStrike15_GotvSyncPacket.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.data != null && message.hasOwnProperty("data"))
+            if (message.data != null && Object.hasOwnProperty.call(message, "data"))
                 $root.CEngineGotvSyncPacket.encode(message.data, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             return writer;
         };
@@ -36592,11 +37517,11 @@
         PlayerDecalDigitalSignature.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.signature != null && message.hasOwnProperty("signature"))
+            if (message.signature != null && Object.hasOwnProperty.call(message, "signature"))
                 writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.signature);
-            if (message.accountid != null && message.hasOwnProperty("accountid"))
+            if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.accountid);
-            if (message.rtime != null && message.hasOwnProperty("rtime"))
+            if (message.rtime != null && Object.hasOwnProperty.call(message, "rtime"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.rtime);
             if (message.endpos != null && message.endpos.length)
                 for (var i = 0; i < message.endpos.length; ++i)
@@ -36607,22 +37532,22 @@
             if (message.right != null && message.right.length)
                 for (var i = 0; i < message.right.length; ++i)
                     writer.uint32(/* id 6, wireType 5 =*/53).float(message.right[i]);
-            if (message.tx_defidx != null && message.hasOwnProperty("tx_defidx"))
+            if (message.tx_defidx != null && Object.hasOwnProperty.call(message, "tx_defidx"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.tx_defidx);
-            if (message.entindex != null && message.hasOwnProperty("entindex"))
+            if (message.entindex != null && Object.hasOwnProperty.call(message, "entindex"))
                 writer.uint32(/* id 8, wireType 0 =*/64).int32(message.entindex);
-            if (message.hitbox != null && message.hasOwnProperty("hitbox"))
+            if (message.hitbox != null && Object.hasOwnProperty.call(message, "hitbox"))
                 writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.hitbox);
-            if (message.creationtime != null && message.hasOwnProperty("creationtime"))
+            if (message.creationtime != null && Object.hasOwnProperty.call(message, "creationtime"))
                 writer.uint32(/* id 10, wireType 5 =*/85).float(message.creationtime);
-            if (message.equipslot != null && message.hasOwnProperty("equipslot"))
+            if (message.equipslot != null && Object.hasOwnProperty.call(message, "equipslot"))
                 writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.equipslot);
-            if (message.trace_id != null && message.hasOwnProperty("trace_id"))
+            if (message.trace_id != null && Object.hasOwnProperty.call(message, "trace_id"))
                 writer.uint32(/* id 12, wireType 0 =*/96).uint32(message.trace_id);
             if (message.normal != null && message.normal.length)
                 for (var i = 0; i < message.normal.length; ++i)
                     writer.uint32(/* id 13, wireType 5 =*/109).float(message.normal[i]);
-            if (message.tint_id != null && message.hasOwnProperty("tint_id"))
+            if (message.tint_id != null && Object.hasOwnProperty.call(message, "tint_id"))
                 writer.uint32(/* id 14, wireType 0 =*/112).uint32(message.tint_id);
             return writer;
         };
@@ -37049,9 +37974,9 @@
         CMsgGCCStrike15_v2_ClientPlayerDecalSign.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.data != null && message.hasOwnProperty("data"))
+            if (message.data != null && Object.hasOwnProperty.call(message, "data"))
                 $root.PlayerDecalDigitalSignature.encode(message.data, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.itemid != null && message.hasOwnProperty("itemid"))
+            if (message.itemid != null && Object.hasOwnProperty.call(message, "itemid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.itemid);
             return writer;
         };
@@ -37287,11 +38212,11 @@
         CMsgGCCStrike15_v2_ClientLogonFatalError.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.errorcode != null && message.hasOwnProperty("errorcode"))
+            if (message.errorcode != null && Object.hasOwnProperty.call(message, "errorcode"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.errorcode);
-            if (message.message != null && message.hasOwnProperty("message"))
+            if (message.message != null && Object.hasOwnProperty.call(message, "message"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
-            if (message.country != null && message.hasOwnProperty("country"))
+            if (message.country != null && Object.hasOwnProperty.call(message, "country"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.country);
             return writer;
         };
@@ -37521,7 +38446,7 @@
         CMsgGCCStrike15_v2_ClientPollState.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.pollid != null && message.hasOwnProperty("pollid"))
+            if (message.pollid != null && Object.hasOwnProperty.call(message, "pollid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.pollid);
             if (message.names != null && message.names.length)
                 for (var i = 0; i < message.names.length; ++i)
@@ -37843,23 +38768,23 @@
         CMsgGCCStrike15_v2_Party_Register.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.id != null && message.hasOwnProperty("id"))
+            if (message.id != null && Object.hasOwnProperty.call(message, "id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.id);
-            if (message.ver != null && message.hasOwnProperty("ver"))
+            if (message.ver != null && Object.hasOwnProperty.call(message, "ver"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.ver);
-            if (message.apr != null && message.hasOwnProperty("apr"))
+            if (message.apr != null && Object.hasOwnProperty.call(message, "apr"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.apr);
-            if (message.ark != null && message.hasOwnProperty("ark"))
+            if (message.ark != null && Object.hasOwnProperty.call(message, "ark"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.ark);
-            if (message.nby != null && message.hasOwnProperty("nby"))
+            if (message.nby != null && Object.hasOwnProperty.call(message, "nby"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.nby);
-            if (message.grp != null && message.hasOwnProperty("grp"))
+            if (message.grp != null && Object.hasOwnProperty.call(message, "grp"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.grp);
-            if (message.slots != null && message.hasOwnProperty("slots"))
+            if (message.slots != null && Object.hasOwnProperty.call(message, "slots"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.slots);
-            if (message.launcher != null && message.hasOwnProperty("launcher"))
+            if (message.launcher != null && Object.hasOwnProperty.call(message, "launcher"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.launcher);
-            if (message.game_type != null && message.hasOwnProperty("game_type"))
+            if (message.game_type != null && Object.hasOwnProperty.call(message, "game_type"))
                 writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.game_type);
             return writer;
         };
@@ -38181,18 +39106,18 @@
         CMsgGCCStrike15_v2_Party_Search.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.ver != null && message.hasOwnProperty("ver"))
+            if (message.ver != null && Object.hasOwnProperty.call(message, "ver"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.ver);
-            if (message.apr != null && message.hasOwnProperty("apr"))
+            if (message.apr != null && Object.hasOwnProperty.call(message, "apr"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.apr);
-            if (message.ark != null && message.hasOwnProperty("ark"))
+            if (message.ark != null && Object.hasOwnProperty.call(message, "ark"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.ark);
             if (message.grps != null && message.grps.length)
                 for (var i = 0; i < message.grps.length; ++i)
                     writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.grps[i]);
-            if (message.launcher != null && message.hasOwnProperty("launcher"))
+            if (message.launcher != null && Object.hasOwnProperty.call(message, "launcher"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.launcher);
-            if (message.game_type != null && message.hasOwnProperty("game_type"))
+            if (message.game_type != null && Object.hasOwnProperty.call(message, "game_type"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.game_type);
             return writer;
         };
@@ -38705,17 +39630,17 @@
             Entry.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.id != null && message.hasOwnProperty("id"))
+                if (message.id != null && Object.hasOwnProperty.call(message, "id"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.id);
-                if (message.grp != null && message.hasOwnProperty("grp"))
+                if (message.grp != null && Object.hasOwnProperty.call(message, "grp"))
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.grp);
-                if (message.game_type != null && message.hasOwnProperty("game_type"))
+                if (message.game_type != null && Object.hasOwnProperty.call(message, "game_type"))
                     writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.game_type);
-                if (message.apr != null && message.hasOwnProperty("apr"))
+                if (message.apr != null && Object.hasOwnProperty.call(message, "apr"))
                     writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.apr);
-                if (message.ark != null && message.hasOwnProperty("ark"))
+                if (message.ark != null && Object.hasOwnProperty.call(message, "ark"))
                     writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.ark);
-                if (message.loc != null && message.hasOwnProperty("loc"))
+                if (message.loc != null && Object.hasOwnProperty.call(message, "loc"))
                     writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.loc);
                 return writer;
             };
@@ -38970,9 +39895,9 @@
         CMsgGCCStrike15_v2_Party_Invite.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.accountid != null && message.hasOwnProperty("accountid"))
+            if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.accountid);
-            if (message.lobbyid != null && message.hasOwnProperty("lobbyid"))
+            if (message.lobbyid != null && Object.hasOwnProperty.call(message, "lobbyid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.lobbyid);
             return writer;
         };
@@ -39184,7 +40109,7 @@
             if (message.players != null && message.players.length)
                 for (var i = 0; i < message.players.length; ++i)
                     $root.CMsgGCCStrike15_v2_Account_RequestCoPlays.Player.encode(message.players[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.servertime != null && message.hasOwnProperty("servertime"))
+            if (message.servertime != null && Object.hasOwnProperty.call(message, "servertime"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.servertime);
             return writer;
         };
@@ -39417,11 +40342,11 @@
             Player.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.accountid != null && message.hasOwnProperty("accountid"))
+                if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.accountid);
-                if (message.rtcoplay != null && message.hasOwnProperty("rtcoplay"))
+                if (message.rtcoplay != null && Object.hasOwnProperty.call(message, "rtcoplay"))
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.rtcoplay);
-                if (message.online != null && message.hasOwnProperty("online"))
+                if (message.online != null && Object.hasOwnProperty.call(message, "online"))
                     writer.uint32(/* id 3, wireType 0 =*/24).bool(message.online);
                 return writer;
             };
@@ -39661,13 +40586,13 @@
         CMsgGCCStrike15_v2_ClientToGCRequestTicket.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.authorized_steam_id != null && message.hasOwnProperty("authorized_steam_id"))
+            if (message.authorized_steam_id != null && Object.hasOwnProperty.call(message, "authorized_steam_id"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.authorized_steam_id);
-            if (message.authorized_public_ip != null && message.hasOwnProperty("authorized_public_ip"))
+            if (message.authorized_public_ip != null && Object.hasOwnProperty.call(message, "authorized_public_ip"))
                 writer.uint32(/* id 2, wireType 5 =*/21).fixed32(message.authorized_public_ip);
-            if (message.gameserver_steam_id != null && message.hasOwnProperty("gameserver_steam_id"))
+            if (message.gameserver_steam_id != null && Object.hasOwnProperty.call(message, "gameserver_steam_id"))
                 writer.uint32(/* id 3, wireType 1 =*/25).fixed64(message.gameserver_steam_id);
-            if (message.gameserver_sdr_routing != null && message.hasOwnProperty("gameserver_sdr_routing"))
+            if (message.gameserver_sdr_routing != null && Object.hasOwnProperty.call(message, "gameserver_sdr_routing"))
                 writer.uint32(/* id 5, wireType 2 =*/42).string(message.gameserver_sdr_routing);
             return writer;
         };
@@ -39916,7 +40841,7 @@
         CMsgGCToClientSteamDatagramTicket.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.serialized_ticket != null && message.hasOwnProperty("serialized_ticket"))
+            if (message.serialized_ticket != null && Object.hasOwnProperty.call(message, "serialized_ticket"))
                 writer.uint32(/* id 16, wireType 2 =*/130).bytes(message.serialized_ticket);
             return writer;
         };
@@ -40290,11 +41215,11 @@
         CMsgGCCStrike15_v2_ClientRequestSouvenir.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.itemid != null && message.hasOwnProperty("itemid"))
+            if (message.itemid != null && Object.hasOwnProperty.call(message, "itemid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.itemid);
-            if (message.matchid != null && message.hasOwnProperty("matchid"))
+            if (message.matchid != null && Object.hasOwnProperty.call(message, "matchid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.matchid);
-            if (message.eventid != null && message.hasOwnProperty("eventid"))
+            if (message.eventid != null && Object.hasOwnProperty.call(message, "eventid"))
                 writer.uint32(/* id 3, wireType 0 =*/24).int32(message.eventid);
             return writer;
         };
@@ -40541,9 +41466,9 @@
         CMsgGCCStrike15_v2_ClientAccountBalance.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.amount != null && message.hasOwnProperty("amount"))
+            if (message.amount != null && Object.hasOwnProperty.call(message, "amount"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.amount);
-            if (message.url != null && message.hasOwnProperty("url"))
+            if (message.url != null && Object.hasOwnProperty.call(message, "url"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.url);
             return writer;
         };
@@ -40765,9 +41690,9 @@
         CMsgGCCStrike15_v2_ClientPartyJoinRelay.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.accountid != null && message.hasOwnProperty("accountid"))
+            if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.accountid);
-            if (message.lobbyid != null && message.hasOwnProperty("lobbyid"))
+            if (message.lobbyid != null && Object.hasOwnProperty.call(message, "lobbyid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.lobbyid);
             return writer;
         };
@@ -41194,9 +42119,9 @@
             Entry.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.accountid != null && message.hasOwnProperty("accountid"))
+                if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.accountid);
-                if (message.warntype != null && message.hasOwnProperty("warntype"))
+                if (message.warntype != null && Object.hasOwnProperty.call(message, "warntype"))
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.warntype);
                 return writer;
             };
@@ -41407,9 +42332,9 @@
         CMsgGCCStrike15_v2_SetEventFavorite.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eventid != null && message.hasOwnProperty("eventid"))
+            if (message.eventid != null && Object.hasOwnProperty.call(message, "eventid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.eventid);
-            if (message.is_favorite != null && message.hasOwnProperty("is_favorite"))
+            if (message.is_favorite != null && Object.hasOwnProperty.call(message, "is_favorite"))
                 writer.uint32(/* id 2, wireType 0 =*/16).bool(message.is_favorite);
             return writer;
         };
@@ -41622,7 +42547,7 @@
         CMsgGCCStrike15_v2_GetEventFavorites_Request.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.all_events != null && message.hasOwnProperty("all_events"))
+            if (message.all_events != null && Object.hasOwnProperty.call(message, "all_events"))
                 writer.uint32(/* id 1, wireType 0 =*/8).bool(message.all_events);
             return writer;
         };
@@ -41827,11 +42752,11 @@
         CMsgGCCStrike15_v2_GetEventFavorites_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.all_events != null && message.hasOwnProperty("all_events"))
+            if (message.all_events != null && Object.hasOwnProperty.call(message, "all_events"))
                 writer.uint32(/* id 1, wireType 0 =*/8).bool(message.all_events);
-            if (message.json_favorites != null && message.hasOwnProperty("json_favorites"))
+            if (message.json_favorites != null && Object.hasOwnProperty.call(message, "json_favorites"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.json_favorites);
-            if (message.json_featured != null && message.hasOwnProperty("json_featured"))
+            if (message.json_featured != null && Object.hasOwnProperty.call(message, "json_featured"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.json_featured);
             return writer;
         };
@@ -41985,10 +42910,2074 @@
         return CMsgGCCStrike15_v2_GetEventFavorites_Response;
     })();
     
+    $root.CMsgGCCStrike15_v2_ClientPerfReport = (function() {
+    
+        /**
+         * Properties of a CMsgGCCStrike15_v2_ClientPerfReport.
+         * @exports ICMsgGCCStrike15_v2_ClientPerfReport
+         * @interface ICMsgGCCStrike15_v2_ClientPerfReport
+         * @property {Array.<CMsgGCCStrike15_v2_ClientPerfReport.IEntry>|null} [entries] CMsgGCCStrike15_v2_ClientPerfReport entries
+         */
+    
+        /**
+         * Constructs a new CMsgGCCStrike15_v2_ClientPerfReport.
+         * @exports CMsgGCCStrike15_v2_ClientPerfReport
+         * @classdesc Represents a CMsgGCCStrike15_v2_ClientPerfReport.
+         * @implements ICMsgGCCStrike15_v2_ClientPerfReport
+         * @constructor
+         * @param {ICMsgGCCStrike15_v2_ClientPerfReport=} [properties] Properties to set
+         */
+        function CMsgGCCStrike15_v2_ClientPerfReport(properties) {
+            this.entries = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientPerfReport entries.
+         * @member {Array.<CMsgGCCStrike15_v2_ClientPerfReport.IEntry>} entries
+         * @memberof CMsgGCCStrike15_v2_ClientPerfReport
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientPerfReport.prototype.entries = $util.emptyArray;
+    
+        /**
+         * Creates a new CMsgGCCStrike15_v2_ClientPerfReport instance using the specified properties.
+         * @function create
+         * @memberof CMsgGCCStrike15_v2_ClientPerfReport
+         * @static
+         * @param {ICMsgGCCStrike15_v2_ClientPerfReport=} [properties] Properties to set
+         * @returns {CMsgGCCStrike15_v2_ClientPerfReport} CMsgGCCStrike15_v2_ClientPerfReport instance
+         */
+        CMsgGCCStrike15_v2_ClientPerfReport.create = function create(properties) {
+            return new CMsgGCCStrike15_v2_ClientPerfReport(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_v2_ClientPerfReport message. Does not implicitly {@link CMsgGCCStrike15_v2_ClientPerfReport.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgGCCStrike15_v2_ClientPerfReport
+         * @static
+         * @param {ICMsgGCCStrike15_v2_ClientPerfReport} message CMsgGCCStrike15_v2_ClientPerfReport message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_v2_ClientPerfReport.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.entries != null && message.entries.length)
+                for (var i = 0; i < message.entries.length; ++i)
+                    $root.CMsgGCCStrike15_v2_ClientPerfReport.Entry.encode(message.entries[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_v2_ClientPerfReport message, length delimited. Does not implicitly {@link CMsgGCCStrike15_v2_ClientPerfReport.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgGCCStrike15_v2_ClientPerfReport
+         * @static
+         * @param {ICMsgGCCStrike15_v2_ClientPerfReport} message CMsgGCCStrike15_v2_ClientPerfReport message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_v2_ClientPerfReport.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_v2_ClientPerfReport message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgGCCStrike15_v2_ClientPerfReport
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgGCCStrike15_v2_ClientPerfReport} CMsgGCCStrike15_v2_ClientPerfReport
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_v2_ClientPerfReport.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientPerfReport();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    if (!(message.entries && message.entries.length))
+                        message.entries = [];
+                    message.entries.push($root.CMsgGCCStrike15_v2_ClientPerfReport.Entry.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_v2_ClientPerfReport message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgGCCStrike15_v2_ClientPerfReport
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgGCCStrike15_v2_ClientPerfReport} CMsgGCCStrike15_v2_ClientPerfReport
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_v2_ClientPerfReport.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgGCCStrike15_v2_ClientPerfReport message.
+         * @function verify
+         * @memberof CMsgGCCStrike15_v2_ClientPerfReport
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgGCCStrike15_v2_ClientPerfReport.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.entries != null && message.hasOwnProperty("entries")) {
+                if (!Array.isArray(message.entries))
+                    return "entries: array expected";
+                for (var i = 0; i < message.entries.length; ++i) {
+                    var error = $root.CMsgGCCStrike15_v2_ClientPerfReport.Entry.verify(message.entries[i]);
+                    if (error)
+                        return "entries." + error;
+                }
+            }
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgGCCStrike15_v2_ClientPerfReport message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgGCCStrike15_v2_ClientPerfReport
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgGCCStrike15_v2_ClientPerfReport} CMsgGCCStrike15_v2_ClientPerfReport
+         */
+        CMsgGCCStrike15_v2_ClientPerfReport.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgGCCStrike15_v2_ClientPerfReport)
+                return object;
+            var message = new $root.CMsgGCCStrike15_v2_ClientPerfReport();
+            if (object.entries) {
+                if (!Array.isArray(object.entries))
+                    throw TypeError(".CMsgGCCStrike15_v2_ClientPerfReport.entries: array expected");
+                message.entries = [];
+                for (var i = 0; i < object.entries.length; ++i) {
+                    if (typeof object.entries[i] !== "object")
+                        throw TypeError(".CMsgGCCStrike15_v2_ClientPerfReport.entries: object expected");
+                    message.entries[i] = $root.CMsgGCCStrike15_v2_ClientPerfReport.Entry.fromObject(object.entries[i]);
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgGCCStrike15_v2_ClientPerfReport message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgGCCStrike15_v2_ClientPerfReport
+         * @static
+         * @param {CMsgGCCStrike15_v2_ClientPerfReport} message CMsgGCCStrike15_v2_ClientPerfReport
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgGCCStrike15_v2_ClientPerfReport.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.entries = [];
+            if (message.entries && message.entries.length) {
+                object.entries = [];
+                for (var j = 0; j < message.entries.length; ++j)
+                    object.entries[j] = $root.CMsgGCCStrike15_v2_ClientPerfReport.Entry.toObject(message.entries[j], options);
+            }
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgGCCStrike15_v2_ClientPerfReport to JSON.
+         * @function toJSON
+         * @memberof CMsgGCCStrike15_v2_ClientPerfReport
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgGCCStrike15_v2_ClientPerfReport.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        CMsgGCCStrike15_v2_ClientPerfReport.Entry = (function() {
+    
+            /**
+             * Properties of an Entry.
+             * @memberof CMsgGCCStrike15_v2_ClientPerfReport
+             * @interface IEntry
+             * @property {number|null} [perfcounter] Entry perfcounter
+             * @property {number|null} [length] Entry length
+             * @property {Uint8Array|null} [reference] Entry reference
+             * @property {Uint8Array|null} [actual] Entry actual
+             * @property {number|null} [sourceid] Entry sourceid
+             * @property {number|null} [status] Entry status
+             */
+    
+            /**
+             * Constructs a new Entry.
+             * @memberof CMsgGCCStrike15_v2_ClientPerfReport
+             * @classdesc Represents an Entry.
+             * @implements IEntry
+             * @constructor
+             * @param {CMsgGCCStrike15_v2_ClientPerfReport.IEntry=} [properties] Properties to set
+             */
+            function Entry(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * Entry perfcounter.
+             * @member {number} perfcounter
+             * @memberof CMsgGCCStrike15_v2_ClientPerfReport.Entry
+             * @instance
+             */
+            Entry.prototype.perfcounter = 0;
+    
+            /**
+             * Entry length.
+             * @member {number} length
+             * @memberof CMsgGCCStrike15_v2_ClientPerfReport.Entry
+             * @instance
+             */
+            Entry.prototype.length = 0;
+    
+            /**
+             * Entry reference.
+             * @member {Uint8Array} reference
+             * @memberof CMsgGCCStrike15_v2_ClientPerfReport.Entry
+             * @instance
+             */
+            Entry.prototype.reference = $util.newBuffer([]);
+    
+            /**
+             * Entry actual.
+             * @member {Uint8Array} actual
+             * @memberof CMsgGCCStrike15_v2_ClientPerfReport.Entry
+             * @instance
+             */
+            Entry.prototype.actual = $util.newBuffer([]);
+    
+            /**
+             * Entry sourceid.
+             * @member {number} sourceid
+             * @memberof CMsgGCCStrike15_v2_ClientPerfReport.Entry
+             * @instance
+             */
+            Entry.prototype.sourceid = 0;
+    
+            /**
+             * Entry status.
+             * @member {number} status
+             * @memberof CMsgGCCStrike15_v2_ClientPerfReport.Entry
+             * @instance
+             */
+            Entry.prototype.status = 0;
+    
+            /**
+             * Creates a new Entry instance using the specified properties.
+             * @function create
+             * @memberof CMsgGCCStrike15_v2_ClientPerfReport.Entry
+             * @static
+             * @param {CMsgGCCStrike15_v2_ClientPerfReport.IEntry=} [properties] Properties to set
+             * @returns {CMsgGCCStrike15_v2_ClientPerfReport.Entry} Entry instance
+             */
+            Entry.create = function create(properties) {
+                return new Entry(properties);
+            };
+    
+            /**
+             * Encodes the specified Entry message. Does not implicitly {@link CMsgGCCStrike15_v2_ClientPerfReport.Entry.verify|verify} messages.
+             * @function encode
+             * @memberof CMsgGCCStrike15_v2_ClientPerfReport.Entry
+             * @static
+             * @param {CMsgGCCStrike15_v2_ClientPerfReport.IEntry} message Entry message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Entry.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.perfcounter != null && Object.hasOwnProperty.call(message, "perfcounter"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.perfcounter);
+                if (message.length != null && Object.hasOwnProperty.call(message, "length"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.length);
+                if (message.reference != null && Object.hasOwnProperty.call(message, "reference"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.reference);
+                if (message.actual != null && Object.hasOwnProperty.call(message, "actual"))
+                    writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.actual);
+                if (message.sourceid != null && Object.hasOwnProperty.call(message, "sourceid"))
+                    writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.sourceid);
+                if (message.status != null && Object.hasOwnProperty.call(message, "status"))
+                    writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.status);
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified Entry message, length delimited. Does not implicitly {@link CMsgGCCStrike15_v2_ClientPerfReport.Entry.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof CMsgGCCStrike15_v2_ClientPerfReport.Entry
+             * @static
+             * @param {CMsgGCCStrike15_v2_ClientPerfReport.IEntry} message Entry message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Entry.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes an Entry message from the specified reader or buffer.
+             * @function decode
+             * @memberof CMsgGCCStrike15_v2_ClientPerfReport.Entry
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {CMsgGCCStrike15_v2_ClientPerfReport.Entry} Entry
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Entry.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientPerfReport.Entry();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.perfcounter = reader.uint32();
+                        break;
+                    case 2:
+                        message.length = reader.uint32();
+                        break;
+                    case 3:
+                        message.reference = reader.bytes();
+                        break;
+                    case 4:
+                        message.actual = reader.bytes();
+                        break;
+                    case 5:
+                        message.sourceid = reader.uint32();
+                        break;
+                    case 6:
+                        message.status = reader.uint32();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes an Entry message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof CMsgGCCStrike15_v2_ClientPerfReport.Entry
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {CMsgGCCStrike15_v2_ClientPerfReport.Entry} Entry
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Entry.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies an Entry message.
+             * @function verify
+             * @memberof CMsgGCCStrike15_v2_ClientPerfReport.Entry
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            Entry.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.perfcounter != null && message.hasOwnProperty("perfcounter"))
+                    if (!$util.isInteger(message.perfcounter))
+                        return "perfcounter: integer expected";
+                if (message.length != null && message.hasOwnProperty("length"))
+                    if (!$util.isInteger(message.length))
+                        return "length: integer expected";
+                if (message.reference != null && message.hasOwnProperty("reference"))
+                    if (!(message.reference && typeof message.reference.length === "number" || $util.isString(message.reference)))
+                        return "reference: buffer expected";
+                if (message.actual != null && message.hasOwnProperty("actual"))
+                    if (!(message.actual && typeof message.actual.length === "number" || $util.isString(message.actual)))
+                        return "actual: buffer expected";
+                if (message.sourceid != null && message.hasOwnProperty("sourceid"))
+                    if (!$util.isInteger(message.sourceid))
+                        return "sourceid: integer expected";
+                if (message.status != null && message.hasOwnProperty("status"))
+                    if (!$util.isInteger(message.status))
+                        return "status: integer expected";
+                return null;
+            };
+    
+            /**
+             * Creates an Entry message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof CMsgGCCStrike15_v2_ClientPerfReport.Entry
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {CMsgGCCStrike15_v2_ClientPerfReport.Entry} Entry
+             */
+            Entry.fromObject = function fromObject(object) {
+                if (object instanceof $root.CMsgGCCStrike15_v2_ClientPerfReport.Entry)
+                    return object;
+                var message = new $root.CMsgGCCStrike15_v2_ClientPerfReport.Entry();
+                if (object.perfcounter != null)
+                    message.perfcounter = object.perfcounter >>> 0;
+                if (object.length != null)
+                    message.length = object.length >>> 0;
+                if (object.reference != null)
+                    if (typeof object.reference === "string")
+                        $util.base64.decode(object.reference, message.reference = $util.newBuffer($util.base64.length(object.reference)), 0);
+                    else if (object.reference.length)
+                        message.reference = object.reference;
+                if (object.actual != null)
+                    if (typeof object.actual === "string")
+                        $util.base64.decode(object.actual, message.actual = $util.newBuffer($util.base64.length(object.actual)), 0);
+                    else if (object.actual.length)
+                        message.actual = object.actual;
+                if (object.sourceid != null)
+                    message.sourceid = object.sourceid >>> 0;
+                if (object.status != null)
+                    message.status = object.status >>> 0;
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from an Entry message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof CMsgGCCStrike15_v2_ClientPerfReport.Entry
+             * @static
+             * @param {CMsgGCCStrike15_v2_ClientPerfReport.Entry} message Entry
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            Entry.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.perfcounter = 0;
+                    object.length = 0;
+                    if (options.bytes === String)
+                        object.reference = "";
+                    else {
+                        object.reference = [];
+                        if (options.bytes !== Array)
+                            object.reference = $util.newBuffer(object.reference);
+                    }
+                    if (options.bytes === String)
+                        object.actual = "";
+                    else {
+                        object.actual = [];
+                        if (options.bytes !== Array)
+                            object.actual = $util.newBuffer(object.actual);
+                    }
+                    object.sourceid = 0;
+                    object.status = 0;
+                }
+                if (message.perfcounter != null && message.hasOwnProperty("perfcounter"))
+                    object.perfcounter = message.perfcounter;
+                if (message.length != null && message.hasOwnProperty("length"))
+                    object.length = message.length;
+                if (message.reference != null && message.hasOwnProperty("reference"))
+                    object.reference = options.bytes === String ? $util.base64.encode(message.reference, 0, message.reference.length) : options.bytes === Array ? Array.prototype.slice.call(message.reference) : message.reference;
+                if (message.actual != null && message.hasOwnProperty("actual"))
+                    object.actual = options.bytes === String ? $util.base64.encode(message.actual, 0, message.actual.length) : options.bytes === Array ? Array.prototype.slice.call(message.actual) : message.actual;
+                if (message.sourceid != null && message.hasOwnProperty("sourceid"))
+                    object.sourceid = message.sourceid;
+                if (message.status != null && message.hasOwnProperty("status"))
+                    object.status = message.status;
+                return object;
+            };
+    
+            /**
+             * Converts this Entry to JSON.
+             * @function toJSON
+             * @memberof CMsgGCCStrike15_v2_ClientPerfReport.Entry
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            Entry.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            return Entry;
+        })();
+    
+        return CMsgGCCStrike15_v2_ClientPerfReport;
+    })();
+    
+    $root.CVDiagnostic = (function() {
+    
+        /**
+         * Properties of a CVDiagnostic.
+         * @exports ICVDiagnostic
+         * @interface ICVDiagnostic
+         * @property {number|null} [id] CVDiagnostic id
+         * @property {number|null} [extended] CVDiagnostic extended
+         * @property {number|Long|null} [value] CVDiagnostic value
+         * @property {string|null} [string_value] CVDiagnostic string_value
+         */
+    
+        /**
+         * Constructs a new CVDiagnostic.
+         * @exports CVDiagnostic
+         * @classdesc Represents a CVDiagnostic.
+         * @implements ICVDiagnostic
+         * @constructor
+         * @param {ICVDiagnostic=} [properties] Properties to set
+         */
+        function CVDiagnostic(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CVDiagnostic id.
+         * @member {number} id
+         * @memberof CVDiagnostic
+         * @instance
+         */
+        CVDiagnostic.prototype.id = 0;
+    
+        /**
+         * CVDiagnostic extended.
+         * @member {number} extended
+         * @memberof CVDiagnostic
+         * @instance
+         */
+        CVDiagnostic.prototype.extended = 0;
+    
+        /**
+         * CVDiagnostic value.
+         * @member {number|Long} value
+         * @memberof CVDiagnostic
+         * @instance
+         */
+        CVDiagnostic.prototype.value = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+        /**
+         * CVDiagnostic string_value.
+         * @member {string} string_value
+         * @memberof CVDiagnostic
+         * @instance
+         */
+        CVDiagnostic.prototype.string_value = "";
+    
+        /**
+         * Creates a new CVDiagnostic instance using the specified properties.
+         * @function create
+         * @memberof CVDiagnostic
+         * @static
+         * @param {ICVDiagnostic=} [properties] Properties to set
+         * @returns {CVDiagnostic} CVDiagnostic instance
+         */
+        CVDiagnostic.create = function create(properties) {
+            return new CVDiagnostic(properties);
+        };
+    
+        /**
+         * Encodes the specified CVDiagnostic message. Does not implicitly {@link CVDiagnostic.verify|verify} messages.
+         * @function encode
+         * @memberof CVDiagnostic
+         * @static
+         * @param {ICVDiagnostic} message CVDiagnostic message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CVDiagnostic.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.id != null && Object.hasOwnProperty.call(message, "id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.id);
+            if (message.extended != null && Object.hasOwnProperty.call(message, "extended"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.extended);
+            if (message.value != null && Object.hasOwnProperty.call(message, "value"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.value);
+            if (message.string_value != null && Object.hasOwnProperty.call(message, "string_value"))
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.string_value);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CVDiagnostic message, length delimited. Does not implicitly {@link CVDiagnostic.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CVDiagnostic
+         * @static
+         * @param {ICVDiagnostic} message CVDiagnostic message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CVDiagnostic.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CVDiagnostic message from the specified reader or buffer.
+         * @function decode
+         * @memberof CVDiagnostic
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CVDiagnostic} CVDiagnostic
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CVDiagnostic.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CVDiagnostic();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.id = reader.uint32();
+                    break;
+                case 2:
+                    message.extended = reader.uint32();
+                    break;
+                case 3:
+                    message.value = reader.uint64();
+                    break;
+                case 4:
+                    message.string_value = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CVDiagnostic message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CVDiagnostic
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CVDiagnostic} CVDiagnostic
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CVDiagnostic.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CVDiagnostic message.
+         * @function verify
+         * @memberof CVDiagnostic
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CVDiagnostic.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.id != null && message.hasOwnProperty("id"))
+                if (!$util.isInteger(message.id))
+                    return "id: integer expected";
+            if (message.extended != null && message.hasOwnProperty("extended"))
+                if (!$util.isInteger(message.extended))
+                    return "extended: integer expected";
+            if (message.value != null && message.hasOwnProperty("value"))
+                if (!$util.isInteger(message.value) && !(message.value && $util.isInteger(message.value.low) && $util.isInteger(message.value.high)))
+                    return "value: integer|Long expected";
+            if (message.string_value != null && message.hasOwnProperty("string_value"))
+                if (!$util.isString(message.string_value))
+                    return "string_value: string expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CVDiagnostic message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CVDiagnostic
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CVDiagnostic} CVDiagnostic
+         */
+        CVDiagnostic.fromObject = function fromObject(object) {
+            if (object instanceof $root.CVDiagnostic)
+                return object;
+            var message = new $root.CVDiagnostic();
+            if (object.id != null)
+                message.id = object.id >>> 0;
+            if (object.extended != null)
+                message.extended = object.extended >>> 0;
+            if (object.value != null)
+                if ($util.Long)
+                    (message.value = $util.Long.fromValue(object.value)).unsigned = true;
+                else if (typeof object.value === "string")
+                    message.value = parseInt(object.value, 10);
+                else if (typeof object.value === "number")
+                    message.value = object.value;
+                else if (typeof object.value === "object")
+                    message.value = new $util.LongBits(object.value.low >>> 0, object.value.high >>> 0).toNumber(true);
+            if (object.string_value != null)
+                message.string_value = String(object.string_value);
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CVDiagnostic message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CVDiagnostic
+         * @static
+         * @param {CVDiagnostic} message CVDiagnostic
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CVDiagnostic.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.id = 0;
+                object.extended = 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.value = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.value = options.longs === String ? "0" : 0;
+                object.string_value = "";
+            }
+            if (message.id != null && message.hasOwnProperty("id"))
+                object.id = message.id;
+            if (message.extended != null && message.hasOwnProperty("extended"))
+                object.extended = message.extended;
+            if (message.value != null && message.hasOwnProperty("value"))
+                if (typeof message.value === "number")
+                    object.value = options.longs === String ? String(message.value) : message.value;
+                else
+                    object.value = options.longs === String ? $util.Long.prototype.toString.call(message.value) : options.longs === Number ? new $util.LongBits(message.value.low >>> 0, message.value.high >>> 0).toNumber(true) : message.value;
+            if (message.string_value != null && message.hasOwnProperty("string_value"))
+                object.string_value = message.string_value;
+            return object;
+        };
+    
+        /**
+         * Converts this CVDiagnostic to JSON.
+         * @function toJSON
+         * @memberof CVDiagnostic
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CVDiagnostic.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return CVDiagnostic;
+    })();
+    
+    $root.CMsgGCCStrike15_v2_ClientReportValidation = (function() {
+    
+        /**
+         * Properties of a CMsgGCCStrike15_v2_ClientReportValidation.
+         * @exports ICMsgGCCStrike15_v2_ClientReportValidation
+         * @interface ICMsgGCCStrike15_v2_ClientReportValidation
+         * @property {string|null} [file_report] CMsgGCCStrike15_v2_ClientReportValidation file_report
+         * @property {string|null} [command_line] CMsgGCCStrike15_v2_ClientReportValidation command_line
+         * @property {number|null} [total_files] CMsgGCCStrike15_v2_ClientReportValidation total_files
+         * @property {number|null} [internal_error] CMsgGCCStrike15_v2_ClientReportValidation internal_error
+         * @property {number|null} [trust_time] CMsgGCCStrike15_v2_ClientReportValidation trust_time
+         * @property {number|null} [count_pending] CMsgGCCStrike15_v2_ClientReportValidation count_pending
+         * @property {number|null} [count_completed] CMsgGCCStrike15_v2_ClientReportValidation count_completed
+         * @property {number|null} [process_id] CMsgGCCStrike15_v2_ClientReportValidation process_id
+         * @property {number|null} [osversion] CMsgGCCStrike15_v2_ClientReportValidation osversion
+         * @property {number|null} [clientreportversion] CMsgGCCStrike15_v2_ClientReportValidation clientreportversion
+         * @property {number|null} [status_id] CMsgGCCStrike15_v2_ClientReportValidation status_id
+         * @property {number|null} [diagnostic1] CMsgGCCStrike15_v2_ClientReportValidation diagnostic1
+         * @property {number|Long|null} [diagnostic2] CMsgGCCStrike15_v2_ClientReportValidation diagnostic2
+         * @property {number|Long|null} [diagnostic3] CMsgGCCStrike15_v2_ClientReportValidation diagnostic3
+         * @property {string|null} [last_launch_data] CMsgGCCStrike15_v2_ClientReportValidation last_launch_data
+         * @property {number|null} [report_count] CMsgGCCStrike15_v2_ClientReportValidation report_count
+         * @property {number|Long|null} [client_time] CMsgGCCStrike15_v2_ClientReportValidation client_time
+         * @property {number|Long|null} [diagnostic4] CMsgGCCStrike15_v2_ClientReportValidation diagnostic4
+         * @property {number|Long|null} [diagnostic5] CMsgGCCStrike15_v2_ClientReportValidation diagnostic5
+         * @property {Array.<ICVDiagnostic>|null} [diagnostics] CMsgGCCStrike15_v2_ClientReportValidation diagnostics
+         */
+    
+        /**
+         * Constructs a new CMsgGCCStrike15_v2_ClientReportValidation.
+         * @exports CMsgGCCStrike15_v2_ClientReportValidation
+         * @classdesc Represents a CMsgGCCStrike15_v2_ClientReportValidation.
+         * @implements ICMsgGCCStrike15_v2_ClientReportValidation
+         * @constructor
+         * @param {ICMsgGCCStrike15_v2_ClientReportValidation=} [properties] Properties to set
+         */
+        function CMsgGCCStrike15_v2_ClientReportValidation(properties) {
+            this.diagnostics = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation file_report.
+         * @member {string} file_report
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.file_report = "";
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation command_line.
+         * @member {string} command_line
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.command_line = "";
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation total_files.
+         * @member {number} total_files
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.total_files = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation internal_error.
+         * @member {number} internal_error
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.internal_error = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation trust_time.
+         * @member {number} trust_time
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.trust_time = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation count_pending.
+         * @member {number} count_pending
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.count_pending = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation count_completed.
+         * @member {number} count_completed
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.count_completed = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation process_id.
+         * @member {number} process_id
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.process_id = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation osversion.
+         * @member {number} osversion
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.osversion = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation clientreportversion.
+         * @member {number} clientreportversion
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.clientreportversion = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation status_id.
+         * @member {number} status_id
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.status_id = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation diagnostic1.
+         * @member {number} diagnostic1
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.diagnostic1 = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation diagnostic2.
+         * @member {number|Long} diagnostic2
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.diagnostic2 = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation diagnostic3.
+         * @member {number|Long} diagnostic3
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.diagnostic3 = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation last_launch_data.
+         * @member {string} last_launch_data
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.last_launch_data = "";
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation report_count.
+         * @member {number} report_count
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.report_count = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation client_time.
+         * @member {number|Long} client_time
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.client_time = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation diagnostic4.
+         * @member {number|Long} diagnostic4
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.diagnostic4 = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation diagnostic5.
+         * @member {number|Long} diagnostic5
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.diagnostic5 = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_ClientReportValidation diagnostics.
+         * @member {Array.<ICVDiagnostic>} diagnostics
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.diagnostics = $util.emptyArray;
+    
+        /**
+         * Creates a new CMsgGCCStrike15_v2_ClientReportValidation instance using the specified properties.
+         * @function create
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @static
+         * @param {ICMsgGCCStrike15_v2_ClientReportValidation=} [properties] Properties to set
+         * @returns {CMsgGCCStrike15_v2_ClientReportValidation} CMsgGCCStrike15_v2_ClientReportValidation instance
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.create = function create(properties) {
+            return new CMsgGCCStrike15_v2_ClientReportValidation(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_v2_ClientReportValidation message. Does not implicitly {@link CMsgGCCStrike15_v2_ClientReportValidation.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @static
+         * @param {ICMsgGCCStrike15_v2_ClientReportValidation} message CMsgGCCStrike15_v2_ClientReportValidation message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.file_report != null && Object.hasOwnProperty.call(message, "file_report"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.file_report);
+            if (message.command_line != null && Object.hasOwnProperty.call(message, "command_line"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.command_line);
+            if (message.total_files != null && Object.hasOwnProperty.call(message, "total_files"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.total_files);
+            if (message.internal_error != null && Object.hasOwnProperty.call(message, "internal_error"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.internal_error);
+            if (message.trust_time != null && Object.hasOwnProperty.call(message, "trust_time"))
+                writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.trust_time);
+            if (message.count_pending != null && Object.hasOwnProperty.call(message, "count_pending"))
+                writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.count_pending);
+            if (message.count_completed != null && Object.hasOwnProperty.call(message, "count_completed"))
+                writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.count_completed);
+            if (message.process_id != null && Object.hasOwnProperty.call(message, "process_id"))
+                writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.process_id);
+            if (message.osversion != null && Object.hasOwnProperty.call(message, "osversion"))
+                writer.uint32(/* id 9, wireType 0 =*/72).int32(message.osversion);
+            if (message.clientreportversion != null && Object.hasOwnProperty.call(message, "clientreportversion"))
+                writer.uint32(/* id 10, wireType 0 =*/80).uint32(message.clientreportversion);
+            if (message.status_id != null && Object.hasOwnProperty.call(message, "status_id"))
+                writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.status_id);
+            if (message.diagnostic1 != null && Object.hasOwnProperty.call(message, "diagnostic1"))
+                writer.uint32(/* id 12, wireType 0 =*/96).uint32(message.diagnostic1);
+            if (message.diagnostic2 != null && Object.hasOwnProperty.call(message, "diagnostic2"))
+                writer.uint32(/* id 13, wireType 0 =*/104).uint64(message.diagnostic2);
+            if (message.diagnostic3 != null && Object.hasOwnProperty.call(message, "diagnostic3"))
+                writer.uint32(/* id 14, wireType 0 =*/112).uint64(message.diagnostic3);
+            if (message.last_launch_data != null && Object.hasOwnProperty.call(message, "last_launch_data"))
+                writer.uint32(/* id 15, wireType 2 =*/122).string(message.last_launch_data);
+            if (message.report_count != null && Object.hasOwnProperty.call(message, "report_count"))
+                writer.uint32(/* id 16, wireType 0 =*/128).uint32(message.report_count);
+            if (message.client_time != null && Object.hasOwnProperty.call(message, "client_time"))
+                writer.uint32(/* id 17, wireType 0 =*/136).uint64(message.client_time);
+            if (message.diagnostic4 != null && Object.hasOwnProperty.call(message, "diagnostic4"))
+                writer.uint32(/* id 18, wireType 0 =*/144).uint64(message.diagnostic4);
+            if (message.diagnostic5 != null && Object.hasOwnProperty.call(message, "diagnostic5"))
+                writer.uint32(/* id 19, wireType 0 =*/152).uint64(message.diagnostic5);
+            if (message.diagnostics != null && message.diagnostics.length)
+                for (var i = 0; i < message.diagnostics.length; ++i)
+                    $root.CVDiagnostic.encode(message.diagnostics[i], writer.uint32(/* id 20, wireType 2 =*/162).fork()).ldelim();
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_v2_ClientReportValidation message, length delimited. Does not implicitly {@link CMsgGCCStrike15_v2_ClientReportValidation.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @static
+         * @param {ICMsgGCCStrike15_v2_ClientReportValidation} message CMsgGCCStrike15_v2_ClientReportValidation message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_v2_ClientReportValidation message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgGCCStrike15_v2_ClientReportValidation} CMsgGCCStrike15_v2_ClientReportValidation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientReportValidation();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.file_report = reader.string();
+                    break;
+                case 2:
+                    message.command_line = reader.string();
+                    break;
+                case 3:
+                    message.total_files = reader.uint32();
+                    break;
+                case 4:
+                    message.internal_error = reader.uint32();
+                    break;
+                case 5:
+                    message.trust_time = reader.uint32();
+                    break;
+                case 6:
+                    message.count_pending = reader.uint32();
+                    break;
+                case 7:
+                    message.count_completed = reader.uint32();
+                    break;
+                case 8:
+                    message.process_id = reader.uint32();
+                    break;
+                case 9:
+                    message.osversion = reader.int32();
+                    break;
+                case 10:
+                    message.clientreportversion = reader.uint32();
+                    break;
+                case 11:
+                    message.status_id = reader.uint32();
+                    break;
+                case 12:
+                    message.diagnostic1 = reader.uint32();
+                    break;
+                case 13:
+                    message.diagnostic2 = reader.uint64();
+                    break;
+                case 14:
+                    message.diagnostic3 = reader.uint64();
+                    break;
+                case 15:
+                    message.last_launch_data = reader.string();
+                    break;
+                case 16:
+                    message.report_count = reader.uint32();
+                    break;
+                case 17:
+                    message.client_time = reader.uint64();
+                    break;
+                case 18:
+                    message.diagnostic4 = reader.uint64();
+                    break;
+                case 19:
+                    message.diagnostic5 = reader.uint64();
+                    break;
+                case 20:
+                    if (!(message.diagnostics && message.diagnostics.length))
+                        message.diagnostics = [];
+                    message.diagnostics.push($root.CVDiagnostic.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_v2_ClientReportValidation message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgGCCStrike15_v2_ClientReportValidation} CMsgGCCStrike15_v2_ClientReportValidation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgGCCStrike15_v2_ClientReportValidation message.
+         * @function verify
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.file_report != null && message.hasOwnProperty("file_report"))
+                if (!$util.isString(message.file_report))
+                    return "file_report: string expected";
+            if (message.command_line != null && message.hasOwnProperty("command_line"))
+                if (!$util.isString(message.command_line))
+                    return "command_line: string expected";
+            if (message.total_files != null && message.hasOwnProperty("total_files"))
+                if (!$util.isInteger(message.total_files))
+                    return "total_files: integer expected";
+            if (message.internal_error != null && message.hasOwnProperty("internal_error"))
+                if (!$util.isInteger(message.internal_error))
+                    return "internal_error: integer expected";
+            if (message.trust_time != null && message.hasOwnProperty("trust_time"))
+                if (!$util.isInteger(message.trust_time))
+                    return "trust_time: integer expected";
+            if (message.count_pending != null && message.hasOwnProperty("count_pending"))
+                if (!$util.isInteger(message.count_pending))
+                    return "count_pending: integer expected";
+            if (message.count_completed != null && message.hasOwnProperty("count_completed"))
+                if (!$util.isInteger(message.count_completed))
+                    return "count_completed: integer expected";
+            if (message.process_id != null && message.hasOwnProperty("process_id"))
+                if (!$util.isInteger(message.process_id))
+                    return "process_id: integer expected";
+            if (message.osversion != null && message.hasOwnProperty("osversion"))
+                if (!$util.isInteger(message.osversion))
+                    return "osversion: integer expected";
+            if (message.clientreportversion != null && message.hasOwnProperty("clientreportversion"))
+                if (!$util.isInteger(message.clientreportversion))
+                    return "clientreportversion: integer expected";
+            if (message.status_id != null && message.hasOwnProperty("status_id"))
+                if (!$util.isInteger(message.status_id))
+                    return "status_id: integer expected";
+            if (message.diagnostic1 != null && message.hasOwnProperty("diagnostic1"))
+                if (!$util.isInteger(message.diagnostic1))
+                    return "diagnostic1: integer expected";
+            if (message.diagnostic2 != null && message.hasOwnProperty("diagnostic2"))
+                if (!$util.isInteger(message.diagnostic2) && !(message.diagnostic2 && $util.isInteger(message.diagnostic2.low) && $util.isInteger(message.diagnostic2.high)))
+                    return "diagnostic2: integer|Long expected";
+            if (message.diagnostic3 != null && message.hasOwnProperty("diagnostic3"))
+                if (!$util.isInteger(message.diagnostic3) && !(message.diagnostic3 && $util.isInteger(message.diagnostic3.low) && $util.isInteger(message.diagnostic3.high)))
+                    return "diagnostic3: integer|Long expected";
+            if (message.last_launch_data != null && message.hasOwnProperty("last_launch_data"))
+                if (!$util.isString(message.last_launch_data))
+                    return "last_launch_data: string expected";
+            if (message.report_count != null && message.hasOwnProperty("report_count"))
+                if (!$util.isInteger(message.report_count))
+                    return "report_count: integer expected";
+            if (message.client_time != null && message.hasOwnProperty("client_time"))
+                if (!$util.isInteger(message.client_time) && !(message.client_time && $util.isInteger(message.client_time.low) && $util.isInteger(message.client_time.high)))
+                    return "client_time: integer|Long expected";
+            if (message.diagnostic4 != null && message.hasOwnProperty("diagnostic4"))
+                if (!$util.isInteger(message.diagnostic4) && !(message.diagnostic4 && $util.isInteger(message.diagnostic4.low) && $util.isInteger(message.diagnostic4.high)))
+                    return "diagnostic4: integer|Long expected";
+            if (message.diagnostic5 != null && message.hasOwnProperty("diagnostic5"))
+                if (!$util.isInteger(message.diagnostic5) && !(message.diagnostic5 && $util.isInteger(message.diagnostic5.low) && $util.isInteger(message.diagnostic5.high)))
+                    return "diagnostic5: integer|Long expected";
+            if (message.diagnostics != null && message.hasOwnProperty("diagnostics")) {
+                if (!Array.isArray(message.diagnostics))
+                    return "diagnostics: array expected";
+                for (var i = 0; i < message.diagnostics.length; ++i) {
+                    var error = $root.CVDiagnostic.verify(message.diagnostics[i]);
+                    if (error)
+                        return "diagnostics." + error;
+                }
+            }
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgGCCStrike15_v2_ClientReportValidation message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgGCCStrike15_v2_ClientReportValidation} CMsgGCCStrike15_v2_ClientReportValidation
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgGCCStrike15_v2_ClientReportValidation)
+                return object;
+            var message = new $root.CMsgGCCStrike15_v2_ClientReportValidation();
+            if (object.file_report != null)
+                message.file_report = String(object.file_report);
+            if (object.command_line != null)
+                message.command_line = String(object.command_line);
+            if (object.total_files != null)
+                message.total_files = object.total_files >>> 0;
+            if (object.internal_error != null)
+                message.internal_error = object.internal_error >>> 0;
+            if (object.trust_time != null)
+                message.trust_time = object.trust_time >>> 0;
+            if (object.count_pending != null)
+                message.count_pending = object.count_pending >>> 0;
+            if (object.count_completed != null)
+                message.count_completed = object.count_completed >>> 0;
+            if (object.process_id != null)
+                message.process_id = object.process_id >>> 0;
+            if (object.osversion != null)
+                message.osversion = object.osversion | 0;
+            if (object.clientreportversion != null)
+                message.clientreportversion = object.clientreportversion >>> 0;
+            if (object.status_id != null)
+                message.status_id = object.status_id >>> 0;
+            if (object.diagnostic1 != null)
+                message.diagnostic1 = object.diagnostic1 >>> 0;
+            if (object.diagnostic2 != null)
+                if ($util.Long)
+                    (message.diagnostic2 = $util.Long.fromValue(object.diagnostic2)).unsigned = true;
+                else if (typeof object.diagnostic2 === "string")
+                    message.diagnostic2 = parseInt(object.diagnostic2, 10);
+                else if (typeof object.diagnostic2 === "number")
+                    message.diagnostic2 = object.diagnostic2;
+                else if (typeof object.diagnostic2 === "object")
+                    message.diagnostic2 = new $util.LongBits(object.diagnostic2.low >>> 0, object.diagnostic2.high >>> 0).toNumber(true);
+            if (object.diagnostic3 != null)
+                if ($util.Long)
+                    (message.diagnostic3 = $util.Long.fromValue(object.diagnostic3)).unsigned = true;
+                else if (typeof object.diagnostic3 === "string")
+                    message.diagnostic3 = parseInt(object.diagnostic3, 10);
+                else if (typeof object.diagnostic3 === "number")
+                    message.diagnostic3 = object.diagnostic3;
+                else if (typeof object.diagnostic3 === "object")
+                    message.diagnostic3 = new $util.LongBits(object.diagnostic3.low >>> 0, object.diagnostic3.high >>> 0).toNumber(true);
+            if (object.last_launch_data != null)
+                message.last_launch_data = String(object.last_launch_data);
+            if (object.report_count != null)
+                message.report_count = object.report_count >>> 0;
+            if (object.client_time != null)
+                if ($util.Long)
+                    (message.client_time = $util.Long.fromValue(object.client_time)).unsigned = true;
+                else if (typeof object.client_time === "string")
+                    message.client_time = parseInt(object.client_time, 10);
+                else if (typeof object.client_time === "number")
+                    message.client_time = object.client_time;
+                else if (typeof object.client_time === "object")
+                    message.client_time = new $util.LongBits(object.client_time.low >>> 0, object.client_time.high >>> 0).toNumber(true);
+            if (object.diagnostic4 != null)
+                if ($util.Long)
+                    (message.diagnostic4 = $util.Long.fromValue(object.diagnostic4)).unsigned = true;
+                else if (typeof object.diagnostic4 === "string")
+                    message.diagnostic4 = parseInt(object.diagnostic4, 10);
+                else if (typeof object.diagnostic4 === "number")
+                    message.diagnostic4 = object.diagnostic4;
+                else if (typeof object.diagnostic4 === "object")
+                    message.diagnostic4 = new $util.LongBits(object.diagnostic4.low >>> 0, object.diagnostic4.high >>> 0).toNumber(true);
+            if (object.diagnostic5 != null)
+                if ($util.Long)
+                    (message.diagnostic5 = $util.Long.fromValue(object.diagnostic5)).unsigned = true;
+                else if (typeof object.diagnostic5 === "string")
+                    message.diagnostic5 = parseInt(object.diagnostic5, 10);
+                else if (typeof object.diagnostic5 === "number")
+                    message.diagnostic5 = object.diagnostic5;
+                else if (typeof object.diagnostic5 === "object")
+                    message.diagnostic5 = new $util.LongBits(object.diagnostic5.low >>> 0, object.diagnostic5.high >>> 0).toNumber(true);
+            if (object.diagnostics) {
+                if (!Array.isArray(object.diagnostics))
+                    throw TypeError(".CMsgGCCStrike15_v2_ClientReportValidation.diagnostics: array expected");
+                message.diagnostics = [];
+                for (var i = 0; i < object.diagnostics.length; ++i) {
+                    if (typeof object.diagnostics[i] !== "object")
+                        throw TypeError(".CMsgGCCStrike15_v2_ClientReportValidation.diagnostics: object expected");
+                    message.diagnostics[i] = $root.CVDiagnostic.fromObject(object.diagnostics[i]);
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgGCCStrike15_v2_ClientReportValidation message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @static
+         * @param {CMsgGCCStrike15_v2_ClientReportValidation} message CMsgGCCStrike15_v2_ClientReportValidation
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.diagnostics = [];
+            if (options.defaults) {
+                object.file_report = "";
+                object.command_line = "";
+                object.total_files = 0;
+                object.internal_error = 0;
+                object.trust_time = 0;
+                object.count_pending = 0;
+                object.count_completed = 0;
+                object.process_id = 0;
+                object.osversion = 0;
+                object.clientreportversion = 0;
+                object.status_id = 0;
+                object.diagnostic1 = 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.diagnostic2 = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.diagnostic2 = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.diagnostic3 = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.diagnostic3 = options.longs === String ? "0" : 0;
+                object.last_launch_data = "";
+                object.report_count = 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.client_time = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.client_time = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.diagnostic4 = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.diagnostic4 = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.diagnostic5 = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.diagnostic5 = options.longs === String ? "0" : 0;
+            }
+            if (message.file_report != null && message.hasOwnProperty("file_report"))
+                object.file_report = message.file_report;
+            if (message.command_line != null && message.hasOwnProperty("command_line"))
+                object.command_line = message.command_line;
+            if (message.total_files != null && message.hasOwnProperty("total_files"))
+                object.total_files = message.total_files;
+            if (message.internal_error != null && message.hasOwnProperty("internal_error"))
+                object.internal_error = message.internal_error;
+            if (message.trust_time != null && message.hasOwnProperty("trust_time"))
+                object.trust_time = message.trust_time;
+            if (message.count_pending != null && message.hasOwnProperty("count_pending"))
+                object.count_pending = message.count_pending;
+            if (message.count_completed != null && message.hasOwnProperty("count_completed"))
+                object.count_completed = message.count_completed;
+            if (message.process_id != null && message.hasOwnProperty("process_id"))
+                object.process_id = message.process_id;
+            if (message.osversion != null && message.hasOwnProperty("osversion"))
+                object.osversion = message.osversion;
+            if (message.clientreportversion != null && message.hasOwnProperty("clientreportversion"))
+                object.clientreportversion = message.clientreportversion;
+            if (message.status_id != null && message.hasOwnProperty("status_id"))
+                object.status_id = message.status_id;
+            if (message.diagnostic1 != null && message.hasOwnProperty("diagnostic1"))
+                object.diagnostic1 = message.diagnostic1;
+            if (message.diagnostic2 != null && message.hasOwnProperty("diagnostic2"))
+                if (typeof message.diagnostic2 === "number")
+                    object.diagnostic2 = options.longs === String ? String(message.diagnostic2) : message.diagnostic2;
+                else
+                    object.diagnostic2 = options.longs === String ? $util.Long.prototype.toString.call(message.diagnostic2) : options.longs === Number ? new $util.LongBits(message.diagnostic2.low >>> 0, message.diagnostic2.high >>> 0).toNumber(true) : message.diagnostic2;
+            if (message.diagnostic3 != null && message.hasOwnProperty("diagnostic3"))
+                if (typeof message.diagnostic3 === "number")
+                    object.diagnostic3 = options.longs === String ? String(message.diagnostic3) : message.diagnostic3;
+                else
+                    object.diagnostic3 = options.longs === String ? $util.Long.prototype.toString.call(message.diagnostic3) : options.longs === Number ? new $util.LongBits(message.diagnostic3.low >>> 0, message.diagnostic3.high >>> 0).toNumber(true) : message.diagnostic3;
+            if (message.last_launch_data != null && message.hasOwnProperty("last_launch_data"))
+                object.last_launch_data = message.last_launch_data;
+            if (message.report_count != null && message.hasOwnProperty("report_count"))
+                object.report_count = message.report_count;
+            if (message.client_time != null && message.hasOwnProperty("client_time"))
+                if (typeof message.client_time === "number")
+                    object.client_time = options.longs === String ? String(message.client_time) : message.client_time;
+                else
+                    object.client_time = options.longs === String ? $util.Long.prototype.toString.call(message.client_time) : options.longs === Number ? new $util.LongBits(message.client_time.low >>> 0, message.client_time.high >>> 0).toNumber(true) : message.client_time;
+            if (message.diagnostic4 != null && message.hasOwnProperty("diagnostic4"))
+                if (typeof message.diagnostic4 === "number")
+                    object.diagnostic4 = options.longs === String ? String(message.diagnostic4) : message.diagnostic4;
+                else
+                    object.diagnostic4 = options.longs === String ? $util.Long.prototype.toString.call(message.diagnostic4) : options.longs === Number ? new $util.LongBits(message.diagnostic4.low >>> 0, message.diagnostic4.high >>> 0).toNumber(true) : message.diagnostic4;
+            if (message.diagnostic5 != null && message.hasOwnProperty("diagnostic5"))
+                if (typeof message.diagnostic5 === "number")
+                    object.diagnostic5 = options.longs === String ? String(message.diagnostic5) : message.diagnostic5;
+                else
+                    object.diagnostic5 = options.longs === String ? $util.Long.prototype.toString.call(message.diagnostic5) : options.longs === Number ? new $util.LongBits(message.diagnostic5.low >>> 0, message.diagnostic5.high >>> 0).toNumber(true) : message.diagnostic5;
+            if (message.diagnostics && message.diagnostics.length) {
+                object.diagnostics = [];
+                for (var j = 0; j < message.diagnostics.length; ++j)
+                    object.diagnostics[j] = $root.CVDiagnostic.toObject(message.diagnostics[j], options);
+            }
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgGCCStrike15_v2_ClientReportValidation to JSON.
+         * @function toJSON
+         * @memberof CMsgGCCStrike15_v2_ClientReportValidation
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgGCCStrike15_v2_ClientReportValidation.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return CMsgGCCStrike15_v2_ClientReportValidation;
+    })();
+    
+    $root.CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode = (function() {
+    
+        /**
+         * Properties of a CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.
+         * @exports ICMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @interface ICMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @property {string|null} [file_report] CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode file_report
+         * @property {boolean|null} [offer_insecure_mode] CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode offer_insecure_mode
+         * @property {boolean|null} [offer_secure_mode] CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode offer_secure_mode
+         * @property {boolean|null} [show_unsigned_ui] CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode show_unsigned_ui
+         * @property {boolean|null} [kick_user] CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode kick_user
+         * @property {boolean|null} [show_trusted_ui] CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode show_trusted_ui
+         * @property {boolean|null} [show_warning_not_trusted] CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode show_warning_not_trusted
+         * @property {boolean|null} [show_warning_not_trusted_2] CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode show_warning_not_trusted_2
+         * @property {string|null} [files_prevented_trusted] CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode files_prevented_trusted
+         */
+    
+        /**
+         * Constructs a new CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.
+         * @exports CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @classdesc Represents a CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.
+         * @implements ICMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @constructor
+         * @param {ICMsgGCCStrike15_v2_GC2ClientRefuseSecureMode=} [properties] Properties to set
+         */
+        function CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode file_report.
+         * @member {string} file_report
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.prototype.file_report = "";
+    
+        /**
+         * CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode offer_insecure_mode.
+         * @member {boolean} offer_insecure_mode
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.prototype.offer_insecure_mode = false;
+    
+        /**
+         * CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode offer_secure_mode.
+         * @member {boolean} offer_secure_mode
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.prototype.offer_secure_mode = false;
+    
+        /**
+         * CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode show_unsigned_ui.
+         * @member {boolean} show_unsigned_ui
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.prototype.show_unsigned_ui = false;
+    
+        /**
+         * CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode kick_user.
+         * @member {boolean} kick_user
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.prototype.kick_user = false;
+    
+        /**
+         * CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode show_trusted_ui.
+         * @member {boolean} show_trusted_ui
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.prototype.show_trusted_ui = false;
+    
+        /**
+         * CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode show_warning_not_trusted.
+         * @member {boolean} show_warning_not_trusted
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.prototype.show_warning_not_trusted = false;
+    
+        /**
+         * CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode show_warning_not_trusted_2.
+         * @member {boolean} show_warning_not_trusted_2
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.prototype.show_warning_not_trusted_2 = false;
+    
+        /**
+         * CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode files_prevented_trusted.
+         * @member {string} files_prevented_trusted
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.prototype.files_prevented_trusted = "";
+    
+        /**
+         * Creates a new CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode instance using the specified properties.
+         * @function create
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @static
+         * @param {ICMsgGCCStrike15_v2_GC2ClientRefuseSecureMode=} [properties] Properties to set
+         * @returns {CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode} CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.create = function create(properties) {
+            return new CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode message. Does not implicitly {@link CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @static
+         * @param {ICMsgGCCStrike15_v2_GC2ClientRefuseSecureMode} message CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.file_report != null && Object.hasOwnProperty.call(message, "file_report"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.file_report);
+            if (message.offer_insecure_mode != null && Object.hasOwnProperty.call(message, "offer_insecure_mode"))
+                writer.uint32(/* id 2, wireType 0 =*/16).bool(message.offer_insecure_mode);
+            if (message.offer_secure_mode != null && Object.hasOwnProperty.call(message, "offer_secure_mode"))
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.offer_secure_mode);
+            if (message.show_unsigned_ui != null && Object.hasOwnProperty.call(message, "show_unsigned_ui"))
+                writer.uint32(/* id 4, wireType 0 =*/32).bool(message.show_unsigned_ui);
+            if (message.kick_user != null && Object.hasOwnProperty.call(message, "kick_user"))
+                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.kick_user);
+            if (message.show_trusted_ui != null && Object.hasOwnProperty.call(message, "show_trusted_ui"))
+                writer.uint32(/* id 6, wireType 0 =*/48).bool(message.show_trusted_ui);
+            if (message.show_warning_not_trusted != null && Object.hasOwnProperty.call(message, "show_warning_not_trusted"))
+                writer.uint32(/* id 7, wireType 0 =*/56).bool(message.show_warning_not_trusted);
+            if (message.show_warning_not_trusted_2 != null && Object.hasOwnProperty.call(message, "show_warning_not_trusted_2"))
+                writer.uint32(/* id 8, wireType 0 =*/64).bool(message.show_warning_not_trusted_2);
+            if (message.files_prevented_trusted != null && Object.hasOwnProperty.call(message, "files_prevented_trusted"))
+                writer.uint32(/* id 9, wireType 2 =*/74).string(message.files_prevented_trusted);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode message, length delimited. Does not implicitly {@link CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @static
+         * @param {ICMsgGCCStrike15_v2_GC2ClientRefuseSecureMode} message CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode} CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.file_report = reader.string();
+                    break;
+                case 2:
+                    message.offer_insecure_mode = reader.bool();
+                    break;
+                case 3:
+                    message.offer_secure_mode = reader.bool();
+                    break;
+                case 4:
+                    message.show_unsigned_ui = reader.bool();
+                    break;
+                case 5:
+                    message.kick_user = reader.bool();
+                    break;
+                case 6:
+                    message.show_trusted_ui = reader.bool();
+                    break;
+                case 7:
+                    message.show_warning_not_trusted = reader.bool();
+                    break;
+                case 8:
+                    message.show_warning_not_trusted_2 = reader.bool();
+                    break;
+                case 9:
+                    message.files_prevented_trusted = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode} CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode message.
+         * @function verify
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.file_report != null && message.hasOwnProperty("file_report"))
+                if (!$util.isString(message.file_report))
+                    return "file_report: string expected";
+            if (message.offer_insecure_mode != null && message.hasOwnProperty("offer_insecure_mode"))
+                if (typeof message.offer_insecure_mode !== "boolean")
+                    return "offer_insecure_mode: boolean expected";
+            if (message.offer_secure_mode != null && message.hasOwnProperty("offer_secure_mode"))
+                if (typeof message.offer_secure_mode !== "boolean")
+                    return "offer_secure_mode: boolean expected";
+            if (message.show_unsigned_ui != null && message.hasOwnProperty("show_unsigned_ui"))
+                if (typeof message.show_unsigned_ui !== "boolean")
+                    return "show_unsigned_ui: boolean expected";
+            if (message.kick_user != null && message.hasOwnProperty("kick_user"))
+                if (typeof message.kick_user !== "boolean")
+                    return "kick_user: boolean expected";
+            if (message.show_trusted_ui != null && message.hasOwnProperty("show_trusted_ui"))
+                if (typeof message.show_trusted_ui !== "boolean")
+                    return "show_trusted_ui: boolean expected";
+            if (message.show_warning_not_trusted != null && message.hasOwnProperty("show_warning_not_trusted"))
+                if (typeof message.show_warning_not_trusted !== "boolean")
+                    return "show_warning_not_trusted: boolean expected";
+            if (message.show_warning_not_trusted_2 != null && message.hasOwnProperty("show_warning_not_trusted_2"))
+                if (typeof message.show_warning_not_trusted_2 !== "boolean")
+                    return "show_warning_not_trusted_2: boolean expected";
+            if (message.files_prevented_trusted != null && message.hasOwnProperty("files_prevented_trusted"))
+                if (!$util.isString(message.files_prevented_trusted))
+                    return "files_prevented_trusted: string expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode} CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode)
+                return object;
+            var message = new $root.CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode();
+            if (object.file_report != null)
+                message.file_report = String(object.file_report);
+            if (object.offer_insecure_mode != null)
+                message.offer_insecure_mode = Boolean(object.offer_insecure_mode);
+            if (object.offer_secure_mode != null)
+                message.offer_secure_mode = Boolean(object.offer_secure_mode);
+            if (object.show_unsigned_ui != null)
+                message.show_unsigned_ui = Boolean(object.show_unsigned_ui);
+            if (object.kick_user != null)
+                message.kick_user = Boolean(object.kick_user);
+            if (object.show_trusted_ui != null)
+                message.show_trusted_ui = Boolean(object.show_trusted_ui);
+            if (object.show_warning_not_trusted != null)
+                message.show_warning_not_trusted = Boolean(object.show_warning_not_trusted);
+            if (object.show_warning_not_trusted_2 != null)
+                message.show_warning_not_trusted_2 = Boolean(object.show_warning_not_trusted_2);
+            if (object.files_prevented_trusted != null)
+                message.files_prevented_trusted = String(object.files_prevented_trusted);
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @static
+         * @param {CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode} message CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.file_report = "";
+                object.offer_insecure_mode = false;
+                object.offer_secure_mode = false;
+                object.show_unsigned_ui = false;
+                object.kick_user = false;
+                object.show_trusted_ui = false;
+                object.show_warning_not_trusted = false;
+                object.show_warning_not_trusted_2 = false;
+                object.files_prevented_trusted = "";
+            }
+            if (message.file_report != null && message.hasOwnProperty("file_report"))
+                object.file_report = message.file_report;
+            if (message.offer_insecure_mode != null && message.hasOwnProperty("offer_insecure_mode"))
+                object.offer_insecure_mode = message.offer_insecure_mode;
+            if (message.offer_secure_mode != null && message.hasOwnProperty("offer_secure_mode"))
+                object.offer_secure_mode = message.offer_secure_mode;
+            if (message.show_unsigned_ui != null && message.hasOwnProperty("show_unsigned_ui"))
+                object.show_unsigned_ui = message.show_unsigned_ui;
+            if (message.kick_user != null && message.hasOwnProperty("kick_user"))
+                object.kick_user = message.kick_user;
+            if (message.show_trusted_ui != null && message.hasOwnProperty("show_trusted_ui"))
+                object.show_trusted_ui = message.show_trusted_ui;
+            if (message.show_warning_not_trusted != null && message.hasOwnProperty("show_warning_not_trusted"))
+                object.show_warning_not_trusted = message.show_warning_not_trusted;
+            if (message.show_warning_not_trusted_2 != null && message.hasOwnProperty("show_warning_not_trusted_2"))
+                object.show_warning_not_trusted_2 = message.show_warning_not_trusted_2;
+            if (message.files_prevented_trusted != null && message.hasOwnProperty("files_prevented_trusted"))
+                object.files_prevented_trusted = message.files_prevented_trusted;
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode to JSON.
+         * @function toJSON
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode;
+    })();
+    
+    $root.CMsgGCCStrike15_v2_GC2ClientRequestValidation = (function() {
+    
+        /**
+         * Properties of a CMsgGCCStrike15_v2_GC2ClientRequestValidation.
+         * @exports ICMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @interface ICMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @property {boolean|null} [full_report] CMsgGCCStrike15_v2_GC2ClientRequestValidation full_report
+         * @property {string|null} [module] CMsgGCCStrike15_v2_GC2ClientRequestValidation module
+         */
+    
+        /**
+         * Constructs a new CMsgGCCStrike15_v2_GC2ClientRequestValidation.
+         * @exports CMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @classdesc Represents a CMsgGCCStrike15_v2_GC2ClientRequestValidation.
+         * @implements ICMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @constructor
+         * @param {ICMsgGCCStrike15_v2_GC2ClientRequestValidation=} [properties] Properties to set
+         */
+        function CMsgGCCStrike15_v2_GC2ClientRequestValidation(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgGCCStrike15_v2_GC2ClientRequestValidation full_report.
+         * @member {boolean} full_report
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientRequestValidation.prototype.full_report = false;
+    
+        /**
+         * CMsgGCCStrike15_v2_GC2ClientRequestValidation module.
+         * @member {string} module
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientRequestValidation.prototype.module = "";
+    
+        /**
+         * Creates a new CMsgGCCStrike15_v2_GC2ClientRequestValidation instance using the specified properties.
+         * @function create
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @static
+         * @param {ICMsgGCCStrike15_v2_GC2ClientRequestValidation=} [properties] Properties to set
+         * @returns {CMsgGCCStrike15_v2_GC2ClientRequestValidation} CMsgGCCStrike15_v2_GC2ClientRequestValidation instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientRequestValidation.create = function create(properties) {
+            return new CMsgGCCStrike15_v2_GC2ClientRequestValidation(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_v2_GC2ClientRequestValidation message. Does not implicitly {@link CMsgGCCStrike15_v2_GC2ClientRequestValidation.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @static
+         * @param {ICMsgGCCStrike15_v2_GC2ClientRequestValidation} message CMsgGCCStrike15_v2_GC2ClientRequestValidation message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_v2_GC2ClientRequestValidation.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.full_report != null && Object.hasOwnProperty.call(message, "full_report"))
+                writer.uint32(/* id 1, wireType 0 =*/8).bool(message.full_report);
+            if (message.module != null && Object.hasOwnProperty.call(message, "module"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.module);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_v2_GC2ClientRequestValidation message, length delimited. Does not implicitly {@link CMsgGCCStrike15_v2_GC2ClientRequestValidation.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @static
+         * @param {ICMsgGCCStrike15_v2_GC2ClientRequestValidation} message CMsgGCCStrike15_v2_GC2ClientRequestValidation message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_v2_GC2ClientRequestValidation.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_v2_GC2ClientRequestValidation message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgGCCStrike15_v2_GC2ClientRequestValidation} CMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_v2_GC2ClientRequestValidation.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_GC2ClientRequestValidation();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.full_report = reader.bool();
+                    break;
+                case 2:
+                    message.module = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_v2_GC2ClientRequestValidation message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgGCCStrike15_v2_GC2ClientRequestValidation} CMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_v2_GC2ClientRequestValidation.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgGCCStrike15_v2_GC2ClientRequestValidation message.
+         * @function verify
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgGCCStrike15_v2_GC2ClientRequestValidation.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.full_report != null && message.hasOwnProperty("full_report"))
+                if (typeof message.full_report !== "boolean")
+                    return "full_report: boolean expected";
+            if (message.module != null && message.hasOwnProperty("module"))
+                if (!$util.isString(message.module))
+                    return "module: string expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgGCCStrike15_v2_GC2ClientRequestValidation message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgGCCStrike15_v2_GC2ClientRequestValidation} CMsgGCCStrike15_v2_GC2ClientRequestValidation
+         */
+        CMsgGCCStrike15_v2_GC2ClientRequestValidation.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgGCCStrike15_v2_GC2ClientRequestValidation)
+                return object;
+            var message = new $root.CMsgGCCStrike15_v2_GC2ClientRequestValidation();
+            if (object.full_report != null)
+                message.full_report = Boolean(object.full_report);
+            if (object.module != null)
+                message.module = String(object.module);
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgGCCStrike15_v2_GC2ClientRequestValidation message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @static
+         * @param {CMsgGCCStrike15_v2_GC2ClientRequestValidation} message CMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgGCCStrike15_v2_GC2ClientRequestValidation.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.full_report = false;
+                object.module = "";
+            }
+            if (message.full_report != null && message.hasOwnProperty("full_report"))
+                object.full_report = message.full_report;
+            if (message.module != null && message.hasOwnProperty("module"))
+                object.module = message.module;
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgGCCStrike15_v2_GC2ClientRequestValidation to JSON.
+         * @function toJSON
+         * @memberof CMsgGCCStrike15_v2_GC2ClientRequestValidation
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgGCCStrike15_v2_GC2ClientRequestValidation.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return CMsgGCCStrike15_v2_GC2ClientRequestValidation;
+    })();
+    
     /**
      * GCProtoBufMsgSrc enum.
      * @exports GCProtoBufMsgSrc
-     * @enum {string}
+     * @enum {number}
      * @property {number} GCProtoBufMsgSrc_Unspecified=0 GCProtoBufMsgSrc_Unspecified value
      * @property {number} GCProtoBufMsgSrc_FromSystem=1 GCProtoBufMsgSrc_FromSystem value
      * @property {number} GCProtoBufMsgSrc_FromSteamID=2 GCProtoBufMsgSrc_FromSteamID value
@@ -42151,27 +45140,27 @@
         CMsgProtoBufHeader.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.client_steam_id != null && message.hasOwnProperty("client_steam_id"))
+            if (message.client_steam_id != null && Object.hasOwnProperty.call(message, "client_steam_id"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.client_steam_id);
-            if (message.client_session_id != null && message.hasOwnProperty("client_session_id"))
+            if (message.client_session_id != null && Object.hasOwnProperty.call(message, "client_session_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.client_session_id);
-            if (message.source_app_id != null && message.hasOwnProperty("source_app_id"))
+            if (message.source_app_id != null && Object.hasOwnProperty.call(message, "source_app_id"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.source_app_id);
-            if (message.job_id_source != null && message.hasOwnProperty("job_id_source"))
+            if (message.job_id_source != null && Object.hasOwnProperty.call(message, "job_id_source"))
                 writer.uint32(/* id 10, wireType 1 =*/81).fixed64(message.job_id_source);
-            if (message.job_id_target != null && message.hasOwnProperty("job_id_target"))
+            if (message.job_id_target != null && Object.hasOwnProperty.call(message, "job_id_target"))
                 writer.uint32(/* id 11, wireType 1 =*/89).fixed64(message.job_id_target);
-            if (message.target_job_name != null && message.hasOwnProperty("target_job_name"))
+            if (message.target_job_name != null && Object.hasOwnProperty.call(message, "target_job_name"))
                 writer.uint32(/* id 12, wireType 2 =*/98).string(message.target_job_name);
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 13, wireType 0 =*/104).int32(message.eresult);
-            if (message.error_message != null && message.hasOwnProperty("error_message"))
+            if (message.error_message != null && Object.hasOwnProperty.call(message, "error_message"))
                 writer.uint32(/* id 14, wireType 2 =*/114).string(message.error_message);
-            if (message.ip != null && message.hasOwnProperty("ip"))
+            if (message.ip != null && Object.hasOwnProperty.call(message, "ip"))
                 writer.uint32(/* id 15, wireType 0 =*/120).uint32(message.ip);
-            if (message.gc_msg_src != null && message.hasOwnProperty("gc_msg_src"))
+            if (message.gc_msg_src != null && Object.hasOwnProperty.call(message, "gc_msg_src"))
                 writer.uint32(/* id 200, wireType 0 =*/1600).int32(message.gc_msg_src);
-            if (message.gc_dir_index_source != null && message.hasOwnProperty("gc_dir_index_source"))
+            if (message.gc_dir_index_source != null && Object.hasOwnProperty.call(message, "gc_dir_index_source"))
                 writer.uint32(/* id 201, wireType 0 =*/1608).uint32(message.gc_dir_index_source);
             return writer;
         };
@@ -42575,15 +45564,15 @@
         CMsgWebAPIKey.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.status != null && message.hasOwnProperty("status"))
+            if (message.status != null && Object.hasOwnProperty.call(message, "status"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.status);
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.account_id);
-            if (message.publisher_group_id != null && message.hasOwnProperty("publisher_group_id"))
+            if (message.publisher_group_id != null && Object.hasOwnProperty.call(message, "publisher_group_id"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.publisher_group_id);
-            if (message.key_id != null && message.hasOwnProperty("key_id"))
+            if (message.key_id != null && Object.hasOwnProperty.call(message, "key_id"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.key_id);
-            if (message.domain != null && message.hasOwnProperty("domain"))
+            if (message.domain != null && Object.hasOwnProperty.call(message, "domain"))
                 writer.uint32(/* id 5, wireType 2 =*/42).string(message.domain);
             return writer;
         };
@@ -42881,11 +45870,11 @@
         CMsgHttpRequest.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.request_method != null && message.hasOwnProperty("request_method"))
+            if (message.request_method != null && Object.hasOwnProperty.call(message, "request_method"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.request_method);
-            if (message.hostname != null && message.hasOwnProperty("hostname"))
+            if (message.hostname != null && Object.hasOwnProperty.call(message, "hostname"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.hostname);
-            if (message.url != null && message.hasOwnProperty("url"))
+            if (message.url != null && Object.hasOwnProperty.call(message, "url"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.url);
             if (message.headers != null && message.headers.length)
                 for (var i = 0; i < message.headers.length; ++i)
@@ -42896,9 +45885,9 @@
             if (message.post_params != null && message.post_params.length)
                 for (var i = 0; i < message.post_params.length; ++i)
                     $root.CMsgHttpRequest.QueryParam.encode(message.post_params[i], writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
-            if (message.body != null && message.hasOwnProperty("body"))
+            if (message.body != null && Object.hasOwnProperty.call(message, "body"))
                 writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.body);
-            if (message.absolute_timeout != null && message.hasOwnProperty("absolute_timeout"))
+            if (message.absolute_timeout != null && Object.hasOwnProperty.call(message, "absolute_timeout"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.absolute_timeout);
             return writer;
         };
@@ -43237,9 +46226,9 @@
             RequestHeader.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.name != null && message.hasOwnProperty("name"))
+                if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                if (message.value != null && message.hasOwnProperty("value"))
+                if (message.value != null && Object.hasOwnProperty.call(message, "value"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.value);
                 return writer;
             };
@@ -43447,9 +46436,9 @@
             QueryParam.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.name != null && message.hasOwnProperty("name"))
+                if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                if (message.value != null && message.hasOwnProperty("value"))
+                if (message.value != null && Object.hasOwnProperty.call(message, "value"))
                     writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.value);
                 return writer;
             };
@@ -43714,19 +46703,19 @@
         CMsgWebAPIRequest.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.UNUSED_job_name != null && message.hasOwnProperty("UNUSED_job_name"))
+            if (message.UNUSED_job_name != null && Object.hasOwnProperty.call(message, "UNUSED_job_name"))
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.UNUSED_job_name);
-            if (message.interface_name != null && message.hasOwnProperty("interface_name"))
+            if (message.interface_name != null && Object.hasOwnProperty.call(message, "interface_name"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.interface_name);
-            if (message.method_name != null && message.hasOwnProperty("method_name"))
+            if (message.method_name != null && Object.hasOwnProperty.call(message, "method_name"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.method_name);
-            if (message.version != null && message.hasOwnProperty("version"))
+            if (message.version != null && Object.hasOwnProperty.call(message, "version"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.version);
-            if (message.api_key != null && message.hasOwnProperty("api_key"))
+            if (message.api_key != null && Object.hasOwnProperty.call(message, "api_key"))
                 $root.CMsgWebAPIKey.encode(message.api_key, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
-            if (message.request != null && message.hasOwnProperty("request"))
+            if (message.request != null && Object.hasOwnProperty.call(message, "request"))
                 $root.CMsgHttpRequest.encode(message.request, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
-            if (message.routing_app_id != null && message.hasOwnProperty("routing_app_id"))
+            if (message.routing_app_id != null && Object.hasOwnProperty.call(message, "routing_app_id"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.routing_app_id);
             return writer;
         };
@@ -44009,12 +46998,12 @@
         CMsgHttpResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.status_code != null && message.hasOwnProperty("status_code"))
+            if (message.status_code != null && Object.hasOwnProperty.call(message, "status_code"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.status_code);
             if (message.headers != null && message.headers.length)
                 for (var i = 0; i < message.headers.length; ++i)
                     $root.CMsgHttpResponse.ResponseHeader.encode(message.headers[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.body != null && message.hasOwnProperty("body"))
+            if (message.body != null && Object.hasOwnProperty.call(message, "body"))
                 writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.body);
             return writer;
         };
@@ -44259,9 +47248,9 @@
             ResponseHeader.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.name != null && message.hasOwnProperty("name"))
+                if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                if (message.value != null && message.hasOwnProperty("value"))
+                if (message.value != null && Object.hasOwnProperty.call(message, "value"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.value);
                 return writer;
             };
@@ -44472,9 +47461,9 @@
         CMsgAMFindAccounts.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.search_type != null && message.hasOwnProperty("search_type"))
+            if (message.search_type != null && Object.hasOwnProperty.call(message, "search_type"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.search_type);
-            if (message.search_string != null && message.hasOwnProperty("search_string"))
+            if (message.search_string != null && Object.hasOwnProperty.call(message, "search_string"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.search_string);
             return writer;
         };
@@ -44945,19 +47934,19 @@
         CMsgNotifyWatchdog.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.source != null && message.hasOwnProperty("source"))
+            if (message.source != null && Object.hasOwnProperty.call(message, "source"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.source);
-            if (message.alert_type != null && message.hasOwnProperty("alert_type"))
+            if (message.alert_type != null && Object.hasOwnProperty.call(message, "alert_type"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.alert_type);
-            if (message.alert_destination != null && message.hasOwnProperty("alert_destination"))
+            if (message.alert_destination != null && Object.hasOwnProperty.call(message, "alert_destination"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.alert_destination);
-            if (message.critical != null && message.hasOwnProperty("critical"))
+            if (message.critical != null && Object.hasOwnProperty.call(message, "critical"))
                 writer.uint32(/* id 4, wireType 0 =*/32).bool(message.critical);
-            if (message.time != null && message.hasOwnProperty("time"))
+            if (message.time != null && Object.hasOwnProperty.call(message, "time"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.time);
-            if (message.appid != null && message.hasOwnProperty("appid"))
+            if (message.appid != null && Object.hasOwnProperty.call(message, "appid"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.appid);
-            if (message.text != null && message.hasOwnProperty("text"))
+            if (message.text != null && Object.hasOwnProperty.call(message, "text"))
                 writer.uint32(/* id 7, wireType 2 =*/58).string(message.text);
             return writer;
         };
@@ -45211,7 +48200,7 @@
         CMsgAMGetLicenses.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
             return writer;
         };
@@ -45430,11 +48419,11 @@
         CMsgPackageLicense.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.package_id != null && message.hasOwnProperty("package_id"))
+            if (message.package_id != null && Object.hasOwnProperty.call(message, "package_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.package_id);
-            if (message.time_created != null && message.hasOwnProperty("time_created"))
+            if (message.time_created != null && Object.hasOwnProperty.call(message, "time_created"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.time_created);
-            if (message.owner_id != null && message.hasOwnProperty("owner_id"))
+            if (message.owner_id != null && Object.hasOwnProperty.call(message, "owner_id"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.owner_id);
             return writer;
         };
@@ -45657,7 +48646,7 @@
             if (message.license != null && message.license.length)
                 for (var i = 0; i < message.license.length; ++i)
                     $root.CMsgPackageLicense.encode(message.license[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.result != null && message.hasOwnProperty("result"))
+            if (message.result != null && Object.hasOwnProperty.call(message, "result"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.result);
             return writer;
         };
@@ -45894,9 +48883,9 @@
         CMsgAMGetUserGameStats.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steam_id != null && message.hasOwnProperty("steam_id"))
+            if (message.steam_id != null && Object.hasOwnProperty.call(message, "steam_id"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steam_id);
-            if (message.game_id != null && message.hasOwnProperty("game_id"))
+            if (message.game_id != null && Object.hasOwnProperty.call(message, "game_id"))
                 writer.uint32(/* id 2, wireType 1 =*/17).fixed64(message.game_id);
             if (message.stats != null && message.stats.length)
                 for (var i = 0; i < message.stats.length; ++i)
@@ -46195,11 +49184,11 @@
         CMsgAMGetUserGameStatsResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steam_id != null && message.hasOwnProperty("steam_id"))
+            if (message.steam_id != null && Object.hasOwnProperty.call(message, "steam_id"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steam_id);
-            if (message.game_id != null && message.hasOwnProperty("game_id"))
+            if (message.game_id != null && Object.hasOwnProperty.call(message, "game_id"))
                 writer.uint32(/* id 2, wireType 1 =*/17).fixed64(message.game_id);
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 3, wireType 0 =*/24).int32(message.eresult);
             if (message.stats != null && message.stats.length)
                 for (var i = 0; i < message.stats.length; ++i)
@@ -46511,9 +49500,9 @@
             Stats.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.stat_id != null && message.hasOwnProperty("stat_id"))
+                if (message.stat_id != null && Object.hasOwnProperty.call(message, "stat_id"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.stat_id);
-                if (message.stat_value != null && message.hasOwnProperty("stat_value"))
+                if (message.stat_value != null && Object.hasOwnProperty.call(message, "stat_value"))
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.stat_value);
                 return writer;
             };
@@ -46730,11 +49719,11 @@
             Achievement_Blocks.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.achievement_id != null && message.hasOwnProperty("achievement_id"))
+                if (message.achievement_id != null && Object.hasOwnProperty.call(message, "achievement_id"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.achievement_id);
-                if (message.achievement_bit_id != null && message.hasOwnProperty("achievement_bit_id"))
+                if (message.achievement_bit_id != null && Object.hasOwnProperty.call(message, "achievement_bit_id"))
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.achievement_bit_id);
-                if (message.unlock_time != null && message.hasOwnProperty("unlock_time"))
+                if (message.unlock_time != null && Object.hasOwnProperty.call(message, "unlock_time"))
                     writer.uint32(/* id 3, wireType 5 =*/29).fixed32(message.unlock_time);
                 return writer;
             };
@@ -46956,9 +49945,9 @@
         CMsgGCGetCommandList.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.app_id != null && message.hasOwnProperty("app_id"))
+            if (message.app_id != null && Object.hasOwnProperty.call(message, "app_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.app_id);
-            if (message.command_prefix != null && message.hasOwnProperty("command_prefix"))
+            if (message.command_prefix != null && Object.hasOwnProperty.call(message, "command_prefix"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.command_prefix);
             return writer;
         };
@@ -47777,9 +50766,9 @@
             ValueTag.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.found != null && message.hasOwnProperty("found"))
+                if (message.found != null && Object.hasOwnProperty.call(message, "found"))
                     writer.uint32(/* id 1, wireType 0 =*/8).bool(message.found);
-                if (message.value != null && message.hasOwnProperty("value"))
+                if (message.value != null && Object.hasOwnProperty.call(message, "value"))
                     writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.value);
                 return writer;
             };
@@ -48204,9 +51193,9 @@
             KeyPair.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.name != null && message.hasOwnProperty("name"))
+                if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                if (message.value != null && message.hasOwnProperty("value"))
+                if (message.value != null && Object.hasOwnProperty.call(message, "value"))
                     writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.value);
                 return writer;
             };
@@ -48897,33 +51886,33 @@
         CGCMsgMemCachedStatsResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.curr_connections != null && message.hasOwnProperty("curr_connections"))
+            if (message.curr_connections != null && Object.hasOwnProperty.call(message, "curr_connections"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.curr_connections);
-            if (message.cmd_get != null && message.hasOwnProperty("cmd_get"))
+            if (message.cmd_get != null && Object.hasOwnProperty.call(message, "cmd_get"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.cmd_get);
-            if (message.cmd_set != null && message.hasOwnProperty("cmd_set"))
+            if (message.cmd_set != null && Object.hasOwnProperty.call(message, "cmd_set"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.cmd_set);
-            if (message.cmd_flush != null && message.hasOwnProperty("cmd_flush"))
+            if (message.cmd_flush != null && Object.hasOwnProperty.call(message, "cmd_flush"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.cmd_flush);
-            if (message.get_hits != null && message.hasOwnProperty("get_hits"))
+            if (message.get_hits != null && Object.hasOwnProperty.call(message, "get_hits"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint64(message.get_hits);
-            if (message.get_misses != null && message.hasOwnProperty("get_misses"))
+            if (message.get_misses != null && Object.hasOwnProperty.call(message, "get_misses"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint64(message.get_misses);
-            if (message.delete_hits != null && message.hasOwnProperty("delete_hits"))
+            if (message.delete_hits != null && Object.hasOwnProperty.call(message, "delete_hits"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint64(message.delete_hits);
-            if (message.delete_misses != null && message.hasOwnProperty("delete_misses"))
+            if (message.delete_misses != null && Object.hasOwnProperty.call(message, "delete_misses"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint64(message.delete_misses);
-            if (message.bytes_read != null && message.hasOwnProperty("bytes_read"))
+            if (message.bytes_read != null && Object.hasOwnProperty.call(message, "bytes_read"))
                 writer.uint32(/* id 9, wireType 0 =*/72).uint64(message.bytes_read);
-            if (message.bytes_written != null && message.hasOwnProperty("bytes_written"))
+            if (message.bytes_written != null && Object.hasOwnProperty.call(message, "bytes_written"))
                 writer.uint32(/* id 10, wireType 0 =*/80).uint64(message.bytes_written);
-            if (message.limit_maxbytes != null && message.hasOwnProperty("limit_maxbytes"))
+            if (message.limit_maxbytes != null && Object.hasOwnProperty.call(message, "limit_maxbytes"))
                 writer.uint32(/* id 11, wireType 0 =*/88).uint64(message.limit_maxbytes);
-            if (message.curr_items != null && message.hasOwnProperty("curr_items"))
+            if (message.curr_items != null && Object.hasOwnProperty.call(message, "curr_items"))
                 writer.uint32(/* id 12, wireType 0 =*/96).uint64(message.curr_items);
-            if (message.evictions != null && message.hasOwnProperty("evictions"))
+            if (message.evictions != null && Object.hasOwnProperty.call(message, "evictions"))
                 writer.uint32(/* id 13, wireType 0 =*/104).uint64(message.evictions);
-            if (message.bytes != null && message.hasOwnProperty("bytes"))
+            if (message.bytes != null && Object.hasOwnProperty.call(message, "bytes"))
                 writer.uint32(/* id 14, wireType 0 =*/112).uint64(message.bytes);
             return writer;
         };
@@ -49450,7 +52439,7 @@
         CGCMsgSQLStats.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.schema_catalog != null && message.hasOwnProperty("schema_catalog"))
+            if (message.schema_catalog != null && Object.hasOwnProperty.call(message, "schema_catalog"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.schema_catalog);
             return writer;
         };
@@ -49709,23 +52698,23 @@
         CGCMsgSQLStatsResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.threads != null && message.hasOwnProperty("threads"))
+            if (message.threads != null && Object.hasOwnProperty.call(message, "threads"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.threads);
-            if (message.threads_connected != null && message.hasOwnProperty("threads_connected"))
+            if (message.threads_connected != null && Object.hasOwnProperty.call(message, "threads_connected"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.threads_connected);
-            if (message.threads_active != null && message.hasOwnProperty("threads_active"))
+            if (message.threads_active != null && Object.hasOwnProperty.call(message, "threads_active"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.threads_active);
-            if (message.operations_submitted != null && message.hasOwnProperty("operations_submitted"))
+            if (message.operations_submitted != null && Object.hasOwnProperty.call(message, "operations_submitted"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.operations_submitted);
-            if (message.prepared_statements_executed != null && message.hasOwnProperty("prepared_statements_executed"))
+            if (message.prepared_statements_executed != null && Object.hasOwnProperty.call(message, "prepared_statements_executed"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.prepared_statements_executed);
-            if (message.non_prepared_statements_executed != null && message.hasOwnProperty("non_prepared_statements_executed"))
+            if (message.non_prepared_statements_executed != null && Object.hasOwnProperty.call(message, "non_prepared_statements_executed"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.non_prepared_statements_executed);
-            if (message.deadlock_retries != null && message.hasOwnProperty("deadlock_retries"))
+            if (message.deadlock_retries != null && Object.hasOwnProperty.call(message, "deadlock_retries"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.deadlock_retries);
-            if (message.operations_timed_out_in_queue != null && message.hasOwnProperty("operations_timed_out_in_queue"))
+            if (message.operations_timed_out_in_queue != null && Object.hasOwnProperty.call(message, "operations_timed_out_in_queue"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.operations_timed_out_in_queue);
-            if (message.errors != null && message.hasOwnProperty("errors"))
+            if (message.errors != null && Object.hasOwnProperty.call(message, "errors"))
                 writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.errors);
             return writer;
         };
@@ -50028,13 +53017,13 @@
         CMsgAMAddFreeLicense.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
-            if (message.ip_public != null && message.hasOwnProperty("ip_public"))
+            if (message.ip_public != null && Object.hasOwnProperty.call(message, "ip_public"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.ip_public);
-            if (message.packageid != null && message.hasOwnProperty("packageid"))
+            if (message.packageid != null && Object.hasOwnProperty.call(message, "packageid"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.packageid);
-            if (message.store_country_code != null && message.hasOwnProperty("store_country_code"))
+            if (message.store_country_code != null && Object.hasOwnProperty.call(message, "store_country_code"))
                 writer.uint32(/* id 4, wireType 2 =*/34).string(message.store_country_code);
             return writer;
         };
@@ -50287,11 +53276,11 @@
         CMsgAMAddFreeLicenseResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.eresult);
-            if (message.purchase_result_detail != null && message.hasOwnProperty("purchase_result_detail"))
+            if (message.purchase_result_detail != null && Object.hasOwnProperty.call(message, "purchase_result_detail"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.purchase_result_detail);
-            if (message.transid != null && message.hasOwnProperty("transid"))
+            if (message.transid != null && Object.hasOwnProperty.call(message, "transid"))
                 writer.uint32(/* id 3, wireType 1 =*/25).fixed64(message.transid);
             return writer;
         };
@@ -50768,17 +53757,17 @@
         CIPLocationInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.ip != null && message.hasOwnProperty("ip"))
+            if (message.ip != null && Object.hasOwnProperty.call(message, "ip"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.ip);
-            if (message.latitude != null && message.hasOwnProperty("latitude"))
+            if (message.latitude != null && Object.hasOwnProperty.call(message, "latitude"))
                 writer.uint32(/* id 2, wireType 5 =*/21).float(message.latitude);
-            if (message.longitude != null && message.hasOwnProperty("longitude"))
+            if (message.longitude != null && Object.hasOwnProperty.call(message, "longitude"))
                 writer.uint32(/* id 3, wireType 5 =*/29).float(message.longitude);
-            if (message.country != null && message.hasOwnProperty("country"))
+            if (message.country != null && Object.hasOwnProperty.call(message, "country"))
                 writer.uint32(/* id 4, wireType 2 =*/34).string(message.country);
-            if (message.state != null && message.hasOwnProperty("state"))
+            if (message.state != null && Object.hasOwnProperty.call(message, "state"))
                 writer.uint32(/* id 5, wireType 2 =*/42).string(message.state);
-            if (message.city != null && message.hasOwnProperty("city"))
+            if (message.city != null && Object.hasOwnProperty.call(message, "city"))
                 writer.uint32(/* id 6, wireType 2 =*/50).string(message.city);
             return writer;
         };
@@ -51238,9 +54227,9 @@
         CGCMsgSystemStatsSchema.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.gc_app_id != null && message.hasOwnProperty("gc_app_id"))
+            if (message.gc_app_id != null && Object.hasOwnProperty.call(message, "gc_app_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.gc_app_id);
-            if (message.schema_kv != null && message.hasOwnProperty("schema_kv"))
+            if (message.schema_kv != null && Object.hasOwnProperty.call(message, "schema_kv"))
                 writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.schema_kv);
             return writer;
         };
@@ -51716,31 +54705,31 @@
         CGCMsgGetSystemStatsResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.gc_app_id != null && message.hasOwnProperty("gc_app_id"))
+            if (message.gc_app_id != null && Object.hasOwnProperty.call(message, "gc_app_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.gc_app_id);
-            if (message.stats_kv != null && message.hasOwnProperty("stats_kv"))
+            if (message.stats_kv != null && Object.hasOwnProperty.call(message, "stats_kv"))
                 writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.stats_kv);
-            if (message.active_jobs != null && message.hasOwnProperty("active_jobs"))
+            if (message.active_jobs != null && Object.hasOwnProperty.call(message, "active_jobs"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.active_jobs);
-            if (message.yielding_jobs != null && message.hasOwnProperty("yielding_jobs"))
+            if (message.yielding_jobs != null && Object.hasOwnProperty.call(message, "yielding_jobs"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.yielding_jobs);
-            if (message.user_sessions != null && message.hasOwnProperty("user_sessions"))
+            if (message.user_sessions != null && Object.hasOwnProperty.call(message, "user_sessions"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.user_sessions);
-            if (message.game_server_sessions != null && message.hasOwnProperty("game_server_sessions"))
+            if (message.game_server_sessions != null && Object.hasOwnProperty.call(message, "game_server_sessions"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.game_server_sessions);
-            if (message.socaches != null && message.hasOwnProperty("socaches"))
+            if (message.socaches != null && Object.hasOwnProperty.call(message, "socaches"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.socaches);
-            if (message.socaches_to_unload != null && message.hasOwnProperty("socaches_to_unload"))
+            if (message.socaches_to_unload != null && Object.hasOwnProperty.call(message, "socaches_to_unload"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.socaches_to_unload);
-            if (message.socaches_loading != null && message.hasOwnProperty("socaches_loading"))
+            if (message.socaches_loading != null && Object.hasOwnProperty.call(message, "socaches_loading"))
                 writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.socaches_loading);
-            if (message.writeback_queue != null && message.hasOwnProperty("writeback_queue"))
+            if (message.writeback_queue != null && Object.hasOwnProperty.call(message, "writeback_queue"))
                 writer.uint32(/* id 10, wireType 0 =*/80).uint32(message.writeback_queue);
-            if (message.steamid_locks != null && message.hasOwnProperty("steamid_locks"))
+            if (message.steamid_locks != null && Object.hasOwnProperty.call(message, "steamid_locks"))
                 writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.steamid_locks);
-            if (message.logon_queue != null && message.hasOwnProperty("logon_queue"))
+            if (message.logon_queue != null && Object.hasOwnProperty.call(message, "logon_queue"))
                 writer.uint32(/* id 12, wireType 0 =*/96).uint32(message.logon_queue);
-            if (message.logon_jobs != null && message.hasOwnProperty("logon_jobs"))
+            if (message.logon_jobs != null && Object.hasOwnProperty.call(message, "logon_jobs"))
                 writer.uint32(/* id 13, wireType 0 =*/104).uint32(message.logon_jobs);
             return writer;
         };
@@ -52116,16 +55105,16 @@
         CMsgAMSendEmail.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
-            if (message.email_msg_type != null && message.hasOwnProperty("email_msg_type"))
+            if (message.email_msg_type != null && Object.hasOwnProperty.call(message, "email_msg_type"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.email_msg_type);
-            if (message.email_format != null && message.hasOwnProperty("email_format"))
+            if (message.email_format != null && Object.hasOwnProperty.call(message, "email_format"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.email_format);
             if (message.persona_name_tokens != null && message.persona_name_tokens.length)
                 for (var i = 0; i < message.persona_name_tokens.length; ++i)
                     $root.CMsgAMSendEmail.PersonaNameReplacementToken.encode(message.persona_name_tokens[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
-            if (message.source_gc != null && message.hasOwnProperty("source_gc"))
+            if (message.source_gc != null && Object.hasOwnProperty.call(message, "source_gc"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.source_gc);
             if (message.tokens != null && message.tokens.length)
                 for (var i = 0; i < message.tokens.length; ++i)
@@ -52431,9 +55420,9 @@
             ReplacementToken.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.token_name != null && message.hasOwnProperty("token_name"))
+                if (message.token_name != null && Object.hasOwnProperty.call(message, "token_name"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.token_name);
-                if (message.token_value != null && message.hasOwnProperty("token_value"))
+                if (message.token_value != null && Object.hasOwnProperty.call(message, "token_value"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.token_value);
                 return writer;
             };
@@ -52641,9 +55630,9 @@
             PersonaNameReplacementToken.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.steamid != null && message.hasOwnProperty("steamid"))
+                if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                     writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
-                if (message.token_name != null && message.hasOwnProperty("token_name"))
+                if (message.token_name != null && Object.hasOwnProperty.call(message, "token_name"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.token_name);
                 return writer;
             };
@@ -52859,7 +55848,7 @@
         CMsgAMSendEmailResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.eresult);
             return writer;
         };
@@ -53073,13 +56062,13 @@
         CMsgGCGetEmailTemplate.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.app_id != null && message.hasOwnProperty("app_id"))
+            if (message.app_id != null && Object.hasOwnProperty.call(message, "app_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.app_id);
-            if (message.email_msg_type != null && message.hasOwnProperty("email_msg_type"))
+            if (message.email_msg_type != null && Object.hasOwnProperty.call(message, "email_msg_type"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.email_msg_type);
-            if (message.email_lang != null && message.hasOwnProperty("email_lang"))
+            if (message.email_lang != null && Object.hasOwnProperty.call(message, "email_lang"))
                 writer.uint32(/* id 3, wireType 0 =*/24).int32(message.email_lang);
-            if (message.email_format != null && message.hasOwnProperty("email_format"))
+            if (message.email_format != null && Object.hasOwnProperty.call(message, "email_format"))
                 writer.uint32(/* id 4, wireType 0 =*/32).int32(message.email_format);
             return writer;
         };
@@ -53318,11 +56307,11 @@
         CMsgGCGetEmailTemplateResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.eresult);
-            if (message.template_exists != null && message.hasOwnProperty("template_exists"))
+            if (message.template_exists != null && Object.hasOwnProperty.call(message, "template_exists"))
                 writer.uint32(/* id 2, wireType 0 =*/16).bool(message.template_exists);
-            if (message.template != null && message.hasOwnProperty("template"))
+            if (message.template != null && Object.hasOwnProperty.call(message, "template"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.template);
             return writer;
         };
@@ -53568,15 +56557,15 @@
         CMsgAMGrantGuestPasses2.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steam_id != null && message.hasOwnProperty("steam_id"))
+            if (message.steam_id != null && Object.hasOwnProperty.call(message, "steam_id"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steam_id);
-            if (message.package_id != null && message.hasOwnProperty("package_id"))
+            if (message.package_id != null && Object.hasOwnProperty.call(message, "package_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.package_id);
-            if (message.passes_to_grant != null && message.hasOwnProperty("passes_to_grant"))
+            if (message.passes_to_grant != null && Object.hasOwnProperty.call(message, "passes_to_grant"))
                 writer.uint32(/* id 3, wireType 0 =*/24).int32(message.passes_to_grant);
-            if (message.days_to_expiration != null && message.hasOwnProperty("days_to_expiration"))
+            if (message.days_to_expiration != null && Object.hasOwnProperty.call(message, "days_to_expiration"))
                 writer.uint32(/* id 4, wireType 0 =*/32).int32(message.days_to_expiration);
-            if (message.action != null && message.hasOwnProperty("action"))
+            if (message.action != null && Object.hasOwnProperty.call(message, "action"))
                 writer.uint32(/* id 5, wireType 0 =*/40).int32(message.action);
             return writer;
         };
@@ -53831,9 +56820,9 @@
         CMsgAMGrantGuestPasses2Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.eresult);
-            if (message.passes_granted != null && message.hasOwnProperty("passes_granted"))
+            if (message.passes_granted != null && Object.hasOwnProperty.call(message, "passes_granted"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.passes_granted);
             return writer;
         };
@@ -54041,9 +57030,9 @@
         CGCSystemMsg_GetAccountDetails.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
-            if (message.appid != null && message.hasOwnProperty("appid"))
+            if (message.appid != null && Object.hasOwnProperty.call(message, "appid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.appid);
             return writer;
         };
@@ -54240,6 +57229,8 @@
          * @property {number|null} [rt_identity_linked] CGCSystemMsg_GetAccountDetails_Response rt_identity_linked
          * @property {number|null} [rt_birth_date] CGCSystemMsg_GetAccountDetails_Response rt_birth_date
          * @property {string|null} [txn_country_code] CGCSystemMsg_GetAccountDetails_Response txn_country_code
+         * @property {boolean|null} [has_accepted_china_ssa] CGCSystemMsg_GetAccountDetails_Response has_accepted_china_ssa
+         * @property {boolean|null} [is_banned_steam_china] CGCSystemMsg_GetAccountDetails_Response is_banned_steam_china
          */
     
         /**
@@ -54530,6 +57521,22 @@
         CGCSystemMsg_GetAccountDetails_Response.prototype.txn_country_code = "";
     
         /**
+         * CGCSystemMsg_GetAccountDetails_Response has_accepted_china_ssa.
+         * @member {boolean} has_accepted_china_ssa
+         * @memberof CGCSystemMsg_GetAccountDetails_Response
+         * @instance
+         */
+        CGCSystemMsg_GetAccountDetails_Response.prototype.has_accepted_china_ssa = false;
+    
+        /**
+         * CGCSystemMsg_GetAccountDetails_Response is_banned_steam_china.
+         * @member {boolean} is_banned_steam_china
+         * @memberof CGCSystemMsg_GetAccountDetails_Response
+         * @instance
+         */
+        CGCSystemMsg_GetAccountDetails_Response.prototype.is_banned_steam_china = false;
+    
+        /**
          * Creates a new CGCSystemMsg_GetAccountDetails_Response instance using the specified properties.
          * @function create
          * @memberof CGCSystemMsg_GetAccountDetails_Response
@@ -54553,74 +57560,78 @@
         CGCSystemMsg_GetAccountDetails_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult_deprecated != null && message.hasOwnProperty("eresult_deprecated"))
+            if (message.eresult_deprecated != null && Object.hasOwnProperty.call(message, "eresult_deprecated"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.eresult_deprecated);
-            if (message.account_name != null && message.hasOwnProperty("account_name"))
+            if (message.account_name != null && Object.hasOwnProperty.call(message, "account_name"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.account_name);
-            if (message.persona_name != null && message.hasOwnProperty("persona_name"))
+            if (message.persona_name != null && Object.hasOwnProperty.call(message, "persona_name"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.persona_name);
-            if (message.is_profile_public != null && message.hasOwnProperty("is_profile_public"))
+            if (message.is_profile_public != null && Object.hasOwnProperty.call(message, "is_profile_public"))
                 writer.uint32(/* id 4, wireType 0 =*/32).bool(message.is_profile_public);
-            if (message.is_inventory_public != null && message.hasOwnProperty("is_inventory_public"))
+            if (message.is_inventory_public != null && Object.hasOwnProperty.call(message, "is_inventory_public"))
                 writer.uint32(/* id 5, wireType 0 =*/40).bool(message.is_inventory_public);
-            if (message.is_vac_banned != null && message.hasOwnProperty("is_vac_banned"))
+            if (message.is_vac_banned != null && Object.hasOwnProperty.call(message, "is_vac_banned"))
                 writer.uint32(/* id 7, wireType 0 =*/56).bool(message.is_vac_banned);
-            if (message.is_cyber_cafe != null && message.hasOwnProperty("is_cyber_cafe"))
+            if (message.is_cyber_cafe != null && Object.hasOwnProperty.call(message, "is_cyber_cafe"))
                 writer.uint32(/* id 8, wireType 0 =*/64).bool(message.is_cyber_cafe);
-            if (message.is_school_account != null && message.hasOwnProperty("is_school_account"))
+            if (message.is_school_account != null && Object.hasOwnProperty.call(message, "is_school_account"))
                 writer.uint32(/* id 9, wireType 0 =*/72).bool(message.is_school_account);
-            if (message.is_limited != null && message.hasOwnProperty("is_limited"))
+            if (message.is_limited != null && Object.hasOwnProperty.call(message, "is_limited"))
                 writer.uint32(/* id 10, wireType 0 =*/80).bool(message.is_limited);
-            if (message.is_subscribed != null && message.hasOwnProperty("is_subscribed"))
+            if (message.is_subscribed != null && Object.hasOwnProperty.call(message, "is_subscribed"))
                 writer.uint32(/* id 11, wireType 0 =*/88).bool(message.is_subscribed);
-            if (message["package"] != null && message.hasOwnProperty("package"))
+            if (message["package"] != null && Object.hasOwnProperty.call(message, "package"))
                 writer.uint32(/* id 12, wireType 0 =*/96).uint32(message["package"]);
-            if (message.is_free_trial_account != null && message.hasOwnProperty("is_free_trial_account"))
+            if (message.is_free_trial_account != null && Object.hasOwnProperty.call(message, "is_free_trial_account"))
                 writer.uint32(/* id 13, wireType 0 =*/104).bool(message.is_free_trial_account);
-            if (message.free_trial_expiration != null && message.hasOwnProperty("free_trial_expiration"))
+            if (message.free_trial_expiration != null && Object.hasOwnProperty.call(message, "free_trial_expiration"))
                 writer.uint32(/* id 14, wireType 0 =*/112).uint32(message.free_trial_expiration);
-            if (message.is_low_violence != null && message.hasOwnProperty("is_low_violence"))
+            if (message.is_low_violence != null && Object.hasOwnProperty.call(message, "is_low_violence"))
                 writer.uint32(/* id 15, wireType 0 =*/120).bool(message.is_low_violence);
-            if (message.is_account_locked_down != null && message.hasOwnProperty("is_account_locked_down"))
+            if (message.is_account_locked_down != null && Object.hasOwnProperty.call(message, "is_account_locked_down"))
                 writer.uint32(/* id 16, wireType 0 =*/128).bool(message.is_account_locked_down);
-            if (message.is_community_banned != null && message.hasOwnProperty("is_community_banned"))
+            if (message.is_community_banned != null && Object.hasOwnProperty.call(message, "is_community_banned"))
                 writer.uint32(/* id 17, wireType 0 =*/136).bool(message.is_community_banned);
-            if (message.is_trade_banned != null && message.hasOwnProperty("is_trade_banned"))
+            if (message.is_trade_banned != null && Object.hasOwnProperty.call(message, "is_trade_banned"))
                 writer.uint32(/* id 18, wireType 0 =*/144).bool(message.is_trade_banned);
-            if (message.trade_ban_expiration != null && message.hasOwnProperty("trade_ban_expiration"))
+            if (message.trade_ban_expiration != null && Object.hasOwnProperty.call(message, "trade_ban_expiration"))
                 writer.uint32(/* id 19, wireType 0 =*/152).uint32(message.trade_ban_expiration);
-            if (message.accountid != null && message.hasOwnProperty("accountid"))
+            if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
                 writer.uint32(/* id 20, wireType 0 =*/160).uint32(message.accountid);
-            if (message.suspension_end_time != null && message.hasOwnProperty("suspension_end_time"))
+            if (message.suspension_end_time != null && Object.hasOwnProperty.call(message, "suspension_end_time"))
                 writer.uint32(/* id 21, wireType 0 =*/168).uint32(message.suspension_end_time);
-            if (message.currency != null && message.hasOwnProperty("currency"))
+            if (message.currency != null && Object.hasOwnProperty.call(message, "currency"))
                 writer.uint32(/* id 22, wireType 2 =*/178).string(message.currency);
-            if (message.steam_level != null && message.hasOwnProperty("steam_level"))
+            if (message.steam_level != null && Object.hasOwnProperty.call(message, "steam_level"))
                 writer.uint32(/* id 23, wireType 0 =*/184).uint32(message.steam_level);
-            if (message.friend_count != null && message.hasOwnProperty("friend_count"))
+            if (message.friend_count != null && Object.hasOwnProperty.call(message, "friend_count"))
                 writer.uint32(/* id 24, wireType 0 =*/192).uint32(message.friend_count);
-            if (message.account_creation_time != null && message.hasOwnProperty("account_creation_time"))
+            if (message.account_creation_time != null && Object.hasOwnProperty.call(message, "account_creation_time"))
                 writer.uint32(/* id 25, wireType 0 =*/200).uint32(message.account_creation_time);
-            if (message.is_steamguard_enabled != null && message.hasOwnProperty("is_steamguard_enabled"))
+            if (message.is_steamguard_enabled != null && Object.hasOwnProperty.call(message, "is_steamguard_enabled"))
                 writer.uint32(/* id 27, wireType 0 =*/216).bool(message.is_steamguard_enabled);
-            if (message.is_phone_verified != null && message.hasOwnProperty("is_phone_verified"))
+            if (message.is_phone_verified != null && Object.hasOwnProperty.call(message, "is_phone_verified"))
                 writer.uint32(/* id 28, wireType 0 =*/224).bool(message.is_phone_verified);
-            if (message.is_two_factor_auth_enabled != null && message.hasOwnProperty("is_two_factor_auth_enabled"))
+            if (message.is_two_factor_auth_enabled != null && Object.hasOwnProperty.call(message, "is_two_factor_auth_enabled"))
                 writer.uint32(/* id 29, wireType 0 =*/232).bool(message.is_two_factor_auth_enabled);
-            if (message.two_factor_enabled_time != null && message.hasOwnProperty("two_factor_enabled_time"))
+            if (message.two_factor_enabled_time != null && Object.hasOwnProperty.call(message, "two_factor_enabled_time"))
                 writer.uint32(/* id 30, wireType 0 =*/240).uint32(message.two_factor_enabled_time);
-            if (message.phone_verification_time != null && message.hasOwnProperty("phone_verification_time"))
+            if (message.phone_verification_time != null && Object.hasOwnProperty.call(message, "phone_verification_time"))
                 writer.uint32(/* id 31, wireType 0 =*/248).uint32(message.phone_verification_time);
-            if (message.phone_id != null && message.hasOwnProperty("phone_id"))
+            if (message.phone_id != null && Object.hasOwnProperty.call(message, "phone_id"))
                 writer.uint32(/* id 33, wireType 0 =*/264).uint64(message.phone_id);
-            if (message.is_phone_identifying != null && message.hasOwnProperty("is_phone_identifying"))
+            if (message.is_phone_identifying != null && Object.hasOwnProperty.call(message, "is_phone_identifying"))
                 writer.uint32(/* id 34, wireType 0 =*/272).bool(message.is_phone_identifying);
-            if (message.rt_identity_linked != null && message.hasOwnProperty("rt_identity_linked"))
+            if (message.rt_identity_linked != null && Object.hasOwnProperty.call(message, "rt_identity_linked"))
                 writer.uint32(/* id 35, wireType 0 =*/280).uint32(message.rt_identity_linked);
-            if (message.rt_birth_date != null && message.hasOwnProperty("rt_birth_date"))
+            if (message.rt_birth_date != null && Object.hasOwnProperty.call(message, "rt_birth_date"))
                 writer.uint32(/* id 36, wireType 0 =*/288).uint32(message.rt_birth_date);
-            if (message.txn_country_code != null && message.hasOwnProperty("txn_country_code"))
+            if (message.txn_country_code != null && Object.hasOwnProperty.call(message, "txn_country_code"))
                 writer.uint32(/* id 37, wireType 2 =*/298).string(message.txn_country_code);
+            if (message.has_accepted_china_ssa != null && Object.hasOwnProperty.call(message, "has_accepted_china_ssa"))
+                writer.uint32(/* id 38, wireType 0 =*/304).bool(message.has_accepted_china_ssa);
+            if (message.is_banned_steam_china != null && Object.hasOwnProperty.call(message, "is_banned_steam_china"))
+                writer.uint32(/* id 39, wireType 0 =*/312).bool(message.is_banned_steam_china);
             return writer;
         };
     
@@ -54756,6 +57767,12 @@
                     break;
                 case 37:
                     message.txn_country_code = reader.string();
+                    break;
+                case 38:
+                    message.has_accepted_china_ssa = reader.bool();
+                    break;
+                case 39:
+                    message.is_banned_steam_china = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -54894,6 +57911,12 @@
             if (message.txn_country_code != null && message.hasOwnProperty("txn_country_code"))
                 if (!$util.isString(message.txn_country_code))
                     return "txn_country_code: string expected";
+            if (message.has_accepted_china_ssa != null && message.hasOwnProperty("has_accepted_china_ssa"))
+                if (typeof message.has_accepted_china_ssa !== "boolean")
+                    return "has_accepted_china_ssa: boolean expected";
+            if (message.is_banned_steam_china != null && message.hasOwnProperty("is_banned_steam_china"))
+                if (typeof message.is_banned_steam_china !== "boolean")
+                    return "is_banned_steam_china: boolean expected";
             return null;
         };
     
@@ -54984,6 +58007,10 @@
                 message.rt_birth_date = object.rt_birth_date >>> 0;
             if (object.txn_country_code != null)
                 message.txn_country_code = String(object.txn_country_code);
+            if (object.has_accepted_china_ssa != null)
+                message.has_accepted_china_ssa = Boolean(object.has_accepted_china_ssa);
+            if (object.is_banned_steam_china != null)
+                message.is_banned_steam_china = Boolean(object.is_banned_steam_china);
             return message;
         };
     
@@ -55039,6 +58066,8 @@
                 object.rt_identity_linked = 0;
                 object.rt_birth_date = 0;
                 object.txn_country_code = "";
+                object.has_accepted_china_ssa = false;
+                object.is_banned_steam_china = false;
             }
             if (message.eresult_deprecated != null && message.hasOwnProperty("eresult_deprecated"))
                 object.eresult_deprecated = message.eresult_deprecated;
@@ -55111,6 +58140,10 @@
                 object.rt_birth_date = message.rt_birth_date;
             if (message.txn_country_code != null && message.hasOwnProperty("txn_country_code"))
                 object.txn_country_code = message.txn_country_code;
+            if (message.has_accepted_china_ssa != null && message.hasOwnProperty("has_accepted_china_ssa"))
+                object.has_accepted_china_ssa = message.has_accepted_china_ssa;
+            if (message.is_banned_steam_china != null && message.hasOwnProperty("is_banned_steam_china"))
+                object.is_banned_steam_china = message.is_banned_steam_china;
             return object;
         };
     
@@ -55670,9 +58703,9 @@
             PersonaName.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.steamid != null && message.hasOwnProperty("steamid"))
+                if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                     writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
-                if (message.persona_name != null && message.hasOwnProperty("persona_name"))
+                if (message.persona_name != null && Object.hasOwnProperty.call(message, "persona_name"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.persona_name);
                 return writer;
             };
@@ -55897,9 +58930,9 @@
         CMsgGCCheckFriendship.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid_left != null && message.hasOwnProperty("steamid_left"))
+            if (message.steamid_left != null && Object.hasOwnProperty.call(message, "steamid_left"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid_left);
-            if (message.steamid_right != null && message.hasOwnProperty("steamid_right"))
+            if (message.steamid_right != null && Object.hasOwnProperty.call(message, "steamid_right"))
                 writer.uint32(/* id 2, wireType 1 =*/17).fixed64(message.steamid_right);
             return writer;
         };
@@ -56135,9 +59168,9 @@
         CMsgGCCheckFriendship_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.success != null && message.hasOwnProperty("success"))
+            if (message.success != null && Object.hasOwnProperty.call(message, "success"))
                 writer.uint32(/* id 1, wireType 0 =*/8).bool(message.success);
-            if (message.found_friendship != null && message.hasOwnProperty("found_friendship"))
+            if (message.found_friendship != null && Object.hasOwnProperty.call(message, "found_friendship"))
                 writer.uint32(/* id 2, wireType 0 =*/16).bool(message.found_friendship);
             return writer;
         };
@@ -56346,7 +59379,7 @@
         CMsgGCMsgMasterSetDirectory.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.master_dir_index != null && message.hasOwnProperty("master_dir_index"))
+            if (message.master_dir_index != null && Object.hasOwnProperty.call(message, "master_dir_index"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.master_dir_index);
             if (message.dir != null && message.dir.length)
                 for (var i = 0; i < message.dir.length; ++i)
@@ -56600,15 +59633,15 @@
             SubGC.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.dir_index != null && message.hasOwnProperty("dir_index"))
+                if (message.dir_index != null && Object.hasOwnProperty.call(message, "dir_index"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.dir_index);
-                if (message.name != null && message.hasOwnProperty("name"))
+                if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
-                if (message.box != null && message.hasOwnProperty("box"))
+                if (message.box != null && Object.hasOwnProperty.call(message, "box"))
                     writer.uint32(/* id 3, wireType 2 =*/26).string(message.box);
-                if (message.command_line != null && message.hasOwnProperty("command_line"))
+                if (message.command_line != null && Object.hasOwnProperty.call(message, "command_line"))
                     writer.uint32(/* id 4, wireType 2 =*/34).string(message.command_line);
-                if (message.gc_binary != null && message.hasOwnProperty("gc_binary"))
+                if (message.gc_binary != null && Object.hasOwnProperty.call(message, "gc_binary"))
                     writer.uint32(/* id 5, wireType 2 =*/42).string(message.gc_binary);
                 return writer;
             };
@@ -56843,7 +59876,7 @@
         CMsgGCMsgMasterSetDirectory_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.eresult);
             return writer;
         };
@@ -57030,7 +60063,7 @@
         CMsgGCMsgWebAPIJobRequestForwardResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.dir_index != null && message.hasOwnProperty("dir_index"))
+            if (message.dir_index != null && Object.hasOwnProperty.call(message, "dir_index"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.dir_index);
             return writer;
         };
@@ -57217,7 +60250,7 @@
         CGCSystemMsg_GetPurchaseTrust_Request.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
             return writer;
         };
@@ -57445,13 +60478,13 @@
         CGCSystemMsg_GetPurchaseTrust_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.has_prior_purchase_history != null && message.hasOwnProperty("has_prior_purchase_history"))
+            if (message.has_prior_purchase_history != null && Object.hasOwnProperty.call(message, "has_prior_purchase_history"))
                 writer.uint32(/* id 1, wireType 0 =*/8).bool(message.has_prior_purchase_history);
-            if (message.has_no_recent_password_resets != null && message.hasOwnProperty("has_no_recent_password_resets"))
+            if (message.has_no_recent_password_resets != null && Object.hasOwnProperty.call(message, "has_no_recent_password_resets"))
                 writer.uint32(/* id 2, wireType 0 =*/16).bool(message.has_no_recent_password_resets);
-            if (message.is_wallet_cash_trusted != null && message.hasOwnProperty("is_wallet_cash_trusted"))
+            if (message.is_wallet_cash_trusted != null && Object.hasOwnProperty.call(message, "is_wallet_cash_trusted"))
                 writer.uint32(/* id 3, wireType 0 =*/24).bool(message.is_wallet_cash_trusted);
-            if (message.time_all_trusted != null && message.hasOwnProperty("time_all_trusted"))
+            if (message.time_all_trusted != null && Object.hasOwnProperty.call(message, "time_all_trusted"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.time_all_trusted);
             return writer;
         };
@@ -57708,15 +60741,15 @@
         CMsgGCHAccountVacStatusChange.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steam_id != null && message.hasOwnProperty("steam_id"))
+            if (message.steam_id != null && Object.hasOwnProperty.call(message, "steam_id"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steam_id);
-            if (message.app_id != null && message.hasOwnProperty("app_id"))
+            if (message.app_id != null && Object.hasOwnProperty.call(message, "app_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.app_id);
-            if (message.rtime_vacban_starts != null && message.hasOwnProperty("rtime_vacban_starts"))
+            if (message.rtime_vacban_starts != null && Object.hasOwnProperty.call(message, "rtime_vacban_starts"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.rtime_vacban_starts);
-            if (message.is_banned_now != null && message.hasOwnProperty("is_banned_now"))
+            if (message.is_banned_now != null && Object.hasOwnProperty.call(message, "is_banned_now"))
                 writer.uint32(/* id 4, wireType 0 =*/32).bool(message.is_banned_now);
-            if (message.is_banned_future != null && message.hasOwnProperty("is_banned_future"))
+            if (message.is_banned_future != null && Object.hasOwnProperty.call(message, "is_banned_future"))
                 writer.uint32(/* id 5, wireType 0 =*/40).bool(message.is_banned_future);
             return writer;
         };
@@ -57962,7 +60995,7 @@
         CMsgGCGetPartnerAccountLink.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
             return writer;
         };
@@ -58115,6 +61148,9 @@
          * @interface ICMsgGCGetPartnerAccountLink_Response
          * @property {number|null} [pwid] CMsgGCGetPartnerAccountLink_Response pwid
          * @property {number|null} [nexonid] CMsgGCGetPartnerAccountLink_Response nexonid
+         * @property {number|null} [ageclass] CMsgGCGetPartnerAccountLink_Response ageclass
+         * @property {boolean|null} [id_verified] CMsgGCGetPartnerAccountLink_Response id_verified
+         * @property {boolean|null} [is_adult] CMsgGCGetPartnerAccountLink_Response is_adult
          */
     
         /**
@@ -58149,6 +61185,30 @@
         CMsgGCGetPartnerAccountLink_Response.prototype.nexonid = 0;
     
         /**
+         * CMsgGCGetPartnerAccountLink_Response ageclass.
+         * @member {number} ageclass
+         * @memberof CMsgGCGetPartnerAccountLink_Response
+         * @instance
+         */
+        CMsgGCGetPartnerAccountLink_Response.prototype.ageclass = 0;
+    
+        /**
+         * CMsgGCGetPartnerAccountLink_Response id_verified.
+         * @member {boolean} id_verified
+         * @memberof CMsgGCGetPartnerAccountLink_Response
+         * @instance
+         */
+        CMsgGCGetPartnerAccountLink_Response.prototype.id_verified = true;
+    
+        /**
+         * CMsgGCGetPartnerAccountLink_Response is_adult.
+         * @member {boolean} is_adult
+         * @memberof CMsgGCGetPartnerAccountLink_Response
+         * @instance
+         */
+        CMsgGCGetPartnerAccountLink_Response.prototype.is_adult = false;
+    
+        /**
          * Creates a new CMsgGCGetPartnerAccountLink_Response instance using the specified properties.
          * @function create
          * @memberof CMsgGCGetPartnerAccountLink_Response
@@ -58172,10 +61232,16 @@
         CMsgGCGetPartnerAccountLink_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.pwid != null && message.hasOwnProperty("pwid"))
+            if (message.pwid != null && Object.hasOwnProperty.call(message, "pwid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.pwid);
-            if (message.nexonid != null && message.hasOwnProperty("nexonid"))
+            if (message.nexonid != null && Object.hasOwnProperty.call(message, "nexonid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.nexonid);
+            if (message.ageclass != null && Object.hasOwnProperty.call(message, "ageclass"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.ageclass);
+            if (message.id_verified != null && Object.hasOwnProperty.call(message, "id_verified"))
+                writer.uint32(/* id 4, wireType 0 =*/32).bool(message.id_verified);
+            if (message.is_adult != null && Object.hasOwnProperty.call(message, "is_adult"))
+                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.is_adult);
             return writer;
         };
     
@@ -58215,6 +61281,15 @@
                     break;
                 case 2:
                     message.nexonid = reader.uint32();
+                    break;
+                case 3:
+                    message.ageclass = reader.int32();
+                    break;
+                case 4:
+                    message.id_verified = reader.bool();
+                    break;
+                case 5:
+                    message.is_adult = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -58257,6 +61332,15 @@
             if (message.nexonid != null && message.hasOwnProperty("nexonid"))
                 if (!$util.isInteger(message.nexonid))
                     return "nexonid: integer expected";
+            if (message.ageclass != null && message.hasOwnProperty("ageclass"))
+                if (!$util.isInteger(message.ageclass))
+                    return "ageclass: integer expected";
+            if (message.id_verified != null && message.hasOwnProperty("id_verified"))
+                if (typeof message.id_verified !== "boolean")
+                    return "id_verified: boolean expected";
+            if (message.is_adult != null && message.hasOwnProperty("is_adult"))
+                if (typeof message.is_adult !== "boolean")
+                    return "is_adult: boolean expected";
             return null;
         };
     
@@ -58276,6 +61360,12 @@
                 message.pwid = object.pwid >>> 0;
             if (object.nexonid != null)
                 message.nexonid = object.nexonid >>> 0;
+            if (object.ageclass != null)
+                message.ageclass = object.ageclass | 0;
+            if (object.id_verified != null)
+                message.id_verified = Boolean(object.id_verified);
+            if (object.is_adult != null)
+                message.is_adult = Boolean(object.is_adult);
             return message;
         };
     
@@ -58295,11 +61385,20 @@
             if (options.defaults) {
                 object.pwid = 0;
                 object.nexonid = 0;
+                object.ageclass = 0;
+                object.id_verified = true;
+                object.is_adult = false;
             }
             if (message.pwid != null && message.hasOwnProperty("pwid"))
                 object.pwid = message.pwid;
             if (message.nexonid != null && message.hasOwnProperty("nexonid"))
                 object.nexonid = message.nexonid;
+            if (message.ageclass != null && message.hasOwnProperty("ageclass"))
+                object.ageclass = message.ageclass;
+            if (message.id_verified != null && message.hasOwnProperty("id_verified"))
+                object.id_verified = message.id_verified;
+            if (message.is_adult != null && message.hasOwnProperty("is_adult"))
+                object.is_adult = message.is_adult;
             return object;
         };
     
@@ -58413,13 +61512,13 @@
             if (message.dir_index != null && message.dir_index.length)
                 for (var i = 0; i < message.dir_index.length; ++i)
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.dir_index[i]);
-            if (message.method != null && message.hasOwnProperty("method"))
+            if (message.method != null && Object.hasOwnProperty.call(message, "method"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.method);
-            if (message.fallback != null && message.hasOwnProperty("fallback"))
+            if (message.fallback != null && Object.hasOwnProperty.call(message, "fallback"))
                 writer.uint32(/* id 3, wireType 0 =*/24).int32(message.fallback);
-            if (message.protobuf_field != null && message.hasOwnProperty("protobuf_field"))
+            if (message.protobuf_field != null && Object.hasOwnProperty.call(message, "protobuf_field"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.protobuf_field);
-            if (message.webapi_param != null && message.hasOwnProperty("webapi_param"))
+            if (message.webapi_param != null && Object.hasOwnProperty.call(message, "webapi_param"))
                 writer.uint32(/* id 5, wireType 2 =*/42).string(message.webapi_param);
             return writer;
         };
@@ -58671,7 +61770,7 @@
         /**
          * RoutingMethod enum.
          * @name CMsgGCRoutingInfo.RoutingMethod
-         * @enum {string}
+         * @enum {number}
          * @property {number} RANDOM=0 RANDOM value
          * @property {number} DISCARD=1 DISCARD value
          * @property {number} CLIENT_STEAMID=2 CLIENT_STEAMID value
@@ -58970,11 +62069,11 @@
             Entry.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.interface_name != null && message.hasOwnProperty("interface_name"))
+                if (message.interface_name != null && Object.hasOwnProperty.call(message, "interface_name"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.interface_name);
-                if (message.method_name != null && message.hasOwnProperty("method_name"))
+                if (message.method_name != null && Object.hasOwnProperty.call(message, "method_name"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.method_name);
-                if (message.routing != null && message.hasOwnProperty("routing"))
+                if (message.routing != null && Object.hasOwnProperty.call(message, "routing"))
                     $root.CMsgGCRoutingInfo.encode(message.routing, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                 return writer;
             };
@@ -59406,9 +62505,9 @@
             Entry.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.msg_type != null && message.hasOwnProperty("msg_type"))
+                if (message.msg_type != null && Object.hasOwnProperty.call(message, "msg_type"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.msg_type);
-                if (message.routing != null && message.hasOwnProperty("routing"))
+                if (message.routing != null && Object.hasOwnProperty.call(message, "routing"))
                     $root.CMsgGCRoutingInfo.encode(message.routing, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 return writer;
             };
@@ -59615,7 +62714,7 @@
         CMsgGCMsgMasterSetWebAPIRouting_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.eresult);
             return writer;
         };
@@ -59802,7 +62901,7 @@
         CMsgGCMsgMasterSetClientMsgRouting_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.eresult);
             return writer;
         };
@@ -60420,7 +63519,7 @@
         /**
          * Option enum.
          * @name CMsgGCMsgSetOptions.Option
-         * @enum {string}
+         * @enum {number}
          * @property {number} NOTIFY_USER_SESSIONS=0 NOTIFY_USER_SESSIONS value
          * @property {number} NOTIFY_SERVER_SESSIONS=1 NOTIFY_SERVER_SESSIONS value
          * @property {number} NOTIFY_ACHIEVEMENTS=2 NOTIFY_ACHIEVEMENTS value
@@ -60604,30 +63703,30 @@
         CMsgGCHUpdateSession.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steam_id != null && message.hasOwnProperty("steam_id"))
+            if (message.steam_id != null && Object.hasOwnProperty.call(message, "steam_id"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steam_id);
-            if (message.app_id != null && message.hasOwnProperty("app_id"))
+            if (message.app_id != null && Object.hasOwnProperty.call(message, "app_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.app_id);
-            if (message.online != null && message.hasOwnProperty("online"))
+            if (message.online != null && Object.hasOwnProperty.call(message, "online"))
                 writer.uint32(/* id 3, wireType 0 =*/24).bool(message.online);
-            if (message.server_steam_id != null && message.hasOwnProperty("server_steam_id"))
+            if (message.server_steam_id != null && Object.hasOwnProperty.call(message, "server_steam_id"))
                 writer.uint32(/* id 4, wireType 1 =*/33).fixed64(message.server_steam_id);
-            if (message.server_addr != null && message.hasOwnProperty("server_addr"))
+            if (message.server_addr != null && Object.hasOwnProperty.call(message, "server_addr"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.server_addr);
-            if (message.server_port != null && message.hasOwnProperty("server_port"))
+            if (message.server_port != null && Object.hasOwnProperty.call(message, "server_port"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.server_port);
-            if (message.os_type != null && message.hasOwnProperty("os_type"))
+            if (message.os_type != null && Object.hasOwnProperty.call(message, "os_type"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.os_type);
-            if (message.client_addr != null && message.hasOwnProperty("client_addr"))
+            if (message.client_addr != null && Object.hasOwnProperty.call(message, "client_addr"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.client_addr);
             if (message.extra_fields != null && message.extra_fields.length)
                 for (var i = 0; i < message.extra_fields.length; ++i)
                     $root.CMsgGCHUpdateSession.ExtraField.encode(message.extra_fields[i], writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
-            if (message.owner_id != null && message.hasOwnProperty("owner_id"))
+            if (message.owner_id != null && Object.hasOwnProperty.call(message, "owner_id"))
                 writer.uint32(/* id 10, wireType 1 =*/81).fixed64(message.owner_id);
-            if (message.cm_session_sysid != null && message.hasOwnProperty("cm_session_sysid"))
+            if (message.cm_session_sysid != null && Object.hasOwnProperty.call(message, "cm_session_sysid"))
                 writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.cm_session_sysid);
-            if (message.cm_session_identifier != null && message.hasOwnProperty("cm_session_identifier"))
+            if (message.cm_session_identifier != null && Object.hasOwnProperty.call(message, "cm_session_identifier"))
                 writer.uint32(/* id 12, wireType 0 =*/96).uint32(message.cm_session_identifier);
             if (message.depot_ids != null && message.depot_ids.length)
                 for (var i = 0; i < message.depot_ids.length; ++i)
@@ -61038,9 +64137,9 @@
             ExtraField.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.name != null && message.hasOwnProperty("name"))
+                if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                if (message.value != null && message.hasOwnProperty("value"))
+                if (message.value != null && Object.hasOwnProperty.call(message, "value"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.value);
                 return writer;
             };
@@ -61260,11 +64359,11 @@
         CMsgNotificationOfSuspiciousActivity.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
-            if (message.appid != null && message.hasOwnProperty("appid"))
+            if (message.appid != null && Object.hasOwnProperty.call(message, "appid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.appid);
-            if (message.multiple_instances != null && message.hasOwnProperty("multiple_instances"))
+            if (message.multiple_instances != null && Object.hasOwnProperty.call(message, "multiple_instances"))
                 $root.CMsgNotificationOfSuspiciousActivity.MultipleGameInstances.encode(message.multiple_instances, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             return writer;
         };
@@ -61500,7 +64599,7 @@
             MultipleGameInstances.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.app_instance_count != null && message.hasOwnProperty("app_instance_count"))
+                if (message.app_instance_count != null && Object.hasOwnProperty.call(message, "app_instance_count"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.app_instance_count);
                 if (message.other_steamids != null && message.other_steamids.length)
                     for (var i = 0; i < message.other_steamids.length; ++i)
@@ -61762,11 +64861,11 @@
         CMsgDPPartnerMicroTxns.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.appid != null && message.hasOwnProperty("appid"))
+            if (message.appid != null && Object.hasOwnProperty.call(message, "appid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.appid);
-            if (message.gc_name != null && message.hasOwnProperty("gc_name"))
+            if (message.gc_name != null && Object.hasOwnProperty.call(message, "gc_name"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.gc_name);
-            if (message.partner != null && message.hasOwnProperty("partner"))
+            if (message.partner != null && Object.hasOwnProperty.call(message, "partner"))
                 $root.CMsgDPPartnerMicroTxns.PartnerInfo.encode(message.partner, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             if (message.transactions != null && message.transactions.length)
                 for (var i = 0; i < message.transactions.length; ++i)
@@ -62156,39 +65255,39 @@
             PartnerMicroTxn.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.init_time != null && message.hasOwnProperty("init_time"))
+                if (message.init_time != null && Object.hasOwnProperty.call(message, "init_time"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.init_time);
-                if (message.last_update_time != null && message.hasOwnProperty("last_update_time"))
+                if (message.last_update_time != null && Object.hasOwnProperty.call(message, "last_update_time"))
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.last_update_time);
-                if (message.txn_id != null && message.hasOwnProperty("txn_id"))
+                if (message.txn_id != null && Object.hasOwnProperty.call(message, "txn_id"))
                     writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.txn_id);
-                if (message.account_id != null && message.hasOwnProperty("account_id"))
+                if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                     writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.account_id);
-                if (message.line_item != null && message.hasOwnProperty("line_item"))
+                if (message.line_item != null && Object.hasOwnProperty.call(message, "line_item"))
                     writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.line_item);
-                if (message.item_id != null && message.hasOwnProperty("item_id"))
+                if (message.item_id != null && Object.hasOwnProperty.call(message, "item_id"))
                     writer.uint32(/* id 6, wireType 0 =*/48).uint64(message.item_id);
-                if (message.def_index != null && message.hasOwnProperty("def_index"))
+                if (message.def_index != null && Object.hasOwnProperty.call(message, "def_index"))
                     writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.def_index);
-                if (message.price != null && message.hasOwnProperty("price"))
+                if (message.price != null && Object.hasOwnProperty.call(message, "price"))
                     writer.uint32(/* id 8, wireType 0 =*/64).uint64(message.price);
-                if (message.tax != null && message.hasOwnProperty("tax"))
+                if (message.tax != null && Object.hasOwnProperty.call(message, "tax"))
                     writer.uint32(/* id 9, wireType 0 =*/72).uint64(message.tax);
-                if (message.price_usd != null && message.hasOwnProperty("price_usd"))
+                if (message.price_usd != null && Object.hasOwnProperty.call(message, "price_usd"))
                     writer.uint32(/* id 10, wireType 0 =*/80).uint64(message.price_usd);
-                if (message.tax_usd != null && message.hasOwnProperty("tax_usd"))
+                if (message.tax_usd != null && Object.hasOwnProperty.call(message, "tax_usd"))
                     writer.uint32(/* id 11, wireType 0 =*/88).uint64(message.tax_usd);
-                if (message.purchase_type != null && message.hasOwnProperty("purchase_type"))
+                if (message.purchase_type != null && Object.hasOwnProperty.call(message, "purchase_type"))
                     writer.uint32(/* id 12, wireType 0 =*/96).uint32(message.purchase_type);
-                if (message.steam_txn_type != null && message.hasOwnProperty("steam_txn_type"))
+                if (message.steam_txn_type != null && Object.hasOwnProperty.call(message, "steam_txn_type"))
                     writer.uint32(/* id 13, wireType 0 =*/104).uint32(message.steam_txn_type);
-                if (message.country_code != null && message.hasOwnProperty("country_code"))
+                if (message.country_code != null && Object.hasOwnProperty.call(message, "country_code"))
                     writer.uint32(/* id 14, wireType 2 =*/114).string(message.country_code);
-                if (message.region_code != null && message.hasOwnProperty("region_code"))
+                if (message.region_code != null && Object.hasOwnProperty.call(message, "region_code"))
                     writer.uint32(/* id 15, wireType 2 =*/122).string(message.region_code);
-                if (message.quantity != null && message.hasOwnProperty("quantity"))
+                if (message.quantity != null && Object.hasOwnProperty.call(message, "quantity"))
                     writer.uint32(/* id 16, wireType 0 =*/128).int32(message.quantity);
-                if (message.ref_trans_id != null && message.hasOwnProperty("ref_trans_id"))
+                if (message.ref_trans_id != null && Object.hasOwnProperty.call(message, "ref_trans_id"))
                     writer.uint32(/* id 17, wireType 0 =*/136).uint64(message.ref_trans_id);
                 return writer;
             };
@@ -62677,13 +65776,13 @@
             PartnerInfo.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.partner_id != null && message.hasOwnProperty("partner_id"))
+                if (message.partner_id != null && Object.hasOwnProperty.call(message, "partner_id"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.partner_id);
-                if (message.partner_name != null && message.hasOwnProperty("partner_name"))
+                if (message.partner_name != null && Object.hasOwnProperty.call(message, "partner_name"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.partner_name);
-                if (message.currency_code != null && message.hasOwnProperty("currency_code"))
+                if (message.currency_code != null && Object.hasOwnProperty.call(message, "currency_code"))
                     writer.uint32(/* id 3, wireType 2 =*/26).string(message.currency_code);
-                if (message.currency_name != null && message.hasOwnProperty("currency_name"))
+                if (message.currency_name != null && Object.hasOwnProperty.call(message, "currency_name"))
                     writer.uint32(/* id 4, wireType 2 =*/34).string(message.currency_name);
                 return writer;
             };
@@ -62916,9 +66015,9 @@
         CMsgDPPartnerMicroTxnsResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.eresult);
-            if (message.eerrorcode != null && message.hasOwnProperty("eerrorcode"))
+            if (message.eerrorcode != null && Object.hasOwnProperty.call(message, "eerrorcode"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.eerrorcode);
             return writer;
         };
@@ -63109,7 +66208,7 @@
         /**
          * EErrorCode enum.
          * @name CMsgDPPartnerMicroTxnsResponse.EErrorCode
-         * @enum {string}
+         * @enum {number}
          * @property {number} k_MsgValid=0 k_MsgValid value
          * @property {number} k_MsgInvalidAppID=1 k_MsgInvalidAppID value
          * @property {number} k_MsgInvalidPartnerInfo=2 k_MsgInvalidPartnerInfo value
@@ -63135,6 +66234,439 @@
         })();
     
         return CMsgDPPartnerMicroTxnsResponse;
+    })();
+    
+    $root.CChinaAgreementSessions_StartAgreementSessionInGame_Request = (function() {
+    
+        /**
+         * Properties of a CChinaAgreementSessions_StartAgreementSessionInGame_Request.
+         * @exports ICChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @interface ICChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @property {number|null} [appid] CChinaAgreementSessions_StartAgreementSessionInGame_Request appid
+         * @property {number|Long|null} [steamid] CChinaAgreementSessions_StartAgreementSessionInGame_Request steamid
+         * @property {string|null} [client_ipaddress] CChinaAgreementSessions_StartAgreementSessionInGame_Request client_ipaddress
+         */
+    
+        /**
+         * Constructs a new CChinaAgreementSessions_StartAgreementSessionInGame_Request.
+         * @exports CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @classdesc Represents a CChinaAgreementSessions_StartAgreementSessionInGame_Request.
+         * @implements ICChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @constructor
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Request=} [properties] Properties to set
+         */
+        function CChinaAgreementSessions_StartAgreementSessionInGame_Request(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CChinaAgreementSessions_StartAgreementSessionInGame_Request appid.
+         * @member {number} appid
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.prototype.appid = 0;
+    
+        /**
+         * CChinaAgreementSessions_StartAgreementSessionInGame_Request steamid.
+         * @member {number|Long} steamid
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.prototype.steamid = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+    
+        /**
+         * CChinaAgreementSessions_StartAgreementSessionInGame_Request client_ipaddress.
+         * @member {string} client_ipaddress
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.prototype.client_ipaddress = "";
+    
+        /**
+         * Creates a new CChinaAgreementSessions_StartAgreementSessionInGame_Request instance using the specified properties.
+         * @function create
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Request=} [properties] Properties to set
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Request} CChinaAgreementSessions_StartAgreementSessionInGame_Request instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.create = function create(properties) {
+            return new CChinaAgreementSessions_StartAgreementSessionInGame_Request(properties);
+        };
+    
+        /**
+         * Encodes the specified CChinaAgreementSessions_StartAgreementSessionInGame_Request message. Does not implicitly {@link CChinaAgreementSessions_StartAgreementSessionInGame_Request.verify|verify} messages.
+         * @function encode
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Request} message CChinaAgreementSessions_StartAgreementSessionInGame_Request message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.appid != null && Object.hasOwnProperty.call(message, "appid"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.appid);
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
+                writer.uint32(/* id 2, wireType 1 =*/17).fixed64(message.steamid);
+            if (message.client_ipaddress != null && Object.hasOwnProperty.call(message, "client_ipaddress"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.client_ipaddress);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CChinaAgreementSessions_StartAgreementSessionInGame_Request message, length delimited. Does not implicitly {@link CChinaAgreementSessions_StartAgreementSessionInGame_Request.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Request} message CChinaAgreementSessions_StartAgreementSessionInGame_Request message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CChinaAgreementSessions_StartAgreementSessionInGame_Request message from the specified reader or buffer.
+         * @function decode
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Request} CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CChinaAgreementSessions_StartAgreementSessionInGame_Request();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.appid = reader.uint32();
+                    break;
+                case 2:
+                    message.steamid = reader.fixed64();
+                    break;
+                case 3:
+                    message.client_ipaddress = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CChinaAgreementSessions_StartAgreementSessionInGame_Request message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Request} CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CChinaAgreementSessions_StartAgreementSessionInGame_Request message.
+         * @function verify
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.appid != null && message.hasOwnProperty("appid"))
+                if (!$util.isInteger(message.appid))
+                    return "appid: integer expected";
+            if (message.steamid != null && message.hasOwnProperty("steamid"))
+                if (!$util.isInteger(message.steamid) && !(message.steamid && $util.isInteger(message.steamid.low) && $util.isInteger(message.steamid.high)))
+                    return "steamid: integer|Long expected";
+            if (message.client_ipaddress != null && message.hasOwnProperty("client_ipaddress"))
+                if (!$util.isString(message.client_ipaddress))
+                    return "client_ipaddress: string expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CChinaAgreementSessions_StartAgreementSessionInGame_Request message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Request} CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.fromObject = function fromObject(object) {
+            if (object instanceof $root.CChinaAgreementSessions_StartAgreementSessionInGame_Request)
+                return object;
+            var message = new $root.CChinaAgreementSessions_StartAgreementSessionInGame_Request();
+            if (object.appid != null)
+                message.appid = object.appid >>> 0;
+            if (object.steamid != null)
+                if ($util.Long)
+                    (message.steamid = $util.Long.fromValue(object.steamid)).unsigned = false;
+                else if (typeof object.steamid === "string")
+                    message.steamid = parseInt(object.steamid, 10);
+                else if (typeof object.steamid === "number")
+                    message.steamid = object.steamid;
+                else if (typeof object.steamid === "object")
+                    message.steamid = new $util.LongBits(object.steamid.low >>> 0, object.steamid.high >>> 0).toNumber();
+            if (object.client_ipaddress != null)
+                message.client_ipaddress = String(object.client_ipaddress);
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CChinaAgreementSessions_StartAgreementSessionInGame_Request message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {CChinaAgreementSessions_StartAgreementSessionInGame_Request} message CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.appid = 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, false);
+                    object.steamid = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.steamid = options.longs === String ? "0" : 0;
+                object.client_ipaddress = "";
+            }
+            if (message.appid != null && message.hasOwnProperty("appid"))
+                object.appid = message.appid;
+            if (message.steamid != null && message.hasOwnProperty("steamid"))
+                if (typeof message.steamid === "number")
+                    object.steamid = options.longs === String ? String(message.steamid) : message.steamid;
+                else
+                    object.steamid = options.longs === String ? $util.Long.prototype.toString.call(message.steamid) : options.longs === Number ? new $util.LongBits(message.steamid.low >>> 0, message.steamid.high >>> 0).toNumber() : message.steamid;
+            if (message.client_ipaddress != null && message.hasOwnProperty("client_ipaddress"))
+                object.client_ipaddress = message.client_ipaddress;
+            return object;
+        };
+    
+        /**
+         * Converts this CChinaAgreementSessions_StartAgreementSessionInGame_Request to JSON.
+         * @function toJSON
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return CChinaAgreementSessions_StartAgreementSessionInGame_Request;
+    })();
+    
+    $root.CChinaAgreementSessions_StartAgreementSessionInGame_Response = (function() {
+    
+        /**
+         * Properties of a CChinaAgreementSessions_StartAgreementSessionInGame_Response.
+         * @exports ICChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @interface ICChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @property {string|null} [agreement_url] CChinaAgreementSessions_StartAgreementSessionInGame_Response agreement_url
+         */
+    
+        /**
+         * Constructs a new CChinaAgreementSessions_StartAgreementSessionInGame_Response.
+         * @exports CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @classdesc Represents a CChinaAgreementSessions_StartAgreementSessionInGame_Response.
+         * @implements ICChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @constructor
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Response=} [properties] Properties to set
+         */
+        function CChinaAgreementSessions_StartAgreementSessionInGame_Response(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CChinaAgreementSessions_StartAgreementSessionInGame_Response agreement_url.
+         * @member {string} agreement_url
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.prototype.agreement_url = "";
+    
+        /**
+         * Creates a new CChinaAgreementSessions_StartAgreementSessionInGame_Response instance using the specified properties.
+         * @function create
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Response=} [properties] Properties to set
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Response} CChinaAgreementSessions_StartAgreementSessionInGame_Response instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.create = function create(properties) {
+            return new CChinaAgreementSessions_StartAgreementSessionInGame_Response(properties);
+        };
+    
+        /**
+         * Encodes the specified CChinaAgreementSessions_StartAgreementSessionInGame_Response message. Does not implicitly {@link CChinaAgreementSessions_StartAgreementSessionInGame_Response.verify|verify} messages.
+         * @function encode
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Response} message CChinaAgreementSessions_StartAgreementSessionInGame_Response message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.agreement_url != null && Object.hasOwnProperty.call(message, "agreement_url"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.agreement_url);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CChinaAgreementSessions_StartAgreementSessionInGame_Response message, length delimited. Does not implicitly {@link CChinaAgreementSessions_StartAgreementSessionInGame_Response.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Response} message CChinaAgreementSessions_StartAgreementSessionInGame_Response message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CChinaAgreementSessions_StartAgreementSessionInGame_Response message from the specified reader or buffer.
+         * @function decode
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Response} CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CChinaAgreementSessions_StartAgreementSessionInGame_Response();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.agreement_url = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CChinaAgreementSessions_StartAgreementSessionInGame_Response message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Response} CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CChinaAgreementSessions_StartAgreementSessionInGame_Response message.
+         * @function verify
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.agreement_url != null && message.hasOwnProperty("agreement_url"))
+                if (!$util.isString(message.agreement_url))
+                    return "agreement_url: string expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CChinaAgreementSessions_StartAgreementSessionInGame_Response message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Response} CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.fromObject = function fromObject(object) {
+            if (object instanceof $root.CChinaAgreementSessions_StartAgreementSessionInGame_Response)
+                return object;
+            var message = new $root.CChinaAgreementSessions_StartAgreementSessionInGame_Response();
+            if (object.agreement_url != null)
+                message.agreement_url = String(object.agreement_url);
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CChinaAgreementSessions_StartAgreementSessionInGame_Response message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {CChinaAgreementSessions_StartAgreementSessionInGame_Response} message CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults)
+                object.agreement_url = "";
+            if (message.agreement_url != null && message.hasOwnProperty("agreement_url"))
+                object.agreement_url = message.agreement_url;
+            return object;
+        };
+    
+        /**
+         * Converts this CChinaAgreementSessions_StartAgreementSessionInGame_Response to JSON.
+         * @function toJSON
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return CChinaAgreementSessions_StartAgreementSessionInGame_Response;
     })();
     
     $root.google = (function() {
@@ -63496,9 +67028,9 @@
                 FileDescriptorProto.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.name != null && message.hasOwnProperty("name"))
+                    if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                    if (message["package"] != null && message.hasOwnProperty("package"))
+                    if (message["package"] != null && Object.hasOwnProperty.call(message, "package"))
                         writer.uint32(/* id 2, wireType 2 =*/18).string(message["package"]);
                     if (message.dependency != null && message.dependency.length)
                         for (var i = 0; i < message.dependency.length; ++i)
@@ -63515,9 +67047,9 @@
                     if (message.extension != null && message.extension.length)
                         for (var i = 0; i < message.extension.length; ++i)
                             $root.google.protobuf.FieldDescriptorProto.encode(message.extension[i], writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
-                    if (message.options != null && message.hasOwnProperty("options"))
+                    if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                         $root.google.protobuf.FileOptions.encode(message.options, writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
-                    if (message.source_code_info != null && message.hasOwnProperty("source_code_info"))
+                    if (message.source_code_info != null && Object.hasOwnProperty.call(message, "source_code_info"))
                         $root.google.protobuf.SourceCodeInfo.encode(message.source_code_info, writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
                     return writer;
                 };
@@ -63954,7 +67486,7 @@
                 DescriptorProto.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.name != null && message.hasOwnProperty("name"))
+                    if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
                     if (message.field != null && message.field.length)
                         for (var i = 0; i < message.field.length; ++i)
@@ -63971,7 +67503,7 @@
                     if (message.extension != null && message.extension.length)
                         for (var i = 0; i < message.extension.length; ++i)
                             $root.google.protobuf.FieldDescriptorProto.encode(message.extension[i], writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
-                    if (message.options != null && message.hasOwnProperty("options"))
+                    if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                         $root.google.protobuf.MessageOptions.encode(message.options, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
                     return writer;
                 };
@@ -64333,9 +67865,9 @@
                     ExtensionRange.encode = function encode(message, writer) {
                         if (!writer)
                             writer = $Writer.create();
-                        if (message.start != null && message.hasOwnProperty("start"))
+                        if (message.start != null && Object.hasOwnProperty.call(message, "start"))
                             writer.uint32(/* id 1, wireType 0 =*/8).int32(message.start);
-                        if (message.end != null && message.hasOwnProperty("end"))
+                        if (message.end != null && Object.hasOwnProperty.call(message, "end"))
                             writer.uint32(/* id 2, wireType 0 =*/16).int32(message.end);
                         return writer;
                     };
@@ -64600,21 +68132,21 @@
                 FieldDescriptorProto.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.name != null && message.hasOwnProperty("name"))
+                    if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                    if (message.extendee != null && message.hasOwnProperty("extendee"))
+                    if (message.extendee != null && Object.hasOwnProperty.call(message, "extendee"))
                         writer.uint32(/* id 2, wireType 2 =*/18).string(message.extendee);
-                    if (message.number != null && message.hasOwnProperty("number"))
+                    if (message.number != null && Object.hasOwnProperty.call(message, "number"))
                         writer.uint32(/* id 3, wireType 0 =*/24).int32(message.number);
-                    if (message.label != null && message.hasOwnProperty("label"))
+                    if (message.label != null && Object.hasOwnProperty.call(message, "label"))
                         writer.uint32(/* id 4, wireType 0 =*/32).int32(message.label);
-                    if (message.type != null && message.hasOwnProperty("type"))
+                    if (message.type != null && Object.hasOwnProperty.call(message, "type"))
                         writer.uint32(/* id 5, wireType 0 =*/40).int32(message.type);
-                    if (message.type_name != null && message.hasOwnProperty("type_name"))
+                    if (message.type_name != null && Object.hasOwnProperty.call(message, "type_name"))
                         writer.uint32(/* id 6, wireType 2 =*/50).string(message.type_name);
-                    if (message.default_value != null && message.hasOwnProperty("default_value"))
+                    if (message.default_value != null && Object.hasOwnProperty.call(message, "default_value"))
                         writer.uint32(/* id 7, wireType 2 =*/58).string(message.default_value);
-                    if (message.options != null && message.hasOwnProperty("options"))
+                    if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                         $root.google.protobuf.FieldOptions.encode(message.options, writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
                     return writer;
                 };
@@ -64939,7 +68471,7 @@
                 /**
                  * Type enum.
                  * @name google.protobuf.FieldDescriptorProto.Type
-                 * @enum {string}
+                 * @enum {number}
                  * @property {number} TYPE_DOUBLE=1 TYPE_DOUBLE value
                  * @property {number} TYPE_FLOAT=2 TYPE_FLOAT value
                  * @property {number} TYPE_INT64=3 TYPE_INT64 value
@@ -64985,7 +68517,7 @@
                 /**
                  * Label enum.
                  * @name google.protobuf.FieldDescriptorProto.Label
-                 * @enum {string}
+                 * @enum {number}
                  * @property {number} LABEL_OPTIONAL=1 LABEL_OPTIONAL value
                  * @property {number} LABEL_REQUIRED=2 LABEL_REQUIRED value
                  * @property {number} LABEL_REPEATED=3 LABEL_REPEATED value
@@ -65076,12 +68608,12 @@
                 EnumDescriptorProto.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.name != null && message.hasOwnProperty("name"))
+                    if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
                     if (message.value != null && message.value.length)
                         for (var i = 0; i < message.value.length; ++i)
                             $root.google.protobuf.EnumValueDescriptorProto.encode(message.value[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-                    if (message.options != null && message.hasOwnProperty("options"))
+                    if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                         $root.google.protobuf.EnumOptions.encode(message.options, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                     return writer;
                 };
@@ -65334,11 +68866,11 @@
                 EnumValueDescriptorProto.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.name != null && message.hasOwnProperty("name"))
+                    if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                    if (message.number != null && message.hasOwnProperty("number"))
+                    if (message.number != null && Object.hasOwnProperty.call(message, "number"))
                         writer.uint32(/* id 2, wireType 0 =*/16).int32(message.number);
-                    if (message.options != null && message.hasOwnProperty("options"))
+                    if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                         $root.google.protobuf.EnumValueOptions.encode(message.options, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                     return writer;
                 };
@@ -65572,12 +69104,12 @@
                 ServiceDescriptorProto.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.name != null && message.hasOwnProperty("name"))
+                    if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
                     if (message.method != null && message.method.length)
                         for (var i = 0; i < message.method.length; ++i)
                             $root.google.protobuf.MethodDescriptorProto.encode(message.method[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-                    if (message.options != null && message.hasOwnProperty("options"))
+                    if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                         $root.google.protobuf.ServiceOptions.encode(message.options, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                     return writer;
                 };
@@ -65839,13 +69371,13 @@
                 MethodDescriptorProto.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.name != null && message.hasOwnProperty("name"))
+                    if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                    if (message.input_type != null && message.hasOwnProperty("input_type"))
+                    if (message.input_type != null && Object.hasOwnProperty.call(message, "input_type"))
                         writer.uint32(/* id 2, wireType 2 =*/18).string(message.input_type);
-                    if (message.output_type != null && message.hasOwnProperty("output_type"))
+                    if (message.output_type != null && Object.hasOwnProperty.call(message, "output_type"))
                         writer.uint32(/* id 3, wireType 2 =*/26).string(message.output_type);
-                    if (message.options != null && message.hasOwnProperty("options"))
+                    if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                         $root.google.protobuf.MethodOptions.encode(message.options, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
                     return writer;
                 };
@@ -66144,21 +69676,21 @@
                 FileOptions.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.java_package != null && message.hasOwnProperty("java_package"))
+                    if (message.java_package != null && Object.hasOwnProperty.call(message, "java_package"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.java_package);
-                    if (message.java_outer_classname != null && message.hasOwnProperty("java_outer_classname"))
+                    if (message.java_outer_classname != null && Object.hasOwnProperty.call(message, "java_outer_classname"))
                         writer.uint32(/* id 8, wireType 2 =*/66).string(message.java_outer_classname);
-                    if (message.optimize_for != null && message.hasOwnProperty("optimize_for"))
+                    if (message.optimize_for != null && Object.hasOwnProperty.call(message, "optimize_for"))
                         writer.uint32(/* id 9, wireType 0 =*/72).int32(message.optimize_for);
-                    if (message.java_multiple_files != null && message.hasOwnProperty("java_multiple_files"))
+                    if (message.java_multiple_files != null && Object.hasOwnProperty.call(message, "java_multiple_files"))
                         writer.uint32(/* id 10, wireType 0 =*/80).bool(message.java_multiple_files);
-                    if (message.cc_generic_services != null && message.hasOwnProperty("cc_generic_services"))
+                    if (message.cc_generic_services != null && Object.hasOwnProperty.call(message, "cc_generic_services"))
                         writer.uint32(/* id 16, wireType 0 =*/128).bool(message.cc_generic_services);
-                    if (message.java_generic_services != null && message.hasOwnProperty("java_generic_services"))
+                    if (message.java_generic_services != null && Object.hasOwnProperty.call(message, "java_generic_services"))
                         writer.uint32(/* id 17, wireType 0 =*/136).bool(message.java_generic_services);
-                    if (message.py_generic_services != null && message.hasOwnProperty("py_generic_services"))
+                    if (message.py_generic_services != null && Object.hasOwnProperty.call(message, "py_generic_services"))
                         writer.uint32(/* id 18, wireType 0 =*/144).bool(message.py_generic_services);
-                    if (message.java_generate_equals_and_hash != null && message.hasOwnProperty("java_generate_equals_and_hash"))
+                    if (message.java_generate_equals_and_hash != null && Object.hasOwnProperty.call(message, "java_generate_equals_and_hash"))
                         writer.uint32(/* id 20, wireType 0 =*/160).bool(message.java_generate_equals_and_hash);
                     if (message.uninterpreted_option != null && message.uninterpreted_option.length)
                         for (var i = 0; i < message.uninterpreted_option.length; ++i)
@@ -66419,7 +69951,7 @@
                 /**
                  * OptimizeMode enum.
                  * @name google.protobuf.FileOptions.OptimizeMode
-                 * @enum {string}
+                 * @enum {number}
                  * @property {number} SPEED=1 SPEED value
                  * @property {number} CODE_SIZE=2 CODE_SIZE value
                  * @property {number} LITE_RUNTIME=3 LITE_RUNTIME value
@@ -66528,16 +70060,16 @@
                 MessageOptions.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.message_set_wire_format != null && message.hasOwnProperty("message_set_wire_format"))
+                    if (message.message_set_wire_format != null && Object.hasOwnProperty.call(message, "message_set_wire_format"))
                         writer.uint32(/* id 1, wireType 0 =*/8).bool(message.message_set_wire_format);
-                    if (message.no_standard_descriptor_accessor != null && message.hasOwnProperty("no_standard_descriptor_accessor"))
+                    if (message.no_standard_descriptor_accessor != null && Object.hasOwnProperty.call(message, "no_standard_descriptor_accessor"))
                         writer.uint32(/* id 2, wireType 0 =*/16).bool(message.no_standard_descriptor_accessor);
                     if (message.uninterpreted_option != null && message.uninterpreted_option.length)
                         for (var i = 0; i < message.uninterpreted_option.length; ++i)
                             $root.google.protobuf.UninterpretedOption.encode(message.uninterpreted_option[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
-                    if (message[".msgpool_soft_limit"] != null && message.hasOwnProperty(".msgpool_soft_limit"))
+                    if (message[".msgpool_soft_limit"] != null && Object.hasOwnProperty.call(message, ".msgpool_soft_limit"))
                         writer.uint32(/* id 60000, wireType 0 =*/480000).int32(message[".msgpool_soft_limit"]);
-                    if (message[".msgpool_hard_limit"] != null && message.hasOwnProperty(".msgpool_hard_limit"))
+                    if (message[".msgpool_hard_limit"] != null && Object.hasOwnProperty.call(message, ".msgpool_hard_limit"))
                         writer.uint32(/* id 60001, wireType 0 =*/480008).int32(message[".msgpool_hard_limit"]);
                     return writer;
                 };
@@ -66835,18 +70367,18 @@
                 FieldOptions.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.ctype != null && message.hasOwnProperty("ctype"))
+                    if (message.ctype != null && Object.hasOwnProperty.call(message, "ctype"))
                         writer.uint32(/* id 1, wireType 0 =*/8).int32(message.ctype);
-                    if (message.packed != null && message.hasOwnProperty("packed"))
+                    if (message.packed != null && Object.hasOwnProperty.call(message, "packed"))
                         writer.uint32(/* id 2, wireType 0 =*/16).bool(message.packed);
-                    if (message.deprecated != null && message.hasOwnProperty("deprecated"))
+                    if (message.deprecated != null && Object.hasOwnProperty.call(message, "deprecated"))
                         writer.uint32(/* id 3, wireType 0 =*/24).bool(message.deprecated);
-                    if (message.experimental_map_key != null && message.hasOwnProperty("experimental_map_key"))
+                    if (message.experimental_map_key != null && Object.hasOwnProperty.call(message, "experimental_map_key"))
                         writer.uint32(/* id 9, wireType 2 =*/74).string(message.experimental_map_key);
                     if (message.uninterpreted_option != null && message.uninterpreted_option.length)
                         for (var i = 0; i < message.uninterpreted_option.length; ++i)
                             $root.google.protobuf.UninterpretedOption.encode(message.uninterpreted_option[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
-                    if (message[".key_field"] != null && message.hasOwnProperty(".key_field"))
+                    if (message[".key_field"] != null && Object.hasOwnProperty.call(message, ".key_field"))
                         writer.uint32(/* id 60000, wireType 0 =*/480000).bool(message[".key_field"]);
                     return writer;
                 };
@@ -67071,7 +70603,7 @@
                 /**
                  * CType enum.
                  * @name google.protobuf.FieldOptions.CType
-                 * @enum {string}
+                 * @enum {number}
                  * @property {number} STRING=0 STRING value
                  * @property {number} CORD=1 CORD value
                  * @property {number} STRING_PIECE=2 STRING_PIECE value
@@ -68033,17 +71565,17 @@
                     if (message.name != null && message.name.length)
                         for (var i = 0; i < message.name.length; ++i)
                             $root.google.protobuf.UninterpretedOption.NamePart.encode(message.name[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-                    if (message.identifier_value != null && message.hasOwnProperty("identifier_value"))
+                    if (message.identifier_value != null && Object.hasOwnProperty.call(message, "identifier_value"))
                         writer.uint32(/* id 3, wireType 2 =*/26).string(message.identifier_value);
-                    if (message.positive_int_value != null && message.hasOwnProperty("positive_int_value"))
+                    if (message.positive_int_value != null && Object.hasOwnProperty.call(message, "positive_int_value"))
                         writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.positive_int_value);
-                    if (message.negative_int_value != null && message.hasOwnProperty("negative_int_value"))
+                    if (message.negative_int_value != null && Object.hasOwnProperty.call(message, "negative_int_value"))
                         writer.uint32(/* id 5, wireType 0 =*/40).int64(message.negative_int_value);
-                    if (message.double_value != null && message.hasOwnProperty("double_value"))
+                    if (message.double_value != null && Object.hasOwnProperty.call(message, "double_value"))
                         writer.uint32(/* id 6, wireType 1 =*/49).double(message.double_value);
-                    if (message.string_value != null && message.hasOwnProperty("string_value"))
+                    if (message.string_value != null && Object.hasOwnProperty.call(message, "string_value"))
                         writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.string_value);
-                    if (message.aggregate_value != null && message.hasOwnProperty("aggregate_value"))
+                    if (message.aggregate_value != null && Object.hasOwnProperty.call(message, "aggregate_value"))
                         writer.uint32(/* id 8, wireType 2 =*/66).string(message.aggregate_value);
                     return writer;
                 };
@@ -69117,25 +72649,25 @@
         CEngineGotvSyncPacket.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.match_id != null && message.hasOwnProperty("match_id"))
+            if (message.match_id != null && Object.hasOwnProperty.call(message, "match_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.match_id);
-            if (message.instance_id != null && message.hasOwnProperty("instance_id"))
+            if (message.instance_id != null && Object.hasOwnProperty.call(message, "instance_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.instance_id);
-            if (message.signupfragment != null && message.hasOwnProperty("signupfragment"))
+            if (message.signupfragment != null && Object.hasOwnProperty.call(message, "signupfragment"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.signupfragment);
-            if (message.currentfragment != null && message.hasOwnProperty("currentfragment"))
+            if (message.currentfragment != null && Object.hasOwnProperty.call(message, "currentfragment"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.currentfragment);
-            if (message.tickrate != null && message.hasOwnProperty("tickrate"))
+            if (message.tickrate != null && Object.hasOwnProperty.call(message, "tickrate"))
                 writer.uint32(/* id 5, wireType 5 =*/45).float(message.tickrate);
-            if (message.tick != null && message.hasOwnProperty("tick"))
+            if (message.tick != null && Object.hasOwnProperty.call(message, "tick"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.tick);
-            if (message.rtdelay != null && message.hasOwnProperty("rtdelay"))
+            if (message.rtdelay != null && Object.hasOwnProperty.call(message, "rtdelay"))
                 writer.uint32(/* id 8, wireType 5 =*/69).float(message.rtdelay);
-            if (message.rcvage != null && message.hasOwnProperty("rcvage"))
+            if (message.rcvage != null && Object.hasOwnProperty.call(message, "rcvage"))
                 writer.uint32(/* id 9, wireType 5 =*/77).float(message.rcvage);
-            if (message.keyframe_interval != null && message.hasOwnProperty("keyframe_interval"))
+            if (message.keyframe_interval != null && Object.hasOwnProperty.call(message, "keyframe_interval"))
                 writer.uint32(/* id 10, wireType 5 =*/85).float(message.keyframe_interval);
-            if (message.cdndelay != null && message.hasOwnProperty("cdndelay"))
+            if (message.cdndelay != null && Object.hasOwnProperty.call(message, "cdndelay"))
                 writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.cdndelay);
             return writer;
         };

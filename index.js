@@ -144,7 +144,7 @@ GlobalOffensive.prototype.refreshSession = function(){
 	   	client_session_need: 0,
 	   	steam_launcher: 0,
 	   	client_launcher: 0,
-	   	version: 1255,
+	   	version: 1316,
 
 	   	socache_have_versions
    	});
@@ -281,6 +281,10 @@ GlobalOffensive.prototype.inspectItem = function(owner, assetid, d, callback) {
 	}
 };
 
+GlobalOffensive.prototype.requestPlayerStats = function () {
+	this._send(Language.ClientDeepStats, Protos.CMsgGCCStrike15_ClientDeepStats, {});
+};
+
 GlobalOffensive.prototype.requestPlayersProfile = function(steamid, callback) {
 	if (typeof steamid == 'string') {
 		steamid = new SteamID(steamid);
@@ -292,7 +296,7 @@ GlobalOffensive.prototype.requestPlayersProfile = function(steamid, callback) {
 
 	this._send(Language.ClientRequestPlayersProfile, Protos.CMsgGCCStrike15_v2_ClientRequestPlayersProfile, {
 		account_id: steamid.accountid,
-		request_level: 32
+		request_level: 128
 	});
 
 	if (callback) {

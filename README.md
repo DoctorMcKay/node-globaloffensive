@@ -198,6 +198,10 @@ As of v2.1.0, the request will time out if no response is received in 10 seconds
 Sends the same request to the GC that viewing the CSGO player profile from the in-game friendlist sends. Returns the same information that you would get in-game.
 This returns the same protobuf that is used when you request your own profile data, so most of it stays empty.
 
+### requestPlayerStats()
+
+Get account statistic by last time. Its work only if you have subscribtion to CS:GO 360 Stats
+
 ### refreshSession()
 
 Refresh session. The session becomes expire every hour.
@@ -313,6 +317,9 @@ Emitted when we receive the status of our connection to the GC. Exactly when thi
 
 ### hasPrime
 - `hasPrime` - Boolean if the account has access to prime
+
+### playerStats
+- `stats` - An object of user statistic information K/D and more
 
 ### itemPresets
 - `itemPresets` - In game items presets
