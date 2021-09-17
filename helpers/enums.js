@@ -28,3 +28,44 @@ GlobalOffensive.ItemCustomizationNotification = {
 	GraffitiUnseal: 9185,
 	GenerateSouvenir: 9204
 };
+
+GlobalOffensive.ECurrency = {
+	k_ECurrencyFirst: 0,
+	k_ECurrencyUSD: 0,
+	k_ECurrencyGBP: 1,
+	k_ECurrencyEUR: 2,
+	k_ECurrencyRUB: 3,
+	k_ECurrencyBRL: 4,
+	// space for Dota currencies
+	k_ECurrencyJPY: 8,
+	k_ECurrencyNOK: 9,
+	k_ECurrencyIDR: 10,
+	k_ECurrencyMYR: 11,
+	k_ECurrencyPHP: 12,
+	k_ECurrencySGD: 13,
+	k_ECurrencyTHB: 14,
+	k_ECurrencyVND: 15,
+	k_ECurrencyKRW: 16,
+	k_ECurrencyTRY: 17,
+	k_ECurrencyUAH: 18,
+	k_ECurrencyMXN: 19,
+	k_ECurrencyCAD: 20,
+	k_ECurrencyAUD: 21,
+	k_ECurrencyNZD: 22,
+	k_ECurrencyPLN: 23,
+	k_ECurrencyCHF: 24,
+	k_ECurrencyCNY: 25,
+	k_ECurrencyTWD: 26,
+	k_ECurrencyHKD: 27,
+	k_ECurrencyINR: 28,
+	k_ECurrencyAED: 29,
+	k_ECurrencySAR: 30,
+	k_ECurrencyZAR: 31,
+	k_ECurrencyCOP: 32,
+	k_ECurrencyPEN: 33,
+	k_ECurrencyCLP: 34,
+	// NOTE: Not actually the Maximum currency value, but the Terminator for the possible currency code range.
+	k_ECurrencyMax: 35,
+	// make this a big number so we can avoid having to move it when we add another currency type
+	k_ECurrencyInvalid: 255
+};

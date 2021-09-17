@@ -9,6 +9,7 @@ test/*
 .idea/**/tasks.xml
 .idea/dictionaries
 .idea/httpRequests/
+.idea/*
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/
