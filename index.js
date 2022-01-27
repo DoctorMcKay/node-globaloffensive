@@ -1,5 +1,6 @@
 const ByteBuffer = require('bytebuffer');
 const EventEmitter = require('events').EventEmitter;
+const {ShareCode} = require('globaloffensive-sharecode');
 const SteamID = require('steamid');
 const Util = require('util');
 
@@ -148,6 +149,30 @@ GlobalOffensive.prototype._send = function(type, protobuf, body) {
 	}
 
 	return true;
+};
+
+GlobalOffensive.prototype.requestGame = function(shareCodeOrDetails) {
+	if (typeof shareCodeOrDetails == 'string') {
+		shareCodeOrDetails = (new ShareCode(shareCodeOrDetails)).decode();
+	}
+
+	if (typeof shareCodeOrDetails != 'object' || !shareCodeOrDetails) {
+		throw new Error('shareCodeOrDetails must be a sharecode or an object with properties matchId, outcomeId, token');
+	}
+
+	let requiredProps = ['matchId', 'outcomeId', 'token'];
+	requiredProps.sort();
+	let extantProps = Object.keys(shareCodeOrDetails);
+	extantProps.sort();
+	if (extantProps.join() != requiredProps.join()) {
+		throw new Error('shareCodeOrDetails must be a sharecode or an object with properties matchId, outcomeId, token');
+	}
+
+	this._send(Language.MatchListRequestFullGameInfo, Protos.CMsgGCCStrike15_v2_MatchListRequestFullGameInfo, {
+		matchid: shareCodeOrDetails.matchId,
+		outcomeid: shareCodeOrDetails.outcomeId,
+		token: shareCodeOrDetails.token
+	});
 };
 
 GlobalOffensive.prototype.requestLiveGames = function() {

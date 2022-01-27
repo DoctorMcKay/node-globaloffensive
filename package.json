@@ -25,6 +25,7 @@
 	},
 	"dependencies": {
 		"bytebuffer": "^5.0.1",
+		"globaloffensive-sharecode": "^1.1.1",
 		"long": "^3.2.0",
 		"protobufjs": "^6.8.8",
 		"steamid": "^1.1.0"
