@@ -164,6 +164,21 @@ GlobalOffensive.prototype._processSOEconItem = function(item) {
 		item.tradable_after = new Date(tradableAfterDateBytes.readUInt32LE(0) * 1000);
 	}
 
+	let killEaterBytes = getAttributeValueBytes(80);
+	if (killEaterBytes) {
+		item.kill_eater_value = killEaterBytes.readUInt32LE(0);
+	}
+
+	let killEaterScoreTypeBytes = getAttributeValueBytes(81);
+	if (killEaterScoreTypeBytes) {
+		item.kill_eater_score_type = killEaterScoreTypeBytes.readUInt32LE(0);
+	}
+
+	let questIdBytes = getAttributeValueBytes(168);
+	if (questIdBytes) {
+		item.quest_id = questIdBytes.readUInt32LE(0);
+	}
+
 	let stickers = [];
 	for (let i = 0; i <= 5; i++) {
 		let stickerIdBytes = getAttributeValueBytes(113 + (i * 4));
