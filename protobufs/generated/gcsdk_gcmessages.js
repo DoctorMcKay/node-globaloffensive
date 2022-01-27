@@ -22,11 +22,13 @@
      * @enum {string}
      * @property {number} GCClientLauncherType_DEFAULT=0 GCClientLauncherType_DEFAULT value
      * @property {number} GCClientLauncherType_PERFECTWORLD=1 GCClientLauncherType_PERFECTWORLD value
+     * @property {number} GCClientLauncherType_STEAMCHINA=2 GCClientLauncherType_STEAMCHINA value
      */
     $root.GCClientLauncherType = (function() {
         var valuesById = {}, values = Object.create(valuesById);
         values[valuesById[0] = "GCClientLauncherType_DEFAULT"] = 0;
         values[valuesById[1] = "GCClientLauncherType_PERFECTWORLD"] = 1;
+        values[valuesById[2] = "GCClientLauncherType_STEAMCHINA"] = 2;
         return values;
     })();
     
@@ -47,26 +49,6 @@
         values[valuesById[2] = "GCConnectionStatus_NO_SESSION"] = 2;
         values[valuesById[3] = "GCConnectionStatus_NO_SESSION_IN_LOGON_QUEUE"] = 3;
         values[valuesById[4] = "GCConnectionStatus_NO_STEAM"] = 4;
-        return values;
-    })();
-    
-    /**
-     * ESteamPaymentRuleType enum.
-     * @exports ESteamPaymentRuleType
-     * @enum {string}
-     * @property {number} k_EPaymentRuleTypeComposite=0 k_EPaymentRuleTypeComposite value
-     * @property {number} k_EPaymentRuleTypeWorkshop=1 k_EPaymentRuleTypeWorkshop value
-     * @property {number} k_EPaymentRuleTypeServiceProvider=2 k_EPaymentRuleTypeServiceProvider value
-     * @property {number} k_EPaymentRuleTypePartner=3 k_EPaymentRuleTypePartner value
-     * @property {number} k_EPaymentRuleTypeSpecialPayment=4 k_EPaymentRuleTypeSpecialPayment value
-     */
-    $root.ESteamPaymentRuleType = (function() {
-        var valuesById = {}, values = Object.create(valuesById);
-        values[valuesById[0] = "k_EPaymentRuleTypeComposite"] = 0;
-        values[valuesById[1] = "k_EPaymentRuleTypeWorkshop"] = 1;
-        values[valuesById[2] = "k_EPaymentRuleTypeServiceProvider"] = 2;
-        values[valuesById[3] = "k_EPaymentRuleTypePartner"] = 3;
-        values[valuesById[4] = "k_EPaymentRuleTypeSpecialPayment"] = 4;
         return values;
     })();
     
@@ -5336,6 +5318,7 @@
          * @property {number|null} [partner_accountid] CMsgClientHello partner_accountid
          * @property {number|null} [partner_accountflags] CMsgClientHello partner_accountflags
          * @property {number|null} [partner_accountbalance] CMsgClientHello partner_accountbalance
+         * @property {number|null} [steam_launcher] CMsgClientHello steam_launcher
          */
     
         /**
@@ -5419,6 +5402,14 @@
         CMsgClientHello.prototype.partner_accountbalance = 0;
     
         /**
+         * CMsgClientHello steam_launcher.
+         * @member {number} steam_launcher
+         * @memberof CMsgClientHello
+         * @instance
+         */
+        CMsgClientHello.prototype.steam_launcher = 0;
+    
+        /**
          * Creates a new CMsgClientHello instance using the specified properties.
          * @function create
          * @memberof CMsgClientHello
@@ -5459,6 +5450,8 @@
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.partner_accountflags);
             if (message.partner_accountbalance != null && message.hasOwnProperty("partner_accountbalance"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.partner_accountbalance);
+            if (message.steam_launcher != null && message.hasOwnProperty("steam_launcher"))
+                writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.steam_launcher);
             return writer;
         };
     
@@ -5518,6 +5511,9 @@
                     break;
                 case 8:
                     message.partner_accountbalance = reader.uint32();
+                    break;
+                case 9:
+                    message.steam_launcher = reader.uint32();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -5584,6 +5580,9 @@
             if (message.partner_accountbalance != null && message.hasOwnProperty("partner_accountbalance"))
                 if (!$util.isInteger(message.partner_accountbalance))
                     return "partner_accountbalance: integer expected";
+            if (message.steam_launcher != null && message.hasOwnProperty("steam_launcher"))
+                if (!$util.isInteger(message.steam_launcher))
+                    return "steam_launcher: integer expected";
             return null;
         };
     
@@ -5623,6 +5622,8 @@
                 message.partner_accountflags = object.partner_accountflags >>> 0;
             if (object.partner_accountbalance != null)
                 message.partner_accountbalance = object.partner_accountbalance >>> 0;
+            if (object.steam_launcher != null)
+                message.steam_launcher = object.steam_launcher >>> 0;
             return message;
         };
     
@@ -5649,6 +5650,7 @@
                 object.partner_accountid = 0;
                 object.partner_accountflags = 0;
                 object.partner_accountbalance = 0;
+                object.steam_launcher = 0;
             }
             if (message.version != null && message.hasOwnProperty("version"))
                 object.version = message.version;
@@ -5669,6 +5671,8 @@
                 object.partner_accountflags = message.partner_accountflags;
             if (message.partner_accountbalance != null && message.hasOwnProperty("partner_accountbalance"))
                 object.partner_accountbalance = message.partner_accountbalance;
+            if (message.steam_launcher != null && message.hasOwnProperty("steam_launcher"))
+                object.steam_launcher = message.steam_launcher;
             return object;
         };
     
@@ -8211,6 +8215,9 @@
          * @property {number|null} [gameitemid] CWorkshop_SetItemPaymentRules_Request gameitemid
          * @property {Array.<CWorkshop_SetItemPaymentRules_Request.IWorkshopItemPaymentRule>|null} [associated_workshop_files] CWorkshop_SetItemPaymentRules_Request associated_workshop_files
          * @property {Array.<CWorkshop_SetItemPaymentRules_Request.IPartnerItemPaymentRule>|null} [partner_accounts] CWorkshop_SetItemPaymentRules_Request partner_accounts
+         * @property {boolean|null} [validate_only] CWorkshop_SetItemPaymentRules_Request validate_only
+         * @property {boolean|null} [make_workshop_files_subscribable] CWorkshop_SetItemPaymentRules_Request make_workshop_files_subscribable
+         * @property {CWorkshop_SetItemPaymentRules_Request.IWorkshopDirectPaymentRule|null} [associated_workshop_file_for_direct_payments] CWorkshop_SetItemPaymentRules_Request associated_workshop_file_for_direct_payments
          */
     
         /**
@@ -8263,6 +8270,30 @@
         CWorkshop_SetItemPaymentRules_Request.prototype.partner_accounts = $util.emptyArray;
     
         /**
+         * CWorkshop_SetItemPaymentRules_Request validate_only.
+         * @member {boolean} validate_only
+         * @memberof CWorkshop_SetItemPaymentRules_Request
+         * @instance
+         */
+        CWorkshop_SetItemPaymentRules_Request.prototype.validate_only = false;
+    
+        /**
+         * CWorkshop_SetItemPaymentRules_Request make_workshop_files_subscribable.
+         * @member {boolean} make_workshop_files_subscribable
+         * @memberof CWorkshop_SetItemPaymentRules_Request
+         * @instance
+         */
+        CWorkshop_SetItemPaymentRules_Request.prototype.make_workshop_files_subscribable = false;
+    
+        /**
+         * CWorkshop_SetItemPaymentRules_Request associated_workshop_file_for_direct_payments.
+         * @member {CWorkshop_SetItemPaymentRules_Request.IWorkshopDirectPaymentRule|null|undefined} associated_workshop_file_for_direct_payments
+         * @memberof CWorkshop_SetItemPaymentRules_Request
+         * @instance
+         */
+        CWorkshop_SetItemPaymentRules_Request.prototype.associated_workshop_file_for_direct_payments = null;
+    
+        /**
          * Creates a new CWorkshop_SetItemPaymentRules_Request instance using the specified properties.
          * @function create
          * @memberof CWorkshop_SetItemPaymentRules_Request
@@ -8296,6 +8327,12 @@
             if (message.partner_accounts != null && message.partner_accounts.length)
                 for (var i = 0; i < message.partner_accounts.length; ++i)
                     $root.CWorkshop_SetItemPaymentRules_Request.PartnerItemPaymentRule.encode(message.partner_accounts[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+            if (message.validate_only != null && message.hasOwnProperty("validate_only"))
+                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.validate_only);
+            if (message.make_workshop_files_subscribable != null && message.hasOwnProperty("make_workshop_files_subscribable"))
+                writer.uint32(/* id 6, wireType 0 =*/48).bool(message.make_workshop_files_subscribable);
+            if (message.associated_workshop_file_for_direct_payments != null && message.hasOwnProperty("associated_workshop_file_for_direct_payments"))
+                $root.CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule.encode(message.associated_workshop_file_for_direct_payments, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
             return writer;
         };
     
@@ -8345,6 +8382,15 @@
                     if (!(message.partner_accounts && message.partner_accounts.length))
                         message.partner_accounts = [];
                     message.partner_accounts.push($root.CWorkshop_SetItemPaymentRules_Request.PartnerItemPaymentRule.decode(reader, reader.uint32()));
+                    break;
+                case 5:
+                    message.validate_only = reader.bool();
+                    break;
+                case 6:
+                    message.make_workshop_files_subscribable = reader.bool();
+                    break;
+                case 7:
+                    message.associated_workshop_file_for_direct_payments = $root.CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule.decode(reader, reader.uint32());
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -8405,6 +8451,17 @@
                         return "partner_accounts." + error;
                 }
             }
+            if (message.validate_only != null && message.hasOwnProperty("validate_only"))
+                if (typeof message.validate_only !== "boolean")
+                    return "validate_only: boolean expected";
+            if (message.make_workshop_files_subscribable != null && message.hasOwnProperty("make_workshop_files_subscribable"))
+                if (typeof message.make_workshop_files_subscribable !== "boolean")
+                    return "make_workshop_files_subscribable: boolean expected";
+            if (message.associated_workshop_file_for_direct_payments != null && message.hasOwnProperty("associated_workshop_file_for_direct_payments")) {
+                var error = $root.CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule.verify(message.associated_workshop_file_for_direct_payments);
+                if (error)
+                    return "associated_workshop_file_for_direct_payments." + error;
+            }
             return null;
         };
     
@@ -8444,6 +8501,15 @@
                     message.partner_accounts[i] = $root.CWorkshop_SetItemPaymentRules_Request.PartnerItemPaymentRule.fromObject(object.partner_accounts[i]);
                 }
             }
+            if (object.validate_only != null)
+                message.validate_only = Boolean(object.validate_only);
+            if (object.make_workshop_files_subscribable != null)
+                message.make_workshop_files_subscribable = Boolean(object.make_workshop_files_subscribable);
+            if (object.associated_workshop_file_for_direct_payments != null) {
+                if (typeof object.associated_workshop_file_for_direct_payments !== "object")
+                    throw TypeError(".CWorkshop_SetItemPaymentRules_Request.associated_workshop_file_for_direct_payments: object expected");
+                message.associated_workshop_file_for_direct_payments = $root.CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule.fromObject(object.associated_workshop_file_for_direct_payments);
+            }
             return message;
         };
     
@@ -8467,6 +8533,9 @@
             if (options.defaults) {
                 object.appid = 0;
                 object.gameitemid = 0;
+                object.validate_only = false;
+                object.make_workshop_files_subscribable = false;
+                object.associated_workshop_file_for_direct_payments = null;
             }
             if (message.appid != null && message.hasOwnProperty("appid"))
                 object.appid = message.appid;
@@ -8482,6 +8551,12 @@
                 for (var j = 0; j < message.partner_accounts.length; ++j)
                     object.partner_accounts[j] = $root.CWorkshop_SetItemPaymentRules_Request.PartnerItemPaymentRule.toObject(message.partner_accounts[j], options);
             }
+            if (message.validate_only != null && message.hasOwnProperty("validate_only"))
+                object.validate_only = message.validate_only;
+            if (message.make_workshop_files_subscribable != null && message.hasOwnProperty("make_workshop_files_subscribable"))
+                object.make_workshop_files_subscribable = message.make_workshop_files_subscribable;
+            if (message.associated_workshop_file_for_direct_payments != null && message.hasOwnProperty("associated_workshop_file_for_direct_payments"))
+                object.associated_workshop_file_for_direct_payments = $root.CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule.toObject(message.associated_workshop_file_for_direct_payments, options);
             return object;
         };
     
@@ -8762,6 +8837,230 @@
             };
     
             return WorkshopItemPaymentRule;
+        })();
+    
+        CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule = (function() {
+    
+            /**
+             * Properties of a WorkshopDirectPaymentRule.
+             * @memberof CWorkshop_SetItemPaymentRules_Request
+             * @interface IWorkshopDirectPaymentRule
+             * @property {number|Long|null} [workshop_file_id] WorkshopDirectPaymentRule workshop_file_id
+             * @property {string|null} [rule_description] WorkshopDirectPaymentRule rule_description
+             */
+    
+            /**
+             * Constructs a new WorkshopDirectPaymentRule.
+             * @memberof CWorkshop_SetItemPaymentRules_Request
+             * @classdesc Represents a WorkshopDirectPaymentRule.
+             * @implements IWorkshopDirectPaymentRule
+             * @constructor
+             * @param {CWorkshop_SetItemPaymentRules_Request.IWorkshopDirectPaymentRule=} [properties] Properties to set
+             */
+            function WorkshopDirectPaymentRule(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * WorkshopDirectPaymentRule workshop_file_id.
+             * @member {number|Long} workshop_file_id
+             * @memberof CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule
+             * @instance
+             */
+            WorkshopDirectPaymentRule.prototype.workshop_file_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+            /**
+             * WorkshopDirectPaymentRule rule_description.
+             * @member {string} rule_description
+             * @memberof CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule
+             * @instance
+             */
+            WorkshopDirectPaymentRule.prototype.rule_description = "";
+    
+            /**
+             * Creates a new WorkshopDirectPaymentRule instance using the specified properties.
+             * @function create
+             * @memberof CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule
+             * @static
+             * @param {CWorkshop_SetItemPaymentRules_Request.IWorkshopDirectPaymentRule=} [properties] Properties to set
+             * @returns {CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule} WorkshopDirectPaymentRule instance
+             */
+            WorkshopDirectPaymentRule.create = function create(properties) {
+                return new WorkshopDirectPaymentRule(properties);
+            };
+    
+            /**
+             * Encodes the specified WorkshopDirectPaymentRule message. Does not implicitly {@link CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule.verify|verify} messages.
+             * @function encode
+             * @memberof CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule
+             * @static
+             * @param {CWorkshop_SetItemPaymentRules_Request.IWorkshopDirectPaymentRule} message WorkshopDirectPaymentRule message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            WorkshopDirectPaymentRule.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.workshop_file_id != null && message.hasOwnProperty("workshop_file_id"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.workshop_file_id);
+                if (message.rule_description != null && message.hasOwnProperty("rule_description"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.rule_description);
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified WorkshopDirectPaymentRule message, length delimited. Does not implicitly {@link CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule
+             * @static
+             * @param {CWorkshop_SetItemPaymentRules_Request.IWorkshopDirectPaymentRule} message WorkshopDirectPaymentRule message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            WorkshopDirectPaymentRule.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes a WorkshopDirectPaymentRule message from the specified reader or buffer.
+             * @function decode
+             * @memberof CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule} WorkshopDirectPaymentRule
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            WorkshopDirectPaymentRule.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.workshop_file_id = reader.uint64();
+                        break;
+                    case 2:
+                        message.rule_description = reader.string();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes a WorkshopDirectPaymentRule message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule} WorkshopDirectPaymentRule
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            WorkshopDirectPaymentRule.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies a WorkshopDirectPaymentRule message.
+             * @function verify
+             * @memberof CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            WorkshopDirectPaymentRule.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.workshop_file_id != null && message.hasOwnProperty("workshop_file_id"))
+                    if (!$util.isInteger(message.workshop_file_id) && !(message.workshop_file_id && $util.isInteger(message.workshop_file_id.low) && $util.isInteger(message.workshop_file_id.high)))
+                        return "workshop_file_id: integer|Long expected";
+                if (message.rule_description != null && message.hasOwnProperty("rule_description"))
+                    if (!$util.isString(message.rule_description))
+                        return "rule_description: string expected";
+                return null;
+            };
+    
+            /**
+             * Creates a WorkshopDirectPaymentRule message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule} WorkshopDirectPaymentRule
+             */
+            WorkshopDirectPaymentRule.fromObject = function fromObject(object) {
+                if (object instanceof $root.CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule)
+                    return object;
+                var message = new $root.CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule();
+                if (object.workshop_file_id != null)
+                    if ($util.Long)
+                        (message.workshop_file_id = $util.Long.fromValue(object.workshop_file_id)).unsigned = true;
+                    else if (typeof object.workshop_file_id === "string")
+                        message.workshop_file_id = parseInt(object.workshop_file_id, 10);
+                    else if (typeof object.workshop_file_id === "number")
+                        message.workshop_file_id = object.workshop_file_id;
+                    else if (typeof object.workshop_file_id === "object")
+                        message.workshop_file_id = new $util.LongBits(object.workshop_file_id.low >>> 0, object.workshop_file_id.high >>> 0).toNumber(true);
+                if (object.rule_description != null)
+                    message.rule_description = String(object.rule_description);
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from a WorkshopDirectPaymentRule message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule
+             * @static
+             * @param {CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule} message WorkshopDirectPaymentRule
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            WorkshopDirectPaymentRule.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    if ($util.Long) {
+                        var long = new $util.Long(0, 0, true);
+                        object.workshop_file_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    } else
+                        object.workshop_file_id = options.longs === String ? "0" : 0;
+                    object.rule_description = "";
+                }
+                if (message.workshop_file_id != null && message.hasOwnProperty("workshop_file_id"))
+                    if (typeof message.workshop_file_id === "number")
+                        object.workshop_file_id = options.longs === String ? String(message.workshop_file_id) : message.workshop_file_id;
+                    else
+                        object.workshop_file_id = options.longs === String ? $util.Long.prototype.toString.call(message.workshop_file_id) : options.longs === Number ? new $util.LongBits(message.workshop_file_id.low >>> 0, message.workshop_file_id.high >>> 0).toNumber(true) : message.workshop_file_id;
+                if (message.rule_description != null && message.hasOwnProperty("rule_description"))
+                    object.rule_description = message.rule_description;
+                return object;
+            };
+    
+            /**
+             * Converts this WorkshopDirectPaymentRule to JSON.
+             * @function toJSON
+             * @memberof CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            WorkshopDirectPaymentRule.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            return WorkshopDirectPaymentRule;
         })();
     
         CWorkshop_SetItemPaymentRules_Request.PartnerItemPaymentRule = (function() {
@@ -10392,6 +10691,875 @@
         };
     
         return CWorkshop_AddSpecialPayment_Response;
+    })();
+    
+    $root.CProductInfo_SetRichPresenceLocalization_Request = (function() {
+    
+        /**
+         * Properties of a CProductInfo_SetRichPresenceLocalization_Request.
+         * @exports ICProductInfo_SetRichPresenceLocalization_Request
+         * @interface ICProductInfo_SetRichPresenceLocalization_Request
+         * @property {number|null} [appid] CProductInfo_SetRichPresenceLocalization_Request appid
+         * @property {Array.<CProductInfo_SetRichPresenceLocalization_Request.ILanguageSection>|null} [languages] CProductInfo_SetRichPresenceLocalization_Request languages
+         * @property {number|Long|null} [steamid] CProductInfo_SetRichPresenceLocalization_Request steamid
+         */
+    
+        /**
+         * Constructs a new CProductInfo_SetRichPresenceLocalization_Request.
+         * @exports CProductInfo_SetRichPresenceLocalization_Request
+         * @classdesc Represents a CProductInfo_SetRichPresenceLocalization_Request.
+         * @implements ICProductInfo_SetRichPresenceLocalization_Request
+         * @constructor
+         * @param {ICProductInfo_SetRichPresenceLocalization_Request=} [properties] Properties to set
+         */
+        function CProductInfo_SetRichPresenceLocalization_Request(properties) {
+            this.languages = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CProductInfo_SetRichPresenceLocalization_Request appid.
+         * @member {number} appid
+         * @memberof CProductInfo_SetRichPresenceLocalization_Request
+         * @instance
+         */
+        CProductInfo_SetRichPresenceLocalization_Request.prototype.appid = 0;
+    
+        /**
+         * CProductInfo_SetRichPresenceLocalization_Request languages.
+         * @member {Array.<CProductInfo_SetRichPresenceLocalization_Request.ILanguageSection>} languages
+         * @memberof CProductInfo_SetRichPresenceLocalization_Request
+         * @instance
+         */
+        CProductInfo_SetRichPresenceLocalization_Request.prototype.languages = $util.emptyArray;
+    
+        /**
+         * CProductInfo_SetRichPresenceLocalization_Request steamid.
+         * @member {number|Long} steamid
+         * @memberof CProductInfo_SetRichPresenceLocalization_Request
+         * @instance
+         */
+        CProductInfo_SetRichPresenceLocalization_Request.prototype.steamid = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+        /**
+         * Creates a new CProductInfo_SetRichPresenceLocalization_Request instance using the specified properties.
+         * @function create
+         * @memberof CProductInfo_SetRichPresenceLocalization_Request
+         * @static
+         * @param {ICProductInfo_SetRichPresenceLocalization_Request=} [properties] Properties to set
+         * @returns {CProductInfo_SetRichPresenceLocalization_Request} CProductInfo_SetRichPresenceLocalization_Request instance
+         */
+        CProductInfo_SetRichPresenceLocalization_Request.create = function create(properties) {
+            return new CProductInfo_SetRichPresenceLocalization_Request(properties);
+        };
+    
+        /**
+         * Encodes the specified CProductInfo_SetRichPresenceLocalization_Request message. Does not implicitly {@link CProductInfo_SetRichPresenceLocalization_Request.verify|verify} messages.
+         * @function encode
+         * @memberof CProductInfo_SetRichPresenceLocalization_Request
+         * @static
+         * @param {ICProductInfo_SetRichPresenceLocalization_Request} message CProductInfo_SetRichPresenceLocalization_Request message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CProductInfo_SetRichPresenceLocalization_Request.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.appid != null && message.hasOwnProperty("appid"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.appid);
+            if (message.languages != null && message.languages.length)
+                for (var i = 0; i < message.languages.length; ++i)
+                    $root.CProductInfo_SetRichPresenceLocalization_Request.LanguageSection.encode(message.languages[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            if (message.steamid != null && message.hasOwnProperty("steamid"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.steamid);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CProductInfo_SetRichPresenceLocalization_Request message, length delimited. Does not implicitly {@link CProductInfo_SetRichPresenceLocalization_Request.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CProductInfo_SetRichPresenceLocalization_Request
+         * @static
+         * @param {ICProductInfo_SetRichPresenceLocalization_Request} message CProductInfo_SetRichPresenceLocalization_Request message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CProductInfo_SetRichPresenceLocalization_Request.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CProductInfo_SetRichPresenceLocalization_Request message from the specified reader or buffer.
+         * @function decode
+         * @memberof CProductInfo_SetRichPresenceLocalization_Request
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CProductInfo_SetRichPresenceLocalization_Request} CProductInfo_SetRichPresenceLocalization_Request
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CProductInfo_SetRichPresenceLocalization_Request.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CProductInfo_SetRichPresenceLocalization_Request();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.appid = reader.uint32();
+                    break;
+                case 2:
+                    if (!(message.languages && message.languages.length))
+                        message.languages = [];
+                    message.languages.push($root.CProductInfo_SetRichPresenceLocalization_Request.LanguageSection.decode(reader, reader.uint32()));
+                    break;
+                case 3:
+                    message.steamid = reader.uint64();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CProductInfo_SetRichPresenceLocalization_Request message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CProductInfo_SetRichPresenceLocalization_Request
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CProductInfo_SetRichPresenceLocalization_Request} CProductInfo_SetRichPresenceLocalization_Request
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CProductInfo_SetRichPresenceLocalization_Request.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CProductInfo_SetRichPresenceLocalization_Request message.
+         * @function verify
+         * @memberof CProductInfo_SetRichPresenceLocalization_Request
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CProductInfo_SetRichPresenceLocalization_Request.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.appid != null && message.hasOwnProperty("appid"))
+                if (!$util.isInteger(message.appid))
+                    return "appid: integer expected";
+            if (message.languages != null && message.hasOwnProperty("languages")) {
+                if (!Array.isArray(message.languages))
+                    return "languages: array expected";
+                for (var i = 0; i < message.languages.length; ++i) {
+                    var error = $root.CProductInfo_SetRichPresenceLocalization_Request.LanguageSection.verify(message.languages[i]);
+                    if (error)
+                        return "languages." + error;
+                }
+            }
+            if (message.steamid != null && message.hasOwnProperty("steamid"))
+                if (!$util.isInteger(message.steamid) && !(message.steamid && $util.isInteger(message.steamid.low) && $util.isInteger(message.steamid.high)))
+                    return "steamid: integer|Long expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CProductInfo_SetRichPresenceLocalization_Request message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CProductInfo_SetRichPresenceLocalization_Request
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CProductInfo_SetRichPresenceLocalization_Request} CProductInfo_SetRichPresenceLocalization_Request
+         */
+        CProductInfo_SetRichPresenceLocalization_Request.fromObject = function fromObject(object) {
+            if (object instanceof $root.CProductInfo_SetRichPresenceLocalization_Request)
+                return object;
+            var message = new $root.CProductInfo_SetRichPresenceLocalization_Request();
+            if (object.appid != null)
+                message.appid = object.appid >>> 0;
+            if (object.languages) {
+                if (!Array.isArray(object.languages))
+                    throw TypeError(".CProductInfo_SetRichPresenceLocalization_Request.languages: array expected");
+                message.languages = [];
+                for (var i = 0; i < object.languages.length; ++i) {
+                    if (typeof object.languages[i] !== "object")
+                        throw TypeError(".CProductInfo_SetRichPresenceLocalization_Request.languages: object expected");
+                    message.languages[i] = $root.CProductInfo_SetRichPresenceLocalization_Request.LanguageSection.fromObject(object.languages[i]);
+                }
+            }
+            if (object.steamid != null)
+                if ($util.Long)
+                    (message.steamid = $util.Long.fromValue(object.steamid)).unsigned = true;
+                else if (typeof object.steamid === "string")
+                    message.steamid = parseInt(object.steamid, 10);
+                else if (typeof object.steamid === "number")
+                    message.steamid = object.steamid;
+                else if (typeof object.steamid === "object")
+                    message.steamid = new $util.LongBits(object.steamid.low >>> 0, object.steamid.high >>> 0).toNumber(true);
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CProductInfo_SetRichPresenceLocalization_Request message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CProductInfo_SetRichPresenceLocalization_Request
+         * @static
+         * @param {CProductInfo_SetRichPresenceLocalization_Request} message CProductInfo_SetRichPresenceLocalization_Request
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CProductInfo_SetRichPresenceLocalization_Request.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.languages = [];
+            if (options.defaults) {
+                object.appid = 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.steamid = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.steamid = options.longs === String ? "0" : 0;
+            }
+            if (message.appid != null && message.hasOwnProperty("appid"))
+                object.appid = message.appid;
+            if (message.languages && message.languages.length) {
+                object.languages = [];
+                for (var j = 0; j < message.languages.length; ++j)
+                    object.languages[j] = $root.CProductInfo_SetRichPresenceLocalization_Request.LanguageSection.toObject(message.languages[j], options);
+            }
+            if (message.steamid != null && message.hasOwnProperty("steamid"))
+                if (typeof message.steamid === "number")
+                    object.steamid = options.longs === String ? String(message.steamid) : message.steamid;
+                else
+                    object.steamid = options.longs === String ? $util.Long.prototype.toString.call(message.steamid) : options.longs === Number ? new $util.LongBits(message.steamid.low >>> 0, message.steamid.high >>> 0).toNumber(true) : message.steamid;
+            return object;
+        };
+    
+        /**
+         * Converts this CProductInfo_SetRichPresenceLocalization_Request to JSON.
+         * @function toJSON
+         * @memberof CProductInfo_SetRichPresenceLocalization_Request
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CProductInfo_SetRichPresenceLocalization_Request.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        CProductInfo_SetRichPresenceLocalization_Request.Token = (function() {
+    
+            /**
+             * Properties of a Token.
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request
+             * @interface IToken
+             * @property {string|null} [token] Token token
+             * @property {string|null} [value] Token value
+             */
+    
+            /**
+             * Constructs a new Token.
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request
+             * @classdesc Represents a Token.
+             * @implements IToken
+             * @constructor
+             * @param {CProductInfo_SetRichPresenceLocalization_Request.IToken=} [properties] Properties to set
+             */
+            function Token(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * Token token.
+             * @member {string} token
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.Token
+             * @instance
+             */
+            Token.prototype.token = "";
+    
+            /**
+             * Token value.
+             * @member {string} value
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.Token
+             * @instance
+             */
+            Token.prototype.value = "";
+    
+            /**
+             * Creates a new Token instance using the specified properties.
+             * @function create
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.Token
+             * @static
+             * @param {CProductInfo_SetRichPresenceLocalization_Request.IToken=} [properties] Properties to set
+             * @returns {CProductInfo_SetRichPresenceLocalization_Request.Token} Token instance
+             */
+            Token.create = function create(properties) {
+                return new Token(properties);
+            };
+    
+            /**
+             * Encodes the specified Token message. Does not implicitly {@link CProductInfo_SetRichPresenceLocalization_Request.Token.verify|verify} messages.
+             * @function encode
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.Token
+             * @static
+             * @param {CProductInfo_SetRichPresenceLocalization_Request.IToken} message Token message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Token.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.token != null && message.hasOwnProperty("token"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.token);
+                if (message.value != null && message.hasOwnProperty("value"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.value);
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified Token message, length delimited. Does not implicitly {@link CProductInfo_SetRichPresenceLocalization_Request.Token.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.Token
+             * @static
+             * @param {CProductInfo_SetRichPresenceLocalization_Request.IToken} message Token message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Token.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes a Token message from the specified reader or buffer.
+             * @function decode
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.Token
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {CProductInfo_SetRichPresenceLocalization_Request.Token} Token
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Token.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CProductInfo_SetRichPresenceLocalization_Request.Token();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.token = reader.string();
+                        break;
+                    case 2:
+                        message.value = reader.string();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes a Token message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.Token
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {CProductInfo_SetRichPresenceLocalization_Request.Token} Token
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Token.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies a Token message.
+             * @function verify
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.Token
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            Token.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.token != null && message.hasOwnProperty("token"))
+                    if (!$util.isString(message.token))
+                        return "token: string expected";
+                if (message.value != null && message.hasOwnProperty("value"))
+                    if (!$util.isString(message.value))
+                        return "value: string expected";
+                return null;
+            };
+    
+            /**
+             * Creates a Token message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.Token
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {CProductInfo_SetRichPresenceLocalization_Request.Token} Token
+             */
+            Token.fromObject = function fromObject(object) {
+                if (object instanceof $root.CProductInfo_SetRichPresenceLocalization_Request.Token)
+                    return object;
+                var message = new $root.CProductInfo_SetRichPresenceLocalization_Request.Token();
+                if (object.token != null)
+                    message.token = String(object.token);
+                if (object.value != null)
+                    message.value = String(object.value);
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from a Token message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.Token
+             * @static
+             * @param {CProductInfo_SetRichPresenceLocalization_Request.Token} message Token
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            Token.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.token = "";
+                    object.value = "";
+                }
+                if (message.token != null && message.hasOwnProperty("token"))
+                    object.token = message.token;
+                if (message.value != null && message.hasOwnProperty("value"))
+                    object.value = message.value;
+                return object;
+            };
+    
+            /**
+             * Converts this Token to JSON.
+             * @function toJSON
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.Token
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            Token.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            return Token;
+        })();
+    
+        CProductInfo_SetRichPresenceLocalization_Request.LanguageSection = (function() {
+    
+            /**
+             * Properties of a LanguageSection.
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request
+             * @interface ILanguageSection
+             * @property {string|null} [language] LanguageSection language
+             * @property {Array.<CProductInfo_SetRichPresenceLocalization_Request.IToken>|null} [tokens] LanguageSection tokens
+             */
+    
+            /**
+             * Constructs a new LanguageSection.
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request
+             * @classdesc Represents a LanguageSection.
+             * @implements ILanguageSection
+             * @constructor
+             * @param {CProductInfo_SetRichPresenceLocalization_Request.ILanguageSection=} [properties] Properties to set
+             */
+            function LanguageSection(properties) {
+                this.tokens = [];
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * LanguageSection language.
+             * @member {string} language
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.LanguageSection
+             * @instance
+             */
+            LanguageSection.prototype.language = "";
+    
+            /**
+             * LanguageSection tokens.
+             * @member {Array.<CProductInfo_SetRichPresenceLocalization_Request.IToken>} tokens
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.LanguageSection
+             * @instance
+             */
+            LanguageSection.prototype.tokens = $util.emptyArray;
+    
+            /**
+             * Creates a new LanguageSection instance using the specified properties.
+             * @function create
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.LanguageSection
+             * @static
+             * @param {CProductInfo_SetRichPresenceLocalization_Request.ILanguageSection=} [properties] Properties to set
+             * @returns {CProductInfo_SetRichPresenceLocalization_Request.LanguageSection} LanguageSection instance
+             */
+            LanguageSection.create = function create(properties) {
+                return new LanguageSection(properties);
+            };
+    
+            /**
+             * Encodes the specified LanguageSection message. Does not implicitly {@link CProductInfo_SetRichPresenceLocalization_Request.LanguageSection.verify|verify} messages.
+             * @function encode
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.LanguageSection
+             * @static
+             * @param {CProductInfo_SetRichPresenceLocalization_Request.ILanguageSection} message LanguageSection message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            LanguageSection.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.language != null && message.hasOwnProperty("language"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.language);
+                if (message.tokens != null && message.tokens.length)
+                    for (var i = 0; i < message.tokens.length; ++i)
+                        $root.CProductInfo_SetRichPresenceLocalization_Request.Token.encode(message.tokens[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified LanguageSection message, length delimited. Does not implicitly {@link CProductInfo_SetRichPresenceLocalization_Request.LanguageSection.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.LanguageSection
+             * @static
+             * @param {CProductInfo_SetRichPresenceLocalization_Request.ILanguageSection} message LanguageSection message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            LanguageSection.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes a LanguageSection message from the specified reader or buffer.
+             * @function decode
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.LanguageSection
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {CProductInfo_SetRichPresenceLocalization_Request.LanguageSection} LanguageSection
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            LanguageSection.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CProductInfo_SetRichPresenceLocalization_Request.LanguageSection();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.language = reader.string();
+                        break;
+                    case 2:
+                        if (!(message.tokens && message.tokens.length))
+                            message.tokens = [];
+                        message.tokens.push($root.CProductInfo_SetRichPresenceLocalization_Request.Token.decode(reader, reader.uint32()));
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes a LanguageSection message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.LanguageSection
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {CProductInfo_SetRichPresenceLocalization_Request.LanguageSection} LanguageSection
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            LanguageSection.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies a LanguageSection message.
+             * @function verify
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.LanguageSection
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            LanguageSection.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.language != null && message.hasOwnProperty("language"))
+                    if (!$util.isString(message.language))
+                        return "language: string expected";
+                if (message.tokens != null && message.hasOwnProperty("tokens")) {
+                    if (!Array.isArray(message.tokens))
+                        return "tokens: array expected";
+                    for (var i = 0; i < message.tokens.length; ++i) {
+                        var error = $root.CProductInfo_SetRichPresenceLocalization_Request.Token.verify(message.tokens[i]);
+                        if (error)
+                            return "tokens." + error;
+                    }
+                }
+                return null;
+            };
+    
+            /**
+             * Creates a LanguageSection message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.LanguageSection
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {CProductInfo_SetRichPresenceLocalization_Request.LanguageSection} LanguageSection
+             */
+            LanguageSection.fromObject = function fromObject(object) {
+                if (object instanceof $root.CProductInfo_SetRichPresenceLocalization_Request.LanguageSection)
+                    return object;
+                var message = new $root.CProductInfo_SetRichPresenceLocalization_Request.LanguageSection();
+                if (object.language != null)
+                    message.language = String(object.language);
+                if (object.tokens) {
+                    if (!Array.isArray(object.tokens))
+                        throw TypeError(".CProductInfo_SetRichPresenceLocalization_Request.LanguageSection.tokens: array expected");
+                    message.tokens = [];
+                    for (var i = 0; i < object.tokens.length; ++i) {
+                        if (typeof object.tokens[i] !== "object")
+                            throw TypeError(".CProductInfo_SetRichPresenceLocalization_Request.LanguageSection.tokens: object expected");
+                        message.tokens[i] = $root.CProductInfo_SetRichPresenceLocalization_Request.Token.fromObject(object.tokens[i]);
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from a LanguageSection message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.LanguageSection
+             * @static
+             * @param {CProductInfo_SetRichPresenceLocalization_Request.LanguageSection} message LanguageSection
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            LanguageSection.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.arrays || options.defaults)
+                    object.tokens = [];
+                if (options.defaults)
+                    object.language = "";
+                if (message.language != null && message.hasOwnProperty("language"))
+                    object.language = message.language;
+                if (message.tokens && message.tokens.length) {
+                    object.tokens = [];
+                    for (var j = 0; j < message.tokens.length; ++j)
+                        object.tokens[j] = $root.CProductInfo_SetRichPresenceLocalization_Request.Token.toObject(message.tokens[j], options);
+                }
+                return object;
+            };
+    
+            /**
+             * Converts this LanguageSection to JSON.
+             * @function toJSON
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.LanguageSection
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            LanguageSection.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            return LanguageSection;
+        })();
+    
+        return CProductInfo_SetRichPresenceLocalization_Request;
+    })();
+    
+    $root.CProductInfo_SetRichPresenceLocalization_Response = (function() {
+    
+        /**
+         * Properties of a CProductInfo_SetRichPresenceLocalization_Response.
+         * @exports ICProductInfo_SetRichPresenceLocalization_Response
+         * @interface ICProductInfo_SetRichPresenceLocalization_Response
+         */
+    
+        /**
+         * Constructs a new CProductInfo_SetRichPresenceLocalization_Response.
+         * @exports CProductInfo_SetRichPresenceLocalization_Response
+         * @classdesc Represents a CProductInfo_SetRichPresenceLocalization_Response.
+         * @implements ICProductInfo_SetRichPresenceLocalization_Response
+         * @constructor
+         * @param {ICProductInfo_SetRichPresenceLocalization_Response=} [properties] Properties to set
+         */
+        function CProductInfo_SetRichPresenceLocalization_Response(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * Creates a new CProductInfo_SetRichPresenceLocalization_Response instance using the specified properties.
+         * @function create
+         * @memberof CProductInfo_SetRichPresenceLocalization_Response
+         * @static
+         * @param {ICProductInfo_SetRichPresenceLocalization_Response=} [properties] Properties to set
+         * @returns {CProductInfo_SetRichPresenceLocalization_Response} CProductInfo_SetRichPresenceLocalization_Response instance
+         */
+        CProductInfo_SetRichPresenceLocalization_Response.create = function create(properties) {
+            return new CProductInfo_SetRichPresenceLocalization_Response(properties);
+        };
+    
+        /**
+         * Encodes the specified CProductInfo_SetRichPresenceLocalization_Response message. Does not implicitly {@link CProductInfo_SetRichPresenceLocalization_Response.verify|verify} messages.
+         * @function encode
+         * @memberof CProductInfo_SetRichPresenceLocalization_Response
+         * @static
+         * @param {ICProductInfo_SetRichPresenceLocalization_Response} message CProductInfo_SetRichPresenceLocalization_Response message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CProductInfo_SetRichPresenceLocalization_Response.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CProductInfo_SetRichPresenceLocalization_Response message, length delimited. Does not implicitly {@link CProductInfo_SetRichPresenceLocalization_Response.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CProductInfo_SetRichPresenceLocalization_Response
+         * @static
+         * @param {ICProductInfo_SetRichPresenceLocalization_Response} message CProductInfo_SetRichPresenceLocalization_Response message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CProductInfo_SetRichPresenceLocalization_Response.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CProductInfo_SetRichPresenceLocalization_Response message from the specified reader or buffer.
+         * @function decode
+         * @memberof CProductInfo_SetRichPresenceLocalization_Response
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CProductInfo_SetRichPresenceLocalization_Response} CProductInfo_SetRichPresenceLocalization_Response
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CProductInfo_SetRichPresenceLocalization_Response.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CProductInfo_SetRichPresenceLocalization_Response();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CProductInfo_SetRichPresenceLocalization_Response message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CProductInfo_SetRichPresenceLocalization_Response
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CProductInfo_SetRichPresenceLocalization_Response} CProductInfo_SetRichPresenceLocalization_Response
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CProductInfo_SetRichPresenceLocalization_Response.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CProductInfo_SetRichPresenceLocalization_Response message.
+         * @function verify
+         * @memberof CProductInfo_SetRichPresenceLocalization_Response
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CProductInfo_SetRichPresenceLocalization_Response.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CProductInfo_SetRichPresenceLocalization_Response message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CProductInfo_SetRichPresenceLocalization_Response
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CProductInfo_SetRichPresenceLocalization_Response} CProductInfo_SetRichPresenceLocalization_Response
+         */
+        CProductInfo_SetRichPresenceLocalization_Response.fromObject = function fromObject(object) {
+            if (object instanceof $root.CProductInfo_SetRichPresenceLocalization_Response)
+                return object;
+            return new $root.CProductInfo_SetRichPresenceLocalization_Response();
+        };
+    
+        /**
+         * Creates a plain object from a CProductInfo_SetRichPresenceLocalization_Response message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CProductInfo_SetRichPresenceLocalization_Response
+         * @static
+         * @param {CProductInfo_SetRichPresenceLocalization_Response} message CProductInfo_SetRichPresenceLocalization_Response
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CProductInfo_SetRichPresenceLocalization_Response.toObject = function toObject() {
+            return {};
+        };
+    
+        /**
+         * Converts this CProductInfo_SetRichPresenceLocalization_Response to JSON.
+         * @function toJSON
+         * @memberof CProductInfo_SetRichPresenceLocalization_Response
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CProductInfo_SetRichPresenceLocalization_Response.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return CProductInfo_SetRichPresenceLocalization_Response;
     })();
     
     /**
@@ -22649,6 +23817,8 @@
          * @property {number|null} [rt_identity_linked] CGCSystemMsg_GetAccountDetails_Response rt_identity_linked
          * @property {number|null} [rt_birth_date] CGCSystemMsg_GetAccountDetails_Response rt_birth_date
          * @property {string|null} [txn_country_code] CGCSystemMsg_GetAccountDetails_Response txn_country_code
+         * @property {boolean|null} [has_accepted_china_ssa] CGCSystemMsg_GetAccountDetails_Response has_accepted_china_ssa
+         * @property {boolean|null} [is_banned_steam_china] CGCSystemMsg_GetAccountDetails_Response is_banned_steam_china
          */
     
         /**
@@ -22939,6 +24109,22 @@
         CGCSystemMsg_GetAccountDetails_Response.prototype.txn_country_code = "";
     
         /**
+         * CGCSystemMsg_GetAccountDetails_Response has_accepted_china_ssa.
+         * @member {boolean} has_accepted_china_ssa
+         * @memberof CGCSystemMsg_GetAccountDetails_Response
+         * @instance
+         */
+        CGCSystemMsg_GetAccountDetails_Response.prototype.has_accepted_china_ssa = false;
+    
+        /**
+         * CGCSystemMsg_GetAccountDetails_Response is_banned_steam_china.
+         * @member {boolean} is_banned_steam_china
+         * @memberof CGCSystemMsg_GetAccountDetails_Response
+         * @instance
+         */
+        CGCSystemMsg_GetAccountDetails_Response.prototype.is_banned_steam_china = false;
+    
+        /**
          * Creates a new CGCSystemMsg_GetAccountDetails_Response instance using the specified properties.
          * @function create
          * @memberof CGCSystemMsg_GetAccountDetails_Response
@@ -23030,6 +24216,10 @@
                 writer.uint32(/* id 36, wireType 0 =*/288).uint32(message.rt_birth_date);
             if (message.txn_country_code != null && message.hasOwnProperty("txn_country_code"))
                 writer.uint32(/* id 37, wireType 2 =*/298).string(message.txn_country_code);
+            if (message.has_accepted_china_ssa != null && message.hasOwnProperty("has_accepted_china_ssa"))
+                writer.uint32(/* id 38, wireType 0 =*/304).bool(message.has_accepted_china_ssa);
+            if (message.is_banned_steam_china != null && message.hasOwnProperty("is_banned_steam_china"))
+                writer.uint32(/* id 39, wireType 0 =*/312).bool(message.is_banned_steam_china);
             return writer;
         };
     
@@ -23165,6 +24355,12 @@
                     break;
                 case 37:
                     message.txn_country_code = reader.string();
+                    break;
+                case 38:
+                    message.has_accepted_china_ssa = reader.bool();
+                    break;
+                case 39:
+                    message.is_banned_steam_china = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -23303,6 +24499,12 @@
             if (message.txn_country_code != null && message.hasOwnProperty("txn_country_code"))
                 if (!$util.isString(message.txn_country_code))
                     return "txn_country_code: string expected";
+            if (message.has_accepted_china_ssa != null && message.hasOwnProperty("has_accepted_china_ssa"))
+                if (typeof message.has_accepted_china_ssa !== "boolean")
+                    return "has_accepted_china_ssa: boolean expected";
+            if (message.is_banned_steam_china != null && message.hasOwnProperty("is_banned_steam_china"))
+                if (typeof message.is_banned_steam_china !== "boolean")
+                    return "is_banned_steam_china: boolean expected";
             return null;
         };
     
@@ -23393,6 +24595,10 @@
                 message.rt_birth_date = object.rt_birth_date >>> 0;
             if (object.txn_country_code != null)
                 message.txn_country_code = String(object.txn_country_code);
+            if (object.has_accepted_china_ssa != null)
+                message.has_accepted_china_ssa = Boolean(object.has_accepted_china_ssa);
+            if (object.is_banned_steam_china != null)
+                message.is_banned_steam_china = Boolean(object.is_banned_steam_china);
             return message;
         };
     
@@ -23448,6 +24654,8 @@
                 object.rt_identity_linked = 0;
                 object.rt_birth_date = 0;
                 object.txn_country_code = "";
+                object.has_accepted_china_ssa = false;
+                object.is_banned_steam_china = false;
             }
             if (message.eresult_deprecated != null && message.hasOwnProperty("eresult_deprecated"))
                 object.eresult_deprecated = message.eresult_deprecated;
@@ -23520,6 +24728,10 @@
                 object.rt_birth_date = message.rt_birth_date;
             if (message.txn_country_code != null && message.hasOwnProperty("txn_country_code"))
                 object.txn_country_code = message.txn_country_code;
+            if (message.has_accepted_china_ssa != null && message.hasOwnProperty("has_accepted_china_ssa"))
+                object.has_accepted_china_ssa = message.has_accepted_china_ssa;
+            if (message.is_banned_steam_china != null && message.hasOwnProperty("is_banned_steam_china"))
+                object.is_banned_steam_china = message.is_banned_steam_china;
             return object;
         };
     
@@ -25203,6 +26415,7 @@
          * @exports ICMsgGCMsgMasterSetDirectory_Response
          * @interface ICMsgGCMsgMasterSetDirectory_Response
          * @property {number|null} [eresult] CMsgGCMsgMasterSetDirectory_Response eresult
+         * @property {string|null} [message] CMsgGCMsgMasterSetDirectory_Response message
          */
     
         /**
@@ -25227,6 +26440,14 @@
          * @instance
          */
         CMsgGCMsgMasterSetDirectory_Response.prototype.eresult = 2;
+    
+        /**
+         * CMsgGCMsgMasterSetDirectory_Response message.
+         * @member {string} message
+         * @memberof CMsgGCMsgMasterSetDirectory_Response
+         * @instance
+         */
+        CMsgGCMsgMasterSetDirectory_Response.prototype.message = "";
     
         /**
          * Creates a new CMsgGCMsgMasterSetDirectory_Response instance using the specified properties.
@@ -25254,6 +26475,8 @@
                 writer = $Writer.create();
             if (message.eresult != null && message.hasOwnProperty("eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.eresult);
+            if (message.message != null && message.hasOwnProperty("message"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
             return writer;
         };
     
@@ -25290,6 +26513,9 @@
                 switch (tag >>> 3) {
                 case 1:
                     message.eresult = reader.int32();
+                    break;
+                case 2:
+                    message.message = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -25329,6 +26555,9 @@
             if (message.eresult != null && message.hasOwnProperty("eresult"))
                 if (!$util.isInteger(message.eresult))
                     return "eresult: integer expected";
+            if (message.message != null && message.hasOwnProperty("message"))
+                if (!$util.isString(message.message))
+                    return "message: string expected";
             return null;
         };
     
@@ -25346,6 +26575,8 @@
             var message = new $root.CMsgGCMsgMasterSetDirectory_Response();
             if (object.eresult != null)
                 message.eresult = object.eresult | 0;
+            if (object.message != null)
+                message.message = String(object.message);
             return message;
         };
     
@@ -25362,10 +26593,14 @@
             if (!options)
                 options = {};
             var object = {};
-            if (options.defaults)
+            if (options.defaults) {
                 object.eresult = 2;
+                object.message = "";
+            }
             if (message.eresult != null && message.hasOwnProperty("eresult"))
                 object.eresult = message.eresult;
+            if (message.message != null && message.hasOwnProperty("message"))
+                object.message = message.message;
             return object;
         };
     
@@ -26524,6 +27759,9 @@
          * @interface ICMsgGCGetPartnerAccountLink_Response
          * @property {number|null} [pwid] CMsgGCGetPartnerAccountLink_Response pwid
          * @property {number|null} [nexonid] CMsgGCGetPartnerAccountLink_Response nexonid
+         * @property {number|null} [ageclass] CMsgGCGetPartnerAccountLink_Response ageclass
+         * @property {boolean|null} [id_verified] CMsgGCGetPartnerAccountLink_Response id_verified
+         * @property {boolean|null} [is_adult] CMsgGCGetPartnerAccountLink_Response is_adult
          */
     
         /**
@@ -26558,6 +27796,30 @@
         CMsgGCGetPartnerAccountLink_Response.prototype.nexonid = 0;
     
         /**
+         * CMsgGCGetPartnerAccountLink_Response ageclass.
+         * @member {number} ageclass
+         * @memberof CMsgGCGetPartnerAccountLink_Response
+         * @instance
+         */
+        CMsgGCGetPartnerAccountLink_Response.prototype.ageclass = 0;
+    
+        /**
+         * CMsgGCGetPartnerAccountLink_Response id_verified.
+         * @member {boolean} id_verified
+         * @memberof CMsgGCGetPartnerAccountLink_Response
+         * @instance
+         */
+        CMsgGCGetPartnerAccountLink_Response.prototype.id_verified = true;
+    
+        /**
+         * CMsgGCGetPartnerAccountLink_Response is_adult.
+         * @member {boolean} is_adult
+         * @memberof CMsgGCGetPartnerAccountLink_Response
+         * @instance
+         */
+        CMsgGCGetPartnerAccountLink_Response.prototype.is_adult = false;
+    
+        /**
          * Creates a new CMsgGCGetPartnerAccountLink_Response instance using the specified properties.
          * @function create
          * @memberof CMsgGCGetPartnerAccountLink_Response
@@ -26585,6 +27847,12 @@
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.pwid);
             if (message.nexonid != null && message.hasOwnProperty("nexonid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.nexonid);
+            if (message.ageclass != null && message.hasOwnProperty("ageclass"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.ageclass);
+            if (message.id_verified != null && message.hasOwnProperty("id_verified"))
+                writer.uint32(/* id 4, wireType 0 =*/32).bool(message.id_verified);
+            if (message.is_adult != null && message.hasOwnProperty("is_adult"))
+                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.is_adult);
             return writer;
         };
     
@@ -26624,6 +27892,15 @@
                     break;
                 case 2:
                     message.nexonid = reader.uint32();
+                    break;
+                case 3:
+                    message.ageclass = reader.int32();
+                    break;
+                case 4:
+                    message.id_verified = reader.bool();
+                    break;
+                case 5:
+                    message.is_adult = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -26666,6 +27943,15 @@
             if (message.nexonid != null && message.hasOwnProperty("nexonid"))
                 if (!$util.isInteger(message.nexonid))
                     return "nexonid: integer expected";
+            if (message.ageclass != null && message.hasOwnProperty("ageclass"))
+                if (!$util.isInteger(message.ageclass))
+                    return "ageclass: integer expected";
+            if (message.id_verified != null && message.hasOwnProperty("id_verified"))
+                if (typeof message.id_verified !== "boolean")
+                    return "id_verified: boolean expected";
+            if (message.is_adult != null && message.hasOwnProperty("is_adult"))
+                if (typeof message.is_adult !== "boolean")
+                    return "is_adult: boolean expected";
             return null;
         };
     
@@ -26685,6 +27971,12 @@
                 message.pwid = object.pwid >>> 0;
             if (object.nexonid != null)
                 message.nexonid = object.nexonid >>> 0;
+            if (object.ageclass != null)
+                message.ageclass = object.ageclass | 0;
+            if (object.id_verified != null)
+                message.id_verified = Boolean(object.id_verified);
+            if (object.is_adult != null)
+                message.is_adult = Boolean(object.is_adult);
             return message;
         };
     
@@ -26704,11 +27996,20 @@
             if (options.defaults) {
                 object.pwid = 0;
                 object.nexonid = 0;
+                object.ageclass = 0;
+                object.id_verified = true;
+                object.is_adult = false;
             }
             if (message.pwid != null && message.hasOwnProperty("pwid"))
                 object.pwid = message.pwid;
             if (message.nexonid != null && message.hasOwnProperty("nexonid"))
                 object.nexonid = message.nexonid;
+            if (message.ageclass != null && message.hasOwnProperty("ageclass"))
+                object.ageclass = message.ageclass;
+            if (message.id_verified != null && message.hasOwnProperty("id_verified"))
+                object.id_verified = message.id_verified;
+            if (message.is_adult != null && message.hasOwnProperty("is_adult"))
+                object.is_adult = message.is_adult;
             return object;
         };
     
@@ -31544,6 +32845,439 @@
         })();
     
         return CMsgDPPartnerMicroTxnsResponse;
+    })();
+    
+    $root.CChinaAgreementSessions_StartAgreementSessionInGame_Request = (function() {
+    
+        /**
+         * Properties of a CChinaAgreementSessions_StartAgreementSessionInGame_Request.
+         * @exports ICChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @interface ICChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @property {number|null} [appid] CChinaAgreementSessions_StartAgreementSessionInGame_Request appid
+         * @property {number|Long|null} [steamid] CChinaAgreementSessions_StartAgreementSessionInGame_Request steamid
+         * @property {string|null} [client_ipaddress] CChinaAgreementSessions_StartAgreementSessionInGame_Request client_ipaddress
+         */
+    
+        /**
+         * Constructs a new CChinaAgreementSessions_StartAgreementSessionInGame_Request.
+         * @exports CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @classdesc Represents a CChinaAgreementSessions_StartAgreementSessionInGame_Request.
+         * @implements ICChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @constructor
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Request=} [properties] Properties to set
+         */
+        function CChinaAgreementSessions_StartAgreementSessionInGame_Request(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CChinaAgreementSessions_StartAgreementSessionInGame_Request appid.
+         * @member {number} appid
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.prototype.appid = 0;
+    
+        /**
+         * CChinaAgreementSessions_StartAgreementSessionInGame_Request steamid.
+         * @member {number|Long} steamid
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.prototype.steamid = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+    
+        /**
+         * CChinaAgreementSessions_StartAgreementSessionInGame_Request client_ipaddress.
+         * @member {string} client_ipaddress
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.prototype.client_ipaddress = "";
+    
+        /**
+         * Creates a new CChinaAgreementSessions_StartAgreementSessionInGame_Request instance using the specified properties.
+         * @function create
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Request=} [properties] Properties to set
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Request} CChinaAgreementSessions_StartAgreementSessionInGame_Request instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.create = function create(properties) {
+            return new CChinaAgreementSessions_StartAgreementSessionInGame_Request(properties);
+        };
+    
+        /**
+         * Encodes the specified CChinaAgreementSessions_StartAgreementSessionInGame_Request message. Does not implicitly {@link CChinaAgreementSessions_StartAgreementSessionInGame_Request.verify|verify} messages.
+         * @function encode
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Request} message CChinaAgreementSessions_StartAgreementSessionInGame_Request message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.appid != null && message.hasOwnProperty("appid"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.appid);
+            if (message.steamid != null && message.hasOwnProperty("steamid"))
+                writer.uint32(/* id 2, wireType 1 =*/17).fixed64(message.steamid);
+            if (message.client_ipaddress != null && message.hasOwnProperty("client_ipaddress"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.client_ipaddress);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CChinaAgreementSessions_StartAgreementSessionInGame_Request message, length delimited. Does not implicitly {@link CChinaAgreementSessions_StartAgreementSessionInGame_Request.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Request} message CChinaAgreementSessions_StartAgreementSessionInGame_Request message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CChinaAgreementSessions_StartAgreementSessionInGame_Request message from the specified reader or buffer.
+         * @function decode
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Request} CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CChinaAgreementSessions_StartAgreementSessionInGame_Request();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.appid = reader.uint32();
+                    break;
+                case 2:
+                    message.steamid = reader.fixed64();
+                    break;
+                case 3:
+                    message.client_ipaddress = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CChinaAgreementSessions_StartAgreementSessionInGame_Request message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Request} CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CChinaAgreementSessions_StartAgreementSessionInGame_Request message.
+         * @function verify
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.appid != null && message.hasOwnProperty("appid"))
+                if (!$util.isInteger(message.appid))
+                    return "appid: integer expected";
+            if (message.steamid != null && message.hasOwnProperty("steamid"))
+                if (!$util.isInteger(message.steamid) && !(message.steamid && $util.isInteger(message.steamid.low) && $util.isInteger(message.steamid.high)))
+                    return "steamid: integer|Long expected";
+            if (message.client_ipaddress != null && message.hasOwnProperty("client_ipaddress"))
+                if (!$util.isString(message.client_ipaddress))
+                    return "client_ipaddress: string expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CChinaAgreementSessions_StartAgreementSessionInGame_Request message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Request} CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.fromObject = function fromObject(object) {
+            if (object instanceof $root.CChinaAgreementSessions_StartAgreementSessionInGame_Request)
+                return object;
+            var message = new $root.CChinaAgreementSessions_StartAgreementSessionInGame_Request();
+            if (object.appid != null)
+                message.appid = object.appid >>> 0;
+            if (object.steamid != null)
+                if ($util.Long)
+                    (message.steamid = $util.Long.fromValue(object.steamid)).unsigned = false;
+                else if (typeof object.steamid === "string")
+                    message.steamid = parseInt(object.steamid, 10);
+                else if (typeof object.steamid === "number")
+                    message.steamid = object.steamid;
+                else if (typeof object.steamid === "object")
+                    message.steamid = new $util.LongBits(object.steamid.low >>> 0, object.steamid.high >>> 0).toNumber();
+            if (object.client_ipaddress != null)
+                message.client_ipaddress = String(object.client_ipaddress);
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CChinaAgreementSessions_StartAgreementSessionInGame_Request message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {CChinaAgreementSessions_StartAgreementSessionInGame_Request} message CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.appid = 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, false);
+                    object.steamid = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.steamid = options.longs === String ? "0" : 0;
+                object.client_ipaddress = "";
+            }
+            if (message.appid != null && message.hasOwnProperty("appid"))
+                object.appid = message.appid;
+            if (message.steamid != null && message.hasOwnProperty("steamid"))
+                if (typeof message.steamid === "number")
+                    object.steamid = options.longs === String ? String(message.steamid) : message.steamid;
+                else
+                    object.steamid = options.longs === String ? $util.Long.prototype.toString.call(message.steamid) : options.longs === Number ? new $util.LongBits(message.steamid.low >>> 0, message.steamid.high >>> 0).toNumber() : message.steamid;
+            if (message.client_ipaddress != null && message.hasOwnProperty("client_ipaddress"))
+                object.client_ipaddress = message.client_ipaddress;
+            return object;
+        };
+    
+        /**
+         * Converts this CChinaAgreementSessions_StartAgreementSessionInGame_Request to JSON.
+         * @function toJSON
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return CChinaAgreementSessions_StartAgreementSessionInGame_Request;
+    })();
+    
+    $root.CChinaAgreementSessions_StartAgreementSessionInGame_Response = (function() {
+    
+        /**
+         * Properties of a CChinaAgreementSessions_StartAgreementSessionInGame_Response.
+         * @exports ICChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @interface ICChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @property {string|null} [agreement_url] CChinaAgreementSessions_StartAgreementSessionInGame_Response agreement_url
+         */
+    
+        /**
+         * Constructs a new CChinaAgreementSessions_StartAgreementSessionInGame_Response.
+         * @exports CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @classdesc Represents a CChinaAgreementSessions_StartAgreementSessionInGame_Response.
+         * @implements ICChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @constructor
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Response=} [properties] Properties to set
+         */
+        function CChinaAgreementSessions_StartAgreementSessionInGame_Response(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CChinaAgreementSessions_StartAgreementSessionInGame_Response agreement_url.
+         * @member {string} agreement_url
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.prototype.agreement_url = "";
+    
+        /**
+         * Creates a new CChinaAgreementSessions_StartAgreementSessionInGame_Response instance using the specified properties.
+         * @function create
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Response=} [properties] Properties to set
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Response} CChinaAgreementSessions_StartAgreementSessionInGame_Response instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.create = function create(properties) {
+            return new CChinaAgreementSessions_StartAgreementSessionInGame_Response(properties);
+        };
+    
+        /**
+         * Encodes the specified CChinaAgreementSessions_StartAgreementSessionInGame_Response message. Does not implicitly {@link CChinaAgreementSessions_StartAgreementSessionInGame_Response.verify|verify} messages.
+         * @function encode
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Response} message CChinaAgreementSessions_StartAgreementSessionInGame_Response message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.agreement_url != null && message.hasOwnProperty("agreement_url"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.agreement_url);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CChinaAgreementSessions_StartAgreementSessionInGame_Response message, length delimited. Does not implicitly {@link CChinaAgreementSessions_StartAgreementSessionInGame_Response.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Response} message CChinaAgreementSessions_StartAgreementSessionInGame_Response message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CChinaAgreementSessions_StartAgreementSessionInGame_Response message from the specified reader or buffer.
+         * @function decode
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Response} CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CChinaAgreementSessions_StartAgreementSessionInGame_Response();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.agreement_url = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CChinaAgreementSessions_StartAgreementSessionInGame_Response message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Response} CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CChinaAgreementSessions_StartAgreementSessionInGame_Response message.
+         * @function verify
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.agreement_url != null && message.hasOwnProperty("agreement_url"))
+                if (!$util.isString(message.agreement_url))
+                    return "agreement_url: string expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CChinaAgreementSessions_StartAgreementSessionInGame_Response message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Response} CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.fromObject = function fromObject(object) {
+            if (object instanceof $root.CChinaAgreementSessions_StartAgreementSessionInGame_Response)
+                return object;
+            var message = new $root.CChinaAgreementSessions_StartAgreementSessionInGame_Response();
+            if (object.agreement_url != null)
+                message.agreement_url = String(object.agreement_url);
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CChinaAgreementSessions_StartAgreementSessionInGame_Response message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {CChinaAgreementSessions_StartAgreementSessionInGame_Response} message CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults)
+                object.agreement_url = "";
+            if (message.agreement_url != null && message.hasOwnProperty("agreement_url"))
+                object.agreement_url = message.agreement_url;
+            return object;
+        };
+    
+        /**
+         * Converts this CChinaAgreementSessions_StartAgreementSessionInGame_Response to JSON.
+         * @function toJSON
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return CChinaAgreementSessions_StartAgreementSessionInGame_Response;
     })();
     
     $root.google = (function() {

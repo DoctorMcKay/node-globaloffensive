@@ -32434,6 +32434,8 @@
          * @property {number|null} [rt_identity_linked] CGCSystemMsg_GetAccountDetails_Response rt_identity_linked
          * @property {number|null} [rt_birth_date] CGCSystemMsg_GetAccountDetails_Response rt_birth_date
          * @property {string|null} [txn_country_code] CGCSystemMsg_GetAccountDetails_Response txn_country_code
+         * @property {boolean|null} [has_accepted_china_ssa] CGCSystemMsg_GetAccountDetails_Response has_accepted_china_ssa
+         * @property {boolean|null} [is_banned_steam_china] CGCSystemMsg_GetAccountDetails_Response is_banned_steam_china
          */
     
         /**
@@ -32724,6 +32726,22 @@
         CGCSystemMsg_GetAccountDetails_Response.prototype.txn_country_code = "";
     
         /**
+         * CGCSystemMsg_GetAccountDetails_Response has_accepted_china_ssa.
+         * @member {boolean} has_accepted_china_ssa
+         * @memberof CGCSystemMsg_GetAccountDetails_Response
+         * @instance
+         */
+        CGCSystemMsg_GetAccountDetails_Response.prototype.has_accepted_china_ssa = false;
+    
+        /**
+         * CGCSystemMsg_GetAccountDetails_Response is_banned_steam_china.
+         * @member {boolean} is_banned_steam_china
+         * @memberof CGCSystemMsg_GetAccountDetails_Response
+         * @instance
+         */
+        CGCSystemMsg_GetAccountDetails_Response.prototype.is_banned_steam_china = false;
+    
+        /**
          * Creates a new CGCSystemMsg_GetAccountDetails_Response instance using the specified properties.
          * @function create
          * @memberof CGCSystemMsg_GetAccountDetails_Response
@@ -32815,6 +32833,10 @@
                 writer.uint32(/* id 36, wireType 0 =*/288).uint32(message.rt_birth_date);
             if (message.txn_country_code != null && message.hasOwnProperty("txn_country_code"))
                 writer.uint32(/* id 37, wireType 2 =*/298).string(message.txn_country_code);
+            if (message.has_accepted_china_ssa != null && message.hasOwnProperty("has_accepted_china_ssa"))
+                writer.uint32(/* id 38, wireType 0 =*/304).bool(message.has_accepted_china_ssa);
+            if (message.is_banned_steam_china != null && message.hasOwnProperty("is_banned_steam_china"))
+                writer.uint32(/* id 39, wireType 0 =*/312).bool(message.is_banned_steam_china);
             return writer;
         };
     
@@ -32950,6 +32972,12 @@
                     break;
                 case 37:
                     message.txn_country_code = reader.string();
+                    break;
+                case 38:
+                    message.has_accepted_china_ssa = reader.bool();
+                    break;
+                case 39:
+                    message.is_banned_steam_china = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -33088,6 +33116,12 @@
             if (message.txn_country_code != null && message.hasOwnProperty("txn_country_code"))
                 if (!$util.isString(message.txn_country_code))
                     return "txn_country_code: string expected";
+            if (message.has_accepted_china_ssa != null && message.hasOwnProperty("has_accepted_china_ssa"))
+                if (typeof message.has_accepted_china_ssa !== "boolean")
+                    return "has_accepted_china_ssa: boolean expected";
+            if (message.is_banned_steam_china != null && message.hasOwnProperty("is_banned_steam_china"))
+                if (typeof message.is_banned_steam_china !== "boolean")
+                    return "is_banned_steam_china: boolean expected";
             return null;
         };
     
@@ -33178,6 +33212,10 @@
                 message.rt_birth_date = object.rt_birth_date >>> 0;
             if (object.txn_country_code != null)
                 message.txn_country_code = String(object.txn_country_code);
+            if (object.has_accepted_china_ssa != null)
+                message.has_accepted_china_ssa = Boolean(object.has_accepted_china_ssa);
+            if (object.is_banned_steam_china != null)
+                message.is_banned_steam_china = Boolean(object.is_banned_steam_china);
             return message;
         };
     
@@ -33233,6 +33271,8 @@
                 object.rt_identity_linked = 0;
                 object.rt_birth_date = 0;
                 object.txn_country_code = "";
+                object.has_accepted_china_ssa = false;
+                object.is_banned_steam_china = false;
             }
             if (message.eresult_deprecated != null && message.hasOwnProperty("eresult_deprecated"))
                 object.eresult_deprecated = message.eresult_deprecated;
@@ -33305,6 +33345,10 @@
                 object.rt_birth_date = message.rt_birth_date;
             if (message.txn_country_code != null && message.hasOwnProperty("txn_country_code"))
                 object.txn_country_code = message.txn_country_code;
+            if (message.has_accepted_china_ssa != null && message.hasOwnProperty("has_accepted_china_ssa"))
+                object.has_accepted_china_ssa = message.has_accepted_china_ssa;
+            if (message.is_banned_steam_china != null && message.hasOwnProperty("is_banned_steam_china"))
+                object.is_banned_steam_china = message.is_banned_steam_china;
             return object;
         };
     
@@ -34988,6 +35032,7 @@
          * @exports ICMsgGCMsgMasterSetDirectory_Response
          * @interface ICMsgGCMsgMasterSetDirectory_Response
          * @property {number|null} [eresult] CMsgGCMsgMasterSetDirectory_Response eresult
+         * @property {string|null} [message] CMsgGCMsgMasterSetDirectory_Response message
          */
     
         /**
@@ -35012,6 +35057,14 @@
          * @instance
          */
         CMsgGCMsgMasterSetDirectory_Response.prototype.eresult = 2;
+    
+        /**
+         * CMsgGCMsgMasterSetDirectory_Response message.
+         * @member {string} message
+         * @memberof CMsgGCMsgMasterSetDirectory_Response
+         * @instance
+         */
+        CMsgGCMsgMasterSetDirectory_Response.prototype.message = "";
     
         /**
          * Creates a new CMsgGCMsgMasterSetDirectory_Response instance using the specified properties.
@@ -35039,6 +35092,8 @@
                 writer = $Writer.create();
             if (message.eresult != null && message.hasOwnProperty("eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.eresult);
+            if (message.message != null && message.hasOwnProperty("message"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
             return writer;
         };
     
@@ -35075,6 +35130,9 @@
                 switch (tag >>> 3) {
                 case 1:
                     message.eresult = reader.int32();
+                    break;
+                case 2:
+                    message.message = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -35114,6 +35172,9 @@
             if (message.eresult != null && message.hasOwnProperty("eresult"))
                 if (!$util.isInteger(message.eresult))
                     return "eresult: integer expected";
+            if (message.message != null && message.hasOwnProperty("message"))
+                if (!$util.isString(message.message))
+                    return "message: string expected";
             return null;
         };
     
@@ -35131,6 +35192,8 @@
             var message = new $root.CMsgGCMsgMasterSetDirectory_Response();
             if (object.eresult != null)
                 message.eresult = object.eresult | 0;
+            if (object.message != null)
+                message.message = String(object.message);
             return message;
         };
     
@@ -35147,10 +35210,14 @@
             if (!options)
                 options = {};
             var object = {};
-            if (options.defaults)
+            if (options.defaults) {
                 object.eresult = 2;
+                object.message = "";
+            }
             if (message.eresult != null && message.hasOwnProperty("eresult"))
                 object.eresult = message.eresult;
+            if (message.message != null && message.hasOwnProperty("message"))
+                object.message = message.message;
             return object;
         };
     
@@ -36309,6 +36376,9 @@
          * @interface ICMsgGCGetPartnerAccountLink_Response
          * @property {number|null} [pwid] CMsgGCGetPartnerAccountLink_Response pwid
          * @property {number|null} [nexonid] CMsgGCGetPartnerAccountLink_Response nexonid
+         * @property {number|null} [ageclass] CMsgGCGetPartnerAccountLink_Response ageclass
+         * @property {boolean|null} [id_verified] CMsgGCGetPartnerAccountLink_Response id_verified
+         * @property {boolean|null} [is_adult] CMsgGCGetPartnerAccountLink_Response is_adult
          */
     
         /**
@@ -36343,6 +36413,30 @@
         CMsgGCGetPartnerAccountLink_Response.prototype.nexonid = 0;
     
         /**
+         * CMsgGCGetPartnerAccountLink_Response ageclass.
+         * @member {number} ageclass
+         * @memberof CMsgGCGetPartnerAccountLink_Response
+         * @instance
+         */
+        CMsgGCGetPartnerAccountLink_Response.prototype.ageclass = 0;
+    
+        /**
+         * CMsgGCGetPartnerAccountLink_Response id_verified.
+         * @member {boolean} id_verified
+         * @memberof CMsgGCGetPartnerAccountLink_Response
+         * @instance
+         */
+        CMsgGCGetPartnerAccountLink_Response.prototype.id_verified = true;
+    
+        /**
+         * CMsgGCGetPartnerAccountLink_Response is_adult.
+         * @member {boolean} is_adult
+         * @memberof CMsgGCGetPartnerAccountLink_Response
+         * @instance
+         */
+        CMsgGCGetPartnerAccountLink_Response.prototype.is_adult = false;
+    
+        /**
          * Creates a new CMsgGCGetPartnerAccountLink_Response instance using the specified properties.
          * @function create
          * @memberof CMsgGCGetPartnerAccountLink_Response
@@ -36370,6 +36464,12 @@
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.pwid);
             if (message.nexonid != null && message.hasOwnProperty("nexonid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.nexonid);
+            if (message.ageclass != null && message.hasOwnProperty("ageclass"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.ageclass);
+            if (message.id_verified != null && message.hasOwnProperty("id_verified"))
+                writer.uint32(/* id 4, wireType 0 =*/32).bool(message.id_verified);
+            if (message.is_adult != null && message.hasOwnProperty("is_adult"))
+                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.is_adult);
             return writer;
         };
     
@@ -36409,6 +36509,15 @@
                     break;
                 case 2:
                     message.nexonid = reader.uint32();
+                    break;
+                case 3:
+                    message.ageclass = reader.int32();
+                    break;
+                case 4:
+                    message.id_verified = reader.bool();
+                    break;
+                case 5:
+                    message.is_adult = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -36451,6 +36560,15 @@
             if (message.nexonid != null && message.hasOwnProperty("nexonid"))
                 if (!$util.isInteger(message.nexonid))
                     return "nexonid: integer expected";
+            if (message.ageclass != null && message.hasOwnProperty("ageclass"))
+                if (!$util.isInteger(message.ageclass))
+                    return "ageclass: integer expected";
+            if (message.id_verified != null && message.hasOwnProperty("id_verified"))
+                if (typeof message.id_verified !== "boolean")
+                    return "id_verified: boolean expected";
+            if (message.is_adult != null && message.hasOwnProperty("is_adult"))
+                if (typeof message.is_adult !== "boolean")
+                    return "is_adult: boolean expected";
             return null;
         };
     
@@ -36470,6 +36588,12 @@
                 message.pwid = object.pwid >>> 0;
             if (object.nexonid != null)
                 message.nexonid = object.nexonid >>> 0;
+            if (object.ageclass != null)
+                message.ageclass = object.ageclass | 0;
+            if (object.id_verified != null)
+                message.id_verified = Boolean(object.id_verified);
+            if (object.is_adult != null)
+                message.is_adult = Boolean(object.is_adult);
             return message;
         };
     
@@ -36489,11 +36613,20 @@
             if (options.defaults) {
                 object.pwid = 0;
                 object.nexonid = 0;
+                object.ageclass = 0;
+                object.id_verified = true;
+                object.is_adult = false;
             }
             if (message.pwid != null && message.hasOwnProperty("pwid"))
                 object.pwid = message.pwid;
             if (message.nexonid != null && message.hasOwnProperty("nexonid"))
                 object.nexonid = message.nexonid;
+            if (message.ageclass != null && message.hasOwnProperty("ageclass"))
+                object.ageclass = message.ageclass;
+            if (message.id_verified != null && message.hasOwnProperty("id_verified"))
+                object.id_verified = message.id_verified;
+            if (message.is_adult != null && message.hasOwnProperty("is_adult"))
+                object.is_adult = message.is_adult;
             return object;
         };
     
@@ -41329,6 +41462,439 @@
         })();
     
         return CMsgDPPartnerMicroTxnsResponse;
+    })();
+    
+    $root.CChinaAgreementSessions_StartAgreementSessionInGame_Request = (function() {
+    
+        /**
+         * Properties of a CChinaAgreementSessions_StartAgreementSessionInGame_Request.
+         * @exports ICChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @interface ICChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @property {number|null} [appid] CChinaAgreementSessions_StartAgreementSessionInGame_Request appid
+         * @property {number|Long|null} [steamid] CChinaAgreementSessions_StartAgreementSessionInGame_Request steamid
+         * @property {string|null} [client_ipaddress] CChinaAgreementSessions_StartAgreementSessionInGame_Request client_ipaddress
+         */
+    
+        /**
+         * Constructs a new CChinaAgreementSessions_StartAgreementSessionInGame_Request.
+         * @exports CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @classdesc Represents a CChinaAgreementSessions_StartAgreementSessionInGame_Request.
+         * @implements ICChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @constructor
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Request=} [properties] Properties to set
+         */
+        function CChinaAgreementSessions_StartAgreementSessionInGame_Request(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CChinaAgreementSessions_StartAgreementSessionInGame_Request appid.
+         * @member {number} appid
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.prototype.appid = 0;
+    
+        /**
+         * CChinaAgreementSessions_StartAgreementSessionInGame_Request steamid.
+         * @member {number|Long} steamid
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.prototype.steamid = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+    
+        /**
+         * CChinaAgreementSessions_StartAgreementSessionInGame_Request client_ipaddress.
+         * @member {string} client_ipaddress
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.prototype.client_ipaddress = "";
+    
+        /**
+         * Creates a new CChinaAgreementSessions_StartAgreementSessionInGame_Request instance using the specified properties.
+         * @function create
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Request=} [properties] Properties to set
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Request} CChinaAgreementSessions_StartAgreementSessionInGame_Request instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.create = function create(properties) {
+            return new CChinaAgreementSessions_StartAgreementSessionInGame_Request(properties);
+        };
+    
+        /**
+         * Encodes the specified CChinaAgreementSessions_StartAgreementSessionInGame_Request message. Does not implicitly {@link CChinaAgreementSessions_StartAgreementSessionInGame_Request.verify|verify} messages.
+         * @function encode
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Request} message CChinaAgreementSessions_StartAgreementSessionInGame_Request message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.appid != null && message.hasOwnProperty("appid"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.appid);
+            if (message.steamid != null && message.hasOwnProperty("steamid"))
+                writer.uint32(/* id 2, wireType 1 =*/17).fixed64(message.steamid);
+            if (message.client_ipaddress != null && message.hasOwnProperty("client_ipaddress"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.client_ipaddress);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CChinaAgreementSessions_StartAgreementSessionInGame_Request message, length delimited. Does not implicitly {@link CChinaAgreementSessions_StartAgreementSessionInGame_Request.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Request} message CChinaAgreementSessions_StartAgreementSessionInGame_Request message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CChinaAgreementSessions_StartAgreementSessionInGame_Request message from the specified reader or buffer.
+         * @function decode
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Request} CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CChinaAgreementSessions_StartAgreementSessionInGame_Request();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.appid = reader.uint32();
+                    break;
+                case 2:
+                    message.steamid = reader.fixed64();
+                    break;
+                case 3:
+                    message.client_ipaddress = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CChinaAgreementSessions_StartAgreementSessionInGame_Request message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Request} CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CChinaAgreementSessions_StartAgreementSessionInGame_Request message.
+         * @function verify
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.appid != null && message.hasOwnProperty("appid"))
+                if (!$util.isInteger(message.appid))
+                    return "appid: integer expected";
+            if (message.steamid != null && message.hasOwnProperty("steamid"))
+                if (!$util.isInteger(message.steamid) && !(message.steamid && $util.isInteger(message.steamid.low) && $util.isInteger(message.steamid.high)))
+                    return "steamid: integer|Long expected";
+            if (message.client_ipaddress != null && message.hasOwnProperty("client_ipaddress"))
+                if (!$util.isString(message.client_ipaddress))
+                    return "client_ipaddress: string expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CChinaAgreementSessions_StartAgreementSessionInGame_Request message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Request} CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.fromObject = function fromObject(object) {
+            if (object instanceof $root.CChinaAgreementSessions_StartAgreementSessionInGame_Request)
+                return object;
+            var message = new $root.CChinaAgreementSessions_StartAgreementSessionInGame_Request();
+            if (object.appid != null)
+                message.appid = object.appid >>> 0;
+            if (object.steamid != null)
+                if ($util.Long)
+                    (message.steamid = $util.Long.fromValue(object.steamid)).unsigned = false;
+                else if (typeof object.steamid === "string")
+                    message.steamid = parseInt(object.steamid, 10);
+                else if (typeof object.steamid === "number")
+                    message.steamid = object.steamid;
+                else if (typeof object.steamid === "object")
+                    message.steamid = new $util.LongBits(object.steamid.low >>> 0, object.steamid.high >>> 0).toNumber();
+            if (object.client_ipaddress != null)
+                message.client_ipaddress = String(object.client_ipaddress);
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CChinaAgreementSessions_StartAgreementSessionInGame_Request message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {CChinaAgreementSessions_StartAgreementSessionInGame_Request} message CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.appid = 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, false);
+                    object.steamid = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.steamid = options.longs === String ? "0" : 0;
+                object.client_ipaddress = "";
+            }
+            if (message.appid != null && message.hasOwnProperty("appid"))
+                object.appid = message.appid;
+            if (message.steamid != null && message.hasOwnProperty("steamid"))
+                if (typeof message.steamid === "number")
+                    object.steamid = options.longs === String ? String(message.steamid) : message.steamid;
+                else
+                    object.steamid = options.longs === String ? $util.Long.prototype.toString.call(message.steamid) : options.longs === Number ? new $util.LongBits(message.steamid.low >>> 0, message.steamid.high >>> 0).toNumber() : message.steamid;
+            if (message.client_ipaddress != null && message.hasOwnProperty("client_ipaddress"))
+                object.client_ipaddress = message.client_ipaddress;
+            return object;
+        };
+    
+        /**
+         * Converts this CChinaAgreementSessions_StartAgreementSessionInGame_Request to JSON.
+         * @function toJSON
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return CChinaAgreementSessions_StartAgreementSessionInGame_Request;
+    })();
+    
+    $root.CChinaAgreementSessions_StartAgreementSessionInGame_Response = (function() {
+    
+        /**
+         * Properties of a CChinaAgreementSessions_StartAgreementSessionInGame_Response.
+         * @exports ICChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @interface ICChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @property {string|null} [agreement_url] CChinaAgreementSessions_StartAgreementSessionInGame_Response agreement_url
+         */
+    
+        /**
+         * Constructs a new CChinaAgreementSessions_StartAgreementSessionInGame_Response.
+         * @exports CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @classdesc Represents a CChinaAgreementSessions_StartAgreementSessionInGame_Response.
+         * @implements ICChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @constructor
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Response=} [properties] Properties to set
+         */
+        function CChinaAgreementSessions_StartAgreementSessionInGame_Response(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CChinaAgreementSessions_StartAgreementSessionInGame_Response agreement_url.
+         * @member {string} agreement_url
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.prototype.agreement_url = "";
+    
+        /**
+         * Creates a new CChinaAgreementSessions_StartAgreementSessionInGame_Response instance using the specified properties.
+         * @function create
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Response=} [properties] Properties to set
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Response} CChinaAgreementSessions_StartAgreementSessionInGame_Response instance
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.create = function create(properties) {
+            return new CChinaAgreementSessions_StartAgreementSessionInGame_Response(properties);
+        };
+    
+        /**
+         * Encodes the specified CChinaAgreementSessions_StartAgreementSessionInGame_Response message. Does not implicitly {@link CChinaAgreementSessions_StartAgreementSessionInGame_Response.verify|verify} messages.
+         * @function encode
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Response} message CChinaAgreementSessions_StartAgreementSessionInGame_Response message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.agreement_url != null && message.hasOwnProperty("agreement_url"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.agreement_url);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CChinaAgreementSessions_StartAgreementSessionInGame_Response message, length delimited. Does not implicitly {@link CChinaAgreementSessions_StartAgreementSessionInGame_Response.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {ICChinaAgreementSessions_StartAgreementSessionInGame_Response} message CChinaAgreementSessions_StartAgreementSessionInGame_Response message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CChinaAgreementSessions_StartAgreementSessionInGame_Response message from the specified reader or buffer.
+         * @function decode
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Response} CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CChinaAgreementSessions_StartAgreementSessionInGame_Response();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.agreement_url = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CChinaAgreementSessions_StartAgreementSessionInGame_Response message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Response} CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CChinaAgreementSessions_StartAgreementSessionInGame_Response message.
+         * @function verify
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.agreement_url != null && message.hasOwnProperty("agreement_url"))
+                if (!$util.isString(message.agreement_url))
+                    return "agreement_url: string expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CChinaAgreementSessions_StartAgreementSessionInGame_Response message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CChinaAgreementSessions_StartAgreementSessionInGame_Response} CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.fromObject = function fromObject(object) {
+            if (object instanceof $root.CChinaAgreementSessions_StartAgreementSessionInGame_Response)
+                return object;
+            var message = new $root.CChinaAgreementSessions_StartAgreementSessionInGame_Response();
+            if (object.agreement_url != null)
+                message.agreement_url = String(object.agreement_url);
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CChinaAgreementSessions_StartAgreementSessionInGame_Response message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {CChinaAgreementSessions_StartAgreementSessionInGame_Response} message CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults)
+                object.agreement_url = "";
+            if (message.agreement_url != null && message.hasOwnProperty("agreement_url"))
+                object.agreement_url = message.agreement_url;
+            return object;
+        };
+    
+        /**
+         * Converts this CChinaAgreementSessions_StartAgreementSessionInGame_Response to JSON.
+         * @function toJSON
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return CChinaAgreementSessions_StartAgreementSessionInGame_Response;
     })();
     
     $root.google = (function() {

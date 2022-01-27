@@ -109,6 +109,9 @@
      * @property {number} k_EGCMsgGetGamePersonalDataEntriesResponse=527 k_EGCMsgGetGamePersonalDataEntriesResponse value
      * @property {number} k_EGCMsgTerminateGamePersonalDataEntriesRequest=528 k_EGCMsgTerminateGamePersonalDataEntriesRequest value
      * @property {number} k_EGCMsgTerminateGamePersonalDataEntriesResponse=529 k_EGCMsgTerminateGamePersonalDataEntriesResponse value
+     * @property {number} k_EGCMsgRecurringSubscriptionStatusChange=530 k_EGCMsgRecurringSubscriptionStatusChange value
+     * @property {number} k_EGCMsgDirectServiceMethod=531 k_EGCMsgDirectServiceMethod value
+     * @property {number} k_EGCMsgDirectServiceMethodResponse=532 k_EGCMsgDirectServiceMethodResponse value
      */
     $root.EGCSystemMsg = (function() {
         var valuesById = {}, values = Object.create(valuesById);
@@ -201,6 +204,9 @@
         values[valuesById[527] = "k_EGCMsgGetGamePersonalDataEntriesResponse"] = 527;
         values[valuesById[528] = "k_EGCMsgTerminateGamePersonalDataEntriesRequest"] = 528;
         values[valuesById[529] = "k_EGCMsgTerminateGamePersonalDataEntriesResponse"] = 529;
+        values[valuesById[530] = "k_EGCMsgRecurringSubscriptionStatusChange"] = 530;
+        values[valuesById[531] = "k_EGCMsgDirectServiceMethod"] = 531;
+        values[valuesById[532] = "k_EGCMsgDirectServiceMethodResponse"] = 532;
         return values;
     })();
     
@@ -1194,6 +1200,288 @@
         };
     
         return CMsgGCHInviteUserToLobby;
+    })();
+    
+    $root.CMsgGCHRecurringSubscriptionStatusChange = (function() {
+    
+        /**
+         * Properties of a CMsgGCHRecurringSubscriptionStatusChange.
+         * @exports ICMsgGCHRecurringSubscriptionStatusChange
+         * @interface ICMsgGCHRecurringSubscriptionStatusChange
+         * @property {number|Long|null} [steamid] CMsgGCHRecurringSubscriptionStatusChange steamid
+         * @property {number|null} [appid] CMsgGCHRecurringSubscriptionStatusChange appid
+         * @property {number|Long|null} [agreementid] CMsgGCHRecurringSubscriptionStatusChange agreementid
+         * @property {boolean|null} [active] CMsgGCHRecurringSubscriptionStatusChange active
+         */
+    
+        /**
+         * Constructs a new CMsgGCHRecurringSubscriptionStatusChange.
+         * @exports CMsgGCHRecurringSubscriptionStatusChange
+         * @classdesc Represents a CMsgGCHRecurringSubscriptionStatusChange.
+         * @implements ICMsgGCHRecurringSubscriptionStatusChange
+         * @constructor
+         * @param {ICMsgGCHRecurringSubscriptionStatusChange=} [properties] Properties to set
+         */
+        function CMsgGCHRecurringSubscriptionStatusChange(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgGCHRecurringSubscriptionStatusChange steamid.
+         * @member {number|Long} steamid
+         * @memberof CMsgGCHRecurringSubscriptionStatusChange
+         * @instance
+         */
+        CMsgGCHRecurringSubscriptionStatusChange.prototype.steamid = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+    
+        /**
+         * CMsgGCHRecurringSubscriptionStatusChange appid.
+         * @member {number} appid
+         * @memberof CMsgGCHRecurringSubscriptionStatusChange
+         * @instance
+         */
+        CMsgGCHRecurringSubscriptionStatusChange.prototype.appid = 0;
+    
+        /**
+         * CMsgGCHRecurringSubscriptionStatusChange agreementid.
+         * @member {number|Long} agreementid
+         * @memberof CMsgGCHRecurringSubscriptionStatusChange
+         * @instance
+         */
+        CMsgGCHRecurringSubscriptionStatusChange.prototype.agreementid = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+    
+        /**
+         * CMsgGCHRecurringSubscriptionStatusChange active.
+         * @member {boolean} active
+         * @memberof CMsgGCHRecurringSubscriptionStatusChange
+         * @instance
+         */
+        CMsgGCHRecurringSubscriptionStatusChange.prototype.active = false;
+    
+        /**
+         * Creates a new CMsgGCHRecurringSubscriptionStatusChange instance using the specified properties.
+         * @function create
+         * @memberof CMsgGCHRecurringSubscriptionStatusChange
+         * @static
+         * @param {ICMsgGCHRecurringSubscriptionStatusChange=} [properties] Properties to set
+         * @returns {CMsgGCHRecurringSubscriptionStatusChange} CMsgGCHRecurringSubscriptionStatusChange instance
+         */
+        CMsgGCHRecurringSubscriptionStatusChange.create = function create(properties) {
+            return new CMsgGCHRecurringSubscriptionStatusChange(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgGCHRecurringSubscriptionStatusChange message. Does not implicitly {@link CMsgGCHRecurringSubscriptionStatusChange.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgGCHRecurringSubscriptionStatusChange
+         * @static
+         * @param {ICMsgGCHRecurringSubscriptionStatusChange} message CMsgGCHRecurringSubscriptionStatusChange message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCHRecurringSubscriptionStatusChange.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.steamid != null && message.hasOwnProperty("steamid"))
+                writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
+            if (message.appid != null && message.hasOwnProperty("appid"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.appid);
+            if (message.agreementid != null && message.hasOwnProperty("agreementid"))
+                writer.uint32(/* id 3, wireType 1 =*/25).fixed64(message.agreementid);
+            if (message.active != null && message.hasOwnProperty("active"))
+                writer.uint32(/* id 4, wireType 0 =*/32).bool(message.active);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgGCHRecurringSubscriptionStatusChange message, length delimited. Does not implicitly {@link CMsgGCHRecurringSubscriptionStatusChange.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgGCHRecurringSubscriptionStatusChange
+         * @static
+         * @param {ICMsgGCHRecurringSubscriptionStatusChange} message CMsgGCHRecurringSubscriptionStatusChange message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCHRecurringSubscriptionStatusChange.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgGCHRecurringSubscriptionStatusChange message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgGCHRecurringSubscriptionStatusChange
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgGCHRecurringSubscriptionStatusChange} CMsgGCHRecurringSubscriptionStatusChange
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCHRecurringSubscriptionStatusChange.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCHRecurringSubscriptionStatusChange();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.steamid = reader.fixed64();
+                    break;
+                case 2:
+                    message.appid = reader.uint32();
+                    break;
+                case 3:
+                    message.agreementid = reader.fixed64();
+                    break;
+                case 4:
+                    message.active = reader.bool();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgGCHRecurringSubscriptionStatusChange message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgGCHRecurringSubscriptionStatusChange
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgGCHRecurringSubscriptionStatusChange} CMsgGCHRecurringSubscriptionStatusChange
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCHRecurringSubscriptionStatusChange.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgGCHRecurringSubscriptionStatusChange message.
+         * @function verify
+         * @memberof CMsgGCHRecurringSubscriptionStatusChange
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgGCHRecurringSubscriptionStatusChange.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.steamid != null && message.hasOwnProperty("steamid"))
+                if (!$util.isInteger(message.steamid) && !(message.steamid && $util.isInteger(message.steamid.low) && $util.isInteger(message.steamid.high)))
+                    return "steamid: integer|Long expected";
+            if (message.appid != null && message.hasOwnProperty("appid"))
+                if (!$util.isInteger(message.appid))
+                    return "appid: integer expected";
+            if (message.agreementid != null && message.hasOwnProperty("agreementid"))
+                if (!$util.isInteger(message.agreementid) && !(message.agreementid && $util.isInteger(message.agreementid.low) && $util.isInteger(message.agreementid.high)))
+                    return "agreementid: integer|Long expected";
+            if (message.active != null && message.hasOwnProperty("active"))
+                if (typeof message.active !== "boolean")
+                    return "active: boolean expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgGCHRecurringSubscriptionStatusChange message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgGCHRecurringSubscriptionStatusChange
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgGCHRecurringSubscriptionStatusChange} CMsgGCHRecurringSubscriptionStatusChange
+         */
+        CMsgGCHRecurringSubscriptionStatusChange.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgGCHRecurringSubscriptionStatusChange)
+                return object;
+            var message = new $root.CMsgGCHRecurringSubscriptionStatusChange();
+            if (object.steamid != null)
+                if ($util.Long)
+                    (message.steamid = $util.Long.fromValue(object.steamid)).unsigned = false;
+                else if (typeof object.steamid === "string")
+                    message.steamid = parseInt(object.steamid, 10);
+                else if (typeof object.steamid === "number")
+                    message.steamid = object.steamid;
+                else if (typeof object.steamid === "object")
+                    message.steamid = new $util.LongBits(object.steamid.low >>> 0, object.steamid.high >>> 0).toNumber();
+            if (object.appid != null)
+                message.appid = object.appid >>> 0;
+            if (object.agreementid != null)
+                if ($util.Long)
+                    (message.agreementid = $util.Long.fromValue(object.agreementid)).unsigned = false;
+                else if (typeof object.agreementid === "string")
+                    message.agreementid = parseInt(object.agreementid, 10);
+                else if (typeof object.agreementid === "number")
+                    message.agreementid = object.agreementid;
+                else if (typeof object.agreementid === "object")
+                    message.agreementid = new $util.LongBits(object.agreementid.low >>> 0, object.agreementid.high >>> 0).toNumber();
+            if (object.active != null)
+                message.active = Boolean(object.active);
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgGCHRecurringSubscriptionStatusChange message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgGCHRecurringSubscriptionStatusChange
+         * @static
+         * @param {CMsgGCHRecurringSubscriptionStatusChange} message CMsgGCHRecurringSubscriptionStatusChange
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgGCHRecurringSubscriptionStatusChange.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, false);
+                    object.steamid = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.steamid = options.longs === String ? "0" : 0;
+                object.appid = 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, false);
+                    object.agreementid = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.agreementid = options.longs === String ? "0" : 0;
+                object.active = false;
+            }
+            if (message.steamid != null && message.hasOwnProperty("steamid"))
+                if (typeof message.steamid === "number")
+                    object.steamid = options.longs === String ? String(message.steamid) : message.steamid;
+                else
+                    object.steamid = options.longs === String ? $util.Long.prototype.toString.call(message.steamid) : options.longs === Number ? new $util.LongBits(message.steamid.low >>> 0, message.steamid.high >>> 0).toNumber() : message.steamid;
+            if (message.appid != null && message.hasOwnProperty("appid"))
+                object.appid = message.appid;
+            if (message.agreementid != null && message.hasOwnProperty("agreementid"))
+                if (typeof message.agreementid === "number")
+                    object.agreementid = options.longs === String ? String(message.agreementid) : message.agreementid;
+                else
+                    object.agreementid = options.longs === String ? $util.Long.prototype.toString.call(message.agreementid) : options.longs === Number ? new $util.LongBits(message.agreementid.low >>> 0, message.agreementid.high >>> 0).toNumber() : message.agreementid;
+            if (message.active != null && message.hasOwnProperty("active"))
+                object.active = message.active;
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgGCHRecurringSubscriptionStatusChange to JSON.
+         * @function toJSON
+         * @memberof CMsgGCHRecurringSubscriptionStatusChange
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgGCHRecurringSubscriptionStatusChange.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        return CMsgGCHRecurringSubscriptionStatusChange;
     })();
     
     $root.CQuest_PublisherAddCommunityItemsToPlayer_Request = (function() {

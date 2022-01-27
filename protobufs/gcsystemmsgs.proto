@@ -91,6 +91,9 @@ enum EGCSystemMsg {
 	k_EGCMsgGetGamePersonalDataEntriesResponse = 527;
 	k_EGCMsgTerminateGamePersonalDataEntriesRequest = 528;
 	k_EGCMsgTerminateGamePersonalDataEntriesResponse = 529;
+	k_EGCMsgRecurringSubscriptionStatusChange = 530;
+	k_EGCMsgDirectServiceMethod = 531;
+	k_EGCMsgDirectServiceMethodResponse = 532;
 }
 
 enum ESOMsg {
@@ -177,6 +180,13 @@ message CMsgGCHInviteUserToLobby {
 	optional fixed64 steamid_lobby = 4;
 }
 
+message CMsgGCHRecurringSubscriptionStatusChange {
+	optional fixed64 steamid = 1;
+	optional uint32 appid = 2;
+	optional fixed64 agreementid = 3;
+	optional bool active = 4;
+}
+
 message CQuest_PublisherAddCommunityItemsToPlayer_Request {
 	message Attribute {
 		optional uint32 attribute = 1;
@@ -233,4 +243,3 @@ message CCommunity_TerminateGamePersonalDataEntries_Request {
 message CCommunity_TerminateGamePersonalDataEntries_Response {
 	optional uint32 gceresult = 1;
 }
-
