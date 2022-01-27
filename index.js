@@ -261,7 +261,6 @@ GlobalOffensive.prototype.nameItem = function(nameTagId, itemId, name) {
 	buffer.writeUint64(itemId);
 	buffer.writeByte(0x00); // unknown
 	buffer.writeCString(name);
-	//console.log(buffer.buffer.toString('hex').toUpperCase());
 	this._send(Language.NameItem, null, buffer);
 };
 
