@@ -57,7 +57,7 @@ A big object containing account data and some statistics including players in-ga
 
 An array containing the items in your inventory. Undefined until `connectedToGC` is emitted.
 
-As of v2.1.0, some special properties are populated on items in this array (and also item objects in `itemAcquired` and
+As of v2.2.0, some special properties are populated on items in this array (and also item objects in `itemAcquired` and
 related events), where applicable:
 
 - `position` - This item's position in your inventory. If the item is new and unacknowledged, this is `0`
@@ -65,6 +65,9 @@ related events), where applicable:
 - `paint_index` - The item's paint index
 - `paint_seed` - The item's paint seed
 - `paint_wear` - The item's paint wear, as a float (often ignorantly referred to as "float value")
+- `kill_eater_value` - Tracked stat value for StatTrak weapons
+- `kill_eater_score_type` - What type of stat is tracked for StatTrak weapons. Currently only 0 (Kills) is available.
+- `quest_id`
 - `tradable_after` - A `Date` object representing when this item will become tradable. May be a date in the past, as this is not removed when the date is reached.
 - `stickers` - An array of objects:
     - `slot` - The sticker slot number, 0-5
