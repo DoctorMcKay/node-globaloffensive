@@ -94,13 +94,23 @@ When instantiating your node-globaloffensive instance, you need to pass your act
 var csgo = new GlobalOffensive(steamClient);
 ```
 
+### requestGame(shareCodeOrDetails)
+- `shareCodeOrDetails` - Either a share code as a string, or an object containing properties `matchId`, `outcomeId`, `token`
+
+**v2.2.0 or later is required to use this method**
+
+Requests stats for a historical game. Listen for the `matchList` event to get your response.
+
 ### requestLiveGames()
 
-Request a list of current live tournament games. This is the list you see in the client under Watch -> Live. Listen for the `matchList` event to get your response.
+Request a list of current live tournament games.
+This is the list you see in the client under Watch -> Live.
+Listen for the `matchList` event to get your response.
 
 ### requestRecentGames(steamid)
 
-Request a list of recent games (max. 8). This is the list you see in the client under Watch -> Your Matches. Listen for the `matchList` event to get your response.
+Request a list of recent games (max. 8). This is the list you see in the client under Watch -> Your Matches.
+Listen for the `matchList` event to get your response.
 
 ### requestLiveGameForUser(steamid)
 
