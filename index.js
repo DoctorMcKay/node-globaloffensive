@@ -175,6 +175,10 @@ GlobalOffensive.prototype.requestGame = function(shareCodeOrDetails) {
 	});
 };
 
+GlobalOffensive.prototype.requestMatchmakingStats = function() {
+	this._send(Language.MatchmakingClient2GCHello, Protos.CMsgGCCStrike15_v2_MatchmakingClient2GCHello , {});
+};
+
 GlobalOffensive.prototype.requestLiveGames = function() {
 	this._send(Language.MatchListRequestCurrentLiveGames, Protos.CMsgGCCStrike15_v2_MatchListRequestCurrentLiveGames, {});
 };
