@@ -96,7 +96,7 @@ var csgo = new GlobalOffensive(steamClient);
 ### requestMatchmakingStats()
 
 Requests the GC for matchmaking data.
-Listen for the `accountData` event to get your response or access the accountData propery after `accountData` was emitted
+Listen for the `accountData` event to get your response or access the [accountData](#accountdata) propery after `accountData` was emitted
 
 ### requestGame(shareCodeOrDetails)
 - `shareCodeOrDetails` - Either a share code as a string, or an object containing properties `matchId`, `outcomeId`, `token`
