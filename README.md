@@ -71,10 +71,10 @@ You can request this info to be populated by calling [requestMatchmakingStats()]
     - `search_time_avg`
     - `main_post_url`
     - `required_appid_version`
-    - `pricesheet_version"`
+    - `pricesheet_version`
     - `twitch_streams_version`
     - `active_tournament_eventid`
-    - `active_survey_id"`
+    - `active_survey_id`
     - `rtime32_cur`
     - `rtime32_event_start`
 - `penalty_seconds`
