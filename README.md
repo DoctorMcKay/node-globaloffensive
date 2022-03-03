@@ -51,6 +51,7 @@ There are a few useful read-only properties available to you.
 ### accountData
 
 A big object containing account data and some statistics including players in-game. Undefined until `accountData` is emitted.
+You can request this info to be populated by calling [requestMatchmakingStats()](#requestmatchmakingstats)
 
 - `my_current_event_teams` - Always an empty array?
 - `my_current_event_stages` - Always an empty array?
