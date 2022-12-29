@@ -217,6 +217,10 @@ Renames a particular item in your inventory, using a given name tag. You can ren
 `0` as the `nameTagId`.
 
 ### craft(items, recipe)
+- `items` - An array of item IDs to craft
+- `recipe` - An integer indicating which crafting recipe to use
+
+**v2.3.0 or later is required to use this method**
 
 Craft `items` together into a new item using a specific `recipe`. `items` should be an array of item IDs to craft.
 You will receive a [`craftingComplete`](#craftingcomplete) event in response. If crafting succeeded, you will also get
@@ -395,6 +399,8 @@ csgo.on('itemCustomizationNotification', (itemIds, notificationType) => {
 ### craftingComplete
 - `recipe` - The ID of the recipe that was used to perform this craft, or -1 on failure
 - `itemsGained` - An array of IDs of items that were gained as a result of this craft
+
+**v2.3.0 or later is required to use this event**
 
 Emitted when a craft initiated by the [`craft`](#craftitems-recipe) method finishes.
 
