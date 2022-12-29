@@ -114,6 +114,22 @@ handlers[Language.Client2GCEconPreviewDataBlockResponse] = function(body) {
 	this.emit('inspectItemInfo#' + item.itemid, item);
 };
 
+// Item manipulation
+handlers[Language.CraftResponse] = function(body) {
+	let blueprint = body.readInt16(); // recipe ID
+	let unknown = body.readUint32(); // always 0 in my experience
+
+	let idCount = body.readUint16();
+	let idList = []; // let's form an array of IDs
+
+	for (let i = 0; i < idCount; i++) {
+		let id = body.readUint64().toString(); // grab the next id
+		idList.push(id); // item id
+	}
+
+	this.emit('craftingComplete', blueprint, idList);
+};
+
 handlers[Language.ItemCustomizationNotification] = function(body) {
 	let proto = decodeProto(Protos.CMsgGCItemCustomizationNotification, body);
 	if (!proto.item_id || proto.item_id.length == 0 || !proto.request) {

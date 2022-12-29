@@ -299,6 +299,22 @@ GlobalOffensive.prototype.deleteItem = function(itemId) {
 	this._send(Language.Delete, null, buffer);
 };
 
+/**
+ * Craft some items using a given recipe.
+ * @param {int[]} items - IDs of items to craft
+ * @param {int} recipe - The ID of the recipe to use
+ */
+GlobalOffensive.prototype.craft = function(items, recipe) {
+	let buffer = new ByteBuffer(2 + 2 + (8 * items.length), ByteBuffer.LITTLE_ENDIAN);
+	buffer.writeInt16(recipe);
+	buffer.writeInt16(items.length);
+	for (let i = 0; i < items.length; i++) {
+		buffer.writeUint64(items[i]);
+	}
+
+	this._send(Language.Craft, null, buffer);
+};
+
 // Storage units
 /**
  * Put an item from your inventory into a casket (aka a storage unit).

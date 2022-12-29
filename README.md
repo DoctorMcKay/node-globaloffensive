@@ -216,6 +216,26 @@ This returns the same protobuf that is used when you request your own profile da
 Renames a particular item in your inventory, using a given name tag. You can rename storage units for free by passing
 `0` as the `nameTagId`.
 
+### craft(items, recipe)
+
+Craft `items` together into a new item using a specific `recipe`. `items` should be an array of item IDs to craft.
+You will receive a [`craftingComplete`](#craftingcomplete) event in response. If crafting succeeded, you will also get
+[`itemRemoved`](#itemremoved) events for each item you spent, and [`itemAcquired`](#itemacquired) events for each item
+you received.
+
+Recipes are defined in items_game.txt. Available recipes as of late 2022 are:
+
+- 0 = Trade-Up: 10x Consumer Grade → 1x Industrial Grade
+- 1 = Trade-Up: 10x Industrial Grade → 1x Mil-Spec Grade
+- 2 = Trade-Up: 10x Mil-Spec Grade → 1x Restricted
+- 3 = Trade-Up: 10x Restricted → 1x Classified
+- 4 = Trade-Up: 10x Classified → 1x Covert
+- 10 = Trade-Up: 10x StatTrak Consumer Grade → 1x StatTrak Industrial Grade
+- 11 = Trade-Up: 10x StatTrak Industrial Grade → 1x StatTrak Mil-Spec Grade
+- 12 = Trade-Up: 10x StatTrak Mil-Spec Grade → 1x StatTrak Restricted
+- 13 = Trade-Up: 10x StatTrak Restricted → 1x StatTrak Classified
+- 14 = Trade-Up: 10x StatTrak Classified → 1x StatTrak Covert
+
 ### deleteItem(itemId)
 - `itemId` - The ID of the item you want to delete
 
@@ -371,6 +391,12 @@ csgo.on('itemCustomizationNotification', (itemIds, notificationType) => {
     }
 });
 ```
+
+### craftingComplete
+- `recipe` - The ID of the recipe that was used to perform this craft, or -1 on failure
+- `itemsGained` - An array of IDs of items that were gained as a result of this craft
+
+Emitted when a craft initiated by the [`craft`](#craftitems-recipe) method finishes.
 
 ### playersProfile
 - `profile` - An object containing the profile data
