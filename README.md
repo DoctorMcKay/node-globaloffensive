@@ -136,8 +136,8 @@ Request live game info for a specific user. Listen for the `matchList` event to 
 			- `slot` - What slot this sticker is applied to
 			- `sticker_id` - The ID of this type of sticker
 			- `wear` - Either `null` (not scratched) or a float between 0 and 1 describing how much this sticker has been scratched
-			- `scale` - Always `null`?
-			- `rotation` - Always `null`?
+			- `scale` - This property is only not null on the early dreamhack 2013 stickers. It is no longer used.
+			- `rotation` - This property is only not null on the early dreamhack 2013 stickers. It is no longer used.
 			- `tint_id`
 		- `inventory` - An integer which has no use to you
 		- `origin` - The numeric origin of this item
