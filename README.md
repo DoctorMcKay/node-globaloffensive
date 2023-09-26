@@ -9,7 +9,8 @@ Game Coordinator. It's designed to work with a
 
 This is based off of [node-tf2](https://github.com/DoctorMcKay/node-tf2).
 
-**You will need node-steam-user v4.2.0 or later and Node.js v8 or later to use node-globaloffensive v2.**
+**You will need steam-user v4.2.0 or later and Node.js v14 or later to use globaloffensive v3.**  
+You will need steam-user v4.2.0 or later and Node.js v8 or later to use globaloffensive v2.
 
 # Setup
 
