@@ -17,8 +17,8 @@ function GlobalOffensive(steam) {
 	if (steam.packageName != 'steam-user' || !steam.packageVersion || !steam.constructor) {
 		throw new Error('globaloffensive v2 only supports steam-user v4.2.0 or later.');
 	} else {
-		let parts = steam.packageVersion.split('.');
-		if (parts[0] < 4 || parts[1] < 2) {
+		let [major, minor] = steam.packageVersion.split('.');
+		if (major < 4 || (major == 4 && minor < 2)) {
 			throw new Error(`globaloffensive v2 only supports steam-user v4.2.0 or later. ${steam.constructor.name} v${steam.packageVersion} given.`);
 		}
 	}
