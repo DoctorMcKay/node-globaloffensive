@@ -9,6 +9,17 @@ const Protos = require('./protobufs/generated/_load.js');
 let handlers = GlobalOffensive.prototype._handlers;
 
 // ClientWelcome and ClientConnectionStatus
+handlers[Language.ClientLogonFatalError] = function(body) {
+	let proto = decodeProto(Protos.CMsgGCCStrike15_v2_ClientLogonFatalError, body);
+
+	clearTimeout(this._helloTimer);
+
+	let err = new Error(`Logon Fatal Error: ${proto.message || proto.errorcode}`);
+	err.code = proto.errorcode;
+	err.country = proto.country;
+	this.emit('error', err);
+};
+
 handlers[Language.ClientWelcome] = function(body) {
 	let proto = decodeProto(Protos.CMsgClientWelcome, body);
 
