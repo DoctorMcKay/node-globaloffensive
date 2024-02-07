@@ -3,7 +3,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/globaloffensive.svg)](https://npmjs.com/package/globaloffensive)
 [![license](https://img.shields.io/npm/l/globaloffensive.svg)](https://github.com/DoctorMcKay/node-globaloffensive/blob/master/LICENSE)
 
-This module provides a very flexible interface for interacting with the [CS:GO](http://store.steampowered.com/app/730)
+This module provides a very flexible interface for interacting with the [CS2](http://store.steampowered.com/app/730)
 Game Coordinator. It's designed to work with a
 [node-steam-user SteamUser](https://github.com/DoctorMcKay/node-steam-user) instance.
 
@@ -311,6 +311,11 @@ csgo.on('disconnectedFromGC', (reason) => {
     }
 });
 ```
+
+### error
+- `err` - An `Error` object
+
+Emitted when we encounter a fatal error attempting to connect to the GC. If this event is not handled, the app will crash.
 
 ### connectionStatus
 - `status` - A value from the `GCConnectionStatus` enum
