@@ -30,6 +30,9 @@
 		"protobufjs": "^7.2.5",
 		"steamid": "^2.0.0"
 	},
+	"peerDependencies": {
+		"steam-user": ">=4.2.0"
+	},
 	"devDependencies": {
 		"steam-user": "^4.26.1"
 	},
