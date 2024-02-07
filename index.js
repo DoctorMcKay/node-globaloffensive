@@ -117,10 +117,16 @@ GlobalOffensive.prototype._connect = function() {
 			return;
 		}
 
-		this._send(Language.ClientHello, Protos.CMsgClientHello, {});
+		this._send(Language.ClientHello, Protos.CMsgClientHello, {
+			version: 2000244,
+			client_session_need: 0,
+			client_launcher: 0,
+			steam_launcher: 0
+		});
+
 		this._helloTimerMs = Math.min(60000, (this._helloTimerMs || 1000) * 2); // exponential backoff, max 60 seconds
 		this._helloTimer = setTimeout(sendHello, this._helloTimerMs);
-		this.emit('debug', "Sending hello, setting timer for next attempt to " + this._helloTimerMs + " ms");
+		this.emit('debug', `Sending hello, setting timer for next attempt to ${this._helloTimerMs} ms`);
 	};
 
 	this._helloTimer = setTimeout(sendHello, 500);
