@@ -19,23 +19,25 @@
     /**
      * GCClientLauncherType enum.
      * @exports GCClientLauncherType
-     * @enum {string}
+     * @enum {number}
      * @property {number} GCClientLauncherType_DEFAULT=0 GCClientLauncherType_DEFAULT value
      * @property {number} GCClientLauncherType_PERFECTWORLD=1 GCClientLauncherType_PERFECTWORLD value
      * @property {number} GCClientLauncherType_STEAMCHINA=2 GCClientLauncherType_STEAMCHINA value
+     * @property {number} GCClientLauncherType_SOURCE2=3 GCClientLauncherType_SOURCE2 value
      */
     $root.GCClientLauncherType = (function() {
         var valuesById = {}, values = Object.create(valuesById);
         values[valuesById[0] = "GCClientLauncherType_DEFAULT"] = 0;
         values[valuesById[1] = "GCClientLauncherType_PERFECTWORLD"] = 1;
         values[valuesById[2] = "GCClientLauncherType_STEAMCHINA"] = 2;
+        values[valuesById[3] = "GCClientLauncherType_SOURCE2"] = 3;
         return values;
     })();
     
     /**
      * GCConnectionStatus enum.
      * @exports GCConnectionStatus
-     * @enum {string}
+     * @enum {number}
      * @property {number} GCConnectionStatus_HAVE_SESSION=0 GCConnectionStatus_HAVE_SESSION value
      * @property {number} GCConnectionStatus_GC_GOING_DOWN=1 GCConnectionStatus_GC_GOING_DOWN value
      * @property {number} GCConnectionStatus_NO_SESSION=2 GCConnectionStatus_NO_SESSION value
@@ -117,9 +119,9 @@
         CMsgSOIDOwner.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.type != null && message.hasOwnProperty("type"))
+            if (message.type != null && Object.hasOwnProperty.call(message, "type"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.type);
-            if (message.id != null && message.hasOwnProperty("id"))
+            if (message.id != null && Object.hasOwnProperty.call(message, "id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.id);
             return writer;
         };
@@ -155,12 +157,14 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.type = reader.uint32();
-                    break;
-                case 2:
-                    message.id = reader.uint64();
-                    break;
+                case 1: {
+                        message.type = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.id = reader.uint64();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -273,6 +277,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgSOIDOwner
+         * @function getTypeUrl
+         * @memberof CMsgSOIDOwner
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgSOIDOwner.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgSOIDOwner";
+        };
+    
         return CMsgSOIDOwner;
     })();
     
@@ -359,13 +378,13 @@
         CMsgSOSingleObject.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.type_id != null && message.hasOwnProperty("type_id"))
+            if (message.type_id != null && Object.hasOwnProperty.call(message, "type_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.type_id);
-            if (message.object_data != null && message.hasOwnProperty("object_data"))
+            if (message.object_data != null && Object.hasOwnProperty.call(message, "object_data"))
                 writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.object_data);
-            if (message.version != null && message.hasOwnProperty("version"))
+            if (message.version != null && Object.hasOwnProperty.call(message, "version"))
                 writer.uint32(/* id 4, wireType 1 =*/33).fixed64(message.version);
-            if (message.owner_soid != null && message.hasOwnProperty("owner_soid"))
+            if (message.owner_soid != null && Object.hasOwnProperty.call(message, "owner_soid"))
                 $root.CMsgSOIDOwner.encode(message.owner_soid, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
             return writer;
         };
@@ -401,18 +420,22 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 2:
-                    message.type_id = reader.int32();
-                    break;
-                case 3:
-                    message.object_data = reader.bytes();
-                    break;
-                case 4:
-                    message.version = reader.fixed64();
-                    break;
-                case 5:
-                    message.owner_soid = $root.CMsgSOIDOwner.decode(reader, reader.uint32());
-                    break;
+                case 2: {
+                        message.type_id = reader.int32();
+                        break;
+                    }
+                case 3: {
+                        message.object_data = reader.bytes();
+                        break;
+                    }
+                case 4: {
+                        message.version = reader.fixed64();
+                        break;
+                    }
+                case 5: {
+                        message.owner_soid = $root.CMsgSOIDOwner.decode(reader, reader.uint32());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -482,7 +505,7 @@
             if (object.object_data != null)
                 if (typeof object.object_data === "string")
                     $util.base64.decode(object.object_data, message.object_data = $util.newBuffer($util.base64.length(object.object_data)), 0);
-                else if (object.object_data.length)
+                else if (object.object_data.length >= 0)
                     message.object_data = object.object_data;
             if (object.version != null)
                 if ($util.Long)
@@ -553,6 +576,21 @@
          */
         CMsgSOSingleObject.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgSOSingleObject
+         * @function getTypeUrl
+         * @memberof CMsgSOSingleObject
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgSOSingleObject.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgSOSingleObject";
         };
     
         return CMsgSOSingleObject;
@@ -636,9 +674,9 @@
             if (message.objects_modified != null && message.objects_modified.length)
                 for (var i = 0; i < message.objects_modified.length; ++i)
                     $root.CMsgSOMultipleObjects.SingleObject.encode(message.objects_modified[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.version != null && message.hasOwnProperty("version"))
+            if (message.version != null && Object.hasOwnProperty.call(message, "version"))
                 writer.uint32(/* id 3, wireType 1 =*/25).fixed64(message.version);
-            if (message.owner_soid != null && message.hasOwnProperty("owner_soid"))
+            if (message.owner_soid != null && Object.hasOwnProperty.call(message, "owner_soid"))
                 $root.CMsgSOIDOwner.encode(message.owner_soid, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
             return writer;
         };
@@ -674,17 +712,20 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 2:
-                    if (!(message.objects_modified && message.objects_modified.length))
-                        message.objects_modified = [];
-                    message.objects_modified.push($root.CMsgSOMultipleObjects.SingleObject.decode(reader, reader.uint32()));
-                    break;
-                case 3:
-                    message.version = reader.fixed64();
-                    break;
-                case 6:
-                    message.owner_soid = $root.CMsgSOIDOwner.decode(reader, reader.uint32());
-                    break;
+                case 2: {
+                        if (!(message.objects_modified && message.objects_modified.length))
+                            message.objects_modified = [];
+                        message.objects_modified.push($root.CMsgSOMultipleObjects.SingleObject.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 3: {
+                        message.version = reader.fixed64();
+                        break;
+                    }
+                case 6: {
+                        message.owner_soid = $root.CMsgSOIDOwner.decode(reader, reader.uint32());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -828,6 +869,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgSOMultipleObjects
+         * @function getTypeUrl
+         * @memberof CMsgSOMultipleObjects
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgSOMultipleObjects.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgSOMultipleObjects";
+        };
+    
         CMsgSOMultipleObjects.SingleObject = (function() {
     
             /**
@@ -893,9 +949,9 @@
             SingleObject.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.type_id != null && message.hasOwnProperty("type_id"))
+                if (message.type_id != null && Object.hasOwnProperty.call(message, "type_id"))
                     writer.uint32(/* id 1, wireType 0 =*/8).int32(message.type_id);
-                if (message.object_data != null && message.hasOwnProperty("object_data"))
+                if (message.object_data != null && Object.hasOwnProperty.call(message, "object_data"))
                     writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.object_data);
                 return writer;
             };
@@ -931,12 +987,14 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.type_id = reader.int32();
-                        break;
-                    case 2:
-                        message.object_data = reader.bytes();
-                        break;
+                    case 1: {
+                            message.type_id = reader.int32();
+                            break;
+                        }
+                    case 2: {
+                            message.object_data = reader.bytes();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -998,7 +1056,7 @@
                 if (object.object_data != null)
                     if (typeof object.object_data === "string")
                         $util.base64.decode(object.object_data, message.object_data = $util.newBuffer($util.base64.length(object.object_data)), 0);
-                    else if (object.object_data.length)
+                    else if (object.object_data.length >= 0)
                         message.object_data = object.object_data;
                 return message;
             };
@@ -1042,6 +1100,21 @@
              */
             SingleObject.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            /**
+             * Gets the default type url for SingleObject
+             * @function getTypeUrl
+             * @memberof CMsgSOMultipleObjects.SingleObject
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            SingleObject.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgSOMultipleObjects.SingleObject";
             };
     
             return SingleObject;
@@ -1128,9 +1201,9 @@
             if (message.objects != null && message.objects.length)
                 for (var i = 0; i < message.objects.length; ++i)
                     $root.CMsgSOCacheSubscribed.SubscribedType.encode(message.objects[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.version != null && message.hasOwnProperty("version"))
+            if (message.version != null && Object.hasOwnProperty.call(message, "version"))
                 writer.uint32(/* id 3, wireType 1 =*/25).fixed64(message.version);
-            if (message.owner_soid != null && message.hasOwnProperty("owner_soid"))
+            if (message.owner_soid != null && Object.hasOwnProperty.call(message, "owner_soid"))
                 $root.CMsgSOIDOwner.encode(message.owner_soid, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
             return writer;
         };
@@ -1166,17 +1239,20 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 2:
-                    if (!(message.objects && message.objects.length))
-                        message.objects = [];
-                    message.objects.push($root.CMsgSOCacheSubscribed.SubscribedType.decode(reader, reader.uint32()));
-                    break;
-                case 3:
-                    message.version = reader.fixed64();
-                    break;
-                case 4:
-                    message.owner_soid = $root.CMsgSOIDOwner.decode(reader, reader.uint32());
-                    break;
+                case 2: {
+                        if (!(message.objects && message.objects.length))
+                            message.objects = [];
+                        message.objects.push($root.CMsgSOCacheSubscribed.SubscribedType.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 3: {
+                        message.version = reader.fixed64();
+                        break;
+                    }
+                case 4: {
+                        message.owner_soid = $root.CMsgSOIDOwner.decode(reader, reader.uint32());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -1320,6 +1396,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgSOCacheSubscribed
+         * @function getTypeUrl
+         * @memberof CMsgSOCacheSubscribed
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgSOCacheSubscribed.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgSOCacheSubscribed";
+        };
+    
         CMsgSOCacheSubscribed.SubscribedType = (function() {
     
             /**
@@ -1386,7 +1477,7 @@
             SubscribedType.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.type_id != null && message.hasOwnProperty("type_id"))
+                if (message.type_id != null && Object.hasOwnProperty.call(message, "type_id"))
                     writer.uint32(/* id 1, wireType 0 =*/8).int32(message.type_id);
                 if (message.object_data != null && message.object_data.length)
                     for (var i = 0; i < message.object_data.length; ++i)
@@ -1425,14 +1516,16 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.type_id = reader.int32();
-                        break;
-                    case 2:
-                        if (!(message.object_data && message.object_data.length))
-                            message.object_data = [];
-                        message.object_data.push(reader.bytes());
-                        break;
+                    case 1: {
+                            message.type_id = reader.int32();
+                            break;
+                        }
+                    case 2: {
+                            if (!(message.object_data && message.object_data.length))
+                                message.object_data = [];
+                            message.object_data.push(reader.bytes());
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -1502,7 +1595,7 @@
                     for (var i = 0; i < object.object_data.length; ++i)
                         if (typeof object.object_data[i] === "string")
                             $util.base64.decode(object.object_data[i], message.object_data[i] = $util.newBuffer($util.base64.length(object.object_data[i])), 0);
-                        else if (object.object_data[i].length)
+                        else if (object.object_data[i].length >= 0)
                             message.object_data[i] = object.object_data[i];
                 }
                 return message;
@@ -1544,6 +1637,21 @@
              */
             SubscribedType.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            /**
+             * Gets the default type url for SubscribedType
+             * @function getTypeUrl
+             * @memberof CMsgSOCacheSubscribed.SubscribedType
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            SubscribedType.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgSOCacheSubscribed.SubscribedType";
             };
     
             return SubscribedType;
@@ -1608,7 +1716,7 @@
         CMsgSOCacheUnsubscribed.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.owner_soid != null && message.hasOwnProperty("owner_soid"))
+            if (message.owner_soid != null && Object.hasOwnProperty.call(message, "owner_soid"))
                 $root.CMsgSOIDOwner.encode(message.owner_soid, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             return writer;
         };
@@ -1644,9 +1752,10 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 2:
-                    message.owner_soid = $root.CMsgSOIDOwner.decode(reader, reader.uint32());
-                    break;
+                case 2: {
+                        message.owner_soid = $root.CMsgSOIDOwner.decode(reader, reader.uint32());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -1741,6 +1850,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgSOCacheUnsubscribed
+         * @function getTypeUrl
+         * @memberof CMsgSOCacheUnsubscribed
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgSOCacheUnsubscribed.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgSOCacheUnsubscribed";
+        };
+    
         return CMsgSOCacheUnsubscribed;
     })();
     
@@ -1809,9 +1933,9 @@
         CMsgSOCacheSubscriptionCheck.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.version != null && message.hasOwnProperty("version"))
+            if (message.version != null && Object.hasOwnProperty.call(message, "version"))
                 writer.uint32(/* id 2, wireType 1 =*/17).fixed64(message.version);
-            if (message.owner_soid != null && message.hasOwnProperty("owner_soid"))
+            if (message.owner_soid != null && Object.hasOwnProperty.call(message, "owner_soid"))
                 $root.CMsgSOIDOwner.encode(message.owner_soid, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             return writer;
         };
@@ -1847,12 +1971,14 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 2:
-                    message.version = reader.fixed64();
-                    break;
-                case 3:
-                    message.owner_soid = $root.CMsgSOIDOwner.decode(reader, reader.uint32());
-                    break;
+                case 2: {
+                        message.version = reader.fixed64();
+                        break;
+                    }
+                case 3: {
+                        message.owner_soid = $root.CMsgSOIDOwner.decode(reader, reader.uint32());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -1970,6 +2096,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgSOCacheSubscriptionCheck
+         * @function getTypeUrl
+         * @memberof CMsgSOCacheSubscriptionCheck
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgSOCacheSubscriptionCheck.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgSOCacheSubscriptionCheck";
+        };
+    
         return CMsgSOCacheSubscriptionCheck;
     })();
     
@@ -2029,7 +2170,7 @@
         CMsgSOCacheSubscriptionRefresh.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.owner_soid != null && message.hasOwnProperty("owner_soid"))
+            if (message.owner_soid != null && Object.hasOwnProperty.call(message, "owner_soid"))
                 $root.CMsgSOIDOwner.encode(message.owner_soid, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             return writer;
         };
@@ -2065,9 +2206,10 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 2:
-                    message.owner_soid = $root.CMsgSOIDOwner.decode(reader, reader.uint32());
-                    break;
+                case 2: {
+                        message.owner_soid = $root.CMsgSOIDOwner.decode(reader, reader.uint32());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -2162,6 +2304,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgSOCacheSubscriptionRefresh
+         * @function getTypeUrl
+         * @memberof CMsgSOCacheSubscriptionRefresh
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgSOCacheSubscriptionRefresh.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgSOCacheSubscriptionRefresh";
+        };
+    
         return CMsgSOCacheSubscriptionRefresh;
     })();
     
@@ -2221,7 +2378,7 @@
         CMsgSOCacheVersion.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.version != null && message.hasOwnProperty("version"))
+            if (message.version != null && Object.hasOwnProperty.call(message, "version"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.version);
             return writer;
         };
@@ -2257,9 +2414,10 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.version = reader.fixed64();
-                    break;
+                case 1: {
+                        message.version = reader.fixed64();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -2361,6 +2519,21 @@
          */
         CMsgSOCacheVersion.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgSOCacheVersion
+         * @function getTypeUrl
+         * @memberof CMsgSOCacheVersion
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgSOCacheVersion.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgSOCacheVersion";
         };
     
         return CMsgSOCacheVersion;
@@ -2575,41 +2748,41 @@
         CMsgAccountDetails.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.valid != null && message.hasOwnProperty("valid"))
+            if (message.valid != null && Object.hasOwnProperty.call(message, "valid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).bool(message.valid);
-            if (message.account_name != null && message.hasOwnProperty("account_name"))
+            if (message.account_name != null && Object.hasOwnProperty.call(message, "account_name"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.account_name);
-            if (message.public_profile != null && message.hasOwnProperty("public_profile"))
+            if (message.public_profile != null && Object.hasOwnProperty.call(message, "public_profile"))
                 writer.uint32(/* id 4, wireType 0 =*/32).bool(message.public_profile);
-            if (message.public_inventory != null && message.hasOwnProperty("public_inventory"))
+            if (message.public_inventory != null && Object.hasOwnProperty.call(message, "public_inventory"))
                 writer.uint32(/* id 5, wireType 0 =*/40).bool(message.public_inventory);
-            if (message.vac_banned != null && message.hasOwnProperty("vac_banned"))
+            if (message.vac_banned != null && Object.hasOwnProperty.call(message, "vac_banned"))
                 writer.uint32(/* id 6, wireType 0 =*/48).bool(message.vac_banned);
-            if (message.cyber_cafe != null && message.hasOwnProperty("cyber_cafe"))
+            if (message.cyber_cafe != null && Object.hasOwnProperty.call(message, "cyber_cafe"))
                 writer.uint32(/* id 7, wireType 0 =*/56).bool(message.cyber_cafe);
-            if (message.school_account != null && message.hasOwnProperty("school_account"))
+            if (message.school_account != null && Object.hasOwnProperty.call(message, "school_account"))
                 writer.uint32(/* id 8, wireType 0 =*/64).bool(message.school_account);
-            if (message.free_trial_account != null && message.hasOwnProperty("free_trial_account"))
+            if (message.free_trial_account != null && Object.hasOwnProperty.call(message, "free_trial_account"))
                 writer.uint32(/* id 9, wireType 0 =*/72).bool(message.free_trial_account);
-            if (message.subscribed != null && message.hasOwnProperty("subscribed"))
+            if (message.subscribed != null && Object.hasOwnProperty.call(message, "subscribed"))
                 writer.uint32(/* id 10, wireType 0 =*/80).bool(message.subscribed);
-            if (message.low_violence != null && message.hasOwnProperty("low_violence"))
+            if (message.low_violence != null && Object.hasOwnProperty.call(message, "low_violence"))
                 writer.uint32(/* id 11, wireType 0 =*/88).bool(message.low_violence);
-            if (message.limited != null && message.hasOwnProperty("limited"))
+            if (message.limited != null && Object.hasOwnProperty.call(message, "limited"))
                 writer.uint32(/* id 12, wireType 0 =*/96).bool(message.limited);
-            if (message.trusted != null && message.hasOwnProperty("trusted"))
+            if (message.trusted != null && Object.hasOwnProperty.call(message, "trusted"))
                 writer.uint32(/* id 13, wireType 0 =*/104).bool(message.trusted);
-            if (message["package"] != null && message.hasOwnProperty("package"))
+            if (message["package"] != null && Object.hasOwnProperty.call(message, "package"))
                 writer.uint32(/* id 14, wireType 0 =*/112).uint32(message["package"]);
-            if (message.time_cached != null && message.hasOwnProperty("time_cached"))
+            if (message.time_cached != null && Object.hasOwnProperty.call(message, "time_cached"))
                 writer.uint32(/* id 15, wireType 5 =*/125).fixed32(message.time_cached);
-            if (message.account_locked != null && message.hasOwnProperty("account_locked"))
+            if (message.account_locked != null && Object.hasOwnProperty.call(message, "account_locked"))
                 writer.uint32(/* id 16, wireType 0 =*/128).bool(message.account_locked);
-            if (message.community_banned != null && message.hasOwnProperty("community_banned"))
+            if (message.community_banned != null && Object.hasOwnProperty.call(message, "community_banned"))
                 writer.uint32(/* id 17, wireType 0 =*/136).bool(message.community_banned);
-            if (message.trade_banned != null && message.hasOwnProperty("trade_banned"))
+            if (message.trade_banned != null && Object.hasOwnProperty.call(message, "trade_banned"))
                 writer.uint32(/* id 18, wireType 0 =*/144).bool(message.trade_banned);
-            if (message.eligible_for_community_market != null && message.hasOwnProperty("eligible_for_community_market"))
+            if (message.eligible_for_community_market != null && Object.hasOwnProperty.call(message, "eligible_for_community_market"))
                 writer.uint32(/* id 19, wireType 0 =*/152).bool(message.eligible_for_community_market);
             return writer;
         };
@@ -2645,60 +2818,78 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.valid = reader.bool();
-                    break;
-                case 2:
-                    message.account_name = reader.string();
-                    break;
-                case 4:
-                    message.public_profile = reader.bool();
-                    break;
-                case 5:
-                    message.public_inventory = reader.bool();
-                    break;
-                case 6:
-                    message.vac_banned = reader.bool();
-                    break;
-                case 7:
-                    message.cyber_cafe = reader.bool();
-                    break;
-                case 8:
-                    message.school_account = reader.bool();
-                    break;
-                case 9:
-                    message.free_trial_account = reader.bool();
-                    break;
-                case 10:
-                    message.subscribed = reader.bool();
-                    break;
-                case 11:
-                    message.low_violence = reader.bool();
-                    break;
-                case 12:
-                    message.limited = reader.bool();
-                    break;
-                case 13:
-                    message.trusted = reader.bool();
-                    break;
-                case 14:
-                    message["package"] = reader.uint32();
-                    break;
-                case 15:
-                    message.time_cached = reader.fixed32();
-                    break;
-                case 16:
-                    message.account_locked = reader.bool();
-                    break;
-                case 17:
-                    message.community_banned = reader.bool();
-                    break;
-                case 18:
-                    message.trade_banned = reader.bool();
-                    break;
-                case 19:
-                    message.eligible_for_community_market = reader.bool();
-                    break;
+                case 1: {
+                        message.valid = reader.bool();
+                        break;
+                    }
+                case 2: {
+                        message.account_name = reader.string();
+                        break;
+                    }
+                case 4: {
+                        message.public_profile = reader.bool();
+                        break;
+                    }
+                case 5: {
+                        message.public_inventory = reader.bool();
+                        break;
+                    }
+                case 6: {
+                        message.vac_banned = reader.bool();
+                        break;
+                    }
+                case 7: {
+                        message.cyber_cafe = reader.bool();
+                        break;
+                    }
+                case 8: {
+                        message.school_account = reader.bool();
+                        break;
+                    }
+                case 9: {
+                        message.free_trial_account = reader.bool();
+                        break;
+                    }
+                case 10: {
+                        message.subscribed = reader.bool();
+                        break;
+                    }
+                case 11: {
+                        message.low_violence = reader.bool();
+                        break;
+                    }
+                case 12: {
+                        message.limited = reader.bool();
+                        break;
+                    }
+                case 13: {
+                        message.trusted = reader.bool();
+                        break;
+                    }
+                case 14: {
+                        message["package"] = reader.uint32();
+                        break;
+                    }
+                case 15: {
+                        message.time_cached = reader.fixed32();
+                        break;
+                    }
+                case 16: {
+                        message.account_locked = reader.bool();
+                        break;
+                    }
+                case 17: {
+                        message.community_banned = reader.bool();
+                        break;
+                    }
+                case 18: {
+                        message.trade_banned = reader.bool();
+                        break;
+                    }
+                case 19: {
+                        message.eligible_for_community_market = reader.bool();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -2925,6 +3116,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgAccountDetails
+         * @function getTypeUrl
+         * @memberof CMsgAccountDetails
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgAccountDetails.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgAccountDetails";
+        };
+    
         return CMsgAccountDetails;
     })();
     
@@ -3012,14 +3218,14 @@
         CMsgGCMultiplexMessage.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.msgtype != null && message.hasOwnProperty("msgtype"))
+            if (message.msgtype != null && Object.hasOwnProperty.call(message, "msgtype"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.msgtype);
-            if (message.payload != null && message.hasOwnProperty("payload"))
+            if (message.payload != null && Object.hasOwnProperty.call(message, "payload"))
                 writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.payload);
             if (message.steamids != null && message.steamids.length)
                 for (var i = 0; i < message.steamids.length; ++i)
                     writer.uint32(/* id 3, wireType 1 =*/25).fixed64(message.steamids[i]);
-            if (message.replytogc != null && message.hasOwnProperty("replytogc"))
+            if (message.replytogc != null && Object.hasOwnProperty.call(message, "replytogc"))
                 writer.uint32(/* id 4, wireType 0 =*/32).bool(message.replytogc);
             return writer;
         };
@@ -3055,25 +3261,29 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.msgtype = reader.uint32();
-                    break;
-                case 2:
-                    message.payload = reader.bytes();
-                    break;
-                case 3:
-                    if (!(message.steamids && message.steamids.length))
-                        message.steamids = [];
-                    if ((tag & 7) === 2) {
-                        var end2 = reader.uint32() + reader.pos;
-                        while (reader.pos < end2)
+                case 1: {
+                        message.msgtype = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.payload = reader.bytes();
+                        break;
+                    }
+                case 3: {
+                        if (!(message.steamids && message.steamids.length))
+                            message.steamids = [];
+                        if ((tag & 7) === 2) {
+                            var end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.steamids.push(reader.fixed64());
+                        } else
                             message.steamids.push(reader.fixed64());
-                    } else
-                        message.steamids.push(reader.fixed64());
-                    break;
-                case 4:
-                    message.replytogc = reader.bool();
-                    break;
+                        break;
+                    }
+                case 4: {
+                        message.replytogc = reader.bool();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -3145,7 +3355,7 @@
             if (object.payload != null)
                 if (typeof object.payload === "string")
                     $util.base64.decode(object.payload, message.payload = $util.newBuffer($util.base64.length(object.payload)), 0);
-                else if (object.payload.length)
+                else if (object.payload.length >= 0)
                     message.payload = object.payload;
             if (object.steamids) {
                 if (!Array.isArray(object.steamids))
@@ -3220,6 +3430,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCMultiplexMessage
+         * @function getTypeUrl
+         * @memberof CMsgGCMultiplexMessage
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCMultiplexMessage.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCMultiplexMessage";
+        };
+    
         return CMsgGCMultiplexMessage;
     })();
     
@@ -3279,7 +3504,7 @@
         CMsgGCMultiplexMessage_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.msgtype != null && message.hasOwnProperty("msgtype"))
+            if (message.msgtype != null && Object.hasOwnProperty.call(message, "msgtype"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.msgtype);
             return writer;
         };
@@ -3315,9 +3540,10 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.msgtype = reader.uint32();
-                    break;
+                case 1: {
+                        message.msgtype = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -3407,6 +3633,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCMultiplexMessage_Response
+         * @function getTypeUrl
+         * @memberof CMsgGCMultiplexMessage_Response
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCMultiplexMessage_Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCMultiplexMessage_Response";
+        };
+    
         return CMsgGCMultiplexMessage_Response;
     })();
     
@@ -3475,9 +3716,9 @@
         CGCToGCMsgMasterAck.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.dir_index != null && message.hasOwnProperty("dir_index"))
+            if (message.dir_index != null && Object.hasOwnProperty.call(message, "dir_index"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.dir_index);
-            if (message.gc_type != null && message.hasOwnProperty("gc_type"))
+            if (message.gc_type != null && Object.hasOwnProperty.call(message, "gc_type"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.gc_type);
             return writer;
         };
@@ -3513,12 +3754,14 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.dir_index = reader.uint32();
-                    break;
-                case 2:
-                    message.gc_type = reader.uint32();
-                    break;
+                case 1: {
+                        message.dir_index = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.gc_type = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -3617,6 +3860,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CGCToGCMsgMasterAck
+         * @function getTypeUrl
+         * @memberof CGCToGCMsgMasterAck
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCToGCMsgMasterAck.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCToGCMsgMasterAck";
+        };
+    
         return CGCToGCMsgMasterAck;
     })();
     
@@ -3676,7 +3934,7 @@
         CGCToGCMsgMasterAck_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.eresult);
             return writer;
         };
@@ -3712,9 +3970,10 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.eresult = reader.int32();
-                    break;
+                case 1: {
+                        message.eresult = reader.int32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -3802,6 +4061,21 @@
          */
         CGCToGCMsgMasterAck_Response.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CGCToGCMsgMasterAck_Response
+         * @function getTypeUrl
+         * @memberof CGCToGCMsgMasterAck_Response
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCToGCMsgMasterAck_Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCToGCMsgMasterAck_Response";
         };
     
         return CGCToGCMsgMasterAck_Response;
@@ -3964,6 +4238,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CGCToGCMsgMasterStartupComplete
+         * @function getTypeUrl
+         * @memberof CGCToGCMsgMasterStartupComplete
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCToGCMsgMasterStartupComplete.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCToGCMsgMasterStartupComplete";
+        };
+    
         return CGCToGCMsgMasterStartupComplete;
     })();
     
@@ -4050,13 +4339,13 @@
         CGCToGCMsgRouted.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.msg_type != null && message.hasOwnProperty("msg_type"))
+            if (message.msg_type != null && Object.hasOwnProperty.call(message, "msg_type"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.msg_type);
-            if (message.sender_id != null && message.hasOwnProperty("sender_id"))
+            if (message.sender_id != null && Object.hasOwnProperty.call(message, "sender_id"))
                 writer.uint32(/* id 2, wireType 1 =*/17).fixed64(message.sender_id);
-            if (message.net_message != null && message.hasOwnProperty("net_message"))
+            if (message.net_message != null && Object.hasOwnProperty.call(message, "net_message"))
                 writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.net_message);
-            if (message.ip != null && message.hasOwnProperty("ip"))
+            if (message.ip != null && Object.hasOwnProperty.call(message, "ip"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.ip);
             return writer;
         };
@@ -4092,18 +4381,22 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.msg_type = reader.uint32();
-                    break;
-                case 2:
-                    message.sender_id = reader.fixed64();
-                    break;
-                case 3:
-                    message.net_message = reader.bytes();
-                    break;
-                case 4:
-                    message.ip = reader.uint32();
-                    break;
+                case 1: {
+                        message.msg_type = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.sender_id = reader.fixed64();
+                        break;
+                    }
+                case 3: {
+                        message.net_message = reader.bytes();
+                        break;
+                    }
+                case 4: {
+                        message.ip = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -4180,7 +4473,7 @@
             if (object.net_message != null)
                 if (typeof object.net_message === "string")
                     $util.base64.decode(object.net_message, message.net_message = $util.newBuffer($util.base64.length(object.net_message)), 0);
-                else if (object.net_message.length)
+                else if (object.net_message.length >= 0)
                     message.net_message = object.net_message;
             if (object.ip != null)
                 message.ip = object.ip >>> 0;
@@ -4239,6 +4532,21 @@
          */
         CGCToGCMsgRouted.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CGCToGCMsgRouted
+         * @function getTypeUrl
+         * @memberof CGCToGCMsgRouted
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCToGCMsgRouted.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCToGCMsgRouted";
         };
     
         return CGCToGCMsgRouted;
@@ -4309,9 +4617,9 @@
         CGCToGCMsgRoutedReply.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.msg_type != null && message.hasOwnProperty("msg_type"))
+            if (message.msg_type != null && Object.hasOwnProperty.call(message, "msg_type"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.msg_type);
-            if (message.net_message != null && message.hasOwnProperty("net_message"))
+            if (message.net_message != null && Object.hasOwnProperty.call(message, "net_message"))
                 writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.net_message);
             return writer;
         };
@@ -4347,12 +4655,14 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.msg_type = reader.uint32();
-                    break;
-                case 2:
-                    message.net_message = reader.bytes();
-                    break;
+                case 1: {
+                        message.msg_type = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.net_message = reader.bytes();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -4414,7 +4724,7 @@
             if (object.net_message != null)
                 if (typeof object.net_message === "string")
                     $util.base64.decode(object.net_message, message.net_message = $util.newBuffer($util.base64.length(object.net_message)), 0);
-                else if (object.net_message.length)
+                else if (object.net_message.length >= 0)
                     message.net_message = object.net_message;
             return message;
         };
@@ -4458,6 +4768,21 @@
          */
         CGCToGCMsgRoutedReply.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CGCToGCMsgRoutedReply
+         * @function getTypeUrl
+         * @memberof CGCToGCMsgRoutedReply
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCToGCMsgRoutedReply.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCToGCMsgRoutedReply";
         };
     
         return CGCToGCMsgRoutedReply;
@@ -4528,9 +4853,9 @@
         CMsgGCUpdateSessionIP.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
-            if (message.ip != null && message.hasOwnProperty("ip"))
+            if (message.ip != null && Object.hasOwnProperty.call(message, "ip"))
                 writer.uint32(/* id 2, wireType 5 =*/21).fixed32(message.ip);
             return writer;
         };
@@ -4566,12 +4891,14 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.steamid = reader.fixed64();
-                    break;
-                case 2:
-                    message.ip = reader.fixed32();
-                    break;
+                case 1: {
+                        message.steamid = reader.fixed64();
+                        break;
+                    }
+                case 2: {
+                        message.ip = reader.fixed32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -4684,6 +5011,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCUpdateSessionIP
+         * @function getTypeUrl
+         * @memberof CMsgGCUpdateSessionIP
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCUpdateSessionIP.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCUpdateSessionIP";
+        };
+    
         return CMsgGCUpdateSessionIP;
     })();
     
@@ -4743,7 +5085,7 @@
         CMsgGCRequestSessionIP.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
             return writer;
         };
@@ -4779,9 +5121,10 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.steamid = reader.fixed64();
-                    break;
+                case 1: {
+                        message.steamid = reader.fixed64();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -4885,6 +5228,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCRequestSessionIP
+         * @function getTypeUrl
+         * @memberof CMsgGCRequestSessionIP
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCRequestSessionIP.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCRequestSessionIP";
+        };
+    
         return CMsgGCRequestSessionIP;
     })();
     
@@ -4944,7 +5302,7 @@
         CMsgGCRequestSessionIPResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.ip != null && message.hasOwnProperty("ip"))
+            if (message.ip != null && Object.hasOwnProperty.call(message, "ip"))
                 writer.uint32(/* id 1, wireType 5 =*/13).fixed32(message.ip);
             return writer;
         };
@@ -4980,9 +5338,10 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.ip = reader.fixed32();
-                    break;
+                case 1: {
+                        message.ip = reader.fixed32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -5072,6 +5431,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCRequestSessionIPResponse
+         * @function getTypeUrl
+         * @memberof CMsgGCRequestSessionIPResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCRequestSessionIPResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCRequestSessionIPResponse";
+        };
+    
         return CMsgGCRequestSessionIPResponse;
     })();
     
@@ -5140,9 +5514,9 @@
         CMsgSOCacheHaveVersion.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.soid != null && message.hasOwnProperty("soid"))
+            if (message.soid != null && Object.hasOwnProperty.call(message, "soid"))
                 $root.CMsgSOIDOwner.encode(message.soid, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.version != null && message.hasOwnProperty("version"))
+            if (message.version != null && Object.hasOwnProperty.call(message, "version"))
                 writer.uint32(/* id 2, wireType 1 =*/17).fixed64(message.version);
             return writer;
         };
@@ -5178,12 +5552,14 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.soid = $root.CMsgSOIDOwner.decode(reader, reader.uint32());
-                    break;
-                case 2:
-                    message.version = reader.fixed64();
-                    break;
+                case 1: {
+                        message.soid = $root.CMsgSOIDOwner.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.version = reader.fixed64();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -5299,6 +5675,21 @@
          */
         CMsgSOCacheHaveVersion.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgSOCacheHaveVersion
+         * @function getTypeUrl
+         * @memberof CMsgSOCacheHaveVersion
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgSOCacheHaveVersion.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgSOCacheHaveVersion";
         };
     
         return CMsgSOCacheHaveVersion;
@@ -5433,24 +5824,24 @@
         CMsgClientHello.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.version != null && message.hasOwnProperty("version"))
+            if (message.version != null && Object.hasOwnProperty.call(message, "version"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.version);
             if (message.socache_have_versions != null && message.socache_have_versions.length)
                 for (var i = 0; i < message.socache_have_versions.length; ++i)
                     $root.CMsgSOCacheHaveVersion.encode(message.socache_have_versions[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.client_session_need != null && message.hasOwnProperty("client_session_need"))
+            if (message.client_session_need != null && Object.hasOwnProperty.call(message, "client_session_need"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.client_session_need);
-            if (message.client_launcher != null && message.hasOwnProperty("client_launcher"))
+            if (message.client_launcher != null && Object.hasOwnProperty.call(message, "client_launcher"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.client_launcher);
-            if (message.partner_srcid != null && message.hasOwnProperty("partner_srcid"))
+            if (message.partner_srcid != null && Object.hasOwnProperty.call(message, "partner_srcid"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.partner_srcid);
-            if (message.partner_accountid != null && message.hasOwnProperty("partner_accountid"))
+            if (message.partner_accountid != null && Object.hasOwnProperty.call(message, "partner_accountid"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.partner_accountid);
-            if (message.partner_accountflags != null && message.hasOwnProperty("partner_accountflags"))
+            if (message.partner_accountflags != null && Object.hasOwnProperty.call(message, "partner_accountflags"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.partner_accountflags);
-            if (message.partner_accountbalance != null && message.hasOwnProperty("partner_accountbalance"))
+            if (message.partner_accountbalance != null && Object.hasOwnProperty.call(message, "partner_accountbalance"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.partner_accountbalance);
-            if (message.steam_launcher != null && message.hasOwnProperty("steam_launcher"))
+            if (message.steam_launcher != null && Object.hasOwnProperty.call(message, "steam_launcher"))
                 writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.steam_launcher);
             return writer;
         };
@@ -5486,35 +5877,44 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.version = reader.uint32();
-                    break;
-                case 2:
-                    if (!(message.socache_have_versions && message.socache_have_versions.length))
-                        message.socache_have_versions = [];
-                    message.socache_have_versions.push($root.CMsgSOCacheHaveVersion.decode(reader, reader.uint32()));
-                    break;
-                case 3:
-                    message.client_session_need = reader.uint32();
-                    break;
-                case 4:
-                    message.client_launcher = reader.uint32();
-                    break;
-                case 5:
-                    message.partner_srcid = reader.uint32();
-                    break;
-                case 6:
-                    message.partner_accountid = reader.uint32();
-                    break;
-                case 7:
-                    message.partner_accountflags = reader.uint32();
-                    break;
-                case 8:
-                    message.partner_accountbalance = reader.uint32();
-                    break;
-                case 9:
-                    message.steam_launcher = reader.uint32();
-                    break;
+                case 1: {
+                        message.version = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        if (!(message.socache_have_versions && message.socache_have_versions.length))
+                            message.socache_have_versions = [];
+                        message.socache_have_versions.push($root.CMsgSOCacheHaveVersion.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 3: {
+                        message.client_session_need = reader.uint32();
+                        break;
+                    }
+                case 4: {
+                        message.client_launcher = reader.uint32();
+                        break;
+                    }
+                case 5: {
+                        message.partner_srcid = reader.uint32();
+                        break;
+                    }
+                case 6: {
+                        message.partner_accountid = reader.uint32();
+                        break;
+                    }
+                case 7: {
+                        message.partner_accountflags = reader.uint32();
+                        break;
+                    }
+                case 8: {
+                        message.partner_accountbalance = reader.uint32();
+                        break;
+                    }
+                case 9: {
+                        message.steam_launcher = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -5687,6 +6087,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgClientHello
+         * @function getTypeUrl
+         * @memberof CMsgClientHello
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgClientHello.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgClientHello";
+        };
+    
         return CMsgClientHello;
     })();
     
@@ -5703,6 +6118,7 @@
          * @property {Uint8Array|null} [legacy_steamdatagram_routing] CMsgServerHello legacy_steamdatagram_routing
          * @property {number|null} [required_internal_addr] CMsgServerHello required_internal_addr
          * @property {Uint8Array|null} [steamdatagram_login] CMsgServerHello steamdatagram_login
+         * @property {number|null} [socache_control] CMsgServerHello socache_control
          */
     
         /**
@@ -5778,6 +6194,14 @@
         CMsgServerHello.prototype.steamdatagram_login = $util.newBuffer([]);
     
         /**
+         * CMsgServerHello socache_control.
+         * @member {number} socache_control
+         * @memberof CMsgServerHello
+         * @instance
+         */
+        CMsgServerHello.prototype.socache_control = 0;
+    
+        /**
          * Creates a new CMsgServerHello instance using the specified properties.
          * @function create
          * @memberof CMsgServerHello
@@ -5801,21 +6225,23 @@
         CMsgServerHello.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.version != null && message.hasOwnProperty("version"))
+            if (message.version != null && Object.hasOwnProperty.call(message, "version"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.version);
             if (message.socache_have_versions != null && message.socache_have_versions.length)
                 for (var i = 0; i < message.socache_have_versions.length; ++i)
                     $root.CMsgSOCacheHaveVersion.encode(message.socache_have_versions[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.legacy_client_session_need != null && message.hasOwnProperty("legacy_client_session_need"))
+            if (message.legacy_client_session_need != null && Object.hasOwnProperty.call(message, "legacy_client_session_need"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.legacy_client_session_need);
-            if (message.client_launcher != null && message.hasOwnProperty("client_launcher"))
+            if (message.client_launcher != null && Object.hasOwnProperty.call(message, "client_launcher"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.client_launcher);
-            if (message.legacy_steamdatagram_routing != null && message.hasOwnProperty("legacy_steamdatagram_routing"))
+            if (message.legacy_steamdatagram_routing != null && Object.hasOwnProperty.call(message, "legacy_steamdatagram_routing"))
                 writer.uint32(/* id 6, wireType 2 =*/50).bytes(message.legacy_steamdatagram_routing);
-            if (message.required_internal_addr != null && message.hasOwnProperty("required_internal_addr"))
+            if (message.required_internal_addr != null && Object.hasOwnProperty.call(message, "required_internal_addr"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.required_internal_addr);
-            if (message.steamdatagram_login != null && message.hasOwnProperty("steamdatagram_login"))
+            if (message.steamdatagram_login != null && Object.hasOwnProperty.call(message, "steamdatagram_login"))
                 writer.uint32(/* id 8, wireType 2 =*/66).bytes(message.steamdatagram_login);
+            if (message.socache_control != null && Object.hasOwnProperty.call(message, "socache_control"))
+                writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.socache_control);
             return writer;
         };
     
@@ -5850,29 +6276,40 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.version = reader.uint32();
-                    break;
-                case 2:
-                    if (!(message.socache_have_versions && message.socache_have_versions.length))
-                        message.socache_have_versions = [];
-                    message.socache_have_versions.push($root.CMsgSOCacheHaveVersion.decode(reader, reader.uint32()));
-                    break;
-                case 3:
-                    message.legacy_client_session_need = reader.uint32();
-                    break;
-                case 4:
-                    message.client_launcher = reader.uint32();
-                    break;
-                case 6:
-                    message.legacy_steamdatagram_routing = reader.bytes();
-                    break;
-                case 7:
-                    message.required_internal_addr = reader.uint32();
-                    break;
-                case 8:
-                    message.steamdatagram_login = reader.bytes();
-                    break;
+                case 1: {
+                        message.version = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        if (!(message.socache_have_versions && message.socache_have_versions.length))
+                            message.socache_have_versions = [];
+                        message.socache_have_versions.push($root.CMsgSOCacheHaveVersion.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 3: {
+                        message.legacy_client_session_need = reader.uint32();
+                        break;
+                    }
+                case 4: {
+                        message.client_launcher = reader.uint32();
+                        break;
+                    }
+                case 6: {
+                        message.legacy_steamdatagram_routing = reader.bytes();
+                        break;
+                    }
+                case 7: {
+                        message.required_internal_addr = reader.uint32();
+                        break;
+                    }
+                case 8: {
+                        message.steamdatagram_login = reader.bytes();
+                        break;
+                    }
+                case 9: {
+                        message.socache_control = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -5935,6 +6372,9 @@
             if (message.steamdatagram_login != null && message.hasOwnProperty("steamdatagram_login"))
                 if (!(message.steamdatagram_login && typeof message.steamdatagram_login.length === "number" || $util.isString(message.steamdatagram_login)))
                     return "steamdatagram_login: buffer expected";
+            if (message.socache_control != null && message.hasOwnProperty("socache_control"))
+                if (!$util.isInteger(message.socache_control))
+                    return "socache_control: integer expected";
             return null;
         };
     
@@ -5969,15 +6409,17 @@
             if (object.legacy_steamdatagram_routing != null)
                 if (typeof object.legacy_steamdatagram_routing === "string")
                     $util.base64.decode(object.legacy_steamdatagram_routing, message.legacy_steamdatagram_routing = $util.newBuffer($util.base64.length(object.legacy_steamdatagram_routing)), 0);
-                else if (object.legacy_steamdatagram_routing.length)
+                else if (object.legacy_steamdatagram_routing.length >= 0)
                     message.legacy_steamdatagram_routing = object.legacy_steamdatagram_routing;
             if (object.required_internal_addr != null)
                 message.required_internal_addr = object.required_internal_addr >>> 0;
             if (object.steamdatagram_login != null)
                 if (typeof object.steamdatagram_login === "string")
                     $util.base64.decode(object.steamdatagram_login, message.steamdatagram_login = $util.newBuffer($util.base64.length(object.steamdatagram_login)), 0);
-                else if (object.steamdatagram_login.length)
+                else if (object.steamdatagram_login.length >= 0)
                     message.steamdatagram_login = object.steamdatagram_login;
+            if (object.socache_control != null)
+                message.socache_control = object.socache_control >>> 0;
             return message;
         };
     
@@ -6015,6 +6457,7 @@
                     if (options.bytes !== Array)
                         object.steamdatagram_login = $util.newBuffer(object.steamdatagram_login);
                 }
+                object.socache_control = 0;
             }
             if (message.version != null && message.hasOwnProperty("version"))
                 object.version = message.version;
@@ -6033,6 +6476,8 @@
                 object.required_internal_addr = message.required_internal_addr;
             if (message.steamdatagram_login != null && message.hasOwnProperty("steamdatagram_login"))
                 object.steamdatagram_login = options.bytes === String ? $util.base64.encode(message.steamdatagram_login, 0, message.steamdatagram_login.length) : options.bytes === Array ? Array.prototype.slice.call(message.steamdatagram_login) : message.steamdatagram_login;
+            if (message.socache_control != null && message.hasOwnProperty("socache_control"))
+                object.socache_control = message.socache_control;
             return object;
         };
     
@@ -6045,6 +6490,21 @@
          */
         CMsgServerHello.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgServerHello
+         * @function getTypeUrl
+         * @memberof CMsgServerHello
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgServerHello.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgServerHello";
         };
     
         return CMsgServerHello;
@@ -6198,9 +6658,9 @@
         CMsgClientWelcome.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.version != null && message.hasOwnProperty("version"))
+            if (message.version != null && Object.hasOwnProperty.call(message, "version"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.version);
-            if (message.game_data != null && message.hasOwnProperty("game_data"))
+            if (message.game_data != null && Object.hasOwnProperty.call(message, "game_data"))
                 writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.game_data);
             if (message.outofdate_subscribed_caches != null && message.outofdate_subscribed_caches.length)
                 for (var i = 0; i < message.outofdate_subscribed_caches.length; ++i)
@@ -6208,19 +6668,19 @@
             if (message.uptodate_subscribed_caches != null && message.uptodate_subscribed_caches.length)
                 for (var i = 0; i < message.uptodate_subscribed_caches.length; ++i)
                     $root.CMsgSOCacheSubscriptionCheck.encode(message.uptodate_subscribed_caches[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
-            if (message.location != null && message.hasOwnProperty("location"))
+            if (message.location != null && Object.hasOwnProperty.call(message, "location"))
                 $root.CMsgClientWelcome.Location.encode(message.location, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
-            if (message.game_data2 != null && message.hasOwnProperty("game_data2"))
+            if (message.game_data2 != null && Object.hasOwnProperty.call(message, "game_data2"))
                 writer.uint32(/* id 6, wireType 2 =*/50).bytes(message.game_data2);
-            if (message.rtime32_gc_welcome_timestamp != null && message.hasOwnProperty("rtime32_gc_welcome_timestamp"))
+            if (message.rtime32_gc_welcome_timestamp != null && Object.hasOwnProperty.call(message, "rtime32_gc_welcome_timestamp"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.rtime32_gc_welcome_timestamp);
-            if (message.currency != null && message.hasOwnProperty("currency"))
+            if (message.currency != null && Object.hasOwnProperty.call(message, "currency"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.currency);
-            if (message.balance != null && message.hasOwnProperty("balance"))
+            if (message.balance != null && Object.hasOwnProperty.call(message, "balance"))
                 writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.balance);
-            if (message.balance_url != null && message.hasOwnProperty("balance_url"))
+            if (message.balance_url != null && Object.hasOwnProperty.call(message, "balance_url"))
                 writer.uint32(/* id 10, wireType 2 =*/82).string(message.balance_url);
-            if (message.txn_country_code != null && message.hasOwnProperty("txn_country_code"))
+            if (message.txn_country_code != null && Object.hasOwnProperty.call(message, "txn_country_code"))
                 writer.uint32(/* id 11, wireType 2 =*/90).string(message.txn_country_code);
             return writer;
         };
@@ -6256,43 +6716,54 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.version = reader.uint32();
-                    break;
-                case 2:
-                    message.game_data = reader.bytes();
-                    break;
-                case 3:
-                    if (!(message.outofdate_subscribed_caches && message.outofdate_subscribed_caches.length))
-                        message.outofdate_subscribed_caches = [];
-                    message.outofdate_subscribed_caches.push($root.CMsgSOCacheSubscribed.decode(reader, reader.uint32()));
-                    break;
-                case 4:
-                    if (!(message.uptodate_subscribed_caches && message.uptodate_subscribed_caches.length))
-                        message.uptodate_subscribed_caches = [];
-                    message.uptodate_subscribed_caches.push($root.CMsgSOCacheSubscriptionCheck.decode(reader, reader.uint32()));
-                    break;
-                case 5:
-                    message.location = $root.CMsgClientWelcome.Location.decode(reader, reader.uint32());
-                    break;
-                case 6:
-                    message.game_data2 = reader.bytes();
-                    break;
-                case 7:
-                    message.rtime32_gc_welcome_timestamp = reader.uint32();
-                    break;
-                case 8:
-                    message.currency = reader.uint32();
-                    break;
-                case 9:
-                    message.balance = reader.uint32();
-                    break;
-                case 10:
-                    message.balance_url = reader.string();
-                    break;
-                case 11:
-                    message.txn_country_code = reader.string();
-                    break;
+                case 1: {
+                        message.version = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.game_data = reader.bytes();
+                        break;
+                    }
+                case 3: {
+                        if (!(message.outofdate_subscribed_caches && message.outofdate_subscribed_caches.length))
+                            message.outofdate_subscribed_caches = [];
+                        message.outofdate_subscribed_caches.push($root.CMsgSOCacheSubscribed.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 4: {
+                        if (!(message.uptodate_subscribed_caches && message.uptodate_subscribed_caches.length))
+                            message.uptodate_subscribed_caches = [];
+                        message.uptodate_subscribed_caches.push($root.CMsgSOCacheSubscriptionCheck.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 5: {
+                        message.location = $root.CMsgClientWelcome.Location.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 6: {
+                        message.game_data2 = reader.bytes();
+                        break;
+                    }
+                case 7: {
+                        message.rtime32_gc_welcome_timestamp = reader.uint32();
+                        break;
+                    }
+                case 8: {
+                        message.currency = reader.uint32();
+                        break;
+                    }
+                case 9: {
+                        message.balance = reader.uint32();
+                        break;
+                    }
+                case 10: {
+                        message.balance_url = reader.string();
+                        break;
+                    }
+                case 11: {
+                        message.txn_country_code = reader.string();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -6395,7 +6866,7 @@
             if (object.game_data != null)
                 if (typeof object.game_data === "string")
                     $util.base64.decode(object.game_data, message.game_data = $util.newBuffer($util.base64.length(object.game_data)), 0);
-                else if (object.game_data.length)
+                else if (object.game_data.length >= 0)
                     message.game_data = object.game_data;
             if (object.outofdate_subscribed_caches) {
                 if (!Array.isArray(object.outofdate_subscribed_caches))
@@ -6425,7 +6896,7 @@
             if (object.game_data2 != null)
                 if (typeof object.game_data2 === "string")
                     $util.base64.decode(object.game_data2, message.game_data2 = $util.newBuffer($util.base64.length(object.game_data2)), 0);
-                else if (object.game_data2.length)
+                else if (object.game_data2.length >= 0)
                     message.game_data2 = object.game_data2;
             if (object.rtime32_gc_welcome_timestamp != null)
                 message.rtime32_gc_welcome_timestamp = object.rtime32_gc_welcome_timestamp >>> 0;
@@ -6522,6 +6993,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgClientWelcome
+         * @function getTypeUrl
+         * @memberof CMsgClientWelcome
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgClientWelcome.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgClientWelcome";
+        };
+    
         CMsgClientWelcome.Location = (function() {
     
             /**
@@ -6596,11 +7082,11 @@
             Location.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.latitude != null && message.hasOwnProperty("latitude"))
+                if (message.latitude != null && Object.hasOwnProperty.call(message, "latitude"))
                     writer.uint32(/* id 1, wireType 5 =*/13).float(message.latitude);
-                if (message.longitude != null && message.hasOwnProperty("longitude"))
+                if (message.longitude != null && Object.hasOwnProperty.call(message, "longitude"))
                     writer.uint32(/* id 2, wireType 5 =*/21).float(message.longitude);
-                if (message.country != null && message.hasOwnProperty("country"))
+                if (message.country != null && Object.hasOwnProperty.call(message, "country"))
                     writer.uint32(/* id 3, wireType 2 =*/26).string(message.country);
                 return writer;
             };
@@ -6636,15 +7122,18 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.latitude = reader.float();
-                        break;
-                    case 2:
-                        message.longitude = reader.float();
-                        break;
-                    case 3:
-                        message.country = reader.string();
-                        break;
+                    case 1: {
+                            message.latitude = reader.float();
+                            break;
+                        }
+                    case 2: {
+                            message.longitude = reader.float();
+                            break;
+                        }
+                    case 3: {
+                            message.country = reader.string();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -6749,6 +7238,21 @@
              */
             Location.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            /**
+             * Gets the default type url for Location
+             * @function getTypeUrl
+             * @memberof CMsgClientWelcome.Location
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            Location.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgClientWelcome.Location";
             };
     
             return Location;
@@ -6858,17 +7362,17 @@
         CMsgConnectionStatus.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.status != null && message.hasOwnProperty("status"))
+            if (message.status != null && Object.hasOwnProperty.call(message, "status"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.status);
-            if (message.client_session_need != null && message.hasOwnProperty("client_session_need"))
+            if (message.client_session_need != null && Object.hasOwnProperty.call(message, "client_session_need"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.client_session_need);
-            if (message.queue_position != null && message.hasOwnProperty("queue_position"))
+            if (message.queue_position != null && Object.hasOwnProperty.call(message, "queue_position"))
                 writer.uint32(/* id 3, wireType 0 =*/24).int32(message.queue_position);
-            if (message.queue_size != null && message.hasOwnProperty("queue_size"))
+            if (message.queue_size != null && Object.hasOwnProperty.call(message, "queue_size"))
                 writer.uint32(/* id 4, wireType 0 =*/32).int32(message.queue_size);
-            if (message.wait_seconds != null && message.hasOwnProperty("wait_seconds"))
+            if (message.wait_seconds != null && Object.hasOwnProperty.call(message, "wait_seconds"))
                 writer.uint32(/* id 5, wireType 0 =*/40).int32(message.wait_seconds);
-            if (message.estimated_wait_seconds_remaining != null && message.hasOwnProperty("estimated_wait_seconds_remaining"))
+            if (message.estimated_wait_seconds_remaining != null && Object.hasOwnProperty.call(message, "estimated_wait_seconds_remaining"))
                 writer.uint32(/* id 6, wireType 0 =*/48).int32(message.estimated_wait_seconds_remaining);
             return writer;
         };
@@ -6904,24 +7408,30 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.status = reader.int32();
-                    break;
-                case 2:
-                    message.client_session_need = reader.uint32();
-                    break;
-                case 3:
-                    message.queue_position = reader.int32();
-                    break;
-                case 4:
-                    message.queue_size = reader.int32();
-                    break;
-                case 5:
-                    message.wait_seconds = reader.int32();
-                    break;
-                case 6:
-                    message.estimated_wait_seconds_remaining = reader.int32();
-                    break;
+                case 1: {
+                        message.status = reader.int32();
+                        break;
+                    }
+                case 2: {
+                        message.client_session_need = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.queue_position = reader.int32();
+                        break;
+                    }
+                case 4: {
+                        message.queue_size = reader.int32();
+                        break;
+                    }
+                case 5: {
+                        message.wait_seconds = reader.int32();
+                        break;
+                    }
+                case 6: {
+                        message.estimated_wait_seconds_remaining = reader.int32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -6999,6 +7509,12 @@
                 return object;
             var message = new $root.CMsgConnectionStatus();
             switch (object.status) {
+            default:
+                if (typeof object.status === "number") {
+                    message.status = object.status;
+                    break;
+                }
+                break;
             case "GCConnectionStatus_HAVE_SESSION":
             case 0:
                 message.status = 0;
@@ -7055,7 +7571,7 @@
                 object.estimated_wait_seconds_remaining = 0;
             }
             if (message.status != null && message.hasOwnProperty("status"))
-                object.status = options.enums === String ? $root.GCConnectionStatus[message.status] : message.status;
+                object.status = options.enums === String ? $root.GCConnectionStatus[message.status] === undefined ? message.status : $root.GCConnectionStatus[message.status] : message.status;
             if (message.client_session_need != null && message.hasOwnProperty("client_session_need"))
                 object.client_session_need = message.client_session_need;
             if (message.queue_position != null && message.hasOwnProperty("queue_position"))
@@ -7078,6 +7594,21 @@
          */
         CMsgConnectionStatus.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgConnectionStatus
+         * @function getTypeUrl
+         * @memberof CMsgConnectionStatus
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgConnectionStatus.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgConnectionStatus";
         };
     
         return CMsgConnectionStatus;
@@ -7149,7 +7680,7 @@
         CWorkshop_PopulateItemDescriptions_Request.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.appid != null && message.hasOwnProperty("appid"))
+            if (message.appid != null && Object.hasOwnProperty.call(message, "appid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.appid);
             if (message.languages != null && message.languages.length)
                 for (var i = 0; i < message.languages.length; ++i)
@@ -7188,14 +7719,16 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.appid = reader.uint32();
-                    break;
-                case 2:
-                    if (!(message.languages && message.languages.length))
-                        message.languages = [];
-                    message.languages.push($root.CWorkshop_PopulateItemDescriptions_Request.ItemDescriptionsLanguageBlock.decode(reader, reader.uint32()));
-                    break;
+                case 1: {
+                        message.appid = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        if (!(message.languages && message.languages.length))
+                            message.languages = [];
+                        message.languages.push($root.CWorkshop_PopulateItemDescriptions_Request.ItemDescriptionsLanguageBlock.decode(reader, reader.uint32()));
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -7311,6 +7844,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CWorkshop_PopulateItemDescriptions_Request
+         * @function getTypeUrl
+         * @memberof CWorkshop_PopulateItemDescriptions_Request
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CWorkshop_PopulateItemDescriptions_Request.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CWorkshop_PopulateItemDescriptions_Request";
+        };
+    
         CWorkshop_PopulateItemDescriptions_Request.SingleItemDescription = (function() {
     
             /**
@@ -7385,11 +7933,11 @@
             SingleItemDescription.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.gameitemid != null && message.hasOwnProperty("gameitemid"))
+                if (message.gameitemid != null && Object.hasOwnProperty.call(message, "gameitemid"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.gameitemid);
-                if (message.item_description != null && message.hasOwnProperty("item_description"))
+                if (message.item_description != null && Object.hasOwnProperty.call(message, "item_description"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.item_description);
-                if (message.one_per_account != null && message.hasOwnProperty("one_per_account"))
+                if (message.one_per_account != null && Object.hasOwnProperty.call(message, "one_per_account"))
                     writer.uint32(/* id 3, wireType 0 =*/24).bool(message.one_per_account);
                 return writer;
             };
@@ -7425,15 +7973,18 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.gameitemid = reader.uint32();
-                        break;
-                    case 2:
-                        message.item_description = reader.string();
-                        break;
-                    case 3:
-                        message.one_per_account = reader.bool();
-                        break;
+                    case 1: {
+                            message.gameitemid = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            message.item_description = reader.string();
+                            break;
+                        }
+                    case 3: {
+                            message.one_per_account = reader.bool();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -7540,6 +8091,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for SingleItemDescription
+             * @function getTypeUrl
+             * @memberof CWorkshop_PopulateItemDescriptions_Request.SingleItemDescription
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            SingleItemDescription.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CWorkshop_PopulateItemDescriptions_Request.SingleItemDescription";
+            };
+    
             return SingleItemDescription;
         })();
     
@@ -7609,7 +8175,7 @@
             ItemDescriptionsLanguageBlock.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.language != null && message.hasOwnProperty("language"))
+                if (message.language != null && Object.hasOwnProperty.call(message, "language"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.language);
                 if (message.descriptions != null && message.descriptions.length)
                     for (var i = 0; i < message.descriptions.length; ++i)
@@ -7648,14 +8214,16 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.language = reader.string();
-                        break;
-                    case 2:
-                        if (!(message.descriptions && message.descriptions.length))
-                            message.descriptions = [];
-                        message.descriptions.push($root.CWorkshop_PopulateItemDescriptions_Request.SingleItemDescription.decode(reader, reader.uint32()));
-                        break;
+                    case 1: {
+                            message.language = reader.string();
+                            break;
+                        }
+                    case 2: {
+                            if (!(message.descriptions && message.descriptions.length))
+                                message.descriptions = [];
+                            message.descriptions.push($root.CWorkshop_PopulateItemDescriptions_Request.SingleItemDescription.decode(reader, reader.uint32()));
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -7771,6 +8339,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for ItemDescriptionsLanguageBlock
+             * @function getTypeUrl
+             * @memberof CWorkshop_PopulateItemDescriptions_Request.ItemDescriptionsLanguageBlock
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            ItemDescriptionsLanguageBlock.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CWorkshop_PopulateItemDescriptions_Request.ItemDescriptionsLanguageBlock";
+            };
+    
             return ItemDescriptionsLanguageBlock;
         })();
     
@@ -7842,9 +8425,9 @@
         CWorkshop_GetContributors_Request.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.appid != null && message.hasOwnProperty("appid"))
+            if (message.appid != null && Object.hasOwnProperty.call(message, "appid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.appid);
-            if (message.gameitemid != null && message.hasOwnProperty("gameitemid"))
+            if (message.gameitemid != null && Object.hasOwnProperty.call(message, "gameitemid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.gameitemid);
             return writer;
         };
@@ -7880,12 +8463,14 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.appid = reader.uint32();
-                    break;
-                case 2:
-                    message.gameitemid = reader.uint32();
-                    break;
+                case 1: {
+                        message.appid = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.gameitemid = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -7982,6 +8567,21 @@
          */
         CWorkshop_GetContributors_Request.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CWorkshop_GetContributors_Request
+         * @function getTypeUrl
+         * @memberof CWorkshop_GetContributors_Request
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CWorkshop_GetContributors_Request.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CWorkshop_GetContributors_Request";
         };
     
         return CWorkshop_GetContributors_Request;
@@ -8081,16 +8681,17 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    if (!(message.contributors && message.contributors.length))
-                        message.contributors = [];
-                    if ((tag & 7) === 2) {
-                        var end2 = reader.uint32() + reader.pos;
-                        while (reader.pos < end2)
+                case 1: {
+                        if (!(message.contributors && message.contributors.length))
+                            message.contributors = [];
+                        if ((tag & 7) === 2) {
+                            var end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.contributors.push(reader.fixed64());
+                        } else
                             message.contributors.push(reader.fixed64());
-                    } else
-                        message.contributors.push(reader.fixed64());
-                    break;
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -8200,6 +8801,21 @@
          */
         CWorkshop_GetContributors_Response.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CWorkshop_GetContributors_Response
+         * @function getTypeUrl
+         * @memberof CWorkshop_GetContributors_Response
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CWorkshop_GetContributors_Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CWorkshop_GetContributors_Response";
         };
     
         return CWorkshop_GetContributors_Response;
@@ -8317,9 +8933,9 @@
         CWorkshop_SetItemPaymentRules_Request.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.appid != null && message.hasOwnProperty("appid"))
+            if (message.appid != null && Object.hasOwnProperty.call(message, "appid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.appid);
-            if (message.gameitemid != null && message.hasOwnProperty("gameitemid"))
+            if (message.gameitemid != null && Object.hasOwnProperty.call(message, "gameitemid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.gameitemid);
             if (message.associated_workshop_files != null && message.associated_workshop_files.length)
                 for (var i = 0; i < message.associated_workshop_files.length; ++i)
@@ -8327,11 +8943,11 @@
             if (message.partner_accounts != null && message.partner_accounts.length)
                 for (var i = 0; i < message.partner_accounts.length; ++i)
                     $root.CWorkshop_SetItemPaymentRules_Request.PartnerItemPaymentRule.encode(message.partner_accounts[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
-            if (message.validate_only != null && message.hasOwnProperty("validate_only"))
+            if (message.validate_only != null && Object.hasOwnProperty.call(message, "validate_only"))
                 writer.uint32(/* id 5, wireType 0 =*/40).bool(message.validate_only);
-            if (message.make_workshop_files_subscribable != null && message.hasOwnProperty("make_workshop_files_subscribable"))
+            if (message.make_workshop_files_subscribable != null && Object.hasOwnProperty.call(message, "make_workshop_files_subscribable"))
                 writer.uint32(/* id 6, wireType 0 =*/48).bool(message.make_workshop_files_subscribable);
-            if (message.associated_workshop_file_for_direct_payments != null && message.hasOwnProperty("associated_workshop_file_for_direct_payments"))
+            if (message.associated_workshop_file_for_direct_payments != null && Object.hasOwnProperty.call(message, "associated_workshop_file_for_direct_payments"))
                 $root.CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule.encode(message.associated_workshop_file_for_direct_payments, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
             return writer;
         };
@@ -8367,31 +8983,38 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.appid = reader.uint32();
-                    break;
-                case 2:
-                    message.gameitemid = reader.uint32();
-                    break;
-                case 3:
-                    if (!(message.associated_workshop_files && message.associated_workshop_files.length))
-                        message.associated_workshop_files = [];
-                    message.associated_workshop_files.push($root.CWorkshop_SetItemPaymentRules_Request.WorkshopItemPaymentRule.decode(reader, reader.uint32()));
-                    break;
-                case 4:
-                    if (!(message.partner_accounts && message.partner_accounts.length))
-                        message.partner_accounts = [];
-                    message.partner_accounts.push($root.CWorkshop_SetItemPaymentRules_Request.PartnerItemPaymentRule.decode(reader, reader.uint32()));
-                    break;
-                case 5:
-                    message.validate_only = reader.bool();
-                    break;
-                case 6:
-                    message.make_workshop_files_subscribable = reader.bool();
-                    break;
-                case 7:
-                    message.associated_workshop_file_for_direct_payments = $root.CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule.decode(reader, reader.uint32());
-                    break;
+                case 1: {
+                        message.appid = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.gameitemid = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        if (!(message.associated_workshop_files && message.associated_workshop_files.length))
+                            message.associated_workshop_files = [];
+                        message.associated_workshop_files.push($root.CWorkshop_SetItemPaymentRules_Request.WorkshopItemPaymentRule.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 4: {
+                        if (!(message.partner_accounts && message.partner_accounts.length))
+                            message.partner_accounts = [];
+                        message.partner_accounts.push($root.CWorkshop_SetItemPaymentRules_Request.PartnerItemPaymentRule.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 5: {
+                        message.validate_only = reader.bool();
+                        break;
+                    }
+                case 6: {
+                        message.make_workshop_files_subscribable = reader.bool();
+                        break;
+                    }
+                case 7: {
+                        message.associated_workshop_file_for_direct_payments = $root.CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule.decode(reader, reader.uint32());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -8571,6 +9194,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CWorkshop_SetItemPaymentRules_Request
+         * @function getTypeUrl
+         * @memberof CWorkshop_SetItemPaymentRules_Request
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CWorkshop_SetItemPaymentRules_Request.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CWorkshop_SetItemPaymentRules_Request";
+        };
+    
         CWorkshop_SetItemPaymentRules_Request.WorkshopItemPaymentRule = (function() {
     
             /**
@@ -8654,13 +9292,13 @@
             WorkshopItemPaymentRule.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.workshop_file_id != null && message.hasOwnProperty("workshop_file_id"))
+                if (message.workshop_file_id != null && Object.hasOwnProperty.call(message, "workshop_file_id"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.workshop_file_id);
-                if (message.revenue_percentage != null && message.hasOwnProperty("revenue_percentage"))
+                if (message.revenue_percentage != null && Object.hasOwnProperty.call(message, "revenue_percentage"))
                     writer.uint32(/* id 2, wireType 5 =*/21).float(message.revenue_percentage);
-                if (message.rule_description != null && message.hasOwnProperty("rule_description"))
+                if (message.rule_description != null && Object.hasOwnProperty.call(message, "rule_description"))
                     writer.uint32(/* id 3, wireType 2 =*/26).string(message.rule_description);
-                if (message.rule_type != null && message.hasOwnProperty("rule_type"))
+                if (message.rule_type != null && Object.hasOwnProperty.call(message, "rule_type"))
                     writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.rule_type);
                 return writer;
             };
@@ -8696,18 +9334,22 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.workshop_file_id = reader.uint64();
-                        break;
-                    case 2:
-                        message.revenue_percentage = reader.float();
-                        break;
-                    case 3:
-                        message.rule_description = reader.string();
-                        break;
-                    case 4:
-                        message.rule_type = reader.uint32();
-                        break;
+                    case 1: {
+                            message.workshop_file_id = reader.uint64();
+                            break;
+                        }
+                    case 2: {
+                            message.revenue_percentage = reader.float();
+                            break;
+                        }
+                    case 3: {
+                            message.rule_description = reader.string();
+                            break;
+                        }
+                    case 4: {
+                            message.rule_type = reader.uint32();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -8836,6 +9478,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for WorkshopItemPaymentRule
+             * @function getTypeUrl
+             * @memberof CWorkshop_SetItemPaymentRules_Request.WorkshopItemPaymentRule
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            WorkshopItemPaymentRule.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CWorkshop_SetItemPaymentRules_Request.WorkshopItemPaymentRule";
+            };
+    
             return WorkshopItemPaymentRule;
         })();
     
@@ -8904,9 +9561,9 @@
             WorkshopDirectPaymentRule.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.workshop_file_id != null && message.hasOwnProperty("workshop_file_id"))
+                if (message.workshop_file_id != null && Object.hasOwnProperty.call(message, "workshop_file_id"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.workshop_file_id);
-                if (message.rule_description != null && message.hasOwnProperty("rule_description"))
+                if (message.rule_description != null && Object.hasOwnProperty.call(message, "rule_description"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.rule_description);
                 return writer;
             };
@@ -8942,12 +9599,14 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.workshop_file_id = reader.uint64();
-                        break;
-                    case 2:
-                        message.rule_description = reader.string();
-                        break;
+                    case 1: {
+                            message.workshop_file_id = reader.uint64();
+                            break;
+                        }
+                    case 2: {
+                            message.rule_description = reader.string();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -9060,6 +9719,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for WorkshopDirectPaymentRule
+             * @function getTypeUrl
+             * @memberof CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            WorkshopDirectPaymentRule.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule";
+            };
+    
             return WorkshopDirectPaymentRule;
         })();
     
@@ -9137,11 +9811,11 @@
             PartnerItemPaymentRule.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.account_id != null && message.hasOwnProperty("account_id"))
+                if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.account_id);
-                if (message.revenue_percentage != null && message.hasOwnProperty("revenue_percentage"))
+                if (message.revenue_percentage != null && Object.hasOwnProperty.call(message, "revenue_percentage"))
                     writer.uint32(/* id 2, wireType 5 =*/21).float(message.revenue_percentage);
-                if (message.rule_description != null && message.hasOwnProperty("rule_description"))
+                if (message.rule_description != null && Object.hasOwnProperty.call(message, "rule_description"))
                     writer.uint32(/* id 3, wireType 2 =*/26).string(message.rule_description);
                 return writer;
             };
@@ -9177,15 +9851,18 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.account_id = reader.uint32();
-                        break;
-                    case 2:
-                        message.revenue_percentage = reader.float();
-                        break;
-                    case 3:
-                        message.rule_description = reader.string();
-                        break;
+                    case 1: {
+                            message.account_id = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            message.revenue_percentage = reader.float();
+                            break;
+                        }
+                    case 3: {
+                            message.rule_description = reader.string();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -9290,6 +9967,21 @@
              */
             PartnerItemPaymentRule.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            /**
+             * Gets the default type url for PartnerItemPaymentRule
+             * @function getTypeUrl
+             * @memberof CWorkshop_SetItemPaymentRules_Request.PartnerItemPaymentRule
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            PartnerItemPaymentRule.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CWorkshop_SetItemPaymentRules_Request.PartnerItemPaymentRule";
             };
     
             return PartnerItemPaymentRule;
@@ -9455,6 +10147,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CWorkshop_SetItemPaymentRules_Response
+         * @function getTypeUrl
+         * @memberof CWorkshop_SetItemPaymentRules_Response
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CWorkshop_SetItemPaymentRules_Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CWorkshop_SetItemPaymentRules_Response";
+        };
+    
         return CWorkshop_SetItemPaymentRules_Response;
     })();
     
@@ -9524,7 +10231,7 @@
         CGameServers_AggregationQuery_Request.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.filter != null && message.hasOwnProperty("filter"))
+            if (message.filter != null && Object.hasOwnProperty.call(message, "filter"))
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.filter);
             if (message.group_fields != null && message.group_fields.length)
                 for (var i = 0; i < message.group_fields.length; ++i)
@@ -9563,14 +10270,16 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.filter = reader.string();
-                    break;
-                case 3:
-                    if (!(message.group_fields && message.group_fields.length))
-                        message.group_fields = [];
-                    message.group_fields.push(reader.string());
-                    break;
+                case 1: {
+                        message.filter = reader.string();
+                        break;
+                    }
+                case 3: {
+                        if (!(message.group_fields && message.group_fields.length))
+                            message.group_fields = [];
+                        message.group_fields.push(reader.string());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -9681,6 +10390,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CGameServers_AggregationQuery_Request
+         * @function getTypeUrl
+         * @memberof CGameServers_AggregationQuery_Request
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGameServers_AggregationQuery_Request.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGameServers_AggregationQuery_Request";
+        };
+    
         return CGameServers_AggregationQuery_Request;
     })();
     
@@ -9778,11 +10502,12 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    if (!(message.groups && message.groups.length))
-                        message.groups = [];
-                    message.groups.push($root.CGameServers_AggregationQuery_Response.Group.decode(reader, reader.uint32()));
-                    break;
+                case 1: {
+                        if (!(message.groups && message.groups.length))
+                            message.groups = [];
+                        message.groups.push($root.CGameServers_AggregationQuery_Response.Group.decode(reader, reader.uint32()));
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -9887,6 +10612,21 @@
          */
         CGameServers_AggregationQuery_Response.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CGameServers_AggregationQuery_Response
+         * @function getTypeUrl
+         * @memberof CGameServers_AggregationQuery_Response
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGameServers_AggregationQuery_Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGameServers_AggregationQuery_Response";
         };
     
         CGameServers_AggregationQuery_Response.Group = (function() {
@@ -10003,17 +10743,17 @@
                 if (message.group_values != null && message.group_values.length)
                     for (var i = 0; i < message.group_values.length; ++i)
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.group_values[i]);
-                if (message.servers_empty != null && message.hasOwnProperty("servers_empty"))
+                if (message.servers_empty != null && Object.hasOwnProperty.call(message, "servers_empty"))
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.servers_empty);
-                if (message.servers_full != null && message.hasOwnProperty("servers_full"))
+                if (message.servers_full != null && Object.hasOwnProperty.call(message, "servers_full"))
                     writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.servers_full);
-                if (message.servers_total != null && message.hasOwnProperty("servers_total"))
+                if (message.servers_total != null && Object.hasOwnProperty.call(message, "servers_total"))
                     writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.servers_total);
-                if (message.players_humans != null && message.hasOwnProperty("players_humans"))
+                if (message.players_humans != null && Object.hasOwnProperty.call(message, "players_humans"))
                     writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.players_humans);
-                if (message.players_bots != null && message.hasOwnProperty("players_bots"))
+                if (message.players_bots != null && Object.hasOwnProperty.call(message, "players_bots"))
                     writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.players_bots);
-                if (message.player_capacity != null && message.hasOwnProperty("player_capacity"))
+                if (message.player_capacity != null && Object.hasOwnProperty.call(message, "player_capacity"))
                     writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.player_capacity);
                 return writer;
             };
@@ -10049,29 +10789,36 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        if (!(message.group_values && message.group_values.length))
-                            message.group_values = [];
-                        message.group_values.push(reader.string());
-                        break;
-                    case 2:
-                        message.servers_empty = reader.uint32();
-                        break;
-                    case 3:
-                        message.servers_full = reader.uint32();
-                        break;
-                    case 4:
-                        message.servers_total = reader.uint32();
-                        break;
-                    case 5:
-                        message.players_humans = reader.uint32();
-                        break;
-                    case 6:
-                        message.players_bots = reader.uint32();
-                        break;
-                    case 7:
-                        message.player_capacity = reader.uint32();
-                        break;
+                    case 1: {
+                            if (!(message.group_values && message.group_values.length))
+                                message.group_values = [];
+                            message.group_values.push(reader.string());
+                            break;
+                        }
+                    case 2: {
+                            message.servers_empty = reader.uint32();
+                            break;
+                        }
+                    case 3: {
+                            message.servers_full = reader.uint32();
+                            break;
+                        }
+                    case 4: {
+                            message.servers_total = reader.uint32();
+                            break;
+                        }
+                    case 5: {
+                            message.players_humans = reader.uint32();
+                            break;
+                        }
+                    case 6: {
+                            message.players_bots = reader.uint32();
+                            break;
+                        }
+                    case 7: {
+                            message.player_capacity = reader.uint32();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -10223,6 +10970,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for Group
+             * @function getTypeUrl
+             * @memberof CGameServers_AggregationQuery_Response.Group
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            Group.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CGameServers_AggregationQuery_Response.Group";
+            };
+    
             return Group;
         })();
     
@@ -10321,15 +11083,15 @@
         CWorkshop_AddSpecialPayment_Request.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.appid != null && message.hasOwnProperty("appid"))
+            if (message.appid != null && Object.hasOwnProperty.call(message, "appid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.appid);
-            if (message.gameitemid != null && message.hasOwnProperty("gameitemid"))
+            if (message.gameitemid != null && Object.hasOwnProperty.call(message, "gameitemid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.gameitemid);
-            if (message.date != null && message.hasOwnProperty("date"))
+            if (message.date != null && Object.hasOwnProperty.call(message, "date"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.date);
-            if (message.payment_us_usd != null && message.hasOwnProperty("payment_us_usd"))
+            if (message.payment_us_usd != null && Object.hasOwnProperty.call(message, "payment_us_usd"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.payment_us_usd);
-            if (message.payment_row_usd != null && message.hasOwnProperty("payment_row_usd"))
+            if (message.payment_row_usd != null && Object.hasOwnProperty.call(message, "payment_row_usd"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint64(message.payment_row_usd);
             return writer;
         };
@@ -10365,21 +11127,26 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.appid = reader.uint32();
-                    break;
-                case 2:
-                    message.gameitemid = reader.uint32();
-                    break;
-                case 3:
-                    message.date = reader.string();
-                    break;
-                case 4:
-                    message.payment_us_usd = reader.uint64();
-                    break;
-                case 5:
-                    message.payment_row_usd = reader.uint64();
-                    break;
+                case 1: {
+                        message.appid = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.gameitemid = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.date = reader.string();
+                        break;
+                    }
+                case 4: {
+                        message.payment_us_usd = reader.uint64();
+                        break;
+                    }
+                case 5: {
+                        message.payment_row_usd = reader.uint64();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -10528,6 +11295,21 @@
          */
         CWorkshop_AddSpecialPayment_Request.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CWorkshop_AddSpecialPayment_Request
+         * @function getTypeUrl
+         * @memberof CWorkshop_AddSpecialPayment_Request
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CWorkshop_AddSpecialPayment_Request.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CWorkshop_AddSpecialPayment_Request";
         };
     
         return CWorkshop_AddSpecialPayment_Request;
@@ -10690,6 +11472,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CWorkshop_AddSpecialPayment_Response
+         * @function getTypeUrl
+         * @memberof CWorkshop_AddSpecialPayment_Response
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CWorkshop_AddSpecialPayment_Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CWorkshop_AddSpecialPayment_Response";
+        };
+    
         return CWorkshop_AddSpecialPayment_Response;
     })();
     
@@ -10768,12 +11565,12 @@
         CProductInfo_SetRichPresenceLocalization_Request.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.appid != null && message.hasOwnProperty("appid"))
+            if (message.appid != null && Object.hasOwnProperty.call(message, "appid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.appid);
             if (message.languages != null && message.languages.length)
                 for (var i = 0; i < message.languages.length; ++i)
                     $root.CProductInfo_SetRichPresenceLocalization_Request.LanguageSection.encode(message.languages[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.steamid);
             return writer;
         };
@@ -10809,17 +11606,20 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.appid = reader.uint32();
-                    break;
-                case 2:
-                    if (!(message.languages && message.languages.length))
-                        message.languages = [];
-                    message.languages.push($root.CProductInfo_SetRichPresenceLocalization_Request.LanguageSection.decode(reader, reader.uint32()));
-                    break;
-                case 3:
-                    message.steamid = reader.uint64();
-                    break;
+                case 1: {
+                        message.appid = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        if (!(message.languages && message.languages.length))
+                            message.languages = [];
+                        message.languages.push($root.CProductInfo_SetRichPresenceLocalization_Request.LanguageSection.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 3: {
+                        message.steamid = reader.uint64();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -10958,6 +11758,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CProductInfo_SetRichPresenceLocalization_Request
+         * @function getTypeUrl
+         * @memberof CProductInfo_SetRichPresenceLocalization_Request
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CProductInfo_SetRichPresenceLocalization_Request.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CProductInfo_SetRichPresenceLocalization_Request";
+        };
+    
         CProductInfo_SetRichPresenceLocalization_Request.Token = (function() {
     
             /**
@@ -11023,9 +11838,9 @@
             Token.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.token != null && message.hasOwnProperty("token"))
+                if (message.token != null && Object.hasOwnProperty.call(message, "token"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.token);
-                if (message.value != null && message.hasOwnProperty("value"))
+                if (message.value != null && Object.hasOwnProperty.call(message, "value"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.value);
                 return writer;
             };
@@ -11061,12 +11876,14 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.token = reader.string();
-                        break;
-                    case 2:
-                        message.value = reader.string();
-                        break;
+                    case 1: {
+                            message.token = reader.string();
+                            break;
+                        }
+                    case 2: {
+                            message.value = reader.string();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -11165,6 +11982,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for Token
+             * @function getTypeUrl
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.Token
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            Token.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CProductInfo_SetRichPresenceLocalization_Request.Token";
+            };
+    
             return Token;
         })();
     
@@ -11234,7 +12066,7 @@
             LanguageSection.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.language != null && message.hasOwnProperty("language"))
+                if (message.language != null && Object.hasOwnProperty.call(message, "language"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.language);
                 if (message.tokens != null && message.tokens.length)
                     for (var i = 0; i < message.tokens.length; ++i)
@@ -11273,14 +12105,16 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.language = reader.string();
-                        break;
-                    case 2:
-                        if (!(message.tokens && message.tokens.length))
-                            message.tokens = [];
-                        message.tokens.push($root.CProductInfo_SetRichPresenceLocalization_Request.Token.decode(reader, reader.uint32()));
-                        break;
+                    case 1: {
+                            message.language = reader.string();
+                            break;
+                        }
+                    case 2: {
+                            if (!(message.tokens && message.tokens.length))
+                                message.tokens = [];
+                            message.tokens.push($root.CProductInfo_SetRichPresenceLocalization_Request.Token.decode(reader, reader.uint32()));
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -11394,6 +12228,21 @@
              */
             LanguageSection.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            /**
+             * Gets the default type url for LanguageSection
+             * @function getTypeUrl
+             * @memberof CProductInfo_SetRichPresenceLocalization_Request.LanguageSection
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            LanguageSection.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CProductInfo_SetRichPresenceLocalization_Request.LanguageSection";
             };
     
             return LanguageSection;
@@ -11559,13 +12408,1142 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CProductInfo_SetRichPresenceLocalization_Response
+         * @function getTypeUrl
+         * @memberof CProductInfo_SetRichPresenceLocalization_Response
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CProductInfo_SetRichPresenceLocalization_Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CProductInfo_SetRichPresenceLocalization_Response";
+        };
+    
         return CProductInfo_SetRichPresenceLocalization_Response;
+    })();
+    
+    $root.CMsgSerializedSOCache = (function() {
+    
+        /**
+         * Properties of a CMsgSerializedSOCache.
+         * @exports ICMsgSerializedSOCache
+         * @interface ICMsgSerializedSOCache
+         * @property {number|null} [file_version] CMsgSerializedSOCache file_version
+         * @property {Array.<CMsgSerializedSOCache.ICache>|null} [caches] CMsgSerializedSOCache caches
+         * @property {number|null} [gc_socache_file_version] CMsgSerializedSOCache gc_socache_file_version
+         */
+    
+        /**
+         * Constructs a new CMsgSerializedSOCache.
+         * @exports CMsgSerializedSOCache
+         * @classdesc Represents a CMsgSerializedSOCache.
+         * @implements ICMsgSerializedSOCache
+         * @constructor
+         * @param {ICMsgSerializedSOCache=} [properties] Properties to set
+         */
+        function CMsgSerializedSOCache(properties) {
+            this.caches = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgSerializedSOCache file_version.
+         * @member {number} file_version
+         * @memberof CMsgSerializedSOCache
+         * @instance
+         */
+        CMsgSerializedSOCache.prototype.file_version = 0;
+    
+        /**
+         * CMsgSerializedSOCache caches.
+         * @member {Array.<CMsgSerializedSOCache.ICache>} caches
+         * @memberof CMsgSerializedSOCache
+         * @instance
+         */
+        CMsgSerializedSOCache.prototype.caches = $util.emptyArray;
+    
+        /**
+         * CMsgSerializedSOCache gc_socache_file_version.
+         * @member {number} gc_socache_file_version
+         * @memberof CMsgSerializedSOCache
+         * @instance
+         */
+        CMsgSerializedSOCache.prototype.gc_socache_file_version = 0;
+    
+        /**
+         * Creates a new CMsgSerializedSOCache instance using the specified properties.
+         * @function create
+         * @memberof CMsgSerializedSOCache
+         * @static
+         * @param {ICMsgSerializedSOCache=} [properties] Properties to set
+         * @returns {CMsgSerializedSOCache} CMsgSerializedSOCache instance
+         */
+        CMsgSerializedSOCache.create = function create(properties) {
+            return new CMsgSerializedSOCache(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgSerializedSOCache message. Does not implicitly {@link CMsgSerializedSOCache.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgSerializedSOCache
+         * @static
+         * @param {ICMsgSerializedSOCache} message CMsgSerializedSOCache message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgSerializedSOCache.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.file_version != null && Object.hasOwnProperty.call(message, "file_version"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.file_version);
+            if (message.caches != null && message.caches.length)
+                for (var i = 0; i < message.caches.length; ++i)
+                    $root.CMsgSerializedSOCache.Cache.encode(message.caches[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            if (message.gc_socache_file_version != null && Object.hasOwnProperty.call(message, "gc_socache_file_version"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.gc_socache_file_version);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgSerializedSOCache message, length delimited. Does not implicitly {@link CMsgSerializedSOCache.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgSerializedSOCache
+         * @static
+         * @param {ICMsgSerializedSOCache} message CMsgSerializedSOCache message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgSerializedSOCache.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgSerializedSOCache message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgSerializedSOCache
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgSerializedSOCache} CMsgSerializedSOCache
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgSerializedSOCache.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSerializedSOCache();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1: {
+                        message.file_version = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        if (!(message.caches && message.caches.length))
+                            message.caches = [];
+                        message.caches.push($root.CMsgSerializedSOCache.Cache.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 3: {
+                        message.gc_socache_file_version = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgSerializedSOCache message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgSerializedSOCache
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgSerializedSOCache} CMsgSerializedSOCache
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgSerializedSOCache.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgSerializedSOCache message.
+         * @function verify
+         * @memberof CMsgSerializedSOCache
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgSerializedSOCache.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.file_version != null && message.hasOwnProperty("file_version"))
+                if (!$util.isInteger(message.file_version))
+                    return "file_version: integer expected";
+            if (message.caches != null && message.hasOwnProperty("caches")) {
+                if (!Array.isArray(message.caches))
+                    return "caches: array expected";
+                for (var i = 0; i < message.caches.length; ++i) {
+                    var error = $root.CMsgSerializedSOCache.Cache.verify(message.caches[i]);
+                    if (error)
+                        return "caches." + error;
+                }
+            }
+            if (message.gc_socache_file_version != null && message.hasOwnProperty("gc_socache_file_version"))
+                if (!$util.isInteger(message.gc_socache_file_version))
+                    return "gc_socache_file_version: integer expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgSerializedSOCache message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgSerializedSOCache
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgSerializedSOCache} CMsgSerializedSOCache
+         */
+        CMsgSerializedSOCache.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgSerializedSOCache)
+                return object;
+            var message = new $root.CMsgSerializedSOCache();
+            if (object.file_version != null)
+                message.file_version = object.file_version >>> 0;
+            if (object.caches) {
+                if (!Array.isArray(object.caches))
+                    throw TypeError(".CMsgSerializedSOCache.caches: array expected");
+                message.caches = [];
+                for (var i = 0; i < object.caches.length; ++i) {
+                    if (typeof object.caches[i] !== "object")
+                        throw TypeError(".CMsgSerializedSOCache.caches: object expected");
+                    message.caches[i] = $root.CMsgSerializedSOCache.Cache.fromObject(object.caches[i]);
+                }
+            }
+            if (object.gc_socache_file_version != null)
+                message.gc_socache_file_version = object.gc_socache_file_version >>> 0;
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgSerializedSOCache message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgSerializedSOCache
+         * @static
+         * @param {CMsgSerializedSOCache} message CMsgSerializedSOCache
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgSerializedSOCache.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.caches = [];
+            if (options.defaults) {
+                object.file_version = 0;
+                object.gc_socache_file_version = 0;
+            }
+            if (message.file_version != null && message.hasOwnProperty("file_version"))
+                object.file_version = message.file_version;
+            if (message.caches && message.caches.length) {
+                object.caches = [];
+                for (var j = 0; j < message.caches.length; ++j)
+                    object.caches[j] = $root.CMsgSerializedSOCache.Cache.toObject(message.caches[j], options);
+            }
+            if (message.gc_socache_file_version != null && message.hasOwnProperty("gc_socache_file_version"))
+                object.gc_socache_file_version = message.gc_socache_file_version;
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgSerializedSOCache to JSON.
+         * @function toJSON
+         * @memberof CMsgSerializedSOCache
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgSerializedSOCache.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgSerializedSOCache
+         * @function getTypeUrl
+         * @memberof CMsgSerializedSOCache
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgSerializedSOCache.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgSerializedSOCache";
+        };
+    
+        CMsgSerializedSOCache.TypeCache = (function() {
+    
+            /**
+             * Properties of a TypeCache.
+             * @memberof CMsgSerializedSOCache
+             * @interface ITypeCache
+             * @property {number|null} [type] TypeCache type
+             * @property {Array.<Uint8Array>|null} [objects] TypeCache objects
+             * @property {number|null} [service_id] TypeCache service_id
+             */
+    
+            /**
+             * Constructs a new TypeCache.
+             * @memberof CMsgSerializedSOCache
+             * @classdesc Represents a TypeCache.
+             * @implements ITypeCache
+             * @constructor
+             * @param {CMsgSerializedSOCache.ITypeCache=} [properties] Properties to set
+             */
+            function TypeCache(properties) {
+                this.objects = [];
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * TypeCache type.
+             * @member {number} type
+             * @memberof CMsgSerializedSOCache.TypeCache
+             * @instance
+             */
+            TypeCache.prototype.type = 0;
+    
+            /**
+             * TypeCache objects.
+             * @member {Array.<Uint8Array>} objects
+             * @memberof CMsgSerializedSOCache.TypeCache
+             * @instance
+             */
+            TypeCache.prototype.objects = $util.emptyArray;
+    
+            /**
+             * TypeCache service_id.
+             * @member {number} service_id
+             * @memberof CMsgSerializedSOCache.TypeCache
+             * @instance
+             */
+            TypeCache.prototype.service_id = 0;
+    
+            /**
+             * Creates a new TypeCache instance using the specified properties.
+             * @function create
+             * @memberof CMsgSerializedSOCache.TypeCache
+             * @static
+             * @param {CMsgSerializedSOCache.ITypeCache=} [properties] Properties to set
+             * @returns {CMsgSerializedSOCache.TypeCache} TypeCache instance
+             */
+            TypeCache.create = function create(properties) {
+                return new TypeCache(properties);
+            };
+    
+            /**
+             * Encodes the specified TypeCache message. Does not implicitly {@link CMsgSerializedSOCache.TypeCache.verify|verify} messages.
+             * @function encode
+             * @memberof CMsgSerializedSOCache.TypeCache
+             * @static
+             * @param {CMsgSerializedSOCache.ITypeCache} message TypeCache message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            TypeCache.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.type != null && Object.hasOwnProperty.call(message, "type"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.type);
+                if (message.objects != null && message.objects.length)
+                    for (var i = 0; i < message.objects.length; ++i)
+                        writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.objects[i]);
+                if (message.service_id != null && Object.hasOwnProperty.call(message, "service_id"))
+                    writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.service_id);
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified TypeCache message, length delimited. Does not implicitly {@link CMsgSerializedSOCache.TypeCache.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof CMsgSerializedSOCache.TypeCache
+             * @static
+             * @param {CMsgSerializedSOCache.ITypeCache} message TypeCache message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            TypeCache.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes a TypeCache message from the specified reader or buffer.
+             * @function decode
+             * @memberof CMsgSerializedSOCache.TypeCache
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {CMsgSerializedSOCache.TypeCache} TypeCache
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            TypeCache.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSerializedSOCache.TypeCache();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.type = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            if (!(message.objects && message.objects.length))
+                                message.objects = [];
+                            message.objects.push(reader.bytes());
+                            break;
+                        }
+                    case 3: {
+                            message.service_id = reader.uint32();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes a TypeCache message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof CMsgSerializedSOCache.TypeCache
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {CMsgSerializedSOCache.TypeCache} TypeCache
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            TypeCache.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies a TypeCache message.
+             * @function verify
+             * @memberof CMsgSerializedSOCache.TypeCache
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            TypeCache.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.type != null && message.hasOwnProperty("type"))
+                    if (!$util.isInteger(message.type))
+                        return "type: integer expected";
+                if (message.objects != null && message.hasOwnProperty("objects")) {
+                    if (!Array.isArray(message.objects))
+                        return "objects: array expected";
+                    for (var i = 0; i < message.objects.length; ++i)
+                        if (!(message.objects[i] && typeof message.objects[i].length === "number" || $util.isString(message.objects[i])))
+                            return "objects: buffer[] expected";
+                }
+                if (message.service_id != null && message.hasOwnProperty("service_id"))
+                    if (!$util.isInteger(message.service_id))
+                        return "service_id: integer expected";
+                return null;
+            };
+    
+            /**
+             * Creates a TypeCache message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof CMsgSerializedSOCache.TypeCache
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {CMsgSerializedSOCache.TypeCache} TypeCache
+             */
+            TypeCache.fromObject = function fromObject(object) {
+                if (object instanceof $root.CMsgSerializedSOCache.TypeCache)
+                    return object;
+                var message = new $root.CMsgSerializedSOCache.TypeCache();
+                if (object.type != null)
+                    message.type = object.type >>> 0;
+                if (object.objects) {
+                    if (!Array.isArray(object.objects))
+                        throw TypeError(".CMsgSerializedSOCache.TypeCache.objects: array expected");
+                    message.objects = [];
+                    for (var i = 0; i < object.objects.length; ++i)
+                        if (typeof object.objects[i] === "string")
+                            $util.base64.decode(object.objects[i], message.objects[i] = $util.newBuffer($util.base64.length(object.objects[i])), 0);
+                        else if (object.objects[i].length >= 0)
+                            message.objects[i] = object.objects[i];
+                }
+                if (object.service_id != null)
+                    message.service_id = object.service_id >>> 0;
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from a TypeCache message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof CMsgSerializedSOCache.TypeCache
+             * @static
+             * @param {CMsgSerializedSOCache.TypeCache} message TypeCache
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            TypeCache.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.arrays || options.defaults)
+                    object.objects = [];
+                if (options.defaults) {
+                    object.type = 0;
+                    object.service_id = 0;
+                }
+                if (message.type != null && message.hasOwnProperty("type"))
+                    object.type = message.type;
+                if (message.objects && message.objects.length) {
+                    object.objects = [];
+                    for (var j = 0; j < message.objects.length; ++j)
+                        object.objects[j] = options.bytes === String ? $util.base64.encode(message.objects[j], 0, message.objects[j].length) : options.bytes === Array ? Array.prototype.slice.call(message.objects[j]) : message.objects[j];
+                }
+                if (message.service_id != null && message.hasOwnProperty("service_id"))
+                    object.service_id = message.service_id;
+                return object;
+            };
+    
+            /**
+             * Converts this TypeCache to JSON.
+             * @function toJSON
+             * @memberof CMsgSerializedSOCache.TypeCache
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            TypeCache.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            /**
+             * Gets the default type url for TypeCache
+             * @function getTypeUrl
+             * @memberof CMsgSerializedSOCache.TypeCache
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            TypeCache.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgSerializedSOCache.TypeCache";
+            };
+    
+            return TypeCache;
+        })();
+    
+        CMsgSerializedSOCache.Cache = (function() {
+    
+            /**
+             * Properties of a Cache.
+             * @memberof CMsgSerializedSOCache
+             * @interface ICache
+             * @property {number|null} [type] Cache type
+             * @property {number|Long|null} [id] Cache id
+             * @property {Array.<CMsgSerializedSOCache.Cache.IVersion>|null} [versions] Cache versions
+             * @property {Array.<CMsgSerializedSOCache.ITypeCache>|null} [type_caches] Cache type_caches
+             */
+    
+            /**
+             * Constructs a new Cache.
+             * @memberof CMsgSerializedSOCache
+             * @classdesc Represents a Cache.
+             * @implements ICache
+             * @constructor
+             * @param {CMsgSerializedSOCache.ICache=} [properties] Properties to set
+             */
+            function Cache(properties) {
+                this.versions = [];
+                this.type_caches = [];
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * Cache type.
+             * @member {number} type
+             * @memberof CMsgSerializedSOCache.Cache
+             * @instance
+             */
+            Cache.prototype.type = 0;
+    
+            /**
+             * Cache id.
+             * @member {number|Long} id
+             * @memberof CMsgSerializedSOCache.Cache
+             * @instance
+             */
+            Cache.prototype.id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+            /**
+             * Cache versions.
+             * @member {Array.<CMsgSerializedSOCache.Cache.IVersion>} versions
+             * @memberof CMsgSerializedSOCache.Cache
+             * @instance
+             */
+            Cache.prototype.versions = $util.emptyArray;
+    
+            /**
+             * Cache type_caches.
+             * @member {Array.<CMsgSerializedSOCache.ITypeCache>} type_caches
+             * @memberof CMsgSerializedSOCache.Cache
+             * @instance
+             */
+            Cache.prototype.type_caches = $util.emptyArray;
+    
+            /**
+             * Creates a new Cache instance using the specified properties.
+             * @function create
+             * @memberof CMsgSerializedSOCache.Cache
+             * @static
+             * @param {CMsgSerializedSOCache.ICache=} [properties] Properties to set
+             * @returns {CMsgSerializedSOCache.Cache} Cache instance
+             */
+            Cache.create = function create(properties) {
+                return new Cache(properties);
+            };
+    
+            /**
+             * Encodes the specified Cache message. Does not implicitly {@link CMsgSerializedSOCache.Cache.verify|verify} messages.
+             * @function encode
+             * @memberof CMsgSerializedSOCache.Cache
+             * @static
+             * @param {CMsgSerializedSOCache.ICache} message Cache message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Cache.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.type != null && Object.hasOwnProperty.call(message, "type"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.type);
+                if (message.id != null && Object.hasOwnProperty.call(message, "id"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.id);
+                if (message.versions != null && message.versions.length)
+                    for (var i = 0; i < message.versions.length; ++i)
+                        $root.CMsgSerializedSOCache.Cache.Version.encode(message.versions[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                if (message.type_caches != null && message.type_caches.length)
+                    for (var i = 0; i < message.type_caches.length; ++i)
+                        $root.CMsgSerializedSOCache.TypeCache.encode(message.type_caches[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified Cache message, length delimited. Does not implicitly {@link CMsgSerializedSOCache.Cache.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof CMsgSerializedSOCache.Cache
+             * @static
+             * @param {CMsgSerializedSOCache.ICache} message Cache message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Cache.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes a Cache message from the specified reader or buffer.
+             * @function decode
+             * @memberof CMsgSerializedSOCache.Cache
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {CMsgSerializedSOCache.Cache} Cache
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Cache.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSerializedSOCache.Cache();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.type = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            message.id = reader.uint64();
+                            break;
+                        }
+                    case 3: {
+                            if (!(message.versions && message.versions.length))
+                                message.versions = [];
+                            message.versions.push($root.CMsgSerializedSOCache.Cache.Version.decode(reader, reader.uint32()));
+                            break;
+                        }
+                    case 4: {
+                            if (!(message.type_caches && message.type_caches.length))
+                                message.type_caches = [];
+                            message.type_caches.push($root.CMsgSerializedSOCache.TypeCache.decode(reader, reader.uint32()));
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes a Cache message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof CMsgSerializedSOCache.Cache
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {CMsgSerializedSOCache.Cache} Cache
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Cache.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies a Cache message.
+             * @function verify
+             * @memberof CMsgSerializedSOCache.Cache
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            Cache.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.type != null && message.hasOwnProperty("type"))
+                    if (!$util.isInteger(message.type))
+                        return "type: integer expected";
+                if (message.id != null && message.hasOwnProperty("id"))
+                    if (!$util.isInteger(message.id) && !(message.id && $util.isInteger(message.id.low) && $util.isInteger(message.id.high)))
+                        return "id: integer|Long expected";
+                if (message.versions != null && message.hasOwnProperty("versions")) {
+                    if (!Array.isArray(message.versions))
+                        return "versions: array expected";
+                    for (var i = 0; i < message.versions.length; ++i) {
+                        var error = $root.CMsgSerializedSOCache.Cache.Version.verify(message.versions[i]);
+                        if (error)
+                            return "versions." + error;
+                    }
+                }
+                if (message.type_caches != null && message.hasOwnProperty("type_caches")) {
+                    if (!Array.isArray(message.type_caches))
+                        return "type_caches: array expected";
+                    for (var i = 0; i < message.type_caches.length; ++i) {
+                        var error = $root.CMsgSerializedSOCache.TypeCache.verify(message.type_caches[i]);
+                        if (error)
+                            return "type_caches." + error;
+                    }
+                }
+                return null;
+            };
+    
+            /**
+             * Creates a Cache message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof CMsgSerializedSOCache.Cache
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {CMsgSerializedSOCache.Cache} Cache
+             */
+            Cache.fromObject = function fromObject(object) {
+                if (object instanceof $root.CMsgSerializedSOCache.Cache)
+                    return object;
+                var message = new $root.CMsgSerializedSOCache.Cache();
+                if (object.type != null)
+                    message.type = object.type >>> 0;
+                if (object.id != null)
+                    if ($util.Long)
+                        (message.id = $util.Long.fromValue(object.id)).unsigned = true;
+                    else if (typeof object.id === "string")
+                        message.id = parseInt(object.id, 10);
+                    else if (typeof object.id === "number")
+                        message.id = object.id;
+                    else if (typeof object.id === "object")
+                        message.id = new $util.LongBits(object.id.low >>> 0, object.id.high >>> 0).toNumber(true);
+                if (object.versions) {
+                    if (!Array.isArray(object.versions))
+                        throw TypeError(".CMsgSerializedSOCache.Cache.versions: array expected");
+                    message.versions = [];
+                    for (var i = 0; i < object.versions.length; ++i) {
+                        if (typeof object.versions[i] !== "object")
+                            throw TypeError(".CMsgSerializedSOCache.Cache.versions: object expected");
+                        message.versions[i] = $root.CMsgSerializedSOCache.Cache.Version.fromObject(object.versions[i]);
+                    }
+                }
+                if (object.type_caches) {
+                    if (!Array.isArray(object.type_caches))
+                        throw TypeError(".CMsgSerializedSOCache.Cache.type_caches: array expected");
+                    message.type_caches = [];
+                    for (var i = 0; i < object.type_caches.length; ++i) {
+                        if (typeof object.type_caches[i] !== "object")
+                            throw TypeError(".CMsgSerializedSOCache.Cache.type_caches: object expected");
+                        message.type_caches[i] = $root.CMsgSerializedSOCache.TypeCache.fromObject(object.type_caches[i]);
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from a Cache message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof CMsgSerializedSOCache.Cache
+             * @static
+             * @param {CMsgSerializedSOCache.Cache} message Cache
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            Cache.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.arrays || options.defaults) {
+                    object.versions = [];
+                    object.type_caches = [];
+                }
+                if (options.defaults) {
+                    object.type = 0;
+                    if ($util.Long) {
+                        var long = new $util.Long(0, 0, true);
+                        object.id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    } else
+                        object.id = options.longs === String ? "0" : 0;
+                }
+                if (message.type != null && message.hasOwnProperty("type"))
+                    object.type = message.type;
+                if (message.id != null && message.hasOwnProperty("id"))
+                    if (typeof message.id === "number")
+                        object.id = options.longs === String ? String(message.id) : message.id;
+                    else
+                        object.id = options.longs === String ? $util.Long.prototype.toString.call(message.id) : options.longs === Number ? new $util.LongBits(message.id.low >>> 0, message.id.high >>> 0).toNumber(true) : message.id;
+                if (message.versions && message.versions.length) {
+                    object.versions = [];
+                    for (var j = 0; j < message.versions.length; ++j)
+                        object.versions[j] = $root.CMsgSerializedSOCache.Cache.Version.toObject(message.versions[j], options);
+                }
+                if (message.type_caches && message.type_caches.length) {
+                    object.type_caches = [];
+                    for (var j = 0; j < message.type_caches.length; ++j)
+                        object.type_caches[j] = $root.CMsgSerializedSOCache.TypeCache.toObject(message.type_caches[j], options);
+                }
+                return object;
+            };
+    
+            /**
+             * Converts this Cache to JSON.
+             * @function toJSON
+             * @memberof CMsgSerializedSOCache.Cache
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            Cache.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            /**
+             * Gets the default type url for Cache
+             * @function getTypeUrl
+             * @memberof CMsgSerializedSOCache.Cache
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            Cache.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgSerializedSOCache.Cache";
+            };
+    
+            Cache.Version = (function() {
+    
+                /**
+                 * Properties of a Version.
+                 * @memberof CMsgSerializedSOCache.Cache
+                 * @interface IVersion
+                 * @property {number|null} [service] Version service
+                 * @property {number|Long|null} [version] Version version
+                 */
+    
+                /**
+                 * Constructs a new Version.
+                 * @memberof CMsgSerializedSOCache.Cache
+                 * @classdesc Represents a Version.
+                 * @implements IVersion
+                 * @constructor
+                 * @param {CMsgSerializedSOCache.Cache.IVersion=} [properties] Properties to set
+                 */
+                function Version(properties) {
+                    if (properties)
+                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null)
+                                this[keys[i]] = properties[keys[i]];
+                }
+    
+                /**
+                 * Version service.
+                 * @member {number} service
+                 * @memberof CMsgSerializedSOCache.Cache.Version
+                 * @instance
+                 */
+                Version.prototype.service = 0;
+    
+                /**
+                 * Version version.
+                 * @member {number|Long} version
+                 * @memberof CMsgSerializedSOCache.Cache.Version
+                 * @instance
+                 */
+                Version.prototype.version = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+                /**
+                 * Creates a new Version instance using the specified properties.
+                 * @function create
+                 * @memberof CMsgSerializedSOCache.Cache.Version
+                 * @static
+                 * @param {CMsgSerializedSOCache.Cache.IVersion=} [properties] Properties to set
+                 * @returns {CMsgSerializedSOCache.Cache.Version} Version instance
+                 */
+                Version.create = function create(properties) {
+                    return new Version(properties);
+                };
+    
+                /**
+                 * Encodes the specified Version message. Does not implicitly {@link CMsgSerializedSOCache.Cache.Version.verify|verify} messages.
+                 * @function encode
+                 * @memberof CMsgSerializedSOCache.Cache.Version
+                 * @static
+                 * @param {CMsgSerializedSOCache.Cache.IVersion} message Version message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Version.encode = function encode(message, writer) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    if (message.service != null && Object.hasOwnProperty.call(message, "service"))
+                        writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.service);
+                    if (message.version != null && Object.hasOwnProperty.call(message, "version"))
+                        writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.version);
+                    return writer;
+                };
+    
+                /**
+                 * Encodes the specified Version message, length delimited. Does not implicitly {@link CMsgSerializedSOCache.Cache.Version.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof CMsgSerializedSOCache.Cache.Version
+                 * @static
+                 * @param {CMsgSerializedSOCache.Cache.IVersion} message Version message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Version.encodeDelimited = function encodeDelimited(message, writer) {
+                    return this.encode(message, writer).ldelim();
+                };
+    
+                /**
+                 * Decodes a Version message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof CMsgSerializedSOCache.Cache.Version
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {CMsgSerializedSOCache.Cache.Version} Version
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Version.decode = function decode(reader, length) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSerializedSOCache.Cache.Version();
+                    while (reader.pos < end) {
+                        var tag = reader.uint32();
+                        switch (tag >>> 3) {
+                        case 1: {
+                                message.service = reader.uint32();
+                                break;
+                            }
+                        case 2: {
+                                message.version = reader.uint64();
+                                break;
+                            }
+                        default:
+                            reader.skipType(tag & 7);
+                            break;
+                        }
+                    }
+                    return message;
+                };
+    
+                /**
+                 * Decodes a Version message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof CMsgSerializedSOCache.Cache.Version
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {CMsgSerializedSOCache.Cache.Version} Version
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Version.decodeDelimited = function decodeDelimited(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+    
+                /**
+                 * Verifies a Version message.
+                 * @function verify
+                 * @memberof CMsgSerializedSOCache.Cache.Version
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                Version.verify = function verify(message) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    if (message.service != null && message.hasOwnProperty("service"))
+                        if (!$util.isInteger(message.service))
+                            return "service: integer expected";
+                    if (message.version != null && message.hasOwnProperty("version"))
+                        if (!$util.isInteger(message.version) && !(message.version && $util.isInteger(message.version.low) && $util.isInteger(message.version.high)))
+                            return "version: integer|Long expected";
+                    return null;
+                };
+    
+                /**
+                 * Creates a Version message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof CMsgSerializedSOCache.Cache.Version
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {CMsgSerializedSOCache.Cache.Version} Version
+                 */
+                Version.fromObject = function fromObject(object) {
+                    if (object instanceof $root.CMsgSerializedSOCache.Cache.Version)
+                        return object;
+                    var message = new $root.CMsgSerializedSOCache.Cache.Version();
+                    if (object.service != null)
+                        message.service = object.service >>> 0;
+                    if (object.version != null)
+                        if ($util.Long)
+                            (message.version = $util.Long.fromValue(object.version)).unsigned = true;
+                        else if (typeof object.version === "string")
+                            message.version = parseInt(object.version, 10);
+                        else if (typeof object.version === "number")
+                            message.version = object.version;
+                        else if (typeof object.version === "object")
+                            message.version = new $util.LongBits(object.version.low >>> 0, object.version.high >>> 0).toNumber(true);
+                    return message;
+                };
+    
+                /**
+                 * Creates a plain object from a Version message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof CMsgSerializedSOCache.Cache.Version
+                 * @static
+                 * @param {CMsgSerializedSOCache.Cache.Version} message Version
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                Version.toObject = function toObject(message, options) {
+                    if (!options)
+                        options = {};
+                    var object = {};
+                    if (options.defaults) {
+                        object.service = 0;
+                        if ($util.Long) {
+                            var long = new $util.Long(0, 0, true);
+                            object.version = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                        } else
+                            object.version = options.longs === String ? "0" : 0;
+                    }
+                    if (message.service != null && message.hasOwnProperty("service"))
+                        object.service = message.service;
+                    if (message.version != null && message.hasOwnProperty("version"))
+                        if (typeof message.version === "number")
+                            object.version = options.longs === String ? String(message.version) : message.version;
+                        else
+                            object.version = options.longs === String ? $util.Long.prototype.toString.call(message.version) : options.longs === Number ? new $util.LongBits(message.version.low >>> 0, message.version.high >>> 0).toNumber(true) : message.version;
+                    return object;
+                };
+    
+                /**
+                 * Converts this Version to JSON.
+                 * @function toJSON
+                 * @memberof CMsgSerializedSOCache.Cache.Version
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                Version.prototype.toJSON = function toJSON() {
+                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+    
+                /**
+                 * Gets the default type url for Version
+                 * @function getTypeUrl
+                 * @memberof CMsgSerializedSOCache.Cache.Version
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                Version.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/CMsgSerializedSOCache.Cache.Version";
+                };
+    
+                return Version;
+            })();
+    
+            return Cache;
+        })();
+    
+        return CMsgSerializedSOCache;
     })();
     
     /**
      * GCProtoBufMsgSrc enum.
      * @exports GCProtoBufMsgSrc
-     * @enum {string}
+     * @enum {number}
      * @property {number} GCProtoBufMsgSrc_Unspecified=0 GCProtoBufMsgSrc_Unspecified value
      * @property {number} GCProtoBufMsgSrc_FromSystem=1 GCProtoBufMsgSrc_FromSystem value
      * @property {number} GCProtoBufMsgSrc_FromSteamID=2 GCProtoBufMsgSrc_FromSteamID value
@@ -11728,27 +13706,27 @@
         CMsgProtoBufHeader.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.client_steam_id != null && message.hasOwnProperty("client_steam_id"))
+            if (message.client_steam_id != null && Object.hasOwnProperty.call(message, "client_steam_id"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.client_steam_id);
-            if (message.client_session_id != null && message.hasOwnProperty("client_session_id"))
+            if (message.client_session_id != null && Object.hasOwnProperty.call(message, "client_session_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.client_session_id);
-            if (message.source_app_id != null && message.hasOwnProperty("source_app_id"))
+            if (message.source_app_id != null && Object.hasOwnProperty.call(message, "source_app_id"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.source_app_id);
-            if (message.job_id_source != null && message.hasOwnProperty("job_id_source"))
+            if (message.job_id_source != null && Object.hasOwnProperty.call(message, "job_id_source"))
                 writer.uint32(/* id 10, wireType 1 =*/81).fixed64(message.job_id_source);
-            if (message.job_id_target != null && message.hasOwnProperty("job_id_target"))
+            if (message.job_id_target != null && Object.hasOwnProperty.call(message, "job_id_target"))
                 writer.uint32(/* id 11, wireType 1 =*/89).fixed64(message.job_id_target);
-            if (message.target_job_name != null && message.hasOwnProperty("target_job_name"))
+            if (message.target_job_name != null && Object.hasOwnProperty.call(message, "target_job_name"))
                 writer.uint32(/* id 12, wireType 2 =*/98).string(message.target_job_name);
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 13, wireType 0 =*/104).int32(message.eresult);
-            if (message.error_message != null && message.hasOwnProperty("error_message"))
+            if (message.error_message != null && Object.hasOwnProperty.call(message, "error_message"))
                 writer.uint32(/* id 14, wireType 2 =*/114).string(message.error_message);
-            if (message.ip != null && message.hasOwnProperty("ip"))
+            if (message.ip != null && Object.hasOwnProperty.call(message, "ip"))
                 writer.uint32(/* id 15, wireType 0 =*/120).uint32(message.ip);
-            if (message.gc_msg_src != null && message.hasOwnProperty("gc_msg_src"))
+            if (message.gc_msg_src != null && Object.hasOwnProperty.call(message, "gc_msg_src"))
                 writer.uint32(/* id 200, wireType 0 =*/1600).int32(message.gc_msg_src);
-            if (message.gc_dir_index_source != null && message.hasOwnProperty("gc_dir_index_source"))
+            if (message.gc_dir_index_source != null && Object.hasOwnProperty.call(message, "gc_dir_index_source"))
                 writer.uint32(/* id 201, wireType 0 =*/1608).uint32(message.gc_dir_index_source);
             return writer;
         };
@@ -11784,39 +13762,50 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.client_steam_id = reader.fixed64();
-                    break;
-                case 2:
-                    message.client_session_id = reader.int32();
-                    break;
-                case 3:
-                    message.source_app_id = reader.uint32();
-                    break;
-                case 10:
-                    message.job_id_source = reader.fixed64();
-                    break;
-                case 11:
-                    message.job_id_target = reader.fixed64();
-                    break;
-                case 12:
-                    message.target_job_name = reader.string();
-                    break;
-                case 13:
-                    message.eresult = reader.int32();
-                    break;
-                case 14:
-                    message.error_message = reader.string();
-                    break;
-                case 15:
-                    message.ip = reader.uint32();
-                    break;
-                case 200:
-                    message.gc_msg_src = reader.int32();
-                    break;
-                case 201:
-                    message.gc_dir_index_source = reader.uint32();
-                    break;
+                case 1: {
+                        message.client_steam_id = reader.fixed64();
+                        break;
+                    }
+                case 2: {
+                        message.client_session_id = reader.int32();
+                        break;
+                    }
+                case 3: {
+                        message.source_app_id = reader.uint32();
+                        break;
+                    }
+                case 10: {
+                        message.job_id_source = reader.fixed64();
+                        break;
+                    }
+                case 11: {
+                        message.job_id_target = reader.fixed64();
+                        break;
+                    }
+                case 12: {
+                        message.target_job_name = reader.string();
+                        break;
+                    }
+                case 13: {
+                        message.eresult = reader.int32();
+                        break;
+                    }
+                case 14: {
+                        message.error_message = reader.string();
+                        break;
+                    }
+                case 15: {
+                        message.ip = reader.uint32();
+                        break;
+                    }
+                case 200: {
+                        message.gc_msg_src = reader.int32();
+                        break;
+                    }
+                case 201: {
+                        message.gc_dir_index_source = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -11948,6 +13937,12 @@
             if (object.ip != null)
                 message.ip = object.ip >>> 0;
             switch (object.gc_msg_src) {
+            default:
+                if (typeof object.gc_msg_src === "number") {
+                    message.gc_msg_src = object.gc_msg_src;
+                    break;
+                }
+                break;
             case "GCProtoBufMsgSrc_Unspecified":
             case 0:
                 message.gc_msg_src = 0;
@@ -12040,7 +14035,7 @@
             if (message.ip != null && message.hasOwnProperty("ip"))
                 object.ip = message.ip;
             if (message.gc_msg_src != null && message.hasOwnProperty("gc_msg_src"))
-                object.gc_msg_src = options.enums === String ? $root.GCProtoBufMsgSrc[message.gc_msg_src] : message.gc_msg_src;
+                object.gc_msg_src = options.enums === String ? $root.GCProtoBufMsgSrc[message.gc_msg_src] === undefined ? message.gc_msg_src : $root.GCProtoBufMsgSrc[message.gc_msg_src] : message.gc_msg_src;
             if (message.gc_dir_index_source != null && message.hasOwnProperty("gc_dir_index_source"))
                 object.gc_dir_index_source = message.gc_dir_index_source;
             return object;
@@ -12055,6 +14050,21 @@
          */
         CMsgProtoBufHeader.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgProtoBufHeader
+         * @function getTypeUrl
+         * @memberof CMsgProtoBufHeader
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgProtoBufHeader.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgProtoBufHeader";
         };
     
         return CMsgProtoBufHeader;
@@ -12152,15 +14162,15 @@
         CMsgWebAPIKey.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.status != null && message.hasOwnProperty("status"))
+            if (message.status != null && Object.hasOwnProperty.call(message, "status"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.status);
-            if (message.account_id != null && message.hasOwnProperty("account_id"))
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.account_id);
-            if (message.publisher_group_id != null && message.hasOwnProperty("publisher_group_id"))
+            if (message.publisher_group_id != null && Object.hasOwnProperty.call(message, "publisher_group_id"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.publisher_group_id);
-            if (message.key_id != null && message.hasOwnProperty("key_id"))
+            if (message.key_id != null && Object.hasOwnProperty.call(message, "key_id"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.key_id);
-            if (message.domain != null && message.hasOwnProperty("domain"))
+            if (message.domain != null && Object.hasOwnProperty.call(message, "domain"))
                 writer.uint32(/* id 5, wireType 2 =*/42).string(message.domain);
             return writer;
         };
@@ -12196,21 +14206,26 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.status = reader.uint32();
-                    break;
-                case 2:
-                    message.account_id = reader.uint32();
-                    break;
-                case 3:
-                    message.publisher_group_id = reader.uint32();
-                    break;
-                case 4:
-                    message.key_id = reader.uint32();
-                    break;
-                case 5:
-                    message.domain = reader.string();
-                    break;
+                case 1: {
+                        message.status = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.account_id = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.publisher_group_id = reader.uint32();
+                        break;
+                    }
+                case 4: {
+                        message.key_id = reader.uint32();
+                        break;
+                    }
+                case 5: {
+                        message.domain = reader.string();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -12331,6 +14346,21 @@
          */
         CMsgWebAPIKey.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgWebAPIKey
+         * @function getTypeUrl
+         * @memberof CMsgWebAPIKey
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgWebAPIKey.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgWebAPIKey";
         };
     
         return CMsgWebAPIKey;
@@ -12458,11 +14488,11 @@
         CMsgHttpRequest.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.request_method != null && message.hasOwnProperty("request_method"))
+            if (message.request_method != null && Object.hasOwnProperty.call(message, "request_method"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.request_method);
-            if (message.hostname != null && message.hasOwnProperty("hostname"))
+            if (message.hostname != null && Object.hasOwnProperty.call(message, "hostname"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.hostname);
-            if (message.url != null && message.hasOwnProperty("url"))
+            if (message.url != null && Object.hasOwnProperty.call(message, "url"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.url);
             if (message.headers != null && message.headers.length)
                 for (var i = 0; i < message.headers.length; ++i)
@@ -12473,9 +14503,9 @@
             if (message.post_params != null && message.post_params.length)
                 for (var i = 0; i < message.post_params.length; ++i)
                     $root.CMsgHttpRequest.QueryParam.encode(message.post_params[i], writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
-            if (message.body != null && message.hasOwnProperty("body"))
+            if (message.body != null && Object.hasOwnProperty.call(message, "body"))
                 writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.body);
-            if (message.absolute_timeout != null && message.hasOwnProperty("absolute_timeout"))
+            if (message.absolute_timeout != null && Object.hasOwnProperty.call(message, "absolute_timeout"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.absolute_timeout);
             return writer;
         };
@@ -12511,36 +14541,44 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.request_method = reader.uint32();
-                    break;
-                case 2:
-                    message.hostname = reader.string();
-                    break;
-                case 3:
-                    message.url = reader.string();
-                    break;
-                case 4:
-                    if (!(message.headers && message.headers.length))
-                        message.headers = [];
-                    message.headers.push($root.CMsgHttpRequest.RequestHeader.decode(reader, reader.uint32()));
-                    break;
-                case 5:
-                    if (!(message.get_params && message.get_params.length))
-                        message.get_params = [];
-                    message.get_params.push($root.CMsgHttpRequest.QueryParam.decode(reader, reader.uint32()));
-                    break;
-                case 6:
-                    if (!(message.post_params && message.post_params.length))
-                        message.post_params = [];
-                    message.post_params.push($root.CMsgHttpRequest.QueryParam.decode(reader, reader.uint32()));
-                    break;
-                case 7:
-                    message.body = reader.bytes();
-                    break;
-                case 8:
-                    message.absolute_timeout = reader.uint32();
-                    break;
+                case 1: {
+                        message.request_method = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.hostname = reader.string();
+                        break;
+                    }
+                case 3: {
+                        message.url = reader.string();
+                        break;
+                    }
+                case 4: {
+                        if (!(message.headers && message.headers.length))
+                            message.headers = [];
+                        message.headers.push($root.CMsgHttpRequest.RequestHeader.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 5: {
+                        if (!(message.get_params && message.get_params.length))
+                            message.get_params = [];
+                        message.get_params.push($root.CMsgHttpRequest.QueryParam.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 6: {
+                        if (!(message.post_params && message.post_params.length))
+                            message.post_params = [];
+                        message.post_params.push($root.CMsgHttpRequest.QueryParam.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 7: {
+                        message.body = reader.bytes();
+                        break;
+                    }
+                case 8: {
+                        message.absolute_timeout = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -12672,7 +14710,7 @@
             if (object.body != null)
                 if (typeof object.body === "string")
                     $util.base64.decode(object.body, message.body = $util.newBuffer($util.base64.length(object.body)), 0);
-                else if (object.body.length)
+                else if (object.body.length >= 0)
                     message.body = object.body;
             if (object.absolute_timeout != null)
                 message.absolute_timeout = object.absolute_timeout >>> 0;
@@ -12749,6 +14787,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgHttpRequest
+         * @function getTypeUrl
+         * @memberof CMsgHttpRequest
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgHttpRequest.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgHttpRequest";
+        };
+    
         CMsgHttpRequest.RequestHeader = (function() {
     
             /**
@@ -12814,9 +14867,9 @@
             RequestHeader.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.name != null && message.hasOwnProperty("name"))
+                if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                if (message.value != null && message.hasOwnProperty("value"))
+                if (message.value != null && Object.hasOwnProperty.call(message, "value"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.value);
                 return writer;
             };
@@ -12852,12 +14905,14 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.name = reader.string();
-                        break;
-                    case 2:
-                        message.value = reader.string();
-                        break;
+                    case 1: {
+                            message.name = reader.string();
+                            break;
+                        }
+                    case 2: {
+                            message.value = reader.string();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -12956,6 +15011,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for RequestHeader
+             * @function getTypeUrl
+             * @memberof CMsgHttpRequest.RequestHeader
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            RequestHeader.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgHttpRequest.RequestHeader";
+            };
+    
             return RequestHeader;
         })();
     
@@ -13024,9 +15094,9 @@
             QueryParam.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.name != null && message.hasOwnProperty("name"))
+                if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                if (message.value != null && message.hasOwnProperty("value"))
+                if (message.value != null && Object.hasOwnProperty.call(message, "value"))
                     writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.value);
                 return writer;
             };
@@ -13062,12 +15132,14 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.name = reader.string();
-                        break;
-                    case 2:
-                        message.value = reader.bytes();
-                        break;
+                    case 1: {
+                            message.name = reader.string();
+                            break;
+                        }
+                    case 2: {
+                            message.value = reader.bytes();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -13129,7 +15201,7 @@
                 if (object.value != null)
                     if (typeof object.value === "string")
                         $util.base64.decode(object.value, message.value = $util.newBuffer($util.base64.length(object.value)), 0);
-                    else if (object.value.length)
+                    else if (object.value.length >= 0)
                         message.value = object.value;
                 return message;
             };
@@ -13175,6 +15247,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for QueryParam
+             * @function getTypeUrl
+             * @memberof CMsgHttpRequest.QueryParam
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            QueryParam.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgHttpRequest.QueryParam";
+            };
+    
             return QueryParam;
         })();
     
@@ -13187,7 +15274,6 @@
          * Properties of a CMsgWebAPIRequest.
          * @exports ICMsgWebAPIRequest
          * @interface ICMsgWebAPIRequest
-         * @property {string|null} [UNUSED_job_name] CMsgWebAPIRequest UNUSED_job_name
          * @property {string|null} [interface_name] CMsgWebAPIRequest interface_name
          * @property {string|null} [method_name] CMsgWebAPIRequest method_name
          * @property {number|null} [version] CMsgWebAPIRequest version
@@ -13210,14 +15296,6 @@
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
-    
-        /**
-         * CMsgWebAPIRequest UNUSED_job_name.
-         * @member {string} UNUSED_job_name
-         * @memberof CMsgWebAPIRequest
-         * @instance
-         */
-        CMsgWebAPIRequest.prototype.UNUSED_job_name = "";
     
         /**
          * CMsgWebAPIRequest interface_name.
@@ -13291,19 +15369,17 @@
         CMsgWebAPIRequest.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.UNUSED_job_name != null && message.hasOwnProperty("UNUSED_job_name"))
-                writer.uint32(/* id 1, wireType 2 =*/10).string(message.UNUSED_job_name);
-            if (message.interface_name != null && message.hasOwnProperty("interface_name"))
+            if (message.interface_name != null && Object.hasOwnProperty.call(message, "interface_name"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.interface_name);
-            if (message.method_name != null && message.hasOwnProperty("method_name"))
+            if (message.method_name != null && Object.hasOwnProperty.call(message, "method_name"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.method_name);
-            if (message.version != null && message.hasOwnProperty("version"))
+            if (message.version != null && Object.hasOwnProperty.call(message, "version"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.version);
-            if (message.api_key != null && message.hasOwnProperty("api_key"))
+            if (message.api_key != null && Object.hasOwnProperty.call(message, "api_key"))
                 $root.CMsgWebAPIKey.encode(message.api_key, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
-            if (message.request != null && message.hasOwnProperty("request"))
+            if (message.request != null && Object.hasOwnProperty.call(message, "request"))
                 $root.CMsgHttpRequest.encode(message.request, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
-            if (message.routing_app_id != null && message.hasOwnProperty("routing_app_id"))
+            if (message.routing_app_id != null && Object.hasOwnProperty.call(message, "routing_app_id"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.routing_app_id);
             return writer;
         };
@@ -13339,27 +15415,30 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.UNUSED_job_name = reader.string();
-                    break;
-                case 2:
-                    message.interface_name = reader.string();
-                    break;
-                case 3:
-                    message.method_name = reader.string();
-                    break;
-                case 4:
-                    message.version = reader.uint32();
-                    break;
-                case 5:
-                    message.api_key = $root.CMsgWebAPIKey.decode(reader, reader.uint32());
-                    break;
-                case 6:
-                    message.request = $root.CMsgHttpRequest.decode(reader, reader.uint32());
-                    break;
-                case 7:
-                    message.routing_app_id = reader.uint32();
-                    break;
+                case 2: {
+                        message.interface_name = reader.string();
+                        break;
+                    }
+                case 3: {
+                        message.method_name = reader.string();
+                        break;
+                    }
+                case 4: {
+                        message.version = reader.uint32();
+                        break;
+                    }
+                case 5: {
+                        message.api_key = $root.CMsgWebAPIKey.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 6: {
+                        message.request = $root.CMsgHttpRequest.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 7: {
+                        message.routing_app_id = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -13395,9 +15474,6 @@
         CMsgWebAPIRequest.verify = function verify(message) {
             if (typeof message !== "object" || message === null)
                 return "object expected";
-            if (message.UNUSED_job_name != null && message.hasOwnProperty("UNUSED_job_name"))
-                if (!$util.isString(message.UNUSED_job_name))
-                    return "UNUSED_job_name: string expected";
             if (message.interface_name != null && message.hasOwnProperty("interface_name"))
                 if (!$util.isString(message.interface_name))
                     return "interface_name: string expected";
@@ -13435,8 +15511,6 @@
             if (object instanceof $root.CMsgWebAPIRequest)
                 return object;
             var message = new $root.CMsgWebAPIRequest();
-            if (object.UNUSED_job_name != null)
-                message.UNUSED_job_name = String(object.UNUSED_job_name);
             if (object.interface_name != null)
                 message.interface_name = String(object.interface_name);
             if (object.method_name != null)
@@ -13472,7 +15546,6 @@
                 options = {};
             var object = {};
             if (options.defaults) {
-                object.UNUSED_job_name = "";
                 object.interface_name = "";
                 object.method_name = "";
                 object.version = 0;
@@ -13480,8 +15553,6 @@
                 object.request = null;
                 object.routing_app_id = 0;
             }
-            if (message.UNUSED_job_name != null && message.hasOwnProperty("UNUSED_job_name"))
-                object.UNUSED_job_name = message.UNUSED_job_name;
             if (message.interface_name != null && message.hasOwnProperty("interface_name"))
                 object.interface_name = message.interface_name;
             if (message.method_name != null && message.hasOwnProperty("method_name"))
@@ -13506,6 +15577,21 @@
          */
         CMsgWebAPIRequest.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgWebAPIRequest
+         * @function getTypeUrl
+         * @memberof CMsgWebAPIRequest
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgWebAPIRequest.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgWebAPIRequest";
         };
     
         return CMsgWebAPIRequest;
@@ -13586,12 +15672,12 @@
         CMsgHttpResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.status_code != null && message.hasOwnProperty("status_code"))
+            if (message.status_code != null && Object.hasOwnProperty.call(message, "status_code"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.status_code);
             if (message.headers != null && message.headers.length)
                 for (var i = 0; i < message.headers.length; ++i)
                     $root.CMsgHttpResponse.ResponseHeader.encode(message.headers[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.body != null && message.hasOwnProperty("body"))
+            if (message.body != null && Object.hasOwnProperty.call(message, "body"))
                 writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.body);
             return writer;
         };
@@ -13627,17 +15713,20 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.status_code = reader.uint32();
-                    break;
-                case 2:
-                    if (!(message.headers && message.headers.length))
-                        message.headers = [];
-                    message.headers.push($root.CMsgHttpResponse.ResponseHeader.decode(reader, reader.uint32()));
-                    break;
-                case 3:
-                    message.body = reader.bytes();
-                    break;
+                case 1: {
+                        message.status_code = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        if (!(message.headers && message.headers.length))
+                            message.headers = [];
+                        message.headers.push($root.CMsgHttpResponse.ResponseHeader.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 3: {
+                        message.body = reader.bytes();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -13718,7 +15807,7 @@
             if (object.body != null)
                 if (typeof object.body === "string")
                     $util.base64.decode(object.body, message.body = $util.newBuffer($util.base64.length(object.body)), 0);
-                else if (object.body.length)
+                else if (object.body.length >= 0)
                     message.body = object.body;
             return message;
         };
@@ -13769,6 +15858,21 @@
          */
         CMsgHttpResponse.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgHttpResponse
+         * @function getTypeUrl
+         * @memberof CMsgHttpResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgHttpResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgHttpResponse";
         };
     
         CMsgHttpResponse.ResponseHeader = (function() {
@@ -13836,9 +15940,9 @@
             ResponseHeader.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.name != null && message.hasOwnProperty("name"))
+                if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                if (message.value != null && message.hasOwnProperty("value"))
+                if (message.value != null && Object.hasOwnProperty.call(message, "value"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.value);
                 return writer;
             };
@@ -13874,12 +15978,14 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.name = reader.string();
-                        break;
-                    case 2:
-                        message.value = reader.string();
-                        break;
+                    case 1: {
+                            message.name = reader.string();
+                            break;
+                        }
+                    case 2: {
+                            message.value = reader.string();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -13978,6 +16084,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for ResponseHeader
+             * @function getTypeUrl
+             * @memberof CMsgHttpResponse.ResponseHeader
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            ResponseHeader.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgHttpResponse.ResponseHeader";
+            };
+    
             return ResponseHeader;
         })();
     
@@ -14049,9 +16170,9 @@
         CMsgAMFindAccounts.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.search_type != null && message.hasOwnProperty("search_type"))
+            if (message.search_type != null && Object.hasOwnProperty.call(message, "search_type"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.search_type);
-            if (message.search_string != null && message.hasOwnProperty("search_string"))
+            if (message.search_string != null && Object.hasOwnProperty.call(message, "search_string"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.search_string);
             return writer;
         };
@@ -14087,12 +16208,14 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.search_type = reader.uint32();
-                    break;
-                case 2:
-                    message.search_string = reader.string();
-                    break;
+                case 1: {
+                        message.search_type = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.search_string = reader.string();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -14189,6 +16312,21 @@
          */
         CMsgAMFindAccounts.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgAMFindAccounts
+         * @function getTypeUrl
+         * @memberof CMsgAMFindAccounts
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgAMFindAccounts.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgAMFindAccounts";
         };
     
         return CMsgAMFindAccounts;
@@ -14288,16 +16426,17 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    if (!(message.steam_id && message.steam_id.length))
-                        message.steam_id = [];
-                    if ((tag & 7) === 2) {
-                        var end2 = reader.uint32() + reader.pos;
-                        while (reader.pos < end2)
+                case 1: {
+                        if (!(message.steam_id && message.steam_id.length))
+                            message.steam_id = [];
+                        if ((tag & 7) === 2) {
+                            var end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.steam_id.push(reader.fixed64());
+                        } else
                             message.steam_id.push(reader.fixed64());
-                    } else
-                        message.steam_id.push(reader.fixed64());
-                    break;
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -14407,6 +16546,21 @@
          */
         CMsgAMFindAccountsResponse.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgAMFindAccountsResponse
+         * @function getTypeUrl
+         * @memberof CMsgAMFindAccountsResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgAMFindAccountsResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgAMFindAccountsResponse";
         };
     
         return CMsgAMFindAccountsResponse;
@@ -14522,19 +16676,19 @@
         CMsgNotifyWatchdog.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.source != null && message.hasOwnProperty("source"))
+            if (message.source != null && Object.hasOwnProperty.call(message, "source"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.source);
-            if (message.alert_type != null && message.hasOwnProperty("alert_type"))
+            if (message.alert_type != null && Object.hasOwnProperty.call(message, "alert_type"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.alert_type);
-            if (message.alert_destination != null && message.hasOwnProperty("alert_destination"))
+            if (message.alert_destination != null && Object.hasOwnProperty.call(message, "alert_destination"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.alert_destination);
-            if (message.critical != null && message.hasOwnProperty("critical"))
+            if (message.critical != null && Object.hasOwnProperty.call(message, "critical"))
                 writer.uint32(/* id 4, wireType 0 =*/32).bool(message.critical);
-            if (message.time != null && message.hasOwnProperty("time"))
+            if (message.time != null && Object.hasOwnProperty.call(message, "time"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.time);
-            if (message.appid != null && message.hasOwnProperty("appid"))
+            if (message.appid != null && Object.hasOwnProperty.call(message, "appid"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.appid);
-            if (message.text != null && message.hasOwnProperty("text"))
+            if (message.text != null && Object.hasOwnProperty.call(message, "text"))
                 writer.uint32(/* id 7, wireType 2 =*/58).string(message.text);
             return writer;
         };
@@ -14570,27 +16724,34 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.source = reader.uint32();
-                    break;
-                case 2:
-                    message.alert_type = reader.uint32();
-                    break;
-                case 3:
-                    message.alert_destination = reader.uint32();
-                    break;
-                case 4:
-                    message.critical = reader.bool();
-                    break;
-                case 5:
-                    message.time = reader.uint32();
-                    break;
-                case 6:
-                    message.appid = reader.uint32();
-                    break;
-                case 7:
-                    message.text = reader.string();
-                    break;
+                case 1: {
+                        message.source = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.alert_type = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.alert_destination = reader.uint32();
+                        break;
+                    }
+                case 4: {
+                        message.critical = reader.bool();
+                        break;
+                    }
+                case 5: {
+                        message.time = reader.uint32();
+                        break;
+                    }
+                case 6: {
+                        message.appid = reader.uint32();
+                        break;
+                    }
+                case 7: {
+                        message.text = reader.string();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -14729,6 +16890,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgNotifyWatchdog
+         * @function getTypeUrl
+         * @memberof CMsgNotifyWatchdog
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgNotifyWatchdog.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgNotifyWatchdog";
+        };
+    
         return CMsgNotifyWatchdog;
     })();
     
@@ -14788,7 +16964,7 @@
         CMsgAMGetLicenses.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
             return writer;
         };
@@ -14824,9 +17000,10 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.steamid = reader.fixed64();
-                    break;
+                case 1: {
+                        message.steamid = reader.fixed64();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -14930,6 +17107,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgAMGetLicenses
+         * @function getTypeUrl
+         * @memberof CMsgAMGetLicenses
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgAMGetLicenses.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgAMGetLicenses";
+        };
+    
         return CMsgAMGetLicenses;
     })();
     
@@ -15007,11 +17199,11 @@
         CMsgPackageLicense.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.package_id != null && message.hasOwnProperty("package_id"))
+            if (message.package_id != null && Object.hasOwnProperty.call(message, "package_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.package_id);
-            if (message.time_created != null && message.hasOwnProperty("time_created"))
+            if (message.time_created != null && Object.hasOwnProperty.call(message, "time_created"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.time_created);
-            if (message.owner_id != null && message.hasOwnProperty("owner_id"))
+            if (message.owner_id != null && Object.hasOwnProperty.call(message, "owner_id"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.owner_id);
             return writer;
         };
@@ -15047,15 +17239,18 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.package_id = reader.uint32();
-                    break;
-                case 2:
-                    message.time_created = reader.uint32();
-                    break;
-                case 3:
-                    message.owner_id = reader.uint32();
-                    break;
+                case 1: {
+                        message.package_id = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.time_created = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.owner_id = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -15162,6 +17357,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgPackageLicense
+         * @function getTypeUrl
+         * @memberof CMsgPackageLicense
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgPackageLicense.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgPackageLicense";
+        };
+    
         return CMsgPackageLicense;
     })();
     
@@ -15234,7 +17444,7 @@
             if (message.license != null && message.license.length)
                 for (var i = 0; i < message.license.length; ++i)
                     $root.CMsgPackageLicense.encode(message.license[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.result != null && message.hasOwnProperty("result"))
+            if (message.result != null && Object.hasOwnProperty.call(message, "result"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.result);
             return writer;
         };
@@ -15270,14 +17480,16 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    if (!(message.license && message.license.length))
-                        message.license = [];
-                    message.license.push($root.CMsgPackageLicense.decode(reader, reader.uint32()));
-                    break;
-                case 2:
-                    message.result = reader.uint32();
-                    break;
+                case 1: {
+                        if (!(message.license && message.license.length))
+                            message.license = [];
+                        message.license.push($root.CMsgPackageLicense.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 2: {
+                        message.result = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -15393,6 +17605,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgAMGetLicensesResponse
+         * @function getTypeUrl
+         * @memberof CMsgAMGetLicensesResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgAMGetLicensesResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgAMGetLicensesResponse";
+        };
+    
         return CMsgAMGetLicensesResponse;
     })();
     
@@ -15471,9 +17698,9 @@
         CMsgAMGetUserGameStats.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steam_id != null && message.hasOwnProperty("steam_id"))
+            if (message.steam_id != null && Object.hasOwnProperty.call(message, "steam_id"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steam_id);
-            if (message.game_id != null && message.hasOwnProperty("game_id"))
+            if (message.game_id != null && Object.hasOwnProperty.call(message, "game_id"))
                 writer.uint32(/* id 2, wireType 1 =*/17).fixed64(message.game_id);
             if (message.stats != null && message.stats.length)
                 for (var i = 0; i < message.stats.length; ++i)
@@ -15512,22 +17739,25 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.steam_id = reader.fixed64();
-                    break;
-                case 2:
-                    message.game_id = reader.fixed64();
-                    break;
-                case 3:
-                    if (!(message.stats && message.stats.length))
-                        message.stats = [];
-                    if ((tag & 7) === 2) {
-                        var end2 = reader.uint32() + reader.pos;
-                        while (reader.pos < end2)
+                case 1: {
+                        message.steam_id = reader.fixed64();
+                        break;
+                    }
+                case 2: {
+                        message.game_id = reader.fixed64();
+                        break;
+                    }
+                case 3: {
+                        if (!(message.stats && message.stats.length))
+                            message.stats = [];
+                        if ((tag & 7) === 2) {
+                            var end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.stats.push(reader.uint32());
+                        } else
                             message.stats.push(reader.uint32());
-                    } else
-                        message.stats.push(reader.uint32());
-                    break;
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -15675,6 +17905,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgAMGetUserGameStats
+         * @function getTypeUrl
+         * @memberof CMsgAMGetUserGameStats
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgAMGetUserGameStats.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgAMGetUserGameStats";
+        };
+    
         return CMsgAMGetUserGameStats;
     })();
     
@@ -15772,11 +18017,11 @@
         CMsgAMGetUserGameStatsResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steam_id != null && message.hasOwnProperty("steam_id"))
+            if (message.steam_id != null && Object.hasOwnProperty.call(message, "steam_id"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steam_id);
-            if (message.game_id != null && message.hasOwnProperty("game_id"))
+            if (message.game_id != null && Object.hasOwnProperty.call(message, "game_id"))
                 writer.uint32(/* id 2, wireType 1 =*/17).fixed64(message.game_id);
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 3, wireType 0 =*/24).int32(message.eresult);
             if (message.stats != null && message.stats.length)
                 for (var i = 0; i < message.stats.length; ++i)
@@ -15818,25 +18063,30 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.steam_id = reader.fixed64();
-                    break;
-                case 2:
-                    message.game_id = reader.fixed64();
-                    break;
-                case 3:
-                    message.eresult = reader.int32();
-                    break;
-                case 4:
-                    if (!(message.stats && message.stats.length))
-                        message.stats = [];
-                    message.stats.push($root.CMsgAMGetUserGameStatsResponse.Stats.decode(reader, reader.uint32()));
-                    break;
-                case 5:
-                    if (!(message.achievement_blocks && message.achievement_blocks.length))
-                        message.achievement_blocks = [];
-                    message.achievement_blocks.push($root.CMsgAMGetUserGameStatsResponse.Achievement_Blocks.decode(reader, reader.uint32()));
-                    break;
+                case 1: {
+                        message.steam_id = reader.fixed64();
+                        break;
+                    }
+                case 2: {
+                        message.game_id = reader.fixed64();
+                        break;
+                    }
+                case 3: {
+                        message.eresult = reader.int32();
+                        break;
+                    }
+                case 4: {
+                        if (!(message.stats && message.stats.length))
+                            message.stats = [];
+                        message.stats.push($root.CMsgAMGetUserGameStatsResponse.Stats.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 5: {
+                        if (!(message.achievement_blocks && message.achievement_blocks.length))
+                            message.achievement_blocks = [];
+                        message.achievement_blocks.push($root.CMsgAMGetUserGameStatsResponse.Achievement_Blocks.decode(reader, reader.uint32()));
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -16023,6 +18273,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgAMGetUserGameStatsResponse
+         * @function getTypeUrl
+         * @memberof CMsgAMGetUserGameStatsResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgAMGetUserGameStatsResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgAMGetUserGameStatsResponse";
+        };
+    
         CMsgAMGetUserGameStatsResponse.Stats = (function() {
     
             /**
@@ -16088,9 +18353,9 @@
             Stats.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.stat_id != null && message.hasOwnProperty("stat_id"))
+                if (message.stat_id != null && Object.hasOwnProperty.call(message, "stat_id"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.stat_id);
-                if (message.stat_value != null && message.hasOwnProperty("stat_value"))
+                if (message.stat_value != null && Object.hasOwnProperty.call(message, "stat_value"))
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.stat_value);
                 return writer;
             };
@@ -16126,12 +18391,14 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.stat_id = reader.uint32();
-                        break;
-                    case 2:
-                        message.stat_value = reader.uint32();
-                        break;
+                    case 1: {
+                            message.stat_id = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            message.stat_value = reader.uint32();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -16230,6 +18497,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for Stats
+             * @function getTypeUrl
+             * @memberof CMsgAMGetUserGameStatsResponse.Stats
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            Stats.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgAMGetUserGameStatsResponse.Stats";
+            };
+    
             return Stats;
         })();
     
@@ -16307,11 +18589,11 @@
             Achievement_Blocks.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.achievement_id != null && message.hasOwnProperty("achievement_id"))
+                if (message.achievement_id != null && Object.hasOwnProperty.call(message, "achievement_id"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.achievement_id);
-                if (message.achievement_bit_id != null && message.hasOwnProperty("achievement_bit_id"))
+                if (message.achievement_bit_id != null && Object.hasOwnProperty.call(message, "achievement_bit_id"))
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.achievement_bit_id);
-                if (message.unlock_time != null && message.hasOwnProperty("unlock_time"))
+                if (message.unlock_time != null && Object.hasOwnProperty.call(message, "unlock_time"))
                     writer.uint32(/* id 3, wireType 5 =*/29).fixed32(message.unlock_time);
                 return writer;
             };
@@ -16347,15 +18629,18 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.achievement_id = reader.uint32();
-                        break;
-                    case 2:
-                        message.achievement_bit_id = reader.uint32();
-                        break;
-                    case 3:
-                        message.unlock_time = reader.fixed32();
-                        break;
+                    case 1: {
+                            message.achievement_id = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            message.achievement_bit_id = reader.uint32();
+                            break;
+                        }
+                    case 3: {
+                            message.unlock_time = reader.fixed32();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -16462,6 +18747,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for Achievement_Blocks
+             * @function getTypeUrl
+             * @memberof CMsgAMGetUserGameStatsResponse.Achievement_Blocks
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            Achievement_Blocks.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgAMGetUserGameStatsResponse.Achievement_Blocks";
+            };
+    
             return Achievement_Blocks;
         })();
     
@@ -16533,9 +18833,9 @@
         CMsgGCGetCommandList.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.app_id != null && message.hasOwnProperty("app_id"))
+            if (message.app_id != null && Object.hasOwnProperty.call(message, "app_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.app_id);
-            if (message.command_prefix != null && message.hasOwnProperty("command_prefix"))
+            if (message.command_prefix != null && Object.hasOwnProperty.call(message, "command_prefix"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.command_prefix);
             return writer;
         };
@@ -16571,12 +18871,14 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.app_id = reader.uint32();
-                    break;
-                case 2:
-                    message.command_prefix = reader.string();
-                    break;
+                case 1: {
+                        message.app_id = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.command_prefix = reader.string();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -16673,6 +18975,21 @@
          */
         CMsgGCGetCommandList.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgGCGetCommandList
+         * @function getTypeUrl
+         * @memberof CMsgGCGetCommandList
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCGetCommandList.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCGetCommandList";
         };
     
         return CMsgGCGetCommandList;
@@ -16772,11 +19089,12 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    if (!(message.command_name && message.command_name.length))
-                        message.command_name = [];
-                    message.command_name.push(reader.string());
-                    break;
+                case 1: {
+                        if (!(message.command_name && message.command_name.length))
+                            message.command_name = [];
+                        message.command_name.push(reader.string());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -16878,6 +19196,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCGetCommandListResponse
+         * @function getTypeUrl
+         * @memberof CMsgGCGetCommandListResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCGetCommandListResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCGetCommandListResponse";
+        };
+    
         return CMsgGCGetCommandListResponse;
     })();
     
@@ -16975,11 +19308,12 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    if (!(message.keys && message.keys.length))
-                        message.keys = [];
-                    message.keys.push(reader.string());
-                    break;
+                case 1: {
+                        if (!(message.keys && message.keys.length))
+                            message.keys = [];
+                        message.keys.push(reader.string());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -17081,6 +19415,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CGCMsgMemCachedGet
+         * @function getTypeUrl
+         * @memberof CGCMsgMemCachedGet
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCMsgMemCachedGet.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCMsgMemCachedGet";
+        };
+    
         return CGCMsgMemCachedGet;
     })();
     
@@ -17178,11 +19527,12 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    if (!(message.values && message.values.length))
-                        message.values = [];
-                    message.values.push($root.CGCMsgMemCachedGetResponse.ValueTag.decode(reader, reader.uint32()));
-                    break;
+                case 1: {
+                        if (!(message.values && message.values.length))
+                            message.values = [];
+                        message.values.push($root.CGCMsgMemCachedGetResponse.ValueTag.decode(reader, reader.uint32()));
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -17289,6 +19639,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CGCMsgMemCachedGetResponse
+         * @function getTypeUrl
+         * @memberof CGCMsgMemCachedGetResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCMsgMemCachedGetResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCMsgMemCachedGetResponse";
+        };
+    
         CGCMsgMemCachedGetResponse.ValueTag = (function() {
     
             /**
@@ -17354,9 +19719,9 @@
             ValueTag.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.found != null && message.hasOwnProperty("found"))
+                if (message.found != null && Object.hasOwnProperty.call(message, "found"))
                     writer.uint32(/* id 1, wireType 0 =*/8).bool(message.found);
-                if (message.value != null && message.hasOwnProperty("value"))
+                if (message.value != null && Object.hasOwnProperty.call(message, "value"))
                     writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.value);
                 return writer;
             };
@@ -17392,12 +19757,14 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.found = reader.bool();
-                        break;
-                    case 2:
-                        message.value = reader.bytes();
-                        break;
+                    case 1: {
+                            message.found = reader.bool();
+                            break;
+                        }
+                    case 2: {
+                            message.value = reader.bytes();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -17459,7 +19826,7 @@
                 if (object.value != null)
                     if (typeof object.value === "string")
                         $util.base64.decode(object.value, message.value = $util.newBuffer($util.base64.length(object.value)), 0);
-                    else if (object.value.length)
+                    else if (object.value.length >= 0)
                         message.value = object.value;
                 return message;
             };
@@ -17503,6 +19870,21 @@
              */
             ValueTag.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            /**
+             * Gets the default type url for ValueTag
+             * @function getTypeUrl
+             * @memberof CGCMsgMemCachedGetResponse.ValueTag
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            ValueTag.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CGCMsgMemCachedGetResponse.ValueTag";
             };
     
             return ValueTag;
@@ -17605,11 +19987,12 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    if (!(message.keys && message.keys.length))
-                        message.keys = [];
-                    message.keys.push($root.CGCMsgMemCachedSet.KeyPair.decode(reader, reader.uint32()));
-                    break;
+                case 1: {
+                        if (!(message.keys && message.keys.length))
+                            message.keys = [];
+                        message.keys.push($root.CGCMsgMemCachedSet.KeyPair.decode(reader, reader.uint32()));
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -17716,6 +20099,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CGCMsgMemCachedSet
+         * @function getTypeUrl
+         * @memberof CGCMsgMemCachedSet
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCMsgMemCachedSet.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCMsgMemCachedSet";
+        };
+    
         CGCMsgMemCachedSet.KeyPair = (function() {
     
             /**
@@ -17781,9 +20179,9 @@
             KeyPair.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.name != null && message.hasOwnProperty("name"))
+                if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                if (message.value != null && message.hasOwnProperty("value"))
+                if (message.value != null && Object.hasOwnProperty.call(message, "value"))
                     writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.value);
                 return writer;
             };
@@ -17819,12 +20217,14 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.name = reader.string();
-                        break;
-                    case 2:
-                        message.value = reader.bytes();
-                        break;
+                    case 1: {
+                            message.name = reader.string();
+                            break;
+                        }
+                    case 2: {
+                            message.value = reader.bytes();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -17886,7 +20286,7 @@
                 if (object.value != null)
                     if (typeof object.value === "string")
                         $util.base64.decode(object.value, message.value = $util.newBuffer($util.base64.length(object.value)), 0);
-                    else if (object.value.length)
+                    else if (object.value.length >= 0)
                         message.value = object.value;
                 return message;
             };
@@ -17930,6 +20330,21 @@
              */
             KeyPair.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            /**
+             * Gets the default type url for KeyPair
+             * @function getTypeUrl
+             * @memberof CGCMsgMemCachedSet.KeyPair
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            KeyPair.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CGCMsgMemCachedSet.KeyPair";
             };
     
             return KeyPair;
@@ -18032,11 +20447,12 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    if (!(message.keys && message.keys.length))
-                        message.keys = [];
-                    message.keys.push(reader.string());
-                    break;
+                case 1: {
+                        if (!(message.keys && message.keys.length))
+                            message.keys = [];
+                        message.keys.push(reader.string());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -18136,6 +20552,21 @@
          */
         CGCMsgMemCachedDelete.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CGCMsgMemCachedDelete
+         * @function getTypeUrl
+         * @memberof CGCMsgMemCachedDelete
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCMsgMemCachedDelete.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCMsgMemCachedDelete";
         };
     
         return CGCMsgMemCachedDelete;
@@ -18296,6 +20727,21 @@
          */
         CGCMsgMemCachedStats.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CGCMsgMemCachedStats
+         * @function getTypeUrl
+         * @memberof CGCMsgMemCachedStats
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCMsgMemCachedStats.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCMsgMemCachedStats";
         };
     
         return CGCMsgMemCachedStats;
@@ -18474,33 +20920,33 @@
         CGCMsgMemCachedStatsResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.curr_connections != null && message.hasOwnProperty("curr_connections"))
+            if (message.curr_connections != null && Object.hasOwnProperty.call(message, "curr_connections"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.curr_connections);
-            if (message.cmd_get != null && message.hasOwnProperty("cmd_get"))
+            if (message.cmd_get != null && Object.hasOwnProperty.call(message, "cmd_get"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.cmd_get);
-            if (message.cmd_set != null && message.hasOwnProperty("cmd_set"))
+            if (message.cmd_set != null && Object.hasOwnProperty.call(message, "cmd_set"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.cmd_set);
-            if (message.cmd_flush != null && message.hasOwnProperty("cmd_flush"))
+            if (message.cmd_flush != null && Object.hasOwnProperty.call(message, "cmd_flush"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.cmd_flush);
-            if (message.get_hits != null && message.hasOwnProperty("get_hits"))
+            if (message.get_hits != null && Object.hasOwnProperty.call(message, "get_hits"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint64(message.get_hits);
-            if (message.get_misses != null && message.hasOwnProperty("get_misses"))
+            if (message.get_misses != null && Object.hasOwnProperty.call(message, "get_misses"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint64(message.get_misses);
-            if (message.delete_hits != null && message.hasOwnProperty("delete_hits"))
+            if (message.delete_hits != null && Object.hasOwnProperty.call(message, "delete_hits"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint64(message.delete_hits);
-            if (message.delete_misses != null && message.hasOwnProperty("delete_misses"))
+            if (message.delete_misses != null && Object.hasOwnProperty.call(message, "delete_misses"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint64(message.delete_misses);
-            if (message.bytes_read != null && message.hasOwnProperty("bytes_read"))
+            if (message.bytes_read != null && Object.hasOwnProperty.call(message, "bytes_read"))
                 writer.uint32(/* id 9, wireType 0 =*/72).uint64(message.bytes_read);
-            if (message.bytes_written != null && message.hasOwnProperty("bytes_written"))
+            if (message.bytes_written != null && Object.hasOwnProperty.call(message, "bytes_written"))
                 writer.uint32(/* id 10, wireType 0 =*/80).uint64(message.bytes_written);
-            if (message.limit_maxbytes != null && message.hasOwnProperty("limit_maxbytes"))
+            if (message.limit_maxbytes != null && Object.hasOwnProperty.call(message, "limit_maxbytes"))
                 writer.uint32(/* id 11, wireType 0 =*/88).uint64(message.limit_maxbytes);
-            if (message.curr_items != null && message.hasOwnProperty("curr_items"))
+            if (message.curr_items != null && Object.hasOwnProperty.call(message, "curr_items"))
                 writer.uint32(/* id 12, wireType 0 =*/96).uint64(message.curr_items);
-            if (message.evictions != null && message.hasOwnProperty("evictions"))
+            if (message.evictions != null && Object.hasOwnProperty.call(message, "evictions"))
                 writer.uint32(/* id 13, wireType 0 =*/104).uint64(message.evictions);
-            if (message.bytes != null && message.hasOwnProperty("bytes"))
+            if (message.bytes != null && Object.hasOwnProperty.call(message, "bytes"))
                 writer.uint32(/* id 14, wireType 0 =*/112).uint64(message.bytes);
             return writer;
         };
@@ -18536,48 +20982,62 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.curr_connections = reader.uint64();
-                    break;
-                case 2:
-                    message.cmd_get = reader.uint64();
-                    break;
-                case 3:
-                    message.cmd_set = reader.uint64();
-                    break;
-                case 4:
-                    message.cmd_flush = reader.uint64();
-                    break;
-                case 5:
-                    message.get_hits = reader.uint64();
-                    break;
-                case 6:
-                    message.get_misses = reader.uint64();
-                    break;
-                case 7:
-                    message.delete_hits = reader.uint64();
-                    break;
-                case 8:
-                    message.delete_misses = reader.uint64();
-                    break;
-                case 9:
-                    message.bytes_read = reader.uint64();
-                    break;
-                case 10:
-                    message.bytes_written = reader.uint64();
-                    break;
-                case 11:
-                    message.limit_maxbytes = reader.uint64();
-                    break;
-                case 12:
-                    message.curr_items = reader.uint64();
-                    break;
-                case 13:
-                    message.evictions = reader.uint64();
-                    break;
-                case 14:
-                    message.bytes = reader.uint64();
-                    break;
+                case 1: {
+                        message.curr_connections = reader.uint64();
+                        break;
+                    }
+                case 2: {
+                        message.cmd_get = reader.uint64();
+                        break;
+                    }
+                case 3: {
+                        message.cmd_set = reader.uint64();
+                        break;
+                    }
+                case 4: {
+                        message.cmd_flush = reader.uint64();
+                        break;
+                    }
+                case 5: {
+                        message.get_hits = reader.uint64();
+                        break;
+                    }
+                case 6: {
+                        message.get_misses = reader.uint64();
+                        break;
+                    }
+                case 7: {
+                        message.delete_hits = reader.uint64();
+                        break;
+                    }
+                case 8: {
+                        message.delete_misses = reader.uint64();
+                        break;
+                    }
+                case 9: {
+                        message.bytes_read = reader.uint64();
+                        break;
+                    }
+                case 10: {
+                        message.bytes_written = reader.uint64();
+                        break;
+                    }
+                case 11: {
+                        message.limit_maxbytes = reader.uint64();
+                        break;
+                    }
+                case 12: {
+                        message.curr_items = reader.uint64();
+                        break;
+                    }
+                case 13: {
+                        message.evictions = reader.uint64();
+                        break;
+                    }
+                case 14: {
+                        message.bytes = reader.uint64();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -18968,6 +21428,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CGCMsgMemCachedStatsResponse
+         * @function getTypeUrl
+         * @memberof CGCMsgMemCachedStatsResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCMsgMemCachedStatsResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCMsgMemCachedStatsResponse";
+        };
+    
         return CGCMsgMemCachedStatsResponse;
     })();
     
@@ -19027,7 +21502,7 @@
         CGCMsgSQLStats.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.schema_catalog != null && message.hasOwnProperty("schema_catalog"))
+            if (message.schema_catalog != null && Object.hasOwnProperty.call(message, "schema_catalog"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.schema_catalog);
             return writer;
         };
@@ -19063,9 +21538,10 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.schema_catalog = reader.uint32();
-                    break;
+                case 1: {
+                        message.schema_catalog = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -19153,6 +21629,21 @@
          */
         CGCMsgSQLStats.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CGCMsgSQLStats
+         * @function getTypeUrl
+         * @memberof CGCMsgSQLStats
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCMsgSQLStats.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCMsgSQLStats";
         };
     
         return CGCMsgSQLStats;
@@ -19286,23 +21777,23 @@
         CGCMsgSQLStatsResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.threads != null && message.hasOwnProperty("threads"))
+            if (message.threads != null && Object.hasOwnProperty.call(message, "threads"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.threads);
-            if (message.threads_connected != null && message.hasOwnProperty("threads_connected"))
+            if (message.threads_connected != null && Object.hasOwnProperty.call(message, "threads_connected"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.threads_connected);
-            if (message.threads_active != null && message.hasOwnProperty("threads_active"))
+            if (message.threads_active != null && Object.hasOwnProperty.call(message, "threads_active"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.threads_active);
-            if (message.operations_submitted != null && message.hasOwnProperty("operations_submitted"))
+            if (message.operations_submitted != null && Object.hasOwnProperty.call(message, "operations_submitted"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.operations_submitted);
-            if (message.prepared_statements_executed != null && message.hasOwnProperty("prepared_statements_executed"))
+            if (message.prepared_statements_executed != null && Object.hasOwnProperty.call(message, "prepared_statements_executed"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.prepared_statements_executed);
-            if (message.non_prepared_statements_executed != null && message.hasOwnProperty("non_prepared_statements_executed"))
+            if (message.non_prepared_statements_executed != null && Object.hasOwnProperty.call(message, "non_prepared_statements_executed"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.non_prepared_statements_executed);
-            if (message.deadlock_retries != null && message.hasOwnProperty("deadlock_retries"))
+            if (message.deadlock_retries != null && Object.hasOwnProperty.call(message, "deadlock_retries"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.deadlock_retries);
-            if (message.operations_timed_out_in_queue != null && message.hasOwnProperty("operations_timed_out_in_queue"))
+            if (message.operations_timed_out_in_queue != null && Object.hasOwnProperty.call(message, "operations_timed_out_in_queue"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.operations_timed_out_in_queue);
-            if (message.errors != null && message.hasOwnProperty("errors"))
+            if (message.errors != null && Object.hasOwnProperty.call(message, "errors"))
                 writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.errors);
             return writer;
         };
@@ -19338,33 +21829,42 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.threads = reader.uint32();
-                    break;
-                case 2:
-                    message.threads_connected = reader.uint32();
-                    break;
-                case 3:
-                    message.threads_active = reader.uint32();
-                    break;
-                case 4:
-                    message.operations_submitted = reader.uint32();
-                    break;
-                case 5:
-                    message.prepared_statements_executed = reader.uint32();
-                    break;
-                case 6:
-                    message.non_prepared_statements_executed = reader.uint32();
-                    break;
-                case 7:
-                    message.deadlock_retries = reader.uint32();
-                    break;
-                case 8:
-                    message.operations_timed_out_in_queue = reader.uint32();
-                    break;
-                case 9:
-                    message.errors = reader.uint32();
-                    break;
+                case 1: {
+                        message.threads = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.threads_connected = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.threads_active = reader.uint32();
+                        break;
+                    }
+                case 4: {
+                        message.operations_submitted = reader.uint32();
+                        break;
+                    }
+                case 5: {
+                        message.prepared_statements_executed = reader.uint32();
+                        break;
+                    }
+                case 6: {
+                        message.non_prepared_statements_executed = reader.uint32();
+                        break;
+                    }
+                case 7: {
+                        message.deadlock_retries = reader.uint32();
+                        break;
+                    }
+                case 8: {
+                        message.operations_timed_out_in_queue = reader.uint32();
+                        break;
+                    }
+                case 9: {
+                        message.errors = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -19519,6 +22019,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CGCMsgSQLStatsResponse
+         * @function getTypeUrl
+         * @memberof CGCMsgSQLStatsResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCMsgSQLStatsResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCMsgSQLStatsResponse";
+        };
+    
         return CGCMsgSQLStatsResponse;
     })();
     
@@ -19605,13 +22120,13 @@
         CMsgAMAddFreeLicense.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
-            if (message.ip_public != null && message.hasOwnProperty("ip_public"))
+            if (message.ip_public != null && Object.hasOwnProperty.call(message, "ip_public"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.ip_public);
-            if (message.packageid != null && message.hasOwnProperty("packageid"))
+            if (message.packageid != null && Object.hasOwnProperty.call(message, "packageid"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.packageid);
-            if (message.store_country_code != null && message.hasOwnProperty("store_country_code"))
+            if (message.store_country_code != null && Object.hasOwnProperty.call(message, "store_country_code"))
                 writer.uint32(/* id 4, wireType 2 =*/34).string(message.store_country_code);
             return writer;
         };
@@ -19647,18 +22162,22 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.steamid = reader.fixed64();
-                    break;
-                case 2:
-                    message.ip_public = reader.uint32();
-                    break;
-                case 3:
-                    message.packageid = reader.uint32();
-                    break;
-                case 4:
-                    message.store_country_code = reader.string();
-                    break;
+                case 1: {
+                        message.steamid = reader.fixed64();
+                        break;
+                    }
+                case 2: {
+                        message.ip_public = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.packageid = reader.uint32();
+                        break;
+                    }
+                case 4: {
+                        message.store_country_code = reader.string();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -19787,6 +22306,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgAMAddFreeLicense
+         * @function getTypeUrl
+         * @memberof CMsgAMAddFreeLicense
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgAMAddFreeLicense.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgAMAddFreeLicense";
+        };
+    
         return CMsgAMAddFreeLicense;
     })();
     
@@ -19864,11 +22398,11 @@
         CMsgAMAddFreeLicenseResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.eresult);
-            if (message.purchase_result_detail != null && message.hasOwnProperty("purchase_result_detail"))
+            if (message.purchase_result_detail != null && Object.hasOwnProperty.call(message, "purchase_result_detail"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.purchase_result_detail);
-            if (message.transid != null && message.hasOwnProperty("transid"))
+            if (message.transid != null && Object.hasOwnProperty.call(message, "transid"))
                 writer.uint32(/* id 3, wireType 1 =*/25).fixed64(message.transid);
             return writer;
         };
@@ -19904,15 +22438,18 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.eresult = reader.int32();
-                    break;
-                case 2:
-                    message.purchase_result_detail = reader.int32();
-                    break;
-                case 3:
-                    message.transid = reader.fixed64();
-                    break;
+                case 1: {
+                        message.eresult = reader.int32();
+                        break;
+                    }
+                case 2: {
+                        message.purchase_result_detail = reader.int32();
+                        break;
+                    }
+                case 3: {
+                        message.transid = reader.fixed64();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -20033,6 +22570,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgAMAddFreeLicenseResponse
+         * @function getTypeUrl
+         * @memberof CMsgAMAddFreeLicenseResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgAMAddFreeLicenseResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgAMAddFreeLicenseResponse";
+        };
+    
         return CMsgAMAddFreeLicenseResponse;
     })();
     
@@ -20130,16 +22682,17 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    if (!(message.ips && message.ips.length))
-                        message.ips = [];
-                    if ((tag & 7) === 2) {
-                        var end2 = reader.uint32() + reader.pos;
-                        while (reader.pos < end2)
+                case 1: {
+                        if (!(message.ips && message.ips.length))
+                            message.ips = [];
+                        if ((tag & 7) === 2) {
+                            var end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.ips.push(reader.fixed32());
+                        } else
                             message.ips.push(reader.fixed32());
-                    } else
-                        message.ips.push(reader.fixed32());
-                    break;
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -20239,6 +22792,21 @@
          */
         CGCMsgGetIPLocation.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CGCMsgGetIPLocation
+         * @function getTypeUrl
+         * @memberof CGCMsgGetIPLocation
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCMsgGetIPLocation.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCMsgGetIPLocation";
         };
     
         return CGCMsgGetIPLocation;
@@ -20345,17 +22913,17 @@
         CIPLocationInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.ip != null && message.hasOwnProperty("ip"))
+            if (message.ip != null && Object.hasOwnProperty.call(message, "ip"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.ip);
-            if (message.latitude != null && message.hasOwnProperty("latitude"))
+            if (message.latitude != null && Object.hasOwnProperty.call(message, "latitude"))
                 writer.uint32(/* id 2, wireType 5 =*/21).float(message.latitude);
-            if (message.longitude != null && message.hasOwnProperty("longitude"))
+            if (message.longitude != null && Object.hasOwnProperty.call(message, "longitude"))
                 writer.uint32(/* id 3, wireType 5 =*/29).float(message.longitude);
-            if (message.country != null && message.hasOwnProperty("country"))
+            if (message.country != null && Object.hasOwnProperty.call(message, "country"))
                 writer.uint32(/* id 4, wireType 2 =*/34).string(message.country);
-            if (message.state != null && message.hasOwnProperty("state"))
+            if (message.state != null && Object.hasOwnProperty.call(message, "state"))
                 writer.uint32(/* id 5, wireType 2 =*/42).string(message.state);
-            if (message.city != null && message.hasOwnProperty("city"))
+            if (message.city != null && Object.hasOwnProperty.call(message, "city"))
                 writer.uint32(/* id 6, wireType 2 =*/50).string(message.city);
             return writer;
         };
@@ -20391,24 +22959,30 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.ip = reader.uint32();
-                    break;
-                case 2:
-                    message.latitude = reader.float();
-                    break;
-                case 3:
-                    message.longitude = reader.float();
-                    break;
-                case 4:
-                    message.country = reader.string();
-                    break;
-                case 5:
-                    message.state = reader.string();
-                    break;
-                case 6:
-                    message.city = reader.string();
-                    break;
+                case 1: {
+                        message.ip = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.latitude = reader.float();
+                        break;
+                    }
+                case 3: {
+                        message.longitude = reader.float();
+                        break;
+                    }
+                case 4: {
+                        message.country = reader.string();
+                        break;
+                    }
+                case 5: {
+                        message.state = reader.string();
+                        break;
+                    }
+                case 6: {
+                        message.city = reader.string();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -20539,6 +23113,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CIPLocationInfo
+         * @function getTypeUrl
+         * @memberof CIPLocationInfo
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CIPLocationInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CIPLocationInfo";
+        };
+    
         return CIPLocationInfo;
     })();
     
@@ -20636,11 +23225,12 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    if (!(message.infos && message.infos.length))
-                        message.infos = [];
-                    message.infos.push($root.CIPLocationInfo.decode(reader, reader.uint32()));
-                    break;
+                case 1: {
+                        if (!(message.infos && message.infos.length))
+                            message.infos = [];
+                        message.infos.push($root.CIPLocationInfo.decode(reader, reader.uint32()));
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -20747,6 +23337,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CGCMsgGetIPLocationResponse
+         * @function getTypeUrl
+         * @memberof CGCMsgGetIPLocationResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCMsgGetIPLocationResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCMsgGetIPLocationResponse";
+        };
+    
         return CGCMsgGetIPLocationResponse;
     })();
     
@@ -20815,9 +23420,9 @@
         CGCMsgSystemStatsSchema.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.gc_app_id != null && message.hasOwnProperty("gc_app_id"))
+            if (message.gc_app_id != null && Object.hasOwnProperty.call(message, "gc_app_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.gc_app_id);
-            if (message.schema_kv != null && message.hasOwnProperty("schema_kv"))
+            if (message.schema_kv != null && Object.hasOwnProperty.call(message, "schema_kv"))
                 writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.schema_kv);
             return writer;
         };
@@ -20853,12 +23458,14 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.gc_app_id = reader.uint32();
-                    break;
-                case 2:
-                    message.schema_kv = reader.bytes();
-                    break;
+                case 1: {
+                        message.gc_app_id = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.schema_kv = reader.bytes();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -20920,7 +23527,7 @@
             if (object.schema_kv != null)
                 if (typeof object.schema_kv === "string")
                     $util.base64.decode(object.schema_kv, message.schema_kv = $util.newBuffer($util.base64.length(object.schema_kv)), 0);
-                else if (object.schema_kv.length)
+                else if (object.schema_kv.length >= 0)
                     message.schema_kv = object.schema_kv;
             return message;
         };
@@ -20964,6 +23571,21 @@
          */
         CGCMsgSystemStatsSchema.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CGCMsgSystemStatsSchema
+         * @function getTypeUrl
+         * @memberof CGCMsgSystemStatsSchema
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCMsgSystemStatsSchema.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCMsgSystemStatsSchema";
         };
     
         return CGCMsgSystemStatsSchema;
@@ -21124,6 +23746,21 @@
          */
         CGCMsgGetSystemStats.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CGCMsgGetSystemStats
+         * @function getTypeUrl
+         * @memberof CGCMsgGetSystemStats
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCMsgGetSystemStats.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCMsgGetSystemStats";
         };
     
         return CGCMsgGetSystemStats;
@@ -21293,31 +23930,31 @@
         CGCMsgGetSystemStatsResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.gc_app_id != null && message.hasOwnProperty("gc_app_id"))
+            if (message.gc_app_id != null && Object.hasOwnProperty.call(message, "gc_app_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.gc_app_id);
-            if (message.stats_kv != null && message.hasOwnProperty("stats_kv"))
+            if (message.stats_kv != null && Object.hasOwnProperty.call(message, "stats_kv"))
                 writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.stats_kv);
-            if (message.active_jobs != null && message.hasOwnProperty("active_jobs"))
+            if (message.active_jobs != null && Object.hasOwnProperty.call(message, "active_jobs"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.active_jobs);
-            if (message.yielding_jobs != null && message.hasOwnProperty("yielding_jobs"))
+            if (message.yielding_jobs != null && Object.hasOwnProperty.call(message, "yielding_jobs"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.yielding_jobs);
-            if (message.user_sessions != null && message.hasOwnProperty("user_sessions"))
+            if (message.user_sessions != null && Object.hasOwnProperty.call(message, "user_sessions"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.user_sessions);
-            if (message.game_server_sessions != null && message.hasOwnProperty("game_server_sessions"))
+            if (message.game_server_sessions != null && Object.hasOwnProperty.call(message, "game_server_sessions"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.game_server_sessions);
-            if (message.socaches != null && message.hasOwnProperty("socaches"))
+            if (message.socaches != null && Object.hasOwnProperty.call(message, "socaches"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.socaches);
-            if (message.socaches_to_unload != null && message.hasOwnProperty("socaches_to_unload"))
+            if (message.socaches_to_unload != null && Object.hasOwnProperty.call(message, "socaches_to_unload"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.socaches_to_unload);
-            if (message.socaches_loading != null && message.hasOwnProperty("socaches_loading"))
+            if (message.socaches_loading != null && Object.hasOwnProperty.call(message, "socaches_loading"))
                 writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.socaches_loading);
-            if (message.writeback_queue != null && message.hasOwnProperty("writeback_queue"))
+            if (message.writeback_queue != null && Object.hasOwnProperty.call(message, "writeback_queue"))
                 writer.uint32(/* id 10, wireType 0 =*/80).uint32(message.writeback_queue);
-            if (message.steamid_locks != null && message.hasOwnProperty("steamid_locks"))
+            if (message.steamid_locks != null && Object.hasOwnProperty.call(message, "steamid_locks"))
                 writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.steamid_locks);
-            if (message.logon_queue != null && message.hasOwnProperty("logon_queue"))
+            if (message.logon_queue != null && Object.hasOwnProperty.call(message, "logon_queue"))
                 writer.uint32(/* id 12, wireType 0 =*/96).uint32(message.logon_queue);
-            if (message.logon_jobs != null && message.hasOwnProperty("logon_jobs"))
+            if (message.logon_jobs != null && Object.hasOwnProperty.call(message, "logon_jobs"))
                 writer.uint32(/* id 13, wireType 0 =*/104).uint32(message.logon_jobs);
             return writer;
         };
@@ -21353,45 +23990,58 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.gc_app_id = reader.uint32();
-                    break;
-                case 2:
-                    message.stats_kv = reader.bytes();
-                    break;
-                case 3:
-                    message.active_jobs = reader.uint32();
-                    break;
-                case 4:
-                    message.yielding_jobs = reader.uint32();
-                    break;
-                case 5:
-                    message.user_sessions = reader.uint32();
-                    break;
-                case 6:
-                    message.game_server_sessions = reader.uint32();
-                    break;
-                case 7:
-                    message.socaches = reader.uint32();
-                    break;
-                case 8:
-                    message.socaches_to_unload = reader.uint32();
-                    break;
-                case 9:
-                    message.socaches_loading = reader.uint32();
-                    break;
-                case 10:
-                    message.writeback_queue = reader.uint32();
-                    break;
-                case 11:
-                    message.steamid_locks = reader.uint32();
-                    break;
-                case 12:
-                    message.logon_queue = reader.uint32();
-                    break;
-                case 13:
-                    message.logon_jobs = reader.uint32();
-                    break;
+                case 1: {
+                        message.gc_app_id = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.stats_kv = reader.bytes();
+                        break;
+                    }
+                case 3: {
+                        message.active_jobs = reader.uint32();
+                        break;
+                    }
+                case 4: {
+                        message.yielding_jobs = reader.uint32();
+                        break;
+                    }
+                case 5: {
+                        message.user_sessions = reader.uint32();
+                        break;
+                    }
+                case 6: {
+                        message.game_server_sessions = reader.uint32();
+                        break;
+                    }
+                case 7: {
+                        message.socaches = reader.uint32();
+                        break;
+                    }
+                case 8: {
+                        message.socaches_to_unload = reader.uint32();
+                        break;
+                    }
+                case 9: {
+                        message.socaches_loading = reader.uint32();
+                        break;
+                    }
+                case 10: {
+                        message.writeback_queue = reader.uint32();
+                        break;
+                    }
+                case 11: {
+                        message.steamid_locks = reader.uint32();
+                        break;
+                    }
+                case 12: {
+                        message.logon_queue = reader.uint32();
+                        break;
+                    }
+                case 13: {
+                        message.logon_jobs = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -21486,7 +24136,7 @@
             if (object.stats_kv != null)
                 if (typeof object.stats_kv === "string")
                     $util.base64.decode(object.stats_kv, message.stats_kv = $util.newBuffer($util.base64.length(object.stats_kv)), 0);
-                else if (object.stats_kv.length)
+                else if (object.stats_kv.length >= 0)
                     message.stats_kv = object.stats_kv;
             if (object.active_jobs != null)
                 message.active_jobs = object.active_jobs >>> 0;
@@ -21585,6 +24235,21 @@
          */
         CGCMsgGetSystemStatsResponse.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CGCMsgGetSystemStatsResponse
+         * @function getTypeUrl
+         * @memberof CGCMsgGetSystemStatsResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCMsgGetSystemStatsResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCMsgGetSystemStatsResponse";
         };
     
         return CGCMsgGetSystemStatsResponse;
@@ -21693,16 +24358,16 @@
         CMsgAMSendEmail.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
-            if (message.email_msg_type != null && message.hasOwnProperty("email_msg_type"))
+            if (message.email_msg_type != null && Object.hasOwnProperty.call(message, "email_msg_type"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.email_msg_type);
-            if (message.email_format != null && message.hasOwnProperty("email_format"))
+            if (message.email_format != null && Object.hasOwnProperty.call(message, "email_format"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.email_format);
             if (message.persona_name_tokens != null && message.persona_name_tokens.length)
                 for (var i = 0; i < message.persona_name_tokens.length; ++i)
                     $root.CMsgAMSendEmail.PersonaNameReplacementToken.encode(message.persona_name_tokens[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
-            if (message.source_gc != null && message.hasOwnProperty("source_gc"))
+            if (message.source_gc != null && Object.hasOwnProperty.call(message, "source_gc"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.source_gc);
             if (message.tokens != null && message.tokens.length)
                 for (var i = 0; i < message.tokens.length; ++i)
@@ -21741,28 +24406,34 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.steamid = reader.fixed64();
-                    break;
-                case 2:
-                    message.email_msg_type = reader.uint32();
-                    break;
-                case 3:
-                    message.email_format = reader.uint32();
-                    break;
-                case 5:
-                    if (!(message.persona_name_tokens && message.persona_name_tokens.length))
-                        message.persona_name_tokens = [];
-                    message.persona_name_tokens.push($root.CMsgAMSendEmail.PersonaNameReplacementToken.decode(reader, reader.uint32()));
-                    break;
-                case 6:
-                    message.source_gc = reader.uint32();
-                    break;
-                case 7:
-                    if (!(message.tokens && message.tokens.length))
-                        message.tokens = [];
-                    message.tokens.push($root.CMsgAMSendEmail.ReplacementToken.decode(reader, reader.uint32()));
-                    break;
+                case 1: {
+                        message.steamid = reader.fixed64();
+                        break;
+                    }
+                case 2: {
+                        message.email_msg_type = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.email_format = reader.uint32();
+                        break;
+                    }
+                case 5: {
+                        if (!(message.persona_name_tokens && message.persona_name_tokens.length))
+                            message.persona_name_tokens = [];
+                        message.persona_name_tokens.push($root.CMsgAMSendEmail.PersonaNameReplacementToken.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 6: {
+                        message.source_gc = reader.uint32();
+                        break;
+                    }
+                case 7: {
+                        if (!(message.tokens && message.tokens.length))
+                            message.tokens = [];
+                        message.tokens.push($root.CMsgAMSendEmail.ReplacementToken.decode(reader, reader.uint32()));
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -21943,6 +24614,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgAMSendEmail
+         * @function getTypeUrl
+         * @memberof CMsgAMSendEmail
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgAMSendEmail.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgAMSendEmail";
+        };
+    
         CMsgAMSendEmail.ReplacementToken = (function() {
     
             /**
@@ -22008,9 +24694,9 @@
             ReplacementToken.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.token_name != null && message.hasOwnProperty("token_name"))
+                if (message.token_name != null && Object.hasOwnProperty.call(message, "token_name"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.token_name);
-                if (message.token_value != null && message.hasOwnProperty("token_value"))
+                if (message.token_value != null && Object.hasOwnProperty.call(message, "token_value"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.token_value);
                 return writer;
             };
@@ -22046,12 +24732,14 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.token_name = reader.string();
-                        break;
-                    case 2:
-                        message.token_value = reader.string();
-                        break;
+                    case 1: {
+                            message.token_name = reader.string();
+                            break;
+                        }
+                    case 2: {
+                            message.token_value = reader.string();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -22150,6 +24838,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for ReplacementToken
+             * @function getTypeUrl
+             * @memberof CMsgAMSendEmail.ReplacementToken
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            ReplacementToken.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgAMSendEmail.ReplacementToken";
+            };
+    
             return ReplacementToken;
         })();
     
@@ -22218,9 +24921,9 @@
             PersonaNameReplacementToken.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.steamid != null && message.hasOwnProperty("steamid"))
+                if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                     writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
-                if (message.token_name != null && message.hasOwnProperty("token_name"))
+                if (message.token_name != null && Object.hasOwnProperty.call(message, "token_name"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.token_name);
                 return writer;
             };
@@ -22256,12 +24959,14 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.steamid = reader.fixed64();
-                        break;
-                    case 2:
-                        message.token_name = reader.string();
-                        break;
+                    case 1: {
+                            message.steamid = reader.fixed64();
+                            break;
+                        }
+                    case 2: {
+                            message.token_name = reader.string();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -22374,6 +25079,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for PersonaNameReplacementToken
+             * @function getTypeUrl
+             * @memberof CMsgAMSendEmail.PersonaNameReplacementToken
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            PersonaNameReplacementToken.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgAMSendEmail.PersonaNameReplacementToken";
+            };
+    
             return PersonaNameReplacementToken;
         })();
     
@@ -22436,7 +25156,7 @@
         CMsgAMSendEmailResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.eresult);
             return writer;
         };
@@ -22472,9 +25192,10 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.eresult = reader.uint32();
-                    break;
+                case 1: {
+                        message.eresult = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -22564,6 +25285,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgAMSendEmailResponse
+         * @function getTypeUrl
+         * @memberof CMsgAMSendEmailResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgAMSendEmailResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgAMSendEmailResponse";
+        };
+    
         return CMsgAMSendEmailResponse;
     })();
     
@@ -22650,13 +25386,13 @@
         CMsgGCGetEmailTemplate.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.app_id != null && message.hasOwnProperty("app_id"))
+            if (message.app_id != null && Object.hasOwnProperty.call(message, "app_id"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.app_id);
-            if (message.email_msg_type != null && message.hasOwnProperty("email_msg_type"))
+            if (message.email_msg_type != null && Object.hasOwnProperty.call(message, "email_msg_type"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.email_msg_type);
-            if (message.email_lang != null && message.hasOwnProperty("email_lang"))
+            if (message.email_lang != null && Object.hasOwnProperty.call(message, "email_lang"))
                 writer.uint32(/* id 3, wireType 0 =*/24).int32(message.email_lang);
-            if (message.email_format != null && message.hasOwnProperty("email_format"))
+            if (message.email_format != null && Object.hasOwnProperty.call(message, "email_format"))
                 writer.uint32(/* id 4, wireType 0 =*/32).int32(message.email_format);
             return writer;
         };
@@ -22692,18 +25428,22 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.app_id = reader.uint32();
-                    break;
-                case 2:
-                    message.email_msg_type = reader.uint32();
-                    break;
-                case 3:
-                    message.email_lang = reader.int32();
-                    break;
-                case 4:
-                    message.email_format = reader.int32();
-                    break;
+                case 1: {
+                        message.app_id = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.email_msg_type = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.email_lang = reader.int32();
+                        break;
+                    }
+                case 4: {
+                        message.email_format = reader.int32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -22818,6 +25558,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCGetEmailTemplate
+         * @function getTypeUrl
+         * @memberof CMsgGCGetEmailTemplate
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCGetEmailTemplate.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCGetEmailTemplate";
+        };
+    
         return CMsgGCGetEmailTemplate;
     })();
     
@@ -22895,11 +25650,11 @@
         CMsgGCGetEmailTemplateResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.eresult);
-            if (message.template_exists != null && message.hasOwnProperty("template_exists"))
+            if (message.template_exists != null && Object.hasOwnProperty.call(message, "template_exists"))
                 writer.uint32(/* id 2, wireType 0 =*/16).bool(message.template_exists);
-            if (message.template != null && message.hasOwnProperty("template"))
+            if (message.template != null && Object.hasOwnProperty.call(message, "template"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.template);
             return writer;
         };
@@ -22935,15 +25690,18 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.eresult = reader.uint32();
-                    break;
-                case 2:
-                    message.template_exists = reader.bool();
-                    break;
-                case 3:
-                    message.template = reader.string();
-                    break;
+                case 1: {
+                        message.eresult = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.template_exists = reader.bool();
+                        break;
+                    }
+                case 3: {
+                        message.template = reader.string();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -23050,6 +25808,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCGetEmailTemplateResponse
+         * @function getTypeUrl
+         * @memberof CMsgGCGetEmailTemplateResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCGetEmailTemplateResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCGetEmailTemplateResponse";
+        };
+    
         return CMsgGCGetEmailTemplateResponse;
     })();
     
@@ -23145,15 +25918,15 @@
         CMsgAMGrantGuestPasses2.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steam_id != null && message.hasOwnProperty("steam_id"))
+            if (message.steam_id != null && Object.hasOwnProperty.call(message, "steam_id"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steam_id);
-            if (message.package_id != null && message.hasOwnProperty("package_id"))
+            if (message.package_id != null && Object.hasOwnProperty.call(message, "package_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.package_id);
-            if (message.passes_to_grant != null && message.hasOwnProperty("passes_to_grant"))
+            if (message.passes_to_grant != null && Object.hasOwnProperty.call(message, "passes_to_grant"))
                 writer.uint32(/* id 3, wireType 0 =*/24).int32(message.passes_to_grant);
-            if (message.days_to_expiration != null && message.hasOwnProperty("days_to_expiration"))
+            if (message.days_to_expiration != null && Object.hasOwnProperty.call(message, "days_to_expiration"))
                 writer.uint32(/* id 4, wireType 0 =*/32).int32(message.days_to_expiration);
-            if (message.action != null && message.hasOwnProperty("action"))
+            if (message.action != null && Object.hasOwnProperty.call(message, "action"))
                 writer.uint32(/* id 5, wireType 0 =*/40).int32(message.action);
             return writer;
         };
@@ -23189,21 +25962,26 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.steam_id = reader.fixed64();
-                    break;
-                case 2:
-                    message.package_id = reader.uint32();
-                    break;
-                case 3:
-                    message.passes_to_grant = reader.int32();
-                    break;
-                case 4:
-                    message.days_to_expiration = reader.int32();
-                    break;
-                case 5:
-                    message.action = reader.int32();
-                    break;
+                case 1: {
+                        message.steam_id = reader.fixed64();
+                        break;
+                    }
+                case 2: {
+                        message.package_id = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.passes_to_grant = reader.int32();
+                        break;
+                    }
+                case 4: {
+                        message.days_to_expiration = reader.int32();
+                        break;
+                    }
+                case 5: {
+                        message.action = reader.int32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -23340,6 +26118,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgAMGrantGuestPasses2
+         * @function getTypeUrl
+         * @memberof CMsgAMGrantGuestPasses2
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgAMGrantGuestPasses2.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgAMGrantGuestPasses2";
+        };
+    
         return CMsgAMGrantGuestPasses2;
     })();
     
@@ -23408,9 +26201,9 @@
         CMsgAMGrantGuestPasses2Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.eresult);
-            if (message.passes_granted != null && message.hasOwnProperty("passes_granted"))
+            if (message.passes_granted != null && Object.hasOwnProperty.call(message, "passes_granted"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.passes_granted);
             return writer;
         };
@@ -23446,12 +26239,14 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.eresult = reader.int32();
-                    break;
-                case 2:
-                    message.passes_granted = reader.int32();
-                    break;
+                case 1: {
+                        message.eresult = reader.int32();
+                        break;
+                    }
+                case 2: {
+                        message.passes_granted = reader.int32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -23550,6 +26345,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgAMGrantGuestPasses2Response
+         * @function getTypeUrl
+         * @memberof CMsgAMGrantGuestPasses2Response
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgAMGrantGuestPasses2Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgAMGrantGuestPasses2Response";
+        };
+    
         return CMsgAMGrantGuestPasses2Response;
     })();
     
@@ -23618,9 +26428,9 @@
         CGCSystemMsg_GetAccountDetails.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
-            if (message.appid != null && message.hasOwnProperty("appid"))
+            if (message.appid != null && Object.hasOwnProperty.call(message, "appid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.appid);
             return writer;
         };
@@ -23656,12 +26466,14 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.steamid = reader.fixed64();
-                    break;
-                case 2:
-                    message.appid = reader.uint32();
-                    break;
+                case 1: {
+                        message.steamid = reader.fixed64();
+                        break;
+                    }
+                case 2: {
+                        message.appid = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -23772,6 +26584,21 @@
          */
         CGCSystemMsg_GetAccountDetails.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CGCSystemMsg_GetAccountDetails
+         * @function getTypeUrl
+         * @memberof CGCSystemMsg_GetAccountDetails
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCSystemMsg_GetAccountDetails.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCSystemMsg_GetAccountDetails";
         };
     
         return CGCSystemMsg_GetAccountDetails;
@@ -24148,77 +26975,77 @@
         CGCSystemMsg_GetAccountDetails_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult_deprecated != null && message.hasOwnProperty("eresult_deprecated"))
+            if (message.eresult_deprecated != null && Object.hasOwnProperty.call(message, "eresult_deprecated"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.eresult_deprecated);
-            if (message.account_name != null && message.hasOwnProperty("account_name"))
+            if (message.account_name != null && Object.hasOwnProperty.call(message, "account_name"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.account_name);
-            if (message.persona_name != null && message.hasOwnProperty("persona_name"))
+            if (message.persona_name != null && Object.hasOwnProperty.call(message, "persona_name"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.persona_name);
-            if (message.is_profile_public != null && message.hasOwnProperty("is_profile_public"))
+            if (message.is_profile_public != null && Object.hasOwnProperty.call(message, "is_profile_public"))
                 writer.uint32(/* id 4, wireType 0 =*/32).bool(message.is_profile_public);
-            if (message.is_inventory_public != null && message.hasOwnProperty("is_inventory_public"))
+            if (message.is_inventory_public != null && Object.hasOwnProperty.call(message, "is_inventory_public"))
                 writer.uint32(/* id 5, wireType 0 =*/40).bool(message.is_inventory_public);
-            if (message.is_vac_banned != null && message.hasOwnProperty("is_vac_banned"))
+            if (message.is_vac_banned != null && Object.hasOwnProperty.call(message, "is_vac_banned"))
                 writer.uint32(/* id 7, wireType 0 =*/56).bool(message.is_vac_banned);
-            if (message.is_cyber_cafe != null && message.hasOwnProperty("is_cyber_cafe"))
+            if (message.is_cyber_cafe != null && Object.hasOwnProperty.call(message, "is_cyber_cafe"))
                 writer.uint32(/* id 8, wireType 0 =*/64).bool(message.is_cyber_cafe);
-            if (message.is_school_account != null && message.hasOwnProperty("is_school_account"))
+            if (message.is_school_account != null && Object.hasOwnProperty.call(message, "is_school_account"))
                 writer.uint32(/* id 9, wireType 0 =*/72).bool(message.is_school_account);
-            if (message.is_limited != null && message.hasOwnProperty("is_limited"))
+            if (message.is_limited != null && Object.hasOwnProperty.call(message, "is_limited"))
                 writer.uint32(/* id 10, wireType 0 =*/80).bool(message.is_limited);
-            if (message.is_subscribed != null && message.hasOwnProperty("is_subscribed"))
+            if (message.is_subscribed != null && Object.hasOwnProperty.call(message, "is_subscribed"))
                 writer.uint32(/* id 11, wireType 0 =*/88).bool(message.is_subscribed);
-            if (message["package"] != null && message.hasOwnProperty("package"))
+            if (message["package"] != null && Object.hasOwnProperty.call(message, "package"))
                 writer.uint32(/* id 12, wireType 0 =*/96).uint32(message["package"]);
-            if (message.is_free_trial_account != null && message.hasOwnProperty("is_free_trial_account"))
+            if (message.is_free_trial_account != null && Object.hasOwnProperty.call(message, "is_free_trial_account"))
                 writer.uint32(/* id 13, wireType 0 =*/104).bool(message.is_free_trial_account);
-            if (message.free_trial_expiration != null && message.hasOwnProperty("free_trial_expiration"))
+            if (message.free_trial_expiration != null && Object.hasOwnProperty.call(message, "free_trial_expiration"))
                 writer.uint32(/* id 14, wireType 0 =*/112).uint32(message.free_trial_expiration);
-            if (message.is_low_violence != null && message.hasOwnProperty("is_low_violence"))
+            if (message.is_low_violence != null && Object.hasOwnProperty.call(message, "is_low_violence"))
                 writer.uint32(/* id 15, wireType 0 =*/120).bool(message.is_low_violence);
-            if (message.is_account_locked_down != null && message.hasOwnProperty("is_account_locked_down"))
+            if (message.is_account_locked_down != null && Object.hasOwnProperty.call(message, "is_account_locked_down"))
                 writer.uint32(/* id 16, wireType 0 =*/128).bool(message.is_account_locked_down);
-            if (message.is_community_banned != null && message.hasOwnProperty("is_community_banned"))
+            if (message.is_community_banned != null && Object.hasOwnProperty.call(message, "is_community_banned"))
                 writer.uint32(/* id 17, wireType 0 =*/136).bool(message.is_community_banned);
-            if (message.is_trade_banned != null && message.hasOwnProperty("is_trade_banned"))
+            if (message.is_trade_banned != null && Object.hasOwnProperty.call(message, "is_trade_banned"))
                 writer.uint32(/* id 18, wireType 0 =*/144).bool(message.is_trade_banned);
-            if (message.trade_ban_expiration != null && message.hasOwnProperty("trade_ban_expiration"))
+            if (message.trade_ban_expiration != null && Object.hasOwnProperty.call(message, "trade_ban_expiration"))
                 writer.uint32(/* id 19, wireType 0 =*/152).uint32(message.trade_ban_expiration);
-            if (message.accountid != null && message.hasOwnProperty("accountid"))
+            if (message.accountid != null && Object.hasOwnProperty.call(message, "accountid"))
                 writer.uint32(/* id 20, wireType 0 =*/160).uint32(message.accountid);
-            if (message.suspension_end_time != null && message.hasOwnProperty("suspension_end_time"))
+            if (message.suspension_end_time != null && Object.hasOwnProperty.call(message, "suspension_end_time"))
                 writer.uint32(/* id 21, wireType 0 =*/168).uint32(message.suspension_end_time);
-            if (message.currency != null && message.hasOwnProperty("currency"))
+            if (message.currency != null && Object.hasOwnProperty.call(message, "currency"))
                 writer.uint32(/* id 22, wireType 2 =*/178).string(message.currency);
-            if (message.steam_level != null && message.hasOwnProperty("steam_level"))
+            if (message.steam_level != null && Object.hasOwnProperty.call(message, "steam_level"))
                 writer.uint32(/* id 23, wireType 0 =*/184).uint32(message.steam_level);
-            if (message.friend_count != null && message.hasOwnProperty("friend_count"))
+            if (message.friend_count != null && Object.hasOwnProperty.call(message, "friend_count"))
                 writer.uint32(/* id 24, wireType 0 =*/192).uint32(message.friend_count);
-            if (message.account_creation_time != null && message.hasOwnProperty("account_creation_time"))
+            if (message.account_creation_time != null && Object.hasOwnProperty.call(message, "account_creation_time"))
                 writer.uint32(/* id 25, wireType 0 =*/200).uint32(message.account_creation_time);
-            if (message.is_steamguard_enabled != null && message.hasOwnProperty("is_steamguard_enabled"))
+            if (message.is_steamguard_enabled != null && Object.hasOwnProperty.call(message, "is_steamguard_enabled"))
                 writer.uint32(/* id 27, wireType 0 =*/216).bool(message.is_steamguard_enabled);
-            if (message.is_phone_verified != null && message.hasOwnProperty("is_phone_verified"))
+            if (message.is_phone_verified != null && Object.hasOwnProperty.call(message, "is_phone_verified"))
                 writer.uint32(/* id 28, wireType 0 =*/224).bool(message.is_phone_verified);
-            if (message.is_two_factor_auth_enabled != null && message.hasOwnProperty("is_two_factor_auth_enabled"))
+            if (message.is_two_factor_auth_enabled != null && Object.hasOwnProperty.call(message, "is_two_factor_auth_enabled"))
                 writer.uint32(/* id 29, wireType 0 =*/232).bool(message.is_two_factor_auth_enabled);
-            if (message.two_factor_enabled_time != null && message.hasOwnProperty("two_factor_enabled_time"))
+            if (message.two_factor_enabled_time != null && Object.hasOwnProperty.call(message, "two_factor_enabled_time"))
                 writer.uint32(/* id 30, wireType 0 =*/240).uint32(message.two_factor_enabled_time);
-            if (message.phone_verification_time != null && message.hasOwnProperty("phone_verification_time"))
+            if (message.phone_verification_time != null && Object.hasOwnProperty.call(message, "phone_verification_time"))
                 writer.uint32(/* id 31, wireType 0 =*/248).uint32(message.phone_verification_time);
-            if (message.phone_id != null && message.hasOwnProperty("phone_id"))
+            if (message.phone_id != null && Object.hasOwnProperty.call(message, "phone_id"))
                 writer.uint32(/* id 33, wireType 0 =*/264).uint64(message.phone_id);
-            if (message.is_phone_identifying != null && message.hasOwnProperty("is_phone_identifying"))
+            if (message.is_phone_identifying != null && Object.hasOwnProperty.call(message, "is_phone_identifying"))
                 writer.uint32(/* id 34, wireType 0 =*/272).bool(message.is_phone_identifying);
-            if (message.rt_identity_linked != null && message.hasOwnProperty("rt_identity_linked"))
+            if (message.rt_identity_linked != null && Object.hasOwnProperty.call(message, "rt_identity_linked"))
                 writer.uint32(/* id 35, wireType 0 =*/280).uint32(message.rt_identity_linked);
-            if (message.rt_birth_date != null && message.hasOwnProperty("rt_birth_date"))
+            if (message.rt_birth_date != null && Object.hasOwnProperty.call(message, "rt_birth_date"))
                 writer.uint32(/* id 36, wireType 0 =*/288).uint32(message.rt_birth_date);
-            if (message.txn_country_code != null && message.hasOwnProperty("txn_country_code"))
+            if (message.txn_country_code != null && Object.hasOwnProperty.call(message, "txn_country_code"))
                 writer.uint32(/* id 37, wireType 2 =*/298).string(message.txn_country_code);
-            if (message.has_accepted_china_ssa != null && message.hasOwnProperty("has_accepted_china_ssa"))
+            if (message.has_accepted_china_ssa != null && Object.hasOwnProperty.call(message, "has_accepted_china_ssa"))
                 writer.uint32(/* id 38, wireType 0 =*/304).bool(message.has_accepted_china_ssa);
-            if (message.is_banned_steam_china != null && message.hasOwnProperty("is_banned_steam_china"))
+            if (message.is_banned_steam_china != null && Object.hasOwnProperty.call(message, "is_banned_steam_china"))
                 writer.uint32(/* id 39, wireType 0 =*/312).bool(message.is_banned_steam_china);
             return writer;
         };
@@ -24254,114 +27081,150 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.eresult_deprecated = reader.uint32();
-                    break;
-                case 2:
-                    message.account_name = reader.string();
-                    break;
-                case 3:
-                    message.persona_name = reader.string();
-                    break;
-                case 4:
-                    message.is_profile_public = reader.bool();
-                    break;
-                case 5:
-                    message.is_inventory_public = reader.bool();
-                    break;
-                case 7:
-                    message.is_vac_banned = reader.bool();
-                    break;
-                case 8:
-                    message.is_cyber_cafe = reader.bool();
-                    break;
-                case 9:
-                    message.is_school_account = reader.bool();
-                    break;
-                case 10:
-                    message.is_limited = reader.bool();
-                    break;
-                case 11:
-                    message.is_subscribed = reader.bool();
-                    break;
-                case 12:
-                    message["package"] = reader.uint32();
-                    break;
-                case 13:
-                    message.is_free_trial_account = reader.bool();
-                    break;
-                case 14:
-                    message.free_trial_expiration = reader.uint32();
-                    break;
-                case 15:
-                    message.is_low_violence = reader.bool();
-                    break;
-                case 16:
-                    message.is_account_locked_down = reader.bool();
-                    break;
-                case 17:
-                    message.is_community_banned = reader.bool();
-                    break;
-                case 18:
-                    message.is_trade_banned = reader.bool();
-                    break;
-                case 19:
-                    message.trade_ban_expiration = reader.uint32();
-                    break;
-                case 20:
-                    message.accountid = reader.uint32();
-                    break;
-                case 21:
-                    message.suspension_end_time = reader.uint32();
-                    break;
-                case 22:
-                    message.currency = reader.string();
-                    break;
-                case 23:
-                    message.steam_level = reader.uint32();
-                    break;
-                case 24:
-                    message.friend_count = reader.uint32();
-                    break;
-                case 25:
-                    message.account_creation_time = reader.uint32();
-                    break;
-                case 27:
-                    message.is_steamguard_enabled = reader.bool();
-                    break;
-                case 28:
-                    message.is_phone_verified = reader.bool();
-                    break;
-                case 29:
-                    message.is_two_factor_auth_enabled = reader.bool();
-                    break;
-                case 30:
-                    message.two_factor_enabled_time = reader.uint32();
-                    break;
-                case 31:
-                    message.phone_verification_time = reader.uint32();
-                    break;
-                case 33:
-                    message.phone_id = reader.uint64();
-                    break;
-                case 34:
-                    message.is_phone_identifying = reader.bool();
-                    break;
-                case 35:
-                    message.rt_identity_linked = reader.uint32();
-                    break;
-                case 36:
-                    message.rt_birth_date = reader.uint32();
-                    break;
-                case 37:
-                    message.txn_country_code = reader.string();
-                    break;
-                case 38:
-                    message.has_accepted_china_ssa = reader.bool();
-                    break;
-                case 39:
-                    message.is_banned_steam_china = reader.bool();
-                    break;
+                case 1: {
+                        message.eresult_deprecated = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.account_name = reader.string();
+                        break;
+                    }
+                case 3: {
+                        message.persona_name = reader.string();
+                        break;
+                    }
+                case 4: {
+                        message.is_profile_public = reader.bool();
+                        break;
+                    }
+                case 5: {
+                        message.is_inventory_public = reader.bool();
+                        break;
+                    }
+                case 7: {
+                        message.is_vac_banned = reader.bool();
+                        break;
+                    }
+                case 8: {
+                        message.is_cyber_cafe = reader.bool();
+                        break;
+                    }
+                case 9: {
+                        message.is_school_account = reader.bool();
+                        break;
+                    }
+                case 10: {
+                        message.is_limited = reader.bool();
+                        break;
+                    }
+                case 11: {
+                        message.is_subscribed = reader.bool();
+                        break;
+                    }
+                case 12: {
+                        message["package"] = reader.uint32();
+                        break;
+                    }
+                case 13: {
+                        message.is_free_trial_account = reader.bool();
+                        break;
+                    }
+                case 14: {
+                        message.free_trial_expiration = reader.uint32();
+                        break;
+                    }
+                case 15: {
+                        message.is_low_violence = reader.bool();
+                        break;
+                    }
+                case 16: {
+                        message.is_account_locked_down = reader.bool();
+                        break;
+                    }
+                case 17: {
+                        message.is_community_banned = reader.bool();
+                        break;
+                    }
+                case 18: {
+                        message.is_trade_banned = reader.bool();
+                        break;
+                    }
+                case 19: {
+                        message.trade_ban_expiration = reader.uint32();
+                        break;
+                    }
+                case 20: {
+                        message.accountid = reader.uint32();
+                        break;
+                    }
+                case 21: {
+                        message.suspension_end_time = reader.uint32();
+                        break;
+                    }
+                case 22: {
+                        message.currency = reader.string();
+                        break;
+                    }
+                case 23: {
+                        message.steam_level = reader.uint32();
+                        break;
+                    }
+                case 24: {
+                        message.friend_count = reader.uint32();
+                        break;
+                    }
+                case 25: {
+                        message.account_creation_time = reader.uint32();
+                        break;
+                    }
+                case 27: {
+                        message.is_steamguard_enabled = reader.bool();
+                        break;
+                    }
+                case 28: {
+                        message.is_phone_verified = reader.bool();
+                        break;
+                    }
+                case 29: {
+                        message.is_two_factor_auth_enabled = reader.bool();
+                        break;
+                    }
+                case 30: {
+                        message.two_factor_enabled_time = reader.uint32();
+                        break;
+                    }
+                case 31: {
+                        message.phone_verification_time = reader.uint32();
+                        break;
+                    }
+                case 33: {
+                        message.phone_id = reader.uint64();
+                        break;
+                    }
+                case 34: {
+                        message.is_phone_identifying = reader.bool();
+                        break;
+                    }
+                case 35: {
+                        message.rt_identity_linked = reader.uint32();
+                        break;
+                    }
+                case 36: {
+                        message.rt_birth_date = reader.uint32();
+                        break;
+                    }
+                case 37: {
+                        message.txn_country_code = reader.string();
+                        break;
+                    }
+                case 38: {
+                        message.has_accepted_china_ssa = reader.bool();
+                        break;
+                    }
+                case 39: {
+                        message.is_banned_steam_china = reader.bool();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -24746,6 +27609,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CGCSystemMsg_GetAccountDetails_Response
+         * @function getTypeUrl
+         * @memberof CGCSystemMsg_GetAccountDetails_Response
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCSystemMsg_GetAccountDetails_Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCSystemMsg_GetAccountDetails_Response";
+        };
+    
         return CGCSystemMsg_GetAccountDetails_Response;
     })();
     
@@ -24843,16 +27721,17 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    if (!(message.steamids && message.steamids.length))
-                        message.steamids = [];
-                    if ((tag & 7) === 2) {
-                        var end2 = reader.uint32() + reader.pos;
-                        while (reader.pos < end2)
+                case 1: {
+                        if (!(message.steamids && message.steamids.length))
+                            message.steamids = [];
+                        if ((tag & 7) === 2) {
+                            var end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.steamids.push(reader.fixed64());
+                        } else
                             message.steamids.push(reader.fixed64());
-                    } else
-                        message.steamids.push(reader.fixed64());
-                    break;
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -24962,6 +27841,21 @@
          */
         CMsgGCGetPersonaNames.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgGCGetPersonaNames
+         * @function getTypeUrl
+         * @memberof CMsgGCGetPersonaNames
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCGetPersonaNames.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCGetPersonaNames";
         };
     
         return CMsgGCGetPersonaNames;
@@ -25074,21 +27968,23 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    if (!(message.succeeded_lookups && message.succeeded_lookups.length))
-                        message.succeeded_lookups = [];
-                    message.succeeded_lookups.push($root.CMsgGCGetPersonaNames_Response.PersonaName.decode(reader, reader.uint32()));
-                    break;
-                case 2:
-                    if (!(message.failed_lookup_steamids && message.failed_lookup_steamids.length))
-                        message.failed_lookup_steamids = [];
-                    if ((tag & 7) === 2) {
-                        var end2 = reader.uint32() + reader.pos;
-                        while (reader.pos < end2)
+                case 1: {
+                        if (!(message.succeeded_lookups && message.succeeded_lookups.length))
+                            message.succeeded_lookups = [];
+                        message.succeeded_lookups.push($root.CMsgGCGetPersonaNames_Response.PersonaName.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 2: {
+                        if (!(message.failed_lookup_steamids && message.failed_lookup_steamids.length))
+                            message.failed_lookup_steamids = [];
+                        if ((tag & 7) === 2) {
+                            var end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.failed_lookup_steamids.push(reader.fixed64());
+                        } else
                             message.failed_lookup_steamids.push(reader.fixed64());
-                    } else
-                        message.failed_lookup_steamids.push(reader.fixed64());
-                    break;
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -25226,6 +28122,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCGetPersonaNames_Response
+         * @function getTypeUrl
+         * @memberof CMsgGCGetPersonaNames_Response
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCGetPersonaNames_Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCGetPersonaNames_Response";
+        };
+    
         CMsgGCGetPersonaNames_Response.PersonaName = (function() {
     
             /**
@@ -25291,9 +28202,9 @@
             PersonaName.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.steamid != null && message.hasOwnProperty("steamid"))
+                if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                     writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
-                if (message.persona_name != null && message.hasOwnProperty("persona_name"))
+                if (message.persona_name != null && Object.hasOwnProperty.call(message, "persona_name"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.persona_name);
                 return writer;
             };
@@ -25329,12 +28240,14 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.steamid = reader.fixed64();
-                        break;
-                    case 2:
-                        message.persona_name = reader.string();
-                        break;
+                    case 1: {
+                            message.steamid = reader.fixed64();
+                            break;
+                        }
+                    case 2: {
+                            message.persona_name = reader.string();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -25447,6 +28360,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for PersonaName
+             * @function getTypeUrl
+             * @memberof CMsgGCGetPersonaNames_Response.PersonaName
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            PersonaName.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgGCGetPersonaNames_Response.PersonaName";
+            };
+    
             return PersonaName;
         })();
     
@@ -25518,9 +28446,9 @@
         CMsgGCCheckFriendship.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid_left != null && message.hasOwnProperty("steamid_left"))
+            if (message.steamid_left != null && Object.hasOwnProperty.call(message, "steamid_left"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid_left);
-            if (message.steamid_right != null && message.hasOwnProperty("steamid_right"))
+            if (message.steamid_right != null && Object.hasOwnProperty.call(message, "steamid_right"))
                 writer.uint32(/* id 2, wireType 1 =*/17).fixed64(message.steamid_right);
             return writer;
         };
@@ -25556,12 +28484,14 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.steamid_left = reader.fixed64();
-                    break;
-                case 2:
-                    message.steamid_right = reader.fixed64();
-                    break;
+                case 1: {
+                        message.steamid_left = reader.fixed64();
+                        break;
+                    }
+                case 2: {
+                        message.steamid_right = reader.fixed64();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -25688,6 +28618,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCCheckFriendship
+         * @function getTypeUrl
+         * @memberof CMsgGCCheckFriendship
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCCheckFriendship.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCCheckFriendship";
+        };
+    
         return CMsgGCCheckFriendship;
     })();
     
@@ -25756,9 +28701,9 @@
         CMsgGCCheckFriendship_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.success != null && message.hasOwnProperty("success"))
+            if (message.success != null && Object.hasOwnProperty.call(message, "success"))
                 writer.uint32(/* id 1, wireType 0 =*/8).bool(message.success);
-            if (message.found_friendship != null && message.hasOwnProperty("found_friendship"))
+            if (message.found_friendship != null && Object.hasOwnProperty.call(message, "found_friendship"))
                 writer.uint32(/* id 2, wireType 0 =*/16).bool(message.found_friendship);
             return writer;
         };
@@ -25794,12 +28739,14 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.success = reader.bool();
-                    break;
-                case 2:
-                    message.found_friendship = reader.bool();
-                    break;
+                case 1: {
+                        message.success = reader.bool();
+                        break;
+                    }
+                case 2: {
+                        message.found_friendship = reader.bool();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -25898,6 +28845,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCCheckFriendship_Response
+         * @function getTypeUrl
+         * @memberof CMsgGCCheckFriendship_Response
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCCheckFriendship_Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCCheckFriendship_Response";
+        };
+    
         return CMsgGCCheckFriendship_Response;
     })();
     
@@ -25967,7 +28929,7 @@
         CMsgGCMsgMasterSetDirectory.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.master_dir_index != null && message.hasOwnProperty("master_dir_index"))
+            if (message.master_dir_index != null && Object.hasOwnProperty.call(message, "master_dir_index"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.master_dir_index);
             if (message.dir != null && message.dir.length)
                 for (var i = 0; i < message.dir.length; ++i)
@@ -26006,14 +28968,16 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.master_dir_index = reader.uint32();
-                    break;
-                case 2:
-                    if (!(message.dir && message.dir.length))
-                        message.dir = [];
-                    message.dir.push($root.CMsgGCMsgMasterSetDirectory.SubGC.decode(reader, reader.uint32()));
-                    break;
+                case 1: {
+                        message.master_dir_index = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        if (!(message.dir && message.dir.length))
+                            message.dir = [];
+                        message.dir.push($root.CMsgGCMsgMasterSetDirectory.SubGC.decode(reader, reader.uint32()));
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -26129,6 +29093,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCMsgMasterSetDirectory
+         * @function getTypeUrl
+         * @memberof CMsgGCMsgMasterSetDirectory
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCMsgMasterSetDirectory.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCMsgMasterSetDirectory";
+        };
+    
         CMsgGCMsgMasterSetDirectory.SubGC = (function() {
     
             /**
@@ -26221,15 +29200,15 @@
             SubGC.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.dir_index != null && message.hasOwnProperty("dir_index"))
+                if (message.dir_index != null && Object.hasOwnProperty.call(message, "dir_index"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.dir_index);
-                if (message.name != null && message.hasOwnProperty("name"))
+                if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
-                if (message.box != null && message.hasOwnProperty("box"))
+                if (message.box != null && Object.hasOwnProperty.call(message, "box"))
                     writer.uint32(/* id 3, wireType 2 =*/26).string(message.box);
-                if (message.command_line != null && message.hasOwnProperty("command_line"))
+                if (message.command_line != null && Object.hasOwnProperty.call(message, "command_line"))
                     writer.uint32(/* id 4, wireType 2 =*/34).string(message.command_line);
-                if (message.gc_binary != null && message.hasOwnProperty("gc_binary"))
+                if (message.gc_binary != null && Object.hasOwnProperty.call(message, "gc_binary"))
                     writer.uint32(/* id 5, wireType 2 =*/42).string(message.gc_binary);
                 return writer;
             };
@@ -26265,21 +29244,26 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.dir_index = reader.uint32();
-                        break;
-                    case 2:
-                        message.name = reader.string();
-                        break;
-                    case 3:
-                        message.box = reader.string();
-                        break;
-                    case 4:
-                        message.command_line = reader.string();
-                        break;
-                    case 5:
-                        message.gc_binary = reader.string();
-                        break;
+                    case 1: {
+                            message.dir_index = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            message.name = reader.string();
+                            break;
+                        }
+                    case 3: {
+                            message.box = reader.string();
+                            break;
+                        }
+                    case 4: {
+                            message.command_line = reader.string();
+                            break;
+                        }
+                    case 5: {
+                            message.gc_binary = reader.string();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -26402,6 +29386,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for SubGC
+             * @function getTypeUrl
+             * @memberof CMsgGCMsgMasterSetDirectory.SubGC
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            SubGC.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgGCMsgMasterSetDirectory.SubGC";
+            };
+    
             return SubGC;
         })();
     
@@ -26473,9 +29472,9 @@
         CMsgGCMsgMasterSetDirectory_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.eresult);
-            if (message.message != null && message.hasOwnProperty("message"))
+            if (message.message != null && Object.hasOwnProperty.call(message, "message"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
             return writer;
         };
@@ -26511,12 +29510,14 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.eresult = reader.int32();
-                    break;
-                case 2:
-                    message.message = reader.string();
-                    break;
+                case 1: {
+                        message.eresult = reader.int32();
+                        break;
+                    }
+                case 2: {
+                        message.message = reader.string();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -26615,6 +29616,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCMsgMasterSetDirectory_Response
+         * @function getTypeUrl
+         * @memberof CMsgGCMsgMasterSetDirectory_Response
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCMsgMasterSetDirectory_Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCMsgMasterSetDirectory_Response";
+        };
+    
         return CMsgGCMsgMasterSetDirectory_Response;
     })();
     
@@ -26674,7 +29690,7 @@
         CMsgGCMsgWebAPIJobRequestForwardResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.dir_index != null && message.hasOwnProperty("dir_index"))
+            if (message.dir_index != null && Object.hasOwnProperty.call(message, "dir_index"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.dir_index);
             return writer;
         };
@@ -26710,9 +29726,10 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.dir_index = reader.uint32();
-                    break;
+                case 1: {
+                        message.dir_index = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -26802,6 +29819,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCMsgWebAPIJobRequestForwardResponse
+         * @function getTypeUrl
+         * @memberof CMsgGCMsgWebAPIJobRequestForwardResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCMsgWebAPIJobRequestForwardResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCMsgWebAPIJobRequestForwardResponse";
+        };
+    
         return CMsgGCMsgWebAPIJobRequestForwardResponse;
     })();
     
@@ -26861,7 +29893,7 @@
         CGCSystemMsg_GetPurchaseTrust_Request.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
             return writer;
         };
@@ -26897,9 +29929,10 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.steamid = reader.fixed64();
-                    break;
+                case 1: {
+                        message.steamid = reader.fixed64();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -27003,6 +30036,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CGCSystemMsg_GetPurchaseTrust_Request
+         * @function getTypeUrl
+         * @memberof CGCSystemMsg_GetPurchaseTrust_Request
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCSystemMsg_GetPurchaseTrust_Request.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCSystemMsg_GetPurchaseTrust_Request";
+        };
+    
         return CGCSystemMsg_GetPurchaseTrust_Request;
     })();
     
@@ -27089,13 +30137,13 @@
         CGCSystemMsg_GetPurchaseTrust_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.has_prior_purchase_history != null && message.hasOwnProperty("has_prior_purchase_history"))
+            if (message.has_prior_purchase_history != null && Object.hasOwnProperty.call(message, "has_prior_purchase_history"))
                 writer.uint32(/* id 1, wireType 0 =*/8).bool(message.has_prior_purchase_history);
-            if (message.has_no_recent_password_resets != null && message.hasOwnProperty("has_no_recent_password_resets"))
+            if (message.has_no_recent_password_resets != null && Object.hasOwnProperty.call(message, "has_no_recent_password_resets"))
                 writer.uint32(/* id 2, wireType 0 =*/16).bool(message.has_no_recent_password_resets);
-            if (message.is_wallet_cash_trusted != null && message.hasOwnProperty("is_wallet_cash_trusted"))
+            if (message.is_wallet_cash_trusted != null && Object.hasOwnProperty.call(message, "is_wallet_cash_trusted"))
                 writer.uint32(/* id 3, wireType 0 =*/24).bool(message.is_wallet_cash_trusted);
-            if (message.time_all_trusted != null && message.hasOwnProperty("time_all_trusted"))
+            if (message.time_all_trusted != null && Object.hasOwnProperty.call(message, "time_all_trusted"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.time_all_trusted);
             return writer;
         };
@@ -27131,18 +30179,22 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.has_prior_purchase_history = reader.bool();
-                    break;
-                case 2:
-                    message.has_no_recent_password_resets = reader.bool();
-                    break;
-                case 3:
-                    message.is_wallet_cash_trusted = reader.bool();
-                    break;
-                case 4:
-                    message.time_all_trusted = reader.uint32();
-                    break;
+                case 1: {
+                        message.has_prior_purchase_history = reader.bool();
+                        break;
+                    }
+                case 2: {
+                        message.has_no_recent_password_resets = reader.bool();
+                        break;
+                    }
+                case 3: {
+                        message.is_wallet_cash_trusted = reader.bool();
+                        break;
+                    }
+                case 4: {
+                        message.time_all_trusted = reader.uint32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -27257,6 +30309,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CGCSystemMsg_GetPurchaseTrust_Response
+         * @function getTypeUrl
+         * @memberof CGCSystemMsg_GetPurchaseTrust_Response
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CGCSystemMsg_GetPurchaseTrust_Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CGCSystemMsg_GetPurchaseTrust_Response";
+        };
+    
         return CGCSystemMsg_GetPurchaseTrust_Response;
     })();
     
@@ -27352,15 +30419,15 @@
         CMsgGCHAccountVacStatusChange.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steam_id != null && message.hasOwnProperty("steam_id"))
+            if (message.steam_id != null && Object.hasOwnProperty.call(message, "steam_id"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steam_id);
-            if (message.app_id != null && message.hasOwnProperty("app_id"))
+            if (message.app_id != null && Object.hasOwnProperty.call(message, "app_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.app_id);
-            if (message.rtime_vacban_starts != null && message.hasOwnProperty("rtime_vacban_starts"))
+            if (message.rtime_vacban_starts != null && Object.hasOwnProperty.call(message, "rtime_vacban_starts"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.rtime_vacban_starts);
-            if (message.is_banned_now != null && message.hasOwnProperty("is_banned_now"))
+            if (message.is_banned_now != null && Object.hasOwnProperty.call(message, "is_banned_now"))
                 writer.uint32(/* id 4, wireType 0 =*/32).bool(message.is_banned_now);
-            if (message.is_banned_future != null && message.hasOwnProperty("is_banned_future"))
+            if (message.is_banned_future != null && Object.hasOwnProperty.call(message, "is_banned_future"))
                 writer.uint32(/* id 5, wireType 0 =*/40).bool(message.is_banned_future);
             return writer;
         };
@@ -27396,21 +30463,26 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.steam_id = reader.fixed64();
-                    break;
-                case 2:
-                    message.app_id = reader.uint32();
-                    break;
-                case 3:
-                    message.rtime_vacban_starts = reader.uint32();
-                    break;
-                case 4:
-                    message.is_banned_now = reader.bool();
-                    break;
-                case 5:
-                    message.is_banned_future = reader.bool();
-                    break;
+                case 1: {
+                        message.steam_id = reader.fixed64();
+                        break;
+                    }
+                case 2: {
+                        message.app_id = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.rtime_vacban_starts = reader.uint32();
+                        break;
+                    }
+                case 4: {
+                        message.is_banned_now = reader.bool();
+                        break;
+                    }
+                case 5: {
+                        message.is_banned_future = reader.bool();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -27547,6 +30619,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCHAccountVacStatusChange
+         * @function getTypeUrl
+         * @memberof CMsgGCHAccountVacStatusChange
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCHAccountVacStatusChange.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCHAccountVacStatusChange";
+        };
+    
         return CMsgGCHAccountVacStatusChange;
     })();
     
@@ -27606,7 +30693,7 @@
         CMsgGCGetPartnerAccountLink.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
             return writer;
         };
@@ -27642,9 +30729,10 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.steamid = reader.fixed64();
-                    break;
+                case 1: {
+                        message.steamid = reader.fixed64();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -27748,6 +30836,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCGetPartnerAccountLink
+         * @function getTypeUrl
+         * @memberof CMsgGCGetPartnerAccountLink
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCGetPartnerAccountLink.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCGetPartnerAccountLink";
+        };
+    
         return CMsgGCGetPartnerAccountLink;
     })();
     
@@ -27843,15 +30946,15 @@
         CMsgGCGetPartnerAccountLink_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.pwid != null && message.hasOwnProperty("pwid"))
+            if (message.pwid != null && Object.hasOwnProperty.call(message, "pwid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.pwid);
-            if (message.nexonid != null && message.hasOwnProperty("nexonid"))
+            if (message.nexonid != null && Object.hasOwnProperty.call(message, "nexonid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.nexonid);
-            if (message.ageclass != null && message.hasOwnProperty("ageclass"))
+            if (message.ageclass != null && Object.hasOwnProperty.call(message, "ageclass"))
                 writer.uint32(/* id 3, wireType 0 =*/24).int32(message.ageclass);
-            if (message.id_verified != null && message.hasOwnProperty("id_verified"))
+            if (message.id_verified != null && Object.hasOwnProperty.call(message, "id_verified"))
                 writer.uint32(/* id 4, wireType 0 =*/32).bool(message.id_verified);
-            if (message.is_adult != null && message.hasOwnProperty("is_adult"))
+            if (message.is_adult != null && Object.hasOwnProperty.call(message, "is_adult"))
                 writer.uint32(/* id 5, wireType 0 =*/40).bool(message.is_adult);
             return writer;
         };
@@ -27887,21 +30990,26 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.pwid = reader.uint32();
-                    break;
-                case 2:
-                    message.nexonid = reader.uint32();
-                    break;
-                case 3:
-                    message.ageclass = reader.int32();
-                    break;
-                case 4:
-                    message.id_verified = reader.bool();
-                    break;
-                case 5:
-                    message.is_adult = reader.bool();
-                    break;
+                case 1: {
+                        message.pwid = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.nexonid = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.ageclass = reader.int32();
+                        break;
+                    }
+                case 4: {
+                        message.id_verified = reader.bool();
+                        break;
+                    }
+                case 5: {
+                        message.is_adult = reader.bool();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -28024,7 +31132,473 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCGetPartnerAccountLink_Response
+         * @function getTypeUrl
+         * @memberof CMsgGCGetPartnerAccountLink_Response
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCGetPartnerAccountLink_Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCGetPartnerAccountLink_Response";
+        };
+    
         return CMsgGCGetPartnerAccountLink_Response;
+    })();
+    
+    $root.CMsgGCAddressMask = (function() {
+    
+        /**
+         * Properties of a CMsgGCAddressMask.
+         * @exports ICMsgGCAddressMask
+         * @interface ICMsgGCAddressMask
+         * @property {number|null} [ipv4] CMsgGCAddressMask ipv4
+         * @property {number|null} [maskbits] CMsgGCAddressMask maskbits
+         */
+    
+        /**
+         * Constructs a new CMsgGCAddressMask.
+         * @exports CMsgGCAddressMask
+         * @classdesc Represents a CMsgGCAddressMask.
+         * @implements ICMsgGCAddressMask
+         * @constructor
+         * @param {ICMsgGCAddressMask=} [properties] Properties to set
+         */
+        function CMsgGCAddressMask(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgGCAddressMask ipv4.
+         * @member {number} ipv4
+         * @memberof CMsgGCAddressMask
+         * @instance
+         */
+        CMsgGCAddressMask.prototype.ipv4 = 0;
+    
+        /**
+         * CMsgGCAddressMask maskbits.
+         * @member {number} maskbits
+         * @memberof CMsgGCAddressMask
+         * @instance
+         */
+        CMsgGCAddressMask.prototype.maskbits = 32;
+    
+        /**
+         * Creates a new CMsgGCAddressMask instance using the specified properties.
+         * @function create
+         * @memberof CMsgGCAddressMask
+         * @static
+         * @param {ICMsgGCAddressMask=} [properties] Properties to set
+         * @returns {CMsgGCAddressMask} CMsgGCAddressMask instance
+         */
+        CMsgGCAddressMask.create = function create(properties) {
+            return new CMsgGCAddressMask(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgGCAddressMask message. Does not implicitly {@link CMsgGCAddressMask.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgGCAddressMask
+         * @static
+         * @param {ICMsgGCAddressMask} message CMsgGCAddressMask message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCAddressMask.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.ipv4 != null && Object.hasOwnProperty.call(message, "ipv4"))
+                writer.uint32(/* id 1, wireType 5 =*/13).fixed32(message.ipv4);
+            if (message.maskbits != null && Object.hasOwnProperty.call(message, "maskbits"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.maskbits);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgGCAddressMask message, length delimited. Does not implicitly {@link CMsgGCAddressMask.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgGCAddressMask
+         * @static
+         * @param {ICMsgGCAddressMask} message CMsgGCAddressMask message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCAddressMask.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgGCAddressMask message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgGCAddressMask
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgGCAddressMask} CMsgGCAddressMask
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCAddressMask.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCAddressMask();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1: {
+                        message.ipv4 = reader.fixed32();
+                        break;
+                    }
+                case 2: {
+                        message.maskbits = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgGCAddressMask message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgGCAddressMask
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgGCAddressMask} CMsgGCAddressMask
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCAddressMask.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgGCAddressMask message.
+         * @function verify
+         * @memberof CMsgGCAddressMask
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgGCAddressMask.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.ipv4 != null && message.hasOwnProperty("ipv4"))
+                if (!$util.isInteger(message.ipv4))
+                    return "ipv4: integer expected";
+            if (message.maskbits != null && message.hasOwnProperty("maskbits"))
+                if (!$util.isInteger(message.maskbits))
+                    return "maskbits: integer expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgGCAddressMask message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgGCAddressMask
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgGCAddressMask} CMsgGCAddressMask
+         */
+        CMsgGCAddressMask.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgGCAddressMask)
+                return object;
+            var message = new $root.CMsgGCAddressMask();
+            if (object.ipv4 != null)
+                message.ipv4 = object.ipv4 >>> 0;
+            if (object.maskbits != null)
+                message.maskbits = object.maskbits >>> 0;
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgGCAddressMask message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgGCAddressMask
+         * @static
+         * @param {CMsgGCAddressMask} message CMsgGCAddressMask
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgGCAddressMask.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.ipv4 = 0;
+                object.maskbits = 32;
+            }
+            if (message.ipv4 != null && message.hasOwnProperty("ipv4"))
+                object.ipv4 = message.ipv4;
+            if (message.maskbits != null && message.hasOwnProperty("maskbits"))
+                object.maskbits = message.maskbits;
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgGCAddressMask to JSON.
+         * @function toJSON
+         * @memberof CMsgGCAddressMask
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgGCAddressMask.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgGCAddressMask
+         * @function getTypeUrl
+         * @memberof CMsgGCAddressMask
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCAddressMask.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCAddressMask";
+        };
+    
+        return CMsgGCAddressMask;
+    })();
+    
+    $root.CMsgGCAddressMaskGroup = (function() {
+    
+        /**
+         * Properties of a CMsgGCAddressMaskGroup.
+         * @exports ICMsgGCAddressMaskGroup
+         * @interface ICMsgGCAddressMaskGroup
+         * @property {Array.<ICMsgGCAddressMask>|null} [addrs] CMsgGCAddressMaskGroup addrs
+         */
+    
+        /**
+         * Constructs a new CMsgGCAddressMaskGroup.
+         * @exports CMsgGCAddressMaskGroup
+         * @classdesc Represents a CMsgGCAddressMaskGroup.
+         * @implements ICMsgGCAddressMaskGroup
+         * @constructor
+         * @param {ICMsgGCAddressMaskGroup=} [properties] Properties to set
+         */
+        function CMsgGCAddressMaskGroup(properties) {
+            this.addrs = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgGCAddressMaskGroup addrs.
+         * @member {Array.<ICMsgGCAddressMask>} addrs
+         * @memberof CMsgGCAddressMaskGroup
+         * @instance
+         */
+        CMsgGCAddressMaskGroup.prototype.addrs = $util.emptyArray;
+    
+        /**
+         * Creates a new CMsgGCAddressMaskGroup instance using the specified properties.
+         * @function create
+         * @memberof CMsgGCAddressMaskGroup
+         * @static
+         * @param {ICMsgGCAddressMaskGroup=} [properties] Properties to set
+         * @returns {CMsgGCAddressMaskGroup} CMsgGCAddressMaskGroup instance
+         */
+        CMsgGCAddressMaskGroup.create = function create(properties) {
+            return new CMsgGCAddressMaskGroup(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgGCAddressMaskGroup message. Does not implicitly {@link CMsgGCAddressMaskGroup.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgGCAddressMaskGroup
+         * @static
+         * @param {ICMsgGCAddressMaskGroup} message CMsgGCAddressMaskGroup message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCAddressMaskGroup.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.addrs != null && message.addrs.length)
+                for (var i = 0; i < message.addrs.length; ++i)
+                    $root.CMsgGCAddressMask.encode(message.addrs[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgGCAddressMaskGroup message, length delimited. Does not implicitly {@link CMsgGCAddressMaskGroup.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgGCAddressMaskGroup
+         * @static
+         * @param {ICMsgGCAddressMaskGroup} message CMsgGCAddressMaskGroup message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCAddressMaskGroup.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgGCAddressMaskGroup message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgGCAddressMaskGroup
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgGCAddressMaskGroup} CMsgGCAddressMaskGroup
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCAddressMaskGroup.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCAddressMaskGroup();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1: {
+                        if (!(message.addrs && message.addrs.length))
+                            message.addrs = [];
+                        message.addrs.push($root.CMsgGCAddressMask.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgGCAddressMaskGroup message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgGCAddressMaskGroup
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgGCAddressMaskGroup} CMsgGCAddressMaskGroup
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCAddressMaskGroup.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgGCAddressMaskGroup message.
+         * @function verify
+         * @memberof CMsgGCAddressMaskGroup
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgGCAddressMaskGroup.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.addrs != null && message.hasOwnProperty("addrs")) {
+                if (!Array.isArray(message.addrs))
+                    return "addrs: array expected";
+                for (var i = 0; i < message.addrs.length; ++i) {
+                    var error = $root.CMsgGCAddressMask.verify(message.addrs[i]);
+                    if (error)
+                        return "addrs." + error;
+                }
+            }
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgGCAddressMaskGroup message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgGCAddressMaskGroup
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgGCAddressMaskGroup} CMsgGCAddressMaskGroup
+         */
+        CMsgGCAddressMaskGroup.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgGCAddressMaskGroup)
+                return object;
+            var message = new $root.CMsgGCAddressMaskGroup();
+            if (object.addrs) {
+                if (!Array.isArray(object.addrs))
+                    throw TypeError(".CMsgGCAddressMaskGroup.addrs: array expected");
+                message.addrs = [];
+                for (var i = 0; i < object.addrs.length; ++i) {
+                    if (typeof object.addrs[i] !== "object")
+                        throw TypeError(".CMsgGCAddressMaskGroup.addrs: object expected");
+                    message.addrs[i] = $root.CMsgGCAddressMask.fromObject(object.addrs[i]);
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgGCAddressMaskGroup message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgGCAddressMaskGroup
+         * @static
+         * @param {CMsgGCAddressMaskGroup} message CMsgGCAddressMaskGroup
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgGCAddressMaskGroup.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.addrs = [];
+            if (message.addrs && message.addrs.length) {
+                object.addrs = [];
+                for (var j = 0; j < message.addrs.length; ++j)
+                    object.addrs[j] = $root.CMsgGCAddressMask.toObject(message.addrs[j], options);
+            }
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgGCAddressMaskGroup to JSON.
+         * @function toJSON
+         * @memberof CMsgGCAddressMaskGroup
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgGCAddressMaskGroup.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgGCAddressMaskGroup
+         * @function getTypeUrl
+         * @memberof CMsgGCAddressMaskGroup
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCAddressMaskGroup.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCAddressMaskGroup";
+        };
+    
+        return CMsgGCAddressMaskGroup;
     })();
     
     $root.CMsgGCRoutingInfo = (function() {
@@ -28038,6 +31612,7 @@
          * @property {CMsgGCRoutingInfo.RoutingMethod|null} [fallback] CMsgGCRoutingInfo fallback
          * @property {number|null} [protobuf_field] CMsgGCRoutingInfo protobuf_field
          * @property {string|null} [webapi_param] CMsgGCRoutingInfo webapi_param
+         * @property {Array.<CMsgGCRoutingInfo.IPolicyRule>|null} [policy_rules] CMsgGCRoutingInfo policy_rules
          */
     
         /**
@@ -28050,6 +31625,7 @@
          */
         function CMsgGCRoutingInfo(properties) {
             this.dir_index = [];
+            this.policy_rules = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -28097,6 +31673,14 @@
         CMsgGCRoutingInfo.prototype.webapi_param = "";
     
         /**
+         * CMsgGCRoutingInfo policy_rules.
+         * @member {Array.<CMsgGCRoutingInfo.IPolicyRule>} policy_rules
+         * @memberof CMsgGCRoutingInfo
+         * @instance
+         */
+        CMsgGCRoutingInfo.prototype.policy_rules = $util.emptyArray;
+    
+        /**
          * Creates a new CMsgGCRoutingInfo instance using the specified properties.
          * @function create
          * @memberof CMsgGCRoutingInfo
@@ -28123,14 +31707,17 @@
             if (message.dir_index != null && message.dir_index.length)
                 for (var i = 0; i < message.dir_index.length; ++i)
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.dir_index[i]);
-            if (message.method != null && message.hasOwnProperty("method"))
+            if (message.method != null && Object.hasOwnProperty.call(message, "method"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.method);
-            if (message.fallback != null && message.hasOwnProperty("fallback"))
+            if (message.fallback != null && Object.hasOwnProperty.call(message, "fallback"))
                 writer.uint32(/* id 3, wireType 0 =*/24).int32(message.fallback);
-            if (message.protobuf_field != null && message.hasOwnProperty("protobuf_field"))
+            if (message.protobuf_field != null && Object.hasOwnProperty.call(message, "protobuf_field"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.protobuf_field);
-            if (message.webapi_param != null && message.hasOwnProperty("webapi_param"))
+            if (message.webapi_param != null && Object.hasOwnProperty.call(message, "webapi_param"))
                 writer.uint32(/* id 5, wireType 2 =*/42).string(message.webapi_param);
+            if (message.policy_rules != null && message.policy_rules.length)
+                for (var i = 0; i < message.policy_rules.length; ++i)
+                    $root.CMsgGCRoutingInfo.PolicyRule.encode(message.policy_rules[i], writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
             return writer;
         };
     
@@ -28165,28 +31752,39 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    if (!(message.dir_index && message.dir_index.length))
-                        message.dir_index = [];
-                    if ((tag & 7) === 2) {
-                        var end2 = reader.uint32() + reader.pos;
-                        while (reader.pos < end2)
+                case 1: {
+                        if (!(message.dir_index && message.dir_index.length))
+                            message.dir_index = [];
+                        if ((tag & 7) === 2) {
+                            var end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.dir_index.push(reader.uint32());
+                        } else
                             message.dir_index.push(reader.uint32());
-                    } else
-                        message.dir_index.push(reader.uint32());
-                    break;
-                case 2:
-                    message.method = reader.int32();
-                    break;
-                case 3:
-                    message.fallback = reader.int32();
-                    break;
-                case 4:
-                    message.protobuf_field = reader.uint32();
-                    break;
-                case 5:
-                    message.webapi_param = reader.string();
-                    break;
+                        break;
+                    }
+                case 2: {
+                        message.method = reader.int32();
+                        break;
+                    }
+                case 3: {
+                        message.fallback = reader.int32();
+                        break;
+                    }
+                case 4: {
+                        message.protobuf_field = reader.uint32();
+                        break;
+                    }
+                case 5: {
+                        message.webapi_param = reader.string();
+                        break;
+                    }
+                case 6: {
+                        if (!(message.policy_rules && message.policy_rules.length))
+                            message.policy_rules = [];
+                        message.policy_rules.push($root.CMsgGCRoutingInfo.PolicyRule.decode(reader, reader.uint32()));
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -28257,6 +31855,15 @@
             if (message.webapi_param != null && message.hasOwnProperty("webapi_param"))
                 if (!$util.isString(message.webapi_param))
                     return "webapi_param: string expected";
+            if (message.policy_rules != null && message.hasOwnProperty("policy_rules")) {
+                if (!Array.isArray(message.policy_rules))
+                    return "policy_rules: array expected";
+                for (var i = 0; i < message.policy_rules.length; ++i) {
+                    var error = $root.CMsgGCRoutingInfo.PolicyRule.verify(message.policy_rules[i]);
+                    if (error)
+                        return "policy_rules." + error;
+                }
+            }
             return null;
         };
     
@@ -28280,6 +31887,12 @@
                     message.dir_index[i] = object.dir_index[i] >>> 0;
             }
             switch (object.method) {
+            default:
+                if (typeof object.method === "number") {
+                    message.method = object.method;
+                    break;
+                }
+                break;
             case "RANDOM":
             case 0:
                 message.method = 0;
@@ -28306,6 +31919,12 @@
             case 0:
                 message.fallback = 0;
                 break;
+            default:
+                if (typeof object.fallback === "number") {
+                    message.fallback = object.fallback;
+                    break;
+                }
+                break;
             case "DISCARD":
             case 1:
                 message.fallback = 1;
@@ -28327,6 +31946,16 @@
                 message.protobuf_field = object.protobuf_field >>> 0;
             if (object.webapi_param != null)
                 message.webapi_param = String(object.webapi_param);
+            if (object.policy_rules) {
+                if (!Array.isArray(object.policy_rules))
+                    throw TypeError(".CMsgGCRoutingInfo.policy_rules: array expected");
+                message.policy_rules = [];
+                for (var i = 0; i < object.policy_rules.length; ++i) {
+                    if (typeof object.policy_rules[i] !== "object")
+                        throw TypeError(".CMsgGCRoutingInfo.policy_rules: object expected");
+                    message.policy_rules[i] = $root.CMsgGCRoutingInfo.PolicyRule.fromObject(object.policy_rules[i]);
+                }
+            }
             return message;
         };
     
@@ -28343,8 +31972,10 @@
             if (!options)
                 options = {};
             var object = {};
-            if (options.arrays || options.defaults)
+            if (options.arrays || options.defaults) {
                 object.dir_index = [];
+                object.policy_rules = [];
+            }
             if (options.defaults) {
                 object.method = options.enums === String ? "RANDOM" : 0;
                 object.fallback = options.enums === String ? "DISCARD" : 1;
@@ -28357,13 +31988,18 @@
                     object.dir_index[j] = message.dir_index[j];
             }
             if (message.method != null && message.hasOwnProperty("method"))
-                object.method = options.enums === String ? $root.CMsgGCRoutingInfo.RoutingMethod[message.method] : message.method;
+                object.method = options.enums === String ? $root.CMsgGCRoutingInfo.RoutingMethod[message.method] === undefined ? message.method : $root.CMsgGCRoutingInfo.RoutingMethod[message.method] : message.method;
             if (message.fallback != null && message.hasOwnProperty("fallback"))
-                object.fallback = options.enums === String ? $root.CMsgGCRoutingInfo.RoutingMethod[message.fallback] : message.fallback;
+                object.fallback = options.enums === String ? $root.CMsgGCRoutingInfo.RoutingMethod[message.fallback] === undefined ? message.fallback : $root.CMsgGCRoutingInfo.RoutingMethod[message.fallback] : message.fallback;
             if (message.protobuf_field != null && message.hasOwnProperty("protobuf_field"))
                 object.protobuf_field = message.protobuf_field;
             if (message.webapi_param != null && message.hasOwnProperty("webapi_param"))
                 object.webapi_param = message.webapi_param;
+            if (message.policy_rules && message.policy_rules.length) {
+                object.policy_rules = [];
+                for (var j = 0; j < message.policy_rules.length; ++j)
+                    object.policy_rules[j] = $root.CMsgGCRoutingInfo.PolicyRule.toObject(message.policy_rules[j], options);
+            }
             return object;
         };
     
@@ -28379,9 +32015,529 @@
         };
     
         /**
+         * Gets the default type url for CMsgGCRoutingInfo
+         * @function getTypeUrl
+         * @memberof CMsgGCRoutingInfo
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCRoutingInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCRoutingInfo";
+        };
+    
+        CMsgGCRoutingInfo.TokenBucketConfiguration = (function() {
+    
+            /**
+             * Properties of a TokenBucketConfiguration.
+             * @memberof CMsgGCRoutingInfo
+             * @interface ITokenBucketConfiguration
+             * @property {number|null} [tokens_start] TokenBucketConfiguration tokens_start
+             * @property {number|null} [tokens_grant] TokenBucketConfiguration tokens_grant
+             * @property {number|null} [grant_seconds] TokenBucketConfiguration grant_seconds
+             */
+    
+            /**
+             * Constructs a new TokenBucketConfiguration.
+             * @memberof CMsgGCRoutingInfo
+             * @classdesc Represents a TokenBucketConfiguration.
+             * @implements ITokenBucketConfiguration
+             * @constructor
+             * @param {CMsgGCRoutingInfo.ITokenBucketConfiguration=} [properties] Properties to set
+             */
+            function TokenBucketConfiguration(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * TokenBucketConfiguration tokens_start.
+             * @member {number} tokens_start
+             * @memberof CMsgGCRoutingInfo.TokenBucketConfiguration
+             * @instance
+             */
+            TokenBucketConfiguration.prototype.tokens_start = 0;
+    
+            /**
+             * TokenBucketConfiguration tokens_grant.
+             * @member {number} tokens_grant
+             * @memberof CMsgGCRoutingInfo.TokenBucketConfiguration
+             * @instance
+             */
+            TokenBucketConfiguration.prototype.tokens_grant = 0;
+    
+            /**
+             * TokenBucketConfiguration grant_seconds.
+             * @member {number} grant_seconds
+             * @memberof CMsgGCRoutingInfo.TokenBucketConfiguration
+             * @instance
+             */
+            TokenBucketConfiguration.prototype.grant_seconds = 0;
+    
+            /**
+             * Creates a new TokenBucketConfiguration instance using the specified properties.
+             * @function create
+             * @memberof CMsgGCRoutingInfo.TokenBucketConfiguration
+             * @static
+             * @param {CMsgGCRoutingInfo.ITokenBucketConfiguration=} [properties] Properties to set
+             * @returns {CMsgGCRoutingInfo.TokenBucketConfiguration} TokenBucketConfiguration instance
+             */
+            TokenBucketConfiguration.create = function create(properties) {
+                return new TokenBucketConfiguration(properties);
+            };
+    
+            /**
+             * Encodes the specified TokenBucketConfiguration message. Does not implicitly {@link CMsgGCRoutingInfo.TokenBucketConfiguration.verify|verify} messages.
+             * @function encode
+             * @memberof CMsgGCRoutingInfo.TokenBucketConfiguration
+             * @static
+             * @param {CMsgGCRoutingInfo.ITokenBucketConfiguration} message TokenBucketConfiguration message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            TokenBucketConfiguration.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.tokens_start != null && Object.hasOwnProperty.call(message, "tokens_start"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.tokens_start);
+                if (message.tokens_grant != null && Object.hasOwnProperty.call(message, "tokens_grant"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).int32(message.tokens_grant);
+                if (message.grant_seconds != null && Object.hasOwnProperty.call(message, "grant_seconds"))
+                    writer.uint32(/* id 3, wireType 0 =*/24).int32(message.grant_seconds);
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified TokenBucketConfiguration message, length delimited. Does not implicitly {@link CMsgGCRoutingInfo.TokenBucketConfiguration.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof CMsgGCRoutingInfo.TokenBucketConfiguration
+             * @static
+             * @param {CMsgGCRoutingInfo.ITokenBucketConfiguration} message TokenBucketConfiguration message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            TokenBucketConfiguration.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes a TokenBucketConfiguration message from the specified reader or buffer.
+             * @function decode
+             * @memberof CMsgGCRoutingInfo.TokenBucketConfiguration
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {CMsgGCRoutingInfo.TokenBucketConfiguration} TokenBucketConfiguration
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            TokenBucketConfiguration.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCRoutingInfo.TokenBucketConfiguration();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.tokens_start = reader.int32();
+                            break;
+                        }
+                    case 2: {
+                            message.tokens_grant = reader.int32();
+                            break;
+                        }
+                    case 3: {
+                            message.grant_seconds = reader.int32();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes a TokenBucketConfiguration message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof CMsgGCRoutingInfo.TokenBucketConfiguration
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {CMsgGCRoutingInfo.TokenBucketConfiguration} TokenBucketConfiguration
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            TokenBucketConfiguration.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies a TokenBucketConfiguration message.
+             * @function verify
+             * @memberof CMsgGCRoutingInfo.TokenBucketConfiguration
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            TokenBucketConfiguration.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.tokens_start != null && message.hasOwnProperty("tokens_start"))
+                    if (!$util.isInteger(message.tokens_start))
+                        return "tokens_start: integer expected";
+                if (message.tokens_grant != null && message.hasOwnProperty("tokens_grant"))
+                    if (!$util.isInteger(message.tokens_grant))
+                        return "tokens_grant: integer expected";
+                if (message.grant_seconds != null && message.hasOwnProperty("grant_seconds"))
+                    if (!$util.isInteger(message.grant_seconds))
+                        return "grant_seconds: integer expected";
+                return null;
+            };
+    
+            /**
+             * Creates a TokenBucketConfiguration message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof CMsgGCRoutingInfo.TokenBucketConfiguration
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {CMsgGCRoutingInfo.TokenBucketConfiguration} TokenBucketConfiguration
+             */
+            TokenBucketConfiguration.fromObject = function fromObject(object) {
+                if (object instanceof $root.CMsgGCRoutingInfo.TokenBucketConfiguration)
+                    return object;
+                var message = new $root.CMsgGCRoutingInfo.TokenBucketConfiguration();
+                if (object.tokens_start != null)
+                    message.tokens_start = object.tokens_start | 0;
+                if (object.tokens_grant != null)
+                    message.tokens_grant = object.tokens_grant | 0;
+                if (object.grant_seconds != null)
+                    message.grant_seconds = object.grant_seconds | 0;
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from a TokenBucketConfiguration message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof CMsgGCRoutingInfo.TokenBucketConfiguration
+             * @static
+             * @param {CMsgGCRoutingInfo.TokenBucketConfiguration} message TokenBucketConfiguration
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            TokenBucketConfiguration.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.tokens_start = 0;
+                    object.tokens_grant = 0;
+                    object.grant_seconds = 0;
+                }
+                if (message.tokens_start != null && message.hasOwnProperty("tokens_start"))
+                    object.tokens_start = message.tokens_start;
+                if (message.tokens_grant != null && message.hasOwnProperty("tokens_grant"))
+                    object.tokens_grant = message.tokens_grant;
+                if (message.grant_seconds != null && message.hasOwnProperty("grant_seconds"))
+                    object.grant_seconds = message.grant_seconds;
+                return object;
+            };
+    
+            /**
+             * Converts this TokenBucketConfiguration to JSON.
+             * @function toJSON
+             * @memberof CMsgGCRoutingInfo.TokenBucketConfiguration
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            TokenBucketConfiguration.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            /**
+             * Gets the default type url for TokenBucketConfiguration
+             * @function getTypeUrl
+             * @memberof CMsgGCRoutingInfo.TokenBucketConfiguration
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            TokenBucketConfiguration.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgGCRoutingInfo.TokenBucketConfiguration";
+            };
+    
+            return TokenBucketConfiguration;
+        })();
+    
+        CMsgGCRoutingInfo.PolicyRule = (function() {
+    
+            /**
+             * Properties of a PolicyRule.
+             * @memberof CMsgGCRoutingInfo
+             * @interface IPolicyRule
+             * @property {number|null} [account_type] PolicyRule account_type
+             * @property {number|null} [address_mask_group_id] PolicyRule address_mask_group_id
+             * @property {CMsgGCRoutingInfo.ITokenBucketConfiguration|null} [token_bucket] PolicyRule token_bucket
+             */
+    
+            /**
+             * Constructs a new PolicyRule.
+             * @memberof CMsgGCRoutingInfo
+             * @classdesc Represents a PolicyRule.
+             * @implements IPolicyRule
+             * @constructor
+             * @param {CMsgGCRoutingInfo.IPolicyRule=} [properties] Properties to set
+             */
+            function PolicyRule(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * PolicyRule account_type.
+             * @member {number} account_type
+             * @memberof CMsgGCRoutingInfo.PolicyRule
+             * @instance
+             */
+            PolicyRule.prototype.account_type = 0;
+    
+            /**
+             * PolicyRule address_mask_group_id.
+             * @member {number} address_mask_group_id
+             * @memberof CMsgGCRoutingInfo.PolicyRule
+             * @instance
+             */
+            PolicyRule.prototype.address_mask_group_id = 0;
+    
+            /**
+             * PolicyRule token_bucket.
+             * @member {CMsgGCRoutingInfo.ITokenBucketConfiguration|null|undefined} token_bucket
+             * @memberof CMsgGCRoutingInfo.PolicyRule
+             * @instance
+             */
+            PolicyRule.prototype.token_bucket = null;
+    
+            /**
+             * Creates a new PolicyRule instance using the specified properties.
+             * @function create
+             * @memberof CMsgGCRoutingInfo.PolicyRule
+             * @static
+             * @param {CMsgGCRoutingInfo.IPolicyRule=} [properties] Properties to set
+             * @returns {CMsgGCRoutingInfo.PolicyRule} PolicyRule instance
+             */
+            PolicyRule.create = function create(properties) {
+                return new PolicyRule(properties);
+            };
+    
+            /**
+             * Encodes the specified PolicyRule message. Does not implicitly {@link CMsgGCRoutingInfo.PolicyRule.verify|verify} messages.
+             * @function encode
+             * @memberof CMsgGCRoutingInfo.PolicyRule
+             * @static
+             * @param {CMsgGCRoutingInfo.IPolicyRule} message PolicyRule message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PolicyRule.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.account_type != null && Object.hasOwnProperty.call(message, "account_type"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.account_type);
+                if (message.address_mask_group_id != null && Object.hasOwnProperty.call(message, "address_mask_group_id"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).int32(message.address_mask_group_id);
+                if (message.token_bucket != null && Object.hasOwnProperty.call(message, "token_bucket"))
+                    $root.CMsgGCRoutingInfo.TokenBucketConfiguration.encode(message.token_bucket, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified PolicyRule message, length delimited. Does not implicitly {@link CMsgGCRoutingInfo.PolicyRule.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof CMsgGCRoutingInfo.PolicyRule
+             * @static
+             * @param {CMsgGCRoutingInfo.IPolicyRule} message PolicyRule message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PolicyRule.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes a PolicyRule message from the specified reader or buffer.
+             * @function decode
+             * @memberof CMsgGCRoutingInfo.PolicyRule
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {CMsgGCRoutingInfo.PolicyRule} PolicyRule
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PolicyRule.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCRoutingInfo.PolicyRule();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.account_type = reader.int32();
+                            break;
+                        }
+                    case 2: {
+                            message.address_mask_group_id = reader.int32();
+                            break;
+                        }
+                    case 3: {
+                            message.token_bucket = $root.CMsgGCRoutingInfo.TokenBucketConfiguration.decode(reader, reader.uint32());
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes a PolicyRule message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof CMsgGCRoutingInfo.PolicyRule
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {CMsgGCRoutingInfo.PolicyRule} PolicyRule
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PolicyRule.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies a PolicyRule message.
+             * @function verify
+             * @memberof CMsgGCRoutingInfo.PolicyRule
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            PolicyRule.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.account_type != null && message.hasOwnProperty("account_type"))
+                    if (!$util.isInteger(message.account_type))
+                        return "account_type: integer expected";
+                if (message.address_mask_group_id != null && message.hasOwnProperty("address_mask_group_id"))
+                    if (!$util.isInteger(message.address_mask_group_id))
+                        return "address_mask_group_id: integer expected";
+                if (message.token_bucket != null && message.hasOwnProperty("token_bucket")) {
+                    var error = $root.CMsgGCRoutingInfo.TokenBucketConfiguration.verify(message.token_bucket);
+                    if (error)
+                        return "token_bucket." + error;
+                }
+                return null;
+            };
+    
+            /**
+             * Creates a PolicyRule message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof CMsgGCRoutingInfo.PolicyRule
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {CMsgGCRoutingInfo.PolicyRule} PolicyRule
+             */
+            PolicyRule.fromObject = function fromObject(object) {
+                if (object instanceof $root.CMsgGCRoutingInfo.PolicyRule)
+                    return object;
+                var message = new $root.CMsgGCRoutingInfo.PolicyRule();
+                if (object.account_type != null)
+                    message.account_type = object.account_type | 0;
+                if (object.address_mask_group_id != null)
+                    message.address_mask_group_id = object.address_mask_group_id | 0;
+                if (object.token_bucket != null) {
+                    if (typeof object.token_bucket !== "object")
+                        throw TypeError(".CMsgGCRoutingInfo.PolicyRule.token_bucket: object expected");
+                    message.token_bucket = $root.CMsgGCRoutingInfo.TokenBucketConfiguration.fromObject(object.token_bucket);
+                }
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from a PolicyRule message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof CMsgGCRoutingInfo.PolicyRule
+             * @static
+             * @param {CMsgGCRoutingInfo.PolicyRule} message PolicyRule
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            PolicyRule.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.account_type = 0;
+                    object.address_mask_group_id = 0;
+                    object.token_bucket = null;
+                }
+                if (message.account_type != null && message.hasOwnProperty("account_type"))
+                    object.account_type = message.account_type;
+                if (message.address_mask_group_id != null && message.hasOwnProperty("address_mask_group_id"))
+                    object.address_mask_group_id = message.address_mask_group_id;
+                if (message.token_bucket != null && message.hasOwnProperty("token_bucket"))
+                    object.token_bucket = $root.CMsgGCRoutingInfo.TokenBucketConfiguration.toObject(message.token_bucket, options);
+                return object;
+            };
+    
+            /**
+             * Converts this PolicyRule to JSON.
+             * @function toJSON
+             * @memberof CMsgGCRoutingInfo.PolicyRule
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            PolicyRule.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            /**
+             * Gets the default type url for PolicyRule
+             * @function getTypeUrl
+             * @memberof CMsgGCRoutingInfo.PolicyRule
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            PolicyRule.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgGCRoutingInfo.PolicyRule";
+            };
+    
+            return PolicyRule;
+        })();
+    
+        /**
          * RoutingMethod enum.
          * @name CMsgGCRoutingInfo.RoutingMethod
-         * @enum {string}
+         * @enum {number}
          * @property {number} RANDOM=0 RANDOM value
          * @property {number} DISCARD=1 DISCARD value
          * @property {number} CLIENT_STEAMID=2 CLIENT_STEAMID value
@@ -28495,11 +32651,12 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    if (!(message.entries && message.entries.length))
-                        message.entries = [];
-                    message.entries.push($root.CMsgGCMsgMasterSetWebAPIRouting.Entry.decode(reader, reader.uint32()));
-                    break;
+                case 1: {
+                        if (!(message.entries && message.entries.length))
+                            message.entries = [];
+                        message.entries.push($root.CMsgGCMsgMasterSetWebAPIRouting.Entry.decode(reader, reader.uint32()));
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -28606,6 +32763,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCMsgMasterSetWebAPIRouting
+         * @function getTypeUrl
+         * @memberof CMsgGCMsgMasterSetWebAPIRouting
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCMsgMasterSetWebAPIRouting.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCMsgMasterSetWebAPIRouting";
+        };
+    
         CMsgGCMsgMasterSetWebAPIRouting.Entry = (function() {
     
             /**
@@ -28680,11 +32852,11 @@
             Entry.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.interface_name != null && message.hasOwnProperty("interface_name"))
+                if (message.interface_name != null && Object.hasOwnProperty.call(message, "interface_name"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.interface_name);
-                if (message.method_name != null && message.hasOwnProperty("method_name"))
+                if (message.method_name != null && Object.hasOwnProperty.call(message, "method_name"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.method_name);
-                if (message.routing != null && message.hasOwnProperty("routing"))
+                if (message.routing != null && Object.hasOwnProperty.call(message, "routing"))
                     $root.CMsgGCRoutingInfo.encode(message.routing, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                 return writer;
             };
@@ -28720,15 +32892,18 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.interface_name = reader.string();
-                        break;
-                    case 2:
-                        message.method_name = reader.string();
-                        break;
-                    case 3:
-                        message.routing = $root.CMsgGCRoutingInfo.decode(reader, reader.uint32());
-                        break;
+                    case 1: {
+                            message.interface_name = reader.string();
+                            break;
+                        }
+                    case 2: {
+                            message.method_name = reader.string();
+                            break;
+                        }
+                    case 3: {
+                            message.routing = $root.CMsgGCRoutingInfo.decode(reader, reader.uint32());
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -28840,6 +33015,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for Entry
+             * @function getTypeUrl
+             * @memberof CMsgGCMsgMasterSetWebAPIRouting.Entry
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            Entry.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgGCMsgMasterSetWebAPIRouting.Entry";
+            };
+    
             return Entry;
         })();
     
@@ -28853,6 +33043,7 @@
          * @exports ICMsgGCMsgMasterSetClientMsgRouting
          * @interface ICMsgGCMsgMasterSetClientMsgRouting
          * @property {Array.<CMsgGCMsgMasterSetClientMsgRouting.IEntry>|null} [entries] CMsgGCMsgMasterSetClientMsgRouting entries
+         * @property {Array.<ICMsgGCAddressMaskGroup>|null} [address_mask_groups] CMsgGCMsgMasterSetClientMsgRouting address_mask_groups
          */
     
         /**
@@ -28865,6 +33056,7 @@
          */
         function CMsgGCMsgMasterSetClientMsgRouting(properties) {
             this.entries = [];
+            this.address_mask_groups = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -28878,6 +33070,14 @@
          * @instance
          */
         CMsgGCMsgMasterSetClientMsgRouting.prototype.entries = $util.emptyArray;
+    
+        /**
+         * CMsgGCMsgMasterSetClientMsgRouting address_mask_groups.
+         * @member {Array.<ICMsgGCAddressMaskGroup>} address_mask_groups
+         * @memberof CMsgGCMsgMasterSetClientMsgRouting
+         * @instance
+         */
+        CMsgGCMsgMasterSetClientMsgRouting.prototype.address_mask_groups = $util.emptyArray;
     
         /**
          * Creates a new CMsgGCMsgMasterSetClientMsgRouting instance using the specified properties.
@@ -28906,6 +33106,9 @@
             if (message.entries != null && message.entries.length)
                 for (var i = 0; i < message.entries.length; ++i)
                     $root.CMsgGCMsgMasterSetClientMsgRouting.Entry.encode(message.entries[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.address_mask_groups != null && message.address_mask_groups.length)
+                for (var i = 0; i < message.address_mask_groups.length; ++i)
+                    $root.CMsgGCAddressMaskGroup.encode(message.address_mask_groups[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             return writer;
         };
     
@@ -28940,11 +33143,18 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    if (!(message.entries && message.entries.length))
-                        message.entries = [];
-                    message.entries.push($root.CMsgGCMsgMasterSetClientMsgRouting.Entry.decode(reader, reader.uint32()));
-                    break;
+                case 1: {
+                        if (!(message.entries && message.entries.length))
+                            message.entries = [];
+                        message.entries.push($root.CMsgGCMsgMasterSetClientMsgRouting.Entry.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 2: {
+                        if (!(message.address_mask_groups && message.address_mask_groups.length))
+                            message.address_mask_groups = [];
+                        message.address_mask_groups.push($root.CMsgGCAddressMaskGroup.decode(reader, reader.uint32()));
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -28989,6 +33199,15 @@
                         return "entries." + error;
                 }
             }
+            if (message.address_mask_groups != null && message.hasOwnProperty("address_mask_groups")) {
+                if (!Array.isArray(message.address_mask_groups))
+                    return "address_mask_groups: array expected";
+                for (var i = 0; i < message.address_mask_groups.length; ++i) {
+                    var error = $root.CMsgGCAddressMaskGroup.verify(message.address_mask_groups[i]);
+                    if (error)
+                        return "address_mask_groups." + error;
+                }
+            }
             return null;
         };
     
@@ -29014,6 +33233,16 @@
                     message.entries[i] = $root.CMsgGCMsgMasterSetClientMsgRouting.Entry.fromObject(object.entries[i]);
                 }
             }
+            if (object.address_mask_groups) {
+                if (!Array.isArray(object.address_mask_groups))
+                    throw TypeError(".CMsgGCMsgMasterSetClientMsgRouting.address_mask_groups: array expected");
+                message.address_mask_groups = [];
+                for (var i = 0; i < object.address_mask_groups.length; ++i) {
+                    if (typeof object.address_mask_groups[i] !== "object")
+                        throw TypeError(".CMsgGCMsgMasterSetClientMsgRouting.address_mask_groups: object expected");
+                    message.address_mask_groups[i] = $root.CMsgGCAddressMaskGroup.fromObject(object.address_mask_groups[i]);
+                }
+            }
             return message;
         };
     
@@ -29030,12 +33259,19 @@
             if (!options)
                 options = {};
             var object = {};
-            if (options.arrays || options.defaults)
+            if (options.arrays || options.defaults) {
                 object.entries = [];
+                object.address_mask_groups = [];
+            }
             if (message.entries && message.entries.length) {
                 object.entries = [];
                 for (var j = 0; j < message.entries.length; ++j)
                     object.entries[j] = $root.CMsgGCMsgMasterSetClientMsgRouting.Entry.toObject(message.entries[j], options);
+            }
+            if (message.address_mask_groups && message.address_mask_groups.length) {
+                object.address_mask_groups = [];
+                for (var j = 0; j < message.address_mask_groups.length; ++j)
+                    object.address_mask_groups[j] = $root.CMsgGCAddressMaskGroup.toObject(message.address_mask_groups[j], options);
             }
             return object;
         };
@@ -29049,6 +33285,21 @@
          */
         CMsgGCMsgMasterSetClientMsgRouting.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgGCMsgMasterSetClientMsgRouting
+         * @function getTypeUrl
+         * @memberof CMsgGCMsgMasterSetClientMsgRouting
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCMsgMasterSetClientMsgRouting.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCMsgMasterSetClientMsgRouting";
         };
     
         CMsgGCMsgMasterSetClientMsgRouting.Entry = (function() {
@@ -29116,9 +33367,9 @@
             Entry.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.msg_type != null && message.hasOwnProperty("msg_type"))
+                if (message.msg_type != null && Object.hasOwnProperty.call(message, "msg_type"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.msg_type);
-                if (message.routing != null && message.hasOwnProperty("routing"))
+                if (message.routing != null && Object.hasOwnProperty.call(message, "routing"))
                     $root.CMsgGCRoutingInfo.encode(message.routing, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 return writer;
             };
@@ -29154,12 +33405,14 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.msg_type = reader.uint32();
-                        break;
-                    case 2:
-                        message.routing = $root.CMsgGCRoutingInfo.decode(reader, reader.uint32());
-                        break;
+                    case 1: {
+                            message.msg_type = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            message.routing = $root.CMsgGCRoutingInfo.decode(reader, reader.uint32());
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -29263,6 +33516,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for Entry
+             * @function getTypeUrl
+             * @memberof CMsgGCMsgMasterSetClientMsgRouting.Entry
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            Entry.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgGCMsgMasterSetClientMsgRouting.Entry";
+            };
+    
             return Entry;
         })();
     
@@ -29325,7 +33593,7 @@
         CMsgGCMsgMasterSetWebAPIRouting_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.eresult);
             return writer;
         };
@@ -29361,9 +33629,10 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.eresult = reader.int32();
-                    break;
+                case 1: {
+                        message.eresult = reader.int32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -29453,6 +33722,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCMsgMasterSetWebAPIRouting_Response
+         * @function getTypeUrl
+         * @memberof CMsgGCMsgMasterSetWebAPIRouting_Response
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCMsgMasterSetWebAPIRouting_Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCMsgMasterSetWebAPIRouting_Response";
+        };
+    
         return CMsgGCMsgMasterSetWebAPIRouting_Response;
     })();
     
@@ -29512,7 +33796,7 @@
         CMsgGCMsgMasterSetClientMsgRouting_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.eresult);
             return writer;
         };
@@ -29548,9 +33832,10 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.eresult = reader.int32();
-                    break;
+                case 1: {
+                        message.eresult = reader.int32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -29638,6 +33923,21 @@
          */
         CMsgGCMsgMasterSetClientMsgRouting_Response.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgGCMsgMasterSetClientMsgRouting_Response
+         * @function getTypeUrl
+         * @memberof CMsgGCMsgMasterSetClientMsgRouting_Response
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCMsgMasterSetClientMsgRouting_Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCMsgMasterSetClientMsgRouting_Response";
         };
     
         return CMsgGCMsgMasterSetClientMsgRouting_Response;
@@ -29750,21 +34050,23 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    if (!(message.options && message.options.length))
-                        message.options = [];
-                    if ((tag & 7) === 2) {
-                        var end2 = reader.uint32() + reader.pos;
-                        while (reader.pos < end2)
+                case 1: {
+                        if (!(message.options && message.options.length))
+                            message.options = [];
+                        if ((tag & 7) === 2) {
+                            var end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.options.push(reader.int32());
+                        } else
                             message.options.push(reader.int32());
-                    } else
-                        message.options.push(reader.int32());
-                    break;
-                case 2:
-                    if (!(message.client_msg_ranges && message.client_msg_ranges.length))
-                        message.client_msg_ranges = [];
-                    message.client_msg_ranges.push($root.CMsgGCMsgSetOptions.MessageRange.decode(reader, reader.uint32()));
-                    break;
+                        break;
+                    }
+                case 2: {
+                        if (!(message.client_msg_ranges && message.client_msg_ranges.length))
+                            message.client_msg_ranges = [];
+                        message.client_msg_ranges.push($root.CMsgGCMsgSetOptions.MessageRange.decode(reader, reader.uint32()));
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -29845,6 +34147,10 @@
                 for (var i = 0; i < object.options.length; ++i)
                     switch (object.options[i]) {
                     default:
+                        if (typeof object.options[i] === "number") {
+                            message.options[i] = object.options[i];
+                            break;
+                        }
                     case "NOTIFY_USER_SESSIONS":
                     case 0:
                         message.options[i] = 0;
@@ -29896,7 +34202,7 @@
             if (message.options && message.options.length) {
                 object.options = [];
                 for (var j = 0; j < message.options.length; ++j)
-                    object.options[j] = options.enums === String ? $root.CMsgGCMsgSetOptions.Option[message.options[j]] : message.options[j];
+                    object.options[j] = options.enums === String ? $root.CMsgGCMsgSetOptions.Option[message.options[j]] === undefined ? message.options[j] : $root.CMsgGCMsgSetOptions.Option[message.options[j]] : message.options[j];
             }
             if (message.client_msg_ranges && message.client_msg_ranges.length) {
                 object.client_msg_ranges = [];
@@ -29915,6 +34221,21 @@
          */
         CMsgGCMsgSetOptions.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgGCMsgSetOptions
+         * @function getTypeUrl
+         * @memberof CMsgGCMsgSetOptions
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCMsgSetOptions.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCMsgSetOptions";
         };
     
         CMsgGCMsgSetOptions.MessageRange = (function() {
@@ -30018,12 +34339,14 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.low = reader.uint32();
-                        break;
-                    case 2:
-                        message.high = reader.uint32();
-                        break;
+                    case 1: {
+                            message.low = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            message.high = reader.uint32();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -30124,13 +34447,28 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for MessageRange
+             * @function getTypeUrl
+             * @memberof CMsgGCMsgSetOptions.MessageRange
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            MessageRange.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgGCMsgSetOptions.MessageRange";
+            };
+    
             return MessageRange;
         })();
     
         /**
          * Option enum.
          * @name CMsgGCMsgSetOptions.Option
-         * @enum {string}
+         * @enum {number}
          * @property {number} NOTIFY_USER_SESSIONS=0 NOTIFY_USER_SESSIONS value
          * @property {number} NOTIFY_SERVER_SESSIONS=1 NOTIFY_SERVER_SESSIONS value
          * @property {number} NOTIFY_ACHIEVEMENTS=2 NOTIFY_ACHIEVEMENTS value
@@ -30314,30 +34652,30 @@
         CMsgGCHUpdateSession.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steam_id != null && message.hasOwnProperty("steam_id"))
+            if (message.steam_id != null && Object.hasOwnProperty.call(message, "steam_id"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steam_id);
-            if (message.app_id != null && message.hasOwnProperty("app_id"))
+            if (message.app_id != null && Object.hasOwnProperty.call(message, "app_id"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.app_id);
-            if (message.online != null && message.hasOwnProperty("online"))
+            if (message.online != null && Object.hasOwnProperty.call(message, "online"))
                 writer.uint32(/* id 3, wireType 0 =*/24).bool(message.online);
-            if (message.server_steam_id != null && message.hasOwnProperty("server_steam_id"))
+            if (message.server_steam_id != null && Object.hasOwnProperty.call(message, "server_steam_id"))
                 writer.uint32(/* id 4, wireType 1 =*/33).fixed64(message.server_steam_id);
-            if (message.server_addr != null && message.hasOwnProperty("server_addr"))
+            if (message.server_addr != null && Object.hasOwnProperty.call(message, "server_addr"))
                 writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.server_addr);
-            if (message.server_port != null && message.hasOwnProperty("server_port"))
+            if (message.server_port != null && Object.hasOwnProperty.call(message, "server_port"))
                 writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.server_port);
-            if (message.os_type != null && message.hasOwnProperty("os_type"))
+            if (message.os_type != null && Object.hasOwnProperty.call(message, "os_type"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.os_type);
-            if (message.client_addr != null && message.hasOwnProperty("client_addr"))
+            if (message.client_addr != null && Object.hasOwnProperty.call(message, "client_addr"))
                 writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.client_addr);
             if (message.extra_fields != null && message.extra_fields.length)
                 for (var i = 0; i < message.extra_fields.length; ++i)
                     $root.CMsgGCHUpdateSession.ExtraField.encode(message.extra_fields[i], writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
-            if (message.owner_id != null && message.hasOwnProperty("owner_id"))
+            if (message.owner_id != null && Object.hasOwnProperty.call(message, "owner_id"))
                 writer.uint32(/* id 10, wireType 1 =*/81).fixed64(message.owner_id);
-            if (message.cm_session_sysid != null && message.hasOwnProperty("cm_session_sysid"))
+            if (message.cm_session_sysid != null && Object.hasOwnProperty.call(message, "cm_session_sysid"))
                 writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.cm_session_sysid);
-            if (message.cm_session_identifier != null && message.hasOwnProperty("cm_session_identifier"))
+            if (message.cm_session_identifier != null && Object.hasOwnProperty.call(message, "cm_session_identifier"))
                 writer.uint32(/* id 12, wireType 0 =*/96).uint32(message.cm_session_identifier);
             if (message.depot_ids != null && message.depot_ids.length)
                 for (var i = 0; i < message.depot_ids.length; ++i)
@@ -30376,54 +34714,67 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.steam_id = reader.fixed64();
-                    break;
-                case 2:
-                    message.app_id = reader.uint32();
-                    break;
-                case 3:
-                    message.online = reader.bool();
-                    break;
-                case 4:
-                    message.server_steam_id = reader.fixed64();
-                    break;
-                case 5:
-                    message.server_addr = reader.uint32();
-                    break;
-                case 6:
-                    message.server_port = reader.uint32();
-                    break;
-                case 7:
-                    message.os_type = reader.uint32();
-                    break;
-                case 8:
-                    message.client_addr = reader.uint32();
-                    break;
-                case 9:
-                    if (!(message.extra_fields && message.extra_fields.length))
-                        message.extra_fields = [];
-                    message.extra_fields.push($root.CMsgGCHUpdateSession.ExtraField.decode(reader, reader.uint32()));
-                    break;
-                case 10:
-                    message.owner_id = reader.fixed64();
-                    break;
-                case 11:
-                    message.cm_session_sysid = reader.uint32();
-                    break;
-                case 12:
-                    message.cm_session_identifier = reader.uint32();
-                    break;
-                case 13:
-                    if (!(message.depot_ids && message.depot_ids.length))
-                        message.depot_ids = [];
-                    if ((tag & 7) === 2) {
-                        var end2 = reader.uint32() + reader.pos;
-                        while (reader.pos < end2)
+                case 1: {
+                        message.steam_id = reader.fixed64();
+                        break;
+                    }
+                case 2: {
+                        message.app_id = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.online = reader.bool();
+                        break;
+                    }
+                case 4: {
+                        message.server_steam_id = reader.fixed64();
+                        break;
+                    }
+                case 5: {
+                        message.server_addr = reader.uint32();
+                        break;
+                    }
+                case 6: {
+                        message.server_port = reader.uint32();
+                        break;
+                    }
+                case 7: {
+                        message.os_type = reader.uint32();
+                        break;
+                    }
+                case 8: {
+                        message.client_addr = reader.uint32();
+                        break;
+                    }
+                case 9: {
+                        if (!(message.extra_fields && message.extra_fields.length))
+                            message.extra_fields = [];
+                        message.extra_fields.push($root.CMsgGCHUpdateSession.ExtraField.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 10: {
+                        message.owner_id = reader.fixed64();
+                        break;
+                    }
+                case 11: {
+                        message.cm_session_sysid = reader.uint32();
+                        break;
+                    }
+                case 12: {
+                        message.cm_session_identifier = reader.uint32();
+                        break;
+                    }
+                case 13: {
+                        if (!(message.depot_ids && message.depot_ids.length))
+                            message.depot_ids = [];
+                        if ((tag & 7) === 2) {
+                            var end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.depot_ids.push(reader.uint32());
+                        } else
                             message.depot_ids.push(reader.uint32());
-                    } else
-                        message.depot_ids.push(reader.uint32());
-                    break;
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -30683,6 +35034,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgGCHUpdateSession
+         * @function getTypeUrl
+         * @memberof CMsgGCHUpdateSession
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCHUpdateSession.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCHUpdateSession";
+        };
+    
         CMsgGCHUpdateSession.ExtraField = (function() {
     
             /**
@@ -30748,9 +35114,9 @@
             ExtraField.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.name != null && message.hasOwnProperty("name"))
+                if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                if (message.value != null && message.hasOwnProperty("value"))
+                if (message.value != null && Object.hasOwnProperty.call(message, "value"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.value);
                 return writer;
             };
@@ -30786,12 +35152,14 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.name = reader.string();
-                        break;
-                    case 2:
-                        message.value = reader.string();
-                        break;
+                    case 1: {
+                            message.name = reader.string();
+                            break;
+                        }
+                    case 2: {
+                            message.value = reader.string();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -30890,6 +35258,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for ExtraField
+             * @function getTypeUrl
+             * @memberof CMsgGCHUpdateSession.ExtraField
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            ExtraField.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgGCHUpdateSession.ExtraField";
+            };
+    
             return ExtraField;
         })();
     
@@ -30970,11 +35353,11 @@
         CMsgNotificationOfSuspiciousActivity.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 1, wireType 1 =*/9).fixed64(message.steamid);
-            if (message.appid != null && message.hasOwnProperty("appid"))
+            if (message.appid != null && Object.hasOwnProperty.call(message, "appid"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.appid);
-            if (message.multiple_instances != null && message.hasOwnProperty("multiple_instances"))
+            if (message.multiple_instances != null && Object.hasOwnProperty.call(message, "multiple_instances"))
                 $root.CMsgNotificationOfSuspiciousActivity.MultipleGameInstances.encode(message.multiple_instances, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             return writer;
         };
@@ -31010,15 +35393,18 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.steamid = reader.fixed64();
-                    break;
-                case 2:
-                    message.appid = reader.uint32();
-                    break;
-                case 3:
-                    message.multiple_instances = $root.CMsgNotificationOfSuspiciousActivity.MultipleGameInstances.decode(reader, reader.uint32());
-                    break;
+                case 1: {
+                        message.steamid = reader.fixed64();
+                        break;
+                    }
+                case 2: {
+                        message.appid = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.multiple_instances = $root.CMsgNotificationOfSuspiciousActivity.MultipleGameInstances.decode(reader, reader.uint32());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -31144,6 +35530,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CMsgNotificationOfSuspiciousActivity
+         * @function getTypeUrl
+         * @memberof CMsgNotificationOfSuspiciousActivity
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgNotificationOfSuspiciousActivity.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgNotificationOfSuspiciousActivity";
+        };
+    
         CMsgNotificationOfSuspiciousActivity.MultipleGameInstances = (function() {
     
             /**
@@ -31210,7 +35611,7 @@
             MultipleGameInstances.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.app_instance_count != null && message.hasOwnProperty("app_instance_count"))
+                if (message.app_instance_count != null && Object.hasOwnProperty.call(message, "app_instance_count"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.app_instance_count);
                 if (message.other_steamids != null && message.other_steamids.length)
                     for (var i = 0; i < message.other_steamids.length; ++i)
@@ -31249,19 +35650,21 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.app_instance_count = reader.uint32();
-                        break;
-                    case 2:
-                        if (!(message.other_steamids && message.other_steamids.length))
-                            message.other_steamids = [];
-                        if ((tag & 7) === 2) {
-                            var end2 = reader.uint32() + reader.pos;
-                            while (reader.pos < end2)
+                    case 1: {
+                            message.app_instance_count = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            if (!(message.other_steamids && message.other_steamids.length))
+                                message.other_steamids = [];
+                            if ((tag & 7) === 2) {
+                                var end2 = reader.uint32() + reader.pos;
+                                while (reader.pos < end2)
+                                    message.other_steamids.push(reader.fixed64());
+                            } else
                                 message.other_steamids.push(reader.fixed64());
-                        } else
-                            message.other_steamids.push(reader.fixed64());
-                        break;
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -31382,6 +35785,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for MultipleGameInstances
+             * @function getTypeUrl
+             * @memberof CMsgNotificationOfSuspiciousActivity.MultipleGameInstances
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            MultipleGameInstances.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgNotificationOfSuspiciousActivity.MultipleGameInstances";
+            };
+    
             return MultipleGameInstances;
         })();
     
@@ -31472,11 +35890,11 @@
         CMsgDPPartnerMicroTxns.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.appid != null && message.hasOwnProperty("appid"))
+            if (message.appid != null && Object.hasOwnProperty.call(message, "appid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.appid);
-            if (message.gc_name != null && message.hasOwnProperty("gc_name"))
+            if (message.gc_name != null && Object.hasOwnProperty.call(message, "gc_name"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.gc_name);
-            if (message.partner != null && message.hasOwnProperty("partner"))
+            if (message.partner != null && Object.hasOwnProperty.call(message, "partner"))
                 $root.CMsgDPPartnerMicroTxns.PartnerInfo.encode(message.partner, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             if (message.transactions != null && message.transactions.length)
                 for (var i = 0; i < message.transactions.length; ++i)
@@ -31515,20 +35933,24 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.appid = reader.uint32();
-                    break;
-                case 2:
-                    message.gc_name = reader.string();
-                    break;
-                case 3:
-                    message.partner = $root.CMsgDPPartnerMicroTxns.PartnerInfo.decode(reader, reader.uint32());
-                    break;
-                case 4:
-                    if (!(message.transactions && message.transactions.length))
-                        message.transactions = [];
-                    message.transactions.push($root.CMsgDPPartnerMicroTxns.PartnerMicroTxn.decode(reader, reader.uint32()));
-                    break;
+                case 1: {
+                        message.appid = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.gc_name = reader.string();
+                        break;
+                    }
+                case 3: {
+                        message.partner = $root.CMsgDPPartnerMicroTxns.PartnerInfo.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 4: {
+                        if (!(message.transactions && message.transactions.length))
+                            message.transactions = [];
+                        message.transactions.push($root.CMsgDPPartnerMicroTxns.PartnerMicroTxn.decode(reader, reader.uint32()));
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -31664,6 +36086,21 @@
          */
         CMsgDPPartnerMicroTxns.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgDPPartnerMicroTxns
+         * @function getTypeUrl
+         * @memberof CMsgDPPartnerMicroTxns
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgDPPartnerMicroTxns.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgDPPartnerMicroTxns";
         };
     
         CMsgDPPartnerMicroTxns.PartnerMicroTxn = (function() {
@@ -31866,39 +36303,39 @@
             PartnerMicroTxn.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.init_time != null && message.hasOwnProperty("init_time"))
+                if (message.init_time != null && Object.hasOwnProperty.call(message, "init_time"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.init_time);
-                if (message.last_update_time != null && message.hasOwnProperty("last_update_time"))
+                if (message.last_update_time != null && Object.hasOwnProperty.call(message, "last_update_time"))
                     writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.last_update_time);
-                if (message.txn_id != null && message.hasOwnProperty("txn_id"))
+                if (message.txn_id != null && Object.hasOwnProperty.call(message, "txn_id"))
                     writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.txn_id);
-                if (message.account_id != null && message.hasOwnProperty("account_id"))
+                if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
                     writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.account_id);
-                if (message.line_item != null && message.hasOwnProperty("line_item"))
+                if (message.line_item != null && Object.hasOwnProperty.call(message, "line_item"))
                     writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.line_item);
-                if (message.item_id != null && message.hasOwnProperty("item_id"))
+                if (message.item_id != null && Object.hasOwnProperty.call(message, "item_id"))
                     writer.uint32(/* id 6, wireType 0 =*/48).uint64(message.item_id);
-                if (message.def_index != null && message.hasOwnProperty("def_index"))
+                if (message.def_index != null && Object.hasOwnProperty.call(message, "def_index"))
                     writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.def_index);
-                if (message.price != null && message.hasOwnProperty("price"))
+                if (message.price != null && Object.hasOwnProperty.call(message, "price"))
                     writer.uint32(/* id 8, wireType 0 =*/64).uint64(message.price);
-                if (message.tax != null && message.hasOwnProperty("tax"))
+                if (message.tax != null && Object.hasOwnProperty.call(message, "tax"))
                     writer.uint32(/* id 9, wireType 0 =*/72).uint64(message.tax);
-                if (message.price_usd != null && message.hasOwnProperty("price_usd"))
+                if (message.price_usd != null && Object.hasOwnProperty.call(message, "price_usd"))
                     writer.uint32(/* id 10, wireType 0 =*/80).uint64(message.price_usd);
-                if (message.tax_usd != null && message.hasOwnProperty("tax_usd"))
+                if (message.tax_usd != null && Object.hasOwnProperty.call(message, "tax_usd"))
                     writer.uint32(/* id 11, wireType 0 =*/88).uint64(message.tax_usd);
-                if (message.purchase_type != null && message.hasOwnProperty("purchase_type"))
+                if (message.purchase_type != null && Object.hasOwnProperty.call(message, "purchase_type"))
                     writer.uint32(/* id 12, wireType 0 =*/96).uint32(message.purchase_type);
-                if (message.steam_txn_type != null && message.hasOwnProperty("steam_txn_type"))
+                if (message.steam_txn_type != null && Object.hasOwnProperty.call(message, "steam_txn_type"))
                     writer.uint32(/* id 13, wireType 0 =*/104).uint32(message.steam_txn_type);
-                if (message.country_code != null && message.hasOwnProperty("country_code"))
+                if (message.country_code != null && Object.hasOwnProperty.call(message, "country_code"))
                     writer.uint32(/* id 14, wireType 2 =*/114).string(message.country_code);
-                if (message.region_code != null && message.hasOwnProperty("region_code"))
+                if (message.region_code != null && Object.hasOwnProperty.call(message, "region_code"))
                     writer.uint32(/* id 15, wireType 2 =*/122).string(message.region_code);
-                if (message.quantity != null && message.hasOwnProperty("quantity"))
+                if (message.quantity != null && Object.hasOwnProperty.call(message, "quantity"))
                     writer.uint32(/* id 16, wireType 0 =*/128).int32(message.quantity);
-                if (message.ref_trans_id != null && message.hasOwnProperty("ref_trans_id"))
+                if (message.ref_trans_id != null && Object.hasOwnProperty.call(message, "ref_trans_id"))
                     writer.uint32(/* id 17, wireType 0 =*/136).uint64(message.ref_trans_id);
                 return writer;
             };
@@ -31934,57 +36371,74 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.init_time = reader.uint32();
-                        break;
-                    case 2:
-                        message.last_update_time = reader.uint32();
-                        break;
-                    case 3:
-                        message.txn_id = reader.uint64();
-                        break;
-                    case 4:
-                        message.account_id = reader.uint32();
-                        break;
-                    case 5:
-                        message.line_item = reader.uint32();
-                        break;
-                    case 6:
-                        message.item_id = reader.uint64();
-                        break;
-                    case 7:
-                        message.def_index = reader.uint32();
-                        break;
-                    case 8:
-                        message.price = reader.uint64();
-                        break;
-                    case 9:
-                        message.tax = reader.uint64();
-                        break;
-                    case 10:
-                        message.price_usd = reader.uint64();
-                        break;
-                    case 11:
-                        message.tax_usd = reader.uint64();
-                        break;
-                    case 12:
-                        message.purchase_type = reader.uint32();
-                        break;
-                    case 13:
-                        message.steam_txn_type = reader.uint32();
-                        break;
-                    case 14:
-                        message.country_code = reader.string();
-                        break;
-                    case 15:
-                        message.region_code = reader.string();
-                        break;
-                    case 16:
-                        message.quantity = reader.int32();
-                        break;
-                    case 17:
-                        message.ref_trans_id = reader.uint64();
-                        break;
+                    case 1: {
+                            message.init_time = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            message.last_update_time = reader.uint32();
+                            break;
+                        }
+                    case 3: {
+                            message.txn_id = reader.uint64();
+                            break;
+                        }
+                    case 4: {
+                            message.account_id = reader.uint32();
+                            break;
+                        }
+                    case 5: {
+                            message.line_item = reader.uint32();
+                            break;
+                        }
+                    case 6: {
+                            message.item_id = reader.uint64();
+                            break;
+                        }
+                    case 7: {
+                            message.def_index = reader.uint32();
+                            break;
+                        }
+                    case 8: {
+                            message.price = reader.uint64();
+                            break;
+                        }
+                    case 9: {
+                            message.tax = reader.uint64();
+                            break;
+                        }
+                    case 10: {
+                            message.price_usd = reader.uint64();
+                            break;
+                        }
+                    case 11: {
+                            message.tax_usd = reader.uint64();
+                            break;
+                        }
+                    case 12: {
+                            message.purchase_type = reader.uint32();
+                            break;
+                        }
+                    case 13: {
+                            message.steam_txn_type = reader.uint32();
+                            break;
+                        }
+                    case 14: {
+                            message.country_code = reader.string();
+                            break;
+                        }
+                    case 15: {
+                            message.region_code = reader.string();
+                            break;
+                        }
+                    case 16: {
+                            message.quantity = reader.int32();
+                            break;
+                        }
+                    case 17: {
+                            message.ref_trans_id = reader.uint64();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -32301,6 +36755,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for PartnerMicroTxn
+             * @function getTypeUrl
+             * @memberof CMsgDPPartnerMicroTxns.PartnerMicroTxn
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            PartnerMicroTxn.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgDPPartnerMicroTxns.PartnerMicroTxn";
+            };
+    
             return PartnerMicroTxn;
         })();
     
@@ -32387,13 +36856,13 @@
             PartnerInfo.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.partner_id != null && message.hasOwnProperty("partner_id"))
+                if (message.partner_id != null && Object.hasOwnProperty.call(message, "partner_id"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.partner_id);
-                if (message.partner_name != null && message.hasOwnProperty("partner_name"))
+                if (message.partner_name != null && Object.hasOwnProperty.call(message, "partner_name"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.partner_name);
-                if (message.currency_code != null && message.hasOwnProperty("currency_code"))
+                if (message.currency_code != null && Object.hasOwnProperty.call(message, "currency_code"))
                     writer.uint32(/* id 3, wireType 2 =*/26).string(message.currency_code);
-                if (message.currency_name != null && message.hasOwnProperty("currency_name"))
+                if (message.currency_name != null && Object.hasOwnProperty.call(message, "currency_name"))
                     writer.uint32(/* id 4, wireType 2 =*/34).string(message.currency_name);
                 return writer;
             };
@@ -32429,18 +36898,22 @@
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        message.partner_id = reader.uint32();
-                        break;
-                    case 2:
-                        message.partner_name = reader.string();
-                        break;
-                    case 3:
-                        message.currency_code = reader.string();
-                        break;
-                    case 4:
-                        message.currency_name = reader.string();
-                        break;
+                    case 1: {
+                            message.partner_id = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            message.partner_name = reader.string();
+                            break;
+                        }
+                    case 3: {
+                            message.currency_code = reader.string();
+                            break;
+                        }
+                    case 4: {
+                            message.currency_name = reader.string();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -32555,6 +37028,21 @@
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
     
+            /**
+             * Gets the default type url for PartnerInfo
+             * @function getTypeUrl
+             * @memberof CMsgDPPartnerMicroTxns.PartnerInfo
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            PartnerInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgDPPartnerMicroTxns.PartnerInfo";
+            };
+    
             return PartnerInfo;
         })();
     
@@ -32626,9 +37114,9 @@
         CMsgDPPartnerMicroTxnsResponse.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.eresult != null && message.hasOwnProperty("eresult"))
+            if (message.eresult != null && Object.hasOwnProperty.call(message, "eresult"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.eresult);
-            if (message.eerrorcode != null && message.hasOwnProperty("eerrorcode"))
+            if (message.eerrorcode != null && Object.hasOwnProperty.call(message, "eerrorcode"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.eerrorcode);
             return writer;
         };
@@ -32664,12 +37152,14 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.eresult = reader.uint32();
-                    break;
-                case 2:
-                    message.eerrorcode = reader.int32();
-                    break;
+                case 1: {
+                        message.eresult = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.eerrorcode = reader.int32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -32741,6 +37231,12 @@
             if (object.eresult != null)
                 message.eresult = object.eresult >>> 0;
             switch (object.eerrorcode) {
+            default:
+                if (typeof object.eerrorcode === "number") {
+                    message.eerrorcode = object.eerrorcode;
+                    break;
+                }
+                break;
             case "k_MsgValid":
             case 0:
                 message.eerrorcode = 0;
@@ -32801,7 +37297,7 @@
             if (message.eresult != null && message.hasOwnProperty("eresult"))
                 object.eresult = message.eresult;
             if (message.eerrorcode != null && message.hasOwnProperty("eerrorcode"))
-                object.eerrorcode = options.enums === String ? $root.CMsgDPPartnerMicroTxnsResponse.EErrorCode[message.eerrorcode] : message.eerrorcode;
+                object.eerrorcode = options.enums === String ? $root.CMsgDPPartnerMicroTxnsResponse.EErrorCode[message.eerrorcode] === undefined ? message.eerrorcode : $root.CMsgDPPartnerMicroTxnsResponse.EErrorCode[message.eerrorcode] : message.eerrorcode;
             return object;
         };
     
@@ -32817,9 +37313,24 @@
         };
     
         /**
+         * Gets the default type url for CMsgDPPartnerMicroTxnsResponse
+         * @function getTypeUrl
+         * @memberof CMsgDPPartnerMicroTxnsResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgDPPartnerMicroTxnsResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgDPPartnerMicroTxnsResponse";
+        };
+    
+        /**
          * EErrorCode enum.
          * @name CMsgDPPartnerMicroTxnsResponse.EErrorCode
-         * @enum {string}
+         * @enum {number}
          * @property {number} k_MsgValid=0 k_MsgValid value
          * @property {number} k_MsgInvalidAppID=1 k_MsgInvalidAppID value
          * @property {number} k_MsgInvalidPartnerInfo=2 k_MsgInvalidPartnerInfo value
@@ -32921,11 +37432,11 @@
         CChinaAgreementSessions_StartAgreementSessionInGame_Request.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.appid != null && message.hasOwnProperty("appid"))
+            if (message.appid != null && Object.hasOwnProperty.call(message, "appid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.appid);
-            if (message.steamid != null && message.hasOwnProperty("steamid"))
+            if (message.steamid != null && Object.hasOwnProperty.call(message, "steamid"))
                 writer.uint32(/* id 2, wireType 1 =*/17).fixed64(message.steamid);
-            if (message.client_ipaddress != null && message.hasOwnProperty("client_ipaddress"))
+            if (message.client_ipaddress != null && Object.hasOwnProperty.call(message, "client_ipaddress"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.client_ipaddress);
             return writer;
         };
@@ -32961,15 +37472,18 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.appid = reader.uint32();
-                    break;
-                case 2:
-                    message.steamid = reader.fixed64();
-                    break;
-                case 3:
-                    message.client_ipaddress = reader.string();
-                    break;
+                case 1: {
+                        message.appid = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.steamid = reader.fixed64();
+                        break;
+                    }
+                case 3: {
+                        message.client_ipaddress = reader.string();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -33090,6 +37604,21 @@
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
     
+        /**
+         * Gets the default type url for CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @function getTypeUrl
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Request
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CChinaAgreementSessions_StartAgreementSessionInGame_Request";
+        };
+    
         return CChinaAgreementSessions_StartAgreementSessionInGame_Request;
     })();
     
@@ -33149,7 +37678,7 @@
         CChinaAgreementSessions_StartAgreementSessionInGame_Response.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.agreement_url != null && message.hasOwnProperty("agreement_url"))
+            if (message.agreement_url != null && Object.hasOwnProperty.call(message, "agreement_url"))
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.agreement_url);
             return writer;
         };
@@ -33185,9 +37714,10 @@
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.agreement_url = reader.string();
-                    break;
+                case 1: {
+                        message.agreement_url = reader.string();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -33275,6 +37805,21 @@
          */
         CChinaAgreementSessions_StartAgreementSessionInGame_Response.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @function getTypeUrl
+         * @memberof CChinaAgreementSessions_StartAgreementSessionInGame_Response
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CChinaAgreementSessions_StartAgreementSessionInGame_Response";
         };
     
         return CChinaAgreementSessions_StartAgreementSessionInGame_Response;
@@ -33392,11 +37937,12 @@
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
-                        case 1:
-                            if (!(message.file && message.file.length))
-                                message.file = [];
-                            message.file.push($root.google.protobuf.FileDescriptorProto.decode(reader, reader.uint32()));
-                            break;
+                        case 1: {
+                                if (!(message.file && message.file.length))
+                                    message.file = [];
+                                message.file.push($root.google.protobuf.FileDescriptorProto.decode(reader, reader.uint32()));
+                                break;
+                            }
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -33501,6 +38047,21 @@
                  */
                 FileDescriptorSet.prototype.toJSON = function toJSON() {
                     return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+    
+                /**
+                 * Gets the default type url for FileDescriptorSet
+                 * @function getTypeUrl
+                 * @memberof google.protobuf.FileDescriptorSet
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                FileDescriptorSet.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/google.protobuf.FileDescriptorSet";
                 };
     
                 return FileDescriptorSet;
@@ -33639,9 +38200,9 @@
                 FileDescriptorProto.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.name != null && message.hasOwnProperty("name"))
+                    if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                    if (message["package"] != null && message.hasOwnProperty("package"))
+                    if (message["package"] != null && Object.hasOwnProperty.call(message, "package"))
                         writer.uint32(/* id 2, wireType 2 =*/18).string(message["package"]);
                     if (message.dependency != null && message.dependency.length)
                         for (var i = 0; i < message.dependency.length; ++i)
@@ -33658,9 +38219,9 @@
                     if (message.extension != null && message.extension.length)
                         for (var i = 0; i < message.extension.length; ++i)
                             $root.google.protobuf.FieldDescriptorProto.encode(message.extension[i], writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
-                    if (message.options != null && message.hasOwnProperty("options"))
+                    if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                         $root.google.protobuf.FileOptions.encode(message.options, writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
-                    if (message.source_code_info != null && message.hasOwnProperty("source_code_info"))
+                    if (message.source_code_info != null && Object.hasOwnProperty.call(message, "source_code_info"))
                         $root.google.protobuf.SourceCodeInfo.encode(message.source_code_info, writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
                     return writer;
                 };
@@ -33696,43 +38257,52 @@
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
-                        case 1:
-                            message.name = reader.string();
-                            break;
-                        case 2:
-                            message["package"] = reader.string();
-                            break;
-                        case 3:
-                            if (!(message.dependency && message.dependency.length))
-                                message.dependency = [];
-                            message.dependency.push(reader.string());
-                            break;
-                        case 4:
-                            if (!(message.message_type && message.message_type.length))
-                                message.message_type = [];
-                            message.message_type.push($root.google.protobuf.DescriptorProto.decode(reader, reader.uint32()));
-                            break;
-                        case 5:
-                            if (!(message.enum_type && message.enum_type.length))
-                                message.enum_type = [];
-                            message.enum_type.push($root.google.protobuf.EnumDescriptorProto.decode(reader, reader.uint32()));
-                            break;
-                        case 6:
-                            if (!(message.service && message.service.length))
-                                message.service = [];
-                            message.service.push($root.google.protobuf.ServiceDescriptorProto.decode(reader, reader.uint32()));
-                            break;
-                        case 7:
-                            if (!(message.extension && message.extension.length))
-                                message.extension = [];
-                            message.extension.push($root.google.protobuf.FieldDescriptorProto.decode(reader, reader.uint32()));
-                            break;
-                        case 8:
-                            message.options = $root.google.protobuf.FileOptions.decode(reader, reader.uint32());
-                            break;
-                        case 9:
-                            message.source_code_info = $root.google.protobuf.SourceCodeInfo.decode(reader, reader.uint32());
-                            break;
+                        case 1: {
+                                message.name = reader.string();
+                                break;
+                            }
+                        case 2: {
+                                message["package"] = reader.string();
+                                break;
+                            }
+                        case 3: {
+                                if (!(message.dependency && message.dependency.length))
+                                    message.dependency = [];
+                                message.dependency.push(reader.string());
+                                break;
+                            }
+                        case 4: {
+                                if (!(message.message_type && message.message_type.length))
+                                    message.message_type = [];
+                                message.message_type.push($root.google.protobuf.DescriptorProto.decode(reader, reader.uint32()));
+                                break;
+                            }
+                        case 5: {
+                                if (!(message.enum_type && message.enum_type.length))
+                                    message.enum_type = [];
+                                message.enum_type.push($root.google.protobuf.EnumDescriptorProto.decode(reader, reader.uint32()));
+                                break;
+                            }
+                        case 6: {
+                                if (!(message.service && message.service.length))
+                                    message.service = [];
+                                message.service.push($root.google.protobuf.ServiceDescriptorProto.decode(reader, reader.uint32()));
+                                break;
+                            }
+                        case 7: {
+                                if (!(message.extension && message.extension.length))
+                                    message.extension = [];
+                                message.extension.push($root.google.protobuf.FieldDescriptorProto.decode(reader, reader.uint32()));
+                                break;
+                            }
+                        case 8: {
+                                message.options = $root.google.protobuf.FileOptions.decode(reader, reader.uint32());
+                                break;
+                            }
+                        case 9: {
+                                message.source_code_info = $root.google.protobuf.SourceCodeInfo.decode(reader, reader.uint32());
+                                break;
+                            }
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -33979,6 +38549,21 @@
                     return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                 };
     
+                /**
+                 * Gets the default type url for FileDescriptorProto
+                 * @function getTypeUrl
+                 * @memberof google.protobuf.FileDescriptorProto
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                FileDescriptorProto.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/google.protobuf.FileDescriptorProto";
+                };
+    
                 return FileDescriptorProto;
             })();
     
@@ -34097,7 +38682,7 @@
                 DescriptorProto.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.name != null && message.hasOwnProperty("name"))
+                    if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
                     if (message.field != null && message.field.length)
                         for (var i = 0; i < message.field.length; ++i)
@@ -34114,7 +38699,7 @@
                     if (message.extension != null && message.extension.length)
                         for (var i = 0; i < message.extension.length; ++i)
                             $root.google.protobuf.FieldDescriptorProto.encode(message.extension[i], writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
-                    if (message.options != null && message.hasOwnProperty("options"))
+                    if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                         $root.google.protobuf.MessageOptions.encode(message.options, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
                     return writer;
                 };
@@ -34150,37 +38735,44 @@
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
-                        case 1:
-                            message.name = reader.string();
-                            break;
-                        case 2:
-                            if (!(message.field && message.field.length))
-                                message.field = [];
-                            message.field.push($root.google.protobuf.FieldDescriptorProto.decode(reader, reader.uint32()));
-                            break;
-                        case 6:
-                            if (!(message.extension && message.extension.length))
-                                message.extension = [];
-                            message.extension.push($root.google.protobuf.FieldDescriptorProto.decode(reader, reader.uint32()));
-                            break;
-                        case 3:
-                            if (!(message.nested_type && message.nested_type.length))
-                                message.nested_type = [];
-                            message.nested_type.push($root.google.protobuf.DescriptorProto.decode(reader, reader.uint32()));
-                            break;
-                        case 4:
-                            if (!(message.enum_type && message.enum_type.length))
-                                message.enum_type = [];
-                            message.enum_type.push($root.google.protobuf.EnumDescriptorProto.decode(reader, reader.uint32()));
-                            break;
-                        case 5:
-                            if (!(message.extension_range && message.extension_range.length))
-                                message.extension_range = [];
-                            message.extension_range.push($root.google.protobuf.DescriptorProto.ExtensionRange.decode(reader, reader.uint32()));
-                            break;
-                        case 7:
-                            message.options = $root.google.protobuf.MessageOptions.decode(reader, reader.uint32());
-                            break;
+                        case 1: {
+                                message.name = reader.string();
+                                break;
+                            }
+                        case 2: {
+                                if (!(message.field && message.field.length))
+                                    message.field = [];
+                                message.field.push($root.google.protobuf.FieldDescriptorProto.decode(reader, reader.uint32()));
+                                break;
+                            }
+                        case 6: {
+                                if (!(message.extension && message.extension.length))
+                                    message.extension = [];
+                                message.extension.push($root.google.protobuf.FieldDescriptorProto.decode(reader, reader.uint32()));
+                                break;
+                            }
+                        case 3: {
+                                if (!(message.nested_type && message.nested_type.length))
+                                    message.nested_type = [];
+                                message.nested_type.push($root.google.protobuf.DescriptorProto.decode(reader, reader.uint32()));
+                                break;
+                            }
+                        case 4: {
+                                if (!(message.enum_type && message.enum_type.length))
+                                    message.enum_type = [];
+                                message.enum_type.push($root.google.protobuf.EnumDescriptorProto.decode(reader, reader.uint32()));
+                                break;
+                            }
+                        case 5: {
+                                if (!(message.extension_range && message.extension_range.length))
+                                    message.extension_range = [];
+                                message.extension_range.push($root.google.protobuf.DescriptorProto.ExtensionRange.decode(reader, reader.uint32()));
+                                break;
+                            }
+                        case 7: {
+                                message.options = $root.google.protobuf.MessageOptions.decode(reader, reader.uint32());
+                                break;
+                            }
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -34411,6 +39003,21 @@
                     return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                 };
     
+                /**
+                 * Gets the default type url for DescriptorProto
+                 * @function getTypeUrl
+                 * @memberof google.protobuf.DescriptorProto
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                DescriptorProto.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/google.protobuf.DescriptorProto";
+                };
+    
                 DescriptorProto.ExtensionRange = (function() {
     
                     /**
@@ -34476,9 +39083,9 @@
                     ExtensionRange.encode = function encode(message, writer) {
                         if (!writer)
                             writer = $Writer.create();
-                        if (message.start != null && message.hasOwnProperty("start"))
+                        if (message.start != null && Object.hasOwnProperty.call(message, "start"))
                             writer.uint32(/* id 1, wireType 0 =*/8).int32(message.start);
-                        if (message.end != null && message.hasOwnProperty("end"))
+                        if (message.end != null && Object.hasOwnProperty.call(message, "end"))
                             writer.uint32(/* id 2, wireType 0 =*/16).int32(message.end);
                         return writer;
                     };
@@ -34514,12 +39121,14 @@
                         while (reader.pos < end) {
                             var tag = reader.uint32();
                             switch (tag >>> 3) {
-                            case 1:
-                                message.start = reader.int32();
-                                break;
-                            case 2:
-                                message.end = reader.int32();
-                                break;
+                            case 1: {
+                                    message.start = reader.int32();
+                                    break;
+                                }
+                            case 2: {
+                                    message.end = reader.int32();
+                                    break;
+                                }
                             default:
                                 reader.skipType(tag & 7);
                                 break;
@@ -34616,6 +39225,21 @@
                      */
                     ExtensionRange.prototype.toJSON = function toJSON() {
                         return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    /**
+                     * Gets the default type url for ExtensionRange
+                     * @function getTypeUrl
+                     * @memberof google.protobuf.DescriptorProto.ExtensionRange
+                     * @static
+                     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                     * @returns {string} The default type url
+                     */
+                    ExtensionRange.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                        if (typeUrlPrefix === undefined) {
+                            typeUrlPrefix = "type.googleapis.com";
+                        }
+                        return typeUrlPrefix + "/google.protobuf.DescriptorProto.ExtensionRange";
                     };
     
                     return ExtensionRange;
@@ -34743,21 +39367,21 @@
                 FieldDescriptorProto.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.name != null && message.hasOwnProperty("name"))
+                    if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                    if (message.extendee != null && message.hasOwnProperty("extendee"))
+                    if (message.extendee != null && Object.hasOwnProperty.call(message, "extendee"))
                         writer.uint32(/* id 2, wireType 2 =*/18).string(message.extendee);
-                    if (message.number != null && message.hasOwnProperty("number"))
+                    if (message.number != null && Object.hasOwnProperty.call(message, "number"))
                         writer.uint32(/* id 3, wireType 0 =*/24).int32(message.number);
-                    if (message.label != null && message.hasOwnProperty("label"))
+                    if (message.label != null && Object.hasOwnProperty.call(message, "label"))
                         writer.uint32(/* id 4, wireType 0 =*/32).int32(message.label);
-                    if (message.type != null && message.hasOwnProperty("type"))
+                    if (message.type != null && Object.hasOwnProperty.call(message, "type"))
                         writer.uint32(/* id 5, wireType 0 =*/40).int32(message.type);
-                    if (message.type_name != null && message.hasOwnProperty("type_name"))
+                    if (message.type_name != null && Object.hasOwnProperty.call(message, "type_name"))
                         writer.uint32(/* id 6, wireType 2 =*/50).string(message.type_name);
-                    if (message.default_value != null && message.hasOwnProperty("default_value"))
+                    if (message.default_value != null && Object.hasOwnProperty.call(message, "default_value"))
                         writer.uint32(/* id 7, wireType 2 =*/58).string(message.default_value);
-                    if (message.options != null && message.hasOwnProperty("options"))
+                    if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                         $root.google.protobuf.FieldOptions.encode(message.options, writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
                     return writer;
                 };
@@ -34793,30 +39417,38 @@
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
-                        case 1:
-                            message.name = reader.string();
-                            break;
-                        case 3:
-                            message.number = reader.int32();
-                            break;
-                        case 4:
-                            message.label = reader.int32();
-                            break;
-                        case 5:
-                            message.type = reader.int32();
-                            break;
-                        case 6:
-                            message.type_name = reader.string();
-                            break;
-                        case 2:
-                            message.extendee = reader.string();
-                            break;
-                        case 7:
-                            message.default_value = reader.string();
-                            break;
-                        case 8:
-                            message.options = $root.google.protobuf.FieldOptions.decode(reader, reader.uint32());
-                            break;
+                        case 1: {
+                                message.name = reader.string();
+                                break;
+                            }
+                        case 3: {
+                                message.number = reader.int32();
+                                break;
+                            }
+                        case 4: {
+                                message.label = reader.int32();
+                                break;
+                            }
+                        case 5: {
+                                message.type = reader.int32();
+                                break;
+                            }
+                        case 6: {
+                                message.type_name = reader.string();
+                                break;
+                            }
+                        case 2: {
+                                message.extendee = reader.string();
+                                break;
+                            }
+                        case 7: {
+                                message.default_value = reader.string();
+                                break;
+                            }
+                        case 8: {
+                                message.options = $root.google.protobuf.FieldOptions.decode(reader, reader.uint32());
+                                break;
+                            }
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -34925,6 +39557,12 @@
                     if (object.number != null)
                         message.number = object.number | 0;
                     switch (object.label) {
+                    default:
+                        if (typeof object.label === "number") {
+                            message.label = object.label;
+                            break;
+                        }
+                        break;
                     case "LABEL_OPTIONAL":
                     case 1:
                         message.label = 1;
@@ -34939,6 +39577,12 @@
                         break;
                     }
                     switch (object.type) {
+                    default:
+                        if (typeof object.type === "number") {
+                            message.type = object.type;
+                            break;
+                        }
+                        break;
                     case "TYPE_DOUBLE":
                     case 1:
                         message.type = 1;
@@ -35056,9 +39700,9 @@
                     if (message.number != null && message.hasOwnProperty("number"))
                         object.number = message.number;
                     if (message.label != null && message.hasOwnProperty("label"))
-                        object.label = options.enums === String ? $root.google.protobuf.FieldDescriptorProto.Label[message.label] : message.label;
+                        object.label = options.enums === String ? $root.google.protobuf.FieldDescriptorProto.Label[message.label] === undefined ? message.label : $root.google.protobuf.FieldDescriptorProto.Label[message.label] : message.label;
                     if (message.type != null && message.hasOwnProperty("type"))
-                        object.type = options.enums === String ? $root.google.protobuf.FieldDescriptorProto.Type[message.type] : message.type;
+                        object.type = options.enums === String ? $root.google.protobuf.FieldDescriptorProto.Type[message.type] === undefined ? message.type : $root.google.protobuf.FieldDescriptorProto.Type[message.type] : message.type;
                     if (message.type_name != null && message.hasOwnProperty("type_name"))
                         object.type_name = message.type_name;
                     if (message.default_value != null && message.hasOwnProperty("default_value"))
@@ -35080,9 +39724,24 @@
                 };
     
                 /**
+                 * Gets the default type url for FieldDescriptorProto
+                 * @function getTypeUrl
+                 * @memberof google.protobuf.FieldDescriptorProto
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                FieldDescriptorProto.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/google.protobuf.FieldDescriptorProto";
+                };
+    
+                /**
                  * Type enum.
                  * @name google.protobuf.FieldDescriptorProto.Type
-                 * @enum {string}
+                 * @enum {number}
                  * @property {number} TYPE_DOUBLE=1 TYPE_DOUBLE value
                  * @property {number} TYPE_FLOAT=2 TYPE_FLOAT value
                  * @property {number} TYPE_INT64=3 TYPE_INT64 value
@@ -35128,7 +39787,7 @@
                 /**
                  * Label enum.
                  * @name google.protobuf.FieldDescriptorProto.Label
-                 * @enum {string}
+                 * @enum {number}
                  * @property {number} LABEL_OPTIONAL=1 LABEL_OPTIONAL value
                  * @property {number} LABEL_REQUIRED=2 LABEL_REQUIRED value
                  * @property {number} LABEL_REPEATED=3 LABEL_REPEATED value
@@ -35219,12 +39878,12 @@
                 EnumDescriptorProto.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.name != null && message.hasOwnProperty("name"))
+                    if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
                     if (message.value != null && message.value.length)
                         for (var i = 0; i < message.value.length; ++i)
                             $root.google.protobuf.EnumValueDescriptorProto.encode(message.value[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-                    if (message.options != null && message.hasOwnProperty("options"))
+                    if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                         $root.google.protobuf.EnumOptions.encode(message.options, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                     return writer;
                 };
@@ -35260,17 +39919,20 @@
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
-                        case 1:
-                            message.name = reader.string();
-                            break;
-                        case 2:
-                            if (!(message.value && message.value.length))
-                                message.value = [];
-                            message.value.push($root.google.protobuf.EnumValueDescriptorProto.decode(reader, reader.uint32()));
-                            break;
-                        case 3:
-                            message.options = $root.google.protobuf.EnumOptions.decode(reader, reader.uint32());
-                            break;
+                        case 1: {
+                                message.name = reader.string();
+                                break;
+                            }
+                        case 2: {
+                                if (!(message.value && message.value.length))
+                                    message.value = [];
+                                message.value.push($root.google.protobuf.EnumValueDescriptorProto.decode(reader, reader.uint32()));
+                                break;
+                            }
+                        case 3: {
+                                message.options = $root.google.protobuf.EnumOptions.decode(reader, reader.uint32());
+                                break;
+                            }
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -35400,6 +40062,21 @@
                     return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                 };
     
+                /**
+                 * Gets the default type url for EnumDescriptorProto
+                 * @function getTypeUrl
+                 * @memberof google.protobuf.EnumDescriptorProto
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                EnumDescriptorProto.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/google.protobuf.EnumDescriptorProto";
+                };
+    
                 return EnumDescriptorProto;
             })();
     
@@ -35477,11 +40154,11 @@
                 EnumValueDescriptorProto.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.name != null && message.hasOwnProperty("name"))
+                    if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                    if (message.number != null && message.hasOwnProperty("number"))
+                    if (message.number != null && Object.hasOwnProperty.call(message, "number"))
                         writer.uint32(/* id 2, wireType 0 =*/16).int32(message.number);
-                    if (message.options != null && message.hasOwnProperty("options"))
+                    if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                         $root.google.protobuf.EnumValueOptions.encode(message.options, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                     return writer;
                 };
@@ -35517,15 +40194,18 @@
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
-                        case 1:
-                            message.name = reader.string();
-                            break;
-                        case 2:
-                            message.number = reader.int32();
-                            break;
-                        case 3:
-                            message.options = $root.google.protobuf.EnumValueOptions.decode(reader, reader.uint32());
-                            break;
+                        case 1: {
+                                message.name = reader.string();
+                                break;
+                            }
+                        case 2: {
+                                message.number = reader.int32();
+                                break;
+                            }
+                        case 3: {
+                                message.options = $root.google.protobuf.EnumValueOptions.decode(reader, reader.uint32());
+                                break;
+                            }
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -35637,6 +40317,21 @@
                     return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                 };
     
+                /**
+                 * Gets the default type url for EnumValueDescriptorProto
+                 * @function getTypeUrl
+                 * @memberof google.protobuf.EnumValueDescriptorProto
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                EnumValueDescriptorProto.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/google.protobuf.EnumValueDescriptorProto";
+                };
+    
                 return EnumValueDescriptorProto;
             })();
     
@@ -35715,12 +40410,12 @@
                 ServiceDescriptorProto.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.name != null && message.hasOwnProperty("name"))
+                    if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
                     if (message.method != null && message.method.length)
                         for (var i = 0; i < message.method.length; ++i)
                             $root.google.protobuf.MethodDescriptorProto.encode(message.method[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-                    if (message.options != null && message.hasOwnProperty("options"))
+                    if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                         $root.google.protobuf.ServiceOptions.encode(message.options, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                     return writer;
                 };
@@ -35756,17 +40451,20 @@
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
-                        case 1:
-                            message.name = reader.string();
-                            break;
-                        case 2:
-                            if (!(message.method && message.method.length))
-                                message.method = [];
-                            message.method.push($root.google.protobuf.MethodDescriptorProto.decode(reader, reader.uint32()));
-                            break;
-                        case 3:
-                            message.options = $root.google.protobuf.ServiceOptions.decode(reader, reader.uint32());
-                            break;
+                        case 1: {
+                                message.name = reader.string();
+                                break;
+                            }
+                        case 2: {
+                                if (!(message.method && message.method.length))
+                                    message.method = [];
+                                message.method.push($root.google.protobuf.MethodDescriptorProto.decode(reader, reader.uint32()));
+                                break;
+                            }
+                        case 3: {
+                                message.options = $root.google.protobuf.ServiceOptions.decode(reader, reader.uint32());
+                                break;
+                            }
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -35896,6 +40594,21 @@
                     return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                 };
     
+                /**
+                 * Gets the default type url for ServiceDescriptorProto
+                 * @function getTypeUrl
+                 * @memberof google.protobuf.ServiceDescriptorProto
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                ServiceDescriptorProto.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/google.protobuf.ServiceDescriptorProto";
+                };
+    
                 return ServiceDescriptorProto;
             })();
     
@@ -35982,13 +40695,13 @@
                 MethodDescriptorProto.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.name != null && message.hasOwnProperty("name"))
+                    if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                    if (message.input_type != null && message.hasOwnProperty("input_type"))
+                    if (message.input_type != null && Object.hasOwnProperty.call(message, "input_type"))
                         writer.uint32(/* id 2, wireType 2 =*/18).string(message.input_type);
-                    if (message.output_type != null && message.hasOwnProperty("output_type"))
+                    if (message.output_type != null && Object.hasOwnProperty.call(message, "output_type"))
                         writer.uint32(/* id 3, wireType 2 =*/26).string(message.output_type);
-                    if (message.options != null && message.hasOwnProperty("options"))
+                    if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                         $root.google.protobuf.MethodOptions.encode(message.options, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
                     return writer;
                 };
@@ -36024,18 +40737,22 @@
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
-                        case 1:
-                            message.name = reader.string();
-                            break;
-                        case 2:
-                            message.input_type = reader.string();
-                            break;
-                        case 3:
-                            message.output_type = reader.string();
-                            break;
-                        case 4:
-                            message.options = $root.google.protobuf.MethodOptions.decode(reader, reader.uint32());
-                            break;
+                        case 1: {
+                                message.name = reader.string();
+                                break;
+                            }
+                        case 2: {
+                                message.input_type = reader.string();
+                                break;
+                            }
+                        case 3: {
+                                message.output_type = reader.string();
+                                break;
+                            }
+                        case 4: {
+                                message.options = $root.google.protobuf.MethodOptions.decode(reader, reader.uint32());
+                                break;
+                            }
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -36153,6 +40870,21 @@
                  */
                 MethodDescriptorProto.prototype.toJSON = function toJSON() {
                     return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+    
+                /**
+                 * Gets the default type url for MethodDescriptorProto
+                 * @function getTypeUrl
+                 * @memberof google.protobuf.MethodDescriptorProto
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                MethodDescriptorProto.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/google.protobuf.MethodDescriptorProto";
                 };
     
                 return MethodDescriptorProto;
@@ -36287,21 +41019,21 @@
                 FileOptions.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.java_package != null && message.hasOwnProperty("java_package"))
+                    if (message.java_package != null && Object.hasOwnProperty.call(message, "java_package"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.java_package);
-                    if (message.java_outer_classname != null && message.hasOwnProperty("java_outer_classname"))
+                    if (message.java_outer_classname != null && Object.hasOwnProperty.call(message, "java_outer_classname"))
                         writer.uint32(/* id 8, wireType 2 =*/66).string(message.java_outer_classname);
-                    if (message.optimize_for != null && message.hasOwnProperty("optimize_for"))
+                    if (message.optimize_for != null && Object.hasOwnProperty.call(message, "optimize_for"))
                         writer.uint32(/* id 9, wireType 0 =*/72).int32(message.optimize_for);
-                    if (message.java_multiple_files != null && message.hasOwnProperty("java_multiple_files"))
+                    if (message.java_multiple_files != null && Object.hasOwnProperty.call(message, "java_multiple_files"))
                         writer.uint32(/* id 10, wireType 0 =*/80).bool(message.java_multiple_files);
-                    if (message.cc_generic_services != null && message.hasOwnProperty("cc_generic_services"))
+                    if (message.cc_generic_services != null && Object.hasOwnProperty.call(message, "cc_generic_services"))
                         writer.uint32(/* id 16, wireType 0 =*/128).bool(message.cc_generic_services);
-                    if (message.java_generic_services != null && message.hasOwnProperty("java_generic_services"))
+                    if (message.java_generic_services != null && Object.hasOwnProperty.call(message, "java_generic_services"))
                         writer.uint32(/* id 17, wireType 0 =*/136).bool(message.java_generic_services);
-                    if (message.py_generic_services != null && message.hasOwnProperty("py_generic_services"))
+                    if (message.py_generic_services != null && Object.hasOwnProperty.call(message, "py_generic_services"))
                         writer.uint32(/* id 18, wireType 0 =*/144).bool(message.py_generic_services);
-                    if (message.java_generate_equals_and_hash != null && message.hasOwnProperty("java_generate_equals_and_hash"))
+                    if (message.java_generate_equals_and_hash != null && Object.hasOwnProperty.call(message, "java_generate_equals_and_hash"))
                         writer.uint32(/* id 20, wireType 0 =*/160).bool(message.java_generate_equals_and_hash);
                     if (message.uninterpreted_option != null && message.uninterpreted_option.length)
                         for (var i = 0; i < message.uninterpreted_option.length; ++i)
@@ -36340,35 +41072,44 @@
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
-                        case 1:
-                            message.java_package = reader.string();
-                            break;
-                        case 8:
-                            message.java_outer_classname = reader.string();
-                            break;
-                        case 10:
-                            message.java_multiple_files = reader.bool();
-                            break;
-                        case 20:
-                            message.java_generate_equals_and_hash = reader.bool();
-                            break;
-                        case 9:
-                            message.optimize_for = reader.int32();
-                            break;
-                        case 16:
-                            message.cc_generic_services = reader.bool();
-                            break;
-                        case 17:
-                            message.java_generic_services = reader.bool();
-                            break;
-                        case 18:
-                            message.py_generic_services = reader.bool();
-                            break;
-                        case 999:
-                            if (!(message.uninterpreted_option && message.uninterpreted_option.length))
-                                message.uninterpreted_option = [];
-                            message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
-                            break;
+                        case 1: {
+                                message.java_package = reader.string();
+                                break;
+                            }
+                        case 8: {
+                                message.java_outer_classname = reader.string();
+                                break;
+                            }
+                        case 10: {
+                                message.java_multiple_files = reader.bool();
+                                break;
+                            }
+                        case 20: {
+                                message.java_generate_equals_and_hash = reader.bool();
+                                break;
+                            }
+                        case 9: {
+                                message.optimize_for = reader.int32();
+                                break;
+                            }
+                        case 16: {
+                                message.cc_generic_services = reader.bool();
+                                break;
+                            }
+                        case 17: {
+                                message.java_generic_services = reader.bool();
+                                break;
+                            }
+                        case 18: {
+                                message.py_generic_services = reader.bool();
+                                break;
+                            }
+                        case 999: {
+                                if (!(message.uninterpreted_option && message.uninterpreted_option.length))
+                                    message.uninterpreted_option = [];
+                                message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
+                                break;
+                            }
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -36467,6 +41208,12 @@
                     if (object.java_generate_equals_and_hash != null)
                         message.java_generate_equals_and_hash = Boolean(object.java_generate_equals_and_hash);
                     switch (object.optimize_for) {
+                    default:
+                        if (typeof object.optimize_for === "number") {
+                            message.optimize_for = object.optimize_for;
+                            break;
+                        }
+                        break;
                     case "SPEED":
                     case 1:
                         message.optimize_for = 1;
@@ -36529,7 +41276,7 @@
                     if (message.java_outer_classname != null && message.hasOwnProperty("java_outer_classname"))
                         object.java_outer_classname = message.java_outer_classname;
                     if (message.optimize_for != null && message.hasOwnProperty("optimize_for"))
-                        object.optimize_for = options.enums === String ? $root.google.protobuf.FileOptions.OptimizeMode[message.optimize_for] : message.optimize_for;
+                        object.optimize_for = options.enums === String ? $root.google.protobuf.FileOptions.OptimizeMode[message.optimize_for] === undefined ? message.optimize_for : $root.google.protobuf.FileOptions.OptimizeMode[message.optimize_for] : message.optimize_for;
                     if (message.java_multiple_files != null && message.hasOwnProperty("java_multiple_files"))
                         object.java_multiple_files = message.java_multiple_files;
                     if (message.cc_generic_services != null && message.hasOwnProperty("cc_generic_services"))
@@ -36560,9 +41307,24 @@
                 };
     
                 /**
+                 * Gets the default type url for FileOptions
+                 * @function getTypeUrl
+                 * @memberof google.protobuf.FileOptions
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                FileOptions.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/google.protobuf.FileOptions";
+                };
+    
+                /**
                  * OptimizeMode enum.
                  * @name google.protobuf.FileOptions.OptimizeMode
-                 * @enum {string}
+                 * @enum {number}
                  * @property {number} SPEED=1 SPEED value
                  * @property {number} CODE_SIZE=2 CODE_SIZE value
                  * @property {number} LITE_RUNTIME=3 LITE_RUNTIME value
@@ -36671,16 +41433,16 @@
                 MessageOptions.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.message_set_wire_format != null && message.hasOwnProperty("message_set_wire_format"))
+                    if (message.message_set_wire_format != null && Object.hasOwnProperty.call(message, "message_set_wire_format"))
                         writer.uint32(/* id 1, wireType 0 =*/8).bool(message.message_set_wire_format);
-                    if (message.no_standard_descriptor_accessor != null && message.hasOwnProperty("no_standard_descriptor_accessor"))
+                    if (message.no_standard_descriptor_accessor != null && Object.hasOwnProperty.call(message, "no_standard_descriptor_accessor"))
                         writer.uint32(/* id 2, wireType 0 =*/16).bool(message.no_standard_descriptor_accessor);
                     if (message.uninterpreted_option != null && message.uninterpreted_option.length)
                         for (var i = 0; i < message.uninterpreted_option.length; ++i)
                             $root.google.protobuf.UninterpretedOption.encode(message.uninterpreted_option[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
-                    if (message[".msgpool_soft_limit"] != null && message.hasOwnProperty(".msgpool_soft_limit"))
+                    if (message[".msgpool_soft_limit"] != null && Object.hasOwnProperty.call(message, ".msgpool_soft_limit"))
                         writer.uint32(/* id 60000, wireType 0 =*/480000).int32(message[".msgpool_soft_limit"]);
-                    if (message[".msgpool_hard_limit"] != null && message.hasOwnProperty(".msgpool_hard_limit"))
+                    if (message[".msgpool_hard_limit"] != null && Object.hasOwnProperty.call(message, ".msgpool_hard_limit"))
                         writer.uint32(/* id 60001, wireType 0 =*/480008).int32(message[".msgpool_hard_limit"]);
                     return writer;
                 };
@@ -36716,23 +41478,28 @@
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
-                        case 1:
-                            message.message_set_wire_format = reader.bool();
-                            break;
-                        case 2:
-                            message.no_standard_descriptor_accessor = reader.bool();
-                            break;
-                        case 999:
-                            if (!(message.uninterpreted_option && message.uninterpreted_option.length))
-                                message.uninterpreted_option = [];
-                            message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
-                            break;
-                        case 60000:
-                            message[".msgpool_soft_limit"] = reader.int32();
-                            break;
-                        case 60001:
-                            message[".msgpool_hard_limit"] = reader.int32();
-                            break;
+                        case 1: {
+                                message.message_set_wire_format = reader.bool();
+                                break;
+                            }
+                        case 2: {
+                                message.no_standard_descriptor_accessor = reader.bool();
+                                break;
+                            }
+                        case 999: {
+                                if (!(message.uninterpreted_option && message.uninterpreted_option.length))
+                                    message.uninterpreted_option = [];
+                                message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
+                                break;
+                            }
+                        case 60000: {
+                                message[".msgpool_soft_limit"] = reader.int32();
+                                break;
+                            }
+                        case 60001: {
+                                message[".msgpool_hard_limit"] = reader.int32();
+                                break;
+                            }
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -36873,6 +41640,21 @@
                     return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                 };
     
+                /**
+                 * Gets the default type url for MessageOptions
+                 * @function getTypeUrl
+                 * @memberof google.protobuf.MessageOptions
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                MessageOptions.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/google.protobuf.MessageOptions";
+                };
+    
                 return MessageOptions;
             })();
     
@@ -36978,18 +41760,18 @@
                 FieldOptions.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.ctype != null && message.hasOwnProperty("ctype"))
+                    if (message.ctype != null && Object.hasOwnProperty.call(message, "ctype"))
                         writer.uint32(/* id 1, wireType 0 =*/8).int32(message.ctype);
-                    if (message.packed != null && message.hasOwnProperty("packed"))
+                    if (message.packed != null && Object.hasOwnProperty.call(message, "packed"))
                         writer.uint32(/* id 2, wireType 0 =*/16).bool(message.packed);
-                    if (message.deprecated != null && message.hasOwnProperty("deprecated"))
+                    if (message.deprecated != null && Object.hasOwnProperty.call(message, "deprecated"))
                         writer.uint32(/* id 3, wireType 0 =*/24).bool(message.deprecated);
-                    if (message.experimental_map_key != null && message.hasOwnProperty("experimental_map_key"))
+                    if (message.experimental_map_key != null && Object.hasOwnProperty.call(message, "experimental_map_key"))
                         writer.uint32(/* id 9, wireType 2 =*/74).string(message.experimental_map_key);
                     if (message.uninterpreted_option != null && message.uninterpreted_option.length)
                         for (var i = 0; i < message.uninterpreted_option.length; ++i)
                             $root.google.protobuf.UninterpretedOption.encode(message.uninterpreted_option[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
-                    if (message[".key_field"] != null && message.hasOwnProperty(".key_field"))
+                    if (message[".key_field"] != null && Object.hasOwnProperty.call(message, ".key_field"))
                         writer.uint32(/* id 60000, wireType 0 =*/480000).bool(message[".key_field"]);
                     return writer;
                 };
@@ -37025,26 +41807,32 @@
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
-                        case 1:
-                            message.ctype = reader.int32();
-                            break;
-                        case 2:
-                            message.packed = reader.bool();
-                            break;
-                        case 3:
-                            message.deprecated = reader.bool();
-                            break;
-                        case 9:
-                            message.experimental_map_key = reader.string();
-                            break;
-                        case 999:
-                            if (!(message.uninterpreted_option && message.uninterpreted_option.length))
-                                message.uninterpreted_option = [];
-                            message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
-                            break;
-                        case 60000:
-                            message[".key_field"] = reader.bool();
-                            break;
+                        case 1: {
+                                message.ctype = reader.int32();
+                                break;
+                            }
+                        case 2: {
+                                message.packed = reader.bool();
+                                break;
+                            }
+                        case 3: {
+                                message.deprecated = reader.bool();
+                                break;
+                            }
+                        case 9: {
+                                message.experimental_map_key = reader.string();
+                                break;
+                            }
+                        case 999: {
+                                if (!(message.uninterpreted_option && message.uninterpreted_option.length))
+                                    message.uninterpreted_option = [];
+                                message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
+                                break;
+                            }
+                        case 60000: {
+                                message[".key_field"] = reader.bool();
+                                break;
+                            }
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -37126,6 +41914,12 @@
                         return object;
                     var message = new $root.google.protobuf.FieldOptions();
                     switch (object.ctype) {
+                    default:
+                        if (typeof object.ctype === "number") {
+                            message.ctype = object.ctype;
+                            break;
+                        }
+                        break;
                     case "STRING":
                     case 0:
                         message.ctype = 0;
@@ -37183,7 +41977,7 @@
                         object[".key_field"] = false;
                     }
                     if (message.ctype != null && message.hasOwnProperty("ctype"))
-                        object.ctype = options.enums === String ? $root.google.protobuf.FieldOptions.CType[message.ctype] : message.ctype;
+                        object.ctype = options.enums === String ? $root.google.protobuf.FieldOptions.CType[message.ctype] === undefined ? message.ctype : $root.google.protobuf.FieldOptions.CType[message.ctype] : message.ctype;
                     if (message.packed != null && message.hasOwnProperty("packed"))
                         object.packed = message.packed;
                     if (message.deprecated != null && message.hasOwnProperty("deprecated"))
@@ -37212,9 +42006,24 @@
                 };
     
                 /**
+                 * Gets the default type url for FieldOptions
+                 * @function getTypeUrl
+                 * @memberof google.protobuf.FieldOptions
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                FieldOptions.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/google.protobuf.FieldOptions";
+                };
+    
+                /**
                  * CType enum.
                  * @name google.protobuf.FieldOptions.CType
-                 * @enum {string}
+                 * @enum {number}
                  * @property {number} STRING=0 STRING value
                  * @property {number} CORD=1 CORD value
                  * @property {number} STRING_PIECE=2 STRING_PIECE value
@@ -37324,11 +42133,12 @@
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
-                        case 999:
-                            if (!(message.uninterpreted_option && message.uninterpreted_option.length))
-                                message.uninterpreted_option = [];
-                            message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
-                            break;
+                        case 999: {
+                                if (!(message.uninterpreted_option && message.uninterpreted_option.length))
+                                    message.uninterpreted_option = [];
+                                message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
+                                break;
+                            }
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -37435,6 +42245,21 @@
                     return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                 };
     
+                /**
+                 * Gets the default type url for EnumOptions
+                 * @function getTypeUrl
+                 * @memberof google.protobuf.EnumOptions
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                EnumOptions.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/google.protobuf.EnumOptions";
+                };
+    
                 return EnumOptions;
             })();
     
@@ -37532,11 +42357,12 @@
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
-                        case 999:
-                            if (!(message.uninterpreted_option && message.uninterpreted_option.length))
-                                message.uninterpreted_option = [];
-                            message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
-                            break;
+                        case 999: {
+                                if (!(message.uninterpreted_option && message.uninterpreted_option.length))
+                                    message.uninterpreted_option = [];
+                                message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
+                                break;
+                            }
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -37643,6 +42469,21 @@
                     return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                 };
     
+                /**
+                 * Gets the default type url for EnumValueOptions
+                 * @function getTypeUrl
+                 * @memberof google.protobuf.EnumValueOptions
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                EnumValueOptions.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/google.protobuf.EnumValueOptions";
+                };
+    
                 return EnumValueOptions;
             })();
     
@@ -37740,11 +42581,12 @@
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
-                        case 999:
-                            if (!(message.uninterpreted_option && message.uninterpreted_option.length))
-                                message.uninterpreted_option = [];
-                            message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
-                            break;
+                        case 999: {
+                                if (!(message.uninterpreted_option && message.uninterpreted_option.length))
+                                    message.uninterpreted_option = [];
+                                message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
+                                break;
+                            }
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -37851,6 +42693,21 @@
                     return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                 };
     
+                /**
+                 * Gets the default type url for ServiceOptions
+                 * @function getTypeUrl
+                 * @memberof google.protobuf.ServiceOptions
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                ServiceOptions.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/google.protobuf.ServiceOptions";
+                };
+    
                 return ServiceOptions;
             })();
     
@@ -37948,11 +42805,12 @@
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
-                        case 999:
-                            if (!(message.uninterpreted_option && message.uninterpreted_option.length))
-                                message.uninterpreted_option = [];
-                            message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
-                            break;
+                        case 999: {
+                                if (!(message.uninterpreted_option && message.uninterpreted_option.length))
+                                    message.uninterpreted_option = [];
+                                message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
+                                break;
+                            }
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -38057,6 +42915,21 @@
                  */
                 MethodOptions.prototype.toJSON = function toJSON() {
                     return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+    
+                /**
+                 * Gets the default type url for MethodOptions
+                 * @function getTypeUrl
+                 * @memberof google.protobuf.MethodOptions
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                MethodOptions.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/google.protobuf.MethodOptions";
                 };
     
                 return MethodOptions;
@@ -38176,17 +43049,17 @@
                     if (message.name != null && message.name.length)
                         for (var i = 0; i < message.name.length; ++i)
                             $root.google.protobuf.UninterpretedOption.NamePart.encode(message.name[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-                    if (message.identifier_value != null && message.hasOwnProperty("identifier_value"))
+                    if (message.identifier_value != null && Object.hasOwnProperty.call(message, "identifier_value"))
                         writer.uint32(/* id 3, wireType 2 =*/26).string(message.identifier_value);
-                    if (message.positive_int_value != null && message.hasOwnProperty("positive_int_value"))
+                    if (message.positive_int_value != null && Object.hasOwnProperty.call(message, "positive_int_value"))
                         writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.positive_int_value);
-                    if (message.negative_int_value != null && message.hasOwnProperty("negative_int_value"))
+                    if (message.negative_int_value != null && Object.hasOwnProperty.call(message, "negative_int_value"))
                         writer.uint32(/* id 5, wireType 0 =*/40).int64(message.negative_int_value);
-                    if (message.double_value != null && message.hasOwnProperty("double_value"))
+                    if (message.double_value != null && Object.hasOwnProperty.call(message, "double_value"))
                         writer.uint32(/* id 6, wireType 1 =*/49).double(message.double_value);
-                    if (message.string_value != null && message.hasOwnProperty("string_value"))
+                    if (message.string_value != null && Object.hasOwnProperty.call(message, "string_value"))
                         writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.string_value);
-                    if (message.aggregate_value != null && message.hasOwnProperty("aggregate_value"))
+                    if (message.aggregate_value != null && Object.hasOwnProperty.call(message, "aggregate_value"))
                         writer.uint32(/* id 8, wireType 2 =*/66).string(message.aggregate_value);
                     return writer;
                 };
@@ -38222,29 +43095,36 @@
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
-                        case 2:
-                            if (!(message.name && message.name.length))
-                                message.name = [];
-                            message.name.push($root.google.protobuf.UninterpretedOption.NamePart.decode(reader, reader.uint32()));
-                            break;
-                        case 3:
-                            message.identifier_value = reader.string();
-                            break;
-                        case 4:
-                            message.positive_int_value = reader.uint64();
-                            break;
-                        case 5:
-                            message.negative_int_value = reader.int64();
-                            break;
-                        case 6:
-                            message.double_value = reader.double();
-                            break;
-                        case 7:
-                            message.string_value = reader.bytes();
-                            break;
-                        case 8:
-                            message.aggregate_value = reader.string();
-                            break;
+                        case 2: {
+                                if (!(message.name && message.name.length))
+                                    message.name = [];
+                                message.name.push($root.google.protobuf.UninterpretedOption.NamePart.decode(reader, reader.uint32()));
+                                break;
+                            }
+                        case 3: {
+                                message.identifier_value = reader.string();
+                                break;
+                            }
+                        case 4: {
+                                message.positive_int_value = reader.uint64();
+                                break;
+                            }
+                        case 5: {
+                                message.negative_int_value = reader.int64();
+                                break;
+                            }
+                        case 6: {
+                                message.double_value = reader.double();
+                                break;
+                            }
+                        case 7: {
+                                message.string_value = reader.bytes();
+                                break;
+                            }
+                        case 8: {
+                                message.aggregate_value = reader.string();
+                                break;
+                            }
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -38357,7 +43237,7 @@
                     if (object.string_value != null)
                         if (typeof object.string_value === "string")
                             $util.base64.decode(object.string_value, message.string_value = $util.newBuffer($util.base64.length(object.string_value)), 0);
-                        else if (object.string_value.length)
+                        else if (object.string_value.length >= 0)
                             message.string_value = object.string_value;
                     if (object.aggregate_value != null)
                         message.aggregate_value = String(object.aggregate_value);
@@ -38436,6 +43316,21 @@
                  */
                 UninterpretedOption.prototype.toJSON = function toJSON() {
                     return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+    
+                /**
+                 * Gets the default type url for UninterpretedOption
+                 * @function getTypeUrl
+                 * @memberof google.protobuf.UninterpretedOption
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                UninterpretedOption.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/google.protobuf.UninterpretedOption";
                 };
     
                 UninterpretedOption.NamePart = (function() {
@@ -38539,12 +43434,14 @@
                         while (reader.pos < end) {
                             var tag = reader.uint32();
                             switch (tag >>> 3) {
-                            case 1:
-                                message.name_part = reader.string();
-                                break;
-                            case 2:
-                                message.is_extension = reader.bool();
-                                break;
+                            case 1: {
+                                    message.name_part = reader.string();
+                                    break;
+                                }
+                            case 2: {
+                                    message.is_extension = reader.bool();
+                                    break;
+                                }
                             default:
                                 reader.skipType(tag & 7);
                                 break;
@@ -38643,6 +43540,21 @@
                      */
                     NamePart.prototype.toJSON = function toJSON() {
                         return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    /**
+                     * Gets the default type url for NamePart
+                     * @function getTypeUrl
+                     * @memberof google.protobuf.UninterpretedOption.NamePart
+                     * @static
+                     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                     * @returns {string} The default type url
+                     */
+                    NamePart.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                        if (typeUrlPrefix === undefined) {
+                            typeUrlPrefix = "type.googleapis.com";
+                        }
+                        return typeUrlPrefix + "/google.protobuf.UninterpretedOption.NamePart";
                     };
     
                     return NamePart;
@@ -38745,11 +43657,12 @@
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
-                        case 1:
-                            if (!(message.location && message.location.length))
-                                message.location = [];
-                            message.location.push($root.google.protobuf.SourceCodeInfo.Location.decode(reader, reader.uint32()));
-                            break;
+                        case 1: {
+                                if (!(message.location && message.location.length))
+                                    message.location = [];
+                                message.location.push($root.google.protobuf.SourceCodeInfo.Location.decode(reader, reader.uint32()));
+                                break;
+                            }
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -38854,6 +43767,21 @@
                  */
                 SourceCodeInfo.prototype.toJSON = function toJSON() {
                     return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+    
+                /**
+                 * Gets the default type url for SourceCodeInfo
+                 * @function getTypeUrl
+                 * @memberof google.protobuf.SourceCodeInfo
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                SourceCodeInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/google.protobuf.SourceCodeInfo";
                 };
     
                 SourceCodeInfo.Location = (function() {
@@ -38969,26 +43897,28 @@
                         while (reader.pos < end) {
                             var tag = reader.uint32();
                             switch (tag >>> 3) {
-                            case 1:
-                                if (!(message.path && message.path.length))
-                                    message.path = [];
-                                if ((tag & 7) === 2) {
-                                    var end2 = reader.uint32() + reader.pos;
-                                    while (reader.pos < end2)
+                            case 1: {
+                                    if (!(message.path && message.path.length))
+                                        message.path = [];
+                                    if ((tag & 7) === 2) {
+                                        var end2 = reader.uint32() + reader.pos;
+                                        while (reader.pos < end2)
+                                            message.path.push(reader.int32());
+                                    } else
                                         message.path.push(reader.int32());
-                                } else
-                                    message.path.push(reader.int32());
-                                break;
-                            case 2:
-                                if (!(message.span && message.span.length))
-                                    message.span = [];
-                                if ((tag & 7) === 2) {
-                                    var end2 = reader.uint32() + reader.pos;
-                                    while (reader.pos < end2)
+                                    break;
+                                }
+                            case 2: {
+                                    if (!(message.span && message.span.length))
+                                        message.span = [];
+                                    if ((tag & 7) === 2) {
+                                        var end2 = reader.uint32() + reader.pos;
+                                        while (reader.pos < end2)
+                                            message.span.push(reader.int32());
+                                    } else
                                         message.span.push(reader.int32());
-                                } else
-                                    message.span.push(reader.int32());
-                                break;
+                                    break;
+                                }
                             default:
                                 reader.skipType(tag & 7);
                                 break;
@@ -39109,6 +44039,21 @@
                      */
                     Location.prototype.toJSON = function toJSON() {
                         return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    /**
+                     * Gets the default type url for Location
+                     * @function getTypeUrl
+                     * @memberof google.protobuf.SourceCodeInfo.Location
+                     * @static
+                     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                     * @returns {string} The default type url
+                     */
+                    Location.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                        if (typeUrlPrefix === undefined) {
+                            typeUrlPrefix = "type.googleapis.com";
+                        }
+                        return typeUrlPrefix + "/google.protobuf.SourceCodeInfo.Location";
                     };
     
                     return Location;
