@@ -75,6 +75,9 @@ related events), where applicable:
     - `wear` - The sticker's wear (how scratched it is), as a float. `null` if not scratched at all.
     - `scale` - Float, `null` if not applicable
     - `rotation` - Float, `null` if not applicable
+    - `tint_id`
+    - `offset_x` - Float, `null` if not applicable
+    - `offset_y` - Float, `null` if not applicable
 - `casket_id` - If this item is contained in a casket (storage unit), this is a string containing that casket's item ID
 - `casket_contained_item_count` - If this item is a casket (storage unit), this is a count of how many items it contains
 
@@ -140,6 +143,8 @@ Request live game info for a specific user. Listen for the `matchList` event to 
 			- `scale` - This property is only not null on the early dreamhack 2013 stickers. It is no longer used.
 			- `rotation` - This property is only not null on the early dreamhack 2013 stickers. It is no longer used.
 			- `tint_id`
+			- `offset_x` - Float, `null` if not applicable
+            - `offset_y` - Float, `null` if not applicable
 		- `inventory` - An integer which has no use to you
 		- `origin` - The numeric origin of this item
 		- `questid` - You can ignore this
@@ -349,6 +354,8 @@ Emitted when we receive a match list, especially after a `requestLiveGames()` ca
 		- `scale` - Always `null`?
 		- `rotation` - Always `null`?
 		- `tint_id`
+        - `offset_x` - Float, `null` if not applicable
+        - `offset_y` - Float, `null` if not applicable
 	- `inventory` - An integer which has no use to you
 	- `origin` - The numeric origin of this item
 	- `questid` - You can ignore this
