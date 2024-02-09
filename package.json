@@ -34,6 +34,7 @@
 		"steam-user": ">=4.2.0"
 	},
 	"devDependencies": {
+		"protobufjs-cli": "^1.1.2",
 		"steam-user": "^4.26.1"
 	},
 	"scripts": {
