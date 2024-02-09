@@ -215,11 +215,28 @@ GlobalOffensive.prototype._processSOEconItem = function(item) {
 				sticker_id: stickerIdBytes.readUInt32LE(0),
 				wear: null,
 				scale: null,
-				rotation: null
+				rotation: null,
+				offset_x: null,
+				offset_y: null
 			};
+
+			// As of the 2024-02-06 update, the value of the "sticker slot x schema" attribute (290-295) seems to indicate
+			// which slot the sticker occupies, rather than the actual slot named by the attribute. Why? Who knows?
+			// I sure hope no items exist with schema set for some stickers but not for others.
+			let schemaBytes = getAttributeValueBytes(290 + i);
+			if (schemaBytes) {
+				sticker.slot = schemaBytes.readUInt32LE(0);
+			}
 
 			['wear', 'scale', 'rotation'].forEach((attrib, idx) => {
 				let bytes = getAttributeValueBytes(114 + (i * 4) + idx);
+				if (bytes) {
+					sticker[attrib] = bytes.readFloatLE(0);
+				}
+			});
+
+			['offset_x', 'offset_y'].forEach((attrib, idx) => {
+				let bytes = getAttributeValueBytes(278 + (i * 2) + idx);
 				if (bytes) {
 					sticker[attrib] = bytes.readFloatLE(0);
 				}
