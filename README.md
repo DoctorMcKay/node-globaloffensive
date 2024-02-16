@@ -293,6 +293,15 @@ It appears that under some circumstances, the GC might load these items into you
 so if you are using [`inventory`](#inventory) to see what items are in your inventory, you will need to check `casket_id`
 to filter out items stored in storage units.
 	
+### ApplySticker(stickerId, itemId, stickerSlot, stickerRotation, stickerOffsetX, stickerOffsetY)
+- `stickerId` - The ID of the sticker you want to consume to do this
+- `itemId` - The ID of the item you want to apply the sticker to
+- `stickerSlot` - The sticker slot number, from 0 to 4 or 5 depending on weapon
+- `stickerRotation` - The sticker rotation, from -180 to 180
+- `stickerOffsetX` - The sticker X offset from the sticker slot, can't be placed into the void
+- `stickerOffsetY` - The sticker Y offset from the sticker slot, can't be placed into the void
+
+
 # Events
 
 ### connectedToGC
