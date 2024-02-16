@@ -407,6 +407,27 @@ GlobalOffensive.prototype.getCasketContents = function(casketId, callback) {
 	this.on('itemCustomizationNotification', customizationNotification);
 };
 
+/**
+ * Apply a sticker to an item in your inventory.
+ * @param {int} stickerId
+ * @param {int} itemId
+ * @param {int} stickerSlot
+ * @param {float} stickerRotation
+ * @param {float} stickerOffsetX - Sticker can't be placed into the void
+ * @param {float} stickerOffsetY - Sticker can't be placed into the void
+ */
+GlobalOffensive.prototype.ApplySticker = function(stickerId, itemId, stickerSlot, stickerRotation, stickerOffsetX, stickerOffsetY ) {
+    this._send(Language.ApplySticker, Protos.CMsgApplySticker, {
+        sticker_item_id: stickerId,
+        item_item_id: itemId,
+        sticker_slot: stickerSlot,
+        sticker_rotation: stickerRotation,
+        sticker_offset_x: stickerOffsetX,
+        sticker_offset_y: stickerOffsetY
+    });
+}
+
+
 GlobalOffensive.prototype._handlers = {};
 
 require('./enums.js');
