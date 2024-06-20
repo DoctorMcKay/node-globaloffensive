@@ -407,6 +407,20 @@ GlobalOffensive.prototype.getCasketContents = function(casketId, callback) {
 	this.on('itemCustomizationNotification', customizationNotification);
 };
 
+// Crates (Cases and Capsules)
+/**
+ * Open crate or sticker capsule from inventory
+ * @param {int} keyId - If it's a sticker capsule pass parameter is 0 [asset_id]
+ * @param {int} crateId - Crate asset_id
+ */
+GlobalOffensive.prototype.openCrate = function(keyId, crateId) {
+	let buffer = new ByteBuffer(16, ByteBuffer.LITTLE_ENDIAN);
+	buffer.writeUint64(keyId);
+	buffer.writeUint64(crateId);
+	this._send(Language.UnlockCrate, null, buffer);
+};
+
+
 GlobalOffensive.prototype._handlers = {};
 
 require('./enums.js');

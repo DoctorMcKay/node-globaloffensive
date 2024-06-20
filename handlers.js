@@ -150,6 +150,16 @@ handlers[Language.ItemCustomizationNotification] = function(body) {
 	this.emit('itemCustomizationNotification', proto.item_id, proto.request);
 };
 
+// Open crates
+handlers[Language.UnlockCrateResponse] = function(body) {
+	let successBuffer = Buffer.alloc(6);
+	if (Buffer.compare(body.buffer, successBuffer) === 0) {
+		this.emit('crateOpenSuccess');
+	} else {
+		this.emit('crateOpenFailure');
+	}
+}
+
 // SO
 GlobalOffensive.prototype._processSOEconItem = function(item) {
 	// Inventory position
