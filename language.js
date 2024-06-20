@@ -157,6 +157,13 @@ module.exports = {
 	RequestAnnouncementsResponse: 2526,
 	RequestPassportItemGrant: 2527,
 	ClientVersionUpdated: 2528,
+	AdjustItemEquippedStateMulti: 2529,
+	RecurringSubscriptionStatus: 2530,
+	AdjustEquipSlotsManual: 2531,
+	AdjustEquipSlotsShuffle: 2532,
+	NameItemAndEquip: 2533,
+	OpenCrate: 2534,
+	AcknowledgeRentalExpiration: 2535,
 
 	// EGCBaseClientMsg
 	ClientWelcome: 4004,
