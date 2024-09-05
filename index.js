@@ -131,7 +131,12 @@ GlobalOffensive.prototype._connect = function() {
 
 	this._helloTimer = setTimeout(sendHello, 500);
 };
-
+GlobalOffensive.prototype.openContainer = function(keyID, containerID) {
+	var buf = new ByteBuffer(16, ByteBuffer.LITTLE_ENDIAN);
+	buf.writeUint64(keyID || 0);
+	buf.writeUint64(containerID);
+	this._send(Language.UnlockCrate, null, buf);
+}
 GlobalOffensive.prototype._send = function(type, protobuf, body) {
 	if (!this._steam.steamID) {
 		return false;
