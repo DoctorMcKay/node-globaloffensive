@@ -131,7 +131,7 @@ GlobalOffensive.prototype._connect = function() {
 
 	this._helloTimer = setTimeout(sendHello, 500);
 };
-GlobalOffensive.prototype.openContainer = function(keyID, containerID) {
+GlobalOffensive.prototype.openContainer = function(containerID, keyID) {
 	var buf = new ByteBuffer(16, ByteBuffer.LITTLE_ENDIAN);
 	buf.writeUint64(keyID || 0);
 	buf.writeUint64(containerID);
