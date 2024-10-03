@@ -145,12 +145,16 @@ Request live game info for a specific user. Listen for the `matchList` event to 
 			- `tint_id`
 			- `offset_x` - Float, `null` if not applicable
             - `offset_y` - Float, `null` if not applicable
+            - `offset_z` - Float, `null` if not applicable
+            - `pattern` - Integer, `null` if not applicable
 		- `inventory` - An integer which has no use to you
 		- `origin` - The numeric origin of this item
 		- `questid` - You can ignore this
 		- `dropreason`
 		- `musicindex`
 		- `entindex`
+        - `petindex`
+        - `keychains` - An array of objects with identical structure to `stickers`, but for keychains
 
 **v1.1.0 or later is required to use this method**
 
