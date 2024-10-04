@@ -110,6 +110,13 @@ Request a list of current live tournament games.
 This is the list you see in the client under Watch -> Live.
 Listen for the `matchList` event to get your response.
 
+### openContainer(containerid[, keyid])
+
+- `containerid` - The asset ID of the container.
+- `keyid` - The asset ID of the key, defaults to 0 if not provided as to unlock a keyless container.
+
+Opens a container. Listen for the `itemAcquired` event to get the item unboxed (if open was successful)
+
 ### requestRecentGames(steamid)
 
 Request a list of recent games (max. 8). This is the list you see in the client under Watch -> Your Matches.
