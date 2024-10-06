@@ -52,6 +52,55 @@ There are a few useful read-only properties available to you.
 ### accountData
 
 A big object containing account data and some statistics including players in-game. Undefined until `accountData` is emitted.
+You can request this info to be populated by calling [requestMatchmakingStats()](#requestmatchmakingstats)
+
+- `my_current_event_teams` - Always an empty array?
+- `my_current_event_stages` - Always an empty array?
+- `rankings` - Always an empty array?
+- `account_id`
+- `ongoingmatch`
+- `global_stats`
+    - `search_statistics` - Array of MM queues with info
+        - `game_type` 
+        - `search_time_avg` - Always `null`?
+        - `players_searching`
+    - `players_online`
+	- `servers_online`
+    - `players_searching`
+    - `servers_available`
+    - `ongoing_matches`
+    - `search_time_avg`
+    - `main_post_url`
+    - `required_appid_version`
+    - `pricesheet_version`
+    - `twitch_streams_version`
+    - `active_tournament_eventid`
+    - `active_survey_id`
+    - `rtime32_cur`
+    - `rtime32_event_start`
+- `penalty_seconds`
+- `penalty_reason`
+- `vac_banned`
+- `ranking`
+    - `account_id`
+    - `rank_id`
+    - `wins`
+    - `rank_change`
+    - `rank_type_id`
+    - `tv_control`
+- `commendation`
+    - `cmd_friendly`
+    - `cmd_teaching`
+    - `cmd_leader`
+- `medals`
+- `my_current_event`
+- `my_current_team`
+- `survey_vote`
+- `activity`
+- `player_level`
+- `player_cur_xp`
+- `player_xp_bonus_flags`
+
 
 ### inventory
 
@@ -96,6 +145,11 @@ When instantiating your node-globaloffensive instance, you need to pass your act
 ```js
 var csgo = new GlobalOffensive(steamClient);
 ```
+
+### requestMatchmakingStats()
+
+Requests the GC for matchmaking data.
+Listen for the `accountData` event to get your response or access the [accountData](#accountdata) propery after `accountData` was emitted
 
 ### requestGame(shareCodeOrDetails)
 - `shareCodeOrDetails` - Either a share code as a string, or an object containing properties `matchId`, `outcomeId`, `token`
