@@ -71,7 +71,6 @@
      * @property {number} k_EMsgGCCStrike15_v2_DraftSummary=9162 k_EMsgGCCStrike15_v2_DraftSummary value
      * @property {number} k_EMsgGCCStrike15_v2_ClientRequestJoinFriendData=9163 k_EMsgGCCStrike15_v2_ClientRequestJoinFriendData value
      * @property {number} k_EMsgGCCStrike15_v2_ClientRequestJoinServerData=9164 k_EMsgGCCStrike15_v2_ClientRequestJoinServerData value
-     * @property {number} k_EMsgGCCStrike15_v2_ClientRequestNewMission=9165 k_EMsgGCCStrike15_v2_ClientRequestNewMission value
      * @property {number} k_EMsgGCCStrike15_v2_GC2ClientTournamentInfo=9167 k_EMsgGCCStrike15_v2_GC2ClientTournamentInfo value
      * @property {number} k_EMsgGC_GlobalGame_Subscribe=9168 k_EMsgGC_GlobalGame_Subscribe value
      * @property {number} k_EMsgGC_GlobalGame_Unsubscribe=9169 k_EMsgGC_GlobalGame_Unsubscribe value
@@ -122,6 +121,12 @@
      * @property {number} k_EMsgGCCStrike15_v2_SetPlayerLeaderboardSafeName=9218 k_EMsgGCCStrike15_v2_SetPlayerLeaderboardSafeName value
      * @property {number} k_EMsgGCCStrike15_v2_ClientRedeemFreeReward=9219 k_EMsgGCCStrike15_v2_ClientRedeemFreeReward value
      * @property {number} k_EMsgGCCStrike15_v2_ClientNetworkConfig=9220 k_EMsgGCCStrike15_v2_ClientNetworkConfig value
+     * @property {number} k_EMsgGCCStrike15_v2_GC2ClientNotifyXPShop=9221 k_EMsgGCCStrike15_v2_GC2ClientNotifyXPShop value
+     * @property {number} k_EMsgGCCStrike15_v2_Client2GcAckXPShopTracks=9222 k_EMsgGCCStrike15_v2_Client2GcAckXPShopTracks value
+     * @property {number} k_EMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats=9223 k_EMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats value
+     * @property {number} k_EMsgGCCStrike15_v2_PremierSeasonSummary=9224 k_EMsgGCCStrike15_v2_PremierSeasonSummary value
+     * @property {number} k_EMsgGCCStrike15_v2_RequestRecurringMissionSchedule=9225 k_EMsgGCCStrike15_v2_RequestRecurringMissionSchedule value
+     * @property {number} k_EMsgGCCStrike15_v2_RecurringMissionSchema=9226 k_EMsgGCCStrike15_v2_RecurringMissionSchema value
      */
     $root.ECsgoGCMsg = (function() {
         var valuesById = {}, values = Object.create(valuesById);
@@ -176,7 +181,6 @@
         values[valuesById[9162] = "k_EMsgGCCStrike15_v2_DraftSummary"] = 9162;
         values[valuesById[9163] = "k_EMsgGCCStrike15_v2_ClientRequestJoinFriendData"] = 9163;
         values[valuesById[9164] = "k_EMsgGCCStrike15_v2_ClientRequestJoinServerData"] = 9164;
-        values[valuesById[9165] = "k_EMsgGCCStrike15_v2_ClientRequestNewMission"] = 9165;
         values[valuesById[9167] = "k_EMsgGCCStrike15_v2_GC2ClientTournamentInfo"] = 9167;
         values[valuesById[9168] = "k_EMsgGC_GlobalGame_Subscribe"] = 9168;
         values[valuesById[9169] = "k_EMsgGC_GlobalGame_Unsubscribe"] = 9169;
@@ -227,6 +231,12 @@
         values[valuesById[9218] = "k_EMsgGCCStrike15_v2_SetPlayerLeaderboardSafeName"] = 9218;
         values[valuesById[9219] = "k_EMsgGCCStrike15_v2_ClientRedeemFreeReward"] = 9219;
         values[valuesById[9220] = "k_EMsgGCCStrike15_v2_ClientNetworkConfig"] = 9220;
+        values[valuesById[9221] = "k_EMsgGCCStrike15_v2_GC2ClientNotifyXPShop"] = 9221;
+        values[valuesById[9222] = "k_EMsgGCCStrike15_v2_Client2GcAckXPShopTracks"] = 9222;
+        values[valuesById[9223] = "k_EMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats"] = 9223;
+        values[valuesById[9224] = "k_EMsgGCCStrike15_v2_PremierSeasonSummary"] = 9224;
+        values[valuesById[9225] = "k_EMsgGCCStrike15_v2_RequestRecurringMissionSchedule"] = 9225;
+        values[valuesById[9226] = "k_EMsgGCCStrike15_v2_RecurringMissionSchema"] = 9226;
         return values;
     })();
     
@@ -243,6 +253,20 @@
         values[valuesById[1] = "k_ECsgoSteamUserStat_XpEarnedGames"] = 1;
         values[valuesById[2] = "k_ECsgoSteamUserStat_MatchWinsCompetitive"] = 2;
         values[valuesById[3] = "k_ECsgoSteamUserStat_SurvivedDangerZone"] = 3;
+        return values;
+    })();
+    
+    /**
+     * QuestType enum.
+     * @exports QuestType
+     * @enum {number}
+     * @property {number} k_EQuestType_Operation=1 k_EQuestType_Operation value
+     * @property {number} k_EQuestType_RecurringMission=2 k_EQuestType_RecurringMission value
+     */
+    $root.QuestType = (function() {
+        var valuesById = {}, values = Object.create(valuesById);
+        values[valuesById[1] = "k_EQuestType_Operation"] = 1;
+        values[valuesById[2] = "k_EQuestType_RecurringMission"] = 2;
         return values;
     })();
     
@@ -397,12 +421,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        GameServerPing.decode = function decode(reader, length) {
+        GameServerPing.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.GameServerPing();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 2: {
                         message.ping = reader.int32();
@@ -636,12 +662,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        DataCenterPing.decode = function decode(reader, length) {
+        DataCenterPing.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.DataCenterPing();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.data_center_id = reader.fixed32();
@@ -874,12 +902,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        DetailedSearchStatistic.decode = function decode(reader, length) {
+        DetailedSearchStatistic.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.DetailedSearchStatistic();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.game_type = reader.uint32();
@@ -1168,12 +1198,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        TournamentPlayer.decode = function decode(reader, length) {
+        TournamentPlayer.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.TournamentPlayer();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.account_id = reader.uint32();
@@ -1490,12 +1522,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        TournamentTeam.decode = function decode(reader, length) {
+        TournamentTeam.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.TournamentTeam();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.team_id = reader.int32();
@@ -1850,12 +1884,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        TournamentEvent.decode = function decode(reader, length) {
+        TournamentEvent.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.TournamentEvent();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.event_id = reader.int32();
@@ -2085,7 +2121,6 @@
          * @property {number|null} [active_tournament_eventid] GlobalStatistics active_tournament_eventid
          * @property {number|null} [active_survey_id] GlobalStatistics active_survey_id
          * @property {number|null} [rtime32_cur] GlobalStatistics rtime32_cur
-         * @property {number|null} [rtime32_event_start] GlobalStatistics rtime32_event_start
          * @property {number|null} [required_appid_version2] GlobalStatistics required_appid_version2
          */
     
@@ -2218,14 +2253,6 @@
         GlobalStatistics.prototype.rtime32_cur = 0;
     
         /**
-         * GlobalStatistics rtime32_event_start.
-         * @member {number} rtime32_event_start
-         * @memberof GlobalStatistics
-         * @instance
-         */
-        GlobalStatistics.prototype.rtime32_event_start = 0;
-    
-        /**
          * GlobalStatistics required_appid_version2.
          * @member {number} required_appid_version2
          * @memberof GlobalStatistics
@@ -2286,8 +2313,6 @@
                 writer.uint32(/* id 13, wireType 0 =*/104).uint32(message.active_survey_id);
             if (message.rtime32_cur != null && Object.hasOwnProperty.call(message, "rtime32_cur"))
                 writer.uint32(/* id 14, wireType 0 =*/112).uint32(message.rtime32_cur);
-            if (message.rtime32_event_start != null && Object.hasOwnProperty.call(message, "rtime32_event_start"))
-                writer.uint32(/* id 15, wireType 0 =*/120).uint32(message.rtime32_event_start);
             if (message.required_appid_version2 != null && Object.hasOwnProperty.call(message, "required_appid_version2"))
                 writer.uint32(/* id 16, wireType 0 =*/128).uint32(message.required_appid_version2);
             return writer;
@@ -2317,12 +2342,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        GlobalStatistics.decode = function decode(reader, length) {
+        GlobalStatistics.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.GlobalStatistics();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.players_online = reader.uint32();
@@ -2380,10 +2407,6 @@
                     }
                 case 14: {
                         message.rtime32_cur = reader.uint32();
-                        break;
-                    }
-                case 15: {
-                        message.rtime32_event_start = reader.uint32();
                         break;
                     }
                 case 16: {
@@ -2473,9 +2496,6 @@
             if (message.rtime32_cur != null && message.hasOwnProperty("rtime32_cur"))
                 if (!$util.isInteger(message.rtime32_cur))
                     return "rtime32_cur: integer expected";
-            if (message.rtime32_event_start != null && message.hasOwnProperty("rtime32_event_start"))
-                if (!$util.isInteger(message.rtime32_event_start))
-                    return "rtime32_event_start: integer expected";
             if (message.required_appid_version2 != null && message.hasOwnProperty("required_appid_version2"))
                 if (!$util.isInteger(message.required_appid_version2))
                     return "required_appid_version2: integer expected";
@@ -2530,8 +2550,6 @@
                 message.active_survey_id = object.active_survey_id >>> 0;
             if (object.rtime32_cur != null)
                 message.rtime32_cur = object.rtime32_cur >>> 0;
-            if (object.rtime32_event_start != null)
-                message.rtime32_event_start = object.rtime32_event_start >>> 0;
             if (object.required_appid_version2 != null)
                 message.required_appid_version2 = object.required_appid_version2 >>> 0;
             return message;
@@ -2566,7 +2584,6 @@
                 object.active_tournament_eventid = 0;
                 object.active_survey_id = 0;
                 object.rtime32_cur = 0;
-                object.rtime32_event_start = 0;
                 object.required_appid_version2 = 0;
             }
             if (message.players_online != null && message.hasOwnProperty("players_online"))
@@ -2600,8 +2617,6 @@
                 object.active_survey_id = message.active_survey_id;
             if (message.rtime32_cur != null && message.hasOwnProperty("rtime32_cur"))
                 object.rtime32_cur = message.rtime32_cur;
-            if (message.rtime32_event_start != null && message.hasOwnProperty("rtime32_event_start"))
-                object.rtime32_event_start = message.rtime32_event_start;
             if (message.required_appid_version2 != null && message.hasOwnProperty("required_appid_version2"))
                 object.required_appid_version2 = message.required_appid_version2;
             return object;
@@ -2732,12 +2747,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        OperationalStatisticDescription.decode = function decode(reader, length) {
+        OperationalStatisticDescription.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.OperationalStatisticDescription();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.name = reader.string();
@@ -2961,12 +2978,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        OperationalStatisticElement.decode = function decode(reader, length) {
+        OperationalStatisticElement.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.OperationalStatisticElement();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.idkey = reader.uint32();
@@ -3220,12 +3239,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        OperationalStatisticsPacket.decode = function decode(reader, length) {
+        OperationalStatisticsPacket.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.OperationalStatisticsPacket();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.packetid = reader.int32();
@@ -3501,12 +3522,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        OperationalVarValue.decode = function decode(reader, length) {
+        OperationalVarValue.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.OperationalVarValue();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.name = reader.string();
@@ -3684,6 +3707,8 @@
          * @property {number|null} [rank_if_tie] PlayerRankingInfo rank_if_tie
          * @property {Array.<PlayerRankingInfo.IPerMapRank>|null} [per_map_rank] PlayerRankingInfo per_map_rank
          * @property {number|null} [leaderboard_name_status] PlayerRankingInfo leaderboard_name_status
+         * @property {number|null} [highest_rank] PlayerRankingInfo highest_rank
+         * @property {number|null} [rank_expiry] PlayerRankingInfo rank_expiry
          */
     
         /**
@@ -3807,6 +3832,22 @@
         PlayerRankingInfo.prototype.leaderboard_name_status = 0;
     
         /**
+         * PlayerRankingInfo highest_rank.
+         * @member {number} highest_rank
+         * @memberof PlayerRankingInfo
+         * @instance
+         */
+        PlayerRankingInfo.prototype.highest_rank = 0;
+    
+        /**
+         * PlayerRankingInfo rank_expiry.
+         * @member {number} rank_expiry
+         * @memberof PlayerRankingInfo
+         * @instance
+         */
+        PlayerRankingInfo.prototype.rank_expiry = 0;
+    
+        /**
          * Creates a new PlayerRankingInfo instance using the specified properties.
          * @function create
          * @memberof PlayerRankingInfo
@@ -3857,6 +3898,10 @@
                     $root.PlayerRankingInfo.PerMapRank.encode(message.per_map_rank[i], writer.uint32(/* id 13, wireType 2 =*/106).fork()).ldelim();
             if (message.leaderboard_name_status != null && Object.hasOwnProperty.call(message, "leaderboard_name_status"))
                 writer.uint32(/* id 14, wireType 0 =*/112).uint32(message.leaderboard_name_status);
+            if (message.highest_rank != null && Object.hasOwnProperty.call(message, "highest_rank"))
+                writer.uint32(/* id 15, wireType 0 =*/120).uint32(message.highest_rank);
+            if (message.rank_expiry != null && Object.hasOwnProperty.call(message, "rank_expiry"))
+                writer.uint32(/* id 16, wireType 0 =*/128).uint32(message.rank_expiry);
             return writer;
         };
     
@@ -3884,12 +3929,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        PlayerRankingInfo.decode = function decode(reader, length) {
+        PlayerRankingInfo.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.PlayerRankingInfo();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.account_id = reader.uint32();
@@ -3943,6 +3990,14 @@
                     }
                 case 14: {
                         message.leaderboard_name_status = reader.uint32();
+                        break;
+                    }
+                case 15: {
+                        message.highest_rank = reader.uint32();
+                        break;
+                    }
+                case 16: {
+                        message.rank_expiry = reader.uint32();
                         break;
                     }
                 default:
@@ -4025,6 +4080,12 @@
             if (message.leaderboard_name_status != null && message.hasOwnProperty("leaderboard_name_status"))
                 if (!$util.isInteger(message.leaderboard_name_status))
                     return "leaderboard_name_status: integer expected";
+            if (message.highest_rank != null && message.hasOwnProperty("highest_rank"))
+                if (!$util.isInteger(message.highest_rank))
+                    return "highest_rank: integer expected";
+            if (message.rank_expiry != null && message.hasOwnProperty("rank_expiry"))
+                if (!$util.isInteger(message.rank_expiry))
+                    return "rank_expiry: integer expected";
             return null;
         };
     
@@ -4081,6 +4142,10 @@
             }
             if (object.leaderboard_name_status != null)
                 message.leaderboard_name_status = object.leaderboard_name_status >>> 0;
+            if (object.highest_rank != null)
+                message.highest_rank = object.highest_rank >>> 0;
+            if (object.rank_expiry != null)
+                message.rank_expiry = object.rank_expiry >>> 0;
             return message;
         };
     
@@ -4116,6 +4181,8 @@
                 object.rank_if_lose = 0;
                 object.rank_if_tie = 0;
                 object.leaderboard_name_status = 0;
+                object.highest_rank = 0;
+                object.rank_expiry = 0;
             }
             if (message.account_id != null && message.hasOwnProperty("account_id"))
                 object.account_id = message.account_id;
@@ -4149,6 +4216,10 @@
             }
             if (message.leaderboard_name_status != null && message.hasOwnProperty("leaderboard_name_status"))
                 object.leaderboard_name_status = message.leaderboard_name_status;
+            if (message.highest_rank != null && message.hasOwnProperty("highest_rank"))
+                object.highest_rank = message.highest_rank;
+            if (message.rank_expiry != null && message.hasOwnProperty("rank_expiry"))
+                object.rank_expiry = message.rank_expiry;
             return object;
         };
     
@@ -4285,12 +4356,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            PerMapRank.decode = function decode(reader, length) {
+            PerMapRank.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.PlayerRankingInfo.PerMapRank();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.map_id = reader.uint32();
@@ -4538,12 +4611,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        PlayerCommendationInfo.decode = function decode(reader, length) {
+        PlayerCommendationInfo.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.PlayerCommendationInfo();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.cmd_friendly = reader.uint32();
@@ -4779,12 +4854,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        PlayerMedalsInfo.decode = function decode(reader, length) {
+        PlayerMedalsInfo.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.PlayerMedalsInfo();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 7: {
                         if (!(message.display_items_defidx && message.display_items_defidx.length))
@@ -5047,12 +5124,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        AccountActivity.decode = function decode(reader, length) {
+        AccountActivity.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.AccountActivity();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.activity = reader.uint32();
@@ -5334,12 +5413,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        TournamentMatchSetup.decode = function decode(reader, length) {
+        TournamentMatchSetup.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.TournamentMatchSetup();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.event_id = reader.int32();
@@ -5783,12 +5864,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        ServerHltvInfo.decode = function decode(reader, length) {
+        ServerHltvInfo.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.ServerHltvInfo();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.tv_udp_port = reader.uint32();
@@ -6312,12 +6395,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        IpAddressMask.decode = function decode(reader, length) {
+        IpAddressMask.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.IpAddressMask();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.a = reader.uint32();
@@ -6598,12 +6683,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgCsgoSteamUserStatChange.decode = function decode(reader, length) {
+        CMsgCsgoSteamUserStatChange.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgCsgoSteamUserStatChange();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.ecsgosteamuserstat = reader.int32();
@@ -6837,12 +6924,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        XpProgressData.decode = function decode(reader, length) {
+        XpProgressData.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.XpProgressData();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.xp_points = reader.uint32();
@@ -7075,12 +7164,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        MatchEndItemUpdates.decode = function decode(reader, length) {
+        MatchEndItemUpdates.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.MatchEndItemUpdates();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.item_id = reader.uint64();
@@ -7365,12 +7456,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        ScoreLeaderboardData.decode = function decode(reader, length) {
+        ScoreLeaderboardData.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.ScoreLeaderboardData();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.quest_id = reader.uint64();
@@ -7679,12 +7772,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Entry.decode = function decode(reader, length) {
+            Entry.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.ScoreLeaderboardData.Entry();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.tag = reader.uint32();
@@ -7908,12 +8003,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            AccountEntries.decode = function decode(reader, length) {
+            AccountEntries.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.ScoreLeaderboardData.AccountEntries();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.accountid = reader.uint32();
@@ -8231,12 +8328,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        PlayerQuestData.decode = function decode(reader, length) {
+        PlayerQuestData.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.PlayerQuestData();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.quester_account_id = reader.uint32();
@@ -8518,6 +8617,10 @@
              * @property {number|Long|null} [quest_id] QuestItemData quest_id
              * @property {number|null} [quest_normal_points_earned] QuestItemData quest_normal_points_earned
              * @property {number|null} [quest_bonus_points_earned] QuestItemData quest_bonus_points_earned
+             * @property {Array.<number>|null} [quest_normal_points_required] QuestItemData quest_normal_points_required
+             * @property {Array.<number>|null} [quest_reward_xp] QuestItemData quest_reward_xp
+             * @property {number|null} [quest_period] QuestItemData quest_period
+             * @property {QuestType|null} [quest_type] QuestItemData quest_type
              */
     
             /**
@@ -8529,6 +8632,8 @@
              * @param {PlayerQuestData.IQuestItemData=} [properties] Properties to set
              */
             function QuestItemData(properties) {
+                this.quest_normal_points_required = [];
+                this.quest_reward_xp = [];
                 if (properties)
                     for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
@@ -8560,6 +8665,38 @@
             QuestItemData.prototype.quest_bonus_points_earned = 0;
     
             /**
+             * QuestItemData quest_normal_points_required.
+             * @member {Array.<number>} quest_normal_points_required
+             * @memberof PlayerQuestData.QuestItemData
+             * @instance
+             */
+            QuestItemData.prototype.quest_normal_points_required = $util.emptyArray;
+    
+            /**
+             * QuestItemData quest_reward_xp.
+             * @member {Array.<number>} quest_reward_xp
+             * @memberof PlayerQuestData.QuestItemData
+             * @instance
+             */
+            QuestItemData.prototype.quest_reward_xp = $util.emptyArray;
+    
+            /**
+             * QuestItemData quest_period.
+             * @member {number} quest_period
+             * @memberof PlayerQuestData.QuestItemData
+             * @instance
+             */
+            QuestItemData.prototype.quest_period = 0;
+    
+            /**
+             * QuestItemData quest_type.
+             * @member {QuestType} quest_type
+             * @memberof PlayerQuestData.QuestItemData
+             * @instance
+             */
+            QuestItemData.prototype.quest_type = 1;
+    
+            /**
              * Creates a new QuestItemData instance using the specified properties.
              * @function create
              * @memberof PlayerQuestData.QuestItemData
@@ -8589,6 +8726,16 @@
                     writer.uint32(/* id 2, wireType 0 =*/16).int32(message.quest_normal_points_earned);
                 if (message.quest_bonus_points_earned != null && Object.hasOwnProperty.call(message, "quest_bonus_points_earned"))
                     writer.uint32(/* id 3, wireType 0 =*/24).int32(message.quest_bonus_points_earned);
+                if (message.quest_normal_points_required != null && message.quest_normal_points_required.length)
+                    for (var i = 0; i < message.quest_normal_points_required.length; ++i)
+                        writer.uint32(/* id 4, wireType 0 =*/32).int32(message.quest_normal_points_required[i]);
+                if (message.quest_reward_xp != null && message.quest_reward_xp.length)
+                    for (var i = 0; i < message.quest_reward_xp.length; ++i)
+                        writer.uint32(/* id 5, wireType 0 =*/40).int32(message.quest_reward_xp[i]);
+                if (message.quest_period != null && Object.hasOwnProperty.call(message, "quest_period"))
+                    writer.uint32(/* id 6, wireType 0 =*/48).int32(message.quest_period);
+                if (message.quest_type != null && Object.hasOwnProperty.call(message, "quest_type"))
+                    writer.uint32(/* id 7, wireType 0 =*/56).int32(message.quest_type);
                 return writer;
             };
     
@@ -8616,12 +8763,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            QuestItemData.decode = function decode(reader, length) {
+            QuestItemData.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.PlayerQuestData.QuestItemData();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.quest_id = reader.uint64();
@@ -8633,6 +8782,36 @@
                         }
                     case 3: {
                             message.quest_bonus_points_earned = reader.int32();
+                            break;
+                        }
+                    case 4: {
+                            if (!(message.quest_normal_points_required && message.quest_normal_points_required.length))
+                                message.quest_normal_points_required = [];
+                            if ((tag & 7) === 2) {
+                                var end2 = reader.uint32() + reader.pos;
+                                while (reader.pos < end2)
+                                    message.quest_normal_points_required.push(reader.int32());
+                            } else
+                                message.quest_normal_points_required.push(reader.int32());
+                            break;
+                        }
+                    case 5: {
+                            if (!(message.quest_reward_xp && message.quest_reward_xp.length))
+                                message.quest_reward_xp = [];
+                            if ((tag & 7) === 2) {
+                                var end2 = reader.uint32() + reader.pos;
+                                while (reader.pos < end2)
+                                    message.quest_reward_xp.push(reader.int32());
+                            } else
+                                message.quest_reward_xp.push(reader.int32());
+                            break;
+                        }
+                    case 6: {
+                            message.quest_period = reader.int32();
+                            break;
+                        }
+                    case 7: {
+                            message.quest_type = reader.int32();
                             break;
                         }
                     default:
@@ -8679,6 +8858,31 @@
                 if (message.quest_bonus_points_earned != null && message.hasOwnProperty("quest_bonus_points_earned"))
                     if (!$util.isInteger(message.quest_bonus_points_earned))
                         return "quest_bonus_points_earned: integer expected";
+                if (message.quest_normal_points_required != null && message.hasOwnProperty("quest_normal_points_required")) {
+                    if (!Array.isArray(message.quest_normal_points_required))
+                        return "quest_normal_points_required: array expected";
+                    for (var i = 0; i < message.quest_normal_points_required.length; ++i)
+                        if (!$util.isInteger(message.quest_normal_points_required[i]))
+                            return "quest_normal_points_required: integer[] expected";
+                }
+                if (message.quest_reward_xp != null && message.hasOwnProperty("quest_reward_xp")) {
+                    if (!Array.isArray(message.quest_reward_xp))
+                        return "quest_reward_xp: array expected";
+                    for (var i = 0; i < message.quest_reward_xp.length; ++i)
+                        if (!$util.isInteger(message.quest_reward_xp[i]))
+                            return "quest_reward_xp: integer[] expected";
+                }
+                if (message.quest_period != null && message.hasOwnProperty("quest_period"))
+                    if (!$util.isInteger(message.quest_period))
+                        return "quest_period: integer expected";
+                if (message.quest_type != null && message.hasOwnProperty("quest_type"))
+                    switch (message.quest_type) {
+                    default:
+                        return "quest_type: enum value expected";
+                    case 1:
+                    case 2:
+                        break;
+                    }
                 return null;
             };
     
@@ -8707,6 +8911,38 @@
                     message.quest_normal_points_earned = object.quest_normal_points_earned | 0;
                 if (object.quest_bonus_points_earned != null)
                     message.quest_bonus_points_earned = object.quest_bonus_points_earned | 0;
+                if (object.quest_normal_points_required) {
+                    if (!Array.isArray(object.quest_normal_points_required))
+                        throw TypeError(".PlayerQuestData.QuestItemData.quest_normal_points_required: array expected");
+                    message.quest_normal_points_required = [];
+                    for (var i = 0; i < object.quest_normal_points_required.length; ++i)
+                        message.quest_normal_points_required[i] = object.quest_normal_points_required[i] | 0;
+                }
+                if (object.quest_reward_xp) {
+                    if (!Array.isArray(object.quest_reward_xp))
+                        throw TypeError(".PlayerQuestData.QuestItemData.quest_reward_xp: array expected");
+                    message.quest_reward_xp = [];
+                    for (var i = 0; i < object.quest_reward_xp.length; ++i)
+                        message.quest_reward_xp[i] = object.quest_reward_xp[i] | 0;
+                }
+                if (object.quest_period != null)
+                    message.quest_period = object.quest_period | 0;
+                switch (object.quest_type) {
+                default:
+                    if (typeof object.quest_type === "number") {
+                        message.quest_type = object.quest_type;
+                        break;
+                    }
+                    break;
+                case "k_EQuestType_Operation":
+                case 1:
+                    message.quest_type = 1;
+                    break;
+                case "k_EQuestType_RecurringMission":
+                case 2:
+                    message.quest_type = 2;
+                    break;
+                }
                 return message;
             };
     
@@ -8723,6 +8959,10 @@
                 if (!options)
                     options = {};
                 var object = {};
+                if (options.arrays || options.defaults) {
+                    object.quest_normal_points_required = [];
+                    object.quest_reward_xp = [];
+                }
                 if (options.defaults) {
                     if ($util.Long) {
                         var long = new $util.Long(0, 0, true);
@@ -8731,6 +8971,8 @@
                         object.quest_id = options.longs === String ? "0" : 0;
                     object.quest_normal_points_earned = 0;
                     object.quest_bonus_points_earned = 0;
+                    object.quest_period = 0;
+                    object.quest_type = options.enums === String ? "k_EQuestType_Operation" : 1;
                 }
                 if (message.quest_id != null && message.hasOwnProperty("quest_id"))
                     if (typeof message.quest_id === "number")
@@ -8741,6 +8983,20 @@
                     object.quest_normal_points_earned = message.quest_normal_points_earned;
                 if (message.quest_bonus_points_earned != null && message.hasOwnProperty("quest_bonus_points_earned"))
                     object.quest_bonus_points_earned = message.quest_bonus_points_earned;
+                if (message.quest_normal_points_required && message.quest_normal_points_required.length) {
+                    object.quest_normal_points_required = [];
+                    for (var j = 0; j < message.quest_normal_points_required.length; ++j)
+                        object.quest_normal_points_required[j] = message.quest_normal_points_required[j];
+                }
+                if (message.quest_reward_xp && message.quest_reward_xp.length) {
+                    object.quest_reward_xp = [];
+                    for (var j = 0; j < message.quest_reward_xp.length; ++j)
+                        object.quest_reward_xp[j] = message.quest_reward_xp[j];
+                }
+                if (message.quest_period != null && message.hasOwnProperty("quest_period"))
+                    object.quest_period = message.quest_period;
+                if (message.quest_type != null && message.hasOwnProperty("quest_type"))
+                    object.quest_type = options.enums === String ? $root.QuestType[message.quest_type] === undefined ? message.quest_type : $root.QuestType[message.quest_type] : message.quest_type;
                 return object;
             };
     
@@ -9160,12 +9416,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        DeepPlayerStatsEntry.decode = function decode(reader, length) {
+        DeepPlayerStatsEntry.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.DeepPlayerStatsEntry();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.accountid = reader.uint32();
@@ -9865,12 +10123,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        DeepPlayerMatchEvent.decode = function decode(reader, length) {
+        DeepPlayerMatchEvent.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.DeepPlayerMatchEvent();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.accountid = reader.uint32();
@@ -10164,6 +10424,7 @@
          * @property {Uint8Array|null} [binary_data] CMsgGC_ServerQuestUpdateData binary_data
          * @property {number|null} [mm_game_mode] CMsgGC_ServerQuestUpdateData mm_game_mode
          * @property {IScoreLeaderboardData|null} [missionlbsdata] CMsgGC_ServerQuestUpdateData missionlbsdata
+         * @property {number|null} [flags] CMsgGC_ServerQuestUpdateData flags
          */
     
         /**
@@ -10215,6 +10476,14 @@
         CMsgGC_ServerQuestUpdateData.prototype.missionlbsdata = null;
     
         /**
+         * CMsgGC_ServerQuestUpdateData flags.
+         * @member {number} flags
+         * @memberof CMsgGC_ServerQuestUpdateData
+         * @instance
+         */
+        CMsgGC_ServerQuestUpdateData.prototype.flags = 0;
+    
+        /**
          * Creates a new CMsgGC_ServerQuestUpdateData instance using the specified properties.
          * @function create
          * @memberof CMsgGC_ServerQuestUpdateData
@@ -10247,6 +10516,8 @@
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.mm_game_mode);
             if (message.missionlbsdata != null && Object.hasOwnProperty.call(message, "missionlbsdata"))
                 $root.ScoreLeaderboardData.encode(message.missionlbsdata, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+            if (message.flags != null && Object.hasOwnProperty.call(message, "flags"))
+                writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.flags);
             return writer;
         };
     
@@ -10274,12 +10545,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGC_ServerQuestUpdateData.decode = function decode(reader, length) {
+        CMsgGC_ServerQuestUpdateData.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGC_ServerQuestUpdateData();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.player_quest_data && message.player_quest_data.length))
@@ -10297,6 +10570,10 @@
                     }
                 case 4: {
                         message.missionlbsdata = $root.ScoreLeaderboardData.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 5: {
+                        message.flags = reader.uint32();
                         break;
                     }
                 default:
@@ -10354,6 +10631,9 @@
                 if (error)
                     return "missionlbsdata." + error;
             }
+            if (message.flags != null && message.hasOwnProperty("flags"))
+                if (!$util.isInteger(message.flags))
+                    return "flags: integer expected";
             return null;
         };
     
@@ -10391,6 +10671,8 @@
                     throw TypeError(".CMsgGC_ServerQuestUpdateData.missionlbsdata: object expected");
                 message.missionlbsdata = $root.ScoreLeaderboardData.fromObject(object.missionlbsdata);
             }
+            if (object.flags != null)
+                message.flags = object.flags >>> 0;
             return message;
         };
     
@@ -10419,6 +10701,7 @@
                 }
                 object.mm_game_mode = 0;
                 object.missionlbsdata = null;
+                object.flags = 0;
             }
             if (message.player_quest_data && message.player_quest_data.length) {
                 object.player_quest_data = [];
@@ -10431,6 +10714,8 @@
                 object.mm_game_mode = message.mm_game_mode;
             if (message.missionlbsdata != null && message.hasOwnProperty("missionlbsdata"))
                 object.missionlbsdata = $root.ScoreLeaderboardData.toObject(message.missionlbsdata, options);
+            if (message.flags != null && message.hasOwnProperty("flags"))
+                object.flags = message.flags;
             return object;
         };
     
@@ -10581,12 +10866,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerConfirm();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.token = reader.uint32();
@@ -10846,12 +11133,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_GC2ServerReservationUpdate.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_GC2ServerReservationUpdate.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_GC2ServerReservationUpdate();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.viewers_external_total = reader.uint32();
@@ -11141,12 +11430,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchmakingStart.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchmakingStart.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingStart();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.account_ids && message.account_ids.length))
@@ -11468,12 +11759,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchmakingStop.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchmakingStop.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingStop();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.abandon = reader.int32();
@@ -11704,12 +11997,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate_Note.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate_Note.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate_Note();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.type = reader.int32();
@@ -12038,12 +12333,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchmakingClient2ServerPing.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchmakingClient2ServerPing.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingClient2ServerPing();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.gameserverpings && message.gameserverpings.length))
@@ -12595,12 +12892,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingGC2ClientUpdate();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.matchmaking = reader.int32();
@@ -13444,12 +13743,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CDataGCCStrike15_v2_TournamentMatchDraft.decode = function decode(reader, length) {
+        CDataGCCStrike15_v2_TournamentMatchDraft.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CDataGCCStrike15_v2_TournamentMatchDraft();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.event_id = reader.int32();
@@ -14038,12 +14339,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Entry.decode = function decode(reader, length) {
+            Entry.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CDataGCCStrike15_v2_TournamentMatchDraft.Entry();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.mapid = reader.int32();
@@ -14294,12 +14597,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CPreMatchInfoData.decode = function decode(reader, length) {
+        CPreMatchInfoData.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CPreMatchInfoData();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.predictions_pct = reader.int32();
@@ -14600,12 +14905,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            TeamStats.decode = function decode(reader, length) {
+            TeamStats.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CPreMatchInfoData.TeamStats();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.match_info_idxtxt = reader.int32();
@@ -14783,10 +15090,11 @@
          * @property {Array.<number>|null} [tournament_casters_account_ids] CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve tournament_casters_account_ids
          * @property {number|Long|null} [tv_relay_steamid] CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve tv_relay_steamid
          * @property {ICPreMatchInfoData|null} [pre_match_data] CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve pre_match_data
-         * @property {number|null} [rtime32_event_start] CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve rtime32_event_start
          * @property {number|null} [tv_control] CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve tv_control
          * @property {Array.<IOperationalVarValue>|null} [op_var_values] CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve op_var_values
          * @property {number|null} [socache_control] CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve socache_control
+         * @property {Array.<number>|null} [teammate_colors] CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve teammate_colors
+         * @property {number|null} [match_id_additional] CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve match_id_additional
          */
     
         /**
@@ -14805,6 +15113,7 @@
             this.tournament_teams = [];
             this.tournament_casters_account_ids = [];
             this.op_var_values = [];
+            this.teammate_colors = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -14940,14 +15249,6 @@
         CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.prototype.pre_match_data = null;
     
         /**
-         * CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve rtime32_event_start.
-         * @member {number} rtime32_event_start
-         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve
-         * @instance
-         */
-        CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.prototype.rtime32_event_start = 0;
-    
-        /**
          * CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve tv_control.
          * @member {number} tv_control
          * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve
@@ -14970,6 +15271,22 @@
          * @instance
          */
         CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.prototype.socache_control = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve teammate_colors.
+         * @member {Array.<number>} teammate_colors
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve
+         * @instance
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.prototype.teammate_colors = $util.emptyArray;
+    
+        /**
+         * CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve match_id_additional.
+         * @member {number} match_id_additional
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve
+         * @instance
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.prototype.match_id_additional = 0;
     
         /**
          * Creates a new CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve instance using the specified properties.
@@ -15031,8 +15348,6 @@
                 writer.uint32(/* id 14, wireType 0 =*/112).uint64(message.tv_relay_steamid);
             if (message.pre_match_data != null && Object.hasOwnProperty.call(message, "pre_match_data"))
                 $root.CPreMatchInfoData.encode(message.pre_match_data, writer.uint32(/* id 15, wireType 2 =*/122).fork()).ldelim();
-            if (message.rtime32_event_start != null && Object.hasOwnProperty.call(message, "rtime32_event_start"))
-                writer.uint32(/* id 16, wireType 0 =*/128).uint32(message.rtime32_event_start);
             if (message.tv_control != null && Object.hasOwnProperty.call(message, "tv_control"))
                 writer.uint32(/* id 17, wireType 0 =*/136).uint32(message.tv_control);
             if (message.flags != null && Object.hasOwnProperty.call(message, "flags"))
@@ -15042,6 +15357,11 @@
                     $root.OperationalVarValue.encode(message.op_var_values[i], writer.uint32(/* id 19, wireType 2 =*/154).fork()).ldelim();
             if (message.socache_control != null && Object.hasOwnProperty.call(message, "socache_control"))
                 writer.uint32(/* id 20, wireType 0 =*/160).uint32(message.socache_control);
+            if (message.teammate_colors != null && message.teammate_colors.length)
+                for (var i = 0; i < message.teammate_colors.length; ++i)
+                    writer.uint32(/* id 21, wireType 0 =*/168).int32(message.teammate_colors[i]);
+            if (message.match_id_additional != null && Object.hasOwnProperty.call(message, "match_id_additional"))
+                writer.uint32(/* id 22, wireType 0 =*/176).uint32(message.match_id_additional);
             return writer;
         };
     
@@ -15069,12 +15389,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.account_ids && message.account_ids.length))
@@ -15167,10 +15489,6 @@
                         message.pre_match_data = $root.CPreMatchInfoData.decode(reader, reader.uint32());
                         break;
                     }
-                case 16: {
-                        message.rtime32_event_start = reader.uint32();
-                        break;
-                    }
                 case 17: {
                         message.tv_control = reader.uint32();
                         break;
@@ -15183,6 +15501,21 @@
                     }
                 case 20: {
                         message.socache_control = reader.uint32();
+                        break;
+                    }
+                case 21: {
+                        if (!(message.teammate_colors && message.teammate_colors.length))
+                            message.teammate_colors = [];
+                        if ((tag & 7) === 2) {
+                            var end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.teammate_colors.push(reader.int32());
+                        } else
+                            message.teammate_colors.push(reader.int32());
+                        break;
+                    }
+                case 22: {
+                        message.match_id_additional = reader.uint32();
                         break;
                     }
                 default:
@@ -15302,9 +15635,6 @@
                 if (error)
                     return "pre_match_data." + error;
             }
-            if (message.rtime32_event_start != null && message.hasOwnProperty("rtime32_event_start"))
-                if (!$util.isInteger(message.rtime32_event_start))
-                    return "rtime32_event_start: integer expected";
             if (message.tv_control != null && message.hasOwnProperty("tv_control"))
                 if (!$util.isInteger(message.tv_control))
                     return "tv_control: integer expected";
@@ -15320,6 +15650,16 @@
             if (message.socache_control != null && message.hasOwnProperty("socache_control"))
                 if (!$util.isInteger(message.socache_control))
                     return "socache_control: integer expected";
+            if (message.teammate_colors != null && message.hasOwnProperty("teammate_colors")) {
+                if (!Array.isArray(message.teammate_colors))
+                    return "teammate_colors: array expected";
+                for (var i = 0; i < message.teammate_colors.length; ++i)
+                    if (!$util.isInteger(message.teammate_colors[i]))
+                        return "teammate_colors: integer[] expected";
+            }
+            if (message.match_id_additional != null && message.hasOwnProperty("match_id_additional"))
+                if (!$util.isInteger(message.match_id_additional))
+                    return "match_id_additional: integer expected";
             return null;
         };
     
@@ -15447,8 +15787,6 @@
                     throw TypeError(".CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.pre_match_data: object expected");
                 message.pre_match_data = $root.CPreMatchInfoData.fromObject(object.pre_match_data);
             }
-            if (object.rtime32_event_start != null)
-                message.rtime32_event_start = object.rtime32_event_start >>> 0;
             if (object.tv_control != null)
                 message.tv_control = object.tv_control >>> 0;
             if (object.op_var_values) {
@@ -15463,6 +15801,15 @@
             }
             if (object.socache_control != null)
                 message.socache_control = object.socache_control >>> 0;
+            if (object.teammate_colors) {
+                if (!Array.isArray(object.teammate_colors))
+                    throw TypeError(".CMsgGCCStrike15_v2_MatchmakingGC2ServerReserve.teammate_colors: array expected");
+                message.teammate_colors = [];
+                for (var i = 0; i < object.teammate_colors.length; ++i)
+                    message.teammate_colors[i] = object.teammate_colors[i] | 0;
+            }
+            if (object.match_id_additional != null)
+                message.match_id_additional = object.match_id_additional >>> 0;
             return message;
         };
     
@@ -15487,6 +15834,7 @@
                 object.tournament_teams = [];
                 object.tournament_casters_account_ids = [];
                 object.op_var_values = [];
+                object.teammate_colors = [];
             }
             if (options.defaults) {
                 object.game_type = 0;
@@ -15518,10 +15866,10 @@
                 } else
                     object.tv_relay_steamid = options.longs === String ? "0" : 0;
                 object.pre_match_data = null;
-                object.rtime32_event_start = 0;
                 object.tv_control = 0;
                 object.flags = 0;
                 object.socache_control = 0;
+                object.match_id_additional = 0;
             }
             if (message.account_ids && message.account_ids.length) {
                 object.account_ids = [];
@@ -15586,8 +15934,6 @@
                     object.tv_relay_steamid = options.longs === String ? $util.Long.prototype.toString.call(message.tv_relay_steamid) : options.longs === Number ? new $util.LongBits(message.tv_relay_steamid.low >>> 0, message.tv_relay_steamid.high >>> 0).toNumber(true) : message.tv_relay_steamid;
             if (message.pre_match_data != null && message.hasOwnProperty("pre_match_data"))
                 object.pre_match_data = $root.CPreMatchInfoData.toObject(message.pre_match_data, options);
-            if (message.rtime32_event_start != null && message.hasOwnProperty("rtime32_event_start"))
-                object.rtime32_event_start = message.rtime32_event_start;
             if (message.tv_control != null && message.hasOwnProperty("tv_control"))
                 object.tv_control = message.tv_control;
             if (message.flags != null && message.hasOwnProperty("flags"))
@@ -15599,6 +15945,13 @@
             }
             if (message.socache_control != null && message.hasOwnProperty("socache_control"))
                 object.socache_control = message.socache_control;
+            if (message.teammate_colors && message.teammate_colors.length) {
+                object.teammate_colors = [];
+                for (var j = 0; j < message.teammate_colors.length; ++j)
+                    object.teammate_colors[j] = message.teammate_colors[j];
+            }
+            if (message.match_id_additional != null && message.hasOwnProperty("match_id_additional"))
+                object.match_id_additional = message.match_id_additional;
             return object;
         };
     
@@ -15918,12 +16271,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchmakingServerReservationResponse.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchmakingServerReservationResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingServerReservationResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.reservationid = reader.uint64();
@@ -16504,12 +16859,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchmakingGC2ClientReserve.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientReserve.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingGC2ClientReserve();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.serverid = reader.uint64();
@@ -16794,6 +17151,7 @@
          * @property {Array.<number>|null} [player_spawned] CMsgGCCStrike15_v2_MatchmakingServerRoundStats player_spawned
          * @property {Array.<number>|null} [team_spawn_count] CMsgGCCStrike15_v2_MatchmakingServerRoundStats team_spawn_count
          * @property {number|null} [max_rounds] CMsgGCCStrike15_v2_MatchmakingServerRoundStats max_rounds
+         * @property {number|null} [map_id] CMsgGCCStrike15_v2_MatchmakingServerRoundStats map_id
          */
     
         /**
@@ -17076,6 +17434,14 @@
         CMsgGCCStrike15_v2_MatchmakingServerRoundStats.prototype.max_rounds = 0;
     
         /**
+         * CMsgGCCStrike15_v2_MatchmakingServerRoundStats map_id.
+         * @member {number} map_id
+         * @memberof CMsgGCCStrike15_v2_MatchmakingServerRoundStats
+         * @instance
+         */
+        CMsgGCCStrike15_v2_MatchmakingServerRoundStats.prototype.map_id = 0;
+    
+        /**
          * Creates a new CMsgGCCStrike15_v2_MatchmakingServerRoundStats instance using the specified properties.
          * @function create
          * @memberof CMsgGCCStrike15_v2_MatchmakingServerRoundStats
@@ -17177,6 +17543,8 @@
                     writer.uint32(/* id 30, wireType 0 =*/240).int32(message.team_spawn_count[i]);
             if (message.max_rounds != null && Object.hasOwnProperty.call(message, "max_rounds"))
                 writer.uint32(/* id 31, wireType 0 =*/248).uint32(message.max_rounds);
+            if (message.map_id != null && Object.hasOwnProperty.call(message, "map_id"))
+                writer.uint32(/* id 32, wireType 0 =*/256).int32(message.map_id);
             return writer;
         };
     
@@ -17204,12 +17572,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchmakingServerRoundStats.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchmakingServerRoundStats.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingServerRoundStats();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.reservationid = reader.uint64();
@@ -17447,6 +17817,10 @@
                         message.max_rounds = reader.uint32();
                         break;
                     }
+                case 32: {
+                        message.map_id = reader.int32();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -17645,6 +18019,9 @@
             if (message.max_rounds != null && message.hasOwnProperty("max_rounds"))
                 if (!$util.isInteger(message.max_rounds))
                     return "max_rounds: integer expected";
+            if (message.map_id != null && message.hasOwnProperty("map_id"))
+                if (!$util.isInteger(message.map_id))
+                    return "map_id: integer expected";
             return null;
         };
     
@@ -17818,6 +18195,8 @@
             }
             if (object.max_rounds != null)
                 message.max_rounds = object.max_rounds >>> 0;
+            if (object.map_id != null)
+                message.map_id = object.map_id | 0;
             return message;
         };
     
@@ -17872,6 +18251,7 @@
                 object.drop_info = null;
                 object.b_switched_teams = false;
                 object.max_rounds = 0;
+                object.map_id = 0;
             }
             if (message.reservationid != null && message.hasOwnProperty("reservationid"))
                 if (typeof message.reservationid === "number")
@@ -17986,6 +18366,8 @@
             }
             if (message.max_rounds != null && message.hasOwnProperty("max_rounds"))
                 object.max_rounds = message.max_rounds;
+            if (message.map_id != null && message.hasOwnProperty("map_id"))
+                object.map_id = message.map_id;
             return object;
         };
     
@@ -18100,12 +18482,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            DropInfo.decode = function decode(reader, length) {
+            DropInfo.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingServerRoundStats.DropInfo();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.account_mvp = reader.uint32();
@@ -18295,12 +18679,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchmakingClient2GCHello.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchmakingClient2GCHello.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingClient2GCHello();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 default:
                     reader.skipType(tag & 7);
@@ -18421,6 +18807,7 @@
          * @property {number|null} [player_cur_xp] CMsgGCCStrike15_v2_MatchmakingGC2ClientHello player_cur_xp
          * @property {number|null} [player_xp_bonus_flags] CMsgGCCStrike15_v2_MatchmakingGC2ClientHello player_xp_bonus_flags
          * @property {Array.<IPlayerRankingInfo>|null} [rankings] CMsgGCCStrike15_v2_MatchmakingGC2ClientHello rankings
+         * @property {number|Long|null} [owcaseid] CMsgGCCStrike15_v2_MatchmakingGC2ClientHello owcaseid
          */
     
         /**
@@ -18594,6 +18981,14 @@
         CMsgGCCStrike15_v2_MatchmakingGC2ClientHello.prototype.rankings = $util.emptyArray;
     
         /**
+         * CMsgGCCStrike15_v2_MatchmakingGC2ClientHello owcaseid.
+         * @member {number|Long} owcaseid
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientHello
+         * @instance
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientHello.prototype.owcaseid = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+        /**
          * Creates a new CMsgGCCStrike15_v2_MatchmakingGC2ClientHello instance using the specified properties.
          * @function create
          * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientHello
@@ -18658,6 +19053,8 @@
             if (message.rankings != null && message.rankings.length)
                 for (var i = 0; i < message.rankings.length; ++i)
                     $root.PlayerRankingInfo.encode(message.rankings[i], writer.uint32(/* id 20, wireType 2 =*/162).fork()).ldelim();
+            if (message.owcaseid != null && Object.hasOwnProperty.call(message, "owcaseid"))
+                writer.uint32(/* id 21, wireType 0 =*/168).uint64(message.owcaseid);
             return writer;
         };
     
@@ -18685,12 +19082,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchmakingGC2ClientHello.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientHello.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingGC2ClientHello();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.account_id = reader.uint32();
@@ -18772,6 +19171,10 @@
                         if (!(message.rankings && message.rankings.length))
                             message.rankings = [];
                         message.rankings.push($root.PlayerRankingInfo.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 21: {
+                        message.owcaseid = reader.uint64();
                         break;
                     }
                 default:
@@ -18900,6 +19303,9 @@
                         return "rankings." + error;
                 }
             }
+            if (message.owcaseid != null && message.hasOwnProperty("owcaseid"))
+                if (!$util.isInteger(message.owcaseid) && !(message.owcaseid && $util.isInteger(message.owcaseid.low) && $util.isInteger(message.owcaseid.high)))
+                    return "owcaseid: integer|Long expected";
             return null;
         };
     
@@ -19001,6 +19407,15 @@
                     message.rankings[i] = $root.PlayerRankingInfo.fromObject(object.rankings[i]);
                 }
             }
+            if (object.owcaseid != null)
+                if ($util.Long)
+                    (message.owcaseid = $util.Long.fromValue(object.owcaseid)).unsigned = true;
+                else if (typeof object.owcaseid === "string")
+                    message.owcaseid = parseInt(object.owcaseid, 10);
+                else if (typeof object.owcaseid === "number")
+                    message.owcaseid = object.owcaseid;
+                else if (typeof object.owcaseid === "object")
+                    message.owcaseid = new $util.LongBits(object.owcaseid.low >>> 0, object.owcaseid.high >>> 0).toNumber(true);
             return message;
         };
     
@@ -19039,6 +19454,11 @@
                 object.player_level = 0;
                 object.player_cur_xp = 0;
                 object.player_xp_bonus_flags = 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.owcaseid = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.owcaseid = options.longs === String ? "0" : 0;
             }
             if (message.account_id != null && message.hasOwnProperty("account_id"))
                 object.account_id = message.account_id;
@@ -19087,6 +19507,11 @@
                 for (var j = 0; j < message.rankings.length; ++j)
                     object.rankings[j] = $root.PlayerRankingInfo.toObject(message.rankings[j], options);
             }
+            if (message.owcaseid != null && message.hasOwnProperty("owcaseid"))
+                if (typeof message.owcaseid === "number")
+                    object.owcaseid = options.longs === String ? String(message.owcaseid) : message.owcaseid;
+                else
+                    object.owcaseid = options.longs === String ? $util.Long.prototype.toString.call(message.owcaseid) : options.longs === Number ? new $util.LongBits(message.owcaseid.low >>> 0, message.owcaseid.high >>> 0).toNumber(true) : message.owcaseid;
             return object;
         };
     
@@ -19206,12 +19631,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_AccountPrivacySettings.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_AccountPrivacySettings.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_AccountPrivacySettings();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.settings && message.settings.length))
@@ -19436,12 +19863,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Setting.decode = function decode(reader, length) {
+            Setting.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_AccountPrivacySettings.Setting();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.setting_type = reader.uint32();
@@ -19688,12 +20117,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchmakingGC2ClientAbandon.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientAbandon.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingGC2ClientAbandon();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.account_id = reader.uint32();
@@ -19935,12 +20366,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientGCRankUpdate.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientGCRankUpdate.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientGCRankUpdate();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.rankings && message.rankings.length))
@@ -20157,12 +20590,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchmakingOperator2GCBlogUpdate.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchmakingOperator2GCBlogUpdate.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingOperator2GCBlogUpdate();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.main_post_url = reader.string();
@@ -20393,12 +20828,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ServerNotificationForUserPenalty.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ServerNotificationForUserPenalty.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ServerNotificationForUserPenalty();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.account_id = reader.uint32();
@@ -20721,12 +21158,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientReportPlayer.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientReportPlayer.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientReportPlayer();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.account_id = reader.uint32();
@@ -21068,12 +21507,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientCommendPlayer.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientCommendPlayer.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientCommendPlayer();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.account_id = reader.uint32();
@@ -21382,12 +21823,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientReportServer.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientReportServer.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientReportServer();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.rpt_poorperf = reader.uint32();
@@ -21715,12 +22158,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientReportResponse.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientReportResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientReportResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.confirmation_id = reader.uint64();
@@ -22052,12 +22497,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientRequestWatchInfoFriends.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientRequestWatchInfoFriends.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientRequestWatchInfoFriends();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.request_id = reader.uint32();
@@ -22516,12 +22963,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        WatchableMatchInfo.decode = function decode(reader, length) {
+        WatchableMatchInfo.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.WatchableMatchInfo();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.server_ip = reader.uint32();
@@ -22998,12 +23447,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientRequestJoinFriendData.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientRequestJoinFriendData.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientRequestJoinFriendData();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.version = reader.uint32();
@@ -23333,12 +23784,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientRequestJoinServerData.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientRequestJoinServerData.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientRequestJoinServerData();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.version = reader.uint32();
@@ -23543,233 +23996,6 @@
         return CMsgGCCStrike15_v2_ClientRequestJoinServerData;
     })();
     
-    $root.CMsgGCCstrike15_v2_ClientRequestNewMission = (function() {
-    
-        /**
-         * Properties of a CMsgGCCstrike15_v2_ClientRequestNewMission.
-         * @exports ICMsgGCCstrike15_v2_ClientRequestNewMission
-         * @interface ICMsgGCCstrike15_v2_ClientRequestNewMission
-         * @property {number|null} [mission_id] CMsgGCCstrike15_v2_ClientRequestNewMission mission_id
-         * @property {number|null} [campaign_id] CMsgGCCstrike15_v2_ClientRequestNewMission campaign_id
-         */
-    
-        /**
-         * Constructs a new CMsgGCCstrike15_v2_ClientRequestNewMission.
-         * @exports CMsgGCCstrike15_v2_ClientRequestNewMission
-         * @classdesc Represents a CMsgGCCstrike15_v2_ClientRequestNewMission.
-         * @implements ICMsgGCCstrike15_v2_ClientRequestNewMission
-         * @constructor
-         * @param {ICMsgGCCstrike15_v2_ClientRequestNewMission=} [properties] Properties to set
-         */
-        function CMsgGCCstrike15_v2_ClientRequestNewMission(properties) {
-            if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-    
-        /**
-         * CMsgGCCstrike15_v2_ClientRequestNewMission mission_id.
-         * @member {number} mission_id
-         * @memberof CMsgGCCstrike15_v2_ClientRequestNewMission
-         * @instance
-         */
-        CMsgGCCstrike15_v2_ClientRequestNewMission.prototype.mission_id = 0;
-    
-        /**
-         * CMsgGCCstrike15_v2_ClientRequestNewMission campaign_id.
-         * @member {number} campaign_id
-         * @memberof CMsgGCCstrike15_v2_ClientRequestNewMission
-         * @instance
-         */
-        CMsgGCCstrike15_v2_ClientRequestNewMission.prototype.campaign_id = 0;
-    
-        /**
-         * Creates a new CMsgGCCstrike15_v2_ClientRequestNewMission instance using the specified properties.
-         * @function create
-         * @memberof CMsgGCCstrike15_v2_ClientRequestNewMission
-         * @static
-         * @param {ICMsgGCCstrike15_v2_ClientRequestNewMission=} [properties] Properties to set
-         * @returns {CMsgGCCstrike15_v2_ClientRequestNewMission} CMsgGCCstrike15_v2_ClientRequestNewMission instance
-         */
-        CMsgGCCstrike15_v2_ClientRequestNewMission.create = function create(properties) {
-            return new CMsgGCCstrike15_v2_ClientRequestNewMission(properties);
-        };
-    
-        /**
-         * Encodes the specified CMsgGCCstrike15_v2_ClientRequestNewMission message. Does not implicitly {@link CMsgGCCstrike15_v2_ClientRequestNewMission.verify|verify} messages.
-         * @function encode
-         * @memberof CMsgGCCstrike15_v2_ClientRequestNewMission
-         * @static
-         * @param {ICMsgGCCstrike15_v2_ClientRequestNewMission} message CMsgGCCstrike15_v2_ClientRequestNewMission message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CMsgGCCstrike15_v2_ClientRequestNewMission.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.mission_id != null && Object.hasOwnProperty.call(message, "mission_id"))
-                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.mission_id);
-            if (message.campaign_id != null && Object.hasOwnProperty.call(message, "campaign_id"))
-                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.campaign_id);
-            return writer;
-        };
-    
-        /**
-         * Encodes the specified CMsgGCCstrike15_v2_ClientRequestNewMission message, length delimited. Does not implicitly {@link CMsgGCCstrike15_v2_ClientRequestNewMission.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof CMsgGCCstrike15_v2_ClientRequestNewMission
-         * @static
-         * @param {ICMsgGCCstrike15_v2_ClientRequestNewMission} message CMsgGCCstrike15_v2_ClientRequestNewMission message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CMsgGCCstrike15_v2_ClientRequestNewMission.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-    
-        /**
-         * Decodes a CMsgGCCstrike15_v2_ClientRequestNewMission message from the specified reader or buffer.
-         * @function decode
-         * @memberof CMsgGCCstrike15_v2_ClientRequestNewMission
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {CMsgGCCstrike15_v2_ClientRequestNewMission} CMsgGCCstrike15_v2_ClientRequestNewMission
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CMsgGCCstrike15_v2_ClientRequestNewMission.decode = function decode(reader, length) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCstrike15_v2_ClientRequestNewMission();
-            while (reader.pos < end) {
-                var tag = reader.uint32();
-                switch (tag >>> 3) {
-                case 2: {
-                        message.mission_id = reader.uint32();
-                        break;
-                    }
-                case 3: {
-                        message.campaign_id = reader.uint32();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-    
-        /**
-         * Decodes a CMsgGCCstrike15_v2_ClientRequestNewMission message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof CMsgGCCstrike15_v2_ClientRequestNewMission
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {CMsgGCCstrike15_v2_ClientRequestNewMission} CMsgGCCstrike15_v2_ClientRequestNewMission
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CMsgGCCstrike15_v2_ClientRequestNewMission.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-    
-        /**
-         * Verifies a CMsgGCCstrike15_v2_ClientRequestNewMission message.
-         * @function verify
-         * @memberof CMsgGCCstrike15_v2_ClientRequestNewMission
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        CMsgGCCstrike15_v2_ClientRequestNewMission.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.mission_id != null && message.hasOwnProperty("mission_id"))
-                if (!$util.isInteger(message.mission_id))
-                    return "mission_id: integer expected";
-            if (message.campaign_id != null && message.hasOwnProperty("campaign_id"))
-                if (!$util.isInteger(message.campaign_id))
-                    return "campaign_id: integer expected";
-            return null;
-        };
-    
-        /**
-         * Creates a CMsgGCCstrike15_v2_ClientRequestNewMission message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof CMsgGCCstrike15_v2_ClientRequestNewMission
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {CMsgGCCstrike15_v2_ClientRequestNewMission} CMsgGCCstrike15_v2_ClientRequestNewMission
-         */
-        CMsgGCCstrike15_v2_ClientRequestNewMission.fromObject = function fromObject(object) {
-            if (object instanceof $root.CMsgGCCstrike15_v2_ClientRequestNewMission)
-                return object;
-            var message = new $root.CMsgGCCstrike15_v2_ClientRequestNewMission();
-            if (object.mission_id != null)
-                message.mission_id = object.mission_id >>> 0;
-            if (object.campaign_id != null)
-                message.campaign_id = object.campaign_id >>> 0;
-            return message;
-        };
-    
-        /**
-         * Creates a plain object from a CMsgGCCstrike15_v2_ClientRequestNewMission message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof CMsgGCCstrike15_v2_ClientRequestNewMission
-         * @static
-         * @param {CMsgGCCstrike15_v2_ClientRequestNewMission} message CMsgGCCstrike15_v2_ClientRequestNewMission
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        CMsgGCCstrike15_v2_ClientRequestNewMission.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            var object = {};
-            if (options.defaults) {
-                object.mission_id = 0;
-                object.campaign_id = 0;
-            }
-            if (message.mission_id != null && message.hasOwnProperty("mission_id"))
-                object.mission_id = message.mission_id;
-            if (message.campaign_id != null && message.hasOwnProperty("campaign_id"))
-                object.campaign_id = message.campaign_id;
-            return object;
-        };
-    
-        /**
-         * Converts this CMsgGCCstrike15_v2_ClientRequestNewMission to JSON.
-         * @function toJSON
-         * @memberof CMsgGCCstrike15_v2_ClientRequestNewMission
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        CMsgGCCstrike15_v2_ClientRequestNewMission.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-    
-        /**
-         * Gets the default type url for CMsgGCCstrike15_v2_ClientRequestNewMission
-         * @function getTypeUrl
-         * @memberof CMsgGCCstrike15_v2_ClientRequestNewMission
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        CMsgGCCstrike15_v2_ClientRequestNewMission.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/CMsgGCCstrike15_v2_ClientRequestNewMission";
-        };
-    
-        return CMsgGCCstrike15_v2_ClientRequestNewMission;
-    })();
-    
     $root.CMsgGCCstrike15_v2_ClientRedeemMissionReward = (function() {
     
         /**
@@ -23780,6 +24006,7 @@
          * @property {number|null} [redeem_id] CMsgGCCstrike15_v2_ClientRedeemMissionReward redeem_id
          * @property {number|null} [redeemable_balance] CMsgGCCstrike15_v2_ClientRedeemMissionReward redeemable_balance
          * @property {number|null} [expected_cost] CMsgGCCstrike15_v2_ClientRedeemMissionReward expected_cost
+         * @property {number|null} [bid_control] CMsgGCCstrike15_v2_ClientRedeemMissionReward bid_control
          */
     
         /**
@@ -23830,6 +24057,14 @@
         CMsgGCCstrike15_v2_ClientRedeemMissionReward.prototype.expected_cost = 0;
     
         /**
+         * CMsgGCCstrike15_v2_ClientRedeemMissionReward bid_control.
+         * @member {number} bid_control
+         * @memberof CMsgGCCstrike15_v2_ClientRedeemMissionReward
+         * @instance
+         */
+        CMsgGCCstrike15_v2_ClientRedeemMissionReward.prototype.bid_control = 0;
+    
+        /**
          * Creates a new CMsgGCCstrike15_v2_ClientRedeemMissionReward instance using the specified properties.
          * @function create
          * @memberof CMsgGCCstrike15_v2_ClientRedeemMissionReward
@@ -23861,6 +24096,8 @@
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.redeemable_balance);
             if (message.expected_cost != null && Object.hasOwnProperty.call(message, "expected_cost"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.expected_cost);
+            if (message.bid_control != null && Object.hasOwnProperty.call(message, "bid_control"))
+                writer.uint32(/* id 5, wireType 0 =*/40).int32(message.bid_control);
             return writer;
         };
     
@@ -23888,12 +24125,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCstrike15_v2_ClientRedeemMissionReward.decode = function decode(reader, length) {
+        CMsgGCCstrike15_v2_ClientRedeemMissionReward.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCstrike15_v2_ClientRedeemMissionReward();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.campaign_id = reader.uint32();
@@ -23909,6 +24148,10 @@
                     }
                 case 4: {
                         message.expected_cost = reader.uint32();
+                        break;
+                    }
+                case 5: {
+                        message.bid_control = reader.int32();
                         break;
                     }
                 default:
@@ -23958,6 +24201,9 @@
             if (message.expected_cost != null && message.hasOwnProperty("expected_cost"))
                 if (!$util.isInteger(message.expected_cost))
                     return "expected_cost: integer expected";
+            if (message.bid_control != null && message.hasOwnProperty("bid_control"))
+                if (!$util.isInteger(message.bid_control))
+                    return "bid_control: integer expected";
             return null;
         };
     
@@ -23981,6 +24227,8 @@
                 message.redeemable_balance = object.redeemable_balance >>> 0;
             if (object.expected_cost != null)
                 message.expected_cost = object.expected_cost >>> 0;
+            if (object.bid_control != null)
+                message.bid_control = object.bid_control | 0;
             return message;
         };
     
@@ -24002,6 +24250,7 @@
                 object.redeem_id = 0;
                 object.redeemable_balance = 0;
                 object.expected_cost = 0;
+                object.bid_control = 0;
             }
             if (message.campaign_id != null && message.hasOwnProperty("campaign_id"))
                 object.campaign_id = message.campaign_id;
@@ -24011,6 +24260,8 @@
                 object.redeemable_balance = message.redeemable_balance;
             if (message.expected_cost != null && message.hasOwnProperty("expected_cost"))
                 object.expected_cost = message.expected_cost;
+            if (message.bid_control != null && message.hasOwnProperty("bid_control"))
+                object.bid_control = message.bid_control;
             return object;
         };
     
@@ -24152,12 +24403,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCstrike15_v2_ClientRedeemFreeReward.decode = function decode(reader, length) {
+        CMsgGCCstrike15_v2_ClientRedeemFreeReward.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCstrike15_v2_ClientRedeemFreeReward();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.generation_time = reader.uint32();
@@ -24511,12 +24764,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCstrike15_v2_GC2ServerNotifyXPRewarded.decode = function decode(reader, length) {
+        CMsgGCCstrike15_v2_GC2ServerNotifyXPRewarded.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCstrike15_v2_GC2ServerNotifyXPRewarded();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.xp_progress_data && message.xp_progress_data.length))
@@ -24843,12 +25098,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientNetworkConfig.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientNetworkConfig.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientNetworkConfig();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.data = reader.bytes();
@@ -25079,12 +25336,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_ClientDeepStats.decode = function decode(reader, length) {
+        CMsgGCCStrike15_ClientDeepStats.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_ClientDeepStats();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.account_id = reader.uint32();
@@ -25351,12 +25610,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            DeepStatsRange.decode = function decode(reader, length) {
+            DeepStatsRange.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_ClientDeepStats.DeepStatsRange();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.begin = reader.uint32();
@@ -25592,12 +25853,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            DeepStatsMatch.decode = function decode(reader, length) {
+            DeepStatsMatch.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_ClientDeepStats.DeepStatsMatch();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.player = $root.DeepPlayerStatsEntry.decode(reader, reader.uint32());
@@ -25872,12 +26135,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_WatchInfoUsers.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_WatchInfoUsers.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_WatchInfoUsers();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.request_id = reader.uint32();
@@ -26187,12 +26452,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientRequestPlayersProfile.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientRequestPlayersProfile.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientRequestPlayersProfile();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.request_id__deprecated = reader.uint32();
@@ -26460,12 +26727,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_PlayersProfile.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_PlayersProfile.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_PlayersProfile();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.request_id = reader.uint32();
@@ -26608,6 +26877,1073 @@
         };
     
         return CMsgGCCStrike15_v2_PlayersProfile;
+    })();
+    
+    $root.CMsgGCCStrike15_v2_PremierSeasonSummary = (function() {
+    
+        /**
+         * Properties of a CMsgGCCStrike15_v2_PremierSeasonSummary.
+         * @exports ICMsgGCCStrike15_v2_PremierSeasonSummary
+         * @interface ICMsgGCCStrike15_v2_PremierSeasonSummary
+         * @property {number|null} [account_id] CMsgGCCStrike15_v2_PremierSeasonSummary account_id
+         * @property {number|null} [season_id] CMsgGCCStrike15_v2_PremierSeasonSummary season_id
+         * @property {Array.<CMsgGCCStrike15_v2_PremierSeasonSummary.IDataPerWeek>|null} [data_per_week] CMsgGCCStrike15_v2_PremierSeasonSummary data_per_week
+         * @property {Array.<CMsgGCCStrike15_v2_PremierSeasonSummary.IDataPerMap>|null} [data_per_map] CMsgGCCStrike15_v2_PremierSeasonSummary data_per_map
+         */
+    
+        /**
+         * Constructs a new CMsgGCCStrike15_v2_PremierSeasonSummary.
+         * @exports CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @classdesc Represents a CMsgGCCStrike15_v2_PremierSeasonSummary.
+         * @implements ICMsgGCCStrike15_v2_PremierSeasonSummary
+         * @constructor
+         * @param {ICMsgGCCStrike15_v2_PremierSeasonSummary=} [properties] Properties to set
+         */
+        function CMsgGCCStrike15_v2_PremierSeasonSummary(properties) {
+            this.data_per_week = [];
+            this.data_per_map = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgGCCStrike15_v2_PremierSeasonSummary account_id.
+         * @member {number} account_id
+         * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @instance
+         */
+        CMsgGCCStrike15_v2_PremierSeasonSummary.prototype.account_id = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_PremierSeasonSummary season_id.
+         * @member {number} season_id
+         * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @instance
+         */
+        CMsgGCCStrike15_v2_PremierSeasonSummary.prototype.season_id = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_PremierSeasonSummary data_per_week.
+         * @member {Array.<CMsgGCCStrike15_v2_PremierSeasonSummary.IDataPerWeek>} data_per_week
+         * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @instance
+         */
+        CMsgGCCStrike15_v2_PremierSeasonSummary.prototype.data_per_week = $util.emptyArray;
+    
+        /**
+         * CMsgGCCStrike15_v2_PremierSeasonSummary data_per_map.
+         * @member {Array.<CMsgGCCStrike15_v2_PremierSeasonSummary.IDataPerMap>} data_per_map
+         * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @instance
+         */
+        CMsgGCCStrike15_v2_PremierSeasonSummary.prototype.data_per_map = $util.emptyArray;
+    
+        /**
+         * Creates a new CMsgGCCStrike15_v2_PremierSeasonSummary instance using the specified properties.
+         * @function create
+         * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @static
+         * @param {ICMsgGCCStrike15_v2_PremierSeasonSummary=} [properties] Properties to set
+         * @returns {CMsgGCCStrike15_v2_PremierSeasonSummary} CMsgGCCStrike15_v2_PremierSeasonSummary instance
+         */
+        CMsgGCCStrike15_v2_PremierSeasonSummary.create = function create(properties) {
+            return new CMsgGCCStrike15_v2_PremierSeasonSummary(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_v2_PremierSeasonSummary message. Does not implicitly {@link CMsgGCCStrike15_v2_PremierSeasonSummary.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @static
+         * @param {ICMsgGCCStrike15_v2_PremierSeasonSummary} message CMsgGCCStrike15_v2_PremierSeasonSummary message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_v2_PremierSeasonSummary.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.account_id);
+            if (message.season_id != null && Object.hasOwnProperty.call(message, "season_id"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.season_id);
+            if (message.data_per_week != null && message.data_per_week.length)
+                for (var i = 0; i < message.data_per_week.length; ++i)
+                    $root.CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek.encode(message.data_per_week[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+            if (message.data_per_map != null && message.data_per_map.length)
+                for (var i = 0; i < message.data_per_map.length; ++i)
+                    $root.CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap.encode(message.data_per_map[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_v2_PremierSeasonSummary message, length delimited. Does not implicitly {@link CMsgGCCStrike15_v2_PremierSeasonSummary.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @static
+         * @param {ICMsgGCCStrike15_v2_PremierSeasonSummary} message CMsgGCCStrike15_v2_PremierSeasonSummary message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_v2_PremierSeasonSummary.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_v2_PremierSeasonSummary message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgGCCStrike15_v2_PremierSeasonSummary} CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_v2_PremierSeasonSummary.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_PremierSeasonSummary();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.account_id = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.season_id = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        if (!(message.data_per_week && message.data_per_week.length))
+                            message.data_per_week = [];
+                        message.data_per_week.push($root.CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 4: {
+                        if (!(message.data_per_map && message.data_per_map.length))
+                            message.data_per_map = [];
+                        message.data_per_map.push($root.CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_v2_PremierSeasonSummary message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgGCCStrike15_v2_PremierSeasonSummary} CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_v2_PremierSeasonSummary.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgGCCStrike15_v2_PremierSeasonSummary message.
+         * @function verify
+         * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgGCCStrike15_v2_PremierSeasonSummary.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.account_id != null && message.hasOwnProperty("account_id"))
+                if (!$util.isInteger(message.account_id))
+                    return "account_id: integer expected";
+            if (message.season_id != null && message.hasOwnProperty("season_id"))
+                if (!$util.isInteger(message.season_id))
+                    return "season_id: integer expected";
+            if (message.data_per_week != null && message.hasOwnProperty("data_per_week")) {
+                if (!Array.isArray(message.data_per_week))
+                    return "data_per_week: array expected";
+                for (var i = 0; i < message.data_per_week.length; ++i) {
+                    var error = $root.CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek.verify(message.data_per_week[i]);
+                    if (error)
+                        return "data_per_week." + error;
+                }
+            }
+            if (message.data_per_map != null && message.hasOwnProperty("data_per_map")) {
+                if (!Array.isArray(message.data_per_map))
+                    return "data_per_map: array expected";
+                for (var i = 0; i < message.data_per_map.length; ++i) {
+                    var error = $root.CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap.verify(message.data_per_map[i]);
+                    if (error)
+                        return "data_per_map." + error;
+                }
+            }
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgGCCStrike15_v2_PremierSeasonSummary message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgGCCStrike15_v2_PremierSeasonSummary} CMsgGCCStrike15_v2_PremierSeasonSummary
+         */
+        CMsgGCCStrike15_v2_PremierSeasonSummary.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgGCCStrike15_v2_PremierSeasonSummary)
+                return object;
+            var message = new $root.CMsgGCCStrike15_v2_PremierSeasonSummary();
+            if (object.account_id != null)
+                message.account_id = object.account_id >>> 0;
+            if (object.season_id != null)
+                message.season_id = object.season_id >>> 0;
+            if (object.data_per_week) {
+                if (!Array.isArray(object.data_per_week))
+                    throw TypeError(".CMsgGCCStrike15_v2_PremierSeasonSummary.data_per_week: array expected");
+                message.data_per_week = [];
+                for (var i = 0; i < object.data_per_week.length; ++i) {
+                    if (typeof object.data_per_week[i] !== "object")
+                        throw TypeError(".CMsgGCCStrike15_v2_PremierSeasonSummary.data_per_week: object expected");
+                    message.data_per_week[i] = $root.CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek.fromObject(object.data_per_week[i]);
+                }
+            }
+            if (object.data_per_map) {
+                if (!Array.isArray(object.data_per_map))
+                    throw TypeError(".CMsgGCCStrike15_v2_PremierSeasonSummary.data_per_map: array expected");
+                message.data_per_map = [];
+                for (var i = 0; i < object.data_per_map.length; ++i) {
+                    if (typeof object.data_per_map[i] !== "object")
+                        throw TypeError(".CMsgGCCStrike15_v2_PremierSeasonSummary.data_per_map: object expected");
+                    message.data_per_map[i] = $root.CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap.fromObject(object.data_per_map[i]);
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgGCCStrike15_v2_PremierSeasonSummary message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @static
+         * @param {CMsgGCCStrike15_v2_PremierSeasonSummary} message CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgGCCStrike15_v2_PremierSeasonSummary.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults) {
+                object.data_per_week = [];
+                object.data_per_map = [];
+            }
+            if (options.defaults) {
+                object.account_id = 0;
+                object.season_id = 0;
+            }
+            if (message.account_id != null && message.hasOwnProperty("account_id"))
+                object.account_id = message.account_id;
+            if (message.season_id != null && message.hasOwnProperty("season_id"))
+                object.season_id = message.season_id;
+            if (message.data_per_week && message.data_per_week.length) {
+                object.data_per_week = [];
+                for (var j = 0; j < message.data_per_week.length; ++j)
+                    object.data_per_week[j] = $root.CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek.toObject(message.data_per_week[j], options);
+            }
+            if (message.data_per_map && message.data_per_map.length) {
+                object.data_per_map = [];
+                for (var j = 0; j < message.data_per_map.length; ++j)
+                    object.data_per_map[j] = $root.CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap.toObject(message.data_per_map[j], options);
+            }
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgGCCStrike15_v2_PremierSeasonSummary to JSON.
+         * @function toJSON
+         * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgGCCStrike15_v2_PremierSeasonSummary.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @function getTypeUrl
+         * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCCStrike15_v2_PremierSeasonSummary.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCCStrike15_v2_PremierSeasonSummary";
+        };
+    
+        CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek = (function() {
+    
+            /**
+             * Properties of a DataPerWeek.
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+             * @interface IDataPerWeek
+             * @property {number|Long|null} [week_id] DataPerWeek week_id
+             * @property {number|null} [rank_id] DataPerWeek rank_id
+             * @property {number|null} [matches_played] DataPerWeek matches_played
+             */
+    
+            /**
+             * Constructs a new DataPerWeek.
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+             * @classdesc Represents a DataPerWeek.
+             * @implements IDataPerWeek
+             * @constructor
+             * @param {CMsgGCCStrike15_v2_PremierSeasonSummary.IDataPerWeek=} [properties] Properties to set
+             */
+            function DataPerWeek(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * DataPerWeek week_id.
+             * @member {number|Long} week_id
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek
+             * @instance
+             */
+            DataPerWeek.prototype.week_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+            /**
+             * DataPerWeek rank_id.
+             * @member {number} rank_id
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek
+             * @instance
+             */
+            DataPerWeek.prototype.rank_id = 0;
+    
+            /**
+             * DataPerWeek matches_played.
+             * @member {number} matches_played
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek
+             * @instance
+             */
+            DataPerWeek.prototype.matches_played = 0;
+    
+            /**
+             * Creates a new DataPerWeek instance using the specified properties.
+             * @function create
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek
+             * @static
+             * @param {CMsgGCCStrike15_v2_PremierSeasonSummary.IDataPerWeek=} [properties] Properties to set
+             * @returns {CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek} DataPerWeek instance
+             */
+            DataPerWeek.create = function create(properties) {
+                return new DataPerWeek(properties);
+            };
+    
+            /**
+             * Encodes the specified DataPerWeek message. Does not implicitly {@link CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek.verify|verify} messages.
+             * @function encode
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek
+             * @static
+             * @param {CMsgGCCStrike15_v2_PremierSeasonSummary.IDataPerWeek} message DataPerWeek message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            DataPerWeek.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.week_id != null && Object.hasOwnProperty.call(message, "week_id"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.week_id);
+                if (message.rank_id != null && Object.hasOwnProperty.call(message, "rank_id"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.rank_id);
+                if (message.matches_played != null && Object.hasOwnProperty.call(message, "matches_played"))
+                    writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.matches_played);
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified DataPerWeek message, length delimited. Does not implicitly {@link CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek
+             * @static
+             * @param {CMsgGCCStrike15_v2_PremierSeasonSummary.IDataPerWeek} message DataPerWeek message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            DataPerWeek.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes a DataPerWeek message from the specified reader or buffer.
+             * @function decode
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek} DataPerWeek
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            DataPerWeek.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.week_id = reader.uint64();
+                            break;
+                        }
+                    case 2: {
+                            message.rank_id = reader.uint32();
+                            break;
+                        }
+                    case 3: {
+                            message.matches_played = reader.uint32();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes a DataPerWeek message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek} DataPerWeek
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            DataPerWeek.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies a DataPerWeek message.
+             * @function verify
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            DataPerWeek.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.week_id != null && message.hasOwnProperty("week_id"))
+                    if (!$util.isInteger(message.week_id) && !(message.week_id && $util.isInteger(message.week_id.low) && $util.isInteger(message.week_id.high)))
+                        return "week_id: integer|Long expected";
+                if (message.rank_id != null && message.hasOwnProperty("rank_id"))
+                    if (!$util.isInteger(message.rank_id))
+                        return "rank_id: integer expected";
+                if (message.matches_played != null && message.hasOwnProperty("matches_played"))
+                    if (!$util.isInteger(message.matches_played))
+                        return "matches_played: integer expected";
+                return null;
+            };
+    
+            /**
+             * Creates a DataPerWeek message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek} DataPerWeek
+             */
+            DataPerWeek.fromObject = function fromObject(object) {
+                if (object instanceof $root.CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek)
+                    return object;
+                var message = new $root.CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek();
+                if (object.week_id != null)
+                    if ($util.Long)
+                        (message.week_id = $util.Long.fromValue(object.week_id)).unsigned = true;
+                    else if (typeof object.week_id === "string")
+                        message.week_id = parseInt(object.week_id, 10);
+                    else if (typeof object.week_id === "number")
+                        message.week_id = object.week_id;
+                    else if (typeof object.week_id === "object")
+                        message.week_id = new $util.LongBits(object.week_id.low >>> 0, object.week_id.high >>> 0).toNumber(true);
+                if (object.rank_id != null)
+                    message.rank_id = object.rank_id >>> 0;
+                if (object.matches_played != null)
+                    message.matches_played = object.matches_played >>> 0;
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from a DataPerWeek message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek
+             * @static
+             * @param {CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek} message DataPerWeek
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            DataPerWeek.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    if ($util.Long) {
+                        var long = new $util.Long(0, 0, true);
+                        object.week_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    } else
+                        object.week_id = options.longs === String ? "0" : 0;
+                    object.rank_id = 0;
+                    object.matches_played = 0;
+                }
+                if (message.week_id != null && message.hasOwnProperty("week_id"))
+                    if (typeof message.week_id === "number")
+                        object.week_id = options.longs === String ? String(message.week_id) : message.week_id;
+                    else
+                        object.week_id = options.longs === String ? $util.Long.prototype.toString.call(message.week_id) : options.longs === Number ? new $util.LongBits(message.week_id.low >>> 0, message.week_id.high >>> 0).toNumber(true) : message.week_id;
+                if (message.rank_id != null && message.hasOwnProperty("rank_id"))
+                    object.rank_id = message.rank_id;
+                if (message.matches_played != null && message.hasOwnProperty("matches_played"))
+                    object.matches_played = message.matches_played;
+                return object;
+            };
+    
+            /**
+             * Converts this DataPerWeek to JSON.
+             * @function toJSON
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            DataPerWeek.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            /**
+             * Gets the default type url for DataPerWeek
+             * @function getTypeUrl
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            DataPerWeek.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerWeek";
+            };
+    
+            return DataPerWeek;
+        })();
+    
+        CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap = (function() {
+    
+            /**
+             * Properties of a DataPerMap.
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+             * @interface IDataPerMap
+             * @property {number|null} [map_id] DataPerMap map_id
+             * @property {number|null} [wins] DataPerMap wins
+             * @property {number|null} [ties] DataPerMap ties
+             * @property {number|null} [losses] DataPerMap losses
+             * @property {number|null} [rounds] DataPerMap rounds
+             * @property {number|null} [kills] DataPerMap kills
+             * @property {number|null} [headshots] DataPerMap headshots
+             * @property {number|null} [assists] DataPerMap assists
+             * @property {number|null} [deaths] DataPerMap deaths
+             * @property {number|null} [mvps] DataPerMap mvps
+             * @property {number|null} [rounds_3k] DataPerMap rounds_3k
+             * @property {number|null} [rounds_4k] DataPerMap rounds_4k
+             * @property {number|null} [rounds_5k] DataPerMap rounds_5k
+             */
+    
+            /**
+             * Constructs a new DataPerMap.
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary
+             * @classdesc Represents a DataPerMap.
+             * @implements IDataPerMap
+             * @constructor
+             * @param {CMsgGCCStrike15_v2_PremierSeasonSummary.IDataPerMap=} [properties] Properties to set
+             */
+            function DataPerMap(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * DataPerMap map_id.
+             * @member {number} map_id
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @instance
+             */
+            DataPerMap.prototype.map_id = 0;
+    
+            /**
+             * DataPerMap wins.
+             * @member {number} wins
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @instance
+             */
+            DataPerMap.prototype.wins = 0;
+    
+            /**
+             * DataPerMap ties.
+             * @member {number} ties
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @instance
+             */
+            DataPerMap.prototype.ties = 0;
+    
+            /**
+             * DataPerMap losses.
+             * @member {number} losses
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @instance
+             */
+            DataPerMap.prototype.losses = 0;
+    
+            /**
+             * DataPerMap rounds.
+             * @member {number} rounds
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @instance
+             */
+            DataPerMap.prototype.rounds = 0;
+    
+            /**
+             * DataPerMap kills.
+             * @member {number} kills
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @instance
+             */
+            DataPerMap.prototype.kills = 0;
+    
+            /**
+             * DataPerMap headshots.
+             * @member {number} headshots
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @instance
+             */
+            DataPerMap.prototype.headshots = 0;
+    
+            /**
+             * DataPerMap assists.
+             * @member {number} assists
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @instance
+             */
+            DataPerMap.prototype.assists = 0;
+    
+            /**
+             * DataPerMap deaths.
+             * @member {number} deaths
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @instance
+             */
+            DataPerMap.prototype.deaths = 0;
+    
+            /**
+             * DataPerMap mvps.
+             * @member {number} mvps
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @instance
+             */
+            DataPerMap.prototype.mvps = 0;
+    
+            /**
+             * DataPerMap rounds_3k.
+             * @member {number} rounds_3k
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @instance
+             */
+            DataPerMap.prototype.rounds_3k = 0;
+    
+            /**
+             * DataPerMap rounds_4k.
+             * @member {number} rounds_4k
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @instance
+             */
+            DataPerMap.prototype.rounds_4k = 0;
+    
+            /**
+             * DataPerMap rounds_5k.
+             * @member {number} rounds_5k
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @instance
+             */
+            DataPerMap.prototype.rounds_5k = 0;
+    
+            /**
+             * Creates a new DataPerMap instance using the specified properties.
+             * @function create
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @static
+             * @param {CMsgGCCStrike15_v2_PremierSeasonSummary.IDataPerMap=} [properties] Properties to set
+             * @returns {CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap} DataPerMap instance
+             */
+            DataPerMap.create = function create(properties) {
+                return new DataPerMap(properties);
+            };
+    
+            /**
+             * Encodes the specified DataPerMap message. Does not implicitly {@link CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap.verify|verify} messages.
+             * @function encode
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @static
+             * @param {CMsgGCCStrike15_v2_PremierSeasonSummary.IDataPerMap} message DataPerMap message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            DataPerMap.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.map_id != null && Object.hasOwnProperty.call(message, "map_id"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.map_id);
+                if (message.wins != null && Object.hasOwnProperty.call(message, "wins"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.wins);
+                if (message.ties != null && Object.hasOwnProperty.call(message, "ties"))
+                    writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.ties);
+                if (message.losses != null && Object.hasOwnProperty.call(message, "losses"))
+                    writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.losses);
+                if (message.rounds != null && Object.hasOwnProperty.call(message, "rounds"))
+                    writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.rounds);
+                if (message.kills != null && Object.hasOwnProperty.call(message, "kills"))
+                    writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.kills);
+                if (message.headshots != null && Object.hasOwnProperty.call(message, "headshots"))
+                    writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.headshots);
+                if (message.assists != null && Object.hasOwnProperty.call(message, "assists"))
+                    writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.assists);
+                if (message.deaths != null && Object.hasOwnProperty.call(message, "deaths"))
+                    writer.uint32(/* id 9, wireType 0 =*/72).uint32(message.deaths);
+                if (message.mvps != null && Object.hasOwnProperty.call(message, "mvps"))
+                    writer.uint32(/* id 10, wireType 0 =*/80).uint32(message.mvps);
+                if (message.rounds_3k != null && Object.hasOwnProperty.call(message, "rounds_3k"))
+                    writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.rounds_3k);
+                if (message.rounds_4k != null && Object.hasOwnProperty.call(message, "rounds_4k"))
+                    writer.uint32(/* id 12, wireType 0 =*/96).uint32(message.rounds_4k);
+                if (message.rounds_5k != null && Object.hasOwnProperty.call(message, "rounds_5k"))
+                    writer.uint32(/* id 13, wireType 0 =*/104).uint32(message.rounds_5k);
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified DataPerMap message, length delimited. Does not implicitly {@link CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @static
+             * @param {CMsgGCCStrike15_v2_PremierSeasonSummary.IDataPerMap} message DataPerMap message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            DataPerMap.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes a DataPerMap message from the specified reader or buffer.
+             * @function decode
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap} DataPerMap
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            DataPerMap.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.map_id = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            message.wins = reader.uint32();
+                            break;
+                        }
+                    case 3: {
+                            message.ties = reader.uint32();
+                            break;
+                        }
+                    case 4: {
+                            message.losses = reader.uint32();
+                            break;
+                        }
+                    case 5: {
+                            message.rounds = reader.uint32();
+                            break;
+                        }
+                    case 6: {
+                            message.kills = reader.uint32();
+                            break;
+                        }
+                    case 7: {
+                            message.headshots = reader.uint32();
+                            break;
+                        }
+                    case 8: {
+                            message.assists = reader.uint32();
+                            break;
+                        }
+                    case 9: {
+                            message.deaths = reader.uint32();
+                            break;
+                        }
+                    case 10: {
+                            message.mvps = reader.uint32();
+                            break;
+                        }
+                    case 11: {
+                            message.rounds_3k = reader.uint32();
+                            break;
+                        }
+                    case 12: {
+                            message.rounds_4k = reader.uint32();
+                            break;
+                        }
+                    case 13: {
+                            message.rounds_5k = reader.uint32();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes a DataPerMap message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap} DataPerMap
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            DataPerMap.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies a DataPerMap message.
+             * @function verify
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            DataPerMap.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.map_id != null && message.hasOwnProperty("map_id"))
+                    if (!$util.isInteger(message.map_id))
+                        return "map_id: integer expected";
+                if (message.wins != null && message.hasOwnProperty("wins"))
+                    if (!$util.isInteger(message.wins))
+                        return "wins: integer expected";
+                if (message.ties != null && message.hasOwnProperty("ties"))
+                    if (!$util.isInteger(message.ties))
+                        return "ties: integer expected";
+                if (message.losses != null && message.hasOwnProperty("losses"))
+                    if (!$util.isInteger(message.losses))
+                        return "losses: integer expected";
+                if (message.rounds != null && message.hasOwnProperty("rounds"))
+                    if (!$util.isInteger(message.rounds))
+                        return "rounds: integer expected";
+                if (message.kills != null && message.hasOwnProperty("kills"))
+                    if (!$util.isInteger(message.kills))
+                        return "kills: integer expected";
+                if (message.headshots != null && message.hasOwnProperty("headshots"))
+                    if (!$util.isInteger(message.headshots))
+                        return "headshots: integer expected";
+                if (message.assists != null && message.hasOwnProperty("assists"))
+                    if (!$util.isInteger(message.assists))
+                        return "assists: integer expected";
+                if (message.deaths != null && message.hasOwnProperty("deaths"))
+                    if (!$util.isInteger(message.deaths))
+                        return "deaths: integer expected";
+                if (message.mvps != null && message.hasOwnProperty("mvps"))
+                    if (!$util.isInteger(message.mvps))
+                        return "mvps: integer expected";
+                if (message.rounds_3k != null && message.hasOwnProperty("rounds_3k"))
+                    if (!$util.isInteger(message.rounds_3k))
+                        return "rounds_3k: integer expected";
+                if (message.rounds_4k != null && message.hasOwnProperty("rounds_4k"))
+                    if (!$util.isInteger(message.rounds_4k))
+                        return "rounds_4k: integer expected";
+                if (message.rounds_5k != null && message.hasOwnProperty("rounds_5k"))
+                    if (!$util.isInteger(message.rounds_5k))
+                        return "rounds_5k: integer expected";
+                return null;
+            };
+    
+            /**
+             * Creates a DataPerMap message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap} DataPerMap
+             */
+            DataPerMap.fromObject = function fromObject(object) {
+                if (object instanceof $root.CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap)
+                    return object;
+                var message = new $root.CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap();
+                if (object.map_id != null)
+                    message.map_id = object.map_id >>> 0;
+                if (object.wins != null)
+                    message.wins = object.wins >>> 0;
+                if (object.ties != null)
+                    message.ties = object.ties >>> 0;
+                if (object.losses != null)
+                    message.losses = object.losses >>> 0;
+                if (object.rounds != null)
+                    message.rounds = object.rounds >>> 0;
+                if (object.kills != null)
+                    message.kills = object.kills >>> 0;
+                if (object.headshots != null)
+                    message.headshots = object.headshots >>> 0;
+                if (object.assists != null)
+                    message.assists = object.assists >>> 0;
+                if (object.deaths != null)
+                    message.deaths = object.deaths >>> 0;
+                if (object.mvps != null)
+                    message.mvps = object.mvps >>> 0;
+                if (object.rounds_3k != null)
+                    message.rounds_3k = object.rounds_3k >>> 0;
+                if (object.rounds_4k != null)
+                    message.rounds_4k = object.rounds_4k >>> 0;
+                if (object.rounds_5k != null)
+                    message.rounds_5k = object.rounds_5k >>> 0;
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from a DataPerMap message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @static
+             * @param {CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap} message DataPerMap
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            DataPerMap.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.map_id = 0;
+                    object.wins = 0;
+                    object.ties = 0;
+                    object.losses = 0;
+                    object.rounds = 0;
+                    object.kills = 0;
+                    object.headshots = 0;
+                    object.assists = 0;
+                    object.deaths = 0;
+                    object.mvps = 0;
+                    object.rounds_3k = 0;
+                    object.rounds_4k = 0;
+                    object.rounds_5k = 0;
+                }
+                if (message.map_id != null && message.hasOwnProperty("map_id"))
+                    object.map_id = message.map_id;
+                if (message.wins != null && message.hasOwnProperty("wins"))
+                    object.wins = message.wins;
+                if (message.ties != null && message.hasOwnProperty("ties"))
+                    object.ties = message.ties;
+                if (message.losses != null && message.hasOwnProperty("losses"))
+                    object.losses = message.losses;
+                if (message.rounds != null && message.hasOwnProperty("rounds"))
+                    object.rounds = message.rounds;
+                if (message.kills != null && message.hasOwnProperty("kills"))
+                    object.kills = message.kills;
+                if (message.headshots != null && message.hasOwnProperty("headshots"))
+                    object.headshots = message.headshots;
+                if (message.assists != null && message.hasOwnProperty("assists"))
+                    object.assists = message.assists;
+                if (message.deaths != null && message.hasOwnProperty("deaths"))
+                    object.deaths = message.deaths;
+                if (message.mvps != null && message.hasOwnProperty("mvps"))
+                    object.mvps = message.mvps;
+                if (message.rounds_3k != null && message.hasOwnProperty("rounds_3k"))
+                    object.rounds_3k = message.rounds_3k;
+                if (message.rounds_4k != null && message.hasOwnProperty("rounds_4k"))
+                    object.rounds_4k = message.rounds_4k;
+                if (message.rounds_5k != null && message.hasOwnProperty("rounds_5k"))
+                    object.rounds_5k = message.rounds_5k;
+                return object;
+            };
+    
+            /**
+             * Converts this DataPerMap to JSON.
+             * @function toJSON
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            DataPerMap.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            /**
+             * Gets the default type url for DataPerMap
+             * @function getTypeUrl
+             * @memberof CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            DataPerMap.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgGCCStrike15_v2_PremierSeasonSummary.DataPerMap";
+            };
+    
+            return DataPerMap;
+        })();
+    
+        return CMsgGCCStrike15_v2_PremierSeasonSummary;
     })();
     
     $root.CMsgGCCStrike15_v2_PlayerOverwatchCaseUpdate = (function() {
@@ -26772,12 +28108,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_PlayerOverwatchCaseUpdate.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_PlayerOverwatchCaseUpdate.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_PlayerOverwatchCaseUpdate();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.caseid = reader.uint64();
@@ -27184,12 +28522,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_PlayerOverwatchCaseAssignment.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_PlayerOverwatchCaseAssignment.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_PlayerOverwatchCaseAssignment();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.caseid = reader.uint64();
@@ -27533,12 +28873,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_PlayerOverwatchCaseStatus.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_PlayerOverwatchCaseStatus.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_PlayerOverwatchCaseStatus();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.caseid = reader.uint64();
@@ -27774,12 +29116,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CClientHeaderOverwatchEvidence.decode = function decode(reader, length) {
+        CClientHeaderOverwatchEvidence.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CClientHeaderOverwatchEvidence();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.accountid = reader.uint32();
@@ -28026,12 +29370,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_GC2ClientTextMsg.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_GC2ClientTextMsg.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_GC2ClientTextMsg();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.id = reader.uint32();
@@ -28276,12 +29622,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_Client2GCTextMsg.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_Client2GCTextMsg.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Client2GCTextMsg();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.id = reader.uint32();
@@ -28520,12 +29868,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchEndRunRewardDrops.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchEndRunRewardDrops.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchEndRunRewardDrops();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 3: {
                         message.serverinfo = $root.CMsgGCCStrike15_v2_MatchmakingServerReservationResponse.decode(reader, reader.uint32());
@@ -28687,6 +30037,9 @@
          * @property {number|null} [entindex] CEconItemPreviewDataBlock entindex
          * @property {number|null} [petindex] CEconItemPreviewDataBlock petindex
          * @property {Array.<CEconItemPreviewDataBlock.ISticker>|null} [keychains] CEconItemPreviewDataBlock keychains
+         * @property {number|null} [style] CEconItemPreviewDataBlock style
+         * @property {Array.<CEconItemPreviewDataBlock.ISticker>|null} [variations] CEconItemPreviewDataBlock variations
+         * @property {number|null} [upgrade_level] CEconItemPreviewDataBlock upgrade_level
          */
     
         /**
@@ -28700,6 +30053,7 @@
         function CEconItemPreviewDataBlock(properties) {
             this.stickers = [];
             this.keychains = [];
+            this.variations = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -28867,6 +30221,30 @@
         CEconItemPreviewDataBlock.prototype.keychains = $util.emptyArray;
     
         /**
+         * CEconItemPreviewDataBlock style.
+         * @member {number} style
+         * @memberof CEconItemPreviewDataBlock
+         * @instance
+         */
+        CEconItemPreviewDataBlock.prototype.style = 0;
+    
+        /**
+         * CEconItemPreviewDataBlock variations.
+         * @member {Array.<CEconItemPreviewDataBlock.ISticker>} variations
+         * @memberof CEconItemPreviewDataBlock
+         * @instance
+         */
+        CEconItemPreviewDataBlock.prototype.variations = $util.emptyArray;
+    
+        /**
+         * CEconItemPreviewDataBlock upgrade_level.
+         * @member {number} upgrade_level
+         * @memberof CEconItemPreviewDataBlock
+         * @instance
+         */
+        CEconItemPreviewDataBlock.prototype.upgrade_level = 0;
+    
+        /**
          * Creates a new CEconItemPreviewDataBlock instance using the specified properties.
          * @function create
          * @memberof CEconItemPreviewDataBlock
@@ -28932,6 +30310,13 @@
             if (message.keychains != null && message.keychains.length)
                 for (var i = 0; i < message.keychains.length; ++i)
                     $root.CEconItemPreviewDataBlock.Sticker.encode(message.keychains[i], writer.uint32(/* id 20, wireType 2 =*/162).fork()).ldelim();
+            if (message.style != null && Object.hasOwnProperty.call(message, "style"))
+                writer.uint32(/* id 21, wireType 0 =*/168).uint32(message.style);
+            if (message.variations != null && message.variations.length)
+                for (var i = 0; i < message.variations.length; ++i)
+                    $root.CEconItemPreviewDataBlock.Sticker.encode(message.variations[i], writer.uint32(/* id 22, wireType 2 =*/178).fork()).ldelim();
+            if (message.upgrade_level != null && Object.hasOwnProperty.call(message, "upgrade_level"))
+                writer.uint32(/* id 23, wireType 0 =*/184).uint32(message.upgrade_level);
             return writer;
         };
     
@@ -28959,12 +30344,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CEconItemPreviewDataBlock.decode = function decode(reader, length) {
+        CEconItemPreviewDataBlock.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CEconItemPreviewDataBlock();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.accountid = reader.uint32();
@@ -29048,6 +30435,20 @@
                         if (!(message.keychains && message.keychains.length))
                             message.keychains = [];
                         message.keychains.push($root.CEconItemPreviewDataBlock.Sticker.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 21: {
+                        message.style = reader.uint32();
+                        break;
+                    }
+                case 22: {
+                        if (!(message.variations && message.variations.length))
+                            message.variations = [];
+                        message.variations.push($root.CEconItemPreviewDataBlock.Sticker.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 23: {
+                        message.upgrade_level = reader.uint32();
                         break;
                     }
                 default:
@@ -29157,6 +30558,21 @@
                         return "keychains." + error;
                 }
             }
+            if (message.style != null && message.hasOwnProperty("style"))
+                if (!$util.isInteger(message.style))
+                    return "style: integer expected";
+            if (message.variations != null && message.hasOwnProperty("variations")) {
+                if (!Array.isArray(message.variations))
+                    return "variations: array expected";
+                for (var i = 0; i < message.variations.length; ++i) {
+                    var error = $root.CEconItemPreviewDataBlock.Sticker.verify(message.variations[i]);
+                    if (error)
+                        return "variations." + error;
+                }
+            }
+            if (message.upgrade_level != null && message.hasOwnProperty("upgrade_level"))
+                if (!$util.isInteger(message.upgrade_level))
+                    return "upgrade_level: integer expected";
             return null;
         };
     
@@ -29235,6 +30651,20 @@
                     message.keychains[i] = $root.CEconItemPreviewDataBlock.Sticker.fromObject(object.keychains[i]);
                 }
             }
+            if (object.style != null)
+                message.style = object.style >>> 0;
+            if (object.variations) {
+                if (!Array.isArray(object.variations))
+                    throw TypeError(".CEconItemPreviewDataBlock.variations: array expected");
+                message.variations = [];
+                for (var i = 0; i < object.variations.length; ++i) {
+                    if (typeof object.variations[i] !== "object")
+                        throw TypeError(".CEconItemPreviewDataBlock.variations: object expected");
+                    message.variations[i] = $root.CEconItemPreviewDataBlock.Sticker.fromObject(object.variations[i]);
+                }
+            }
+            if (object.upgrade_level != null)
+                message.upgrade_level = object.upgrade_level >>> 0;
             return message;
         };
     
@@ -29254,6 +30684,7 @@
             if (options.arrays || options.defaults) {
                 object.stickers = [];
                 object.keychains = [];
+                object.variations = [];
             }
             if (options.defaults) {
                 object.accountid = 0;
@@ -29278,6 +30709,8 @@
                 object.musicindex = 0;
                 object.entindex = 0;
                 object.petindex = 0;
+                object.style = 0;
+                object.upgrade_level = 0;
             }
             if (message.accountid != null && message.hasOwnProperty("accountid"))
                 object.accountid = message.accountid;
@@ -29328,6 +30761,15 @@
                 for (var j = 0; j < message.keychains.length; ++j)
                     object.keychains[j] = $root.CEconItemPreviewDataBlock.Sticker.toObject(message.keychains[j], options);
             }
+            if (message.style != null && message.hasOwnProperty("style"))
+                object.style = message.style;
+            if (message.variations && message.variations.length) {
+                object.variations = [];
+                for (var j = 0; j < message.variations.length; ++j)
+                    object.variations[j] = $root.CEconItemPreviewDataBlock.Sticker.toObject(message.variations[j], options);
+            }
+            if (message.upgrade_level != null && message.hasOwnProperty("upgrade_level"))
+                object.upgrade_level = message.upgrade_level;
             return object;
         };
     
@@ -29373,6 +30815,7 @@
              * @property {number|null} [offset_y] Sticker offset_y
              * @property {number|null} [offset_z] Sticker offset_z
              * @property {number|null} [pattern] Sticker pattern
+             * @property {number|null} [highlight_reel] Sticker highlight_reel
              */
     
             /**
@@ -29471,6 +30914,14 @@
             Sticker.prototype.pattern = 0;
     
             /**
+             * Sticker highlight_reel.
+             * @member {number} highlight_reel
+             * @memberof CEconItemPreviewDataBlock.Sticker
+             * @instance
+             */
+            Sticker.prototype.highlight_reel = 0;
+    
+            /**
              * Creates a new Sticker instance using the specified properties.
              * @function create
              * @memberof CEconItemPreviewDataBlock.Sticker
@@ -29514,6 +30965,8 @@
                     writer.uint32(/* id 9, wireType 5 =*/77).float(message.offset_z);
                 if (message.pattern != null && Object.hasOwnProperty.call(message, "pattern"))
                     writer.uint32(/* id 10, wireType 0 =*/80).uint32(message.pattern);
+                if (message.highlight_reel != null && Object.hasOwnProperty.call(message, "highlight_reel"))
+                    writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.highlight_reel);
                 return writer;
             };
     
@@ -29541,12 +30994,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Sticker.decode = function decode(reader, length) {
+            Sticker.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CEconItemPreviewDataBlock.Sticker();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.slot = reader.uint32();
@@ -29586,6 +31041,10 @@
                         }
                     case 10: {
                             message.pattern = reader.uint32();
+                            break;
+                        }
+                    case 11: {
+                            message.highlight_reel = reader.uint32();
                             break;
                         }
                     default:
@@ -29653,6 +31112,9 @@
                 if (message.pattern != null && message.hasOwnProperty("pattern"))
                     if (!$util.isInteger(message.pattern))
                         return "pattern: integer expected";
+                if (message.highlight_reel != null && message.hasOwnProperty("highlight_reel"))
+                    if (!$util.isInteger(message.highlight_reel))
+                        return "highlight_reel: integer expected";
                 return null;
             };
     
@@ -29688,6 +31150,8 @@
                     message.offset_z = Number(object.offset_z);
                 if (object.pattern != null)
                     message.pattern = object.pattern >>> 0;
+                if (object.highlight_reel != null)
+                    message.highlight_reel = object.highlight_reel >>> 0;
                 return message;
             };
     
@@ -29715,6 +31179,7 @@
                     object.offset_y = 0;
                     object.offset_z = 0;
                     object.pattern = 0;
+                    object.highlight_reel = 0;
                 }
                 if (message.slot != null && message.hasOwnProperty("slot"))
                     object.slot = message.slot;
@@ -29736,6 +31201,8 @@
                     object.offset_z = options.json && !isFinite(message.offset_z) ? String(message.offset_z) : message.offset_z;
                 if (message.pattern != null && message.hasOwnProperty("pattern"))
                     object.pattern = message.pattern;
+                if (message.highlight_reel != null && message.hasOwnProperty("highlight_reel"))
+                    object.highlight_reel = message.highlight_reel;
                 return object;
             };
     
@@ -29856,12 +31323,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchEndRewardDropsNotification.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchEndRewardDropsNotification.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchEndRewardDropsNotification();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 6: {
                         message.iteminfo = $root.CEconItemPreviewDataBlock.decode(reader, reader.uint32());
@@ -30064,12 +31533,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgItemAcknowledged.decode = function decode(reader, length) {
+        CMsgItemAcknowledged.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgItemAcknowledged();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.iteminfo = $root.CEconItemPreviewDataBlock.decode(reader, reader.uint32());
@@ -30305,12 +31776,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.param_s = reader.uint64();
@@ -30601,12 +32074,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.iteminfo = $root.CEconItemPreviewDataBlock.decode(reader, reader.uint32());
@@ -30798,12 +32273,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchListRequestCurrentLiveGames.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchListRequestCurrentLiveGames.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchListRequestCurrentLiveGames();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 default:
                     reader.skipType(tag & 7);
@@ -30984,12 +32461,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchListRequestLiveGameForUser.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchListRequestLiveGameForUser.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchListRequestLiveGameForUser();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.accountid = reader.uint32();
@@ -31187,12 +32666,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchListRequestRecentUserGames.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchListRequestRecentUserGames.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchListRequestRecentUserGames();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.accountid = reader.uint32();
@@ -31390,12 +32871,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchListRequestTournamentGames.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchListRequestTournamentGames.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchListRequestTournamentGames();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.eventid = reader.int32();
@@ -31615,12 +33098,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchListRequestFullGameInfo.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchListRequestFullGameInfo.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchListRequestFullGameInfo();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.matchid = reader.uint64();
@@ -31917,12 +33402,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CDataGCCStrike15_v2_MatchInfo.decode = function decode(reader, length) {
+        CDataGCCStrike15_v2_MatchInfo.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CDataGCCStrike15_v2_MatchInfo();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.matchid = reader.uint64();
@@ -32235,12 +33722,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CDataGCCStrike15_v2_TournamentGroupTeam.decode = function decode(reader, length) {
+        CDataGCCStrike15_v2_TournamentGroupTeam.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CDataGCCStrike15_v2_TournamentGroupTeam();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.team_id = reader.int32();
@@ -32568,12 +34057,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CDataGCCStrike15_v2_TournamentGroup.decode = function decode(reader, length) {
+        CDataGCCStrike15_v2_TournamentGroup.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CDataGCCStrike15_v2_TournamentGroup();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.groupid = reader.uint32();
@@ -32938,12 +34429,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Picks.decode = function decode(reader, length) {
+            Picks.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CDataGCCStrike15_v2_TournamentGroup.Picks();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             if (!(message.pickids && message.pickids.length))
@@ -33198,12 +34691,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CDataGCCStrike15_v2_TournamentSection.decode = function decode(reader, length) {
+        CDataGCCStrike15_v2_TournamentSection.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CDataGCCStrike15_v2_TournamentSection();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.sectionid = reader.uint32();
@@ -33484,12 +34979,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CDataGCCStrike15_v2_TournamentInfo.decode = function decode(reader, length) {
+        CDataGCCStrike15_v2_TournamentInfo.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CDataGCCStrike15_v2_TournamentInfo();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.sections && message.sections.length))
@@ -33815,12 +35312,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchList.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchList.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchList();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.msgrequestid = reader.uint32();
@@ -34148,12 +35647,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_MatchListTournamentOperatorMgmt.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_MatchListTournamentOperatorMgmt.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchListTournamentOperatorMgmt();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.eventid = reader.int32();
@@ -34409,12 +35910,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_Predictions.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_Predictions.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Predictions();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.event_id = reader.uint32();
@@ -34685,12 +36188,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            GroupMatchTeamPick.decode = function decode(reader, length) {
+            GroupMatchTeamPick.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Predictions.GroupMatchTeamPick();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.sectionid = reader.int32();
@@ -34967,12 +36472,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_Fantasy.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_Fantasy.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Fantasy();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.event_id = reader.uint32();
@@ -35221,12 +36728,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            FantasySlot.decode = function decode(reader, length) {
+            FantasySlot.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Fantasy.FantasySlot();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.type = reader.int32();
@@ -35476,12 +36985,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            FantasyTeam.decode = function decode(reader, length) {
+            FantasyTeam.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Fantasy.FantasyTeam();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.sectionid = reader.int32();
@@ -35714,12 +37225,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CAttribute_String.decode = function decode(reader, length) {
+        CAttribute_String.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CAttribute_String();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.value = reader.string();
@@ -36031,12 +37544,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgLegacySource1ClientWelcome.decode = function decode(reader, length) {
+        CMsgLegacySource1ClientWelcome.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgLegacySource1ClientWelcome();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.version = reader.uint32();
@@ -36437,12 +37952,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Location.decode = function decode(reader, length) {
+            Location.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgLegacySource1ClientWelcome.Location();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.latitude = reader.float();
@@ -36734,12 +38251,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgCStrike15Welcome.decode = function decode(reader, length) {
+        CMsgCStrike15Welcome.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgCStrike15Welcome();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 5: {
                         message.store_item_hash = reader.uint32();
@@ -37084,12 +38603,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientVarValueNotificationInfo.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientVarValueNotificationInfo.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientVarValueNotificationInfo();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.value_name = reader.string();
@@ -37388,12 +38909,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ServerVarValueNotificationInfo.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ServerVarValueNotificationInfo.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ServerVarValueNotificationInfo();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.accountid = reader.uint32();
@@ -37657,12 +39180,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_GiftsLeaderboardRequest.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_GiftsLeaderboardRequest.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_GiftsLeaderboardRequest();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 default:
                     reader.skipType(tag & 7);
@@ -37889,12 +39414,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_GiftsLeaderboardResponse.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_GiftsLeaderboardResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_GiftsLeaderboardResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.servertime = reader.uint32();
@@ -38169,12 +39696,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            GiftLeaderboardEntry.decode = function decode(reader, length) {
+            GiftLeaderboardEntry.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_GiftsLeaderboardResponse.GiftLeaderboardEntry();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.accountid = reader.uint32();
@@ -38399,12 +39928,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientSubmitSurveyVote.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientSubmitSurveyVote.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientSubmitSurveyVote();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.survey_id = reader.uint32();
@@ -38615,12 +40146,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_Server2GCClientValidate.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_Server2GCClientValidate.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Server2GCClientValidate();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.accountid = reader.uint32();
@@ -38853,12 +40386,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_GC2ClientTournamentInfo.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_GC2ClientTournamentInfo.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_GC2ClientTournamentInfo();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.eventid = reader.uint32();
@@ -39135,12 +40670,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CSOEconCoupon.decode = function decode(reader, length) {
+        CSOEconCoupon.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CSOEconCoupon();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.entryid = reader.uint32();
@@ -39387,12 +40924,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CSOAccountItemPersonalStore.decode = function decode(reader, length) {
+        CSOAccountItemPersonalStore.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CSOAccountItemPersonalStore();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.generation_time = reader.uint32();
@@ -39560,6 +41099,760 @@
         return CSOAccountItemPersonalStore;
     })();
     
+    $root.CSOAccountXpShop = (function() {
+    
+        /**
+         * Properties of a CSOAccountXpShop.
+         * @exports ICSOAccountXpShop
+         * @interface ICSOAccountXpShop
+         * @property {number|null} [generation_time] CSOAccountXpShop generation_time
+         * @property {number|null} [redeemable_balance] CSOAccountXpShop redeemable_balance
+         * @property {Array.<number>|null} [xp_tracks] CSOAccountXpShop xp_tracks
+         */
+    
+        /**
+         * Constructs a new CSOAccountXpShop.
+         * @exports CSOAccountXpShop
+         * @classdesc Represents a CSOAccountXpShop.
+         * @implements ICSOAccountXpShop
+         * @constructor
+         * @param {ICSOAccountXpShop=} [properties] Properties to set
+         */
+        function CSOAccountXpShop(properties) {
+            this.xp_tracks = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CSOAccountXpShop generation_time.
+         * @member {number} generation_time
+         * @memberof CSOAccountXpShop
+         * @instance
+         */
+        CSOAccountXpShop.prototype.generation_time = 0;
+    
+        /**
+         * CSOAccountXpShop redeemable_balance.
+         * @member {number} redeemable_balance
+         * @memberof CSOAccountXpShop
+         * @instance
+         */
+        CSOAccountXpShop.prototype.redeemable_balance = 0;
+    
+        /**
+         * CSOAccountXpShop xp_tracks.
+         * @member {Array.<number>} xp_tracks
+         * @memberof CSOAccountXpShop
+         * @instance
+         */
+        CSOAccountXpShop.prototype.xp_tracks = $util.emptyArray;
+    
+        /**
+         * Creates a new CSOAccountXpShop instance using the specified properties.
+         * @function create
+         * @memberof CSOAccountXpShop
+         * @static
+         * @param {ICSOAccountXpShop=} [properties] Properties to set
+         * @returns {CSOAccountXpShop} CSOAccountXpShop instance
+         */
+        CSOAccountXpShop.create = function create(properties) {
+            return new CSOAccountXpShop(properties);
+        };
+    
+        /**
+         * Encodes the specified CSOAccountXpShop message. Does not implicitly {@link CSOAccountXpShop.verify|verify} messages.
+         * @function encode
+         * @memberof CSOAccountXpShop
+         * @static
+         * @param {ICSOAccountXpShop} message CSOAccountXpShop message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CSOAccountXpShop.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.generation_time != null && Object.hasOwnProperty.call(message, "generation_time"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.generation_time);
+            if (message.redeemable_balance != null && Object.hasOwnProperty.call(message, "redeemable_balance"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.redeemable_balance);
+            if (message.xp_tracks != null && message.xp_tracks.length)
+                for (var i = 0; i < message.xp_tracks.length; ++i)
+                    writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.xp_tracks[i]);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CSOAccountXpShop message, length delimited. Does not implicitly {@link CSOAccountXpShop.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CSOAccountXpShop
+         * @static
+         * @param {ICSOAccountXpShop} message CSOAccountXpShop message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CSOAccountXpShop.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CSOAccountXpShop message from the specified reader or buffer.
+         * @function decode
+         * @memberof CSOAccountXpShop
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CSOAccountXpShop} CSOAccountXpShop
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CSOAccountXpShop.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CSOAccountXpShop();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.generation_time = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.redeemable_balance = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        if (!(message.xp_tracks && message.xp_tracks.length))
+                            message.xp_tracks = [];
+                        if ((tag & 7) === 2) {
+                            var end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.xp_tracks.push(reader.uint32());
+                        } else
+                            message.xp_tracks.push(reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CSOAccountXpShop message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CSOAccountXpShop
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CSOAccountXpShop} CSOAccountXpShop
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CSOAccountXpShop.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CSOAccountXpShop message.
+         * @function verify
+         * @memberof CSOAccountXpShop
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CSOAccountXpShop.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.generation_time != null && message.hasOwnProperty("generation_time"))
+                if (!$util.isInteger(message.generation_time))
+                    return "generation_time: integer expected";
+            if (message.redeemable_balance != null && message.hasOwnProperty("redeemable_balance"))
+                if (!$util.isInteger(message.redeemable_balance))
+                    return "redeemable_balance: integer expected";
+            if (message.xp_tracks != null && message.hasOwnProperty("xp_tracks")) {
+                if (!Array.isArray(message.xp_tracks))
+                    return "xp_tracks: array expected";
+                for (var i = 0; i < message.xp_tracks.length; ++i)
+                    if (!$util.isInteger(message.xp_tracks[i]))
+                        return "xp_tracks: integer[] expected";
+            }
+            return null;
+        };
+    
+        /**
+         * Creates a CSOAccountXpShop message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CSOAccountXpShop
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CSOAccountXpShop} CSOAccountXpShop
+         */
+        CSOAccountXpShop.fromObject = function fromObject(object) {
+            if (object instanceof $root.CSOAccountXpShop)
+                return object;
+            var message = new $root.CSOAccountXpShop();
+            if (object.generation_time != null)
+                message.generation_time = object.generation_time >>> 0;
+            if (object.redeemable_balance != null)
+                message.redeemable_balance = object.redeemable_balance >>> 0;
+            if (object.xp_tracks) {
+                if (!Array.isArray(object.xp_tracks))
+                    throw TypeError(".CSOAccountXpShop.xp_tracks: array expected");
+                message.xp_tracks = [];
+                for (var i = 0; i < object.xp_tracks.length; ++i)
+                    message.xp_tracks[i] = object.xp_tracks[i] >>> 0;
+            }
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CSOAccountXpShop message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CSOAccountXpShop
+         * @static
+         * @param {CSOAccountXpShop} message CSOAccountXpShop
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CSOAccountXpShop.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.xp_tracks = [];
+            if (options.defaults) {
+                object.generation_time = 0;
+                object.redeemable_balance = 0;
+            }
+            if (message.generation_time != null && message.hasOwnProperty("generation_time"))
+                object.generation_time = message.generation_time;
+            if (message.redeemable_balance != null && message.hasOwnProperty("redeemable_balance"))
+                object.redeemable_balance = message.redeemable_balance;
+            if (message.xp_tracks && message.xp_tracks.length) {
+                object.xp_tracks = [];
+                for (var j = 0; j < message.xp_tracks.length; ++j)
+                    object.xp_tracks[j] = message.xp_tracks[j];
+            }
+            return object;
+        };
+    
+        /**
+         * Converts this CSOAccountXpShop to JSON.
+         * @function toJSON
+         * @memberof CSOAccountXpShop
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CSOAccountXpShop.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CSOAccountXpShop
+         * @function getTypeUrl
+         * @memberof CSOAccountXpShop
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CSOAccountXpShop.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CSOAccountXpShop";
+        };
+    
+        return CSOAccountXpShop;
+    })();
+    
+    $root.CSOAccountXpShopBids = (function() {
+    
+        /**
+         * Properties of a CSOAccountXpShopBids.
+         * @exports ICSOAccountXpShopBids
+         * @interface ICSOAccountXpShopBids
+         * @property {number|null} [campaign_id] CSOAccountXpShopBids campaign_id
+         * @property {number|null} [redeem_id] CSOAccountXpShopBids redeem_id
+         * @property {number|null} [expected_cost] CSOAccountXpShopBids expected_cost
+         * @property {number|null} [generation_time] CSOAccountXpShopBids generation_time
+         */
+    
+        /**
+         * Constructs a new CSOAccountXpShopBids.
+         * @exports CSOAccountXpShopBids
+         * @classdesc Represents a CSOAccountXpShopBids.
+         * @implements ICSOAccountXpShopBids
+         * @constructor
+         * @param {ICSOAccountXpShopBids=} [properties] Properties to set
+         */
+        function CSOAccountXpShopBids(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CSOAccountXpShopBids campaign_id.
+         * @member {number} campaign_id
+         * @memberof CSOAccountXpShopBids
+         * @instance
+         */
+        CSOAccountXpShopBids.prototype.campaign_id = 0;
+    
+        /**
+         * CSOAccountXpShopBids redeem_id.
+         * @member {number} redeem_id
+         * @memberof CSOAccountXpShopBids
+         * @instance
+         */
+        CSOAccountXpShopBids.prototype.redeem_id = 0;
+    
+        /**
+         * CSOAccountXpShopBids expected_cost.
+         * @member {number} expected_cost
+         * @memberof CSOAccountXpShopBids
+         * @instance
+         */
+        CSOAccountXpShopBids.prototype.expected_cost = 0;
+    
+        /**
+         * CSOAccountXpShopBids generation_time.
+         * @member {number} generation_time
+         * @memberof CSOAccountXpShopBids
+         * @instance
+         */
+        CSOAccountXpShopBids.prototype.generation_time = 0;
+    
+        /**
+         * Creates a new CSOAccountXpShopBids instance using the specified properties.
+         * @function create
+         * @memberof CSOAccountXpShopBids
+         * @static
+         * @param {ICSOAccountXpShopBids=} [properties] Properties to set
+         * @returns {CSOAccountXpShopBids} CSOAccountXpShopBids instance
+         */
+        CSOAccountXpShopBids.create = function create(properties) {
+            return new CSOAccountXpShopBids(properties);
+        };
+    
+        /**
+         * Encodes the specified CSOAccountXpShopBids message. Does not implicitly {@link CSOAccountXpShopBids.verify|verify} messages.
+         * @function encode
+         * @memberof CSOAccountXpShopBids
+         * @static
+         * @param {ICSOAccountXpShopBids} message CSOAccountXpShopBids message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CSOAccountXpShopBids.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.campaign_id != null && Object.hasOwnProperty.call(message, "campaign_id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.campaign_id);
+            if (message.redeem_id != null && Object.hasOwnProperty.call(message, "redeem_id"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.redeem_id);
+            if (message.expected_cost != null && Object.hasOwnProperty.call(message, "expected_cost"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.expected_cost);
+            if (message.generation_time != null && Object.hasOwnProperty.call(message, "generation_time"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.generation_time);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CSOAccountXpShopBids message, length delimited. Does not implicitly {@link CSOAccountXpShopBids.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CSOAccountXpShopBids
+         * @static
+         * @param {ICSOAccountXpShopBids} message CSOAccountXpShopBids message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CSOAccountXpShopBids.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CSOAccountXpShopBids message from the specified reader or buffer.
+         * @function decode
+         * @memberof CSOAccountXpShopBids
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CSOAccountXpShopBids} CSOAccountXpShopBids
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CSOAccountXpShopBids.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CSOAccountXpShopBids();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.campaign_id = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.redeem_id = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.expected_cost = reader.uint32();
+                        break;
+                    }
+                case 4: {
+                        message.generation_time = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CSOAccountXpShopBids message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CSOAccountXpShopBids
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CSOAccountXpShopBids} CSOAccountXpShopBids
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CSOAccountXpShopBids.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CSOAccountXpShopBids message.
+         * @function verify
+         * @memberof CSOAccountXpShopBids
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CSOAccountXpShopBids.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.campaign_id != null && message.hasOwnProperty("campaign_id"))
+                if (!$util.isInteger(message.campaign_id))
+                    return "campaign_id: integer expected";
+            if (message.redeem_id != null && message.hasOwnProperty("redeem_id"))
+                if (!$util.isInteger(message.redeem_id))
+                    return "redeem_id: integer expected";
+            if (message.expected_cost != null && message.hasOwnProperty("expected_cost"))
+                if (!$util.isInteger(message.expected_cost))
+                    return "expected_cost: integer expected";
+            if (message.generation_time != null && message.hasOwnProperty("generation_time"))
+                if (!$util.isInteger(message.generation_time))
+                    return "generation_time: integer expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CSOAccountXpShopBids message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CSOAccountXpShopBids
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CSOAccountXpShopBids} CSOAccountXpShopBids
+         */
+        CSOAccountXpShopBids.fromObject = function fromObject(object) {
+            if (object instanceof $root.CSOAccountXpShopBids)
+                return object;
+            var message = new $root.CSOAccountXpShopBids();
+            if (object.campaign_id != null)
+                message.campaign_id = object.campaign_id >>> 0;
+            if (object.redeem_id != null)
+                message.redeem_id = object.redeem_id >>> 0;
+            if (object.expected_cost != null)
+                message.expected_cost = object.expected_cost >>> 0;
+            if (object.generation_time != null)
+                message.generation_time = object.generation_time >>> 0;
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CSOAccountXpShopBids message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CSOAccountXpShopBids
+         * @static
+         * @param {CSOAccountXpShopBids} message CSOAccountXpShopBids
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CSOAccountXpShopBids.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.campaign_id = 0;
+                object.redeem_id = 0;
+                object.expected_cost = 0;
+                object.generation_time = 0;
+            }
+            if (message.campaign_id != null && message.hasOwnProperty("campaign_id"))
+                object.campaign_id = message.campaign_id;
+            if (message.redeem_id != null && message.hasOwnProperty("redeem_id"))
+                object.redeem_id = message.redeem_id;
+            if (message.expected_cost != null && message.hasOwnProperty("expected_cost"))
+                object.expected_cost = message.expected_cost;
+            if (message.generation_time != null && message.hasOwnProperty("generation_time"))
+                object.generation_time = message.generation_time;
+            return object;
+        };
+    
+        /**
+         * Converts this CSOAccountXpShopBids to JSON.
+         * @function toJSON
+         * @memberof CSOAccountXpShopBids
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CSOAccountXpShopBids.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CSOAccountXpShopBids
+         * @function getTypeUrl
+         * @memberof CSOAccountXpShopBids
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CSOAccountXpShopBids.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CSOAccountXpShopBids";
+        };
+    
+        return CSOAccountXpShopBids;
+    })();
+    
+    $root.CSOAccountKeychainRemoveToolCharges = (function() {
+    
+        /**
+         * Properties of a CSOAccountKeychainRemoveToolCharges.
+         * @exports ICSOAccountKeychainRemoveToolCharges
+         * @interface ICSOAccountKeychainRemoveToolCharges
+         * @property {number|null} [charges] CSOAccountKeychainRemoveToolCharges charges
+         */
+    
+        /**
+         * Constructs a new CSOAccountKeychainRemoveToolCharges.
+         * @exports CSOAccountKeychainRemoveToolCharges
+         * @classdesc Represents a CSOAccountKeychainRemoveToolCharges.
+         * @implements ICSOAccountKeychainRemoveToolCharges
+         * @constructor
+         * @param {ICSOAccountKeychainRemoveToolCharges=} [properties] Properties to set
+         */
+        function CSOAccountKeychainRemoveToolCharges(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CSOAccountKeychainRemoveToolCharges charges.
+         * @member {number} charges
+         * @memberof CSOAccountKeychainRemoveToolCharges
+         * @instance
+         */
+        CSOAccountKeychainRemoveToolCharges.prototype.charges = 0;
+    
+        /**
+         * Creates a new CSOAccountKeychainRemoveToolCharges instance using the specified properties.
+         * @function create
+         * @memberof CSOAccountKeychainRemoveToolCharges
+         * @static
+         * @param {ICSOAccountKeychainRemoveToolCharges=} [properties] Properties to set
+         * @returns {CSOAccountKeychainRemoveToolCharges} CSOAccountKeychainRemoveToolCharges instance
+         */
+        CSOAccountKeychainRemoveToolCharges.create = function create(properties) {
+            return new CSOAccountKeychainRemoveToolCharges(properties);
+        };
+    
+        /**
+         * Encodes the specified CSOAccountKeychainRemoveToolCharges message. Does not implicitly {@link CSOAccountKeychainRemoveToolCharges.verify|verify} messages.
+         * @function encode
+         * @memberof CSOAccountKeychainRemoveToolCharges
+         * @static
+         * @param {ICSOAccountKeychainRemoveToolCharges} message CSOAccountKeychainRemoveToolCharges message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CSOAccountKeychainRemoveToolCharges.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.charges != null && Object.hasOwnProperty.call(message, "charges"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.charges);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CSOAccountKeychainRemoveToolCharges message, length delimited. Does not implicitly {@link CSOAccountKeychainRemoveToolCharges.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CSOAccountKeychainRemoveToolCharges
+         * @static
+         * @param {ICSOAccountKeychainRemoveToolCharges} message CSOAccountKeychainRemoveToolCharges message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CSOAccountKeychainRemoveToolCharges.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CSOAccountKeychainRemoveToolCharges message from the specified reader or buffer.
+         * @function decode
+         * @memberof CSOAccountKeychainRemoveToolCharges
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CSOAccountKeychainRemoveToolCharges} CSOAccountKeychainRemoveToolCharges
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CSOAccountKeychainRemoveToolCharges.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CSOAccountKeychainRemoveToolCharges();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.charges = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CSOAccountKeychainRemoveToolCharges message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CSOAccountKeychainRemoveToolCharges
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CSOAccountKeychainRemoveToolCharges} CSOAccountKeychainRemoveToolCharges
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CSOAccountKeychainRemoveToolCharges.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CSOAccountKeychainRemoveToolCharges message.
+         * @function verify
+         * @memberof CSOAccountKeychainRemoveToolCharges
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CSOAccountKeychainRemoveToolCharges.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.charges != null && message.hasOwnProperty("charges"))
+                if (!$util.isInteger(message.charges))
+                    return "charges: integer expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CSOAccountKeychainRemoveToolCharges message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CSOAccountKeychainRemoveToolCharges
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CSOAccountKeychainRemoveToolCharges} CSOAccountKeychainRemoveToolCharges
+         */
+        CSOAccountKeychainRemoveToolCharges.fromObject = function fromObject(object) {
+            if (object instanceof $root.CSOAccountKeychainRemoveToolCharges)
+                return object;
+            var message = new $root.CSOAccountKeychainRemoveToolCharges();
+            if (object.charges != null)
+                message.charges = object.charges >>> 0;
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CSOAccountKeychainRemoveToolCharges message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CSOAccountKeychainRemoveToolCharges
+         * @static
+         * @param {CSOAccountKeychainRemoveToolCharges} message CSOAccountKeychainRemoveToolCharges
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CSOAccountKeychainRemoveToolCharges.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults)
+                object.charges = 0;
+            if (message.charges != null && message.hasOwnProperty("charges"))
+                object.charges = message.charges;
+            return object;
+        };
+    
+        /**
+         * Converts this CSOAccountKeychainRemoveToolCharges to JSON.
+         * @function toJSON
+         * @memberof CSOAccountKeychainRemoveToolCharges
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CSOAccountKeychainRemoveToolCharges.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CSOAccountKeychainRemoveToolCharges
+         * @function getTypeUrl
+         * @memberof CSOAccountKeychainRemoveToolCharges
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CSOAccountKeychainRemoveToolCharges.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CSOAccountKeychainRemoveToolCharges";
+        };
+    
+        return CSOAccountKeychainRemoveToolCharges;
+    })();
+    
     $root.CSOQuestProgress = (function() {
     
         /**
@@ -39667,12 +41960,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CSOQuestProgress.decode = function decode(reader, length) {
+        CSOQuestProgress.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CSOQuestProgress();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.questid = reader.uint32();
@@ -39961,12 +42256,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CSOAccountSeasonalOperation.decode = function decode(reader, length) {
+        CSOAccountSeasonalOperation.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CSOAccountSeasonalOperation();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.season_value = reader.uint32();
@@ -40248,12 +42545,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CSOAccountRecurringSubscription.decode = function decode(reader, length) {
+        CSOAccountRecurringSubscription.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CSOAccountRecurringSubscription();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.time_next_cycle = reader.uint32();
@@ -40377,6 +42676,258 @@
         };
     
         return CSOAccountRecurringSubscription;
+    })();
+    
+    $root.CSOGameAccountSteamChina = (function() {
+    
+        /**
+         * Properties of a CSOGameAccountSteamChina.
+         * @exports ICSOGameAccountSteamChina
+         * @interface ICSOGameAccountSteamChina
+         * @property {number|null} [time_last_update] CSOGameAccountSteamChina time_last_update
+         * @property {number|null} [time_comms_ban] CSOGameAccountSteamChina time_comms_ban
+         * @property {number|null} [time_play_ban] CSOGameAccountSteamChina time_play_ban
+         */
+    
+        /**
+         * Constructs a new CSOGameAccountSteamChina.
+         * @exports CSOGameAccountSteamChina
+         * @classdesc Represents a CSOGameAccountSteamChina.
+         * @implements ICSOGameAccountSteamChina
+         * @constructor
+         * @param {ICSOGameAccountSteamChina=} [properties] Properties to set
+         */
+        function CSOGameAccountSteamChina(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CSOGameAccountSteamChina time_last_update.
+         * @member {number} time_last_update
+         * @memberof CSOGameAccountSteamChina
+         * @instance
+         */
+        CSOGameAccountSteamChina.prototype.time_last_update = 0;
+    
+        /**
+         * CSOGameAccountSteamChina time_comms_ban.
+         * @member {number} time_comms_ban
+         * @memberof CSOGameAccountSteamChina
+         * @instance
+         */
+        CSOGameAccountSteamChina.prototype.time_comms_ban = 0;
+    
+        /**
+         * CSOGameAccountSteamChina time_play_ban.
+         * @member {number} time_play_ban
+         * @memberof CSOGameAccountSteamChina
+         * @instance
+         */
+        CSOGameAccountSteamChina.prototype.time_play_ban = 0;
+    
+        /**
+         * Creates a new CSOGameAccountSteamChina instance using the specified properties.
+         * @function create
+         * @memberof CSOGameAccountSteamChina
+         * @static
+         * @param {ICSOGameAccountSteamChina=} [properties] Properties to set
+         * @returns {CSOGameAccountSteamChina} CSOGameAccountSteamChina instance
+         */
+        CSOGameAccountSteamChina.create = function create(properties) {
+            return new CSOGameAccountSteamChina(properties);
+        };
+    
+        /**
+         * Encodes the specified CSOGameAccountSteamChina message. Does not implicitly {@link CSOGameAccountSteamChina.verify|verify} messages.
+         * @function encode
+         * @memberof CSOGameAccountSteamChina
+         * @static
+         * @param {ICSOGameAccountSteamChina} message CSOGameAccountSteamChina message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CSOGameAccountSteamChina.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.time_last_update != null && Object.hasOwnProperty.call(message, "time_last_update"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.time_last_update);
+            if (message.time_comms_ban != null && Object.hasOwnProperty.call(message, "time_comms_ban"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.time_comms_ban);
+            if (message.time_play_ban != null && Object.hasOwnProperty.call(message, "time_play_ban"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.time_play_ban);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CSOGameAccountSteamChina message, length delimited. Does not implicitly {@link CSOGameAccountSteamChina.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CSOGameAccountSteamChina
+         * @static
+         * @param {ICSOGameAccountSteamChina} message CSOGameAccountSteamChina message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CSOGameAccountSteamChina.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CSOGameAccountSteamChina message from the specified reader or buffer.
+         * @function decode
+         * @memberof CSOGameAccountSteamChina
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CSOGameAccountSteamChina} CSOGameAccountSteamChina
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CSOGameAccountSteamChina.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CSOGameAccountSteamChina();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.time_last_update = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.time_comms_ban = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.time_play_ban = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CSOGameAccountSteamChina message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CSOGameAccountSteamChina
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CSOGameAccountSteamChina} CSOGameAccountSteamChina
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CSOGameAccountSteamChina.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CSOGameAccountSteamChina message.
+         * @function verify
+         * @memberof CSOGameAccountSteamChina
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CSOGameAccountSteamChina.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.time_last_update != null && message.hasOwnProperty("time_last_update"))
+                if (!$util.isInteger(message.time_last_update))
+                    return "time_last_update: integer expected";
+            if (message.time_comms_ban != null && message.hasOwnProperty("time_comms_ban"))
+                if (!$util.isInteger(message.time_comms_ban))
+                    return "time_comms_ban: integer expected";
+            if (message.time_play_ban != null && message.hasOwnProperty("time_play_ban"))
+                if (!$util.isInteger(message.time_play_ban))
+                    return "time_play_ban: integer expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CSOGameAccountSteamChina message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CSOGameAccountSteamChina
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CSOGameAccountSteamChina} CSOGameAccountSteamChina
+         */
+        CSOGameAccountSteamChina.fromObject = function fromObject(object) {
+            if (object instanceof $root.CSOGameAccountSteamChina)
+                return object;
+            var message = new $root.CSOGameAccountSteamChina();
+            if (object.time_last_update != null)
+                message.time_last_update = object.time_last_update >>> 0;
+            if (object.time_comms_ban != null)
+                message.time_comms_ban = object.time_comms_ban >>> 0;
+            if (object.time_play_ban != null)
+                message.time_play_ban = object.time_play_ban >>> 0;
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CSOGameAccountSteamChina message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CSOGameAccountSteamChina
+         * @static
+         * @param {CSOGameAccountSteamChina} message CSOGameAccountSteamChina
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CSOGameAccountSteamChina.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.time_last_update = 0;
+                object.time_comms_ban = 0;
+                object.time_play_ban = 0;
+            }
+            if (message.time_last_update != null && message.hasOwnProperty("time_last_update"))
+                object.time_last_update = message.time_last_update;
+            if (message.time_comms_ban != null && message.hasOwnProperty("time_comms_ban"))
+                object.time_comms_ban = message.time_comms_ban;
+            if (message.time_play_ban != null && message.hasOwnProperty("time_play_ban"))
+                object.time_play_ban = message.time_play_ban;
+            return object;
+        };
+    
+        /**
+         * Converts this CSOGameAccountSteamChina to JSON.
+         * @function toJSON
+         * @memberof CSOGameAccountSteamChina
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CSOGameAccountSteamChina.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CSOGameAccountSteamChina
+         * @function getTypeUrl
+         * @memberof CSOGameAccountSteamChina
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CSOGameAccountSteamChina.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CSOGameAccountSteamChina";
+        };
+    
+        return CSOGameAccountSteamChina;
     })();
     
     $root.CSOPersonaDataPublic = (function() {
@@ -40508,12 +43059,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CSOPersonaDataPublic.decode = function decode(reader, length) {
+        CSOPersonaDataPublic.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CSOPersonaDataPublic();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.player_level = reader.int32();
@@ -40680,6 +43233,1041 @@
         return CSOPersonaDataPublic;
     })();
     
+    $root.CSOAccountRecurringMission = (function() {
+    
+        /**
+         * Properties of a CSOAccountRecurringMission.
+         * @exports ICSOAccountRecurringMission
+         * @interface ICSOAccountRecurringMission
+         * @property {number|null} [account_id] CSOAccountRecurringMission account_id
+         * @property {number|null} [mission_id] CSOAccountRecurringMission mission_id
+         * @property {number|null} [period] CSOAccountRecurringMission period
+         * @property {number|null} [progress] CSOAccountRecurringMission progress
+         */
+    
+        /**
+         * Constructs a new CSOAccountRecurringMission.
+         * @exports CSOAccountRecurringMission
+         * @classdesc Represents a CSOAccountRecurringMission.
+         * @implements ICSOAccountRecurringMission
+         * @constructor
+         * @param {ICSOAccountRecurringMission=} [properties] Properties to set
+         */
+        function CSOAccountRecurringMission(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CSOAccountRecurringMission account_id.
+         * @member {number} account_id
+         * @memberof CSOAccountRecurringMission
+         * @instance
+         */
+        CSOAccountRecurringMission.prototype.account_id = 0;
+    
+        /**
+         * CSOAccountRecurringMission mission_id.
+         * @member {number} mission_id
+         * @memberof CSOAccountRecurringMission
+         * @instance
+         */
+        CSOAccountRecurringMission.prototype.mission_id = 0;
+    
+        /**
+         * CSOAccountRecurringMission period.
+         * @member {number} period
+         * @memberof CSOAccountRecurringMission
+         * @instance
+         */
+        CSOAccountRecurringMission.prototype.period = 0;
+    
+        /**
+         * CSOAccountRecurringMission progress.
+         * @member {number} progress
+         * @memberof CSOAccountRecurringMission
+         * @instance
+         */
+        CSOAccountRecurringMission.prototype.progress = 0;
+    
+        /**
+         * Creates a new CSOAccountRecurringMission instance using the specified properties.
+         * @function create
+         * @memberof CSOAccountRecurringMission
+         * @static
+         * @param {ICSOAccountRecurringMission=} [properties] Properties to set
+         * @returns {CSOAccountRecurringMission} CSOAccountRecurringMission instance
+         */
+        CSOAccountRecurringMission.create = function create(properties) {
+            return new CSOAccountRecurringMission(properties);
+        };
+    
+        /**
+         * Encodes the specified CSOAccountRecurringMission message. Does not implicitly {@link CSOAccountRecurringMission.verify|verify} messages.
+         * @function encode
+         * @memberof CSOAccountRecurringMission
+         * @static
+         * @param {ICSOAccountRecurringMission} message CSOAccountRecurringMission message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CSOAccountRecurringMission.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.account_id != null && Object.hasOwnProperty.call(message, "account_id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.account_id);
+            if (message.mission_id != null && Object.hasOwnProperty.call(message, "mission_id"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.mission_id);
+            if (message.period != null && Object.hasOwnProperty.call(message, "period"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.period);
+            if (message.progress != null && Object.hasOwnProperty.call(message, "progress"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.progress);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CSOAccountRecurringMission message, length delimited. Does not implicitly {@link CSOAccountRecurringMission.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CSOAccountRecurringMission
+         * @static
+         * @param {ICSOAccountRecurringMission} message CSOAccountRecurringMission message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CSOAccountRecurringMission.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CSOAccountRecurringMission message from the specified reader or buffer.
+         * @function decode
+         * @memberof CSOAccountRecurringMission
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CSOAccountRecurringMission} CSOAccountRecurringMission
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CSOAccountRecurringMission.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CSOAccountRecurringMission();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.account_id = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.mission_id = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.period = reader.uint32();
+                        break;
+                    }
+                case 4: {
+                        message.progress = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CSOAccountRecurringMission message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CSOAccountRecurringMission
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CSOAccountRecurringMission} CSOAccountRecurringMission
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CSOAccountRecurringMission.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CSOAccountRecurringMission message.
+         * @function verify
+         * @memberof CSOAccountRecurringMission
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CSOAccountRecurringMission.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.account_id != null && message.hasOwnProperty("account_id"))
+                if (!$util.isInteger(message.account_id))
+                    return "account_id: integer expected";
+            if (message.mission_id != null && message.hasOwnProperty("mission_id"))
+                if (!$util.isInteger(message.mission_id))
+                    return "mission_id: integer expected";
+            if (message.period != null && message.hasOwnProperty("period"))
+                if (!$util.isInteger(message.period))
+                    return "period: integer expected";
+            if (message.progress != null && message.hasOwnProperty("progress"))
+                if (!$util.isInteger(message.progress))
+                    return "progress: integer expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CSOAccountRecurringMission message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CSOAccountRecurringMission
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CSOAccountRecurringMission} CSOAccountRecurringMission
+         */
+        CSOAccountRecurringMission.fromObject = function fromObject(object) {
+            if (object instanceof $root.CSOAccountRecurringMission)
+                return object;
+            var message = new $root.CSOAccountRecurringMission();
+            if (object.account_id != null)
+                message.account_id = object.account_id >>> 0;
+            if (object.mission_id != null)
+                message.mission_id = object.mission_id >>> 0;
+            if (object.period != null)
+                message.period = object.period >>> 0;
+            if (object.progress != null)
+                message.progress = object.progress >>> 0;
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CSOAccountRecurringMission message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CSOAccountRecurringMission
+         * @static
+         * @param {CSOAccountRecurringMission} message CSOAccountRecurringMission
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CSOAccountRecurringMission.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.account_id = 0;
+                object.mission_id = 0;
+                object.period = 0;
+                object.progress = 0;
+            }
+            if (message.account_id != null && message.hasOwnProperty("account_id"))
+                object.account_id = message.account_id;
+            if (message.mission_id != null && message.hasOwnProperty("mission_id"))
+                object.mission_id = message.mission_id;
+            if (message.period != null && message.hasOwnProperty("period"))
+                object.period = message.period;
+            if (message.progress != null && message.hasOwnProperty("progress"))
+                object.progress = message.progress;
+            return object;
+        };
+    
+        /**
+         * Converts this CSOAccountRecurringMission to JSON.
+         * @function toJSON
+         * @memberof CSOAccountRecurringMission
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CSOAccountRecurringMission.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CSOAccountRecurringMission
+         * @function getTypeUrl
+         * @memberof CSOAccountRecurringMission
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CSOAccountRecurringMission.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CSOAccountRecurringMission";
+        };
+    
+        return CSOAccountRecurringMission;
+    })();
+    
+    $root.CMsgGCCStrike15_v2_GC2ClientNotifyXPShop = (function() {
+    
+        /**
+         * Properties of a CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.
+         * @exports ICMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @interface ICMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @property {ICSOAccountXpShop|null} [prematch] CMsgGCCStrike15_v2_GC2ClientNotifyXPShop prematch
+         * @property {ICSOAccountXpShop|null} [postmatch] CMsgGCCStrike15_v2_GC2ClientNotifyXPShop postmatch
+         * @property {number|null} [current_xp] CMsgGCCStrike15_v2_GC2ClientNotifyXPShop current_xp
+         * @property {number|null} [current_level] CMsgGCCStrike15_v2_GC2ClientNotifyXPShop current_level
+         */
+    
+        /**
+         * Constructs a new CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.
+         * @exports CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @classdesc Represents a CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.
+         * @implements ICMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @constructor
+         * @param {ICMsgGCCStrike15_v2_GC2ClientNotifyXPShop=} [properties] Properties to set
+         */
+        function CMsgGCCStrike15_v2_GC2ClientNotifyXPShop(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgGCCStrike15_v2_GC2ClientNotifyXPShop prematch.
+         * @member {ICSOAccountXpShop|null|undefined} prematch
+         * @memberof CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.prototype.prematch = null;
+    
+        /**
+         * CMsgGCCStrike15_v2_GC2ClientNotifyXPShop postmatch.
+         * @member {ICSOAccountXpShop|null|undefined} postmatch
+         * @memberof CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.prototype.postmatch = null;
+    
+        /**
+         * CMsgGCCStrike15_v2_GC2ClientNotifyXPShop current_xp.
+         * @member {number} current_xp
+         * @memberof CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.prototype.current_xp = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_GC2ClientNotifyXPShop current_level.
+         * @member {number} current_level
+         * @memberof CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.prototype.current_level = 0;
+    
+        /**
+         * Creates a new CMsgGCCStrike15_v2_GC2ClientNotifyXPShop instance using the specified properties.
+         * @function create
+         * @memberof CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @static
+         * @param {ICMsgGCCStrike15_v2_GC2ClientNotifyXPShop=} [properties] Properties to set
+         * @returns {CMsgGCCStrike15_v2_GC2ClientNotifyXPShop} CMsgGCCStrike15_v2_GC2ClientNotifyXPShop instance
+         */
+        CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.create = function create(properties) {
+            return new CMsgGCCStrike15_v2_GC2ClientNotifyXPShop(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_v2_GC2ClientNotifyXPShop message. Does not implicitly {@link CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @static
+         * @param {ICMsgGCCStrike15_v2_GC2ClientNotifyXPShop} message CMsgGCCStrike15_v2_GC2ClientNotifyXPShop message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.prematch != null && Object.hasOwnProperty.call(message, "prematch"))
+                $root.CSOAccountXpShop.encode(message.prematch, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.postmatch != null && Object.hasOwnProperty.call(message, "postmatch"))
+                $root.CSOAccountXpShop.encode(message.postmatch, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            if (message.current_xp != null && Object.hasOwnProperty.call(message, "current_xp"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.current_xp);
+            if (message.current_level != null && Object.hasOwnProperty.call(message, "current_level"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.current_level);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_v2_GC2ClientNotifyXPShop message, length delimited. Does not implicitly {@link CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @static
+         * @param {ICMsgGCCStrike15_v2_GC2ClientNotifyXPShop} message CMsgGCCStrike15_v2_GC2ClientNotifyXPShop message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_v2_GC2ClientNotifyXPShop message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgGCCStrike15_v2_GC2ClientNotifyXPShop} CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_GC2ClientNotifyXPShop();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.prematch = $root.CSOAccountXpShop.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.postmatch = $root.CSOAccountXpShop.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 3: {
+                        message.current_xp = reader.uint32();
+                        break;
+                    }
+                case 4: {
+                        message.current_level = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_v2_GC2ClientNotifyXPShop message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgGCCStrike15_v2_GC2ClientNotifyXPShop} CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgGCCStrike15_v2_GC2ClientNotifyXPShop message.
+         * @function verify
+         * @memberof CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.prematch != null && message.hasOwnProperty("prematch")) {
+                var error = $root.CSOAccountXpShop.verify(message.prematch);
+                if (error)
+                    return "prematch." + error;
+            }
+            if (message.postmatch != null && message.hasOwnProperty("postmatch")) {
+                var error = $root.CSOAccountXpShop.verify(message.postmatch);
+                if (error)
+                    return "postmatch." + error;
+            }
+            if (message.current_xp != null && message.hasOwnProperty("current_xp"))
+                if (!$util.isInteger(message.current_xp))
+                    return "current_xp: integer expected";
+            if (message.current_level != null && message.hasOwnProperty("current_level"))
+                if (!$util.isInteger(message.current_level))
+                    return "current_level: integer expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgGCCStrike15_v2_GC2ClientNotifyXPShop message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgGCCStrike15_v2_GC2ClientNotifyXPShop} CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         */
+        CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgGCCStrike15_v2_GC2ClientNotifyXPShop)
+                return object;
+            var message = new $root.CMsgGCCStrike15_v2_GC2ClientNotifyXPShop();
+            if (object.prematch != null) {
+                if (typeof object.prematch !== "object")
+                    throw TypeError(".CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.prematch: object expected");
+                message.prematch = $root.CSOAccountXpShop.fromObject(object.prematch);
+            }
+            if (object.postmatch != null) {
+                if (typeof object.postmatch !== "object")
+                    throw TypeError(".CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.postmatch: object expected");
+                message.postmatch = $root.CSOAccountXpShop.fromObject(object.postmatch);
+            }
+            if (object.current_xp != null)
+                message.current_xp = object.current_xp >>> 0;
+            if (object.current_level != null)
+                message.current_level = object.current_level >>> 0;
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgGCCStrike15_v2_GC2ClientNotifyXPShop message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @static
+         * @param {CMsgGCCStrike15_v2_GC2ClientNotifyXPShop} message CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.prematch = null;
+                object.postmatch = null;
+                object.current_xp = 0;
+                object.current_level = 0;
+            }
+            if (message.prematch != null && message.hasOwnProperty("prematch"))
+                object.prematch = $root.CSOAccountXpShop.toObject(message.prematch, options);
+            if (message.postmatch != null && message.hasOwnProperty("postmatch"))
+                object.postmatch = $root.CSOAccountXpShop.toObject(message.postmatch, options);
+            if (message.current_xp != null && message.hasOwnProperty("current_xp"))
+                object.current_xp = message.current_xp;
+            if (message.current_level != null && message.hasOwnProperty("current_level"))
+                object.current_level = message.current_level;
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgGCCStrike15_v2_GC2ClientNotifyXPShop to JSON.
+         * @function toJSON
+         * @memberof CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @function getTypeUrl
+         * @memberof CMsgGCCStrike15_v2_GC2ClientNotifyXPShop
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCCStrike15_v2_GC2ClientNotifyXPShop.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCCStrike15_v2_GC2ClientNotifyXPShop";
+        };
+    
+        return CMsgGCCStrike15_v2_GC2ClientNotifyXPShop;
+    })();
+    
+    $root.CMsgGCCStrike15_v2_Client2GcAckXPShopTracks = (function() {
+    
+        /**
+         * Properties of a CMsgGCCStrike15_v2_Client2GcAckXPShopTracks.
+         * @exports ICMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         * @interface ICMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         */
+    
+        /**
+         * Constructs a new CMsgGCCStrike15_v2_Client2GcAckXPShopTracks.
+         * @exports CMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         * @classdesc Represents a CMsgGCCStrike15_v2_Client2GcAckXPShopTracks.
+         * @implements ICMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         * @constructor
+         * @param {ICMsgGCCStrike15_v2_Client2GcAckXPShopTracks=} [properties] Properties to set
+         */
+        function CMsgGCCStrike15_v2_Client2GcAckXPShopTracks(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * Creates a new CMsgGCCStrike15_v2_Client2GcAckXPShopTracks instance using the specified properties.
+         * @function create
+         * @memberof CMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         * @static
+         * @param {ICMsgGCCStrike15_v2_Client2GcAckXPShopTracks=} [properties] Properties to set
+         * @returns {CMsgGCCStrike15_v2_Client2GcAckXPShopTracks} CMsgGCCStrike15_v2_Client2GcAckXPShopTracks instance
+         */
+        CMsgGCCStrike15_v2_Client2GcAckXPShopTracks.create = function create(properties) {
+            return new CMsgGCCStrike15_v2_Client2GcAckXPShopTracks(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_v2_Client2GcAckXPShopTracks message. Does not implicitly {@link CMsgGCCStrike15_v2_Client2GcAckXPShopTracks.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         * @static
+         * @param {ICMsgGCCStrike15_v2_Client2GcAckXPShopTracks} message CMsgGCCStrike15_v2_Client2GcAckXPShopTracks message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_v2_Client2GcAckXPShopTracks.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_v2_Client2GcAckXPShopTracks message, length delimited. Does not implicitly {@link CMsgGCCStrike15_v2_Client2GcAckXPShopTracks.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         * @static
+         * @param {ICMsgGCCStrike15_v2_Client2GcAckXPShopTracks} message CMsgGCCStrike15_v2_Client2GcAckXPShopTracks message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_v2_Client2GcAckXPShopTracks.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_v2_Client2GcAckXPShopTracks message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgGCCStrike15_v2_Client2GcAckXPShopTracks} CMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_v2_Client2GcAckXPShopTracks.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Client2GcAckXPShopTracks();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_v2_Client2GcAckXPShopTracks message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgGCCStrike15_v2_Client2GcAckXPShopTracks} CMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_v2_Client2GcAckXPShopTracks.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgGCCStrike15_v2_Client2GcAckXPShopTracks message.
+         * @function verify
+         * @memberof CMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgGCCStrike15_v2_Client2GcAckXPShopTracks.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgGCCStrike15_v2_Client2GcAckXPShopTracks message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgGCCStrike15_v2_Client2GcAckXPShopTracks} CMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         */
+        CMsgGCCStrike15_v2_Client2GcAckXPShopTracks.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgGCCStrike15_v2_Client2GcAckXPShopTracks)
+                return object;
+            return new $root.CMsgGCCStrike15_v2_Client2GcAckXPShopTracks();
+        };
+    
+        /**
+         * Creates a plain object from a CMsgGCCStrike15_v2_Client2GcAckXPShopTracks message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         * @static
+         * @param {CMsgGCCStrike15_v2_Client2GcAckXPShopTracks} message CMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgGCCStrike15_v2_Client2GcAckXPShopTracks.toObject = function toObject() {
+            return {};
+        };
+    
+        /**
+         * Converts this CMsgGCCStrike15_v2_Client2GcAckXPShopTracks to JSON.
+         * @function toJSON
+         * @memberof CMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgGCCStrike15_v2_Client2GcAckXPShopTracks.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         * @function getTypeUrl
+         * @memberof CMsgGCCStrike15_v2_Client2GcAckXPShopTracks
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCCStrike15_v2_Client2GcAckXPShopTracks.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCCStrike15_v2_Client2GcAckXPShopTracks";
+        };
+    
+        return CMsgGCCStrike15_v2_Client2GcAckXPShopTracks;
+    })();
+    
+    $root.CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats = (function() {
+    
+        /**
+         * Properties of a CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.
+         * @exports ICMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @interface ICMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @property {number|null} [gs_location_id] CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats gs_location_id
+         * @property {number|null} [data_center_id] CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats data_center_id
+         * @property {number|null} [num_locked_in] CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats num_locked_in
+         * @property {number|null} [num_found_nearby] CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats num_found_nearby
+         * @property {number|null} [note_level] CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats note_level
+         */
+    
+        /**
+         * Constructs a new CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.
+         * @exports CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @classdesc Represents a CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.
+         * @implements ICMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @constructor
+         * @param {ICMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats=} [properties] Properties to set
+         */
+        function CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats gs_location_id.
+         * @member {number} gs_location_id
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @instance
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.prototype.gs_location_id = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats data_center_id.
+         * @member {number} data_center_id
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @instance
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.prototype.data_center_id = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats num_locked_in.
+         * @member {number} num_locked_in
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @instance
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.prototype.num_locked_in = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats num_found_nearby.
+         * @member {number} num_found_nearby
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @instance
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.prototype.num_found_nearby = 0;
+    
+        /**
+         * CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats note_level.
+         * @member {number} note_level
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @instance
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.prototype.note_level = 0;
+    
+        /**
+         * Creates a new CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats instance using the specified properties.
+         * @function create
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @static
+         * @param {ICMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats=} [properties] Properties to set
+         * @returns {CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats} CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats instance
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.create = function create(properties) {
+            return new CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats message. Does not implicitly {@link CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @static
+         * @param {ICMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats} message CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.gs_location_id != null && Object.hasOwnProperty.call(message, "gs_location_id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.gs_location_id);
+            if (message.data_center_id != null && Object.hasOwnProperty.call(message, "data_center_id"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.data_center_id);
+            if (message.num_locked_in != null && Object.hasOwnProperty.call(message, "num_locked_in"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.num_locked_in);
+            if (message.num_found_nearby != null && Object.hasOwnProperty.call(message, "num_found_nearby"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.num_found_nearby);
+            if (message.note_level != null && Object.hasOwnProperty.call(message, "note_level"))
+                writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.note_level);
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats message, length delimited. Does not implicitly {@link CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @static
+         * @param {ICMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats} message CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats} CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.gs_location_id = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.data_center_id = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.num_locked_in = reader.uint32();
+                        break;
+                    }
+                case 4: {
+                        message.num_found_nearby = reader.uint32();
+                        break;
+                    }
+                case 5: {
+                        message.note_level = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats} CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats message.
+         * @function verify
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.gs_location_id != null && message.hasOwnProperty("gs_location_id"))
+                if (!$util.isInteger(message.gs_location_id))
+                    return "gs_location_id: integer expected";
+            if (message.data_center_id != null && message.hasOwnProperty("data_center_id"))
+                if (!$util.isInteger(message.data_center_id))
+                    return "data_center_id: integer expected";
+            if (message.num_locked_in != null && message.hasOwnProperty("num_locked_in"))
+                if (!$util.isInteger(message.num_locked_in))
+                    return "num_locked_in: integer expected";
+            if (message.num_found_nearby != null && message.hasOwnProperty("num_found_nearby"))
+                if (!$util.isInteger(message.num_found_nearby))
+                    return "num_found_nearby: integer expected";
+            if (message.note_level != null && message.hasOwnProperty("note_level"))
+                if (!$util.isInteger(message.note_level))
+                    return "note_level: integer expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats} CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats)
+                return object;
+            var message = new $root.CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats();
+            if (object.gs_location_id != null)
+                message.gs_location_id = object.gs_location_id >>> 0;
+            if (object.data_center_id != null)
+                message.data_center_id = object.data_center_id >>> 0;
+            if (object.num_locked_in != null)
+                message.num_locked_in = object.num_locked_in >>> 0;
+            if (object.num_found_nearby != null)
+                message.num_found_nearby = object.num_found_nearby >>> 0;
+            if (object.note_level != null)
+                message.note_level = object.note_level >>> 0;
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @static
+         * @param {CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats} message CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.gs_location_id = 0;
+                object.data_center_id = 0;
+                object.num_locked_in = 0;
+                object.num_found_nearby = 0;
+                object.note_level = 0;
+            }
+            if (message.gs_location_id != null && message.hasOwnProperty("gs_location_id"))
+                object.gs_location_id = message.gs_location_id;
+            if (message.data_center_id != null && message.hasOwnProperty("data_center_id"))
+                object.data_center_id = message.data_center_id;
+            if (message.num_locked_in != null && message.hasOwnProperty("num_locked_in"))
+                object.num_locked_in = message.num_locked_in;
+            if (message.num_found_nearby != null && message.hasOwnProperty("num_found_nearby"))
+                object.num_found_nearby = message.num_found_nearby;
+            if (message.note_level != null && message.hasOwnProperty("note_level"))
+                object.note_level = message.note_level;
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats to JSON.
+         * @function toJSON
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @function getTypeUrl
+         * @memberof CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats";
+        };
+    
+        return CMsgGCCStrike15_v2_MatchmakingGC2ClientSearchStats;
+    })();
+    
     $root.CMsgGC_GlobalGame_Subscribe = (function() {
     
         /**
@@ -40765,12 +44353,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGC_GlobalGame_Subscribe.decode = function decode(reader, length) {
+        CMsgGC_GlobalGame_Subscribe.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGC_GlobalGame_Subscribe();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.ticket = reader.uint64();
@@ -40982,12 +44572,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGC_GlobalGame_Unsubscribe.decode = function decode(reader, length) {
+        CMsgGC_GlobalGame_Unsubscribe.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGC_GlobalGame_Unsubscribe();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.timeleft = reader.int32();
@@ -41207,12 +44799,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGC_GlobalGame_Play.decode = function decode(reader, length) {
+        CMsgGC_GlobalGame_Play.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGC_GlobalGame_Play();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.ticket = reader.uint64();
@@ -41449,12 +45043,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_AcknowledgePenalty.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_AcknowledgePenalty.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_AcknowledgePenalty();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.acknowledged = reader.int32();
@@ -41685,12 +45281,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_Client2GCRequestPrestigeCoin.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_Client2GCRequestPrestigeCoin.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Client2GCRequestPrestigeCoin();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.defindex = reader.uint32();
@@ -41950,12 +45548,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_Client2GCStreamUnlock.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_Client2GCStreamUnlock.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Client2GCStreamUnlock();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.ticket = reader.uint64();
@@ -42180,12 +45780,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientToGCRequestElevate.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientToGCRequestElevate.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientToGCRequestElevate();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.stage = reader.uint32();
@@ -42394,12 +45996,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientToGCChat.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientToGCChat.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientToGCChat();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.match_id = reader.uint64();
@@ -42635,12 +46239,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_GCToClientChat.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_GCToClientChat.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_GCToClientChat();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.account_id = reader.uint32();
@@ -42862,12 +46468,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientAuthKeyCode.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientAuthKeyCode.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientAuthKeyCode();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.eventid = reader.uint32();
@@ -43078,12 +46686,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_GotvSyncPacket.decode = function decode(reader, length) {
+        CMsgGCCStrike15_GotvSyncPacket.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_GotvSyncPacket();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.data = $root.CEngineGotvSyncPacket.decode(reader, reader.uint32());
@@ -43437,12 +47047,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        PlayerDecalDigitalSignature.decode = function decode(reader, length) {
+        PlayerDecalDigitalSignature.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.PlayerDecalDigitalSignature();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.signature = reader.bytes();
@@ -43895,12 +47507,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientPlayerDecalSign.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientPlayerDecalSign.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientPlayerDecalSign();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.data = $root.PlayerDecalDigitalSignature.decode(reader, reader.uint32());
@@ -44130,12 +47744,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_BetaEnrollment.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_BetaEnrollment.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_BetaEnrollment();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.eresult = reader.uint32();
@@ -44355,12 +47971,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientLogonFatalError.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientLogonFatalError.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientLogonFatalError();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.errorcode = reader.uint32();
@@ -44609,12 +48227,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientPollState.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientPollState.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientPollState();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.pollid = reader.uint32();
@@ -44959,12 +48579,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_Party_Register.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_Party_Register.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Party_Register();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.id = reader.uint32();
@@ -45316,12 +48938,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_Party_Search.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_Party_Search.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Party_Search();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.ver = reader.uint32();
@@ -45602,12 +49226,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_Party_SearchResults.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_Party_SearchResults.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Party_SearchResults();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.entries && message.entries.length))
@@ -45887,12 +49513,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Entry.decode = function decode(reader, length) {
+            Entry.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Party_SearchResults.Entry();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.id = reader.uint32();
@@ -46177,12 +49805,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_Party_Invite.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_Party_Invite.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Party_Invite();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.accountid = reader.uint32();
@@ -46406,12 +50036,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_Account_RequestCoPlays.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_Account_RequestCoPlays.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Account_RequestCoPlays();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.players && message.players.length))
@@ -46660,12 +50292,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Player.decode = function decode(reader, length) {
+            Player.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_Account_RequestCoPlays.Player();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.accountid = reader.uint32();
@@ -46924,12 +50558,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientToGCRequestTicket.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientToGCRequestTicket.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientToGCRequestTicket();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.authorized_steam_id = reader.fixed64();
@@ -47192,12 +50828,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCToClientSteamDatagramTicket.decode = function decode(reader, length) {
+        CMsgGCToClientSteamDatagramTicket.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCToClientSteamDatagramTicket();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 16: {
                         message.serialized_ticket = reader.bytes();
@@ -47393,12 +51031,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientRequestOffers.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientRequestOffers.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientRequestOffers();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 default:
                     reader.skipType(tag & 7);
@@ -47601,12 +51241,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientRequestSouvenir.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientRequestSouvenir.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientRequestSouvenir();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.itemid = reader.uint64();
@@ -47868,12 +51510,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientAccountBalance.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientAccountBalance.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientAccountBalance();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.amount = reader.uint64();
@@ -48109,12 +51753,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientPartyJoinRelay.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientPartyJoinRelay.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientPartyJoinRelay();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.accountid = reader.uint32();
@@ -48341,12 +51987,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientPartyWarning.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientPartyWarning.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientPartyWarning();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.entries && message.entries.length))
@@ -48571,12 +52219,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Entry.decode = function decode(reader, length) {
+            Entry.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientPartyWarning.Entry();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.accountid = reader.uint32();
@@ -48801,12 +52451,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_SetEventFavorite.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_SetEventFavorite.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_SetEventFavorite();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.eventid = reader.uint64();
@@ -49031,12 +52683,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_GetEventFavorites_Request.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_GetEventFavorites_Request.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_GetEventFavorites_Request();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.all_events = reader.bool();
@@ -49256,12 +52910,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_GetEventFavorites_Response.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_GetEventFavorites_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_GetEventFavorites_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.all_events = reader.bool();
@@ -49486,12 +53142,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientPerfReport.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientPerfReport.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientPerfReport();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.entries && message.entries.length))
@@ -49760,12 +53418,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Entry.decode = function decode(reader, length) {
+            Entry.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientPerfReport.Entry();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.perfcounter = reader.uint32();
@@ -50078,12 +53738,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CVDiagnostic.decode = function decode(reader, length) {
+        CVDiagnostic.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CVDiagnostic();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.id = reader.uint32();
@@ -50543,12 +54205,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_ClientReportValidation.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_ClientReportValidation.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_ClientReportValidation();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.file_report = reader.string();
@@ -51153,12 +54817,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_GC2ClientRefuseSecureMode();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.file_report = reader.string();
@@ -51464,12 +55130,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_GC2ClientRequestValidation.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_GC2ClientRequestValidation.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_GC2ClientRequestValidation();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.full_report = reader.bool();
@@ -51768,12 +55436,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_GC2ClientInitSystem.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_GC2ClientInitSystem.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_GC2ClientInitSystem();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.load = reader.bool();
@@ -52194,12 +55864,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_GC2ClientInitSystem_Response.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_GC2ClientInitSystem_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_GC2ClientInitSystem_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.success = reader.bool();
@@ -52583,12 +56255,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCStrike15_v2_SetPlayerLeaderboardSafeName.decode = function decode(reader, length) {
+        CMsgGCCStrike15_v2_SetPlayerLeaderboardSafeName.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCStrike15_v2_SetPlayerLeaderboardSafeName();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.leaderboard_safe_name = reader.string();
@@ -52699,6 +56373,657 @@
         };
     
         return CMsgGCCStrike15_v2_SetPlayerLeaderboardSafeName;
+    })();
+    
+    $root.CMsgRequestRecurringMissionSchedule = (function() {
+    
+        /**
+         * Properties of a CMsgRequestRecurringMissionSchedule.
+         * @exports ICMsgRequestRecurringMissionSchedule
+         * @interface ICMsgRequestRecurringMissionSchedule
+         */
+    
+        /**
+         * Constructs a new CMsgRequestRecurringMissionSchedule.
+         * @exports CMsgRequestRecurringMissionSchedule
+         * @classdesc Represents a CMsgRequestRecurringMissionSchedule.
+         * @implements ICMsgRequestRecurringMissionSchedule
+         * @constructor
+         * @param {ICMsgRequestRecurringMissionSchedule=} [properties] Properties to set
+         */
+        function CMsgRequestRecurringMissionSchedule(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * Creates a new CMsgRequestRecurringMissionSchedule instance using the specified properties.
+         * @function create
+         * @memberof CMsgRequestRecurringMissionSchedule
+         * @static
+         * @param {ICMsgRequestRecurringMissionSchedule=} [properties] Properties to set
+         * @returns {CMsgRequestRecurringMissionSchedule} CMsgRequestRecurringMissionSchedule instance
+         */
+        CMsgRequestRecurringMissionSchedule.create = function create(properties) {
+            return new CMsgRequestRecurringMissionSchedule(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgRequestRecurringMissionSchedule message. Does not implicitly {@link CMsgRequestRecurringMissionSchedule.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgRequestRecurringMissionSchedule
+         * @static
+         * @param {ICMsgRequestRecurringMissionSchedule} message CMsgRequestRecurringMissionSchedule message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgRequestRecurringMissionSchedule.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgRequestRecurringMissionSchedule message, length delimited. Does not implicitly {@link CMsgRequestRecurringMissionSchedule.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgRequestRecurringMissionSchedule
+         * @static
+         * @param {ICMsgRequestRecurringMissionSchedule} message CMsgRequestRecurringMissionSchedule message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgRequestRecurringMissionSchedule.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgRequestRecurringMissionSchedule message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgRequestRecurringMissionSchedule
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgRequestRecurringMissionSchedule} CMsgRequestRecurringMissionSchedule
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgRequestRecurringMissionSchedule.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgRequestRecurringMissionSchedule();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgRequestRecurringMissionSchedule message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgRequestRecurringMissionSchedule
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgRequestRecurringMissionSchedule} CMsgRequestRecurringMissionSchedule
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgRequestRecurringMissionSchedule.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgRequestRecurringMissionSchedule message.
+         * @function verify
+         * @memberof CMsgRequestRecurringMissionSchedule
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgRequestRecurringMissionSchedule.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgRequestRecurringMissionSchedule message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgRequestRecurringMissionSchedule
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgRequestRecurringMissionSchedule} CMsgRequestRecurringMissionSchedule
+         */
+        CMsgRequestRecurringMissionSchedule.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgRequestRecurringMissionSchedule)
+                return object;
+            return new $root.CMsgRequestRecurringMissionSchedule();
+        };
+    
+        /**
+         * Creates a plain object from a CMsgRequestRecurringMissionSchedule message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgRequestRecurringMissionSchedule
+         * @static
+         * @param {CMsgRequestRecurringMissionSchedule} message CMsgRequestRecurringMissionSchedule
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgRequestRecurringMissionSchedule.toObject = function toObject() {
+            return {};
+        };
+    
+        /**
+         * Converts this CMsgRequestRecurringMissionSchedule to JSON.
+         * @function toJSON
+         * @memberof CMsgRequestRecurringMissionSchedule
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgRequestRecurringMissionSchedule.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgRequestRecurringMissionSchedule
+         * @function getTypeUrl
+         * @memberof CMsgRequestRecurringMissionSchedule
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgRequestRecurringMissionSchedule.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgRequestRecurringMissionSchedule";
+        };
+    
+        return CMsgRequestRecurringMissionSchedule;
+    })();
+    
+    $root.CMsgRecurringMissionSchema = (function() {
+    
+        /**
+         * Properties of a CMsgRecurringMissionSchema.
+         * @exports ICMsgRecurringMissionSchema
+         * @interface ICMsgRecurringMissionSchema
+         * @property {Array.<CMsgRecurringMissionSchema.IMissionTemplateList>|null} [missions] CMsgRecurringMissionSchema missions
+         */
+    
+        /**
+         * Constructs a new CMsgRecurringMissionSchema.
+         * @exports CMsgRecurringMissionSchema
+         * @classdesc Represents a CMsgRecurringMissionSchema.
+         * @implements ICMsgRecurringMissionSchema
+         * @constructor
+         * @param {ICMsgRecurringMissionSchema=} [properties] Properties to set
+         */
+        function CMsgRecurringMissionSchema(properties) {
+            this.missions = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+    
+        /**
+         * CMsgRecurringMissionSchema missions.
+         * @member {Array.<CMsgRecurringMissionSchema.IMissionTemplateList>} missions
+         * @memberof CMsgRecurringMissionSchema
+         * @instance
+         */
+        CMsgRecurringMissionSchema.prototype.missions = $util.emptyArray;
+    
+        /**
+         * Creates a new CMsgRecurringMissionSchema instance using the specified properties.
+         * @function create
+         * @memberof CMsgRecurringMissionSchema
+         * @static
+         * @param {ICMsgRecurringMissionSchema=} [properties] Properties to set
+         * @returns {CMsgRecurringMissionSchema} CMsgRecurringMissionSchema instance
+         */
+        CMsgRecurringMissionSchema.create = function create(properties) {
+            return new CMsgRecurringMissionSchema(properties);
+        };
+    
+        /**
+         * Encodes the specified CMsgRecurringMissionSchema message. Does not implicitly {@link CMsgRecurringMissionSchema.verify|verify} messages.
+         * @function encode
+         * @memberof CMsgRecurringMissionSchema
+         * @static
+         * @param {ICMsgRecurringMissionSchema} message CMsgRecurringMissionSchema message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgRecurringMissionSchema.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.missions != null && message.missions.length)
+                for (var i = 0; i < message.missions.length; ++i)
+                    $root.CMsgRecurringMissionSchema.MissionTemplateList.encode(message.missions[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            return writer;
+        };
+    
+        /**
+         * Encodes the specified CMsgRecurringMissionSchema message, length delimited. Does not implicitly {@link CMsgRecurringMissionSchema.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof CMsgRecurringMissionSchema
+         * @static
+         * @param {ICMsgRecurringMissionSchema} message CMsgRecurringMissionSchema message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CMsgRecurringMissionSchema.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+    
+        /**
+         * Decodes a CMsgRecurringMissionSchema message from the specified reader or buffer.
+         * @function decode
+         * @memberof CMsgRecurringMissionSchema
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {CMsgRecurringMissionSchema} CMsgRecurringMissionSchema
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgRecurringMissionSchema.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgRecurringMissionSchema();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        if (!(message.missions && message.missions.length))
+                            message.missions = [];
+                        message.missions.push($root.CMsgRecurringMissionSchema.MissionTemplateList.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Decodes a CMsgRecurringMissionSchema message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof CMsgRecurringMissionSchema
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {CMsgRecurringMissionSchema} CMsgRecurringMissionSchema
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CMsgRecurringMissionSchema.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+    
+        /**
+         * Verifies a CMsgRecurringMissionSchema message.
+         * @function verify
+         * @memberof CMsgRecurringMissionSchema
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CMsgRecurringMissionSchema.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.missions != null && message.hasOwnProperty("missions")) {
+                if (!Array.isArray(message.missions))
+                    return "missions: array expected";
+                for (var i = 0; i < message.missions.length; ++i) {
+                    var error = $root.CMsgRecurringMissionSchema.MissionTemplateList.verify(message.missions[i]);
+                    if (error)
+                        return "missions." + error;
+                }
+            }
+            return null;
+        };
+    
+        /**
+         * Creates a CMsgRecurringMissionSchema message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof CMsgRecurringMissionSchema
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {CMsgRecurringMissionSchema} CMsgRecurringMissionSchema
+         */
+        CMsgRecurringMissionSchema.fromObject = function fromObject(object) {
+            if (object instanceof $root.CMsgRecurringMissionSchema)
+                return object;
+            var message = new $root.CMsgRecurringMissionSchema();
+            if (object.missions) {
+                if (!Array.isArray(object.missions))
+                    throw TypeError(".CMsgRecurringMissionSchema.missions: array expected");
+                message.missions = [];
+                for (var i = 0; i < object.missions.length; ++i) {
+                    if (typeof object.missions[i] !== "object")
+                        throw TypeError(".CMsgRecurringMissionSchema.missions: object expected");
+                    message.missions[i] = $root.CMsgRecurringMissionSchema.MissionTemplateList.fromObject(object.missions[i]);
+                }
+            }
+            return message;
+        };
+    
+        /**
+         * Creates a plain object from a CMsgRecurringMissionSchema message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof CMsgRecurringMissionSchema
+         * @static
+         * @param {CMsgRecurringMissionSchema} message CMsgRecurringMissionSchema
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CMsgRecurringMissionSchema.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.missions = [];
+            if (message.missions && message.missions.length) {
+                object.missions = [];
+                for (var j = 0; j < message.missions.length; ++j)
+                    object.missions[j] = $root.CMsgRecurringMissionSchema.MissionTemplateList.toObject(message.missions[j], options);
+            }
+            return object;
+        };
+    
+        /**
+         * Converts this CMsgRecurringMissionSchema to JSON.
+         * @function toJSON
+         * @memberof CMsgRecurringMissionSchema
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CMsgRecurringMissionSchema.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+    
+        /**
+         * Gets the default type url for CMsgRecurringMissionSchema
+         * @function getTypeUrl
+         * @memberof CMsgRecurringMissionSchema
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        CMsgRecurringMissionSchema.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/CMsgRecurringMissionSchema";
+        };
+    
+        CMsgRecurringMissionSchema.MissionTemplateList = (function() {
+    
+            /**
+             * Properties of a MissionTemplateList.
+             * @memberof CMsgRecurringMissionSchema
+             * @interface IMissionTemplateList
+             * @property {number|null} [period] MissionTemplateList period
+             * @property {Array.<Uint8Array>|null} [mission_templates] MissionTemplateList mission_templates
+             */
+    
+            /**
+             * Constructs a new MissionTemplateList.
+             * @memberof CMsgRecurringMissionSchema
+             * @classdesc Represents a MissionTemplateList.
+             * @implements IMissionTemplateList
+             * @constructor
+             * @param {CMsgRecurringMissionSchema.IMissionTemplateList=} [properties] Properties to set
+             */
+            function MissionTemplateList(properties) {
+                this.mission_templates = [];
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * MissionTemplateList period.
+             * @member {number} period
+             * @memberof CMsgRecurringMissionSchema.MissionTemplateList
+             * @instance
+             */
+            MissionTemplateList.prototype.period = 0;
+    
+            /**
+             * MissionTemplateList mission_templates.
+             * @member {Array.<Uint8Array>} mission_templates
+             * @memberof CMsgRecurringMissionSchema.MissionTemplateList
+             * @instance
+             */
+            MissionTemplateList.prototype.mission_templates = $util.emptyArray;
+    
+            /**
+             * Creates a new MissionTemplateList instance using the specified properties.
+             * @function create
+             * @memberof CMsgRecurringMissionSchema.MissionTemplateList
+             * @static
+             * @param {CMsgRecurringMissionSchema.IMissionTemplateList=} [properties] Properties to set
+             * @returns {CMsgRecurringMissionSchema.MissionTemplateList} MissionTemplateList instance
+             */
+            MissionTemplateList.create = function create(properties) {
+                return new MissionTemplateList(properties);
+            };
+    
+            /**
+             * Encodes the specified MissionTemplateList message. Does not implicitly {@link CMsgRecurringMissionSchema.MissionTemplateList.verify|verify} messages.
+             * @function encode
+             * @memberof CMsgRecurringMissionSchema.MissionTemplateList
+             * @static
+             * @param {CMsgRecurringMissionSchema.IMissionTemplateList} message MissionTemplateList message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MissionTemplateList.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.period != null && Object.hasOwnProperty.call(message, "period"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.period);
+                if (message.mission_templates != null && message.mission_templates.length)
+                    for (var i = 0; i < message.mission_templates.length; ++i)
+                        writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.mission_templates[i]);
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified MissionTemplateList message, length delimited. Does not implicitly {@link CMsgRecurringMissionSchema.MissionTemplateList.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof CMsgRecurringMissionSchema.MissionTemplateList
+             * @static
+             * @param {CMsgRecurringMissionSchema.IMissionTemplateList} message MissionTemplateList message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MissionTemplateList.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes a MissionTemplateList message from the specified reader or buffer.
+             * @function decode
+             * @memberof CMsgRecurringMissionSchema.MissionTemplateList
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {CMsgRecurringMissionSchema.MissionTemplateList} MissionTemplateList
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MissionTemplateList.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgRecurringMissionSchema.MissionTemplateList();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.period = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            if (!(message.mission_templates && message.mission_templates.length))
+                                message.mission_templates = [];
+                            message.mission_templates.push(reader.bytes());
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes a MissionTemplateList message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof CMsgRecurringMissionSchema.MissionTemplateList
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {CMsgRecurringMissionSchema.MissionTemplateList} MissionTemplateList
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MissionTemplateList.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies a MissionTemplateList message.
+             * @function verify
+             * @memberof CMsgRecurringMissionSchema.MissionTemplateList
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MissionTemplateList.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.period != null && message.hasOwnProperty("period"))
+                    if (!$util.isInteger(message.period))
+                        return "period: integer expected";
+                if (message.mission_templates != null && message.hasOwnProperty("mission_templates")) {
+                    if (!Array.isArray(message.mission_templates))
+                        return "mission_templates: array expected";
+                    for (var i = 0; i < message.mission_templates.length; ++i)
+                        if (!(message.mission_templates[i] && typeof message.mission_templates[i].length === "number" || $util.isString(message.mission_templates[i])))
+                            return "mission_templates: buffer[] expected";
+                }
+                return null;
+            };
+    
+            /**
+             * Creates a MissionTemplateList message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof CMsgRecurringMissionSchema.MissionTemplateList
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {CMsgRecurringMissionSchema.MissionTemplateList} MissionTemplateList
+             */
+            MissionTemplateList.fromObject = function fromObject(object) {
+                if (object instanceof $root.CMsgRecurringMissionSchema.MissionTemplateList)
+                    return object;
+                var message = new $root.CMsgRecurringMissionSchema.MissionTemplateList();
+                if (object.period != null)
+                    message.period = object.period >>> 0;
+                if (object.mission_templates) {
+                    if (!Array.isArray(object.mission_templates))
+                        throw TypeError(".CMsgRecurringMissionSchema.MissionTemplateList.mission_templates: array expected");
+                    message.mission_templates = [];
+                    for (var i = 0; i < object.mission_templates.length; ++i)
+                        if (typeof object.mission_templates[i] === "string")
+                            $util.base64.decode(object.mission_templates[i], message.mission_templates[i] = $util.newBuffer($util.base64.length(object.mission_templates[i])), 0);
+                        else if (object.mission_templates[i].length >= 0)
+                            message.mission_templates[i] = object.mission_templates[i];
+                }
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from a MissionTemplateList message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof CMsgRecurringMissionSchema.MissionTemplateList
+             * @static
+             * @param {CMsgRecurringMissionSchema.MissionTemplateList} message MissionTemplateList
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MissionTemplateList.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.arrays || options.defaults)
+                    object.mission_templates = [];
+                if (options.defaults)
+                    object.period = 0;
+                if (message.period != null && message.hasOwnProperty("period"))
+                    object.period = message.period;
+                if (message.mission_templates && message.mission_templates.length) {
+                    object.mission_templates = [];
+                    for (var j = 0; j < message.mission_templates.length; ++j)
+                        object.mission_templates[j] = options.bytes === String ? $util.base64.encode(message.mission_templates[j], 0, message.mission_templates[j].length) : options.bytes === Array ? Array.prototype.slice.call(message.mission_templates[j]) : message.mission_templates[j];
+                }
+                return object;
+            };
+    
+            /**
+             * Converts this MissionTemplateList to JSON.
+             * @function toJSON
+             * @memberof CMsgRecurringMissionSchema.MissionTemplateList
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MissionTemplateList.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            /**
+             * Gets the default type url for MissionTemplateList
+             * @function getTypeUrl
+             * @memberof CMsgRecurringMissionSchema.MissionTemplateList
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            MissionTemplateList.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/CMsgRecurringMissionSchema.MissionTemplateList";
+            };
+    
+            return MissionTemplateList;
+        })();
+    
+        return CMsgRecurringMissionSchema;
     })();
     
     /**
@@ -52916,12 +57241,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgProtoBufHeader.decode = function decode(reader, length) {
+        CMsgProtoBufHeader.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgProtoBufHeader();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.client_steam_id = reader.fixed64();
@@ -53360,12 +57687,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgWebAPIKey.decode = function decode(reader, length) {
+        CMsgWebAPIKey.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgWebAPIKey();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.status = reader.uint32();
@@ -53695,12 +58024,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgHttpRequest.decode = function decode(reader, length) {
+        CMsgHttpRequest.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgHttpRequest();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.request_method = reader.uint32();
@@ -54059,12 +58390,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            RequestHeader.decode = function decode(reader, length) {
+            RequestHeader.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgHttpRequest.RequestHeader();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.name = reader.string();
@@ -54286,12 +58619,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            QueryParam.decode = function decode(reader, length) {
+            QueryParam.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgHttpRequest.QueryParam();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.name = reader.string();
@@ -54569,12 +58904,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgWebAPIRequest.decode = function decode(reader, length) {
+        CMsgWebAPIRequest.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgWebAPIRequest();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 2: {
                         message.interface_name = reader.string();
@@ -54867,12 +59204,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgHttpResponse.decode = function decode(reader, length) {
+        CMsgHttpResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgHttpResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.status_code = reader.uint32();
@@ -55132,12 +59471,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            ResponseHeader.decode = function decode(reader, length) {
+            ResponseHeader.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgHttpResponse.ResponseHeader();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.name = reader.string();
@@ -55362,12 +59703,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgAMFindAccounts.decode = function decode(reader, length) {
+        CMsgAMFindAccounts.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAMFindAccounts();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.search_type = reader.uint32();
@@ -55580,12 +59923,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgAMFindAccountsResponse.decode = function decode(reader, length) {
+        CMsgAMFindAccountsResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAMFindAccountsResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.steam_id && message.steam_id.length))
@@ -55878,12 +60223,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgNotifyWatchdog.decode = function decode(reader, length) {
+        CMsgNotifyWatchdog.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgNotifyWatchdog();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.source = reader.uint32();
@@ -56154,12 +60501,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgAMGetLicenses.decode = function decode(reader, length) {
+        CMsgAMGetLicenses.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAMGetLicenses();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.steamid = reader.fixed64();
@@ -56393,12 +60742,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgPackageLicense.decode = function decode(reader, length) {
+        CMsgPackageLicense.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgPackageLicense();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.package_id = reader.uint32();
@@ -56634,12 +60985,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgAMGetLicensesResponse.decode = function decode(reader, length) {
+        CMsgAMGetLicensesResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAMGetLicensesResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.license && message.license.length))
@@ -56893,12 +61246,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgAMGetUserGameStats.decode = function decode(reader, length) {
+        CMsgAMGetUserGameStats.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAMGetUserGameStats();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.steam_id = reader.fixed64();
@@ -57217,12 +61572,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgAMGetUserGameStatsResponse.decode = function decode(reader, length) {
+        CMsgAMGetUserGameStatsResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAMGetUserGameStatsResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.steam_id = reader.fixed64();
@@ -57545,12 +61902,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Stats.decode = function decode(reader, length) {
+            Stats.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAMGetUserGameStatsResponse.Stats();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.stat_id = reader.uint32();
@@ -57783,12 +62142,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Achievement_Blocks.decode = function decode(reader, length) {
+            Achievement_Blocks.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAMGetUserGameStatsResponse.Achievement_Blocks();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.achievement_id = reader.uint32();
@@ -58025,12 +62386,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCGetCommandList.decode = function decode(reader, length) {
+        CMsgGCGetCommandList.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCGetCommandList();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.app_id = reader.uint32();
@@ -58243,12 +62606,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCGetCommandListResponse.decode = function decode(reader, length) {
+        CMsgGCGetCommandListResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCGetCommandListResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.command_name && message.command_name.length))
@@ -58462,12 +62827,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCMsgMemCachedGet.decode = function decode(reader, length) {
+        CGCMsgMemCachedGet.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCMsgMemCachedGet();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.keys && message.keys.length))
@@ -58681,12 +63048,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCMsgMemCachedGetResponse.decode = function decode(reader, length) {
+        CGCMsgMemCachedGetResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCMsgMemCachedGetResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.values && message.values.length))
@@ -58911,12 +63280,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            ValueTag.decode = function decode(reader, length) {
+            ValueTag.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCMsgMemCachedGetResponse.ValueTag();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.found = reader.bool();
@@ -59141,12 +63512,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCMsgMemCachedSet.decode = function decode(reader, length) {
+        CGCMsgMemCachedSet.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCMsgMemCachedSet();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.keys && message.keys.length))
@@ -59371,12 +63744,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            KeyPair.decode = function decode(reader, length) {
+            KeyPair.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCMsgMemCachedSet.KeyPair();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.name = reader.string();
@@ -59601,12 +63976,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCMsgMemCachedDelete.decode = function decode(reader, length) {
+        CGCMsgMemCachedDelete.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCMsgMemCachedDelete();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.keys && message.keys.length))
@@ -59807,12 +64184,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCMsgMemCachedStats.decode = function decode(reader, length) {
+        CGCMsgMemCachedStats.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCMsgMemCachedStats();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 default:
                     reader.skipType(tag & 7);
@@ -60136,12 +64515,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCMsgMemCachedStatsResponse.decode = function decode(reader, length) {
+        CGCMsgMemCachedStatsResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCMsgMemCachedStatsResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.curr_connections = reader.uint64();
@@ -60692,12 +65073,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCMsgSQLStats.decode = function decode(reader, length) {
+        CGCMsgSQLStats.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCMsgSQLStats();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.schema_catalog = reader.uint32();
@@ -60983,12 +65366,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCMsgSQLStatsResponse.decode = function decode(reader, length) {
+        CGCMsgSQLStatsResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCMsgSQLStatsResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.threads = reader.uint32();
@@ -61316,12 +65701,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgAMAddFreeLicense.decode = function decode(reader, length) {
+        CMsgAMAddFreeLicense.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAMAddFreeLicense();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.steamid = reader.fixed64();
@@ -61592,12 +65979,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgAMAddFreeLicenseResponse.decode = function decode(reader, length) {
+        CMsgAMAddFreeLicenseResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAMAddFreeLicenseResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.eresult = reader.int32();
@@ -61836,12 +66225,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCMsgGetIPLocation.decode = function decode(reader, length) {
+        CGCMsgGetIPLocation.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCMsgGetIPLocation();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.ips && message.ips.length))
@@ -62113,12 +66504,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CIPLocationInfo.decode = function decode(reader, length) {
+        CIPLocationInfo.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CIPLocationInfo();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.ip = reader.uint32();
@@ -62379,12 +66772,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCMsgGetIPLocationResponse.decode = function decode(reader, length) {
+        CGCMsgGetIPLocationResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCMsgGetIPLocationResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.infos && message.infos.length))
@@ -62612,12 +67007,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCMsgSystemStatsSchema.decode = function decode(reader, length) {
+        CGCMsgSystemStatsSchema.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCMsgSystemStatsSchema();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.gc_app_id = reader.uint32();
@@ -62826,12 +67223,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCMsgGetSystemStats.decode = function decode(reader, length) {
+        CGCMsgGetSystemStats.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCMsgGetSystemStats();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 default:
                     reader.skipType(tag & 7);
@@ -63144,12 +67543,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCMsgGetSystemStatsResponse.decode = function decode(reader, length) {
+        CGCMsgGetSystemStatsResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCMsgGetSystemStatsResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.gc_app_id = reader.uint32();
@@ -63560,12 +67961,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgAMSendEmail.decode = function decode(reader, length) {
+        CMsgAMSendEmail.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAMSendEmail();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.steamid = reader.fixed64();
@@ -63886,12 +68289,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            ReplacementToken.decode = function decode(reader, length) {
+            ReplacementToken.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAMSendEmail.ReplacementToken();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.token_name = reader.string();
@@ -64113,12 +68518,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            PersonaNameReplacementToken.decode = function decode(reader, length) {
+            PersonaNameReplacementToken.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAMSendEmail.PersonaNameReplacementToken();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.steamid = reader.fixed64();
@@ -64346,12 +68753,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgAMSendEmailResponse.decode = function decode(reader, length) {
+        CMsgAMSendEmailResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAMSendEmailResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.eresult = reader.uint32();
@@ -64582,12 +68991,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCGetEmailTemplate.decode = function decode(reader, length) {
+        CMsgGCGetEmailTemplate.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCGetEmailTemplate();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.app_id = reader.uint32();
@@ -64844,12 +69255,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCGetEmailTemplateResponse.decode = function decode(reader, length) {
+        CMsgGCGetEmailTemplateResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCGetEmailTemplateResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.eresult = reader.uint32();
@@ -65116,12 +69529,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgAMGrantGuestPasses2.decode = function decode(reader, length) {
+        CMsgAMGrantGuestPasses2.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAMGrantGuestPasses2();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.steam_id = reader.fixed64();
@@ -65393,12 +69808,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgAMGrantGuestPasses2Response.decode = function decode(reader, length) {
+        CMsgAMGrantGuestPasses2Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAMGrantGuestPasses2Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.eresult = reader.int32();
@@ -65620,12 +70037,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCSystemMsg_GetAccountDetails.decode = function decode(reader, length) {
+        CGCSystemMsg_GetAccountDetails.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCSystemMsg_GetAccountDetails();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.steamid = reader.fixed64();
@@ -66235,12 +70654,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCSystemMsg_GetAccountDetails_Response.decode = function decode(reader, length) {
+        CGCSystemMsg_GetAccountDetails_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCSystemMsg_GetAccountDetails_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.eresult_deprecated = reader.uint32();
@@ -66875,12 +71296,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCGetPersonaNames.decode = function decode(reader, length) {
+        CMsgGCGetPersonaNames.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCGetPersonaNames();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.steamids && message.steamids.length))
@@ -67122,12 +71545,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCGetPersonaNames_Response.decode = function decode(reader, length) {
+        CMsgGCGetPersonaNames_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCGetPersonaNames_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.succeeded_lookups && message.succeeded_lookups.length))
@@ -67394,12 +71819,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            PersonaName.decode = function decode(reader, length) {
+            PersonaName.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCGetPersonaNames_Response.PersonaName();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.steamid = reader.fixed64();
@@ -67638,12 +72065,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCheckFriendship.decode = function decode(reader, length) {
+        CMsgGCCheckFriendship.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCheckFriendship();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.steamid_left = reader.fixed64();
@@ -67893,12 +72322,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCCheckFriendship_Response.decode = function decode(reader, length) {
+        CMsgGCCheckFriendship_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCCheckFriendship_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.success = reader.bool();
@@ -68122,12 +72553,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCMsgMasterSetDirectory.decode = function decode(reader, length) {
+        CMsgGCMsgMasterSetDirectory.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCMsgMasterSetDirectory();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.master_dir_index = reader.uint32();
@@ -68398,12 +72831,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            SubGC.decode = function decode(reader, length) {
+            SubGC.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCMsgMasterSetDirectory.SubGC();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.dir_index = reader.uint32();
@@ -68664,12 +73099,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCMsgMasterSetDirectory_Response.decode = function decode(reader, length) {
+        CMsgGCMsgMasterSetDirectory_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCMsgMasterSetDirectory_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.eresult = reader.int32();
@@ -68880,12 +73317,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCMsgWebAPIJobRequestForwardResponse.decode = function decode(reader, length) {
+        CMsgGCMsgWebAPIJobRequestForwardResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCMsgWebAPIJobRequestForwardResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.dir_index = reader.uint32();
@@ -69083,12 +73522,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCSystemMsg_GetPurchaseTrust_Request.decode = function decode(reader, length) {
+        CGCSystemMsg_GetPurchaseTrust_Request.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCSystemMsg_GetPurchaseTrust_Request();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.steamid = reader.fixed64();
@@ -69333,12 +73774,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCSystemMsg_GetPurchaseTrust_Response.decode = function decode(reader, length) {
+        CGCSystemMsg_GetPurchaseTrust_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCSystemMsg_GetPurchaseTrust_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.has_prior_purchase_history = reader.bool();
@@ -69617,12 +74060,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCHAccountVacStatusChange.decode = function decode(reader, length) {
+        CMsgGCHAccountVacStatusChange.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCHAccountVacStatusChange();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.steam_id = reader.fixed64();
@@ -69883,12 +74328,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCGetPartnerAccountLink.decode = function decode(reader, length) {
+        CMsgGCGetPartnerAccountLink.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCGetPartnerAccountLink();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.steamid = reader.fixed64();
@@ -70144,12 +74591,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCGetPartnerAccountLink_Response.decode = function decode(reader, length) {
+        CMsgGCGetPartnerAccountLink_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCGetPartnerAccountLink_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.pwid = reader.uint32();
@@ -70407,12 +74856,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCAddressMask.decode = function decode(reader, length) {
+        CMsgGCAddressMask.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCAddressMask();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.ipv4 = reader.fixed32();
@@ -70625,12 +75076,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCAddressMaskGroup.decode = function decode(reader, length) {
+        CMsgGCAddressMaskGroup.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCAddressMaskGroup();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.addrs && message.addrs.length))
@@ -70906,12 +75359,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCRoutingInfo.decode = function decode(reader, length) {
+        CMsgGCRoutingInfo.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCRoutingInfo();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.dir_index && message.dir_index.length))
@@ -71297,12 +75752,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            TokenBucketConfiguration.decode = function decode(reader, length) {
+            TokenBucketConfiguration.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCRoutingInfo.TokenBucketConfiguration();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.tokens_start = reader.int32();
@@ -71547,12 +76004,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            PolicyRule.decode = function decode(reader, length) {
+            PolicyRule.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCRoutingInfo.PolicyRule();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.account_type = reader.int32();
@@ -71805,12 +76264,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCMsgMasterSetWebAPIRouting.decode = function decode(reader, length) {
+        CMsgGCMsgMasterSetWebAPIRouting.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCMsgMasterSetWebAPIRouting();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.entries && message.entries.length))
@@ -72046,12 +76507,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Entry.decode = function decode(reader, length) {
+            Entry.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCMsgMasterSetWebAPIRouting.Entry();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.interface_name = reader.string();
@@ -72297,12 +76760,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCMsgMasterSetClientMsgRouting.decode = function decode(reader, length) {
+        CMsgGCMsgMasterSetClientMsgRouting.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCMsgMasterSetClientMsgRouting();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.entries && message.entries.length))
@@ -72559,12 +77024,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Entry.decode = function decode(reader, length) {
+            Entry.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCMsgMasterSetClientMsgRouting.Entry();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.msg_type = reader.uint32();
@@ -72783,12 +77250,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCMsgMasterSetWebAPIRouting_Response.decode = function decode(reader, length) {
+        CMsgGCMsgMasterSetWebAPIRouting_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCMsgMasterSetWebAPIRouting_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.eresult = reader.int32();
@@ -72986,12 +77455,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCMsgMasterSetClientMsgRouting_Response.decode = function decode(reader, length) {
+        CMsgGCMsgMasterSetClientMsgRouting_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCMsgMasterSetClientMsgRouting_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.eresult = reader.int32();
@@ -73204,12 +77675,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCMsgSetOptions.decode = function decode(reader, length) {
+        CMsgGCMsgSetOptions.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCMsgSetOptions();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.options && message.options.length))
@@ -73493,12 +77966,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            MessageRange.decode = function decode(reader, length) {
+            MessageRange.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCMsgSetOptions.MessageRange();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.low = reader.uint32();
@@ -73868,12 +78343,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCHUpdateSession.decode = function decode(reader, length) {
+        CMsgGCHUpdateSession.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCHUpdateSession();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.steam_id = reader.fixed64();
@@ -74306,12 +78783,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            ExtraField.decode = function decode(reader, length) {
+            ExtraField.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCHUpdateSession.ExtraField();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.name = reader.string();
@@ -74547,12 +79026,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgNotificationOfSuspiciousActivity.decode = function decode(reader, length) {
+        CMsgNotificationOfSuspiciousActivity.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgNotificationOfSuspiciousActivity();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.steamid = reader.fixed64();
@@ -74804,12 +79285,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            MultipleGameInstances.decode = function decode(reader, length) {
+            MultipleGameInstances.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgNotificationOfSuspiciousActivity.MultipleGameInstances();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.app_instance_count = reader.uint32();
@@ -75087,12 +79570,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgDPPartnerMicroTxns.decode = function decode(reader, length) {
+        CMsgDPPartnerMicroTxns.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgDPPartnerMicroTxns();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.appid = reader.uint32();
@@ -75525,12 +80010,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            PartnerMicroTxn.decode = function decode(reader, length) {
+            PartnerMicroTxn.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgDPPartnerMicroTxns.PartnerMicroTxn();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.init_time = reader.uint32();
@@ -76052,12 +80539,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            PartnerInfo.decode = function decode(reader, length) {
+            PartnerInfo.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgDPPartnerMicroTxns.PartnerInfo();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.partner_id = reader.uint32();
@@ -76306,12 +80795,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgDPPartnerMicroTxnsResponse.decode = function decode(reader, length) {
+        CMsgDPPartnerMicroTxnsResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgDPPartnerMicroTxnsResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.eresult = reader.uint32();
@@ -76626,12 +81117,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CChinaAgreementSessions_StartAgreementSessionInGame_Request.decode = function decode(reader, length) {
+        CChinaAgreementSessions_StartAgreementSessionInGame_Request.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CChinaAgreementSessions_StartAgreementSessionInGame_Request();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.appid = reader.uint32();
@@ -76868,12 +81361,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CChinaAgreementSessions_StartAgreementSessionInGame_Response.decode = function decode(reader, length) {
+        CChinaAgreementSessions_StartAgreementSessionInGame_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CChinaAgreementSessions_StartAgreementSessionInGame_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.agreement_url = reader.string();
@@ -77091,12 +81586,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                FileDescriptorSet.decode = function decode(reader, length) {
+                FileDescriptorSet.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.FileDescriptorSet();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 1: {
                                 if (!(message.file && message.file.length))
@@ -77411,12 +81908,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                FileDescriptorProto.decode = function decode(reader, length) {
+                FileDescriptorProto.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.FileDescriptorProto();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 1: {
                                 message.name = reader.string();
@@ -77889,12 +82388,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                DescriptorProto.decode = function decode(reader, length) {
+                DescriptorProto.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.DescriptorProto();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 1: {
                                 message.name = reader.string();
@@ -78275,12 +82776,14 @@
                      * @throws {Error} If the payload is not a reader or valid buffer
                      * @throws {$protobuf.util.ProtocolError} If required fields are missing
                      */
-                    ExtensionRange.decode = function decode(reader, length) {
+                    ExtensionRange.decode = function decode(reader, length, error) {
                         if (!(reader instanceof $Reader))
                             reader = $Reader.create(reader);
                         var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.DescriptorProto.ExtensionRange();
                         while (reader.pos < end) {
                             var tag = reader.uint32();
+                            if (tag === error)
+                                break;
                             switch (tag >>> 3) {
                             case 1: {
                                     message.start = reader.int32();
@@ -78571,12 +83074,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                FieldDescriptorProto.decode = function decode(reader, length) {
+                FieldDescriptorProto.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.FieldDescriptorProto();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 1: {
                                 message.name = reader.string();
@@ -79073,12 +83578,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                EnumDescriptorProto.decode = function decode(reader, length) {
+                EnumDescriptorProto.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.EnumDescriptorProto();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 1: {
                                 message.name = reader.string();
@@ -79348,12 +83855,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                EnumValueDescriptorProto.decode = function decode(reader, length) {
+                EnumValueDescriptorProto.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.EnumValueDescriptorProto();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 1: {
                                 message.name = reader.string();
@@ -79605,12 +84114,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                ServiceDescriptorProto.decode = function decode(reader, length) {
+                ServiceDescriptorProto.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.ServiceDescriptorProto();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 1: {
                                 message.name = reader.string();
@@ -79891,12 +84402,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                MethodDescriptorProto.decode = function decode(reader, length) {
+                MethodDescriptorProto.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.MethodDescriptorProto();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 1: {
                                 message.name = reader.string();
@@ -80226,12 +84739,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                FileOptions.decode = function decode(reader, length) {
+                FileOptions.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.FileOptions();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 1: {
                                 message.java_package = reader.string();
@@ -80632,12 +85147,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                MessageOptions.decode = function decode(reader, length) {
+                MessageOptions.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.MessageOptions();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 1: {
                                 message.message_set_wire_format = reader.bool();
@@ -80961,12 +85478,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                FieldOptions.decode = function decode(reader, length) {
+                FieldOptions.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.FieldOptions();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 1: {
                                 message.ctype = reader.int32();
@@ -81287,12 +85806,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                EnumOptions.decode = function decode(reader, length) {
+                EnumOptions.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.EnumOptions();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 999: {
                                 if (!(message.uninterpreted_option && message.uninterpreted_option.length))
@@ -81511,12 +86032,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                EnumValueOptions.decode = function decode(reader, length) {
+                EnumValueOptions.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.EnumValueOptions();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 999: {
                                 if (!(message.uninterpreted_option && message.uninterpreted_option.length))
@@ -81735,12 +86258,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                ServiceOptions.decode = function decode(reader, length) {
+                ServiceOptions.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.ServiceOptions();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 999: {
                                 if (!(message.uninterpreted_option && message.uninterpreted_option.length))
@@ -81959,12 +86484,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                MethodOptions.decode = function decode(reader, length) {
+                MethodOptions.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.MethodOptions();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 999: {
                                 if (!(message.uninterpreted_option && message.uninterpreted_option.length))
@@ -82249,12 +86776,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                UninterpretedOption.decode = function decode(reader, length) {
+                UninterpretedOption.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.UninterpretedOption();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 2: {
                                 if (!(message.name && message.name.length))
@@ -82588,12 +87117,14 @@
                      * @throws {Error} If the payload is not a reader or valid buffer
                      * @throws {$protobuf.util.ProtocolError} If required fields are missing
                      */
-                    NamePart.decode = function decode(reader, length) {
+                    NamePart.decode = function decode(reader, length, error) {
                         if (!(reader instanceof $Reader))
                             reader = $Reader.create(reader);
                         var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.UninterpretedOption.NamePart();
                         while (reader.pos < end) {
                             var tag = reader.uint32();
+                            if (tag === error)
+                                break;
                             switch (tag >>> 3) {
                             case 1: {
                                     message.name_part = reader.string();
@@ -82811,12 +87342,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                SourceCodeInfo.decode = function decode(reader, length) {
+                SourceCodeInfo.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.SourceCodeInfo();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 1: {
                                 if (!(message.location && message.location.length))
@@ -83051,12 +87584,14 @@
                      * @throws {Error} If the payload is not a reader or valid buffer
                      * @throws {$protobuf.util.ProtocolError} If required fields are missing
                      */
-                    Location.decode = function decode(reader, length) {
+                    Location.decode = function decode(reader, length, error) {
                         if (!(reader instanceof $Reader))
                             reader = $Reader.create(reader);
                         var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.SourceCodeInfo.Location();
                         while (reader.pos < end) {
                             var tag = reader.uint32();
+                            if (tag === error)
+                                break;
                             switch (tag >>> 3) {
                             case 1: {
                                     if (!(message.path && message.path.length))
@@ -83413,12 +87948,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CEngineGotvSyncPacket.decode = function decode(reader, length) {
+        CEngineGotvSyncPacket.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CEngineGotvSyncPacket();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.match_id = reader.uint64();
@@ -83788,12 +88325,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgSOIDOwner.decode = function decode(reader, length) {
+        CMsgSOIDOwner.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSOIDOwner();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.type = reader.uint32();
@@ -84051,12 +88590,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgSOSingleObject.decode = function decode(reader, length) {
+        CMsgSOSingleObject.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSOSingleObject();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 2: {
                         message.type_id = reader.int32();
@@ -84343,12 +88884,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgSOMultipleObjects.decode = function decode(reader, length) {
+        CMsgSOMultipleObjects.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSOMultipleObjects();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 2: {
                         if (!(message.objects_modified && message.objects_modified.length))
@@ -84618,12 +89161,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            SingleObject.decode = function decode(reader, length) {
+            SingleObject.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSOMultipleObjects.SingleObject();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.type_id = reader.int32();
@@ -84870,12 +89415,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgSOCacheSubscribed.decode = function decode(reader, length) {
+        CMsgSOCacheSubscribed.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSOCacheSubscribed();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 2: {
                         if (!(message.objects && message.objects.length))
@@ -85147,12 +89694,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            SubscribedType.decode = function decode(reader, length) {
+            SubscribedType.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSOCacheSubscribed.SubscribedType();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.type_id = reader.int32();
@@ -85383,12 +89932,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgSOCacheUnsubscribed.decode = function decode(reader, length) {
+        CMsgSOCacheUnsubscribed.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSOCacheUnsubscribed();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 2: {
                         message.owner_soid = $root.CMsgSOIDOwner.decode(reader, reader.uint32());
@@ -85602,12 +90153,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgSOCacheSubscriptionCheck.decode = function decode(reader, length) {
+        CMsgSOCacheSubscriptionCheck.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSOCacheSubscriptionCheck();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 2: {
                         message.version = reader.fixed64();
@@ -85837,12 +90390,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgSOCacheSubscriptionRefresh.decode = function decode(reader, length) {
+        CMsgSOCacheSubscriptionRefresh.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSOCacheSubscriptionRefresh();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 2: {
                         message.owner_soid = $root.CMsgSOIDOwner.decode(reader, reader.uint32());
@@ -86045,12 +90600,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgSOCacheVersion.decode = function decode(reader, length) {
+        CMsgSOCacheVersion.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSOCacheVersion();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.version = reader.fixed64();
@@ -86449,12 +91006,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgAccountDetails.decode = function decode(reader, length) {
+        CMsgAccountDetails.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgAccountDetails();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.valid = reader.bool();
@@ -86892,12 +91451,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCMultiplexMessage.decode = function decode(reader, length) {
+        CMsgGCMultiplexMessage.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCMultiplexMessage();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.msgtype = reader.uint32();
@@ -87171,12 +91732,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCMultiplexMessage_Response.decode = function decode(reader, length) {
+        CMsgGCMultiplexMessage_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCMultiplexMessage_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.msgtype = reader.uint32();
@@ -87385,12 +91948,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCToGCMsgMasterAck.decode = function decode(reader, length) {
+        CGCToGCMsgMasterAck.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCToGCMsgMasterAck();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.dir_index = reader.uint32();
@@ -87601,12 +92166,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCToGCMsgMasterAck_Response.decode = function decode(reader, length) {
+        CGCToGCMsgMasterAck_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCToGCMsgMasterAck_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.eresult = reader.int32();
@@ -87793,12 +92360,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCToGCMsgMasterStartupComplete.decode = function decode(reader, length) {
+        CGCToGCMsgMasterStartupComplete.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCToGCMsgMasterStartupComplete();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 default:
                     reader.skipType(tag & 7);
@@ -88012,12 +92581,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCToGCMsgRouted.decode = function decode(reader, length) {
+        CGCToGCMsgRouted.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCToGCMsgRouted();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.msg_type = reader.uint32();
@@ -88286,12 +92857,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGCToGCMsgRoutedReply.decode = function decode(reader, length) {
+        CGCToGCMsgRoutedReply.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGCToGCMsgRoutedReply();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.msg_type = reader.uint32();
@@ -88522,12 +93095,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCUpdateSessionIP.decode = function decode(reader, length) {
+        CMsgGCUpdateSessionIP.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCUpdateSessionIP();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.steamid = reader.fixed64();
@@ -88752,12 +93327,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCRequestSessionIP.decode = function decode(reader, length) {
+        CMsgGCRequestSessionIP.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCRequestSessionIP();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.steamid = reader.fixed64();
@@ -88969,12 +93546,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgGCRequestSessionIPResponse.decode = function decode(reader, length) {
+        CMsgGCRequestSessionIPResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgGCRequestSessionIPResponse();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.ip = reader.fixed32();
@@ -89183,12 +93762,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgSOCacheHaveVersion.decode = function decode(reader, length) {
+        CMsgSOCacheHaveVersion.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSOCacheHaveVersion();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.soid = $root.CMsgSOIDOwner.decode(reader, reader.uint32());
@@ -89508,12 +94089,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgClientHello.decode = function decode(reader, length) {
+        CMsgClientHello.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgClientHello();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.version = reader.uint32();
@@ -89907,12 +94490,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgServerHello.decode = function decode(reader, length) {
+        CMsgServerHello.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgServerHello();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.version = reader.uint32();
@@ -90347,12 +94932,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgClientWelcome.decode = function decode(reader, length) {
+        CMsgClientWelcome.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgClientWelcome();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.version = reader.uint32();
@@ -90753,12 +95340,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Location.decode = function decode(reader, length) {
+            Location.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgClientWelcome.Location();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.latitude = reader.float();
@@ -91039,12 +95628,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgConnectionStatus.decode = function decode(reader, length) {
+        CMsgConnectionStatus.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgConnectionStatus();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.status = reader.int32();
@@ -91350,12 +95941,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CWorkshop_PopulateItemDescriptions_Request.decode = function decode(reader, length) {
+        CWorkshop_PopulateItemDescriptions_Request.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CWorkshop_PopulateItemDescriptions_Request();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.appid = reader.uint32();
@@ -91604,12 +96197,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            SingleItemDescription.decode = function decode(reader, length) {
+            SingleItemDescription.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CWorkshop_PopulateItemDescriptions_Request.SingleItemDescription();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.gameitemid = reader.uint32();
@@ -91845,12 +96440,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            ItemDescriptionsLanguageBlock.decode = function decode(reader, length) {
+            ItemDescriptionsLanguageBlock.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CWorkshop_PopulateItemDescriptions_Request.ItemDescriptionsLanguageBlock();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.language = reader.string();
@@ -92094,12 +96691,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CWorkshop_GetContributors_Request.decode = function decode(reader, length) {
+        CWorkshop_GetContributors_Request.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CWorkshop_GetContributors_Request();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.appid = reader.uint32();
@@ -92312,12 +96911,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CWorkshop_GetContributors_Response.decode = function decode(reader, length) {
+        CWorkshop_GetContributors_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CWorkshop_GetContributors_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.contributors && message.contributors.length))
@@ -92614,12 +97215,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CWorkshop_SetItemPaymentRules_Request.decode = function decode(reader, length) {
+        CWorkshop_SetItemPaymentRules_Request.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CWorkshop_SetItemPaymentRules_Request();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.appid = reader.uint32();
@@ -92965,12 +97568,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            WorkshopItemPaymentRule.decode = function decode(reader, length) {
+            WorkshopItemPaymentRule.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CWorkshop_SetItemPaymentRules_Request.WorkshopItemPaymentRule();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.workshop_file_id = reader.uint64();
@@ -93230,12 +97835,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            WorkshopDirectPaymentRule.decode = function decode(reader, length) {
+            WorkshopDirectPaymentRule.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CWorkshop_SetItemPaymentRules_Request.WorkshopDirectPaymentRule();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.workshop_file_id = reader.uint64();
@@ -93482,12 +98089,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            PartnerItemPaymentRule.decode = function decode(reader, length) {
+            PartnerItemPaymentRule.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CWorkshop_SetItemPaymentRules_Request.PartnerItemPaymentRule();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.account_id = reader.uint32();
@@ -93702,12 +98311,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CWorkshop_SetItemPaymentRules_Response.decode = function decode(reader, length) {
+        CWorkshop_SetItemPaymentRules_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CWorkshop_SetItemPaymentRules_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 default:
                     reader.skipType(tag & 7);
@@ -93901,12 +98512,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGameServers_AggregationQuery_Request.decode = function decode(reader, length) {
+        CGameServers_AggregationQuery_Request.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGameServers_AggregationQuery_Request();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.filter = reader.string();
@@ -94133,12 +98746,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CGameServers_AggregationQuery_Response.decode = function decode(reader, length) {
+        CGameServers_AggregationQuery_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGameServers_AggregationQuery_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         if (!(message.groups && message.groups.length))
@@ -94420,12 +99035,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Group.decode = function decode(reader, length) {
+            Group.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CGameServers_AggregationQuery_Response.Group();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             if (!(message.group_values && message.group_values.length))
@@ -94758,12 +99375,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CWorkshop_AddSpecialPayment_Request.decode = function decode(reader, length) {
+        CWorkshop_AddSpecialPayment_Request.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CWorkshop_AddSpecialPayment_Request();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.appid = reader.uint32();
@@ -95027,12 +99646,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CWorkshop_AddSpecialPayment_Response.decode = function decode(reader, length) {
+        CWorkshop_AddSpecialPayment_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CWorkshop_AddSpecialPayment_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 default:
                     reader.skipType(tag & 7);
@@ -95237,12 +99858,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CProductInfo_SetRichPresenceLocalization_Request.decode = function decode(reader, length) {
+        CProductInfo_SetRichPresenceLocalization_Request.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CProductInfo_SetRichPresenceLocalization_Request();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.appid = reader.uint32();
@@ -95507,12 +100130,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Token.decode = function decode(reader, length) {
+            Token.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CProductInfo_SetRichPresenceLocalization_Request.Token();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.token = reader.string();
@@ -95736,12 +100361,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            LanguageSection.decode = function decode(reader, length) {
+            LanguageSection.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CProductInfo_SetRichPresenceLocalization_Request.LanguageSection();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.language = reader.string();
@@ -95963,12 +100590,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CProductInfo_SetRichPresenceLocalization_Response.decode = function decode(reader, length) {
+        CProductInfo_SetRichPresenceLocalization_Response.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CProductInfo_SetRichPresenceLocalization_Response();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 default:
                     reader.skipType(tag & 7);
@@ -96173,12 +100802,14 @@
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        CMsgSerializedSOCache.decode = function decode(reader, length) {
+        CMsgSerializedSOCache.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
             var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSerializedSOCache();
             while (reader.pos < end) {
                 var tag = reader.uint32();
+                if (tag === error)
+                    break;
                 switch (tag >>> 3) {
                 case 1: {
                         message.file_version = reader.uint32();
@@ -96442,12 +101073,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            TypeCache.decode = function decode(reader, length) {
+            TypeCache.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSerializedSOCache.TypeCache();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.type = reader.uint32();
@@ -96725,12 +101358,14 @@
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Cache.decode = function decode(reader, length) {
+            Cache.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
                 var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSerializedSOCache.Cache();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
+                    if (tag === error)
+                        break;
                     switch (tag >>> 3) {
                     case 1: {
                             message.type = reader.uint32();
@@ -97027,12 +101662,14 @@
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                Version.decode = function decode(reader, length) {
+                Version.decode = function decode(reader, length, error) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
                     var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CMsgSerializedSOCache.Cache.Version();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
+                        if (tag === error)
+                            break;
                         switch (tag >>> 3) {
                         case 1: {
                                 message.service = reader.uint32();
