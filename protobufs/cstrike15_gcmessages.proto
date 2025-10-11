@@ -878,6 +878,7 @@ message CEconItemPreviewDataBlock {
 		optional float offset_y = 8;
 		optional float offset_z = 9;
 		optional uint32 pattern = 10;
+		optional uint32 highlight_reel = 11;
 	}
 
 	optional uint32 accountid = 1;
@@ -900,6 +901,9 @@ message CEconItemPreviewDataBlock {
 	optional int32 entindex = 18;
 	optional uint32 petindex = 19;
 	repeated .CEconItemPreviewDataBlock.Sticker keychains = 20;
+	optional uint32 style = 21;
+	repeated .CEconItemPreviewDataBlock.Sticker variations = 22;
+	optional uint32 upgrade_level = 23;
 }
 
 message CMsgGCCStrike15_v2_MatchEndRewardDropsNotification {
