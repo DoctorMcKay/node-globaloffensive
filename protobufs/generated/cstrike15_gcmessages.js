@@ -29626,6 +29626,7 @@
              * @property {number|null} [offset_z] Sticker offset_z
              * @property {number|null} [pattern] Sticker pattern
              * @property {number|null} [highlight_reel] Sticker highlight_reel
+             * @property {number|null} [wrapped_sticker] Sticker wrapped_sticker
              */
     
             /**
@@ -29732,6 +29733,14 @@
             Sticker.prototype.highlight_reel = 0;
     
             /**
+             * Sticker wrapped_sticker.
+             * @member {number} wrapped_sticker
+             * @memberof CEconItemPreviewDataBlock.Sticker
+             * @instance
+             */
+            Sticker.prototype.wrapped_sticker = 0;
+    
+            /**
              * Creates a new Sticker instance using the specified properties.
              * @function create
              * @memberof CEconItemPreviewDataBlock.Sticker
@@ -29777,6 +29786,8 @@
                     writer.uint32(/* id 10, wireType 0 =*/80).uint32(message.pattern);
                 if (message.highlight_reel != null && Object.hasOwnProperty.call(message, "highlight_reel"))
                     writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.highlight_reel);
+                if (message.wrapped_sticker != null && Object.hasOwnProperty.call(message, "wrapped_sticker"))
+                    writer.uint32(/* id 12, wireType 0 =*/96).uint32(message.wrapped_sticker);
                 return writer;
             };
     
@@ -29857,6 +29868,10 @@
                             message.highlight_reel = reader.uint32();
                             break;
                         }
+                    case 12: {
+                            message.wrapped_sticker = reader.uint32();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -29925,6 +29940,9 @@
                 if (message.highlight_reel != null && message.hasOwnProperty("highlight_reel"))
                     if (!$util.isInteger(message.highlight_reel))
                         return "highlight_reel: integer expected";
+                if (message.wrapped_sticker != null && message.hasOwnProperty("wrapped_sticker"))
+                    if (!$util.isInteger(message.wrapped_sticker))
+                        return "wrapped_sticker: integer expected";
                 return null;
             };
     
@@ -29962,6 +29980,8 @@
                     message.pattern = object.pattern >>> 0;
                 if (object.highlight_reel != null)
                     message.highlight_reel = object.highlight_reel >>> 0;
+                if (object.wrapped_sticker != null)
+                    message.wrapped_sticker = object.wrapped_sticker >>> 0;
                 return message;
             };
     
@@ -29990,6 +30010,7 @@
                     object.offset_z = 0;
                     object.pattern = 0;
                     object.highlight_reel = 0;
+                    object.wrapped_sticker = 0;
                 }
                 if (message.slot != null && message.hasOwnProperty("slot"))
                     object.slot = message.slot;
@@ -30013,6 +30034,8 @@
                     object.pattern = message.pattern;
                 if (message.highlight_reel != null && message.hasOwnProperty("highlight_reel"))
                     object.highlight_reel = message.highlight_reel;
+                if (message.wrapped_sticker != null && message.hasOwnProperty("wrapped_sticker"))
+                    object.wrapped_sticker = message.wrapped_sticker;
                 return object;
             };
     
