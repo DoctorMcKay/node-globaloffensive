@@ -80,6 +80,12 @@ related events), where applicable:
     - `offset_y` - Float, `null` if not applicable
 - `casket_id` - If this item is contained in a casket (storage unit), this is a string containing that casket's item ID
 - `casket_contained_item_count` - If this item is a casket (storage unit), this is a count of how many items it contains
+- `charm` - If a charm (sometimes referred to as keychain) is attached to the item, this object contains details about the charm.
+    - `charm_id` - The ID of the charm
+    - `offset_x` - Float
+    - `offset_y` - Float
+    - `offset_z` - Float
+    - `pattern` - The charm's pattern (1-100,000)
 
 Note that if any of the above attributes are not applicable, then they will not exist in the item object.
 
